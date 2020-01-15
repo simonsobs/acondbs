@@ -8,11 +8,19 @@ import sys
 from acondbs import create_app
 
 ##__________________________________________________________________||
+_THISDIR = os.path.dirname(os.path.realpath(__file__))
+
+##__________________________________________________________________||
 @pytest.fixture
 def app():
-    app = create_app({
-        'TESTING': True,
-    })
+
+    config = dict(
+        TESTING=True,
+        SQLALCHEMY_DATABASE_URI='sqlite:///{}'.format(os.path.join(_THISDIR, 'acl.sqlite3')),
+        SQLALCHEMY_TRACK_MODIFICATIONS=False
+    )
+
+    app = create_app(config)
 
     yield app
 

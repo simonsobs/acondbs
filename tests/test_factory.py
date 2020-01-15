@@ -7,8 +7,3 @@ def test_config():
     assert create_app({'TESTING': True}).testing
 
 ##__________________________________________________________________||
-def test_hello(client):
-    response = client.get('/hello')
-    assert response.data == b'Hello, World!'
-
-##__________________________________________________________________||

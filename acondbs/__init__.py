@@ -1,5 +1,3 @@
-# Tai Sakuma <tai.sakuma@gmail.com>
-import os
 from flask import Flask
 
 ##__________________________________________________________________||
@@ -7,7 +5,8 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'acl.sqlite'),
+        SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
+        SQLALCHEMY_TRACK_MODIFICATIONS=False
     )
 
     if test_config is None:
@@ -15,14 +14,11 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
+    from . import db
+    db.init_app(app)
 
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    from . import bpquery
+    app.register_blueprint(bpquery.bp)
 
     return app
 
