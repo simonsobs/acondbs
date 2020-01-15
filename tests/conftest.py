@@ -5,8 +5,6 @@ import tempfile
 import pytest
 
 import sys
-print(sys.path)
-
 from acondbs import create_app
 
 ##__________________________________________________________________||
