@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 
 ##__________________________________________________________________||
 def create_app(test_config=None):
@@ -19,6 +20,8 @@ def create_app(test_config=None):
 
     from . import bpquery
     app.register_blueprint(bpquery.bp)
+
+    CORS(app, resources={r'/*': {'origins': '*'}})
 
     return app
 
