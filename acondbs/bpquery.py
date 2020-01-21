@@ -25,11 +25,28 @@ def query():
     return jsonify(result=table_html)
 
 ##__________________________________________________________________||
-def query_to_table_html(query):
+@bp.route('/maps')
+def maps():
+    query_ = "SELECT * FROM maps"
+    return query_to_table_json(query_)
+
+##__________________________________________________________________||
+def query_to_dataframe(query):
     db = get_db()
     rows = db.execute(query)
     df = pd.DataFrame(rows, columns=rows.keys())
-    ret = df.to_html()
-    return ret
+    return df
+
+##__________________________________________________________________||
+def query_to_table_html(query):
+    df = query_to_dataframe(query)
+    html = df.to_html()
+    return html
+
+##__________________________________________________________________||
+def query_to_table_json(query):
+    df = query_to_dataframe(query)
+    json = df.to_json(orient='split')
+    return json
 
 ##__________________________________________________________________||
