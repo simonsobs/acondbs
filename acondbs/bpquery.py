@@ -46,7 +46,7 @@ def query_to_table_html(query):
 ##__________________________________________________________________||
 def query_to_table_json(query):
     df = query_to_dataframe(query)
-    json = df.to_json(orient='split')
+    json = df.to_json(orient='table', index=False)
     return json
 
 ##__________________________________________________________________||
