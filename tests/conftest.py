@@ -16,7 +16,7 @@ def app():
 
     config = dict(
         TESTING=True,
-        SQLALCHEMY_DATABASE_URI='sqlite:///{}'.format(os.path.join(_THISDIR, 'acl.sqlite3')),
+        SQLALCHEMY_DATABASE_URI='sqlite:///{}'.format(os.path.join(_THISDIR, 'act.sqlite3')),
         SQLALCHEMY_TRACK_MODIFICATIONS=False
     )
 

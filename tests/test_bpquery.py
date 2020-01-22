@@ -44,9 +44,9 @@ def test_maps(client):
     print(un_jsonified)
     assert 2 == len(un_jsonified)
     assert {'schema', 'data'} == un_jsonified.keys()
-    assert 2 == len(un_jsonified['schema']['fields'])
-    assert ['id', 'name'] == [f['name'] for f in un_jsonified['schema']['fields']]
-    assert 13 == len(un_jsonified['data'])
-    assert {'id': 1001, 'name': 'e20180309'} == un_jsonified['data'][0]
+    assert 4 == len(un_jsonified['schema']['fields'])
+    assert ['id', 'name', 'date_posted', 'mapper'] == [f['name'] for f in un_jsonified['schema']['fields']]
+    assert 15 == len(un_jsonified['data'])
+    assert  {'date_posted': '2018-05-21', 'id': 1001, 'mapper': 'SKN', 'name': 'e20180309'} == un_jsonified['data'][0]
 
 ##__________________________________________________________________||
