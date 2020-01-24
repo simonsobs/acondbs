@@ -31,6 +31,13 @@ def maps():
     return query_to_table_json(query_)
 
 ##__________________________________________________________________||
+@bp.route('/paths', methods=['POST'])
+def paths():
+    map_id = request.form['map_id']
+    query_ = "SELECT * FROM map_path WHERE map_id={}".format(map_id)
+    return query_to_table_json(query_)
+
+##__________________________________________________________________||
 def query_to_dataframe(query):
     db = get_db()
     rows = db.execute(query)
