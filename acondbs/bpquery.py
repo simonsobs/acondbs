@@ -40,10 +40,12 @@ def maps():
     return query_to_table_json(query_)
 
 ##__________________________________________________________________||
-@bp.route('/paths', methods=['POST'])
+@bp.route('/paths', methods=['GET', 'POST'])
 def paths():
-    map_id = request.form['map_id']
-    query_ = "SELECT * FROM map_path WHERE map_id={}".format(map_id)
+    query_ = "SELECT * FROM map_path"
+    if request.method == 'POST':
+        map_id = request.form['map_id']
+        query_ = query_ + " WHERE map_id={}".format(map_id)
     return query_to_table_json(query_)
 
 ##__________________________________________________________________||
