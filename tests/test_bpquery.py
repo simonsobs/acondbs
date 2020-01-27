@@ -41,6 +41,27 @@ def test_maps(client):
     assert 200 == response.status_code
 
     un_jsonified = json.loads(response.data)
+    # e.g.,
+    # {'schema': {
+    #     'fields': [
+    #         {'name': 'id', 'type': 'integer'},
+    #         {'name': 'name','type': 'string'},
+    #         {'name': 'date_posted', 'type': 'string'},
+    #         {'name': 'mapper', 'type': 'string'},
+    #         {'name': 'note', 'type': 'string'}],
+    #     'pandas_version': '0.20.0'},
+    #  'data': [
+    #      {
+    #          'id': 1001,
+    #          'name': 'e20180309',
+    #          'date_posted': '2018-05-21',
+    #          'mapper': 'SKN',
+    #          'note': '- ...'
+    #      },
+    #      {
+    #          ...
+    #      }
+    #      ]
 
     assert 2 == len(un_jsonified)
     assert {'schema', 'data'} == un_jsonified.keys()
