@@ -86,7 +86,7 @@ params = [
     ],
 ]
 @pytest.mark.parametrize('map_id, paths', params)
-def test_map_path(client, map_id, paths):
+def test_paths_post(client, map_id, paths):
     data = {'map_id': map_id}
     response = client.post('/paths', data=data)
     assert 200 == response.status_code
