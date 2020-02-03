@@ -7,6 +7,10 @@ from .db import get_db
 bp = Blueprint('query', __name__)
 
 ##__________________________________________________________________||
+def init_app(app):
+    app.register_blueprint(bp)
+
+##__________________________________________________________________||
 @bp.route('/tables')
 def tables():
     """returns all tables in HTML (to be deleted)

@@ -19,7 +19,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     from . import bpquery
-    app.register_blueprint(bpquery.bp)
+    bpquery.init_app(app)
 
     CORS(app, resources={r'/*': {'origins': '*'}})
 
