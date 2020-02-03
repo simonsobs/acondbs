@@ -21,6 +21,9 @@ def create_app(test_config=None):
     from . import bpquery
     bpquery.init_app(app)
 
+    from . import bpgraphql
+    bpgraphql.init_app(app)
+
     CORS(app, resources={r'/*': {'origins': '*'}})
 
     return app
