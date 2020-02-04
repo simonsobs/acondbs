@@ -3,13 +3,13 @@ import unittest.mock as mock
 
 import sqlalchemy
 
-from acondbs.db import get_db
+from acondbs.db import get_db_connection
 
 ##__________________________________________________________________||
 def test_get_close_db(app):
     with app.app_context():
-        db = get_db()
-        assert db is get_db()
+        db = get_db_connection()
+        assert db is get_db_connection()
 
     with pytest.raises(sqlalchemy.exc.StatementError) as e:
         db.execute("SELECT 1")

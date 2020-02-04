@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 ##__________________________________________________________________||
-def get_db():
+def get_db_connection():
     if 'db' not in g:
         g.db = db.engine.connect()
     return g.db
