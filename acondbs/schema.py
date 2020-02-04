@@ -34,9 +34,9 @@ class MapFilePath(SQLAlchemyObjectType):
         model = MapFilePathModel
         interfaces = (relay.Node, )
 
-# class MapFilePathConnection(relay.Connection):
-#     class Meta:
-#         node = MapFilePath
+class MapFilePathConnection(relay.Connection):
+    class Meta:
+        node = MapFilePath
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
