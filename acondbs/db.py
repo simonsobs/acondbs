@@ -8,15 +8,15 @@ db = SQLAlchemy()
 
 ##__________________________________________________________________||
 def get_db_connection():
-    if 'db' not in g:
-        g.db = db.engine.connect()
-    return g.db
+    if 'db_connection' not in g:
+        g.db_connection = db.engine.connect()
+    return g.db_connection
 
 ##__________________________________________________________________||
 def close_db_connection(e=None):
-    db = g.pop('db', None)
-    if db is not None:
-        db.close()
+    conn = g.pop('db_connection', None)
+    if conn is not None:
+        conn.close()
 
 ##__________________________________________________________________||
 def init_app(app):
