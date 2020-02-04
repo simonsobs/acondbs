@@ -6,7 +6,7 @@ import sqlalchemy
 from acondbs.db import get_db_connection
 
 ##__________________________________________________________________||
-def test_get_close_db(app):
+def test_get_close_db_connection(app):
     with app.app_context():
         db = get_db_connection()
         assert db is get_db_connection()

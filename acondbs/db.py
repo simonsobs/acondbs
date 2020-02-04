@@ -13,7 +13,7 @@ def get_db_connection():
     return g.db
 
 ##__________________________________________________________________||
-def close_db(e=None):
+def close_db_connection(e=None):
     db = g.pop('db', None)
     if db is not None:
         db.close()
@@ -22,7 +22,7 @@ def close_db(e=None):
 def init_app(app):
     db.init_app(app)
     app.cli.add_command(init_db_command)
-    app.teardown_appcontext(close_db)
+    app.teardown_appcontext(close_db_connection)
 
 ##__________________________________________________________________||
 def init_db():
