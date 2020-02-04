@@ -54,8 +54,8 @@ def paths():
 
 ##__________________________________________________________________||
 def query_to_dataframe(query):
-    db = get_db_connection()
-    rows = db.execute(query)
+    conn = get_db_connection()
+    rows = conn.execute(query)
     df = pd.DataFrame(rows, columns=rows.keys())
     return df
 

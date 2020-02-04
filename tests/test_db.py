@@ -8,11 +8,11 @@ from acondbs.db import get_db_connection
 ##__________________________________________________________________||
 def test_get_close_db_connection(app):
     with app.app_context():
-        db = get_db_connection()
-        assert db is get_db_connection()
+        conn = get_db_connection()
+        assert conn is get_db_connection()
 
     with pytest.raises(sqlalchemy.exc.StatementError) as e:
-        db.execute("SELECT 1")
+        conn.execute("SELECT 1")
 
     assert "closed" in str(e.value)
 
