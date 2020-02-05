@@ -13,9 +13,9 @@ class Map(SQLAlchemyObjectType):
         interfaces = (relay.Node, )
 
 
-class MapConnection(relay.Connection):
-    class Meta:
-        node = Map
+# class MapConnection(relay.Connection):
+#     class Meta:
+#         node = Map
 
 ##__________________________________________________________________||
 class Beam(SQLAlchemyObjectType):
@@ -24,9 +24,9 @@ class Beam(SQLAlchemyObjectType):
         interfaces = (relay.Node, )
 
 
-class BeamConnection(relay.Connection):
-    class Meta:
-        node = Beam
+# class BeamConnection(relay.Connection):
+#     class Meta:
+#         node = Beam
 
 ##__________________________________________________________________||
 class MapFilePath(SQLAlchemyObjectType):
@@ -34,17 +34,17 @@ class MapFilePath(SQLAlchemyObjectType):
         model = MapFilePathModel
         interfaces = (relay.Node, )
 
-class MapFilePathConnection(relay.Connection):
-    class Meta:
-        node = MapFilePath
+# class MapFilePathConnection(relay.Connection):
+#     class Meta:
+#         node = MapFilePath
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
-    all_maps = SQLAlchemyConnectionField(MapConnection)
-    all_beams = SQLAlchemyConnectionField(BeamConnection)
-    # all_mapfilepaths = SQLAlchemyConnectionField(MapFilePathConnection)
+    all_maps = SQLAlchemyConnectionField(Map)
+    all_beams = SQLAlchemyConnectionField(Beam)
+    all_mapfilepaths = SQLAlchemyConnectionField(MapFilePath)
 
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query, types=[Map, Beam, MapFilePath])
 
 ##__________________________________________________________________||
