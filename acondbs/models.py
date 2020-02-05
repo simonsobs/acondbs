@@ -16,6 +16,8 @@ class Beam(db.Model):
     path = db.Column(db.Text())
     input_map_id = db.Column(db.ForeignKey('maps.id'))
     input_beam_id = db.Column(db.ForeignKey('beams.id'))
+    map = db.relationship("Map", backref=db.backref("beams"))
+    parent_beam = db.relationship(lambda: Beam, remote_side=id, backref=db.backref("child_beams"))
 
 class MapFilePath(db.Model):
     __tablename__ = 'map_path'
