@@ -1,9 +1,14 @@
+import os
+import datetime
+import json
+import csv
+
 import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
-import json
+import sqlalchemy
 
 ##__________________________________________________________________||
 db = SQLAlchemy()
@@ -25,6 +30,7 @@ def init_app(app):
     db.init_app(app)
     app.cli.add_command(init_db_command)
     app.cli.add_command(dump_db_command)
+    app.cli.add_command(import_csv_command)
     app.teardown_appcontext(close_db_connection)
 
 ##__________________________________________________________________||
@@ -57,5 +63,42 @@ def dump_db_command():
 
     click.echo(json.dumps(db_content, indent=2, default=str))
     # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
+
+##__________________________________________________________________||
+def import_csv(csvdir):
+    metadata = MetaData()
+    metadata.reflect(bind=db.engine)
+    for tbl in metadata.sorted_tables:
+        csv_filename = '{}.csv'.format(tbl.name)
+        csv_path = os.path.join(csvdir, csv_filename)
+        if os.path.exists(csv_path):
+            import_csv_(tbl, csv_path)
+            message = 'imported to "{}" from {}'.format(tbl.name, csv_path)
+        else:
+            message = 'skipped "{}". file not found: {}'.format(tbl.name, csv_path)
+        print(message)
+
+def import_csv_(tbl, csv_path):
+    with open(csv_path, 'r') as f:
+        rows = list(csv.reader(f))
+    fields = rows[0]
+    rows = rows[1:]
+    data = [{f: convert_type(e, tbl.columns[f].type) for f, e in zip(fields, r)} for r in rows]
+    ins = tbl.insert()
+    connection = get_db_connection()
+    connection.execute(ins, data)
+
+def convert_type(str_, type_):
+    if isinstance(type_, sqlalchemy.sql.sqltypes.DATE):
+        if str_:
+            return datetime.datetime.strptime(str_, "%Y-%m-%d").date()
+        return None
+    return str_
+
+@click.command("import-csv")
+@click.argument("csvdir")
+@with_appcontext
+def import_csv_command(csvdir):
+    import_csv(csvdir)
 
 ##__________________________________________________________________||
