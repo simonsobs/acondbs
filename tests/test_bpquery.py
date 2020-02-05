@@ -94,8 +94,8 @@ def test_paths_post(client, map_id, paths):
     un_jsonified = json.loads(response.data)
     assert 2 == len(un_jsonified)
     assert {'schema', 'data'} == un_jsonified.keys()
-    assert 3 == len(un_jsonified['schema']['fields'])
-    assert ['map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
+    assert 4 == len(un_jsonified['schema']['fields'])
+    assert ['id', 'map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
     assert len(paths) == len(un_jsonified['data'])
     assert paths == {e['path'] for e in un_jsonified['data']}
 
@@ -108,8 +108,8 @@ def test_paths_get(client):
 
     assert 2 == len(un_jsonified)
     assert {'schema', 'data'} == un_jsonified.keys()
-    assert 3 == len(un_jsonified['schema']['fields'])
-    assert ['map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
+    assert 4 == len(un_jsonified['schema']['fields'])
+    assert ['id', 'map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
     assert 29 == len(un_jsonified['data'])
 
 ##__________________________________________________________________||
