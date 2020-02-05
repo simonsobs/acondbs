@@ -30,3 +30,8 @@ def test_init_db_command(runner, mock_init_db):
     assert "Initialized" in result.output
 
 ##__________________________________________________________________||
+def test_dump_db_command(runner):
+    result = runner.invoke(args=["dump-db"])
+    assert 10000 < len(result.output)
+
+##__________________________________________________________________||
