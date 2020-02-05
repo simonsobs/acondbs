@@ -35,9 +35,40 @@ def init_app(app):
 
 ##__________________________________________________________________||
 def init_db():
-    pass
 
-##__________________________________________________________________||
+    engine = db.engine
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+
+    if metadata.tables:
+        tbl_names = metadata.tables.keys()
+        # ['maps', 'beams']
+
+        tbl_names = ', '.join(['"{}"'.format(t) for t in tbl_names])
+        # '"beams", "maps"'
+
+        msg = "Dropped all tables: {}".format(tbl_names)
+
+        metadata.drop_all(bind=engine)
+        print(msg)
+
+    if not db.Model.metadata.tables:
+        msg = "No tables to be created are found!"
+        print(msg)
+        return
+
+    tbl_names = db.Model.metadata.tables.keys()
+    # ['maps', 'beams']
+
+    tbl_names = ', '.join(['"{}"'.format(t) for t in tbl_names])
+    # '"beams", "maps"'
+
+    msg = "Created tables: {}".format(tbl_names)
+
+    db.Model.metadata.create_all(engine)
+
+    print(msg)
+
 @click.command("init-db")
 @with_appcontext
 def init_db_command():
