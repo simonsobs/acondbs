@@ -22,10 +22,16 @@ class Beam(SQLAlchemyObjectType):
         model = BeamModel
         interfaces = (relay.Node, )
 
-
 # class BeamConnection(relay.Connection):
-#     class Meta:
-#         node = Beam
+#      class Meta:
+#          node = Beam
+
+## The class "BeamConnection" is commented out because it causes the error
+## "AssertionError: Found different types with the same name in the schema:
+## BeamConnection, BeamConnection". In the class "Query" below
+## "Beam._meta.connection" is used instead. This solution was mentioned in the
+## issue
+## https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-478744077
 
 ##__________________________________________________________________||
 class MapFilePath(SQLAlchemyObjectType):
@@ -41,7 +47,7 @@ class MapFilePath(SQLAlchemyObjectType):
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
     all_maps = SQLAlchemyConnectionField(MapConnection)
-    all_beams = SQLAlchemyConnectionField(Beam)
+    all_beams = SQLAlchemyConnectionField(Beam._meta.connection)
     all_map_file_paths = SQLAlchemyConnectionField(MapFilePath)
 
 schema = graphene.Schema(query=Query, types=[Map, Beam, MapFilePath])
