@@ -43,7 +43,7 @@ class Query(graphene.ObjectType):
     node = relay.Node.Field()
     all_maps = SQLAlchemyConnectionField(Map)
     all_beams = SQLAlchemyConnectionField(Beam)
-    all_mapfilepaths = SQLAlchemyConnectionField(MapFilePath)
+    all_map_file_paths = SQLAlchemyConnectionField(MapFilePath)
 
 schema = graphene.Schema(query=Query, types=[Map, Beam, MapFilePath])
 
