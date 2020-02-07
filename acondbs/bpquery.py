@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import pandas as pd
 
-from .db import get_db
+from .db import get_db_connection
 
 ##__________________________________________________________________||
 bp = Blueprint('query', __name__)
@@ -54,8 +54,8 @@ def paths():
 
 ##__________________________________________________________________||
 def query_to_dataframe(query):
-    db = get_db()
-    rows = db.execute(query)
+    conn = get_db_connection()
+    rows = conn.execute(query)
     df = pd.DataFrame(rows, columns=rows.keys())
     return df
 

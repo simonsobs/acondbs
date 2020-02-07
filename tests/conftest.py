@@ -14,13 +14,8 @@ _THISDIR = os.path.dirname(os.path.realpath(__file__))
 @pytest.fixture
 def app():
 
-    config = dict(
-        TESTING=True,
-        SQLALCHEMY_DATABASE_URI='sqlite:///{}'.format(os.path.join(_THISDIR, 'act.sqlite3')),
-        SQLALCHEMY_TRACK_MODIFICATIONS=False
-    )
-
-    app = create_app(config)
+    config_path = os.path.join(_THISDIR, 'config.py')
+    app = create_app(config_path)
 
     yield app
 
