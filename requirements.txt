@@ -1,0 +1,9 @@
+Flask
+Flask-Cors
+Flask-GraphQL
+Flask-SQLAlchemy
+graphene-sqlalchemy
+pytest
+pytest-cov
+coverage
+pandas
