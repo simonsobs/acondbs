@@ -6,4 +6,5 @@ graphene-sqlalchemy
 pytest
 pytest-cov
 coverage
+codecov
 pandas
