@@ -6,7 +6,7 @@ def test_schema(app):
         query = '{ allMaps { edges { node {name} } }}'
         result = schema.execute(query)
         assert result.errors is None
-        assert 15 == len(result.data['allMaps']['edges'])
+        assert 3 == len(result.data['allMaps']['edges'])
 
 ##__________________________________________________________________||
 def test_sort(app):
@@ -14,7 +14,7 @@ def test_sort(app):
         query = '{ allMaps(sort: DATE_POSTED_DESC) { edges { node {name} } }}'
         result = schema.execute(query)
         assert result.errors is None
-        assert 15 == len(result.data['allMaps']['edges'])
+        assert 3 == len(result.data['allMaps']['edges'])
         print(result.data)
 
 ##__________________________________________________________________||

@@ -33,22 +33,21 @@ def test_maps(client):
     assert {'schema', 'data'} == un_jsonified.keys()
     assert 5 == len(un_jsonified['schema']['fields'])
     assert ['id', 'name', 'date_posted', 'mapper', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
-    assert 15 == len(un_jsonified['data'])
-    assert  {'date_posted': '2018-05-21', 'id': 1001, 'mapper': 'SKN', 'name': 'e20180309'}.items() <= un_jsonified['data'][0].items()
+    assert 3 == len(un_jsonified['data'])
+    assert  {'date_posted': '2019-02-13', 'id': 1001, 'mapper': 'pwg-pmn', 'name': 'lat20190213'}.items() <= un_jsonified['data'][0].items()
 
 ##__________________________________________________________________||
 params = [
-    ['1007',
+    ['1001',
      {
-         'tiger:/home/snaess/scratch/actpol/maps/mr3_20180914/post_time/release',
-         'nersc:/project/projectdirs/act/data/synced_maps/mr3_20180914',
-         'niagara:/scratch/r/rbond/msyriac/synced_maps/mr3_20180914'
+         'nersc:/go/to/my/maps',
      }
     ],
-    ['1013',
-      {
-          'niagara:/home/r/rbond/sigurdkn/project/actpol/maps/mr3f_20190502/release',
-      }
+    ['1012',
+     {
+         'nersc:/go/to/my/maps_v2',
+         'abcde:/path/to/the/maps_v2',
+     }
     ],
 ]
 @pytest.mark.parametrize('map_id, paths', params)
@@ -76,6 +75,6 @@ def test_paths_get(client):
     assert {'schema', 'data'} == un_jsonified.keys()
     assert 4 == len(un_jsonified['schema']['fields'])
     assert ['id', 'map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
-    assert 29 == len(un_jsonified['data'])
+    assert 4 == len(un_jsonified['data'])
 
 ##__________________________________________________________________||
