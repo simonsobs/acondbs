@@ -12,7 +12,7 @@ setup(
     name='acondbs',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    description='Backend server for Acondb',
+    description='A GraphQL server for product DB',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Simons Observatory',
