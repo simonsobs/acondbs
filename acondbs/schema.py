@@ -45,6 +45,13 @@ class MapFilePath(SQLAlchemyObjectType):
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
+
+    version = graphene.String()
+
+    def resolve_version(self, info):
+        from . import __version__
+        return __version__
+
     node = relay.Node.Field()
     all_maps = SQLAlchemyConnectionField(MapConnection)
     all_beams = SQLAlchemyConnectionField(Beam._meta.connection)
