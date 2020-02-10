@@ -35,3 +35,13 @@ after_success:
 
 cache: apt
 
+deploy:
+  provider: pypi
+  user: tai.sakuma
+  distributions: sdist bdist_wheel
+  password:
+    secure: UTyr883e64Y0Ftp5CifgVvc5Ldb3lZzi0ftbHyPkBHQ03Bx4P8jYVPHxg5ry5Ccw071A7vGm+MSO4nMjmFfZf70hC/M35CM1ponHZCqK2voWzJ9bOb0ENolSznpmKTBMYypb1eb3S7UpUjonA6NOqipKaF5k3COPRToRVl4OSWFs2b0ijDKPx32lRuG5H4U0oBI1M8nwSTFJf1VrhYWxaUJsXl4gSIm+cv6glV/NwAdqDjkeIHfaREl6d4miVvefmJ/zVCFQ5G1sePcygUgI/lYGse/+lC7w5w1rzEH6TAmdhXqhJurw7q6kRR+3SsfKV1hL/qk2bvhr7diwTrnrNt85EXZ+fJZTaKFLSTCcTs9cKgYU2ON+7Wo+CVl+REcnn+i1RUHiOd0E4feWlP77ZGBDR18a8GMW2+51Vf6QBMfkDxYl+DofxPG/SeD8hcYt5+lSknahsYuTHE+Q3JT8ohFT7gL0k2RCQMxRh6N6/6bFC5EsrVy6U6yxk7Q0jDA4hjXDU3i/dMLnUar7YpEhzL2Cj+c5OdkbSFimjDsz1/UXKaebSsA95MouGWvNs/EqkQyaT5HS8xWeWdNlXcyiPSEXtH52If/jd9Ls2a4Z5XLgKqC/elQmNncGxqRLzg/jYz4h24AYSwZsCadlBMLiBHSIEBZGohPBmrjtOmqJlqE=
+  on:
+    tags: true
+    python: 3.7
+    condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
