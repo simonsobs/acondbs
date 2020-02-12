@@ -57,6 +57,19 @@ class Query(graphene.ObjectType):
     all_beams = SQLAlchemyConnectionField(Beam._meta.connection)
     all_map_file_paths = SQLAlchemyConnectionField(MapFilePath)
 
+    map = graphene.Field(Map, map_id=graphene.Int(), name=graphene.String())
+
+    def resolve_map(self, info, **kwargs):
+        fields = ('map_id', 'name')
+        query = Map.get_query(info)
+        for f in fields:
+            v = kwargs.get(f)
+            if v is not None:
+                query = query.filter(getattr(MapModel, f)==v)
+                return query.first()
+        return None
+
+
 schema = graphene.Schema(query=Query, types=[Map, Beam, MapFilePath])
 
 ##__________________________________________________________________||
