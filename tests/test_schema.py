@@ -39,8 +39,28 @@ params = [
             }
         },
         id='allMapsFirstTwoSort'
-    )
-
+    ),
+    pytest.param(
+        '''
+        { map(mapId: 1001) { name } }
+         ''',
+        {'map': { 'name': 'lat20190213' } },
+        id='mapByMapID'
+    ),
+    pytest.param(
+        '''
+        { map(mapId: 2001) { name } }
+         ''',
+        {'map': None },
+        id='mapByMapID-nonexistent'
+    ),
+    pytest.param(
+        '''
+        { map(name: "lat20190213") { mapId } }
+         ''',
+        {'map': { 'mapId': '1001' } },
+        id='mapByName'
+    ),
 ]
 
 @pytest.mark.parametrize('query, expected', params)
