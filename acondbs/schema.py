@@ -69,7 +69,18 @@ class Query(graphene.ObjectType):
                 return query.first()
         return None
 
+    beam = graphene.Field(Beam, beam_id=graphene.Int(), name=graphene.String())
 
+    def resolve_beam(self, info, **kwargs):
+        fields = ('beam_id', 'name')
+        query = Beam.get_query(info)
+        for f in fields:
+            v = kwargs.get(f)
+            if v is not None:
+                query = query.filter(getattr(BeamModel, f)==v)
+                return query.first()
+        return None
+##__________________________________________________________________||
 schema = graphene.Schema(query=Query, types=[Map, Beam, MapFilePath])
 
 ##__________________________________________________________________||

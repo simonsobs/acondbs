@@ -61,6 +61,27 @@ params = [
         {'map': { 'mapId': '1001' } },
         id='mapByName'
     ),
+    pytest.param(
+        '''
+        { beam(beamId: 1010) { name } }
+         ''',
+        {'beam': { 'name': '20180101' } },
+        id='beamByBeamID'
+    ),
+    pytest.param(
+        '''
+        { beam(beamId: 2001) { name } }
+         ''',
+        {'beam': None },
+        id='beamByBeamID-nonexistent'
+    ),
+    pytest.param(
+        '''
+        { beam(name: "20180101") { beamId } }
+         ''',
+        {'beam': { 'beamId': '1010' } },
+        id='beamByName'
+    ),
 ]
 
 @pytest.mark.parametrize('query, expected', params)
