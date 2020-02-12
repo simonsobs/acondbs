@@ -32,9 +32,9 @@ def test_maps(client):
     assert 2 == len(un_jsonified)
     assert {'schema', 'data'} == un_jsonified.keys()
     assert 5 == len(un_jsonified['schema']['fields'])
-    assert ['id', 'name', 'date_posted', 'mapper', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
+    assert ['map_id', 'name', 'date_posted', 'mapper', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
     assert 3 == len(un_jsonified['data'])
-    assert  {'date_posted': '2019-02-13', 'id': 1001, 'mapper': 'pwg-pmn', 'name': 'lat20190213'}.items() <= un_jsonified['data'][0].items()
+    assert  {'date_posted': '2019-02-13', 'map_id': 1001, 'mapper': 'pwg-pmn', 'name': 'lat20190213'}.items() <= un_jsonified['data'][0].items()
 
 ##__________________________________________________________________||
 params = [
@@ -60,7 +60,7 @@ def test_paths_post(client, map_id, paths):
     assert 2 == len(un_jsonified)
     assert {'schema', 'data'} == un_jsonified.keys()
     assert 4 == len(un_jsonified['schema']['fields'])
-    assert ['id', 'map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
+    assert ['map_file_path_id', 'map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
     assert len(paths) == len(un_jsonified['data'])
     assert paths == {e['path'] for e in un_jsonified['data']}
 
@@ -74,7 +74,7 @@ def test_paths_get(client):
     assert 2 == len(un_jsonified)
     assert {'schema', 'data'} == un_jsonified.keys()
     assert 4 == len(un_jsonified['schema']['fields'])
-    assert ['id', 'map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
+    assert ['map_file_path_id', 'map_id', 'path', 'note'] == [f['name'] for f in un_jsonified['schema']['fields']]
     assert 4 == len(un_jsonified['data'])
 
 ##__________________________________________________________________||
