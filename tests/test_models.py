@@ -1,5 +1,6 @@
 import flask_sqlalchemy
 
+from acondbs.db import db
 from acondbs import models
 
 # These tests are written primarily for the developer to understand
@@ -72,3 +73,21 @@ def test_backref(app):
         assert beam2 is beam1.child_beams[0]
 
 # __________________________________________________________________||
+def test_map_add(app):
+
+    with app.app_context():
+        map1 = models.Map(name="map1")
+        beam1 = models.Beam(name="beam1", map=map1)
+        db.session.add(map1)
+        db.session.commit()
+
+    with app.app_context():
+        results = models.Map.query.all()
+        assert 4 == len(results)
+
+        map1 = models.Map.query.filter_by(name='map1').first()
+        beam1 = models.Beam.query.filter_by(name='beam1').first()
+        assert isinstance(map1, models.Map)
+        assert isinstance(beam1, models.Beam)
+        assert beam1 is map1.beams[0]
+
