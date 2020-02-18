@@ -4,6 +4,7 @@ branch = True
 concurrency = multiprocessing
 omit =
      acondbs/_version.py
+     venv/*
 
 [report]
 # Regexes for lines to exclude from consideration
