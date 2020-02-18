@@ -60,6 +60,21 @@ class CreateMap(graphene.Mutation):
         ok = True
         return CreateMap(map=map, ok=ok)
 
+class UpdateMap(graphene.Mutation):
+    class Arguments:
+        map_id = graphene.Int()
+        name = graphene.String()
+
+    ok = graphene.Boolean()
+    map = graphene.Field(lambda: Map)
+
+    def mutate(root, info, map_id, name):
+        map = MapModel.query.filter_by(map_id=map_id).first()
+        map.name = name
+        db.session.commit()
+        ok = True
+        return CreateMap(map=map, ok=ok)
+
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
 
@@ -100,6 +115,7 @@ class Query(graphene.ObjectType):
 ##__________________________________________________________________||
 class Mutation(graphene.ObjectType):
     create_map = CreateMap.Field()
+    update_map = UpdateMap.Field()
 
 ##__________________________________________________________________||
 schema = graphene.Schema(query=Query, mutation=Mutation, types=[Map, Beam, MapFilePath])
