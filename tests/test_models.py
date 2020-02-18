@@ -91,3 +91,15 @@ def test_map_add(app):
         assert isinstance(beam1, models.Beam)
         assert beam1 is map1.beams[0]
 
+# __________________________________________________________________||
+def test_map_update(app):
+    with app.app_context():
+        map1 = models.Map.query.filter_by(map_id=1012).first()
+        assert 'lat20200120' == map1.name
+        map1.name = 'new-map-name'
+        db.session.commit()
+    with app.app_context():
+        map1 = models.Map.query.filter_by(map_id=1012).first()
+        assert 'new-map-name' == map1.name
+
+# __________________________________________________________________||
