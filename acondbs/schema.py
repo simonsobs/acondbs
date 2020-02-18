@@ -6,6 +6,8 @@ from .models import Map as MapModel
 from .models import Beam as BeamModel
 from .models import MapFilePath as MapFilePathModel
 
+from .db import db
+
 ##__________________________________________________________________||
 class Map(SQLAlchemyObjectType):
     class Meta:
@@ -42,6 +44,21 @@ class MapFilePath(SQLAlchemyObjectType):
 # class MapFilePathConnection(relay.Connection):
 #     class Meta:
 #         node = MapFilePath
+
+##__________________________________________________________________||
+class CreateMap(graphene.Mutation):
+    class Arguments:
+        name = graphene.String()
+
+    ok = graphene.Boolean()
+    map = graphene.Field(lambda: Map)
+
+    def mutate(root, info, name):
+        map = MapModel(name=name)
+        db.session.add(map)
+        db.session.commit()
+        ok = True
+        return CreateMap(map=map, ok=ok)
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
@@ -81,6 +98,10 @@ class Query(graphene.ObjectType):
                 return query.first()
         return None
 ##__________________________________________________________________||
-schema = graphene.Schema(query=Query, types=[Map, Beam, MapFilePath])
+class Mutation(graphene.ObjectType):
+    create_map = CreateMap.Field()
+
+##__________________________________________________________________||
+schema = graphene.Schema(query=Query, mutation=Mutation, types=[Map, Beam, MapFilePath])
 
 ##__________________________________________________________________||
