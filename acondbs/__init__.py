@@ -4,14 +4,17 @@ from flask import Flask
 from flask_cors import CORS
 
 ##__________________________________________________________________||
-def create_app(config_path=None):
+DEFAULT_CONFIG_DICT = dict(
+    SECRET_KEY='dev',
+    SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
+)
+
+##__________________________________________________________________||
+def create_app(config_path=None, **kwargs):
 
     app = Flask(__name__, instance_relative_config=False)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
-        SQLALCHEMY_TRACK_MODIFICATIONS=False
-    )
+    app.config.from_mapping(**DEFAULT_CONFIG_DICT)
 
     if config_path is not None:
         if not os.path.isabs(config_path):
@@ -28,6 +31,8 @@ def create_app(config_path=None):
             # if `instance_relative_config` is `True`.
 
         app.config.from_pyfile(config_path, silent=False)
+
+    app.config.from_mapping(**kwargs)
 
     from . import db
     db.init_app(app)
