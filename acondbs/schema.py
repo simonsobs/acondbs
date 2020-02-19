@@ -46,15 +46,27 @@ class MapFilePath(SQLAlchemyObjectType):
 #         node = MapFilePath
 
 ##__________________________________________________________________||
+class MapAttribute:
+    name = graphene.String()
+    date_posted = graphene.Date()
+    mapper = graphene.String()
+    note = graphene.String()
+
+class CreateMapInput(graphene.InputObjectType, MapAttribute):
+    name = graphene.String(required=True)
+
+class UpdateMapInput(graphene.InputObjectType, MapAttribute):
+    pass
+
 class CreateMap(graphene.Mutation):
     class Arguments:
-        name = graphene.String()
+        input = CreateMapInput(required=True)
 
     ok = graphene.Boolean()
     map = graphene.Field(lambda: Map)
 
-    def mutate(root, info, name):
-        map = MapModel(name=name)
+    def mutate(root, info, input):
+        map = MapModel(name=input.name)
         db.session.add(map)
         db.session.commit()
         ok = True
@@ -63,14 +75,14 @@ class CreateMap(graphene.Mutation):
 class UpdateMap(graphene.Mutation):
     class Arguments:
         map_id = graphene.Int()
-        name = graphene.String()
+        input = UpdateMapInput(required=True)
 
     ok = graphene.Boolean()
     map = graphene.Field(lambda: Map)
 
-    def mutate(root, info, map_id, name):
+    def mutate(root, info, map_id, input):
         map = MapModel.query.filter_by(map_id=map_id).first()
-        map.name = name
+        map.name = input.name
         db.session.commit()
         ok = True
         return CreateMap(map=map, ok=ok)

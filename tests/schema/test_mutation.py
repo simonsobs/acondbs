@@ -8,7 +8,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          createMap(name: "map1") {
+          createMap(input: {name: "map1"}) {
             map { name } }
         }
          ''',
@@ -20,7 +20,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          updateMap(mapId: 1001, name: "new-name") {
+          updateMap(mapId: 1001, input: {name: "new-name"}) {
             map { mapId name } }
         }
          ''',
