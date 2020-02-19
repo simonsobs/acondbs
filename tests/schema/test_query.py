@@ -1,7 +1,8 @@
+import pytest
+from graphene.test import Client
+
 import acondbs
 from acondbs.schema import schema
-
-import pytest
 
 ##__________________________________________________________________||
 params = [
@@ -87,8 +88,8 @@ params = [
 @pytest.mark.parametrize('query, expected', params)
 def test_schema(app, query, expected):
     with app.app_context():
-        result = schema.execute(query)
-        assert result.errors is None
-        assert expected == result.data
+        client = Client(schema)
+        result = client.execute(query)
+        assert {'data': expected} == result
 
 ##__________________________________________________________________||

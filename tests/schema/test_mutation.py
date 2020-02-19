@@ -1,7 +1,7 @@
-import acondbs
-from acondbs.schema import schema
-
 import pytest
+from graphene.test import Client
+
+from acondbs.schema import schema
 
 ##__________________________________________________________________||
 params = [
@@ -38,12 +38,12 @@ params = [
 @pytest.mark.parametrize('mutation, expected1, query, expected2', params)
 def test_schema(app, mutation, expected1, query, expected2):
     with app.app_context():
-        result = schema.execute(mutation)
-        assert result.errors is None
-        assert expected1 == result.data
+        client = Client(schema)
+        result = client.execute(mutation)
+        assert {'data': expected1} == result
     with app.app_context():
-        result = schema.execute(query)
-        assert result.errors is None
-        assert expected2 == result.data
+        client = Client(schema)
+        result = client.execute(query)
+        assert {'data': expected2} == result
 
 ##__________________________________________________________________||
