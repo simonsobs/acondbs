@@ -1,16 +1,10 @@
 import pytest
 from graphene.test import Client
 
-import acondbs
 from acondbs.schema import schema
 
 ##__________________________________________________________________||
 params = [
-    pytest.param(
-        '{ version }',
-        {'version': acondbs.__version__},
-        id='version'
-    ),
     pytest.param(
         '''
         { allMaps(first: 2) {
