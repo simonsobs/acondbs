@@ -156,3 +156,17 @@ snapshots['test_schema[updateMap-selective-options] 2'] = {
         }
     }
 }
+
+snapshots['test_schema[deleteMap] 1'] = {
+    'data': {
+        'deleteMap': {
+            'ok': True
+        }
+    }
+}
+
+snapshots['test_schema[deleteMap] 2'] = {
+    'data': {
+        'map': None
+    }
+}

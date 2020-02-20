@@ -59,4 +59,17 @@ class UpdateMap(graphene.Mutation):
         ok = True
         return UpdateMap(map=map, ok=ok)
 
+class DeleteMap(graphene.Mutation):
+    class Arguments:
+        map_id = graphene.Int()
+
+    ok = graphene.Boolean()
+
+    def mutate(root, info, map_id):
+        map = MapModel.query.filter_by(map_id=map_id).first()
+        db.session.delete(map)
+        db.session.commit()
+        ok = True
+        return DeleteMap(ok=ok)
+
 ##__________________________________________________________________||
