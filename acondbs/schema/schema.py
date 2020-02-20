@@ -1,91 +1,12 @@
 import graphene
 from graphene import relay
-from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-
-from ..models import Map as MapModel
-from ..models import Beam as BeamModel
-from ..models import MapFilePath as MapFilePathModel
+from graphene_sqlalchemy import SQLAlchemyConnectionField
 
 from ..db import db
 
-##__________________________________________________________________||
-class Map(SQLAlchemyObjectType):
-    class Meta:
-        model = MapModel
-        interfaces = (relay.Node, )
-
-class MapConnection(relay.Connection):
-    class Meta:
-        node = Map
-
-##__________________________________________________________________||
-class Beam(SQLAlchemyObjectType):
-    class Meta:
-        model = BeamModel
-        interfaces = (relay.Node, )
-
-# class BeamConnection(relay.Connection):
-#      class Meta:
-#          node = Beam
-
-## The class "BeamConnection" is commented out because it causes the error
-## "AssertionError: Found different types with the same name in the schema:
-## BeamConnection, BeamConnection". In the class "Query" below
-## "Beam._meta.connection" is used instead. This solution was mentioned in the
-## issue
-## https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-478744077
-
-##__________________________________________________________________||
-class MapFilePath(SQLAlchemyObjectType):
-    class Meta:
-        model = MapFilePathModel
-        interfaces = (relay.Node, )
-
-# class MapFilePathConnection(relay.Connection):
-#     class Meta:
-#         node = MapFilePath
-
-##__________________________________________________________________||
-class MapAttribute:
-    name = graphene.String()
-    date_posted = graphene.Date()
-    mapper = graphene.String()
-    note = graphene.String()
-
-class CreateMapInput(graphene.InputObjectType, MapAttribute):
-    name = graphene.String(required=True)
-
-class UpdateMapInput(graphene.InputObjectType, MapAttribute):
-    pass
-
-class CreateMap(graphene.Mutation):
-    class Arguments:
-        input = CreateMapInput(required=True)
-
-    ok = graphene.Boolean()
-    map = graphene.Field(lambda: Map)
-
-    def mutate(root, info, input):
-        map = MapModel(name=input.name)
-        db.session.add(map)
-        db.session.commit()
-        ok = True
-        return CreateMap(map=map, ok=ok)
-
-class UpdateMap(graphene.Mutation):
-    class Arguments:
-        map_id = graphene.Int()
-        input = UpdateMapInput(required=True)
-
-    ok = graphene.Boolean()
-    map = graphene.Field(lambda: Map)
-
-    def mutate(root, info, map_id, input):
-        map = MapModel.query.filter_by(map_id=map_id).first()
-        map.name = input.name
-        db.session.commit()
-        ok = True
-        return CreateMap(map=map, ok=ok)
+from .map_ import Map, MapModel, MapConnection, CreateMap, UpdateMap
+from .beam import Beam, BeamModel
+from .map_file_path import MapFilePath, MapFilePathModel
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
