@@ -13,27 +13,58 @@ params = [
               datePosted: "2020-02-20",
               mapper: "pwg-pmn",
               note: "- Item 1"
-            }) {
-              map {
-                name
-                datePosted
-                mapper
-                note
-              }
-            }
+            }) { map { name } }
           }
         ''',
         '''
-        {
-          map(name: "map325") {
-            name
-            datePosted
-            mapper
-            note
+          {
+            map(name: "map1") {
+              name datePosted mapper note
+              beams { edges { node { name } } }
+              mapFilePaths { edges { node { path } } }
+            }
           }
-        }
-         ''',
-        id='createMap'
+        ''',
+        id='createMap-all-options'
+    ),
+    pytest.param(
+        '''
+          mutation m {
+            createMap(input: {
+              name: "map1",
+              mapper: "pwg-pmn"
+            }) { map { name } }
+          }
+        ''',
+        '''
+          {
+            map(name: "map1") {
+              name datePosted mapper note
+              beams { edges { node { name } } }
+              mapFilePaths { edges { node { path } } }
+            }
+          }
+        ''',
+        id='createMap-selective-options'
+    ),
+    pytest.param(
+        '''
+          mutation m {
+            createMap(input: {
+              mapper: "pwg-pmn"
+            }) { map { name } }
+          }
+        ''',
+        '''
+          {
+            map(name: "map1") {
+              name datePosted mapper note
+              beams { edges { node { name } } }
+              mapFilePaths { edges { node { path } } }
+            }
+          }
+        ''',
+        id='createMap-error-no-name'
     ),
     pytest.param(
         '''
