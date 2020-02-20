@@ -2,7 +2,7 @@ import pytest
 from graphene.test import Client
 
 import acondbs
-from acondbs.schema import schema
+from acondbs.schema.schema import schema
 
 ##__________________________________________________________________||
 params = [

@@ -2,11 +2,11 @@ import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 
-from .models import Map as MapModel
-from .models import Beam as BeamModel
-from .models import MapFilePath as MapFilePathModel
+from ..models import Map as MapModel
+from ..models import Beam as BeamModel
+from ..models import MapFilePath as MapFilePathModel
 
-from .db import db
+from ..db import db
 
 ##__________________________________________________________________||
 class Map(SQLAlchemyObjectType):
@@ -93,7 +93,7 @@ class Query(graphene.ObjectType):
     version = graphene.String()
 
     def resolve_version(self, info):
-        from . import __version__
+        from .. import __version__
         return __version__
 
     node = relay.Node.Field()

@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_graphql import GraphQLView
 
-from .schema import schema
+from .schema.schema import schema
 
 ##__________________________________________________________________||
 bp = Blueprint('graphql', __name__)
