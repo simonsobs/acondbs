@@ -56,6 +56,6 @@ class UpdateMap(graphene.Mutation):
         map.name = input.name
         db.session.commit()
         ok = True
-        return CreateMap(map=map, ok=ok)
+        return UpdateMap(map=map, ok=ok)
 
 ##__________________________________________________________________||
