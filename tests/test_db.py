@@ -3,7 +3,7 @@ import unittest.mock as mock
 
 import sqlalchemy
 
-from acondbs.db.db import get_db_connection
+from acondbs.db.db import get_db_connection, init_db
 
 ##__________________________________________________________________||
 def test_get_close_db_connection(app):
@@ -15,6 +15,11 @@ def test_get_close_db_connection(app):
         conn.execute("SELECT 1")
 
     assert "closed" in str(e.value)
+
+##__________________________________________________________________||
+def test_init_db(app):
+    with app.app_context():
+        init_db()
 
 ##__________________________________________________________________||
 @pytest.fixture()
