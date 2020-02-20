@@ -31,6 +31,7 @@ def test_init_db_command(runner, mock_init_db):
 ##__________________________________________________________________||
 def test_dump_db_command(runner):
     result = runner.invoke(args=["dump-db"])
+    assert 0 == result.exit_code
     assert 1800 < len(result.output)
 
 ##__________________________________________________________________||
@@ -42,6 +43,7 @@ def mock_import_csv(monkeypatch):
 
 def test_import_csv_command(runner, mock_import_csv):
     result = runner.invoke(args=["import-csv", "../../csv"])
+    assert 0 == result.exit_code
     assert [mock.call('../../csv')] == mock_import_csv.call_args_list
 
 ##__________________________________________________________________||
