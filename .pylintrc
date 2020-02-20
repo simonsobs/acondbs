@@ -1,0 +1,7 @@
+[MESSAGES CONTROL]
+# Links
+# - Pylint homepage: https://www.pylint.org/
+# - Pylint configuration file: https://pylint.readthedocs.io/en/latest/user_guide/run.html
+# - Pylint in VSCode: https://code.visualstudio.com/docs/python/linting
+disable=W,R,C,no-self-argument
+enable=unreachable,duplicate-key,unnecessary-semicolon,global-variable-not-assigned,unused-variable,binary-op-exception,bad-format-string,anomalous-backslash-in-string,bad-open-mode
