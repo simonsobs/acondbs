@@ -37,7 +37,7 @@ class CreateMap(graphene.Mutation):
     map = graphene.Field(lambda: Map)
 
     def mutate(root, info, input):
-        map = MapModel(name=input.name)
+        map = MapModel(**input)
         db.session.add(map)
         db.session.commit()
         ok = True

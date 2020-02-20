@@ -11,7 +11,10 @@ snapshots['test_schema[createMap] 1'] = {
     'data': {
         'createMap': {
             'map': {
-                'name': 'map1'
+                'datePosted': '2020-02-20',
+                'mapper': 'pwg-pmn',
+                'name': 'map1',
+                'note': '- Item 1'
             }
         }
     }
@@ -19,9 +22,7 @@ snapshots['test_schema[createMap] 1'] = {
 
 snapshots['test_schema[createMap] 2'] = {
     'data': {
-        'map': {
-            'name': 'map1'
-        }
+        'map': None
     }
 }
 

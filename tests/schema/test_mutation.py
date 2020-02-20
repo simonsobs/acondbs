@@ -7,13 +7,31 @@ from acondbs.schema.schema import schema
 params = [
     pytest.param(
         '''
-        mutation m {
-          createMap(input: {name: "map1"}) {
-            map { name } }
-        }
-         ''',
+          mutation m {
+            createMap(input: {
+              name: "map1",
+              datePosted: "2020-02-20",
+              mapper: "pwg-pmn",
+              note: "- Item 1"
+            }) {
+              map {
+                name
+                datePosted
+                mapper
+                note
+              }
+            }
+          }
+        ''',
         '''
-        { map(name: "map1") { name } }
+        {
+          map(name: "map325") {
+            name
+            datePosted
+            mapper
+            note
+          }
+        }
          ''',
         id='createMap'
     ),
