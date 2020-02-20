@@ -1,4 +1,4 @@
-from acondbs.db import db
+from acondbs.db.db import db
 from acondbs.models import Map, Beam
 
 # These tests are written primarily for the developer to understand

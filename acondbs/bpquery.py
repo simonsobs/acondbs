@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import pandas as pd
 
-from .db import get_db_connection
+from .db.db import get_db_connection
 
 ##__________________________________________________________________||
 bp = Blueprint('query', __name__)

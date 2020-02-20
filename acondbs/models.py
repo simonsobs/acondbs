@@ -1,4 +1,4 @@
-from .db import db
+from .db.db import db
 
 ##__________________________________________________________________||
 class Map(db.Model):

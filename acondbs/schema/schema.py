@@ -2,7 +2,7 @@ import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
 
-from ..db import db
+from ..db.db import db
 
 from .map_ import Map, MapModel, MapConnection, CreateMap, UpdateMap, DeleteMap
 from .beam import Beam, BeamModel
