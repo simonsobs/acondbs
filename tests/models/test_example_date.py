@@ -2,7 +2,7 @@ import datetime
 import sqlalchemy
 import pytest
 
-from acondbs.db import db
+from acondbs.db.db import db
 from acondbs.models import Map
 
 # __________________________________________________________________||

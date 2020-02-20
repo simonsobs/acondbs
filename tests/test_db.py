@@ -3,7 +3,7 @@ import unittest.mock as mock
 
 import sqlalchemy
 
-from acondbs.db import get_db_connection
+from acondbs.db.db import get_db_connection, init_db
 
 ##__________________________________________________________________||
 def test_get_close_db_connection(app):
@@ -17,10 +17,15 @@ def test_get_close_db_connection(app):
     assert "closed" in str(e.value)
 
 ##__________________________________________________________________||
+def test_init_db(app):
+    with app.app_context():
+        init_db()
+
+##__________________________________________________________________||
 @pytest.fixture()
 def mock_init_db(monkeypatch):
     ret = mock.Mock()
-    monkeypatch.setattr("acondbs.db.init_db", ret)
+    monkeypatch.setattr("acondbs.db.db.init_db", ret)
     return ret
 
 def test_init_db_command(runner, mock_init_db):
@@ -38,7 +43,7 @@ def test_dump_db_command(runner):
 @pytest.fixture()
 def mock_import_csv(monkeypatch):
     ret = mock.Mock()
-    monkeypatch.setattr("acondbs.db.import_csv", ret)
+    monkeypatch.setattr("acondbs.db.db.import_csv", ret)
     return ret
 
 def test_import_csv_command(runner, mock_import_csv):

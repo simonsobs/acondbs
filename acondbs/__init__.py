@@ -34,7 +34,7 @@ def create_app(config_path=None, **kwargs):
 
     app.config.from_mapping(**kwargs)
 
-    from . import db
+    from .db import db
     db.init_app(app)
 
     from . import bpquery
