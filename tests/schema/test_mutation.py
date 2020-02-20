@@ -69,14 +69,46 @@ params = [
     pytest.param(
         '''
         mutation m {
-          updateMap(mapId: 1001, input: {name: "new-name"}) {
+          updateMap(mapId: 1001, input: {
+              name: "new-name"
+              datePosted: "2020-02-18",
+              mapper: "pwg-xyz",
+              note: "- Note 123"
+          }) {
             map { mapId name } }
         }
          ''',
         '''
-        { map(mapId: 1001) { mapId name } }
+          {
+            map(mapId: 1001) {
+              name datePosted mapper note
+              beams { edges { node { name } } }
+              mapFilePaths { edges { node { path } } }
+            }
+          }
+        ''',
+        id='updateMap-all-options'
+    ),
+    pytest.param(
+        '''
+        mutation m {
+          updateMap(mapId: 1001, input: {
+              name: "new-name"
+              mapper: "pwg-xyz",
+          }) {
+            map { mapId name } }
+        }
          ''',
-        id='updateMap'
+        '''
+          {
+            map(mapId: 1001) {
+              name datePosted mapper note
+              beams { edges { node { name } } }
+              mapFilePaths { edges { node { path } } }
+            }
+          }
+        ''',
+        id='updateMap-selective-options'
     ),
 ]
 

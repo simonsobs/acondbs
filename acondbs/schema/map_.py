@@ -53,7 +53,8 @@ class UpdateMap(graphene.Mutation):
 
     def mutate(root, info, map_id, input):
         map = MapModel.query.filter_by(map_id=map_id).first()
-        map.name = input.name
+        for k, v in input.items():
+            setattr(map, k, v)
         db.session.commit()
         ok = True
         return UpdateMap(map=map, ok=ok)
