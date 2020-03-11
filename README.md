@@ -40,7 +40,7 @@ export FLASK_ENV=development
 flask init-db
 ```
 
-An SQLite DB file has been created in the instance folder (`instance/product.sqlite3`). Tables were defined (The tables were empty. Only files were defined. No data were inserted in the tables).
+An SQLite DB file has been created in the instance folder (`instance/product.sqlite3`). Tables were defined (The tables were empty. Only fields were defined. No data were inserted in the tables).
 
 ### Load sample data to DB (optional)
 
