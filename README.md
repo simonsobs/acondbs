@@ -53,13 +53,13 @@ flask import-csv test_data_csv/
 
 ### Run
 
-Run with the Flask build-in server for the development. (Deployment options for proudction are descriped in the [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/deploying/).)
+Run with the Flask built-in server for the development. (Deployment options for proudction are descriped in the [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/deploying/).)
 
 ```bash
 flask run
 ```
 
-The above command starts the build-in server that only allows accress from localhost. It starts the server at the default TCP port, usually `5000`.
+The above command starts the built-in server that only allows accress from localhost. It starts the server at the default TCP port, usually `5000`.
 
 To allow the access from outside, use `--host=0.0.0.0` option. The TCP port can be specified by `--port` option. For example:
 
