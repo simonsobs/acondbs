@@ -8,7 +8,7 @@ A GraphQL server for product DB
 
 ### Check out
 
-Check out Acondbs from GitHub, create and enter a virtual environment, install required pacakaged, and install Acondbs in the editable mode.
+Check out Acondbs from GitHub, create and enter a virtual environment, install required pacakages, and install Acondbs in the editable mode.
 
 ```bash
 git clone git@github.com:simonsobs/acondbs.git
@@ -77,7 +77,7 @@ curl -d "query={allMaps { edges { node { name mapper } } }}" localhost:5000/grap
 
 #### Access to the server with a web browser
 
-If you access to the server with a web browser, it will show a graphical user interface *GraphiQL*: http://localhost:5000/graphql
+If you access to the server with a web browser, it will show a graphical user interface *GraphiQL*: <http://localhost:5000/graphql>
 
 ### Unit test
 
