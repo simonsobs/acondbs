@@ -12,7 +12,7 @@ _THISDIR = os.path.dirname(os.path.realpath(__file__))
 @pytest.fixture
 def database_uri(tmpdir_factory):
     org_database_path = os.path.join(_THISDIR, 'product.sqlite3')
-    tmpdir = str(tmpdir_factory.mktemp(''))
+    tmpdir = str(tmpdir_factory.mktemp('instance'))
     tmp_database_path = os.path.join(tmpdir, 'product.sqlite3')
     shutil.copy2(org_database_path, tmp_database_path)
     ret = 'sqlite:///{}'.format(tmp_database_path)

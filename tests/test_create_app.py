@@ -28,7 +28,7 @@ def mock_default_config_dict(monkeypatch):
 
 @pytest.fixture()
 def config_path(tmpdir_factory):
-    tmpdir = str(tmpdir_factory.mktemp(''))
+    tmpdir = str(tmpdir_factory.mktemp('instance'))
     ret = os.path.join(tmpdir, 'config.py')
     with open(ret, 'w') as f:
         f.write(TEST_CONFIG_FILE_CONTENT)
