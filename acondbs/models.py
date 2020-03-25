@@ -1,6 +1,14 @@
 from .db.db import db
 
 ##__________________________________________________________________||
+class Simulation(db.Model):
+    __tablename__ = 'simulations'
+    simulation_id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.Text(), nullable=False, unique=True, index=True)
+    date_posted = db.Column(db.Date())
+    mapper = db.Column(db.Text())
+    note = db.Column(db.Text())
+
 class Map(db.Model):
     __tablename__ = 'maps'
     map_id = db.Column(db.Integer(), primary_key=True)
