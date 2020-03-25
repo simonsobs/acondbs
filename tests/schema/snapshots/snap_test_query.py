@@ -88,3 +88,31 @@ snapshots['test_schema[beamByName] 1'] = {
         }
     }
 }
+
+snapshots['test_schema[allSimulations] 1'] = {
+    'data': {
+        'allSimulations': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'xyz-s1234-20200101'
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[simulationBySimulationID] 1'] = {
+    'data': {
+        'simulation': {
+            'name': 'xyz-s1234-20200101'
+        }
+    }
+}
+
+snapshots['test_schema[simulationBySimulationID-nonexistent] 1'] = {
+    'data': {
+        'simulation': None
+    }
+}
