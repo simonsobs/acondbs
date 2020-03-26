@@ -3,7 +3,7 @@ import unittest.mock as mock
 
 import sqlalchemy
 
-from acondbs.db.db import get_db_connection
+from acondbs.db.conn import get_db_connection
 from acondbs.db.ops import init_db
 
 ##__________________________________________________________________||

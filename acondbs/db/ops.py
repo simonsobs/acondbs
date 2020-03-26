@@ -9,7 +9,7 @@ from sqlalchemy import MetaData
 import sqlalchemy
 
 from .sa import sa
-from .db import get_db_connection
+from .conn import get_db_connection
 
 ##__________________________________________________________________||
 def init_db():
