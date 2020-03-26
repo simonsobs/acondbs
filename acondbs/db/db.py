@@ -1,7 +1,7 @@
 """DB
 
-This module is similar to `db.py` in `falskr`, an example application
-described in the flask tutorial.
+The earlier versions of this module were similar to `db.py` in
+`falskr`, an example application described in the flask tutorial.
 
  The flask tutorial: https://flask.palletsprojects.com/en/1.1.x/tutorial/
 
