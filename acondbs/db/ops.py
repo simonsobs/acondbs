@@ -13,6 +13,15 @@ from .conn import get_db_connection
 
 ##__________________________________________________________________||
 def init_db():
+    """defines tables in the DB
+
+    This function defines tables in the DB after dropping all existing
+    tables.
+
+    This function needs to be called within the application context of
+    Flask.
+
+    """
 
     engine = sa.engine
     metadata = MetaData()
