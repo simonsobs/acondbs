@@ -14,11 +14,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 ##__________________________________________________________________||
-db = SQLAlchemy()
+sa = SQLAlchemy()
 """the instance of SQLAlchemy
-
-It is named `db` because that appears to be common practice in Flask +
-SQLAlchemy applications.
 
 """
 ##__________________________________________________________________||
@@ -32,7 +29,7 @@ def get_db_connection():
 
     """
     if 'db_connection' not in g:
-        g.db_connection = db.engine.connect()
+        g.db_connection = sa.engine.connect()
     return g.db_connection
 
 ##__________________________________________________________________||
@@ -53,7 +50,7 @@ def init_app(app):
 
     This function is called by `create_app()`
     """
-    db.init_app(app)
+    sa.init_app(app)
 
     from .cmds import init_db_command, dump_db_command, import_csv_command
     app.cli.add_command(init_db_command)

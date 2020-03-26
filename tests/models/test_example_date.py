@@ -2,7 +2,7 @@ import datetime
 import sqlalchemy
 import pytest
 
-from acondbs.db.db import db
+from acondbs.db.db import sa
 from acondbs.models import Map
 
 # __________________________________________________________________||
@@ -26,8 +26,8 @@ def test_add(app):
     map1 = Map(name="map1", date_posted=date_posted)
 
     with app.app_context():
-        db.session.add(map1)
-        db.session.commit()
+        sa.session.add(map1)
+        sa.session.commit()
 
     with app.app_context():
         map1 = Map.query.filter_by(name='map1').first()
@@ -45,10 +45,10 @@ def test_add_raise(app):
     with app.app_context():
 
         # It is also possible to add
-        db.session.add(map1)
+        sa.session.add(map1)
 
         # However, it is not possible to commit
         with pytest.raises(sqlalchemy.exc.StatementError):
-            db.session.commit()
+            sa.session.commit()
 
 # __________________________________________________________________||

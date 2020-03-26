@@ -1,38 +1,38 @@
-from .db.db import db
+from .db.db import sa
 
 ##__________________________________________________________________||
-class Simulation(db.Model):
+class Simulation(sa.Model):
     __tablename__ = 'simulations'
-    simulation_id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.Text(), nullable=False, unique=True, index=True)
-    date_posted = db.Column(db.Date())
-    mapper = db.Column(db.Text())
-    note = db.Column(db.Text())
+    simulation_id = sa.Column(sa.Integer(), primary_key=True)
+    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+    date_posted = sa.Column(sa.Date())
+    mapper = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
 
-class Map(db.Model):
+class Map(sa.Model):
     __tablename__ = 'maps'
-    map_id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.Text(), nullable=False, unique=True, index=True)
-    date_posted = db.Column(db.Date())
-    mapper = db.Column(db.Text())
-    note = db.Column(db.Text())
+    map_id = sa.Column(sa.Integer(), primary_key=True)
+    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+    date_posted = sa.Column(sa.Date())
+    mapper = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
 
-class Beam(db.Model):
+class Beam(sa.Model):
     __tablename__ = 'beams'
-    beam_id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.Text(), nullable=False, unique=True, index=True)
-    path = db.Column(db.Text())
-    input_map_id = db.Column(db.ForeignKey('maps.map_id'))
-    input_beam_id = db.Column(db.ForeignKey('beams.beam_id'))
-    map = db.relationship("Map", backref=db.backref("beams"))
-    parent_beam = db.relationship(lambda: Beam, remote_side=beam_id, backref=db.backref("child_beams"))
+    beam_id = sa.Column(sa.Integer(), primary_key=True)
+    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+    path = sa.Column(sa.Text())
+    input_map_id = sa.Column(sa.ForeignKey('maps.map_id'))
+    input_beam_id = sa.Column(sa.ForeignKey('beams.beam_id'))
+    map = sa.relationship("Map", backref=sa.backref("beams"))
+    parent_beam = sa.relationship(lambda: Beam, remote_side=beam_id, backref=sa.backref("child_beams"))
 
-class MapFilePath(db.Model):
+class MapFilePath(sa.Model):
     __tablename__ = 'map_path'
-    map_file_path_id = db.Column(db.Integer(), primary_key=True)
-    map_id = db.Column(db.ForeignKey('maps.map_id'))
-    path = db.Column(db.Text())
-    note = db.Column(db.Text())
-    map = db.relationship("Map", backref=db.backref("map_file_paths"))
+    map_file_path_id = sa.Column(sa.Integer(), primary_key=True)
+    map_id = sa.Column(sa.ForeignKey('maps.map_id'))
+    path = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
+    map = sa.relationship("Map", backref=sa.backref("map_file_paths"))
 
 ##__________________________________________________________________||

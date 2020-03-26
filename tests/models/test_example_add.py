@@ -1,4 +1,4 @@
-from acondbs.db.db import db
+from acondbs.db.db import sa
 from acondbs.models import Map, Beam
 
 # These tests are written primarily for the developer to understand
@@ -18,8 +18,8 @@ def test_simple(app):
     map1 = Map(name="map1")
 
     with app.app_context():
-        db.session.add(map1)
-        db.session.commit()
+        sa.session.add(map1)
+        sa.session.commit()
 
     with app.app_context():
 
@@ -38,8 +38,8 @@ def test_python_object(app):
     map1 = Map(name="map1")
 
     with app.app_context():
-        db.session.add(map1)
-        db.session.commit()
+        sa.session.add(map1)
+        sa.session.commit()
 
         map1_ = Map.query.filter_by(name='map1').first()
 
@@ -63,8 +63,8 @@ def test_primary_key(app):
     assert map1.map_id is None
 
     with app.app_context():
-        db.session.add(map1)
-        db.session.commit()
+        sa.session.add(map1)
+        sa.session.commit()
 
         # After the commit, map_id is automatically assigned
         map_id = map1.map_id
@@ -94,8 +94,8 @@ def test_relation(app):
     assert beam1.input_map_id is None
 
     with app.app_context():
-        db.session.add(map1)
-        db.session.commit()
+        sa.session.add(map1)
+        sa.session.commit()
 
         # The primary keys are assigned
         assert map1.map_id is not None

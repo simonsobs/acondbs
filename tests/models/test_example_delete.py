@@ -1,4 +1,4 @@
-from acondbs.db.db import db
+from acondbs.db.db import sa
 from acondbs.models import Map, Beam
 
 # These tests are written primarily for the developer to understand
@@ -16,8 +16,8 @@ def test_simple(app):
 
     with app.app_context():
         map1 = Map.query.filter_by(map_id=1012).first()
-        db.session.delete(map1)
-        db.session.commit()
+        sa.session.delete(map1)
+        sa.session.commit()
 
     with app.app_context():
 

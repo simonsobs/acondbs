@@ -8,12 +8,12 @@ import csv
 from sqlalchemy import MetaData
 import sqlalchemy
 
-from .db import db, get_db_connection
+from .db import sa, get_db_connection
 
 ##__________________________________________________________________||
 def init_db():
 
-    engine = db.engine
+    engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)
 
@@ -29,12 +29,12 @@ def init_db():
         metadata.drop_all(bind=engine)
         print(msg)
 
-    if not db.Model.metadata.tables:
+    if not sa.Model.metadata.tables:
         msg = "No tables to be created are found!"
         print(msg)
         return
 
-    tbl_names = db.Model.metadata.tables.keys()
+    tbl_names = sa.Model.metadata.tables.keys()
     # ['maps', 'beams']
 
     tbl_names = ', '.join(['"{}"'.format(t) for t in tbl_names])
@@ -42,14 +42,14 @@ def init_db():
 
     msg = "Created tables: {}".format(tbl_names)
 
-    db.Model.metadata.create_all(engine)
+    sa.Model.metadata.create_all(engine)
 
     print(msg)
 
 ##__________________________________________________________________||
 def get_all_db_content():
     # https://stackoverflow.com/questions/47307873/read-entire-database-with-sqlalchemy-and-dump-as-json
-    engine = db.engine
+    engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)
     ret = { }
@@ -60,7 +60,7 @@ def get_all_db_content():
 ##__________________________________________________________________||
 def import_csv(csvdir):
     metadata = MetaData()
-    metadata.reflect(bind=db.engine)
+    metadata.reflect(bind=sa.engine)
     for tbl in metadata.sorted_tables:
         csv_filename = '{}.csv'.format(tbl.name)
         csv_path = os.path.join(csvdir, csv_filename)

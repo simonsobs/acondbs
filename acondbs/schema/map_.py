@@ -4,7 +4,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ..models import Map as MapModel
 
-from ..db.db import db
+from ..db.db import sa
 
 ##__________________________________________________________________||
 class Map(SQLAlchemyObjectType):
@@ -38,8 +38,8 @@ class CreateMap(graphene.Mutation):
 
     def mutate(root, info, input):
         map = MapModel(**input)
-        db.session.add(map)
-        db.session.commit()
+        sa.session.add(map)
+        sa.session.commit()
         ok = True
         return CreateMap(map=map, ok=ok)
 
@@ -55,7 +55,7 @@ class UpdateMap(graphene.Mutation):
         map = MapModel.query.filter_by(map_id=map_id).first()
         for k, v in input.items():
             setattr(map, k, v)
-        db.session.commit()
+        sa.session.commit()
         ok = True
         return UpdateMap(map=map, ok=ok)
 
@@ -67,8 +67,8 @@ class DeleteMap(graphene.Mutation):
 
     def mutate(root, info, map_id):
         map = MapModel.query.filter_by(map_id=map_id).first()
-        db.session.delete(map)
-        db.session.commit()
+        sa.session.delete(map)
+        sa.session.commit()
         ok = True
         return DeleteMap(ok=ok)
 
