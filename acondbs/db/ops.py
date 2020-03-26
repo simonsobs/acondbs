@@ -8,7 +8,8 @@ import csv
 from sqlalchemy import MetaData
 import sqlalchemy
 
-from .db import sa, get_db_connection
+from .sa import sa
+from .db import get_db_connection
 
 ##__________________________________________________________________||
 def init_db():

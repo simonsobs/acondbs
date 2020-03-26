@@ -1,4 +1,4 @@
-from .db.db import sa
+from .db.sa import sa
 
 ##__________________________________________________________________||
 class Simulation(sa.Model):

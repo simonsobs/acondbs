@@ -8,16 +8,10 @@ described in the flask tutorial.
  db.py in flaskr: https://github.com/pallets/flask/blob/1.1.1/examples/tutorial/flaskr/db.py
 
 """
-
 from flask import g
-from flask_sqlalchemy import SQLAlchemy
 
+from .sa import sa
 
-##__________________________________________________________________||
-sa = SQLAlchemy()
-"""the instance of SQLAlchemy
-
-"""
 ##__________________________________________________________________||
 def get_db_connection():
     """returns the DB connection

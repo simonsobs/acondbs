@@ -4,7 +4,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ..models import Map as MapModel
 
-from ..db.db import sa
+from ..db.sa import sa
 
 ##__________________________________________________________________||
 class Map(SQLAlchemyObjectType):
