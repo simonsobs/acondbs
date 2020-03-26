@@ -42,6 +42,9 @@ class Query(graphene.ObjectType):
     map = graphene.Field(Map, map_id=graphene.Int(), name=graphene.String())
 
     def resolve_map(self, info, **kwargs):
+        import time, random
+        print(kwargs)
+        # time.sleep(random.randint(1, 5))
         fields = ('map_id', 'name')
         query = Map.get_query(info)
         for f in fields:
