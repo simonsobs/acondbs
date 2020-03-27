@@ -12,3 +12,16 @@ def test_app(app):
     assert app.testing
 
 ##__________________________________________________________________||
+def test_client(client):
+    """test the fixture client
+    """
+    response = client.get('/')
+    assert response
+
+##__________________________________________________________________||
+def test_runner(runner):
+    """test the fixture runner
+    """
+    assert runner
+
+##__________________________________________________________________||
