@@ -27,7 +27,7 @@ def dump_db_command():
 
 ##__________________________________________________________________||
 @click.command("import-csv")
-@click.argument("csvdir")
+@click.argument("csvdir", type=click.Path(exists=True))
 @with_appcontext
 def import_csv_command(csvdir):
     import_csv(csvdir)

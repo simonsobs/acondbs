@@ -1,5 +1,9 @@
+import os
+
 import pytest
 import unittest.mock as mock
+
+from ..constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
 @pytest.fixture()
@@ -27,8 +31,9 @@ def mock_import_csv(monkeypatch):
     return ret
 
 def test_import_csv_command(runner, mock_import_csv):
-    result = runner.invoke(args=["import-csv", "../../csv"])
+    csvdir = os.path.join(SAMPLE_DIR, 'csv')
+    result = runner.invoke(args=["import-csv", csvdir])
     assert 0 == result.exit_code
-    assert [mock.call('../../csv')] == mock_import_csv.call_args_list
+    assert [mock.call(csvdir)] == mock_import_csv.call_args_list
 
 ##__________________________________________________________________||
