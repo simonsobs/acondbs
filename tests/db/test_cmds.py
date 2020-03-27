@@ -3,14 +3,14 @@ import unittest.mock as mock
 
 ##__________________________________________________________________||
 @pytest.fixture()
-def mock_init_db(monkeypatch):
+def mock_define_tables(monkeypatch):
     ret = mock.Mock()
-    monkeypatch.setattr("acondbs.db.cmds.init_db", ret)
+    monkeypatch.setattr("acondbs.db.cmds.define_tables", ret)
     return ret
 
-def test_init_db_command(runner, mock_init_db):
+def test_init_db_command(runner, mock_define_tables):
     result = runner.invoke(args=["init-db"])
-    assert [mock.call()] == mock_init_db.call_args_list
+    assert [mock.call()] == mock_define_tables.call_args_list
     assert "Initialized" in result.output
 
 ##__________________________________________________________________||

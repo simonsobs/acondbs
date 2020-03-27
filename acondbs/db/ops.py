@@ -12,7 +12,7 @@ from .sa import sa
 from .conn import get_db_connection
 
 ##__________________________________________________________________||
-def init_db():
+def define_tables():
     """defines tables in the DB
 
     This function defines tables in the DB after dropping all existing

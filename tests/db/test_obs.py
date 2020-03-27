@@ -3,7 +3,7 @@ from sqlalchemy import MetaData
 import pytest
 
 from acondbs import create_app
-from acondbs.db.ops import init_db
+from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 
 ##__________________________________________________________________||
@@ -14,8 +14,8 @@ def app_with_empty_db():
     yield app
 
 ##__________________________________________________________________||
-def test_init_db_start_with_empty_db(app_with_empty_db):
-    """test init_db()
+def test_define_tables_start_with_empty_db(app_with_empty_db):
+    """test define_tables()
 
     This function tests if tables will be defined starting from new db without
     any tables.
@@ -31,7 +31,7 @@ def test_init_db_start_with_empty_db(app_with_empty_db):
         assert not metadata.tables
 
     with app.app_context():
-        init_db()
+        define_tables()
 
     with app.app_context():
         metadata = MetaData()
@@ -40,8 +40,8 @@ def test_init_db_start_with_empty_db(app_with_empty_db):
         assert tbl_names == metadata.tables.keys()
 
 ##__________________________________________________________________||
-def test_init_db_start_with_empty_db(app):
-    """test init_db()
+def test_define_tables_start_with_empty_db(app):
+    """test define_tables()
 
     This function tests if tables will be redefined starting from db
     with tables with entries.
@@ -59,7 +59,7 @@ def test_init_db_start_with_empty_db(app):
         assert total_nentries > 0
 
     with app.app_context():
-        init_db()
+        define_tables()
 
     # confirm tables are defined and all empty
     with app.app_context():

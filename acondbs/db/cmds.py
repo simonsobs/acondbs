@@ -6,14 +6,14 @@ import click
 
 import json
 
-from .ops import init_db, get_all_db_content, import_csv
+from .ops import define_tables, get_all_db_content, import_csv
 
 ##__________________________________________________________________||
 @click.command("init-db")
 @with_appcontext
 def init_db_command():
     """Clear existing data and create new tables."""
-    init_db()
+    define_tables()
     click.echo("Initialized the database.")
 
 ##__________________________________________________________________||
