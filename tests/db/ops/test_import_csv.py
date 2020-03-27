@@ -4,11 +4,7 @@ import pytest
 from acondbs import create_app
 from acondbs.db.ops import define_tables, import_csv, get_all_db_content
 
-##__________________________________________________________________||
-_THISDIR = os.path.dirname(os.path.realpath(__file__))
-_TESTDIRTOP = os.path.dirname(os.path.dirname(_THISDIR))
-_SAMPLEDIR = os.path.join(_TESTDIRTOP, 'sample')
-print(_TESTDIRTOP)
+from ...constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -22,7 +18,7 @@ def app():
 
 ##__________________________________________________________________||
 def test_import_csv(app, snapshot):
-    csvdir = os.path.join(_SAMPLEDIR, 'csv')
+    csvdir = os.path.join(SAMPLE_DIR, 'csv')
     with app.app_context():
         import_csv(csvdir)
     with app.app_context():

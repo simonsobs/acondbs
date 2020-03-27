@@ -6,8 +6,7 @@ import pytest
 from acondbs import create_app
 
 ##__________________________________________________________________||
-_THISDIR = os.path.dirname(os.path.realpath(__file__))
-_SAMPLEDIR = os.path.join(_THISDIR, 'sample')
+from .constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -18,7 +17,7 @@ def database_uri(tmpdir_factory):
     temporarily folder and returns the URI for the copy.
 
     """
-    org_database_path = os.path.join(_SAMPLEDIR, 'product.sqlite3')
+    org_database_path = os.path.join(SAMPLE_DIR, 'product.sqlite3')
     tmpdir = str(tmpdir_factory.mktemp('instance'))
     tmp_database_path = os.path.join(tmpdir, 'product.sqlite3')
     shutil.copy2(org_database_path, tmp_database_path)
@@ -42,7 +41,7 @@ def app(database_uri):
     Flask
 
     """
-    config_path = os.path.join(_SAMPLEDIR, 'config.py')
+    config_path = os.path.join(SAMPLE_DIR, 'config.py')
     app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     yield app
 
