@@ -40,7 +40,7 @@ def test_define_tables_start_with_empty_db(app_with_empty_db):
         assert tbl_names == metadata.tables.keys()
 
 ##__________________________________________________________________||
-def test_define_tables_start_with_empty_db(app):
+def test_define_tables_start_with_nonempty_db(app):
     """test define_tables()
 
     This function tests if tables will be redefined starting from db
