@@ -43,7 +43,7 @@ def client(app):
     https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.test_client
 
     """
-    return app.test_client()
+    yield app.test_client()
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -55,6 +55,6 @@ def runner(app):
     https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.test_cli_runner
 
     """
-    return app.test_cli_runner()
+    yield app.test_cli_runner()
 
 ##__________________________________________________________________||
