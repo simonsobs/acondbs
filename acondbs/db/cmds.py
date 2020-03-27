@@ -20,6 +20,9 @@ def init_db_command():
 @click.command("dump-db")
 @with_appcontext
 def dump_db_command():
+    """Dump the DB contents
+
+    """
     db_content = get_all_db_content()
 
     click.echo(json.dumps(db_content, indent=2, default=str))
@@ -30,6 +33,9 @@ def dump_db_command():
 @click.argument("csvdir", type=click.Path(exists=True))
 @with_appcontext
 def import_csv_command(csvdir):
+    """Import tables from CSV files in CSVDIR into the DB.
+
+    """
     import_csv(csvdir)
 
 ##__________________________________________________________________||
