@@ -5,6 +5,15 @@ from acondbs import create_app
 
 ##__________________________________________________________________||
 def test_create_app_fixture(app):
+    """test if the fixture app is created
+
+    This function tests if the fixture `app` is created. The fixture
+    `app` is defined in `conftest.py`. The `app` is an instance of
+    `Flask`.
+
+    """
+    from flask import Flask
+    assert isinstance(app, Flask)
     assert app.testing
 
 ##__________________________________________________________________||

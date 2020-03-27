@@ -11,6 +11,12 @@ _THISDIR = os.path.dirname(os.path.realpath(__file__))
 ##__________________________________________________________________||
 @pytest.fixture
 def database_uri(tmpdir_factory):
+    """the database URI for a temporarily copy of the test data
+
+    The fixture copies the test data `product.sqlite3` to a
+    temporarily folder and returns the URI for the copy.
+
+    """
     org_database_path = os.path.join(_THISDIR, 'product.sqlite3')
     tmpdir = str(tmpdir_factory.mktemp('instance'))
     tmp_database_path = os.path.join(tmpdir, 'product.sqlite3')
@@ -21,6 +27,8 @@ def database_uri(tmpdir_factory):
 ##__________________________________________________________________||
 @pytest.fixture
 def app(database_uri):
+    """a test Flask application
+    """
     config_path = os.path.join(_THISDIR, 'config.py')
     app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     yield app
@@ -28,11 +36,25 @@ def app(database_uri):
 ##__________________________________________________________________||
 @pytest.fixture
 def client(app):
+    """a test client of the Flask application
+
+    The test client can emulate HTTP requests, e.g, GET, POST. More in
+    the Flask documentation:
+    https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.test_client
+
+    """
     return app.test_client()
 
 ##__________________________________________________________________||
 @pytest.fixture
 def runner(app):
+    """a test CLI runner of the Flask application
+
+    The runner is used to test custom click commands. More in the
+    Flask documentation:
+    https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.test_cli_runner
+
+    """
     return app.test_cli_runner()
 
 ##__________________________________________________________________||
