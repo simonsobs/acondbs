@@ -7,7 +7,7 @@ from snapshottest import GenericRepr, Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_get_all_db_content 1'] = {
+snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'beams': [
         {
             'beam_id': 1010,

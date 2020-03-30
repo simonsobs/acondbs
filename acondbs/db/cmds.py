@@ -6,7 +6,7 @@ import click
 
 import json
 
-from .ops import define_tables, get_all_db_content, import_csv
+from .ops import define_tables, export_db_to_dict_of_dict_list, import_csv
 
 ##__________________________________________________________________||
 @click.command("init-db")
@@ -23,7 +23,7 @@ def dump_db_command():
     """Dump the DB contents
 
     """
-    db_content = get_all_db_content()
+    db_content = export_db_to_dict_of_dict_list()
 
     click.echo(json.dumps(db_content, indent=2, default=str))
     # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable

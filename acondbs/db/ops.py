@@ -57,10 +57,6 @@ def define_tables():
     print(msg)
 
 ##__________________________________________________________________||
-def get_all_db_content():
-    return export_db_to_dict_of_dict_list()
-
-##__________________________________________________________________||
 def get_all_table_names():
     """returns the names of all tables in the DB.
 
