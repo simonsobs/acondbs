@@ -1,5 +1,8 @@
 """DB operations
 
+The functions in this module need to be called within the application
+context of Flask unless stated otherwise.
+
 """
 import os
 import datetime
@@ -17,9 +20,6 @@ def define_tables():
 
     This function defines tables in the DB after dropping all existing
     tables.
-
-    This function needs to be called within the application context of
-    Flask.
 
     """
 
