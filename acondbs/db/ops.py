@@ -58,14 +58,87 @@ def define_tables():
 
 ##__________________________________________________________________||
 def get_all_db_content():
-    # https://stackoverflow.com/questions/47307873/read-entire-database-with-sqlalchemy-and-dump-as-json
+    return export_db_to_dict_of_dict_list()
+
+##__________________________________________________________________||
+def get_all_table_names():
+    """returns the names of all tables in the DB.
+
+    Returns
+    -------
+    list of str
+        the names of all tables in the DB
+
+    """
     engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)
-    ret = { }
-    for tbl in metadata.sorted_tables:
-        ret[tbl.name] = [dict(r) for r in engine.execute(tbl.select())]
+    return [tbl.name for tbl in metadata.sorted_tables]
+
+def export_db_to_dict_of_dict_list():
+    """exports the DB to a dict of table names and lists of dicts for each row
+
+    Returns
+    -------
+    dict
+        dict with one entry for each table: the table name as the key
+        and the value lists of dicts: one dict for each row: field
+        names as the keys and contents as the values. e.g.,
+
+            {"tblA": [
+                {'fieldA': 1001, 'fieldB': 'abc'},
+                {'fieldA': 1002, 'fieldB': 'xyz'}
+            ]}
+
+    """
+    tbl_names = get_all_table_names()
+    ret = {n: export_table_to_dict_list(n) for n in tbl_names}
     return ret
+
+def export_table_to_dict_list(tbl_name):
+    """exports the table to a list of dicts
+
+    Parameters
+    ----------
+    tbl_name : str
+        the table name
+
+    Returns
+    -------
+    list of dict
+        the list of dicts: one dict for each row: field names as the
+        keys and contents as the values. e.g.:
+
+            [
+                {'fieldA': 1001, 'fieldB': 'abc'},
+                {'fieldA': 1002, 'fieldB': 'xyz'}
+            ]
+
+    """
+    result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
+    return [dict(r) for r in result_proxy]
+
+def get_resultproxy_of_select_all_rows(tbl_name):
+    """returns ResultProxy with all rows of the table
+
+    Parameters
+    ----------
+    tbl_name : str
+        the table name
+
+    Returns
+    -------
+    ResultProxy
+        ResultProxy of SQLAlchemy with the result of query selecting
+        all rows of the table.
+        https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.ResultProxy
+
+    """
+    engine = sa.engine
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+    tbl = metadata.tables[tbl_name]
+    return engine.execute(tbl.select())
 
 ##__________________________________________________________________||
 def import_csv(csvdir):
