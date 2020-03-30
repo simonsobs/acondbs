@@ -164,8 +164,8 @@ def import_tables_from_csv_files(csvdir):
             message = 'skipped "{}". file not found: {}'.format(tbl.name, csv_path)
         print(message)
 
-def import_csv_(tbl, csv_path):
-    with open(csv_path, 'r') as f:
+def import_csv_(tbl, path):
+    with open(path, 'r') as f:
         rows = list(csv.reader(f))
     fields = rows[0]
     rows = rows[1:]
