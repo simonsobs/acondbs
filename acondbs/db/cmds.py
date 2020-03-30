@@ -6,7 +6,7 @@ import click
 
 import json
 
-from .ops import define_tables, export_db_to_dict_of_dict_list, import_csv
+from .ops import define_tables, export_db_to_dict_of_dict_list, import_tables_from_csv_files
 
 ##__________________________________________________________________||
 @click.command("init-db")
@@ -36,6 +36,6 @@ def import_csv_command(csvdir):
     """Import tables from CSV files in CSVDIR into the DB.
 
     """
-    import_csv(csvdir)
+    import_tables_from_csv_files(csvdir)
 
 ##__________________________________________________________________||

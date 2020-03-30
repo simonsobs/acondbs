@@ -2,7 +2,7 @@ import os
 import pytest
 
 from acondbs import create_app
-from acondbs.db.ops import define_tables, import_csv, export_db_to_dict_of_dict_list
+from acondbs.db.ops import define_tables, import_tables_from_csv_files, export_db_to_dict_of_dict_list
 
 from ...constants import SAMPLE_DIR
 
@@ -17,10 +17,10 @@ def app():
 
 
 ##__________________________________________________________________||
-def test_import_csv(app, snapshot):
+def test_import_tables_from_csv_files(app, snapshot):
     csvdir = os.path.join(SAMPLE_DIR, 'csv')
     with app.app_context():
-        import_csv(csvdir)
+        import_tables_from_csv_files(csvdir)
     with app.app_context():
         snapshot.assert_match(export_db_to_dict_of_dict_list())
 

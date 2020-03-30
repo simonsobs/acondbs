@@ -29,12 +29,12 @@ def test_dump_db_command(runner):
 
 ##__________________________________________________________________||
 @pytest.fixture()
-def mock_import_csv(monkeypatch):
+def mock_import_tables_from_csv_files(monkeypatch):
     ret = mock.Mock()
-    monkeypatch.setattr("acondbs.db.cmds.import_csv", ret)
+    monkeypatch.setattr("acondbs.db.cmds.import_tables_from_csv_files", ret)
     return ret
 
-def test_import_csv_command(runner, mock_import_csv):
+def test_import_csv_command(runner, mock_import_tables_from_csv_files):
     """test command import-csv
     """
 
@@ -44,6 +44,6 @@ def test_import_csv_command(runner, mock_import_csv):
 
     result = runner.invoke(args=["import-csv", csvdir])
     assert 0 == result.exit_code
-    assert [mock.call(csvdir)] == mock_import_csv.call_args_list
+    assert [mock.call(csvdir)] == mock_import_tables_from_csv_files.call_args_list
 
 ##__________________________________________________________________||

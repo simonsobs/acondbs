@@ -137,7 +137,21 @@ def get_resultproxy_of_select_all_rows(tbl_name):
     return engine.execute(tbl.select())
 
 ##__________________________________________________________________||
-def import_csv(csvdir):
+def import_tables_from_csv_files(csvdir):
+    """imports tables from CSV files into the DB
+
+    The tables need to be already defined in the DB.
+
+    The folder `csvdir` should contain CSV files with the table
+    contents to be imported: one CSV file for one table with the file
+    name <<table name>>.csv
+
+    Parameters
+    ----------
+    csvdir : str
+        a path to a folder with CSV files
+
+    """
     metadata = MetaData()
     metadata.reflect(bind=sa.engine)
     for tbl in metadata.sorted_tables:

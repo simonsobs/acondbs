@@ -7,7 +7,7 @@ from snapshottest import GenericRepr, Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_import_csv 1'] = {
+snapshots['test_import_tables_from_csv_files 1'] = {
     'beams': [
         {
             'beam_id': 1010,
