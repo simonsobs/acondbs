@@ -217,3 +217,15 @@ def convert_data_type_for_insert(str_, type_):
     return str_
 
 ##__________________________________________________________________||
+def export_db_to_csv_files(outdir):
+    tbl_names = get_all_table_names()
+    for tbl_name in tbl_names:
+        csv_filename = '{}.csv'.format(tbl_name)
+        csv_path = os.path.join(outdir, csv_filename)
+        result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
+        with open(csv_path, 'w', newline='') as f:
+            csv_writer = csv.writer(f, lineterminator='\n')
+            csv_writer.writerow(result_proxy.keys())
+            csv_writer.writerows(result_proxy)
+
+##__________________________________________________________________||
