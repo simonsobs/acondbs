@@ -152,16 +152,15 @@ def import_tables_from_csv_files(csvdir):
         a path to a folder with CSV files
 
     """
-    metadata = MetaData()
-    metadata.reflect(bind=sa.engine)
-    for tbl in metadata.sorted_tables:
-        csv_filename = '{}.csv'.format(tbl.name)
+    tbl_names = get_all_table_names()
+    for tbl_name in tbl_names:
+        csv_filename = '{}.csv'.format(tbl_name)
         csv_path = os.path.join(csvdir, csv_filename)
         if os.path.exists(csv_path):
-            import_table_from_csv_file(tbl.name, csv_path)
-            message = 'imported to "{}" from {}'.format(tbl.name, csv_path)
+            import_table_from_csv_file(tbl_name, csv_path)
+            message = 'imported to "{}" from {}'.format(tbl_name, csv_path)
         else:
-            message = 'skipped "{}". file not found: {}'.format(tbl.name, csv_path)
+            message = 'skipped "{}". file not found: {}'.format(tbl_name, csv_path)
         print(message)
 
 def import_table_from_csv_file(tbl_name, path):
