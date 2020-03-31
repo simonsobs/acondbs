@@ -158,13 +158,13 @@ def import_tables_from_csv_files(csvdir):
         csv_filename = '{}.csv'.format(tbl.name)
         csv_path = os.path.join(csvdir, csv_filename)
         if os.path.exists(csv_path):
-            import_csv_(tbl.name, csv_path)
+            import_table_from_csv_file(tbl.name, csv_path)
             message = 'imported to "{}" from {}'.format(tbl.name, csv_path)
         else:
             message = 'skipped "{}". file not found: {}'.format(tbl.name, csv_path)
         print(message)
 
-def import_csv_(tbl_name, path):
+def import_table_from_csv_file(tbl_name, path):
     """import a table from a CSV file
 
     The table needs to be already defined in the DB.
