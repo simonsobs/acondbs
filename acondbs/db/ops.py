@@ -191,6 +191,24 @@ def import_table_from_csv_file(tbl_name, path):
     connection.execute(ins, data)
 
 def convert_type(str_, type_):
+    """converts data type for insert
+
+    This function converts the data type from str to a type relevant
+    to insert in SQLAlchemy
+
+    Parameters
+    ----------
+    str_ : str
+        the data in str
+    type_ :
+        the data type in SQLAlchemy, i.e., one of the types listed in
+        https://docs.sqlalchemy.org/en/13/core/type_basics.html
+
+    Returns
+    -------
+    the data in the type relevant for insert
+
+    """
     if isinstance(type_, sqlalchemy.sql.sqltypes.DATE):
         if str_:
             return datetime.datetime.strptime(str_, "%Y-%m-%d").date()
