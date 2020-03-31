@@ -32,7 +32,8 @@ def create_app(config_path=None, **kwargs):
 
         app.config.from_pyfile(config_path, silent=False)
 
-    app.config.from_mapping(**kwargs)
+    if kwargs:
+        app.config.from_mapping(**kwargs)
 
     from .db import db
     db.init_app(app)
