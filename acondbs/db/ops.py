@@ -185,12 +185,13 @@ def import_table_from_csv_file(tbl_name, path):
         rows = list(csv.reader(f))
     fields = rows[0]
     rows = rows[1:]
-    data = [{f: convert_type(e, tbl.columns[f].type) for f, e in zip(fields, r)} for r in rows]
+    data = [{f: convert_data_type_for_insert(e, tbl.columns[f].type)
+             for f, e in zip(fields, r)} for r in rows]
     ins = tbl.insert()
     connection = get_db_connection()
     connection.execute(ins, data)
 
-def convert_type(str_, type_):
+def convert_data_type_for_insert(str_, type_):
     """converts data type for insert
 
     This function converts the data type from str to a type relevant
