@@ -85,7 +85,7 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'map_id': 1012,
             'mapper': 'pwg-pmn',
             'name': 'lat20200120',
-            'note': '''- This is a dummy test with a lat map                                             
+            'note': '''- This is a dummy test with a lat map
 - A beam depends on this map'''
         },
         {
@@ -93,7 +93,7 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'map_id': 1013,
             'mapper': 'pwg-pmn',
             'name': 'lat20200201',
-            'note': '''- This is a dummy test with a lat map                         
+            'note': '''- This is a dummy test with a lat map
 - A beam depends on this map'''
         }
     ],

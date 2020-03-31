@@ -1,7 +1,7 @@
 map_id,name,date_posted,mapper,note
 1001,lat20190213,2019-02-13,pwg-pmn,"- This is a dummy test with a lat map
 - This should not depend on any beam"
-1012,lat20200120,2020-01-20,pwg-pmn,"- This is a dummy test with a lat map                                             
+1012,lat20200120,2020-01-20,pwg-pmn,"- This is a dummy test with a lat map
 - A beam depends on this map"
-1013,lat20200201,2020-02-01,pwg-pmn,"- This is a dummy test with a lat map                         
+1013,lat20200201,2020-02-01,pwg-pmn,"- This is a dummy test with a lat map
 - A beam depends on this map"
