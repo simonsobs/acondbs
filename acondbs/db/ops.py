@@ -165,6 +165,18 @@ def import_tables_from_csv_files(csvdir):
         print(message)
 
 def import_csv_(tbl_name, path):
+    """import a table from a CSV file
+
+    The table needs to be already defined in the DB.
+
+    Parameters
+    ----------
+    tbl_name : str
+        the name of the table
+    path : str
+        the path to the CSV file
+
+    """
     engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)
