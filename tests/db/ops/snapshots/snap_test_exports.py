@@ -97,6 +97,20 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
 - A beam depends on this map'''
         }
     ],
+    'simulation_path': [
+        {
+            'note': '',
+            'path': 'nersc:/go/to/my/simulations',
+            'simulation_file_path_id': 1,
+            'simulation_id': 1001
+        },
+        {
+            'note': '',
+            'path': 'abcde:/path/to/the/simulations',
+            'simulation_file_path_id': 2,
+            'simulation_id': 1001
+        }
+    ],
     'simulations': [
         {
             'date_posted': GenericRepr('datetime.date(2019, 3, 15)'),

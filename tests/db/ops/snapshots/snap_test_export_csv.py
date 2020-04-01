@@ -99,10 +99,16 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'simulation_path': [
         {
-            'note': None,
-            'path': None,
+            'note': '',
+            'path': 'nersc:/go/to/my/simulations',
             'simulation_file_path_id': 1,
-            'simulation_id': None
+            'simulation_id': 1001
+        },
+        {
+            'note': '',
+            'path': 'abcde:/path/to/the/simulations',
+            'simulation_file_path_id': 2,
+            'simulation_id': 1001
         }
     ],
     'simulations': [
