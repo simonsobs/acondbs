@@ -23,6 +23,14 @@ class Simulation(sa.Model):
     mapper = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
 
+class SimulationFilePath(sa.Model):
+    __tablename__ = 'simulation_path'
+    simulation_file_path_id = sa.Column(sa.Integer(), primary_key=True)
+    simulation_id = sa.Column(sa.ForeignKey('simulations.simulation_id'))
+    path = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
+    simulation = sa.relationship("Simulation", backref=sa.backref("simulation_file_paths"))
+
 class Map(sa.Model):
     __tablename__ = 'maps'
     map_id = sa.Column(sa.Integer(), primary_key=True)

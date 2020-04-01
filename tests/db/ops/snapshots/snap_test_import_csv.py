@@ -97,6 +97,8 @@ snapshots['test_import_tables_from_csv_files 1'] = {
 - A beam depends on this map'''
         }
     ],
+    'simulation_path': [
+    ],
     'simulations': [
         {
             'date_posted': GenericRepr('datetime.date(2019, 3, 15)'),

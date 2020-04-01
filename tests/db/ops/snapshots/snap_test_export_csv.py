@@ -97,6 +97,14 @@ snapshots['test_export_db_to_csv_files 1'] = {
 - A beam depends on this map'''
         }
     ],
+    'simulation_path': [
+        {
+            'note': None,
+            'path': None,
+            'simulation_file_path_id': 1,
+            'simulation_id': None
+        }
+    ],
     'simulations': [
         {
             'date_posted': GenericRepr('datetime.date(2019, 3, 15)'),
