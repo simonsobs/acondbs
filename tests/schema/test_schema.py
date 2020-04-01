@@ -6,6 +6,7 @@ from acondbs.schema.schema import schema
 ##__________________________________________________________________||
 params = [
     'Simulation', 'SimulationConnection',
+    'SimulationFilePath', 'SimulationFilePathConnection',
     'Map', 'MapConnection',
     'MapFilePath', 'MapFilePathConnection',
     'Beam', 'BeamConnection',
