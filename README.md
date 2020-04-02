@@ -44,11 +44,10 @@ An SQLite DB file has been created in the instance folder (`instance/product.sql
 
 ### Load sample data to DB (optional)
 
-(Optional) Load sample data from GitHub to the dababase.
+(Optional) Load sample data to the dababase.
 
 ```bash
-git clone git@github.com:TaiSakuma/acondbs-sample-initial-data-csv.git test_data_csv
-flask import-csv test_data_csv/
+flask import-csv tests/sample/csv/
 ```
 
 ### Run
