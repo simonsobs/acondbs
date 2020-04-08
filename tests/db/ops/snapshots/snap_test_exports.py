@@ -8,6 +8,8 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_export_db_to_dict_of_dict_list 1'] = {
+    'alembic_version': [
+    ],
     'beams': [
         {
             'beam_id': 1010,
