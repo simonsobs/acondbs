@@ -2,7 +2,10 @@ from flask_migrate import Migrate
 
 from .sa import sa
 from .conn import close_db_connection
-from .cmds import init_db_command, dump_db_command, import_csv_command
+from .cmds import init_db_command
+from .cmds import dump_db_command
+from .cmds import import_csv_command
+from .cmds import export_csv_command
 
 migrate = Migrate()
 
@@ -22,6 +25,7 @@ def init_app(app):
     app.cli.add_command(init_db_command)
     app.cli.add_command(dump_db_command)
     app.cli.add_command(import_csv_command)
+    app.cli.add_command(export_csv_command)
     app.teardown_appcontext(close_db_connection)
 
 ##__________________________________________________________________||

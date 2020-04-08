@@ -47,3 +47,21 @@ def test_import_csv_command(runner, mock_import_tables_from_csv_files):
     assert [mock.call(csvdir)] == mock_import_tables_from_csv_files.call_args_list
 
 ##__________________________________________________________________||
+@pytest.fixture()
+def mock_export_db_to_csv_files(monkeypatch):
+    ret = mock.Mock()
+    monkeypatch.setattr("acondbs.db.cmds.export_db_to_csv_files", ret)
+    return ret
+
+def test_export_csv_command(runner, tmpdir_factory, mock_export_db_to_csv_files):
+    """test command export-csv
+    """
+
+    tmpdir = str(tmpdir_factory.mktemp('csv_out'))
+    csvdir = os.path.join(tmpdir, 'csv')
+
+    result = runner.invoke(args=["export-csv", csvdir])
+    assert 0 == result.exit_code
+    assert [mock.call(csvdir)] == mock_export_db_to_csv_files.call_args_list
+
+##__________________________________________________________________||
