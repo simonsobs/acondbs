@@ -219,6 +219,20 @@ def convert_data_type_for_insert(str_, type_):
 
 ##__________________________________________________________________||
 def export_db_to_csv_files(outdir):
+    """export all tables in the DB to CSV files
+
+    The CSV files will be stored in the folder `csvdir`: one CSV file
+    for one table with the file name <<table name>>.csv
+
+    Parameters
+    ----------
+    csvdir : str
+        a path to a folder to store the CSV files
+
+
+    The tables need to be already defined in the DB.
+
+    """
     tbl_names = get_all_table_names()
 
     pathlib.Path(outdir).mkdir(parents=True, exist_ok=True)
