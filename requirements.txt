@@ -2,6 +2,7 @@ Flask
 Flask-Cors
 Flask-GraphQL
 Flask-SQLAlchemy
+Flask-Migrate
 graphene-sqlalchemy
 pytest
 pytest-cov
