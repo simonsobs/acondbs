@@ -1,6 +1,10 @@
+from flask_migrate import Migrate
+
 from .sa import sa
 from .conn import close_db_connection
 from .cmds import init_db_command, dump_db_command, import_csv_command
+
+migrate = Migrate()
 
 ##__________________________________________________________________||
 def init_app(app):
@@ -14,6 +18,7 @@ def init_app(app):
         The Flask application object, an instance of `Flask`
     """
     sa.init_app(app)
+    migrate.init_app(app, sa)
     app.cli.add_command(init_db_command)
     app.cli.add_command(dump_db_command)
     app.cli.add_command(import_csv_command)
