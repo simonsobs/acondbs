@@ -11,3 +11,4 @@ codecov
 snapshottest
 pandas
 gunicorn
+gitpython
