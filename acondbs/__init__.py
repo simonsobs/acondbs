@@ -38,9 +38,6 @@ def create_app(config_path=None, **kwargs):
     from .db import db
     db.init_app(app)
 
-    from . import bpquery
-    bpquery.init_app(app)
-
     from . import bpgraphql
     bpgraphql.init_app(app)
 
