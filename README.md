@@ -8,15 +8,15 @@ A GraphQL server for product DB
 
 ### Check out
 
-Check out Acondbs from GitHub, create and enter a virtual environment, install required pacakages, and install Acondbs in the editable mode.
+Check out Acondbs from GitHub, create and enter a virtual environment, and install Acondbs in the editable mode.
 
 ```bash
 git clone git@github.com:simonsobs/acondbs.git
 cd acondbs
 python -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
+pip install --upgrade pip
+pip install -e  '.[tests]'
 ```
 
 ### Create an instance folder
