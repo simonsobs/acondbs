@@ -5,6 +5,8 @@ concurrency = multiprocessing
 omit =
      acondbs/_version.py
      venv/*
+     */site-packages/*
+     /home/travis/virtualenv/*
 
 [report]
 # Regexes for lines to exclude from consideration
