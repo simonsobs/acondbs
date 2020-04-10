@@ -26,5 +26,21 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    packages=find_packages(exclude=['docs', 'tests'])
+    packages=find_packages(exclude=['docs', 'tests']),
+    install_requires=[
+        'Flask>=1.1',
+        'Flask-Cors>=3.0',
+        'Flask-GraphQL>=2.0',
+        'Flask-Migrate>=2.5',
+        'Flask-SQLAlchemy>=2.4',
+        'graphene-sqlalchemy>=2.2',
+        'gitpython>=3.1'
+    ],
+    extras_require={
+        'tests': [
+            'pytest>-5.4',
+            'pytest-cov>=2.8',
+            'snapshottest>0.5'
+        ]
+    }
 )
