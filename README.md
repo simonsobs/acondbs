@@ -6,20 +6,41 @@ A GraphQL server for product DB
 
 ## How to check out and run (for developers)
 
+### Prepare environment
+
+Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+Enter the virtual environment
+
+```bash
+source venv/bin/activate
+```
+
+Upgrade pip (optional)
+
+```bash
+pip install --upgrade pip
+```
+
 ### Check out
 
-Check out Acondbs from GitHub, create and enter a virtual environment, and install Acondbs in the editable mode.
+Clone the repository from GitHub
 
 ```bash
 git clone git@github.com:simonsobs/acondbs.git
-cd acondbs
-python -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install -e  '.[tests]'
 ```
 
-### Create an instance folder
+Install from the clone in the [editable mode](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs).
+
+```bash
+pip install -e acondbs/[tests]
+```
+
+### Configure
 
 Create an instance folder of Flask, where the config file and the SQLite DB file are stored. Check out an example instance folder from GitHub
 
@@ -27,7 +48,7 @@ Create an instance folder of Flask, where the config file and the SQLite DB file
 git clone git@github.com:TaiSakuma/acondbs-instance-example.git instance
 ```
 
-### Set environmental variables
+Set environmental variables
 
 ```bash
 export FLASK_APP="acondbs:create_app('$PWD/instance/config.py')"
@@ -47,7 +68,7 @@ An SQLite DB file has been created in the instance folder (`instance/product.sql
 (Optional) Load sample data to the dababase.
 
 ```bash
-flask import-csv tests/sample/csv/
+flask import-csv acondbs/tests/sample/csv/
 ```
 
 ### Run
@@ -79,6 +100,12 @@ curl -d "query={allMaps { edges { node { name mapper } } }}" localhost:5000/grap
 If you access to the server with a web browser, it will show a graphical user interface *GraphiQL*: <http://localhost:5000/graphql>
 
 ### Unit test
+
+Move to the repository
+
+```bash
+cd acondbs
+```
 
 Run the unit tests
 
