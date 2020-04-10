@@ -9,6 +9,5 @@ pytest-cov
 coverage
 codecov
 snapshottest
-pandas
 gunicorn
 gitpython
