@@ -31,17 +31,6 @@ def test_nonexistent_path(nonexistent_path):
         gitb.commit(nonexistent_path)
 
 ##__________________________________________________________________||
-@pytest.fixture()
-def folder(empty_folder):
-    """path to an folder (not a git repo) with two text files
-    """
-    folder = empty_folder
-    file1 = folder.joinpath('f.txt')
-    file2 = folder.joinpath('g.txt')
-    file1.write_text('abc')
-    file2.write_text('123')
-    yield folder
-
 def test_non_empty_folder(folder):
     """assert a repo initialized and files committed
     """
