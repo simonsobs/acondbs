@@ -43,15 +43,6 @@ def test_non_empty_folder(folder):
     assert 1 == ncommits
 
 ##__________________________________________________________________||
-@pytest.fixture()
-def repo(folder):
-    """a clean repo
-    """
-    repo = git.Repo.init(folder)
-    repo.git.add(A=True)
-    repo.index.commit('initial commit')
-    yield repo
-
 def test_clean_repo(repo):
     """assert no empty commit is made
     """

@@ -7,15 +7,6 @@ from acondbs.db import gitb
 
 ##__________________________________________________________________||
 @pytest.fixture()
-def repo(folder):
-    """a clean repo
-    """
-    repo = git.Repo.init(folder)
-    repo.git.add(A=True)
-    repo.index.commit('initial commit')
-    yield repo
-
-@pytest.fixture()
 def bare_repo(repo, tmpdir_factory):
     """a bare repo, a clone of the repo
     """
