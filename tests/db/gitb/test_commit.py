@@ -8,20 +8,22 @@ import pytest
 from acondbs.db import gitb
 
 ##__________________________________________________________________||
-def test_empty_folder(empty_folder):
+def test_empty_folder(tmpdir_factory):
     """assert empty folder won't be initialized as a repo
     """
+    folder = Path(tmpdir_factory.mktemp('git'))
     with warnings.catch_warnings(record=True) as w:
-        gitb.commit(empty_folder)
+        gitb.commit(folder)
     assert len(w) == 1
-    assert not gitb.is_git_repo(empty_folder)
+    assert not gitb.is_git_repo(folder)
 
 ##__________________________________________________________________||
 @pytest.fixture()
-def nonexistent_path(empty_folder):
+def nonexistent_path(tmpdir_factory):
     """path to a nonexistent file
     """
-    path = empty_folder.joinpath('nonexistent')
+    folder = Path(tmpdir_factory.mktemp('git'))
+    path = folder.joinpath('nonexistent')
     yield path
 
 def test_nonexistent_path(nonexistent_path):

@@ -5,15 +5,7 @@ import pytest
 
 ##__________________________________________________________________||
 @pytest.fixture()
-def empty_folder(tmpdir_factory):
-    """path to an empty folder
-    """
-    folder = Path(tmpdir_factory.mktemp('git'))
-    yield folder
-
-
-@pytest.fixture()
-def folder(empty_folder):
+def folder(tmpdir_factory):
     """path to an folder (not a git repo) with two text files
 
     f.txt
@@ -23,7 +15,7 @@ def folder(empty_folder):
        123
 
     """
-    folder = empty_folder
+    folder = Path(tmpdir_factory.mktemp('git'))
     file1 = folder.joinpath('f.txt')
     file2 = folder.joinpath('g.txt')
     file1.write_text('abc\n')
