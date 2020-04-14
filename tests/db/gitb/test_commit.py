@@ -8,13 +8,6 @@ import pytest
 from acondbs.db import gitb
 
 ##__________________________________________________________________||
-@pytest.fixture()
-def empty_folder(tmpdir_factory):
-    """path to an empty folder (not a git repo)
-    """
-    folder = Path(tmpdir_factory.mktemp('git'))
-    yield folder
-
 def test_empty_folder(empty_folder):
     """assert empty folder won't be initialized as a repo
     """

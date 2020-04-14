@@ -7,13 +7,6 @@ from acondbs.db import gitb
 
 ##__________________________________________________________________||
 @pytest.fixture()
-def empty_folder(tmpdir_factory):
-    """path to an empty folder (not a git repo)
-    """
-    folder = Path(tmpdir_factory.mktemp('git'))
-    yield folder
-
-@pytest.fixture()
 def folder(empty_folder):
     """path to an folder (not a git repo) with two text files
     """
