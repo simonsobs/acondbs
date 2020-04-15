@@ -89,7 +89,7 @@ def pull(path):
     if not tracking_branch:
         raise ValueError("repo has no tracking branch: {}".format(path))
 
-    remote = repo.remotes[repo.active_branch.tracking_branch().remote_name]
+    remote = repo.remotes[tracking_branch.remote_name]
     remote.pull()
 
 ##__________________________________________________________________||
