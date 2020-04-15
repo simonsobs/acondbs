@@ -93,6 +93,47 @@ def pull(path):
     remote.pull()
 
 ##__________________________________________________________________||
+def push(path):
+    """push to a upstream branch
+
+    Equivalent to execute "git push" in the path.
+
+    Parameters
+    ----------
+    path : str
+        The path to a git repository
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    ValueError
+        If `path` is not a directory
+        If `path` is not a git repo
+        If the repo has no tracking branch
+
+    """
+
+    path = Path(path)
+    if not path.is_dir():
+        raise ValueError("path is not a directory: {}".format(path))
+
+    if not is_git_repo(path):
+        raise ValueError("path is not a git repo: {}".format(path))
+
+    repo = git.Repo(path)
+
+    tracking_branch = repo.active_branch.tracking_branch()
+
+    if not tracking_branch:
+        raise ValueError("repo has no tracking branch: {}".format(path))
+
+    remote = repo.remotes[tracking_branch.remote_name]
+    remote.push()
+
+##__________________________________________________________________||
 def is_git_repo(path):
     """test if a folder is a git repository
 
