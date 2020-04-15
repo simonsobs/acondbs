@@ -8,27 +8,22 @@ import pytest
 from acondbs.db import gitb
 
 ##__________________________________________________________________||
-@pytest.fixture()
-def empty_folder(tmpdir_factory):
-    """path to an empty folder (not a git repo)
-    """
-    folder = Path(tmpdir_factory.mktemp('git'))
-    yield folder
-
-def test_empty_folder(empty_folder):
+def test_empty_folder(tmpdir_factory):
     """assert empty folder won't be initialized as a repo
     """
+    folder = Path(tmpdir_factory.mktemp('git'))
     with warnings.catch_warnings(record=True) as w:
-        gitb.commit(empty_folder)
+        gitb.commit(folder)
     assert len(w) == 1
-    assert not gitb.is_git_repo(empty_folder)
+    assert not gitb.is_git_repo(folder)
 
 ##__________________________________________________________________||
 @pytest.fixture()
-def nonexistent_path(empty_folder):
+def nonexistent_path(tmpdir_factory):
     """path to a nonexistent file
     """
-    path = empty_folder.joinpath('nonexistent')
+    folder = Path(tmpdir_factory.mktemp('git'))
+    path = folder.joinpath('nonexistent')
     yield path
 
 def test_nonexistent_path(nonexistent_path):
@@ -38,17 +33,6 @@ def test_nonexistent_path(nonexistent_path):
         gitb.commit(nonexistent_path)
 
 ##__________________________________________________________________||
-@pytest.fixture()
-def folder(empty_folder):
-    """path to an folder (not a git repo) with two text files
-    """
-    folder = empty_folder
-    file1 = folder.joinpath('f.txt')
-    file2 = folder.joinpath('g.txt')
-    file1.write_text('abc')
-    file2.write_text('123')
-    yield folder
-
 def test_non_empty_folder(folder):
     """assert a repo initialized and files committed
     """
@@ -59,15 +43,6 @@ def test_non_empty_folder(folder):
     assert 1 == ncommits
 
 ##__________________________________________________________________||
-@pytest.fixture()
-def repo(folder):
-    """a clean repo
-    """
-    repo = git.Repo.init(folder)
-    repo.git.add(A=True)
-    repo.index.commit('initial commit')
-    yield repo
-
 def test_clean_repo(repo):
     """assert no empty commit is made
     """
