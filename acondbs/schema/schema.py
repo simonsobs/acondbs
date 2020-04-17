@@ -21,7 +21,7 @@ class Query(graphene.ObjectType):
     all_simulations = SQLAlchemyConnectionField(Simulation._meta.connection)
     all_maps = SQLAlchemyConnectionField(MapConnection)
     all_beams = SQLAlchemyConnectionField(Beam._meta.connection)
-    all_map_file_paths = SQLAlchemyConnectionField(MapFilePath)
+    all_map_file_paths = SQLAlchemyConnectionField(MapFilePath._meta.connection)
     all_simulation_file_paths = SQLAlchemyConnectionField(SimulationFilePath._meta.connection)
 
     simulation = graphene.Field(Simulation, simulation_id=graphene.Int(), name=graphene.String())
