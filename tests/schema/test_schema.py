@@ -10,6 +10,7 @@ params = [
     'Map', 'MapConnection',
     'MapFilePath', 'MapFilePathConnection',
     'Beam', 'BeamConnection',
+    'BeamFilePath', 'BeamFilePathConnection',
 ]
 
 @pytest.mark.parametrize('type_name', params)

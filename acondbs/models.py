@@ -51,10 +51,17 @@ class Beam(sa.Model):
     __tablename__ = 'beams'
     beam_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    path = sa.Column(sa.Text())
     input_map_id = sa.Column(sa.ForeignKey('maps.map_id'))
     input_beam_id = sa.Column(sa.ForeignKey('beams.beam_id'))
     map = sa.relationship("Map", backref=sa.backref("beams"))
     parent_beam = sa.relationship(lambda: Beam, remote_side=beam_id, backref=sa.backref("child_beams"))
+
+class BeamFilePath(sa.Model):
+    __tablename__ = 'beam_file_paths'
+    beam_file_path_id = sa.Column(sa.Integer(), primary_key=True)
+    beam_id = sa.Column(sa.ForeignKey('beams.beam_id'))
+    path = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
+    beam = sa.relationship("Beam", backref=sa.backref("beam_file_paths"))
 
 ##__________________________________________________________________||

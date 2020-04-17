@@ -212,9 +212,6 @@ snapshots['test_object[Beam] 1'] = {
                     'name': 'name'
                 },
                 {
-                    'name': 'path'
-                },
-                {
                     'name': 'inputMapId'
                 },
                 {
@@ -252,5 +249,17 @@ snapshots['test_object[BeamConnection] 1'] = {
             ],
             'name': 'BeamConnection'
         }
+    }
+}
+
+snapshots['test_object[BeamFilePath] 1'] = {
+    'data': {
+        '__type': None
+    }
+}
+
+snapshots['test_object[BeamFilePathConnection] 1'] = {
+    'data': {
+        '__type': None
     }
 }
