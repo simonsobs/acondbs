@@ -45,7 +45,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'path': 'BEAM_DEPOT/Beams/20200207'
         }
     ],
-    'map_path': [
+    'map_file_paths': [
         {
             'map_file_path_id': 1,
             'map_id': 1001,

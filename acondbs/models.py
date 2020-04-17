@@ -50,7 +50,7 @@ class Beam(sa.Model):
     parent_beam = sa.relationship(lambda: Beam, remote_side=beam_id, backref=sa.backref("child_beams"))
 
 class MapFilePath(sa.Model):
-    __tablename__ = 'map_path'
+    __tablename__ = 'map_file_paths'
     map_file_path_id = sa.Column(sa.Integer(), primary_key=True)
     map_id = sa.Column(sa.ForeignKey('maps.map_id'))
     path = sa.Column(sa.Text())
