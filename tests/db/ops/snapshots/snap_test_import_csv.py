@@ -97,7 +97,7 @@ snapshots['test_import_tables_from_csv_files 1'] = {
 - A beam depends on this map'''
         }
     ],
-    'simulation_path': [
+    'simulation_file_paths': [
         {
             'note': '',
             'path': 'nersc:/go/to/my/simulations',
