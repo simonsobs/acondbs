@@ -56,6 +56,52 @@ snapshots['test_object[SimulationConnection] 1'] = {
     }
 }
 
+snapshots['test_object[SimulationFilePath] 1'] = {
+    'data': {
+        '__type': {
+            'description': None,
+            'fields': [
+                {
+                    'name': 'simulationFilePathId'
+                },
+                {
+                    'name': 'simulationId'
+                },
+                {
+                    'name': 'path'
+                },
+                {
+                    'name': 'note'
+                },
+                {
+                    'name': 'simulation'
+                },
+                {
+                    'name': 'id'
+                }
+            ],
+            'name': 'SimulationFilePath'
+        }
+    }
+}
+
+snapshots['test_object[SimulationFilePathConnection] 1'] = {
+    'data': {
+        '__type': {
+            'description': None,
+            'fields': [
+                {
+                    'name': 'pageInfo'
+                },
+                {
+                    'name': 'edges'
+                }
+            ],
+            'name': 'SimulationFilePathConnection'
+        }
+    }
+}
+
 snapshots['test_object[Map] 1'] = {
     'data': {
         '__type': {
@@ -205,52 +251,6 @@ snapshots['test_object[BeamConnection] 1'] = {
                 }
             ],
             'name': 'BeamConnection'
-        }
-    }
-}
-
-snapshots['test_object[SimulationFilePath] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'simulationFilePathId'
-                },
-                {
-                    'name': 'simulationId'
-                },
-                {
-                    'name': 'path'
-                },
-                {
-                    'name': 'note'
-                },
-                {
-                    'name': 'simulation'
-                },
-                {
-                    'name': 'id'
-                }
-            ],
-            'name': 'SimulationFilePath'
-        }
-    }
-}
-
-snapshots['test_object[SimulationFilePathConnection] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pageInfo'
-                },
-                {
-                    'name': 'edges'
-                }
-            ],
-            'name': 'SimulationFilePathConnection'
         }
     }
 }
