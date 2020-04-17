@@ -5,6 +5,7 @@ from graphene_sqlalchemy import SQLAlchemyConnectionField
 from .simulation import Simulation, SimulationModel
 from .map_ import Map, MapModel, MapConnection, CreateMap, UpdateMap, DeleteMap
 from .beam import Beam, BeamModel
+from .beam_file_path import BeamFilePath, BeamFilePathModel
 from .map_file_path import MapFilePath, MapFilePathModel, CreateMapFilePath, UpdateMapFilePath, DeleteMapFilePath
 from .simulation_file_path import SimulationFilePath, SimulationFilePathModel
 
@@ -21,8 +22,9 @@ class Query(graphene.ObjectType):
     all_simulations = SQLAlchemyConnectionField(Simulation._meta.connection)
     all_maps = SQLAlchemyConnectionField(MapConnection)
     all_beams = SQLAlchemyConnectionField(Beam._meta.connection)
-    all_map_file_paths = SQLAlchemyConnectionField(MapFilePath._meta.connection)
     all_simulation_file_paths = SQLAlchemyConnectionField(SimulationFilePath._meta.connection)
+    all_map_file_paths = SQLAlchemyConnectionField(MapFilePath._meta.connection)
+    all_beam_file_paths = SQLAlchemyConnectionField(BeamFilePath._meta.connection)
 
     simulation = graphene.Field(Simulation, simulation_id=graphene.Int(), name=graphene.String())
 
@@ -74,7 +76,7 @@ class Mutation(graphene.ObjectType):
     create_map_file_path = CreateMapFilePath.Field()
     update_map_file_path = UpdateMapFilePath.Field()
     delete_map_file_path = DeleteMapFilePath.Field()
-    
+
 ##__________________________________________________________________||
 schema = graphene.Schema(query=Query, mutation=Mutation)
 

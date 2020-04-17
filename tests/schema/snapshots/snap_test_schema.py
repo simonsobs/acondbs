@@ -227,6 +227,9 @@ snapshots['test_object[Beam] 1'] = {
                     'name': 'childBeams'
                 },
                 {
+                    'name': 'beamFilePaths'
+                },
+                {
                     'name': 'id'
                 }
             ],
@@ -254,12 +257,46 @@ snapshots['test_object[BeamConnection] 1'] = {
 
 snapshots['test_object[BeamFilePath] 1'] = {
     'data': {
-        '__type': None
+        '__type': {
+            'description': None,
+            'fields': [
+                {
+                    'name': 'beamFilePathId'
+                },
+                {
+                    'name': 'beamId'
+                },
+                {
+                    'name': 'path'
+                },
+                {
+                    'name': 'note'
+                },
+                {
+                    'name': 'beam'
+                },
+                {
+                    'name': 'id'
+                }
+            ],
+            'name': 'BeamFilePath'
+        }
     }
 }
 
 snapshots['test_object[BeamFilePathConnection] 1'] = {
     'data': {
-        '__type': None
+        '__type': {
+            'description': None,
+            'fields': [
+                {
+                    'name': 'pageInfo'
+                },
+                {
+                    'name': 'edges'
+                }
+            ],
+            'name': 'BeamFilePathConnection'
+        }
     }
 }
