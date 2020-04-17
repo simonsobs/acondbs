@@ -72,6 +72,6 @@ class Mutation(graphene.ObjectType):
     delete_map = DeleteMap.Field()
 
 ##__________________________________________________________________||
-schema = graphene.Schema(query=Query, mutation=Mutation, types=[Map, Beam, MapFilePath])
+schema = graphene.Schema(query=Query, mutation=Mutation)
 
 ##__________________________________________________________________||
