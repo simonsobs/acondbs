@@ -36,7 +36,11 @@ def test_define_tables_start_with_empty_db(app_with_empty_db):
     with app.app_context():
         metadata = MetaData()
         metadata.reflect(bind=sa.engine)
-        tbl_names = {'beams', 'maps', 'map_path', 'simulations', 'simulation_path'}
+        tbl_names = {
+            'simulations', 'simulation_file_paths',
+            'maps', 'map_file_paths',
+            'beams', 'beam_file_paths'
+        }
         assert tbl_names == metadata.tables.keys()
 
 ##__________________________________________________________________||
@@ -65,7 +69,11 @@ def test_define_tables_start_with_nonempty_db(app):
     with app.app_context():
         metadata = MetaData()
         metadata.reflect(bind=sa.engine)
-        tbl_names = {'beams', 'maps', 'map_path', 'simulations', 'simulation_path'}
+        tbl_names = {
+            'simulations', 'simulation_file_paths',
+            'maps', 'map_file_paths',
+            'beams', 'beam_file_paths'
+        }
         assert tbl_names == metadata.tables.keys()
         total_nentries = sum([len([r for r in
                                sa.engine.execute(tbl.select())]) for tbl in

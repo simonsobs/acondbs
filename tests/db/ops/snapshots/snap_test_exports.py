@@ -8,46 +8,65 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_export_db_to_dict_of_dict_list 1'] = {
-    'alembic_version': [
+    'beam_file_paths': [
+        {
+            'beam_file_path_id': 1,
+            'beam_id': 1070,
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20190304'
+        },
+        {
+            'beam_file_path_id': 2,
+            'beam_id': 1120,
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20190607'
+        },
+        {
+            'beam_file_path_id': 3,
+            'beam_id': 1130,
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20200123'
+        },
+        {
+            'beam_file_path_id': 4,
+            'beam_id': 1150,
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20200207'
+        }
     ],
     'beams': [
         {
             'beam_id': 1010,
             'input_beam_id': '',
             'input_map_id': '',
-            'name': '20180101',
-            'path': ''
+            'name': '20180101'
         },
         {
             'beam_id': 1070,
             'input_beam_id': '',
             'input_map_id': '',
-            'name': '20190304',
-            'path': 'BEAM_DEPOT/Beams/20190304'
+            'name': '20190304'
         },
         {
             'beam_id': 1120,
             'input_beam_id': '',
             'input_map_id': '',
-            'name': '20190607',
-            'path': 'BEAM_DEPOT/Beams/20190607'
+            'name': '20190607'
         },
         {
             'beam_id': 1130,
             'input_beam_id': '',
             'input_map_id': 1012,
-            'name': '20200123',
-            'path': 'BEAM_DEPOT/Beams/20200123'
+            'name': '20200123'
         },
         {
             'beam_id': 1150,
             'input_beam_id': 1130,
             'input_map_id': 1013,
-            'name': '20200207',
-            'path': 'BEAM_DEPOT/Beams/20200207'
+            'name': '20200207'
         }
     ],
-    'map_path': [
+    'map_file_paths': [
         {
             'map_file_path_id': 1,
             'map_id': 1001,
@@ -99,7 +118,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
 - A beam depends on this map'''
         }
     ],
-    'simulation_path': [
+    'simulation_file_paths': [
         {
             'note': '',
             'path': 'nersc:/go/to/my/simulations',
