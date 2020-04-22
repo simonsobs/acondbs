@@ -5,7 +5,7 @@ import warnings
 
 import pytest
 
-from acondbs.db import gitb
+from acondbs.misc import gitb
 
 ##__________________________________________________________________||
 def test_empty_folder(tmpdir_factory):

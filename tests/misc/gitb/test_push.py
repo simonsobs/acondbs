@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from acondbs.db import gitb
+from acondbs.misc import gitb
 
 ##__________________________________________________________________||
 def test_push(remote_url, tmpdir_factory):
