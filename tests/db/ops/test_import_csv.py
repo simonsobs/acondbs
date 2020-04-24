@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 import pytest
 
 from acondbs import create_app
@@ -18,7 +18,7 @@ def app():
 
 ##__________________________________________________________________||
 def test_import_tables_from_csv_files(app, snapshot):
-    csvdir = os.path.join(SAMPLE_DIR, 'csv')
+    csvdir = Path(SAMPLE_DIR, 'csv')
     with app.app_context():
         import_tables_from_csv_files(csvdir)
     with app.app_context():

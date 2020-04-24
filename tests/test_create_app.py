@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 import pytest
 
 from acondbs import create_app
@@ -25,9 +25,8 @@ def mock_default_config_dict(monkeypatch):
 @pytest.fixture()
 def config_path(tmpdir_factory):
     tmpdir = str(tmpdir_factory.mktemp('instance'))
-    ret = os.path.join(tmpdir, 'config.py')
-    with open(ret, 'w') as f:
-        f.write(TEST_CONFIG_FILE_CONTENT)
+    ret = Path(tmpdir, 'config.py')
+    ret.write_text(TEST_CONFIG_FILE_CONTENT)
     yield ret
 
 def test_create_app_default():

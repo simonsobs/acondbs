@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 import pytest
 
 from acondbs import create_app
@@ -12,7 +12,7 @@ from ...constants import SAMPLE_DIR
 @pytest.fixture
 def app():
     database_uri ="sqlite:///:memory:"
-    csvdir = os.path.join(SAMPLE_DIR, 'csv')
+    csvdir = Path(SAMPLE_DIR, 'csv')
     app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     with app.app_context():
         define_tables()

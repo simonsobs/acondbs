@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 import pytest
 import unittest.mock as mock
@@ -38,7 +38,7 @@ def test_import_csv_command(runner, mock_import_tables_from_csv_files):
     """test command import-csv
     """
 
-    csvdir = os.path.join(SAMPLE_DIR, 'csv')
+    csvdir = str(Path(SAMPLE_DIR, 'csv'))
     # needs to give an existing path to `import-csv` as `click.Path()`
     # checks the check the existence.
 
@@ -58,7 +58,7 @@ def test_export_csv_command(runner, tmpdir_factory, mock_export_db_to_csv_files)
     """
 
     tmpdir = str(tmpdir_factory.mktemp('csv_out'))
-    csvdir = os.path.join(tmpdir, 'csv')
+    csvdir = str(Path(tmpdir, 'csv'))
 
     result = runner.invoke(args=["export-csv", csvdir])
     assert 0 == result.exit_code
