@@ -16,12 +16,16 @@ class Task:
 def test_init():
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1)
+    assert cap.func is task
+    assert 0.1 == cap.pause_time
+    assert not cap.daemon
     cap.end()
     assert 0 == task.counter
 
 def test_daemon():
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1, daemon=True)
+    assert cap.daemon
     # end() doesn't need to be called
     assert 0 == task.counter
 

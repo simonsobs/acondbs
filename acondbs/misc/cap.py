@@ -42,6 +42,10 @@ class cap_exec_rate:
 
     """
     def __init__(self, func, pause_time=1.0, daemon=False):
+        self.func = func
+        self.pause_time = pause_time
+        self.daemon = daemon
+
         self.queue = queue.Queue()
         config = Config(func, self.queue, pause_time)
         self.machine = threading.Thread(
