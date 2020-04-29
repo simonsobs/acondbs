@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[createMap-all-options] 1'] = {
+snapshots['test_schema_success[createMap-all-options] 1'] = {
     'data': {
         'createMap': {
             'map': {
@@ -17,7 +17,7 @@ snapshots['test_schema[createMap-all-options] 1'] = {
     }
 }
 
-snapshots['test_schema[createMap-all-options] 2'] = {
+snapshots['test_schema_success[createMap-all-options] 2'] = {
     'data': {
         'map': {
             'beams': {
@@ -36,7 +36,7 @@ snapshots['test_schema[createMap-all-options] 2'] = {
     }
 }
 
-snapshots['test_schema[createMap-selective-options] 1'] = {
+snapshots['test_schema_success[createMap-selective-options] 1'] = {
     'data': {
         'createMap': {
             'map': {
@@ -46,7 +46,7 @@ snapshots['test_schema[createMap-selective-options] 1'] = {
     }
 }
 
-snapshots['test_schema[createMap-selective-options] 2'] = {
+snapshots['test_schema_success[createMap-selective-options] 2'] = {
     'data': {
         'map': {
             'beams': {
@@ -65,7 +65,7 @@ snapshots['test_schema[createMap-selective-options] 2'] = {
     }
 }
 
-snapshots['test_schema[createMap-error-no-name] 1'] = {
+snapshots['test_schema_error[createMap-error-no-name] 1'] = {
     'errors': [
         {
             'locations': [
@@ -80,7 +80,7 @@ In field "name": Expected "String!", found null.'''
     ]
 }
 
-snapshots['test_schema[createMap-error-no-name] 2'] = {
+snapshots['test_schema_error[createMap-error-no-name] 2'] = {
     'data': {
         'map': None
     }

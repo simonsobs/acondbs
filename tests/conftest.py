@@ -3,6 +3,7 @@ import threading
 import shutil
 
 import pytest
+import unittest.mock as mock
 
 from acondbs import create_app
 
@@ -99,5 +100,12 @@ def db_backup_global_variables(monkeypatch):
     monkeypatch.setattr(backup, '_capped_backup_func', None)
     yield
     backup.end_backup_thread()
+
+##__________________________________________________________________||
+@pytest.fixture(autouse=True)
+def mock_request_backup_db(monkeypatch):
+    y = mock.Mock()
+    monkeypatch.setattr("acondbs.schema.map_.request_backup_db", y)
+    yield y
 
 ##__________________________________________________________________||

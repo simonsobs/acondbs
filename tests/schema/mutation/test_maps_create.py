@@ -47,6 +47,19 @@ params = [
         ''',
         id='createMap-selective-options'
     ),
+]
+
+@pytest.mark.parametrize('mutation, query', params)
+def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
+    client = Client(schema)
+    with app.app_context():
+        snapshot.assert_match(client.execute(mutation))
+    with app.app_context():
+        snapshot.assert_match(client.execute(query))
+    assert 1 == mock_request_backup_db.call_count
+
+##__________________________________________________________________||
+params = [
     pytest.param(
         '''
           mutation m {
@@ -69,11 +82,12 @@ params = [
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
-def test_schema(app, snapshot, mutation, query):
+def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
     client = Client(schema)
     with app.app_context():
         snapshot.assert_match(client.execute(mutation))
     with app.app_context():
         snapshot.assert_match(client.execute(query))
+    assert 0 == mock_request_backup_db.call_count
 
 ##__________________________________________________________________||
