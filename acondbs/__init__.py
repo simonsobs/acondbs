@@ -3,6 +3,8 @@ from pathlib import Path
 from flask import Flask
 from flask_cors import CORS
 
+from . import _warnings
+
 ##__________________________________________________________________||
 DEFAULT_CONFIG_DICT = dict(
     SECRET_KEY='dev',
