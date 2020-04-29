@@ -67,7 +67,7 @@ def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
     with app.app_context():
         client.execute(mutation)
 
-   # take backup
+    # take backup
     with app.app_context():
         backup_db_as_csv_to_github(repo_path)
 

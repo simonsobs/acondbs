@@ -1,4 +1,5 @@
 from pathlib import Path
+import threading
 import shutil
 
 import pytest
@@ -89,5 +90,14 @@ def runner(app):
 
     """
     yield app.test_cli_runner()
+
+##__________________________________________________________________||
+@pytest.fixture(autouse=True)
+def db_backup_global_variables(monkeypatch):
+    from acondbs.db import backup
+    monkeypatch.setattr(backup, '_lock', threading.Lock())
+    monkeypatch.setattr(backup, '_capped_backup_func', None)
+    yield
+    backup.end_backup_thread()
 
 ##__________________________________________________________________||
