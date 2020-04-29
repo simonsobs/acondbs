@@ -10,6 +10,7 @@ from .ops import define_tables
 from .ops import export_db_to_dict_of_dict_list
 from .ops import import_tables_from_csv_files
 from .ops import export_db_to_csv_files
+from .backup import backup_db
 
 ##__________________________________________________________________||
 @click.command("init-db")
@@ -50,5 +51,15 @@ def export_csv_command(csvdir):
 
     """
     export_db_to_csv_files(csvdir)
+
+##__________________________________________________________________||
+@click.command("backup-db")
+@with_appcontext
+def backup_db_command():
+    """Back up the DB as CSV to GitHub
+
+    """
+    backup_db()
+
 
 ##__________________________________________________________________||
