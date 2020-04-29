@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[createMapFilePath] 1'] = {
+snapshots['test_schema_success[createMapFilePath] 1'] = {
     'data': {
         'createMapFilePath': {
             'mapFilePath': {
@@ -17,7 +17,7 @@ snapshots['test_schema[createMapFilePath] 1'] = {
     }
 }
 
-snapshots['test_schema[createMapFilePath] 2'] = {
+snapshots['test_schema_success[createMapFilePath] 2'] = {
     'data': {
         'map': {
             'beams': {

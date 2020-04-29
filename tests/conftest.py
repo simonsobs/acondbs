@@ -106,6 +106,7 @@ def db_backup_global_variables(monkeypatch):
 def mock_request_backup_db(monkeypatch):
     y = mock.Mock()
     monkeypatch.setattr("acondbs.schema.map_.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.map_file_path.request_backup_db", y)
     yield y
 
 ##__________________________________________________________________||

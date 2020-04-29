@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[deleteMapFilePath] 1'] = {
+snapshots['test_schema_success[deleteMapFilePath] 1'] = {
     'data': {
         'deleteMapFilePath': {
             'ok': True
@@ -15,7 +15,7 @@ snapshots['test_schema[deleteMapFilePath] 1'] = {
     }
 }
 
-snapshots['test_schema[deleteMapFilePath] 2'] = {
+snapshots['test_schema_success[deleteMapFilePath] 2'] = {
     'data': {
         'map': {
             'beams': {

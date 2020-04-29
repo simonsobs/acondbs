@@ -5,6 +5,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 from ..models import MapFilePath as MapFilePathModel
 
 from ..db.sa import sa
+from ..db.backup import request_backup_db
 
 ##__________________________________________________________________||
 class MapFilePath(SQLAlchemyObjectType):
@@ -36,6 +37,7 @@ class CreateMapFilePath(graphene.Mutation):
         sa.session.add(mapFilePath)
         sa.session.commit()
         ok = True
+        request_backup_db()
         return CreateMapFilePath(mapFilePath=mapFilePath, ok=ok)
 
 class UpdateMapFilePath(graphene.Mutation):
@@ -52,6 +54,7 @@ class UpdateMapFilePath(graphene.Mutation):
             setattr(mapFilePath, k, v)
         sa.session.commit()
         ok = True
+        request_backup_db()
         return UpdateMapFilePath(mapFilePath=mapFilePath, ok=ok)
 
 class DeleteMapFilePath(graphene.Mutation):
@@ -65,6 +68,7 @@ class DeleteMapFilePath(graphene.Mutation):
         sa.session.delete(mapFilePath)
         sa.session.commit()
         ok = True
+        request_backup_db()
         return DeleteMapFilePath(ok=ok)
 
 ##__________________________________________________________________||
