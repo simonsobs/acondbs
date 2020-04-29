@@ -1,14 +1,12 @@
 """global constants in tests
 """
-
-import os
-
+from pathlib import Path
 
 ##__________________________________________________________________||
-TEST_DIR_TOP = os.path.dirname(os.path.realpath(__file__))
-SAMPLE_DIR = os.path.join(TEST_DIR_TOP, 'sample')
+TEST_DIR_TOP = Path(__file__).resolve().parent
+SAMPLE_DIR = TEST_DIR_TOP.joinpath('sample')
 
 ##__________________________________________________________________||
-del os
+del Path
 
 ##__________________________________________________________________||

@@ -4,10 +4,9 @@ The functions in this module need to be called within the application
 context of Flask unless stated otherwise.
 
 """
-import os
 import datetime
 import csv
-import pathlib
+from pathlib import Path
 
 from sqlalchemy import MetaData
 import sqlalchemy
@@ -156,8 +155,8 @@ def import_tables_from_csv_files(csvdir):
     tbl_names = get_all_table_names()
     for tbl_name in tbl_names:
         csv_filename = '{}.csv'.format(tbl_name)
-        csv_path = os.path.join(csvdir, csv_filename)
-        if os.path.exists(csv_path):
+        csv_path = Path(csvdir, csv_filename)
+        if csv_path.exists():
             import_table_from_csv_file(tbl_name, csv_path)
             message = 'imported to "{}" from {}'.format(tbl_name, csv_path)
         else:
@@ -235,11 +234,11 @@ def export_db_to_csv_files(outdir):
     """
     tbl_names = get_all_table_names()
 
-    pathlib.Path(outdir).mkdir(parents=True, exist_ok=True)
+    Path(outdir).mkdir(parents=True, exist_ok=True)
 
     for tbl_name in tbl_names:
         csv_filename = '{}.csv'.format(tbl_name)
-        csv_path = os.path.join(outdir, csv_filename)
+        csv_path = Path(outdir, csv_filename)
         result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
         with open(csv_path, 'w', newline='') as f:
             csv_writer = csv.writer(f, lineterminator='\n')

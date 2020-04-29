@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 from flask import Flask
 from flask_cors import CORS
@@ -17,10 +17,11 @@ def create_app(config_path=None, **kwargs):
     app.config.from_mapping(**DEFAULT_CONFIG_DICT)
 
     if config_path is not None:
-        if not os.path.isabs(config_path):
+        config_path = Path(config_path)
+        if not config_path.is_absolute():
             # If `config_path` is relative, it is considered relative
             # to the current working directory.
-            config_path = os.path.join(os.getcwd(), config_path)
+            config_path = Path.cwd().joinpath(config_path)
 
             # Note: `app.config.from_pyfile()` treats a relative path
             # either a) relative to the top directory of the app,

@@ -1,4 +1,5 @@
-import os
+from pathlib import Path
+import threading
 import shutil
 
 import pytest
@@ -17,9 +18,9 @@ def database_uri(tmpdir_factory):
     temporarily folder and returns the URI for the copy.
 
     """
-    org_database_path = os.path.join(SAMPLE_DIR, 'product.sqlite3')
+    org_database_path = Path(SAMPLE_DIR, 'product.sqlite3')
     tmpdir = str(tmpdir_factory.mktemp('instance'))
-    tmp_database_path = os.path.join(tmpdir, 'product.sqlite3')
+    tmp_database_path = Path(tmpdir, 'product.sqlite3')
     shutil.copy2(org_database_path, tmp_database_path)
     ret = 'sqlite:///{}'.format(tmp_database_path)
     yield ret
@@ -41,7 +42,7 @@ def app(database_uri):
     Flask
 
     """
-    config_path = os.path.join(SAMPLE_DIR, 'config.py')
+    config_path = Path(SAMPLE_DIR, 'config.py')
     app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     yield app
 
@@ -89,5 +90,14 @@ def runner(app):
 
     """
     yield app.test_cli_runner()
+
+##__________________________________________________________________||
+@pytest.fixture(autouse=True)
+def db_backup_global_variables(monkeypatch):
+    from acondbs.db import backup
+    monkeypatch.setattr(backup, '_lock', threading.Lock())
+    monkeypatch.setattr(backup, '_capped_backup_func', None)
+    yield
+    backup.end_backup_thread()
 
 ##__________________________________________________________________||
