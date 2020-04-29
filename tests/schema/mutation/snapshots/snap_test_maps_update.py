@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[updateMap-all-options] 1'] = {
+snapshots['test_schema_success[updateMap-all-options] 1'] = {
     'data': {
         'updateMap': {
             'map': {
@@ -18,7 +18,7 @@ snapshots['test_schema[updateMap-all-options] 1'] = {
     }
 }
 
-snapshots['test_schema[updateMap-all-options] 2'] = {
+snapshots['test_schema_success[updateMap-all-options] 2'] = {
     'data': {
         'map': {
             'beams': {
@@ -42,7 +42,7 @@ snapshots['test_schema[updateMap-all-options] 2'] = {
     }
 }
 
-snapshots['test_schema[updateMap-selective-options] 1'] = {
+snapshots['test_schema_success[updateMap-selective-options] 1'] = {
     'data': {
         'updateMap': {
             'map': {
@@ -53,7 +53,7 @@ snapshots['test_schema[updateMap-selective-options] 1'] = {
     }
 }
 
-snapshots['test_schema[updateMap-selective-options] 2'] = {
+snapshots['test_schema_success[updateMap-selective-options] 2'] = {
     'data': {
         'map': {
             'beams': {

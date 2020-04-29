@@ -59,6 +59,7 @@ class UpdateMap(graphene.Mutation):
             setattr(map, k, v)
         sa.session.commit()
         ok = True
+        request_backup_db()
         return UpdateMap(map=map, ok=ok)
 
 class DeleteMap(graphene.Mutation):
@@ -72,6 +73,7 @@ class DeleteMap(graphene.Mutation):
         sa.session.delete(map)
         sa.session.commit()
         ok = True
+        request_backup_db()
         return DeleteMap(ok=ok)
 
 ##__________________________________________________________________||
