@@ -7,8 +7,23 @@ import unittest.mock as mock
 
 from acondbs import create_app
 
+from acondbs.db.ops import define_tables, import_tables_from_csv_files
+
 ##__________________________________________________________________||
 from .constants import SAMPLE_DIR
+
+##__________________________________________________________________||
+@pytest.fixture(scope="session", autouse=True)
+def initialize_db_with_csv_files():
+    """create a test DB, load data from CSV files
+
+    """
+    config_path = Path(SAMPLE_DIR, 'config.py')
+    csvdir = Path(SAMPLE_DIR, 'csv')
+    app = create_app(config_path=config_path)
+    with app.app_context():
+        define_tables()
+        import_tables_from_csv_files(csvdir)
 
 ##__________________________________________________________________||
 @pytest.fixture
