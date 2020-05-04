@@ -1,3 +1,4 @@
+from pathlib import Path
 from flask_migrate import Migrate
 
 from .sa import sa
@@ -9,6 +10,8 @@ from .cmds import export_csv_command
 from .cmds import backup_db_command
 
 migrate = Migrate()
+
+_MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.parent.joinpath('migrations')
 
 ##__________________________________________________________________||
 def init_app(app):
@@ -22,7 +25,7 @@ def init_app(app):
         The Flask application object, an instance of `Flask`
     """
     sa.init_app(app)
-    migrate.init_app(app, sa)
+    migrate.init_app(app, sa, directory=_MIGRATIONS_DIR)
     app.cli.add_command(init_db_command)
     app.cli.add_command(dump_db_command)
     app.cli.add_command(import_csv_command)
