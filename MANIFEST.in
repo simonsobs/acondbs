@@ -1,2 +1,5 @@
 include versioneer.py
 include acondbs/_version.py
+graft migrations
+global-exclude *.py[co]
+global-exclude __pycache__
