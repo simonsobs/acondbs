@@ -14,7 +14,7 @@ from .constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
 @pytest.fixture(scope="session", autouse=True)
-def initialize_db_with_csv_files():
+def create_db_with_csv_files():
     """create a test DB, load data from CSV files
 
     """
@@ -24,6 +24,9 @@ def initialize_db_with_csv_files():
     with app.app_context():
         define_tables()
         import_tables_from_csv_files(csvdir)
+    yield
+    database_path = Path(SAMPLE_DIR, 'product.sqlite3')
+    database_path.unlink()
 
 ##__________________________________________________________________||
 @pytest.fixture
