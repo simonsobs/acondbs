@@ -25,6 +25,7 @@ setup(
         'Programming Language :: Python :: 3.8',
     ],
     packages=find_packages(exclude=['docs', 'tests']),
+    include_package_data=True,
     install_requires=[
         'Flask>=1.1',
         'Flask-Cors>=3.0',
