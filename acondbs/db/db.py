@@ -11,7 +11,7 @@ from .cmds import backup_db_command
 
 migrate = Migrate()
 
-_MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.parent.joinpath('migrations')
+_MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.joinpath('migrations')
 
 ##__________________________________________________________________||
 def init_app(app):
