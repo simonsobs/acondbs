@@ -35,9 +35,9 @@ snapshots['test_schema_success[updateMap-all-options] 2'] = {
                     }
                 ]
             },
-            'mapper': 'pwg-xyz',
             'name': 'new-name',
-            'note': '- Note 123'
+            'note': '- Note 123',
+            'producedBy': 'pwg-xyz'
         }
     }
 }
@@ -70,10 +70,10 @@ snapshots['test_schema_success[updateMap-selective-options] 2'] = {
                     }
                 ]
             },
-            'mapper': 'pwg-xyz',
             'name': 'new-name',
             'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam'''
+- This should not depend on any beam''',
+            'producedBy': 'pwg-xyz'
         }
     }
 }

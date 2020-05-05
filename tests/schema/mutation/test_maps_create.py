@@ -11,7 +11,7 @@ params = [
             createMap(input: {
               name: "map1",
               datePosted: "2020-02-20",
-              mapper: "pwg-pmn",
+              producedBy: "pwg-pmn",
               note: "- Item 1"
             }) { map { name } }
           }
@@ -19,7 +19,7 @@ params = [
         '''
           {
             map(name: "map1") {
-              name datePosted mapper note
+              name datePosted producedBy note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }
@@ -32,14 +32,14 @@ params = [
           mutation m {
             createMap(input: {
               name: "map1",
-              mapper: "pwg-pmn"
+              producedBy: "pwg-pmn"
             }) { map { name } }
           }
         ''',
         '''
           {
             map(name: "map1") {
-              name datePosted mapper note
+              name datePosted producedBy note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }
@@ -64,14 +64,14 @@ params = [
         '''
           mutation m {
             createMap(input: {
-              mapper: "pwg-pmn"
+              producedBy: "pwg-pmn"
             }) { map { name } }
           }
         ''',
         '''
           {
             map(name: "map1") {
-              name datePosted mapper note
+              name datePosted producedBy note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }

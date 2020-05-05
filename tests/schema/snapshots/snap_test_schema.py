@@ -117,7 +117,7 @@ snapshots['test_object[Map] 1'] = {
                     'name': 'datePosted'
                 },
                 {
-                    'name': 'mapper'
+                    'name': 'producedBy'
                 },
                 {
                     'name': 'note'

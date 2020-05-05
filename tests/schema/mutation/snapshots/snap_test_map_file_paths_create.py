@@ -47,10 +47,10 @@ snapshots['test_schema_success[createMapFilePath] 2'] = {
                     }
                 ]
             },
-            'mapper': 'pwg-pmn',
             'name': 'lat20190213',
             'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam'''
+- This should not depend on any beam''',
+            'producedBy': 'pwg-pmn'
         }
     }
 }

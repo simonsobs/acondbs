@@ -29,9 +29,9 @@ snapshots['test_schema_success[createMap-all-options] 2'] = {
                 'edges': [
                 ]
             },
-            'mapper': 'pwg-pmn',
             'name': 'map1',
-            'note': '- Item 1'
+            'note': '- Item 1',
+            'producedBy': 'pwg-pmn'
         }
     }
 }
@@ -58,9 +58,9 @@ snapshots['test_schema_success[createMap-selective-options] 2'] = {
                 'edges': [
                 ]
             },
-            'mapper': 'pwg-pmn',
             'name': 'map1',
-            'note': None
+            'note': None,
+            'producedBy': 'pwg-pmn'
         }
     }
 }
@@ -74,7 +74,7 @@ snapshots['test_schema_error[createMap-error-no-name] 1'] = {
                     'line': 3
                 }
             ],
-            'message': '''Argument "input" has invalid value {mapper: "pwg-pmn"}.
+            'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn"}.
 In field "name": Expected "String!", found null.'''
         }
     ]

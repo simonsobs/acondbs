@@ -11,7 +11,7 @@ params = [
           updateMap(mapId: 1001, input: {
               name: "new-name"
               datePosted: "2020-02-18",
-              mapper: "pwg-xyz",
+              producedBy: "pwg-xyz",
               note: "- Note 123"
           }) {
             map { mapId name } }
@@ -20,7 +20,7 @@ params = [
         '''
           {
             map(mapId: 1001) {
-              name datePosted mapper note
+              name datePosted producedBy note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }
@@ -33,7 +33,7 @@ params = [
         mutation m {
           updateMap(mapId: 1001, input: {
               name: "new-name"
-              mapper: "pwg-xyz",
+              producedBy: "pwg-xyz",
           }) {
             map { mapId name } }
         }
@@ -41,7 +41,7 @@ params = [
         '''
           {
             map(mapId: 1001) {
-              name datePosted mapper note
+              name datePosted producedBy note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }

@@ -18,7 +18,7 @@ params = [
         '''
           {
             map(mapId: 1012) {
-              name datePosted mapper note
+              name datePosted producedBy note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path note map { mapId } } } }
             }
