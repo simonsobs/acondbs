@@ -1,4 +1,4 @@
-map_id,name,date_posted,mapper,note
+map_id,name,date_posted,produced_by,note
 1001,lat20190213,2019-02-13,pwg-pmn,"- This is a dummy test with a lat map
 - This should not depend on any beam"
 1012,lat20200120,2020-01-20,pwg-pmn,"- This is a dummy test with a lat map
