@@ -28,9 +28,13 @@ params = [
 def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     client = Client(schema)
     with app.app_context():
-        snapshot.assert_match(client.execute(mutation))
+        restult = client.execute(mutation)
+        assert 'errors' not in restult
+        snapshot.assert_match(restult)
     with app.app_context():
-        snapshot.assert_match(client.execute(query))
+        restult = client.execute(query)
+        assert 'errors' not in restult
+        snapshot.assert_match(restult)
     assert 1 == mock_request_backup_db.call_count
 
 ##__________________________________________________________________||
@@ -61,9 +65,13 @@ params = [
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
     client = Client(schema)
     with app.app_context():
-        snapshot.assert_match(client.execute(mutation))
+        restult = client.execute(mutation)
+        assert 'errors' in restult
+        snapshot.assert_match(restult)
     with app.app_context():
-        snapshot.assert_match(client.execute(query))
+        restult = client.execute(query)
+        assert 'errors' not in restult
+        snapshot.assert_match(restult)
     assert 0 == mock_request_backup_db.call_count
 
 ##__________________________________________________________________||
