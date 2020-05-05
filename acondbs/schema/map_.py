@@ -21,7 +21,7 @@ class MapConnection(relay.Connection):
 class MapAttribute:
     name = graphene.String()
     date_posted = graphene.Date()
-    mapper = graphene.String()
+    produced_by = graphene.String()
     note = graphene.String()
 
 class CreateMapInput(graphene.InputObjectType, MapAttribute):

@@ -36,7 +36,7 @@ class Map(sa.Model):
     map_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
     date_posted = sa.Column(sa.Date())
-    mapper = sa.Column(sa.Text())
+    produced_by = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
 
 class MapFilePath(sa.Model):
