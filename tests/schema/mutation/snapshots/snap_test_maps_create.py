@@ -24,7 +24,7 @@ snapshots['test_schema_success[createMap-all-options] 2'] = {
                 'edges': [
                 ]
             },
-            'datePosted': '2020-02-20',
+            'dateProduced': '2020-02-20',
             'mapFilePaths': {
                 'edges': [
                 ]
@@ -53,7 +53,7 @@ snapshots['test_schema_success[createMap-selective-options] 2'] = {
                 'edges': [
                 ]
             },
-            'datePosted': None,
+            'dateProduced': None,
             'mapFilePaths': {
                 'edges': [
                 ]

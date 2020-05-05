@@ -57,7 +57,7 @@ def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
           mutation m {
             createMap(input: {
               name: "map1",
-              datePosted: "2020-02-20",
+              dateProduced: "2020-02-20",
               producedBy: "pwg-pmn",
               note: "- Item 1"
             }) { map { name } }
