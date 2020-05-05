@@ -7,6 +7,8 @@ from ..models import Map as MapModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
+from .common import CommonAttribute
+
 ##__________________________________________________________________||
 class Map(SQLAlchemyObjectType):
     class Meta:
@@ -18,10 +20,7 @@ class MapConnection(relay.Connection):
         node = Map
 
 ##__________________________________________________________________||
-class MapAttribute:
-    name = graphene.String()
-    date_posted = graphene.Date()
-    produced_by = graphene.String()
+class MapAttribute(CommonAttribute):
     note = graphene.String()
 
 class CreateMapInput(graphene.InputObjectType, MapAttribute):
