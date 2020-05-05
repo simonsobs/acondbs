@@ -8,7 +8,7 @@ from ..models import Map as MapModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
-from .common import CommonAttribute
+from .common import CommonCreateInputFields, CommonUpdateInputFields
 
 ##__________________________________________________________________||
 class Map(SQLAlchemyObjectType):
@@ -21,13 +21,10 @@ class MapConnection(relay.Connection):
         node = Map
 
 ##__________________________________________________________________||
-class MapAttribute(CommonAttribute):
-    note = graphene.String()
+class CreateMapInput(graphene.InputObjectType, CommonCreateInputFields):
+    pass
 
-class CreateMapInput(graphene.InputObjectType, MapAttribute):
-    name = graphene.String(required=True)
-
-class UpdateMapInput(graphene.InputObjectType, MapAttribute):
+class UpdateMapInput(graphene.InputObjectType, CommonUpdateInputFields):
     pass
 
 class CreateMap(graphene.Mutation):
@@ -41,7 +38,6 @@ class CreateMap(graphene.Mutation):
         map = MapModel(**input)
         today = datetime.date.today()
         map.date_posted = today
-        map.date_updated = today
         sa.session.add(map)
         sa.session.commit()
         ok = True
