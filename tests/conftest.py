@@ -1,6 +1,7 @@
 from pathlib import Path
 import threading
 import shutil
+import datetime
 
 import pytest
 import unittest.mock as mock
@@ -125,6 +126,16 @@ def mock_request_backup_db(monkeypatch):
     y = mock.Mock()
     monkeypatch.setattr("acondbs.schema.map_.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.map_file_path.request_backup_db", y)
+    yield y
+
+##__________________________________________________________________||
+@pytest.fixture(autouse=True)
+def mock_datetime(monkeypatch):
+    """mock datetime so that  datetime.date.today() always returns the same date
+    """
+    y = mock.Mock(wraps=datetime)
+    y.date.today.return_value = datetime.date(2020, 5, 4)
+    monkeypatch.setattr("acondbs.schema.map_.datetime", y)
     yield y
 
 ##__________________________________________________________________||
