@@ -15,6 +15,12 @@ https://docs.sqlalchhttps://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-
 from .db.sa import sa
 
 ##__________________________________________________________________||
+class CommonFields:
+    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+    date_posted = sa.Column(sa.Date())
+    produced_by = sa.Column(sa.Text())
+
+##__________________________________________________________________||
 class Simulation(sa.Model):
     __tablename__ = 'simulations'
     simulation_id = sa.Column(sa.Integer(), primary_key=True)
@@ -31,12 +37,9 @@ class SimulationFilePath(sa.Model):
     note = sa.Column(sa.Text())
     simulation = sa.relationship("Simulation", backref=sa.backref("simulation_file_paths"))
 
-class Map(sa.Model):
+class Map(sa.Model, CommonFields):
     __tablename__ = 'maps'
     map_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    date_posted = sa.Column(sa.Date())
-    produced_by = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
 
 class MapFilePath(sa.Model):
