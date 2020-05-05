@@ -9,45 +9,27 @@ params = [
         '''
         mutation m {
           updateMap(mapId: 1001, input: {
-              name: "new-name"
-              dateProduced: "2020-02-18",
-              producedBy: "pwg-xyz",
-              note: "- Note 123"
+              contact: "new-contact",
+              updatedBy: "updater",
+              note: "- updated note 123"
           }) {
             map { mapId name } }
         }
          ''',
         '''
           {
-            map(mapId: 1001) {
-              name dateProduced producedBy note
+            map(name: "map1") {
+              name contact
+              datePosted postedBy
+              dateProduced producedBy
+              dateUpdated updatedBy
+              note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }
           }
         ''',
-        id='updateMap-all-options'
-    ),
-    pytest.param(
-        '''
-        mutation m {
-          updateMap(mapId: 1001, input: {
-              name: "new-name"
-              producedBy: "pwg-xyz",
-          }) {
-            map { mapId name } }
-        }
-         ''',
-        '''
-          {
-            map(mapId: 1001) {
-              name dateProduced producedBy note
-              beams { edges { node { name } } }
-              mapFilePaths { edges { node { path } } }
-            }
-          }
-        ''',
-        id='updateMap-selective-options'
+        id='updateMap'
     ),
 ]
 
@@ -65,7 +47,32 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert 1 == mock_request_backup_db.call_count
 
 ##__________________________________________________________________||
-params = [ ]
+params = [
+    pytest.param(
+        '''
+        mutation m {
+          updateMap(mapId: 1001, input: {
+              name: "new-name"
+          }) {
+            map { mapId name } }
+        }
+         ''',
+        '''
+          {
+            map(mapId: 1001) {
+              name contact
+              datePosted postedBy
+              dateProduced producedBy
+              dateUpdated updatedBy
+              note
+              beams { edges { node { name } } }
+              mapFilePaths { edges { node { path } } }
+            }
+          }
+        ''',
+        id='updateMap-error-immutable-fields'
+    ),
+]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):

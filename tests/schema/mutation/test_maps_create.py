@@ -16,7 +16,6 @@ params = [
               dateProduced: "2020-02-20",
               producedBy: "producer",
               postedBy: "poster",
-              updatedBy: "updater",
               note: "- Item 1"
             }) { map { name } }
           }
@@ -88,7 +87,11 @@ params = [
         '''
           {
             map(name: "map1") {
-              name dateProduced producedBy note
+              name contact
+              datePosted postedBy
+              dateProduced producedBy
+              dateUpdated updatedBy
+              note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }

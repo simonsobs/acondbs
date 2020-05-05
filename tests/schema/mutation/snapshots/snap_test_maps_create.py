@@ -27,7 +27,7 @@ snapshots['test_schema_success[createMap-all-options] 2'] = {
             'contact': 'contact-person',
             'datePosted': '2020-05-04',
             'dateProduced': '2020-02-20',
-            'dateUpdated': '2020-05-04',
+            'dateUpdated': None,
             'mapFilePaths': {
                 'edges': [
                 ]
@@ -36,7 +36,7 @@ snapshots['test_schema_success[createMap-all-options] 2'] = {
             'note': '- Item 1',
             'postedBy': 'poster',
             'producedBy': 'producer',
-            'updatedBy': 'updater'
+            'updatedBy': None
         }
     }
 }
@@ -61,7 +61,7 @@ snapshots['test_schema_success[createMap-selective-options] 2'] = {
             'contact': None,
             'datePosted': '2020-05-04',
             'dateProduced': None,
-            'dateUpdated': '2020-05-04',
+            'dateUpdated': None,
             'mapFilePaths': {
                 'edges': [
                 ]

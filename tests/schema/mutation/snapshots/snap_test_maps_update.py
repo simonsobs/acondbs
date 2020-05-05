@@ -7,60 +7,49 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[updateMap-all-options] 1'] = {
+snapshots['test_schema_success[updateMap] 1'] = {
     'data': {
         'updateMap': {
             'map': {
                 'mapId': '1001',
-                'name': 'new-name'
+                'name': 'lat20190213'
             }
         }
     }
 }
 
-snapshots['test_schema_success[updateMap-all-options] 2'] = {
+snapshots['test_schema_success[updateMap] 2'] = {
+    'data': {
+        'map': None
+    }
+}
+
+snapshots['test_schema_error[updateMap-error-immutable-fields] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 41,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {name: "new-name"}.
+In field "name": Unknown field.'''
+        }
+    ]
+}
+
+snapshots['test_schema_error[updateMap-error-immutable-fields] 2'] = {
     'data': {
         'map': {
             'beams': {
                 'edges': [
                 ]
             },
-            'dateProduced': '2020-02-18',
-            'mapFilePaths': {
-                'edges': [
-                    {
-                        'node': {
-                            'path': 'nersc:/go/to/my/maps'
-                        }
-                    }
-                ]
-            },
-            'name': 'new-name',
-            'note': '- Note 123',
-            'producedBy': 'pwg-xyz'
-        }
-    }
-}
-
-snapshots['test_schema_success[updateMap-selective-options] 1'] = {
-    'data': {
-        'updateMap': {
-            'map': {
-                'mapId': '1001',
-                'name': 'new-name'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[updateMap-selective-options] 2'] = {
-    'data': {
-        'map': {
-            'beams': {
-                'edges': [
-                ]
-            },
+            'contact': 'pwg-pmn',
+            'datePosted': '2019-02-13',
             'dateProduced': '2019-02-13',
+            'dateUpdated': '2019-02-13',
             'mapFilePaths': {
                 'edges': [
                     {
@@ -70,10 +59,12 @@ snapshots['test_schema_success[updateMap-selective-options] 2'] = {
                     }
                 ]
             },
-            'name': 'new-name',
+            'name': 'lat20190213',
             'note': '''- This is a dummy test with a lat map
 - This should not depend on any beam''',
-            'producedBy': 'pwg-xyz'
+            'postedBy': 'pwg-pmn',
+            'producedBy': 'pwg-pmn',
+            'updatedBy': 'pwg-pmn'
         }
     }
 }
