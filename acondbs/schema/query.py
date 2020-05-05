@@ -30,7 +30,7 @@ class Query(graphene.ObjectType):
 
     def resolve_simulation(self, info, **kwargs):
         import time, random
-        print(kwargs)
+        # print(kwargs)
         # time.sleep(random.randint(1, 5))
         fields = ('simulation_id', 'name')
         query = Simulation.get_query(info)
@@ -45,7 +45,7 @@ class Query(graphene.ObjectType):
 
     def resolve_map(self, info, **kwargs):
         import time, random
-        print(kwargs)
+        # print(kwargs)
         # time.sleep(random.randint(1, 5))
         fields = ('map_id', 'name')
         query = Map.get_query(info)
