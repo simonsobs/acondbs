@@ -17,8 +17,13 @@ from .db.sa import sa
 ##__________________________________________________________________||
 class CommonFields:
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    date_posted = sa.Column(sa.Date())
+    contact = sa.Column(sa.Text())
+    date_produced = sa.Column(sa.Date())
     produced_by = sa.Column(sa.Text())
+    date_posted = sa.Column(sa.Date())
+    posted_by = sa.Column(sa.Text())
+    date_updated = sa.Column(sa.Date())
+    updated_by = sa.Column(sa.Text())
 
 ##__________________________________________________________________||
 class Simulation(sa.Model):

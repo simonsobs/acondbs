@@ -111,10 +111,25 @@ snapshots['test_object[Map] 1'] = {
                     'name': 'name'
                 },
                 {
-                    'name': 'datePosted'
+                    'name': 'contact'
+                },
+                {
+                    'name': 'dateProduced'
                 },
                 {
                     'name': 'producedBy'
+                },
+                {
+                    'name': 'datePosted'
+                },
+                {
+                    'name': 'postedBy'
+                },
+                {
+                    'name': 'dateUpdated'
+                },
+                {
+                    'name': 'updatedBy'
                 },
                 {
                     'name': 'mapId'
