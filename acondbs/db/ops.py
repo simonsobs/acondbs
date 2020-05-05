@@ -152,7 +152,12 @@ def import_tables_from_csv_files(csvdir):
         a path to a folder with CSV files
 
     """
+
+    ignore = ['alembic_version']
+
     tbl_names = get_all_table_names()
+    tbl_names = [t for t in tbl_names if t not in ignore]
+
     for tbl_name in tbl_names:
         csv_filename = '{}.csv'.format(tbl_name)
         csv_path = Path(csvdir, csv_filename)
