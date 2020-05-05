@@ -3,7 +3,10 @@ import graphene
 ##__________________________________________________________________||
 class CommonAttribute:
     name = graphene.String()
-    date_posted = graphene.Date()
+    contact = graphene.String()
+    date_produced = graphene.Date()
     produced_by = graphene.String()
+    posted_by = graphene.String()
+    updated_by = graphene.String()
 
 ##__________________________________________________________________||
