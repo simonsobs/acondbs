@@ -1,4 +1,6 @@
 import pytest
+import unittest.mock as mock
+
 from graphene.test import Client
 
 from acondbs.schema.schema import schema
@@ -10,8 +12,11 @@ params = [
           mutation m {
             createMap(input: {
               name: "map1",
+              contact: "contact-person",
               dateProduced: "2020-02-20",
-              producedBy: "pwg-pmn",
+              producedBy: "producer",
+              postedBy: "poster",
+              updatedBy: "updater",
               note: "- Item 1"
             }) { map { name } }
           }
@@ -19,7 +24,11 @@ params = [
         '''
           {
             map(name: "map1") {
-              name dateProduced producedBy note
+              name contact
+              datePosted postedBy
+              dateProduced producedBy
+              dateUpdated updatedBy
+              note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }
@@ -39,7 +48,11 @@ params = [
         '''
           {
             map(name: "map1") {
-              name dateProduced producedBy note
+              name contact
+              datePosted postedBy
+              dateProduced producedBy
+              dateUpdated updatedBy
+              note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
             }

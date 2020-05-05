@@ -24,14 +24,19 @@ snapshots['test_schema_success[createMap-all-options] 2'] = {
                 'edges': [
                 ]
             },
+            'contact': 'contact-person',
+            'datePosted': '2020-05-04',
             'dateProduced': '2020-02-20',
+            'dateUpdated': '2020-05-04',
             'mapFilePaths': {
                 'edges': [
                 ]
             },
             'name': 'map1',
             'note': '- Item 1',
-            'producedBy': 'pwg-pmn'
+            'postedBy': 'poster',
+            'producedBy': 'producer',
+            'updatedBy': 'updater'
         }
     }
 }
@@ -53,14 +58,19 @@ snapshots['test_schema_success[createMap-selective-options] 2'] = {
                 'edges': [
                 ]
             },
+            'contact': None,
+            'datePosted': '2020-05-04',
             'dateProduced': None,
+            'dateUpdated': '2020-05-04',
             'mapFilePaths': {
                 'edges': [
                 ]
             },
             'name': 'map1',
             'note': None,
-            'producedBy': 'pwg-pmn'
+            'postedBy': None,
+            'producedBy': 'pwg-pmn',
+            'updatedBy': None
         }
     }
 }

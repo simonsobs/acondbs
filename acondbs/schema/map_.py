@@ -1,3 +1,4 @@
+import datetime
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
@@ -38,6 +39,9 @@ class CreateMap(graphene.Mutation):
 
     def mutate(root, info, input):
         map = MapModel(**input)
+        today = datetime.date.today()
+        map.date_posted = today
+        map.date_updated = today
         sa.session.add(map)
         sa.session.commit()
         ok = True
