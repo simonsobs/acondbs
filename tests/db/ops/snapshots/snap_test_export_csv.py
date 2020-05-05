@@ -94,28 +94,43 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'maps': [
         {
+            'contact': 'pwg-pmn',
             'date_posted': GenericRepr('datetime.date(2019, 2, 13)'),
+            'date_produced': GenericRepr('datetime.date(2019, 2, 13)'),
+            'date_updated': GenericRepr('datetime.date(2019, 2, 13)'),
             'map_id': 1001,
             'name': 'lat20190213',
             'note': '''- This is a dummy test with a lat map
 - This should not depend on any beam''',
-            'produced_by': 'pwg-pmn'
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'updated_by': 'pwg-pmn'
         },
         {
+            'contact': 'pwg-pmn',
             'date_posted': GenericRepr('datetime.date(2020, 1, 20)'),
+            'date_produced': GenericRepr('datetime.date(2020, 1, 20)'),
+            'date_updated': GenericRepr('datetime.date(2020, 1, 20)'),
             'map_id': 1012,
             'name': 'lat20200120',
             'note': '''- This is a dummy test with a lat map
 - A beam depends on this map''',
-            'produced_by': 'pwg-pmn'
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'updated_by': 'pwg-pmn'
         },
         {
+            'contact': 'pwg-pmn',
             'date_posted': GenericRepr('datetime.date(2020, 2, 1)'),
+            'date_produced': GenericRepr('datetime.date(2020, 2, 1)'),
+            'date_updated': GenericRepr('datetime.date(2020, 2, 1)'),
             'map_id': 1013,
             'name': 'lat20200201',
             'note': '''- This is a dummy test with a lat map
 - A beam depends on this map''',
-            'produced_by': 'pwg-pmn'
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'updated_by': 'pwg-pmn'
         }
     ],
     'simulation_file_paths': [
