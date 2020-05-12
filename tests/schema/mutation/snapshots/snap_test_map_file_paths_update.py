@@ -34,29 +34,29 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                 'edges': [
                     {
                         'node': {
-                            'map': {
-                                'productId': '1012'
-                            },
                             'note': '- Note 1 updated',
-                            'path': 'nersc:/go/to/my/new_map_v2'
+                            'path': 'nersc:/go/to/my/new_map_v2',
+                            'product': {
+                                'productId': '1012'
+                            }
                         }
                     },
                     {
                         'node': {
-                            'map': {
-                                'productId': '1012'
-                            },
                             'note': 'lat only',
-                            'path': 'nersc:/go/to/my/maps_v2'
+                            'path': 'nersc:/go/to/my/maps_v2',
+                            'product': {
+                                'productId': '1012'
+                            }
                         }
                     },
                     {
                         'node': {
-                            'map': {
-                                'productId': '1012'
-                            },
                             'note': 'lat only',
-                            'path': 'abcde:/path/to/the/maps_v2'
+                            'path': 'abcde:/path/to/the/maps_v2',
+                            'product': {
+                                'productId': '1012'
+                            }
                         }
                     }
                 ]

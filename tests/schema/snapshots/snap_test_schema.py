@@ -187,7 +187,7 @@ snapshots['test_object[MapFilePath] 1'] = {
                     'name': 'note'
                 },
                 {
-                    'name': 'map'
+                    'name': 'product'
                 },
                 {
                     'name': 'id'

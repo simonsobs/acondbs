@@ -29,20 +29,20 @@ snapshots['test_schema_success[createMapFilePath] 2'] = {
                 'edges': [
                     {
                         'node': {
-                            'map': {
-                                'productId': '1001'
-                            },
                             'note': '',
-                            'path': 'nersc:/go/to/my/maps'
+                            'path': 'nersc:/go/to/my/maps',
+                            'product': {
+                                'productId': '1001'
+                            }
                         }
                     },
                     {
                         'node': {
-                            'map': {
-                                'productId': '1001'
-                            },
                             'note': '- Note 1',
-                            'path': 'nersc:/go/to/my/new_map_v1'
+                            'path': 'nersc:/go/to/my/new_map_v1',
+                            'product': {
+                                'productId': '1001'
+                            }
                         }
                     }
                 ]
