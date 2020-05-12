@@ -19,7 +19,7 @@ snapshots['test_object[Simulation] 1'] = {
                     'name': 'name'
                 },
                 {
-                    'name': 'datePosted'
+                    'name': 'dateProduced'
                 },
                 {
                     'name': 'producedBy'

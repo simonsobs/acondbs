@@ -32,7 +32,7 @@ class Simulation(sa.Model):
     __tablename__ = 'simulations'
     product_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    date_posted = sa.Column(sa.Date())
+    date_produced = sa.Column(sa.Date())
     produced_by = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
 
