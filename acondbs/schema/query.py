@@ -56,10 +56,10 @@ class Query(graphene.ObjectType):
                 return query.first()
         return None
 
-    beam = graphene.Field(Beam, beam_id=graphene.Int(), name=graphene.String())
+    beam = graphene.Field(Beam, product_id=graphene.Int(), name=graphene.String())
 
     def resolve_beam(self, info, **kwargs):
-        fields = ('beam_id', 'name')
+        fields = ('product_id', 'name')
         query = Beam.get_query(info)
         for f in fields:
             v = kwargs.get(f)

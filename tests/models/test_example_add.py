@@ -90,7 +90,7 @@ def test_relation(app):
 
     # The primary and foreign keys are still None
     assert map1.product_id is None
-    assert beam1.beam_id is None
+    assert beam1.product_id is None
     assert beam1.input_map_id is None
 
     with app.app_context():
@@ -99,7 +99,7 @@ def test_relation(app):
 
         # The primary keys are assigned
         assert map1.product_id is not None
-        assert beam1.beam_id is not None
+        assert beam1.product_id is not None
 
         # The foreign key is correctly set
         assert map1.product_id == beam1.input_map_id

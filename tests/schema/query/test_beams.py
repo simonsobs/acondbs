@@ -7,19 +7,19 @@ from acondbs.schema.schema import schema
 params = [
     pytest.param(
         '''
-        { beam(beamId: 1010) { name } }
+        { beam(productId: 1010) { name } }
          ''',
         id='beamByBeamID'
     ),
     pytest.param(
         '''
-        { beam(beamId: 2001) { name } }
+        { beam(productId: 2001) { name } }
          ''',
         id='beamByBeamID-nonexistent'
     ),
     pytest.param(
         '''
-        { beam(name: "20180101") { beamId } }
+        { beam(name: "20180101") { productId } }
          ''',
         id='beamByName'
     ),

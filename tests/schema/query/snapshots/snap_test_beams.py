@@ -24,7 +24,7 @@ snapshots['test_schema[beamByBeamID-nonexistent] 1'] = {
 snapshots['test_schema[beamByName] 1'] = {
     'data': {
         'beam': {
-            'beamId': '1010'
+            'productId': '1010'
         }
     }
 }

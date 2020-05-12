@@ -221,7 +221,7 @@ snapshots['test_object[Beam] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'beamId'
+                    'name': 'productId'
                 },
                 {
                     'name': 'name'
@@ -279,7 +279,7 @@ snapshots['test_object[BeamFilePath] 1'] = {
                     'name': 'beamFilePathId'
                 },
                 {
-                    'name': 'beamId'
+                    'name': 'productId'
                 },
                 {
                     'name': 'path'

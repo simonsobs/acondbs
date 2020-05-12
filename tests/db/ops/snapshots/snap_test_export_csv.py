@@ -11,59 +11,59 @@ snapshots['test_export_db_to_csv_files 1'] = {
     'beam_file_paths': [
         {
             'beam_file_path_id': 1,
-            'beam_id': 1070,
             'note': '',
-            'path': 'BEAM_DEPOT/Beams/20190304'
+            'path': 'BEAM_DEPOT/Beams/20190304',
+            'product_id': 1070
         },
         {
             'beam_file_path_id': 2,
-            'beam_id': 1120,
             'note': '',
-            'path': 'BEAM_DEPOT/Beams/20190607'
+            'path': 'BEAM_DEPOT/Beams/20190607',
+            'product_id': 1120
         },
         {
             'beam_file_path_id': 3,
-            'beam_id': 1130,
             'note': '',
-            'path': 'BEAM_DEPOT/Beams/20200123'
+            'path': 'BEAM_DEPOT/Beams/20200123',
+            'product_id': 1130
         },
         {
             'beam_file_path_id': 4,
-            'beam_id': 1150,
             'note': '',
-            'path': 'BEAM_DEPOT/Beams/20200207'
+            'path': 'BEAM_DEPOT/Beams/20200207',
+            'product_id': 1150
         }
     ],
     'beams': [
         {
-            'beam_id': 1010,
             'input_beam_id': '',
             'input_map_id': '',
-            'name': '20180101'
+            'name': '20180101',
+            'product_id': 1010
         },
         {
-            'beam_id': 1070,
             'input_beam_id': '',
             'input_map_id': '',
-            'name': '20190304'
+            'name': '20190304',
+            'product_id': 1070
         },
         {
-            'beam_id': 1120,
             'input_beam_id': '',
             'input_map_id': '',
-            'name': '20190607'
+            'name': '20190607',
+            'product_id': 1120
         },
         {
-            'beam_id': 1130,
             'input_beam_id': '',
             'input_map_id': 1012,
-            'name': '20200123'
+            'name': '20200123',
+            'product_id': 1130
         },
         {
-            'beam_id': 1150,
             'input_beam_id': 1130,
             'input_map_id': 1013,
-            'name': '20200207'
+            'name': '20200207',
+            'product_id': 1150
         }
     ],
     'map_file_paths': [
