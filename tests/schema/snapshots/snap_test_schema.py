@@ -62,7 +62,7 @@ snapshots['test_object[SimulationFilePath] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'simulationFilePathId'
+                    'name': 'pathId'
                 },
                 {
                     'name': 'productId'

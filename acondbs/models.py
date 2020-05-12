@@ -36,7 +36,7 @@ class Simulation(sa.Model):
 
 class SimulationFilePath(sa.Model):
     __tablename__ = 'simulation_file_paths'
-    simulation_file_path_id = sa.Column(sa.Integer(), primary_key=True)
+    path_id = sa.Column(sa.Integer(), primary_key=True)
     product_id = sa.Column(sa.ForeignKey('simulations.product_id'))
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())

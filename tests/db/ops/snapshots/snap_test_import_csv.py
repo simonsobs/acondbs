@@ -137,14 +137,14 @@ snapshots['test_import_tables_from_csv_files 1'] = {
         {
             'note': '',
             'path': 'nersc:/go/to/my/simulations',
-            'product_id': 1001,
-            'simulation_file_path_id': 1
+            'path_id': 1,
+            'product_id': 1001
         },
         {
             'note': '',
             'path': 'abcde:/path/to/the/simulations',
-            'product_id': 1001,
-            'simulation_file_path_id': 2
+            'path_id': 2,
+            'product_id': 1001
         }
     ],
     'simulations': [
