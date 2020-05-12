@@ -49,7 +49,7 @@ class Map(sa.Model, CommonFields):
 
 class MapFilePath(sa.Model):
     __tablename__ = 'map_file_paths'
-    map_file_path_id = sa.Column(sa.Integer(), primary_key=True)
+    path_id = sa.Column(sa.Integer(), primary_key=True)
     product_id = sa.Column(sa.ForeignKey('maps.product_id'))
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())

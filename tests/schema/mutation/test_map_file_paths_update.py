@@ -8,7 +8,7 @@ params = [
     pytest.param(
         '''
           mutation m {
-            updateMapFilePath(mapFilePathId: 1, input: {
+            updateMapFilePath(pathId: 1, input: {
               path: "nersc:/go/to/my/new_map_v2",
               note: "- Note 1 updated",
               productId: 1012

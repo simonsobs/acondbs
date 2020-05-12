@@ -175,7 +175,7 @@ snapshots['test_object[MapFilePath] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'mapFilePathId'
+                    'name': 'pathId'
                 },
                 {
                     'name': 'productId'

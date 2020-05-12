@@ -8,7 +8,7 @@ params = [
     pytest.param(
         '''
           mutation m {
-            deleteMapFilePath(mapFilePathId: 1) { ok }
+            deleteMapFilePath(pathId: 1) { ok }
           }
         ''',
         '''

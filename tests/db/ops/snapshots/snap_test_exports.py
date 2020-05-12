@@ -68,27 +68,27 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     ],
     'map_file_paths': [
         {
-            'map_file_path_id': 1,
             'note': '',
             'path': 'nersc:/go/to/my/maps',
+            'path_id': 1,
             'product_id': 1001
         },
         {
-            'map_file_path_id': 2,
             'note': 'lat only',
             'path': 'nersc:/go/to/my/maps_v2',
+            'path_id': 2,
             'product_id': 1012
         },
         {
-            'map_file_path_id': 3,
             'note': 'lat only',
             'path': 'abcde:/path/to/the/maps_v2',
+            'path_id': 3,
             'product_id': 1012
         },
         {
-            'map_file_path_id': 4,
             'note': 'lat only',
             'path': 'nersc:/go/to/my/maps_v3',
+            'path_id': 4,
             'product_id': 1013
         }
     ],
