@@ -28,13 +28,8 @@ class CommonFields:
     note = sa.Column(sa.Text())
 
 ##__________________________________________________________________||
-class Simulation(sa.Model):
+class Simulation(sa.Model, CommonFields):
     __tablename__ = 'simulations'
-    product_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    date_produced = sa.Column(sa.Date())
-    produced_by = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
 
 class SimulationFilePath(sa.Model):
     __tablename__ = 'simulation_file_paths'

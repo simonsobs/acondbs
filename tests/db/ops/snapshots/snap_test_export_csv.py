@@ -149,12 +149,17 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'simulations': [
         {
+            'contact': '',
+            'date_posted': None,
             'date_produced': GenericRepr('datetime.date(2019, 3, 15)'),
+            'date_updated': None,
             'name': 'xyz-s1234-20200101',
             'note': '''- note 1
 - note 2''',
+            'posted_by': '',
             'produced_by': 'abc-def',
-            'product_id': 1001
+            'product_id': 1001,
+            'updated_by': ''
         }
     ]
 }
