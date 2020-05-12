@@ -230,7 +230,7 @@ snapshots['test_object[Beam] 1'] = {
                     'name': 'inputMapProductId'
                 },
                 {
-                    'name': 'inputBeamId'
+                    'name': 'inputBeamProductId'
                 },
                 {
                     'name': 'map'

@@ -60,7 +60,7 @@ class Beam(sa.Model):
     product_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
     input_map_product_id = sa.Column(sa.ForeignKey('maps.product_id'))
-    input_beam_id = sa.Column(sa.ForeignKey('beams.product_id'))
+    input_beam_product_id = sa.Column(sa.ForeignKey('beams.product_id'))
     map = sa.relationship("Map", backref=sa.backref("beams"))
     parent_beam = sa.relationship(lambda: Beam, remote_side=product_id, backref=sa.backref("child_beams"))
 
