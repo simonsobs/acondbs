@@ -70,6 +70,6 @@ class BeamFilePath(sa.Model):
     product_id = sa.Column(sa.ForeignKey('beams.product_id'))
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
-    beam = sa.relationship("Beam", backref=sa.backref("beam_file_paths"))
+    product = sa.relationship("Beam", backref=sa.backref("beam_file_paths"))
 
 ##__________________________________________________________________||

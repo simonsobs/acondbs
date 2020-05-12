@@ -288,7 +288,7 @@ snapshots['test_object[BeamFilePath] 1'] = {
                     'name': 'note'
                 },
                 {
-                    'name': 'beam'
+                    'name': 'product'
                 },
                 {
                     'name': 'id'
