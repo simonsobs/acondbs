@@ -10,27 +10,27 @@ snapshots = Snapshot()
 snapshots['test_export_db_to_csv_files 1'] = {
     'beam_file_paths': [
         {
-            'beam_file_path_id': 1,
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20190304',
+            'path_id': 1,
             'product_id': 1070
         },
         {
-            'beam_file_path_id': 2,
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20190607',
+            'path_id': 2,
             'product_id': 1120
         },
         {
-            'beam_file_path_id': 3,
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20200123',
+            'path_id': 3,
             'product_id': 1130
         },
         {
-            'beam_file_path_id': 4,
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20200207',
+            'path_id': 4,
             'product_id': 1150
         }
     ],

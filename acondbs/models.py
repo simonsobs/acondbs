@@ -66,7 +66,7 @@ class Beam(sa.Model):
 
 class BeamFilePath(sa.Model):
     __tablename__ = 'beam_file_paths'
-    beam_file_path_id = sa.Column(sa.Integer(), primary_key=True)
+    path_id = sa.Column(sa.Integer(), primary_key=True)
     product_id = sa.Column(sa.ForeignKey('beams.product_id'))
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
