@@ -30,7 +30,7 @@ snapshots['test_schema_success[createMapFilePath] 2'] = {
                     {
                         'node': {
                             'map': {
-                                'mapId': '1001'
+                                'productId': '1001'
                             },
                             'note': '',
                             'path': 'nersc:/go/to/my/maps'
@@ -39,7 +39,7 @@ snapshots['test_schema_success[createMapFilePath] 2'] = {
                     {
                         'node': {
                             'map': {
-                                'mapId': '1001'
+                                'productId': '1001'
                             },
                             'note': '- Note 1',
                             'path': 'nersc:/go/to/my/new_map_v1'

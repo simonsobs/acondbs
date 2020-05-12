@@ -7,13 +7,13 @@ def test_simple(app):
     '''
 
     with app.app_context():
-        map1 = Map.query.filter_by(map_id=1012).first()
+        map1 = Map.query.filter_by(product_id=1012).first()
         assert 'lat20200120' == map1.name
         map1.name = 'new-map-name'
         sa.session.commit()
 
     with app.app_context():
-        map1 = Map.query.filter_by(map_id=1012).first()
+        map1 = Map.query.filter_by(product_id=1012).first()
         assert 'new-map-name' == map1.name
 
 # __________________________________________________________________||

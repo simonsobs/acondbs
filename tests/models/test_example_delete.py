@@ -15,7 +15,7 @@ def test_simple(app):
         nmaps = len(Map.query.all())
 
     with app.app_context():
-        map1 = Map.query.filter_by(map_id=1012).first()
+        map1 = Map.query.filter_by(product_id=1012).first()
         sa.session.delete(map1)
         sa.session.commit()
 
@@ -25,7 +25,7 @@ def test_simple(app):
         assert (nmaps - 1) == len(Map.query.all())
 
         # the map is no longer found
-        map1 = Map.query.filter_by(map_id=1012).first()
+        map1 = Map.query.filter_by(product_id=1012).first()
         assert map1 is None
 
 # __________________________________________________________________||

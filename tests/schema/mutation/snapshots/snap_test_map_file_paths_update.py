@@ -35,7 +35,7 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                     {
                         'node': {
                             'map': {
-                                'mapId': '1012'
+                                'productId': '1012'
                             },
                             'note': '- Note 1 updated',
                             'path': 'nersc:/go/to/my/new_map_v2'
@@ -44,7 +44,7 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                     {
                         'node': {
                             'map': {
-                                'mapId': '1012'
+                                'productId': '1012'
                             },
                             'note': 'lat only',
                             'path': 'nersc:/go/to/my/maps_v2'
@@ -53,7 +53,7 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                     {
                         'node': {
                             'map': {
-                                'mapId': '1012'
+                                'productId': '1012'
                             },
                             'note': 'lat only',
                             'path': 'abcde:/path/to/the/maps_v2'

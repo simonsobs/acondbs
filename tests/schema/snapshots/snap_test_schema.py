@@ -132,7 +132,7 @@ snapshots['test_object[Map] 1'] = {
                     'name': 'updatedBy'
                 },
                 {
-                    'name': 'mapId'
+                    'name': 'productId'
                 },
                 {
                     'name': 'note'
@@ -178,7 +178,7 @@ snapshots['test_object[MapFilePath] 1'] = {
                     'name': 'mapFilePathId'
                 },
                 {
-                    'name': 'mapId'
+                    'name': 'productId'
                 },
                 {
                     'name': 'path'

@@ -11,16 +11,16 @@ params = [
             createMapFilePath(input: {
               path: "nersc:/go/to/my/new_map_v1",
               note: "- Note 1",
-              mapId: 1001
+              productId: 1001
             }) { mapFilePath { path } }
           }
         ''',
         '''
           {
-            map(mapId: 1001) {
+            map(productId: 1001) {
               name datePosted producedBy note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path note map { mapId } } } }
+              mapFilePaths { edges { node { path note map { productId } } } }
             }
           }
         ''',

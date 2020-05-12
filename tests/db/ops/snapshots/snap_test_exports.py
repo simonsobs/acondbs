@@ -69,27 +69,27 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'map_file_paths': [
         {
             'map_file_path_id': 1,
-            'map_id': 1001,
             'note': '',
-            'path': 'nersc:/go/to/my/maps'
+            'path': 'nersc:/go/to/my/maps',
+            'product_id': 1001
         },
         {
             'map_file_path_id': 2,
-            'map_id': 1012,
             'note': 'lat only',
-            'path': 'nersc:/go/to/my/maps_v2'
+            'path': 'nersc:/go/to/my/maps_v2',
+            'product_id': 1012
         },
         {
             'map_file_path_id': 3,
-            'map_id': 1012,
             'note': 'lat only',
-            'path': 'abcde:/path/to/the/maps_v2'
+            'path': 'abcde:/path/to/the/maps_v2',
+            'product_id': 1012
         },
         {
             'map_file_path_id': 4,
-            'map_id': 1013,
             'note': 'lat only',
-            'path': 'nersc:/go/to/my/maps_v3'
+            'path': 'nersc:/go/to/my/maps_v3',
+            'product_id': 1013
         }
     ],
     'maps': [
@@ -98,12 +98,12 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'date_posted': GenericRepr('datetime.date(2019, 2, 13)'),
             'date_produced': GenericRepr('datetime.date(2019, 2, 13)'),
             'date_updated': GenericRepr('datetime.date(2019, 2, 13)'),
-            'map_id': 1001,
             'name': 'lat20190213',
             'note': '''- This is a dummy test with a lat map
 - This should not depend on any beam''',
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
+            'product_id': 1001,
             'updated_by': 'pwg-pmn'
         },
         {
@@ -111,12 +111,12 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'date_posted': GenericRepr('datetime.date(2020, 1, 20)'),
             'date_produced': GenericRepr('datetime.date(2020, 1, 20)'),
             'date_updated': GenericRepr('datetime.date(2020, 1, 20)'),
-            'map_id': 1012,
             'name': 'lat20200120',
             'note': '''- This is a dummy test with a lat map
 - A beam depends on this map''',
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
+            'product_id': 1012,
             'updated_by': 'pwg-pmn'
         },
         {
@@ -124,12 +124,12 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'date_posted': GenericRepr('datetime.date(2020, 2, 1)'),
             'date_produced': GenericRepr('datetime.date(2020, 2, 1)'),
             'date_updated': GenericRepr('datetime.date(2020, 2, 1)'),
-            'map_id': 1013,
             'name': 'lat20200201',
             'note': '''- This is a dummy test with a lat map
 - A beam depends on this map''',
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
+            'product_id': 1013,
             'updated_by': 'pwg-pmn'
         }
     ],

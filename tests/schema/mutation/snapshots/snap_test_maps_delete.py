@@ -47,19 +47,19 @@ snapshots['test_schema_error[deleteMap-error] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'mapId': '1001',
+                        'productId': '1001',
                         'name': 'lat20190213'
                     }
                 },
                 {
                     'node': {
-                        'mapId': '1012',
+                        'productId': '1012',
                         'name': 'lat20200120'
                     }
                 },
                 {
                     'node': {
-                        'mapId': '1013',
+                        'productId': '1013',
                         'name': 'lat20200201'
                     }
                 }

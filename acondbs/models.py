@@ -44,13 +44,13 @@ class SimulationFilePath(sa.Model):
 
 class Map(sa.Model, CommonFields):
     __tablename__ = 'maps'
-    map_id = sa.Column(sa.Integer(), primary_key=True)
+    product_id = sa.Column(sa.Integer(), primary_key=True)
     note = sa.Column(sa.Text())
 
 class MapFilePath(sa.Model):
     __tablename__ = 'map_file_paths'
     map_file_path_id = sa.Column(sa.Integer(), primary_key=True)
-    map_id = sa.Column(sa.ForeignKey('maps.map_id'))
+    product_id = sa.Column(sa.ForeignKey('maps.product_id'))
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
     map = sa.relationship("Map", backref=sa.backref("map_file_paths"))
@@ -59,7 +59,7 @@ class Beam(sa.Model):
     __tablename__ = 'beams'
     beam_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    input_map_id = sa.Column(sa.ForeignKey('maps.map_id'))
+    input_map_id = sa.Column(sa.ForeignKey('maps.product_id'))
     input_beam_id = sa.Column(sa.ForeignKey('beams.beam_id'))
     map = sa.relationship("Map", backref=sa.backref("beams"))
     parent_beam = sa.relationship(lambda: Beam, remote_side=beam_id, backref=sa.backref("child_beams"))

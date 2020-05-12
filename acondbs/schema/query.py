@@ -41,13 +41,13 @@ class Query(graphene.ObjectType):
                 return query.first()
         return None
 
-    map = graphene.Field(Map, map_id=graphene.Int(), name=graphene.String())
+    map = graphene.Field(Map, product_id=graphene.Int(), name=graphene.String())
 
     def resolve_map(self, info, **kwargs):
         import time, random
         # print(kwargs)
         # time.sleep(random.randint(1, 5))
-        fields = ('map_id', 'name')
+        fields = ('product_id', 'name')
         query = Map.get_query(info)
         for f in fields:
             v = kwargs.get(f)

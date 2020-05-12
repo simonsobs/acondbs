@@ -8,12 +8,12 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteMap(mapId: 1001) { ok }
+          deleteMap(productId: 1001) { ok }
         }
          ''',
         '''
           {
-            map(mapId: 1001) {
+            map(productId: 1001) {
               name dateProduced producedBy note
               beams { edges { node { name } } }
               mapFilePaths { edges { node { path } } }
@@ -42,7 +42,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteMap(mapId: 512) { ok }
+          deleteMap(productId: 512) { ok }
         }
          ''',
         '''
@@ -50,7 +50,7 @@ params = [
             allMaps {
               edges {
                 node {
-                  mapId
+                  productId
                   name
                 }
               }

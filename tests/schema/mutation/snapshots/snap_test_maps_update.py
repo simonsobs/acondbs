@@ -11,8 +11,8 @@ snapshots['test_schema_success[updateMap] 1'] = {
     'data': {
         'updateMap': {
             'map': {
-                'mapId': '1001',
-                'name': 'lat20190213'
+                'name': 'lat20190213',
+                'productId': '1001'
             }
         }
     }
@@ -29,7 +29,7 @@ snapshots['test_schema_error[updateMap-error-immutable-fields] 1'] = {
         {
             'locations': [
                 {
-                    'column': 41,
+                    'column': 45,
                     'line': 3
                 }
             ],

@@ -8,12 +8,12 @@ params = [
     pytest.param(
         '''
         mutation m {
-          updateMap(mapId: 1001, input: {
+          updateMap(productId: 1001, input: {
               contact: "new-contact",
               updatedBy: "updater",
               note: "- updated note 123"
           }) {
-            map { mapId name } }
+            map { productId name } }
         }
          ''',
         '''
@@ -51,15 +51,15 @@ params = [
     pytest.param(
         '''
         mutation m {
-          updateMap(mapId: 1001, input: {
+          updateMap(productId: 1001, input: {
               name: "new-name"
           }) {
-            map { mapId name } }
+            map { productId name } }
         }
          ''',
         '''
           {
-            map(mapId: 1001) {
+            map(productId: 1001) {
               name contact
               datePosted postedBy
               dateProduced producedBy

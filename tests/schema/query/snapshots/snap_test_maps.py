@@ -62,7 +62,7 @@ snapshots['test_schema[mapByMapID-nonexistent] 1'] = {
 snapshots['test_schema[mapByName] 1'] = {
     'data': {
         'map': {
-            'mapId': '1001'
+            'productId': '1001'
         }
     }
 }
