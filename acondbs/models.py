@@ -40,7 +40,7 @@ class SimulationFilePath(sa.Model):
     product_id = sa.Column(sa.ForeignKey('simulations.product_id'))
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
-    simulation = sa.relationship("Simulation", backref=sa.backref("simulation_file_paths"))
+    product = sa.relationship("Simulation", backref=sa.backref("simulation_file_paths"))
 
 class Map(sa.Model, CommonFields):
     __tablename__ = 'maps'
