@@ -37,31 +37,31 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'beams': [
         {
             'input_beam_id': '',
-            'input_map_id': '',
+            'input_map_product_id': '',
             'name': '20180101',
             'product_id': 1010
         },
         {
             'input_beam_id': '',
-            'input_map_id': '',
+            'input_map_product_id': '',
             'name': '20190304',
             'product_id': 1070
         },
         {
             'input_beam_id': '',
-            'input_map_id': '',
+            'input_map_product_id': '',
             'name': '20190607',
             'product_id': 1120
         },
         {
             'input_beam_id': '',
-            'input_map_id': 1012,
+            'input_map_product_id': 1012,
             'name': '20200123',
             'product_id': 1130
         },
         {
             'input_beam_id': 1130,
-            'input_map_id': 1013,
+            'input_map_product_id': 1013,
             'name': '20200207',
             'product_id': 1150
         }

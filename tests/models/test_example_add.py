@@ -91,7 +91,7 @@ def test_relation(app):
     # The primary and foreign keys are still None
     assert map1.product_id is None
     assert beam1.product_id is None
-    assert beam1.input_map_id is None
+    assert beam1.input_map_product_id is None
 
     with app.app_context():
         sa.session.add(map1)
@@ -102,7 +102,7 @@ def test_relation(app):
         assert beam1.product_id is not None
 
         # The foreign key is correctly set
-        assert map1.product_id == beam1.input_map_id
+        assert map1.product_id == beam1.input_map_product_id
 
     with app.app_context():
         map1 = Map.query.filter_by(name='map1').first()
@@ -111,6 +111,6 @@ def test_relation(app):
         # The relation is preserved in a different app context
         assert map1 is beam1.map
         assert beam1 is map1.beams[0]
-        assert map1.product_id == beam1.input_map_id
+        assert map1.product_id == beam1.input_map_product_id
 
 # __________________________________________________________________||
