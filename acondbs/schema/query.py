@@ -26,13 +26,13 @@ class Query(graphene.ObjectType):
     all_map_file_paths = SQLAlchemyConnectionField(MapFilePath._meta.connection)
     all_beam_file_paths = SQLAlchemyConnectionField(BeamFilePath._meta.connection)
 
-    simulation = graphene.Field(Simulation, simulation_id=graphene.Int(), name=graphene.String())
+    simulation = graphene.Field(Simulation, product_id=graphene.Int(), name=graphene.String())
 
     def resolve_simulation(self, info, **kwargs):
         import time, random
         # print(kwargs)
         # time.sleep(random.randint(1, 5))
-        fields = ('simulation_id', 'name')
+        fields = ('product_id', 'name')
         query = Simulation.get_query(info)
         for f in fields:
             v = kwargs.get(f)

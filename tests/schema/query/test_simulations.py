@@ -15,13 +15,13 @@ params = [
     ),
     pytest.param(
         '''
-        { simulation(simulationId: 1001) { name } }
+        { simulation(productId: 1001) { name } }
          ''',
         id='simulationBySimulationID'
     ),
     pytest.param(
         '''
-        { simulation(simulationId: 2001) { name } }
+        { simulation(productId: 2001) { name } }
          ''',
         id='simulationBySimulationID-nonexistent'
     ),

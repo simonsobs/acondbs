@@ -137,14 +137,14 @@ snapshots['test_export_db_to_csv_files 1'] = {
         {
             'note': '',
             'path': 'nersc:/go/to/my/simulations',
-            'simulation_file_path_id': 1,
-            'simulation_id': 1001
+            'product_id': 1001,
+            'simulation_file_path_id': 1
         },
         {
             'note': '',
             'path': 'abcde:/path/to/the/simulations',
-            'simulation_file_path_id': 2,
-            'simulation_id': 1001
+            'product_id': 1001,
+            'simulation_file_path_id': 2
         }
     ],
     'simulations': [
@@ -154,7 +154,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'name': 'xyz-s1234-20200101',
             'note': '''- note 1
 - note 2''',
-            'simulation_id': 1001
+            'product_id': 1001
         }
     ]
 }
