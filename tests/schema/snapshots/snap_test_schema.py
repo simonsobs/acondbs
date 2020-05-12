@@ -108,6 +108,9 @@ snapshots['test_object[Map] 1'] = {
             'description': None,
             'fields': [
                 {
+                    'name': 'productId'
+                },
+                {
                     'name': 'name'
                 },
                 {
@@ -130,9 +133,6 @@ snapshots['test_object[Map] 1'] = {
                 },
                 {
                     'name': 'updatedBy'
-                },
-                {
-                    'name': 'productId'
                 },
                 {
                     'name': 'note'

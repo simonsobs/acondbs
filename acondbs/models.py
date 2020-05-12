@@ -16,6 +16,7 @@ from .db.sa import sa
 
 ##__________________________________________________________________||
 class CommonFields:
+    product_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
     contact = sa.Column(sa.Text())
     date_produced = sa.Column(sa.Date())
@@ -24,6 +25,7 @@ class CommonFields:
     posted_by = sa.Column(sa.Text())
     date_updated = sa.Column(sa.Date())
     updated_by = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
 
 ##__________________________________________________________________||
 class Simulation(sa.Model):
@@ -44,8 +46,6 @@ class SimulationFilePath(sa.Model):
 
 class Map(sa.Model, CommonFields):
     __tablename__ = 'maps'
-    product_id = sa.Column(sa.Integer(), primary_key=True)
-    note = sa.Column(sa.Text())
 
 class MapFilePath(sa.Model):
     __tablename__ = 'map_file_paths'
