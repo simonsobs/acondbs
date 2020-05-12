@@ -242,7 +242,7 @@ snapshots['test_object[Beam] 1'] = {
                     'name': 'childBeams'
                 },
                 {
-                    'name': 'beamFilePaths'
+                    'name': 'paths'
                 },
                 {
                     'name': 'id'
