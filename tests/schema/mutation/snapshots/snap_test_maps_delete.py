@@ -15,12 +15,6 @@ snapshots['test_schema_success[deleteMap] 1'] = {
     }
 }
 
-snapshots['test_schema_success[deleteMap] 2'] = {
-    'data': {
-        'map': None
-    }
-}
-
 snapshots['test_schema_error[deleteMap-error] 1'] = {
     'data': {
         'deleteMap': None
@@ -47,23 +41,29 @@ snapshots['test_schema_error[deleteMap-error] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1001',
-                        'name': 'lat20190213'
+                        'name': 'lat20190213',
+                        'productId': '1001'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012',
-                        'name': 'lat20200120'
+                        'name': 'lat20200120',
+                        'productId': '1012'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013',
-                        'name': 'lat20200201'
+                        'name': 'lat20200201',
+                        'productId': '1013'
                     }
                 }
             ]
         }
+    }
+}
+
+snapshots['test_schema_success[deleteMap] 2'] = {
+    'data': {
+        'map': None
     }
 }

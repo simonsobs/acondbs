@@ -30,7 +30,10 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                 ]
             },
             'datePosted': '2020-01-20',
-            'mapFilePaths': {
+            'name': 'lat20200120',
+            'note': '''- This is a dummy test with a lat map
+- A beam depends on this map''',
+            'paths': {
                 'edges': [
                     {
                         'node': {
@@ -61,9 +64,6 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                     }
                 ]
             },
-            'name': 'lat20200120',
-            'note': '''- This is a dummy test with a lat map
-- A beam depends on this map''',
             'producedBy': 'pwg-pmn'
         }
     }

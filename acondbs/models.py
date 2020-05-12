@@ -53,7 +53,7 @@ class MapFilePath(sa.Model):
     product_id = sa.Column(sa.ForeignKey('maps.product_id'))
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
-    product = sa.relationship("Map", backref=sa.backref("map_file_paths"))
+    product = sa.relationship("Map", backref=sa.backref("paths"))
 
 class Beam(sa.Model):
     __tablename__ = 'beams'

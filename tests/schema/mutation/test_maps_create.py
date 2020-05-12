@@ -29,7 +29,7 @@ params = [
               dateUpdated updatedBy
               note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path } } }
+              paths { edges { node { path } } }
             }
           }
         ''',
@@ -53,7 +53,7 @@ params = [
               dateUpdated updatedBy
               note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path } } }
+              paths { edges { node { path } } }
             }
           }
         ''',
@@ -93,7 +93,7 @@ params = [
               dateUpdated updatedBy
               note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path } } }
+              paths { edges { node { path } } }
             }
           }
         ''',

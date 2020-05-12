@@ -138,7 +138,7 @@ snapshots['test_object[Map] 1'] = {
                     'name': 'note'
                 },
                 {
-                    'name': 'mapFilePaths'
+                    'name': 'paths'
                 },
                 {
                     'name': 'beams'

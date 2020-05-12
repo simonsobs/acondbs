@@ -16,7 +16,7 @@ params = [
             map(productId: 1001 ) {
               name datePosted producedBy note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path note product { productId } } } }
+              paths { edges { node { path note product { productId } } } }
             }
           }
         ''',
