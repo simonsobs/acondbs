@@ -22,7 +22,7 @@ snapshots['test_object[Simulation] 1'] = {
                     'name': 'datePosted'
                 },
                 {
-                    'name': 'mapper'
+                    'name': 'producedBy'
                 },
                 {
                     'name': 'note'

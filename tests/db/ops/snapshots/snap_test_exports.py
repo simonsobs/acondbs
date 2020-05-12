@@ -150,10 +150,10 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'simulations': [
         {
             'date_posted': GenericRepr('datetime.date(2019, 3, 15)'),
-            'mapper': 'abc-def',
             'name': 'xyz-s1234-20200101',
             'note': '''- note 1
 - note 2''',
+            'produced_by': 'abc-def',
             'product_id': 1001
         }
     ]
