@@ -8,7 +8,7 @@ from ..models import Map as MapModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
-from .common import CommonCreateProductInputFields, CommonUpdateInputFields
+from .common import CommonCreateProductInputFields, CommonUpdateProductInputFields
 
 ##__________________________________________________________________||
 class Map(SQLAlchemyObjectType):
@@ -27,7 +27,7 @@ class Map(SQLAlchemyObjectType):
 class CreateMapInput(graphene.InputObjectType, CommonCreateProductInputFields):
     pass
 
-class UpdateMapInput(graphene.InputObjectType, CommonUpdateInputFields):
+class UpdateMapInput(graphene.InputObjectType, CommonUpdateProductInputFields):
     pass
 
 class CreateMap(graphene.Mutation):

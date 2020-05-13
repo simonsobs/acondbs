@@ -8,7 +8,7 @@ from ..models import Beam as BeamModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
-from .common import CommonCreateProductInputFields, CommonUpdateInputFields
+from .common import CommonCreateProductInputFields, CommonUpdateProductInputFields
 
 ##__________________________________________________________________||
 class Beam(SQLAlchemyObjectType):
@@ -31,7 +31,7 @@ class Beam(SQLAlchemyObjectType):
 class CreateBeamInput(graphene.InputObjectType, CommonCreateProductInputFields):
     pass
 
-class UpdateBeamInput(graphene.InputObjectType, CommonUpdateInputFields):
+class UpdateBeamInput(graphene.InputObjectType, CommonUpdateProductInputFields):
     pass
 
 class CreateBeam(graphene.Mutation):

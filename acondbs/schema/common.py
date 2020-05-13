@@ -17,7 +17,7 @@ class CommonCreateProductInputFields(CommonInputFields):
     produced_by = graphene.String()
     posted_by = graphene.String()
 
-class CommonUpdateInputFields(CommonInputFields):
+class CommonUpdateProductInputFields(CommonInputFields):
     """Common input fields of mutations for updating different kinds of objects
 
     """
