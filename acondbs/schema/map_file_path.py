@@ -30,12 +30,12 @@ class CreateMapFilePath(graphene.Mutation):
     mapFilePath = graphene.Field(lambda: MapFilePath)
 
     def mutate(root, info, input):
-        mapFilePath = MapFilePathModel(**input)
-        sa.session.add(mapFilePath)
+        path = MapFilePathModel(**input)
+        sa.session.add(path)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateMapFilePath(mapFilePath=mapFilePath, ok=ok)
+        return CreateMapFilePath(mapFilePath=path, ok=ok)
 
 class UpdateMapFilePath(graphene.Mutation):
     class Arguments:
@@ -46,13 +46,13 @@ class UpdateMapFilePath(graphene.Mutation):
     mapFilePath = graphene.Field(lambda: MapFilePath)
 
     def mutate(root, info, path_id, input):
-        mapFilePath = MapFilePathModel.query.filter_by(path_id=path_id).first()
+        path = MapFilePathModel.query.filter_by(path_id=path_id).first()
         for k, v in input.items():
-            setattr(mapFilePath, k, v)
+            setattr(path, k, v)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return UpdateMapFilePath(mapFilePath=mapFilePath, ok=ok)
+        return UpdateMapFilePath(mapFilePath=path, ok=ok)
 
 class DeleteMapFilePath(graphene.Mutation):
     class Arguments:
@@ -61,8 +61,8 @@ class DeleteMapFilePath(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, path_id):
-        mapFilePath = MapFilePathModel.query.filter_by(path_id=path_id).first()
-        sa.session.delete(mapFilePath)
+        path = MapFilePathModel.query.filter_by(path_id=path_id).first()
+        sa.session.delete(path)
         sa.session.commit()
         ok = True
         request_backup_db()
