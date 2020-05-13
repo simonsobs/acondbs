@@ -8,15 +8,15 @@ params = [
     pytest.param(
         '''
           mutation m {
-            deleteMapFilePath(mapFilePathId: 1) { ok }
+            deleteMapFilePath(pathId: 1) { ok }
           }
         ''',
         '''
           {
-            map(mapId: 1001 ) {
+            map(productId: 1001 ) {
               name datePosted producedBy note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path note map { mapId } } } }
+              paths { edges { node { path note product { productId } } } }
             }
           }
         ''',

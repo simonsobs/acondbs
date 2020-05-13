@@ -1,6 +1,6 @@
-beam_id,name,input_map_id,input_beam_id
-1010,20180101,,
-1070,20190304,,
-1120,20190607,,
-1130,20200123,1012,
-1150,20200207,1013,1130
+product_id,name,input_map_product_id,input_beam_product_id,contact,date_posted,date_produced,date_updated,note,posted_by,produced_by,updated_by
+1010,20180101,,,,,,,,,,
+1070,20190304,,,,,,,,,,
+1120,20190607,,,,,,,,,,
+1130,20200123,1012,,,,,,,,,
+1150,20200207,1013,1130,,,,,,,,

@@ -1,4 +1,4 @@
-beam_file_path_id,beam_id,path,note
+path_id,product_id,path,note
 1,1070,BEAM_DEPOT/Beams/20190304,
 2,1120,BEAM_DEPOT/Beams/20190607,
 3,1130,BEAM_DEPOT/Beams/20200123,

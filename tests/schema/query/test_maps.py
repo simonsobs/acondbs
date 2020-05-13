@@ -23,19 +23,19 @@ params = [
     ),
     pytest.param(
         '''
-        { map(mapId: 1001) { name } }
+        { map(productId: 1001) { name } }
          ''',
         id='mapByMapID'
     ),
     pytest.param(
         '''
-        { map(mapId: 2001) { name } }
+        { map(productId: 2001) { name } }
          ''',
         id='mapByMapID-nonexistent'
     ),
     pytest.param(
         '''
-        { map(name: "lat20190213") { mapId } }
+        { map(name: "lat20190213") { productId } }
          ''',
         id='mapByName'
     ),
@@ -45,6 +45,8 @@ params = [
 def test_schema(app, snapshot, query):
     client = Client(schema)
     with app.app_context():
-        snapshot.assert_match(client.execute(query))
+        result = client.execute(query)
+        assert 'errors' not in result
+        snapshot.assert_match(result)
 
 ##__________________________________________________________________||

@@ -46,14 +46,14 @@ class CreateMap(graphene.Mutation):
 
 class UpdateMap(graphene.Mutation):
     class Arguments:
-        map_id = graphene.Int()
+        product_id = graphene.Int()
         input = UpdateMapInput(required=True)
 
     ok = graphene.Boolean()
     map = graphene.Field(lambda: Map)
 
-    def mutate(root, info, map_id, input):
-        map = MapModel.query.filter_by(map_id=map_id).first()
+    def mutate(root, info, product_id, input):
+        map = MapModel.query.filter_by(product_id=product_id).first()
         for k, v in input.items():
             setattr(map, k, v)
         sa.session.commit()
@@ -63,12 +63,12 @@ class UpdateMap(graphene.Mutation):
 
 class DeleteMap(graphene.Mutation):
     class Arguments:
-        map_id = graphene.Int()
+        product_id = graphene.Int()
 
     ok = graphene.Boolean()
 
-    def mutate(root, info, map_id):
-        map = MapModel.query.filter_by(map_id=map_id).first()
+    def mutate(root, info, product_id):
+        map = MapModel.query.filter_by(product_id=product_id).first()
         sa.session.delete(map)
         sa.session.commit()
         ok = True

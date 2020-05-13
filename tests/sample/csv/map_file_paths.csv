@@ -1,4 +1,4 @@
-map_file_path_id,map_id,path,note
+path_id,product_id,path,note
 1,1001,nersc:/go/to/my/maps,
 2,1012,nersc:/go/to/my/maps_v2,lat only
 3,1012,abcde:/path/to/the/maps_v2,lat only

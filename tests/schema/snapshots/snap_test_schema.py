@@ -13,22 +13,37 @@ snapshots['test_object[Simulation] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'simulationId'
+                    'name': 'productId'
                 },
                 {
                     'name': 'name'
                 },
                 {
+                    'name': 'contact'
+                },
+                {
+                    'name': 'dateProduced'
+                },
+                {
+                    'name': 'producedBy'
+                },
+                {
                     'name': 'datePosted'
                 },
                 {
-                    'name': 'mapper'
+                    'name': 'postedBy'
+                },
+                {
+                    'name': 'dateUpdated'
+                },
+                {
+                    'name': 'updatedBy'
                 },
                 {
                     'name': 'note'
                 },
                 {
-                    'name': 'simulationFilePaths'
+                    'name': 'paths'
                 },
                 {
                     'name': 'id'
@@ -62,10 +77,7 @@ snapshots['test_object[SimulationFilePath] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'simulationFilePathId'
-                },
-                {
-                    'name': 'simulationId'
+                    'name': 'pathId'
                 },
                 {
                     'name': 'path'
@@ -74,7 +86,10 @@ snapshots['test_object[SimulationFilePath] 1'] = {
                     'name': 'note'
                 },
                 {
-                    'name': 'simulation'
+                    'name': 'productId'
+                },
+                {
+                    'name': 'product'
                 },
                 {
                     'name': 'id'
@@ -108,6 +123,9 @@ snapshots['test_object[Map] 1'] = {
             'description': None,
             'fields': [
                 {
+                    'name': 'productId'
+                },
+                {
                     'name': 'name'
                 },
                 {
@@ -132,13 +150,10 @@ snapshots['test_object[Map] 1'] = {
                     'name': 'updatedBy'
                 },
                 {
-                    'name': 'mapId'
-                },
-                {
                     'name': 'note'
                 },
                 {
-                    'name': 'mapFilePaths'
+                    'name': 'paths'
                 },
                 {
                     'name': 'beams'
@@ -175,10 +190,7 @@ snapshots['test_object[MapFilePath] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'mapFilePathId'
-                },
-                {
-                    'name': 'mapId'
+                    'name': 'pathId'
                 },
                 {
                     'name': 'path'
@@ -187,7 +199,10 @@ snapshots['test_object[MapFilePath] 1'] = {
                     'name': 'note'
                 },
                 {
-                    'name': 'map'
+                    'name': 'productId'
+                },
+                {
+                    'name': 'product'
                 },
                 {
                     'name': 'id'
@@ -221,16 +236,40 @@ snapshots['test_object[Beam] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'beamId'
+                    'name': 'productId'
                 },
                 {
                     'name': 'name'
                 },
                 {
-                    'name': 'inputMapId'
+                    'name': 'contact'
                 },
                 {
-                    'name': 'inputBeamId'
+                    'name': 'dateProduced'
+                },
+                {
+                    'name': 'producedBy'
+                },
+                {
+                    'name': 'datePosted'
+                },
+                {
+                    'name': 'postedBy'
+                },
+                {
+                    'name': 'dateUpdated'
+                },
+                {
+                    'name': 'updatedBy'
+                },
+                {
+                    'name': 'note'
+                },
+                {
+                    'name': 'inputMapProductId'
+                },
+                {
+                    'name': 'inputBeamProductId'
                 },
                 {
                     'name': 'map'
@@ -242,7 +281,7 @@ snapshots['test_object[Beam] 1'] = {
                     'name': 'childBeams'
                 },
                 {
-                    'name': 'beamFilePaths'
+                    'name': 'paths'
                 },
                 {
                     'name': 'id'
@@ -276,10 +315,7 @@ snapshots['test_object[BeamFilePath] 1'] = {
             'description': None,
             'fields': [
                 {
-                    'name': 'beamFilePathId'
-                },
-                {
-                    'name': 'beamId'
+                    'name': 'pathId'
                 },
                 {
                     'name': 'path'
@@ -288,7 +324,10 @@ snapshots['test_object[BeamFilePath] 1'] = {
                     'name': 'note'
                 },
                 {
-                    'name': 'beam'
+                    'name': 'productId'
+                },
+                {
+                    'name': 'product'
                 },
                 {
                     'name': 'id'

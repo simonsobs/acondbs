@@ -25,31 +25,31 @@ snapshots['test_schema_success[createMapFilePath] 2'] = {
                 ]
             },
             'datePosted': '2019-02-13',
-            'mapFilePaths': {
+            'name': 'lat20190213',
+            'note': '''- This is a dummy test with a lat map
+- This should not depend on any beam''',
+            'paths': {
                 'edges': [
                     {
                         'node': {
-                            'map': {
-                                'mapId': '1001'
-                            },
                             'note': '',
-                            'path': 'nersc:/go/to/my/maps'
+                            'path': 'nersc:/go/to/my/maps',
+                            'product': {
+                                'productId': '1001'
+                            }
                         }
                     },
                     {
                         'node': {
-                            'map': {
-                                'mapId': '1001'
-                            },
                             'note': '- Note 1',
-                            'path': 'nersc:/go/to/my/new_map_v1'
+                            'path': 'nersc:/go/to/my/new_map_v1',
+                            'product': {
+                                'productId': '1001'
+                            }
                         }
                     }
                 ]
             },
-            'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
             'producedBy': 'pwg-pmn'
         }
     }

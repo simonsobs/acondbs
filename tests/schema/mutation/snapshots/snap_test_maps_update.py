@@ -11,16 +11,10 @@ snapshots['test_schema_success[updateMap] 1'] = {
     'data': {
         'updateMap': {
             'map': {
-                'mapId': '1001',
-                'name': 'lat20190213'
+                'name': 'lat20190213',
+                'productId': '1001'
             }
         }
-    }
-}
-
-snapshots['test_schema_success[updateMap] 2'] = {
-    'data': {
-        'map': None
     }
 }
 
@@ -29,7 +23,7 @@ snapshots['test_schema_error[updateMap-error-immutable-fields] 1'] = {
         {
             'locations': [
                 {
-                    'column': 41,
+                    'column': 45,
                     'line': 3
                 }
             ],
@@ -37,6 +31,12 @@ snapshots['test_schema_error[updateMap-error-immutable-fields] 1'] = {
 In field "name": Unknown field.'''
         }
     ]
+}
+
+snapshots['test_schema_success[updateMap] 2'] = {
+    'data': {
+        'map': None
+    }
 }
 
 snapshots['test_schema_error[updateMap-error-immutable-fields] 2'] = {
@@ -50,7 +50,10 @@ snapshots['test_schema_error[updateMap-error-immutable-fields] 2'] = {
             'datePosted': '2019-02-13',
             'dateProduced': '2019-02-13',
             'dateUpdated': '2019-02-13',
-            'mapFilePaths': {
+            'name': 'lat20190213',
+            'note': '''- This is a dummy test with a lat map
+- This should not depend on any beam''',
+            'paths': {
                 'edges': [
                     {
                         'node': {
@@ -59,9 +62,6 @@ snapshots['test_schema_error[updateMap-error-immutable-fields] 2'] = {
                     }
                 ]
             },
-            'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
             'postedBy': 'pwg-pmn',
             'producedBy': 'pwg-pmn',
             'updatedBy': 'pwg-pmn'

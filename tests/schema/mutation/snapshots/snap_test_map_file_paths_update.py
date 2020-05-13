@@ -30,40 +30,40 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                 ]
             },
             'datePosted': '2020-01-20',
-            'mapFilePaths': {
+            'name': 'lat20200120',
+            'note': '''- This is a dummy test with a lat map
+- A beam depends on this map''',
+            'paths': {
                 'edges': [
                     {
                         'node': {
-                            'map': {
-                                'mapId': '1012'
-                            },
                             'note': '- Note 1 updated',
-                            'path': 'nersc:/go/to/my/new_map_v2'
+                            'path': 'nersc:/go/to/my/new_map_v2',
+                            'product': {
+                                'productId': '1012'
+                            }
                         }
                     },
                     {
                         'node': {
-                            'map': {
-                                'mapId': '1012'
-                            },
                             'note': 'lat only',
-                            'path': 'nersc:/go/to/my/maps_v2'
+                            'path': 'nersc:/go/to/my/maps_v2',
+                            'product': {
+                                'productId': '1012'
+                            }
                         }
                     },
                     {
                         'node': {
-                            'map': {
-                                'mapId': '1012'
-                            },
                             'note': 'lat only',
-                            'path': 'abcde:/path/to/the/maps_v2'
+                            'path': 'abcde:/path/to/the/maps_v2',
+                            'product': {
+                                'productId': '1012'
+                            }
                         }
                     }
                 ]
             },
-            'name': 'lat20200120',
-            'note': '''- This is a dummy test with a lat map
-- A beam depends on this map''',
             'producedBy': 'pwg-pmn'
         }
     }

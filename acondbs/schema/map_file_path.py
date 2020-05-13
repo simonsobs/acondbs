@@ -17,7 +17,7 @@ class MapFilePath(SQLAlchemyObjectType):
 class MapFilePathAttribute:
     path = graphene.String()
     note = graphene.String()
-    map_id = graphene.Int()
+    product_id = graphene.Int()
 
 class CreateMapFilePathInput(graphene.InputObjectType, MapFilePathAttribute):
     pass
@@ -42,14 +42,14 @@ class CreateMapFilePath(graphene.Mutation):
 
 class UpdateMapFilePath(graphene.Mutation):
     class Arguments:
-        map_file_path_id = graphene.Int()
+        path_id = graphene.Int()
         input = UpdateMapFilePathInput(required=True)
 
     ok = graphene.Boolean()
     mapFilePath = graphene.Field(lambda: MapFilePath)
 
-    def mutate(root, info, map_file_path_id, input):
-        mapFilePath = MapFilePathModel.query.filter_by(map_file_path_id=map_file_path_id).first()
+    def mutate(root, info, path_id, input):
+        mapFilePath = MapFilePathModel.query.filter_by(path_id=path_id).first()
         for k, v in input.items():
             setattr(mapFilePath, k, v)
         sa.session.commit()
@@ -59,12 +59,12 @@ class UpdateMapFilePath(graphene.Mutation):
 
 class DeleteMapFilePath(graphene.Mutation):
     class Arguments:
-        map_file_path_id = graphene.Int()
+        path_id = graphene.Int()
 
     ok = graphene.Boolean()
 
-    def mutate(root, info, map_file_path_id):
-        mapFilePath = MapFilePathModel.query.filter_by(map_file_path_id=map_file_path_id).first()
+    def mutate(root, info, path_id):
+        mapFilePath = MapFilePathModel.query.filter_by(path_id=path_id).first()
         sa.session.delete(mapFilePath)
         sa.session.commit()
         ok = True

@@ -17,60 +17,12 @@ snapshots['test_schema_success[createMap-all-options] 1'] = {
     }
 }
 
-snapshots['test_schema_success[createMap-all-options] 2'] = {
-    'data': {
-        'map': {
-            'beams': {
-                'edges': [
-                ]
-            },
-            'contact': 'contact-person',
-            'datePosted': '2020-05-04',
-            'dateProduced': '2020-02-20',
-            'dateUpdated': None,
-            'mapFilePaths': {
-                'edges': [
-                ]
-            },
-            'name': 'map1',
-            'note': '- Item 1',
-            'postedBy': 'poster',
-            'producedBy': 'producer',
-            'updatedBy': None
-        }
-    }
-}
-
 snapshots['test_schema_success[createMap-selective-options] 1'] = {
     'data': {
         'createMap': {
             'map': {
                 'name': 'map1'
             }
-        }
-    }
-}
-
-snapshots['test_schema_success[createMap-selective-options] 2'] = {
-    'data': {
-        'map': {
-            'beams': {
-                'edges': [
-                ]
-            },
-            'contact': None,
-            'datePosted': '2020-05-04',
-            'dateProduced': None,
-            'dateUpdated': None,
-            'mapFilePaths': {
-                'edges': [
-                ]
-            },
-            'name': 'map1',
-            'note': None,
-            'postedBy': None,
-            'producedBy': 'pwg-pmn',
-            'updatedBy': None
         }
     }
 }
@@ -88,6 +40,54 @@ snapshots['test_schema_error[createMap-error-no-name] 1'] = {
 In field "name": Expected "String!", found null.'''
         }
     ]
+}
+
+snapshots['test_schema_success[createMap-all-options] 2'] = {
+    'data': {
+        'map': {
+            'beams': {
+                'edges': [
+                ]
+            },
+            'contact': 'contact-person',
+            'datePosted': '2020-05-04',
+            'dateProduced': '2020-02-20',
+            'dateUpdated': None,
+            'name': 'map1',
+            'note': '- Item 1',
+            'paths': {
+                'edges': [
+                ]
+            },
+            'postedBy': 'poster',
+            'producedBy': 'producer',
+            'updatedBy': None
+        }
+    }
+}
+
+snapshots['test_schema_success[createMap-selective-options] 2'] = {
+    'data': {
+        'map': {
+            'beams': {
+                'edges': [
+                ]
+            },
+            'contact': None,
+            'datePosted': '2020-05-04',
+            'dateProduced': None,
+            'dateUpdated': None,
+            'name': 'map1',
+            'note': None,
+            'paths': {
+                'edges': [
+                ]
+            },
+            'postedBy': None,
+            'producedBy': 'pwg-pmn',
+            'updatedBy': None
+        }
+    }
 }
 
 snapshots['test_schema_error[createMap-error-no-name] 2'] = {

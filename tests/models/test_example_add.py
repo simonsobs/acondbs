@@ -59,21 +59,21 @@ def test_primary_key(app):
 
     map1 = Map(name="map1")
 
-    # The primary key (map_id) is None at this point
-    assert map1.map_id is None
+    # The primary key (product_id) is None at this point
+    assert map1.product_id is None
 
     with app.app_context():
         sa.session.add(map1)
         sa.session.commit()
 
-        # After the commit, map_id is automatically assigned
-        map_id = map1.map_id
-        assert map_id is not None
+        # After the commit, product_id is automatically assigned
+        product_id = map1.product_id
+        assert product_id is not None
 
     with app.app_context():
 
-        # The object can be retrived by the map_id in another context
-        map1 = Map.query.filter_by(map_id=map_id).first()
+        # The object can be retrived by the product_id in another context
+        map1 = Map.query.filter_by(product_id=product_id).first()
         assert 'map1' == map1.name
 
 # __________________________________________________________________||
@@ -89,20 +89,20 @@ def test_relation(app):
     assert [beam1] == map1.beams
 
     # The primary and foreign keys are still None
-    assert map1.map_id is None
-    assert beam1.beam_id is None
-    assert beam1.input_map_id is None
+    assert map1.product_id is None
+    assert beam1.product_id is None
+    assert beam1.input_map_product_id is None
 
     with app.app_context():
         sa.session.add(map1)
         sa.session.commit()
 
         # The primary keys are assigned
-        assert map1.map_id is not None
-        assert beam1.beam_id is not None
+        assert map1.product_id is not None
+        assert beam1.product_id is not None
 
         # The foreign key is correctly set
-        assert map1.map_id == beam1.input_map_id
+        assert map1.product_id == beam1.input_map_product_id
 
     with app.app_context():
         map1 = Map.query.filter_by(name='map1').first()
@@ -111,6 +111,6 @@ def test_relation(app):
         # The relation is preserved in a different app context
         assert map1 is beam1.map
         assert beam1 is map1.beams[0]
-        assert map1.map_id == beam1.input_map_id
+        assert map1.product_id == beam1.input_map_product_id
 
 # __________________________________________________________________||

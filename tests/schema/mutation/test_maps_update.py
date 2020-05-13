@@ -8,12 +8,12 @@ params = [
     pytest.param(
         '''
         mutation m {
-          updateMap(mapId: 1001, input: {
+          updateMap(productId: 1001, input: {
               contact: "new-contact",
               updatedBy: "updater",
               note: "- updated note 123"
           }) {
-            map { mapId name } }
+            map { productId name } }
         }
          ''',
         '''
@@ -25,7 +25,7 @@ params = [
               dateUpdated updatedBy
               note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path } } }
+              paths { edges { node { path } } }
             }
           }
         ''',
@@ -51,22 +51,22 @@ params = [
     pytest.param(
         '''
         mutation m {
-          updateMap(mapId: 1001, input: {
+          updateMap(productId: 1001, input: {
               name: "new-name"
           }) {
-            map { mapId name } }
+            map { productId name } }
         }
          ''',
         '''
           {
-            map(mapId: 1001) {
+            map(productId: 1001) {
               name contact
               datePosted postedBy
               dateProduced producedBy
               dateUpdated updatedBy
               note
               beams { edges { node { name } } }
-              mapFilePaths { edges { node { path } } }
+              paths { edges { node { path } } }
             }
           }
         ''',

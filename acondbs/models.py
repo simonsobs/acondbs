@@ -15,7 +15,8 @@ https://docs.sqlalchhttps://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-
 from .db.sa import sa
 
 ##__________________________________________________________________||
-class CommonFields:
+class CommonProductFields:
+    product_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
     contact = sa.Column(sa.Text())
     date_produced = sa.Column(sa.Date())
@@ -24,52 +25,43 @@ class CommonFields:
     posted_by = sa.Column(sa.Text())
     date_updated = sa.Column(sa.Date())
     updated_by = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
+
+class CommonFilePathFields:
+    path_id = sa.Column(sa.Integer(), primary_key=True)
+    path = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
 
 ##__________________________________________________________________||
-class Simulation(sa.Model):
+class Simulation(sa.Model, CommonProductFields):
     __tablename__ = 'simulations'
-    simulation_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    date_posted = sa.Column(sa.Date())
-    mapper = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
 
-class SimulationFilePath(sa.Model):
+class SimulationFilePath(sa.Model, CommonFilePathFields):
     __tablename__ = 'simulation_file_paths'
-    simulation_file_path_id = sa.Column(sa.Integer(), primary_key=True)
-    simulation_id = sa.Column(sa.ForeignKey('simulations.simulation_id'))
-    path = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
-    simulation = sa.relationship("Simulation", backref=sa.backref("simulation_file_paths"))
+    product_id = sa.Column(sa.ForeignKey('simulations.product_id'))
+    product = sa.relationship("Simulation", backref=sa.backref("paths"))
 
-class Map(sa.Model, CommonFields):
+##__________________________________________________________________||
+class Map(sa.Model, CommonProductFields):
     __tablename__ = 'maps'
-    map_id = sa.Column(sa.Integer(), primary_key=True)
-    note = sa.Column(sa.Text())
 
-class MapFilePath(sa.Model):
+class MapFilePath(sa.Model, CommonFilePathFields):
     __tablename__ = 'map_file_paths'
-    map_file_path_id = sa.Column(sa.Integer(), primary_key=True)
-    map_id = sa.Column(sa.ForeignKey('maps.map_id'))
-    path = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
-    map = sa.relationship("Map", backref=sa.backref("map_file_paths"))
+    product_id = sa.Column(sa.ForeignKey('maps.product_id'))
+    product = sa.relationship("Map", backref=sa.backref("paths"))
 
-class Beam(sa.Model):
+##__________________________________________________________________||
+class Beam(sa.Model, CommonProductFields):
     __tablename__ = 'beams'
-    beam_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    input_map_id = sa.Column(sa.ForeignKey('maps.map_id'))
-    input_beam_id = sa.Column(sa.ForeignKey('beams.beam_id'))
+    input_map_product_id = sa.Column(sa.ForeignKey('maps.product_id'))
+    input_beam_product_id = sa.Column(sa.ForeignKey('beams.product_id'))
     map = sa.relationship("Map", backref=sa.backref("beams"))
-    parent_beam = sa.relationship(lambda: Beam, remote_side=beam_id, backref=sa.backref("child_beams"))
+    parent_beam = sa.relationship(lambda: Beam, remote_side="Beam.product_id", backref=sa.backref("child_beams"))
 
-class BeamFilePath(sa.Model):
+
+class BeamFilePath(sa.Model, CommonFilePathFields):
     __tablename__ = 'beam_file_paths'
-    beam_file_path_id = sa.Column(sa.Integer(), primary_key=True)
-    beam_id = sa.Column(sa.ForeignKey('beams.beam_id'))
-    path = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
-    beam = sa.relationship("Beam", backref=sa.backref("beam_file_paths"))
+    product_id = sa.Column(sa.ForeignKey('beams.product_id'))
+    product = sa.relationship("Beam", backref=sa.backref("paths"))
 
 ##__________________________________________________________________||
