@@ -7,6 +7,7 @@ from .beam import CreateBeam, UpdateBeam, DeleteBeam
 from .beam_file_path import CreateBeamFilePath, UpdateBeamFilePath, DeleteBeamFilePath
 
 from .simulation import CreateSimulation, UpdateSimulation, DeleteSimulation
+from .simulation_file_path import CreateSimulationFilePath, UpdateSimulationFilePath, DeleteSimulationFilePath
 
 from .query import Query
 
@@ -31,5 +32,9 @@ class Mutation(graphene.ObjectType):
     create_simulation = CreateSimulation.Field()
     update_simulation = UpdateSimulation.Field()
     delete_simulation = DeleteSimulation.Field()
+
+    create_simulation_file_path = CreateSimulationFilePath.Field()
+    update_simulation_file_path = UpdateSimulationFilePath.Field()
+    delete_simulation_file_path = DeleteSimulationFilePath.Field()
 
 ##__________________________________________________________________||
