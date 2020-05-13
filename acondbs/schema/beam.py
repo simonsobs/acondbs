@@ -63,6 +63,8 @@ class UpdateBeam(graphene.Mutation):
         beam = BeamModel.query.filter_by(product_id=product_id).first()
         for k, v in input.items():
             setattr(beam, k, v)
+        today = datetime.date.today()
+        beam.date_updated = today
         sa.session.commit()
         ok = True
         request_backup_db()

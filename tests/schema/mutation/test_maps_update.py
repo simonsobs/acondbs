@@ -18,7 +18,7 @@ params = [
          ''',
         '''
           {
-            map(name: "map1") {
+            map(productId: 1001) {
               name contact
               datePosted postedBy
               dateProduced producedBy

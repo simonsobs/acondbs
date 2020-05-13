@@ -59,6 +59,8 @@ class UpdateMap(graphene.Mutation):
         map = MapModel.query.filter_by(product_id=product_id).first()
         for k, v in input.items():
             setattr(map, k, v)
+        today = datetime.date.today()
+        map.date_updated = today
         sa.session.commit()
         ok = True
         request_backup_db()

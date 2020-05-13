@@ -20,7 +20,21 @@ snapshots['test_schema_success[updateBeam] 1'] = {
 
 snapshots['test_schema_success[updateBeam] 2'] = {
     'data': {
-        'beam': None
+        'beam': {
+            'contact': 'new-contact',
+            'datePosted': None,
+            'dateProduced': None,
+            'dateUpdated': '2020-05-04',
+            'name': '20180101',
+            'note': '- updated note 123',
+            'paths': {
+                'edges': [
+                ]
+            },
+            'postedBy': '',
+            'producedBy': '',
+            'updatedBy': 'updater'
+        }
     }
 }
 
@@ -41,6 +55,20 @@ In field "name": Unknown field.'''
 
 snapshots['test_schema_error[updateBeam-error-immutable-fields] 2'] = {
     'data': {
-        'beam': None
+        'beam': {
+            'contact': '',
+            'datePosted': None,
+            'dateProduced': None,
+            'dateUpdated': None,
+            'name': '20180101',
+            'note': '',
+            'paths': {
+                'edges': [
+                ]
+            },
+            'postedBy': '',
+            'producedBy': '',
+            'updatedBy': ''
+        }
     }
 }

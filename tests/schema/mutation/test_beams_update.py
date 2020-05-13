@@ -18,7 +18,7 @@ params = [
          ''',
         '''
           {
-            beam(name: "beam1") {
+            beam(productId: 1010) {
               name contact
               datePosted postedBy
               dateProduced producedBy
@@ -50,7 +50,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          updateBeam(productId: 1001, input: {
+          updateBeam(productId: 1010, input: {
               name: "new-name"
           }) {
             beam { productId name } }
@@ -58,7 +58,7 @@ params = [
          ''',
         '''
           {
-            beam(productId: 1001) {
+            beam(productId: 1010) {
               name contact
               datePosted postedBy
               dateProduced producedBy

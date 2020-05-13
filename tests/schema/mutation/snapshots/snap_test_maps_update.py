@@ -35,7 +35,30 @@ In field "name": Unknown field.'''
 
 snapshots['test_schema_success[updateMap] 2'] = {
     'data': {
-        'map': None
+        'map': {
+            'beams': {
+                'edges': [
+                ]
+            },
+            'contact': 'new-contact',
+            'datePosted': '2019-02-13',
+            'dateProduced': '2019-02-13',
+            'dateUpdated': '2020-05-04',
+            'name': 'lat20190213',
+            'note': '- updated note 123',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'path': 'nersc:/go/to/my/maps'
+                        }
+                    }
+                ]
+            },
+            'postedBy': 'pwg-pmn',
+            'producedBy': 'pwg-pmn',
+            'updatedBy': 'updater'
+        }
     }
 }
 
