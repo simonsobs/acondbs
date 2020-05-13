@@ -92,6 +92,24 @@ snapshots['test_schema_success[createMap-selective-options] 2'] = {
 
 snapshots['test_schema_error[createMap-error-no-name] 2'] = {
     'data': {
-        'map': None
+        'allMaps': {
+            'edges': [
+                {
+                    'node': {
+                        'productId': '1001'
+                    }
+                },
+                {
+                    'node': {
+                        'productId': '1012'
+                    }
+                },
+                {
+                    'node': {
+                        'productId': '1013'
+                    }
+                }
+            ]
+        }
     }
 }

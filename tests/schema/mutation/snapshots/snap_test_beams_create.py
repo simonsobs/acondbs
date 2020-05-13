@@ -24,7 +24,35 @@ In field "name": Expected "String!", found null.'''
 
 snapshots['test_schema_error[createBeam-error-no-name] 2'] = {
     'data': {
-        'beam': None
+        'allBeams': {
+            'edges': [
+                {
+                    'node': {
+                        'productId': '1010'
+                    }
+                },
+                {
+                    'node': {
+                        'productId': '1070'
+                    }
+                },
+                {
+                    'node': {
+                        'productId': '1120'
+                    }
+                },
+                {
+                    'node': {
+                        'productId': '1130'
+                    }
+                },
+                {
+                    'node': {
+                        'productId': '1150'
+                    }
+                }
+            ]
+        }
     }
 }
 

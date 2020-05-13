@@ -86,14 +86,12 @@ params = [
         ''',
         '''
           {
-            map(name: "map1") {
-              name contact
-              datePosted postedBy
-              dateProduced producedBy
-              dateUpdated updatedBy
-              note
-              beams { edges { node { name } } }
-              paths { edges { node { path } } }
+            allMaps {
+              edges {
+                node {
+                  productId
+                }
+              }
             }
           }
         ''',

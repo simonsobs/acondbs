@@ -61,13 +61,12 @@ params = [
         ''',
         '''
           {
-            beam(name: "beam1") {
-              name contact
-              datePosted postedBy
-              dateProduced producedBy
-              dateUpdated updatedBy
-              note
-              paths { edges { node { path } } }
+            allBeams {
+              edges {
+                node {
+                  productId
+                }
+              }
             }
           }
         ''',
