@@ -7,6 +7,8 @@ from ..models import MapFilePath as MapFilePathModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
+from .common import CommonCreateFilePathInputFields, CommonUpdateFilePathInputFields
+
 ##__________________________________________________________________||
 class MapFilePath(SQLAlchemyObjectType):
     class Meta:
@@ -14,14 +16,10 @@ class MapFilePath(SQLAlchemyObjectType):
         interfaces = (relay.Node, )
 
 ##__________________________________________________________________||
-class MapFilePathAttribute:
-    path = graphene.String()
-    note = graphene.String()
+class CreateMapFilePathInput(graphene.InputObjectType, CommonCreateFilePathInputFields):
+    pass
 
-class CreateMapFilePathInput(graphene.InputObjectType, MapFilePathAttribute):
-    product_id = graphene.Int()
-
-class UpdateMapFilePathInput(graphene.InputObjectType, MapFilePathAttribute):
+class UpdateMapFilePathInput(graphene.InputObjectType, CommonUpdateFilePathInputFields):
     pass
 
 class CreateMapFilePath(graphene.Mutation):

@@ -24,3 +24,23 @@ class CommonUpdateProductInputFields(CommonProductInputFields):
     updated_by = graphene.String()
 
 ##__________________________________________________________________||
+class CommonFilePathInputFields:
+    """Common input fields of mutations for creating and updating different kinds of file paths
+
+    """
+    path = graphene.String()
+    note = graphene.String()
+
+class CommonCreateFilePathInputFields(CommonFilePathInputFields):
+    """Common input fields of mutations for creating different kinds of file paths
+
+    """
+    product_id = graphene.Int()
+
+class CommonUpdateFilePathInputFields(CommonFilePathInputFields):
+    """Common input fields of mutations for updating different kinds of file paths
+
+    """
+    pass
+
+##__________________________________________________________________||
