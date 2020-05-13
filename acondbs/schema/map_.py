@@ -16,9 +16,12 @@ class Map(SQLAlchemyObjectType):
         model = MapModel
         interfaces = (relay.Node, )
 
-class MapConnection(relay.Connection):
-    class Meta:
-        node = Map
+# class MapConnection(relay.Connection):
+#     class Meta:
+#         node = Map
+
+## Map._meta.connection is used instead
+## https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-478744077
 
 ##__________________________________________________________________||
 class CreateMapInput(graphene.InputObjectType, CommonCreateInputFields):

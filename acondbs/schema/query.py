@@ -3,7 +3,7 @@ from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
 
 from .simulation import Simulation, SimulationModel
-from .map_ import Map, MapModel, MapConnection
+from .map_ import Map, MapModel
 from .beam import Beam, BeamModel
 from .beam_file_path import BeamFilePath, BeamFilePathModel
 from .map_file_path import MapFilePath, MapFilePathModel
@@ -20,7 +20,7 @@ class Query(graphene.ObjectType):
 
     node = relay.Node.Field()
     all_simulations = SQLAlchemyConnectionField(Simulation._meta.connection)
-    all_maps = SQLAlchemyConnectionField(MapConnection)
+    all_maps = SQLAlchemyConnectionField(Map._meta.connection)
     all_beams = SQLAlchemyConnectionField(Beam._meta.connection)
     all_simulation_file_paths = SQLAlchemyConnectionField(SimulationFilePath._meta.connection)
     all_map_file_paths = SQLAlchemyConnectionField(MapFilePath._meta.connection)
