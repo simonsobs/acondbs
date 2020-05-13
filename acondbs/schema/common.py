@@ -1,14 +1,14 @@
 import graphene
 
 ##__________________________________________________________________||
-class CommonInputFields:
+class CommonProductInputFields:
     """Common input fields of mutations for creating and updating different kinds of objects
 
     """
     contact = graphene.String()
     note = graphene.String()
 
-class CommonCreateProductInputFields(CommonInputFields):
+class CommonCreateProductInputFields(CommonProductInputFields):
     """Common input fields of mutations for creating different kinds of objects
 
     """
@@ -17,7 +17,7 @@ class CommonCreateProductInputFields(CommonInputFields):
     produced_by = graphene.String()
     posted_by = graphene.String()
 
-class CommonUpdateProductInputFields(CommonInputFields):
+class CommonUpdateProductInputFields(CommonProductInputFields):
     """Common input fields of mutations for updating different kinds of objects
 
     """
