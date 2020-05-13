@@ -36,34 +36,74 @@ snapshots['test_import_tables_from_csv_files 1'] = {
     ],
     'beams': [
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': '',
             'name': '20180101',
-            'product_id': 1010
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1010,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': '',
             'name': '20190304',
-            'product_id': 1070
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1070,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': '',
             'name': '20190607',
-            'product_id': 1120
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1120,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': 1012,
             'name': '20200123',
-            'product_id': 1130
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1130,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': 1130,
             'input_map_product_id': 1013,
             'name': '20200207',
-            'product_id': 1150
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1150,
+            'updated_by': ''
         }
     ],
     'map_file_paths': [
@@ -149,17 +189,17 @@ snapshots['test_import_tables_from_csv_files 1'] = {
     ],
     'simulations': [
         {
-            'contact': None,
+            'contact': '',
             'date_posted': None,
             'date_produced': GenericRepr('datetime.date(2019, 3, 15)'),
             'date_updated': None,
             'name': 'xyz-s1234-20200101',
             'note': '''- note 1
 - note 2''',
-            'posted_by': None,
+            'posted_by': '',
             'produced_by': 'abc-def',
             'product_id': 1001,
-            'updated_by': None
+            'updated_by': ''
         }
     ]
 }

@@ -36,34 +36,74 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'beams': [
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': '',
             'name': '20180101',
-            'product_id': 1010
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1010,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': '',
             'name': '20190304',
-            'product_id': 1070
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1070,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': '',
             'name': '20190607',
-            'product_id': 1120
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1120,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': '',
             'input_map_product_id': 1012,
             'name': '20200123',
-            'product_id': 1130
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1130,
+            'updated_by': ''
         },
         {
+            'contact': '',
+            'date_posted': None,
+            'date_produced': None,
+            'date_updated': None,
             'input_beam_product_id': 1130,
             'input_map_product_id': 1013,
             'name': '20200207',
-            'product_id': 1150
+            'note': '',
+            'posted_by': '',
+            'produced_by': '',
+            'product_id': 1150,
+            'updated_by': ''
         }
     ],
     'map_file_paths': [

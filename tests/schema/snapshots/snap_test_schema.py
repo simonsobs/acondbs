@@ -242,6 +242,30 @@ snapshots['test_object[Beam] 1'] = {
                     'name': 'name'
                 },
                 {
+                    'name': 'contact'
+                },
+                {
+                    'name': 'dateProduced'
+                },
+                {
+                    'name': 'producedBy'
+                },
+                {
+                    'name': 'datePosted'
+                },
+                {
+                    'name': 'postedBy'
+                },
+                {
+                    'name': 'dateUpdated'
+                },
+                {
+                    'name': 'updatedBy'
+                },
+                {
+                    'name': 'note'
+                },
+                {
                     'name': 'inputMapProductId'
                 },
                 {

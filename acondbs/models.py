@@ -50,14 +50,13 @@ class MapFilePath(sa.Model):
     note = sa.Column(sa.Text())
     product = sa.relationship("Map", backref=sa.backref("paths"))
 
-class Beam(sa.Model):
+class Beam(sa.Model, CommonFields):
     __tablename__ = 'beams'
-    product_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
     input_map_product_id = sa.Column(sa.ForeignKey('maps.product_id'))
     input_beam_product_id = sa.Column(sa.ForeignKey('beams.product_id'))
     map = sa.relationship("Map", backref=sa.backref("beams"))
-    parent_beam = sa.relationship(lambda: Beam, remote_side=product_id, backref=sa.backref("child_beams"))
+    parent_beam = sa.relationship(lambda: Beam, remote_side="Beam.product_id", backref=sa.backref("child_beams"))
+
 
 class BeamFilePath(sa.Model):
     __tablename__ = 'beam_file_paths'
