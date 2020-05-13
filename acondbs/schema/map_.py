@@ -38,14 +38,14 @@ class CreateMap(graphene.Mutation):
     map = graphene.Field(lambda: Map)
 
     def mutate(root, info, input):
-        map = MapModel(**input)
+        product = MapModel(**input)
         today = datetime.date.today()
-        map.date_posted = today
-        sa.session.add(map)
+        product.date_posted = today
+        sa.session.add(product)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateMap(map=map, ok=ok)
+        return CreateMap(map=product, ok=ok)
 
 class UpdateMap(graphene.Mutation):
     class Arguments:
@@ -56,15 +56,15 @@ class UpdateMap(graphene.Mutation):
     map = graphene.Field(lambda: Map)
 
     def mutate(root, info, product_id, input):
-        map = MapModel.query.filter_by(product_id=product_id).first()
+        product = MapModel.query.filter_by(product_id=product_id).first()
         for k, v in input.items():
-            setattr(map, k, v)
+            setattr(product, k, v)
         today = datetime.date.today()
-        map.date_updated = today
+        product.date_updated = today
         sa.session.commit()
         ok = True
         request_backup_db()
-        return UpdateMap(map=map, ok=ok)
+        return UpdateMap(map=product, ok=ok)
 
 class DeleteMap(graphene.Mutation):
     class Arguments:
@@ -73,8 +73,8 @@ class DeleteMap(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, product_id):
-        map = MapModel.query.filter_by(product_id=product_id).first()
-        sa.session.delete(map)
+        product = MapModel.query.filter_by(product_id=product_id).first()
+        sa.session.delete(product)
         sa.session.commit()
         ok = True
         request_backup_db()
