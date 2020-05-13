@@ -8,7 +8,7 @@ class CommonInputFields:
     contact = graphene.String()
     note = graphene.String()
 
-class CommonCreateInputFields(CommonInputFields):
+class CommonCreateProductInputFields(CommonInputFields):
     """Common input fields of mutations for creating different kinds of objects
 
     """
