@@ -54,3 +54,47 @@ snapshots['test_schema_success[createMapFilePath] 2'] = {
         }
     }
 }
+
+snapshots['test_schema_error[createMapFilePath-noSuchField] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 38,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {path: "nersc:/go/to/my/new_map_v1", note: "- Note 1", productId: 1001, noSuchField: "xxx"}.
+In field "noSuchField": Unknown field.'''
+        }
+    ]
+}
+
+snapshots['test_schema_error[createMapFilePath-noSuchField] 2'] = {
+    'data': {
+        'allMapFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'productId': 1001
+                    }
+                },
+                {
+                    'node': {
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'productId': 1013
+                    }
+                }
+            ]
+        }
+    }
+}

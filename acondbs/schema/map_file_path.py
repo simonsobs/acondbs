@@ -17,10 +17,9 @@ class MapFilePath(SQLAlchemyObjectType):
 class MapFilePathAttribute:
     path = graphene.String()
     note = graphene.String()
-    product_id = graphene.Int()
 
 class CreateMapFilePathInput(graphene.InputObjectType, MapFilePathAttribute):
-    pass
+    product_id = graphene.Int()
 
 class UpdateMapFilePathInput(graphene.InputObjectType, MapFilePathAttribute):
     pass

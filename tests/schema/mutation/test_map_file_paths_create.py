@@ -42,7 +42,32 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert 1 == mock_request_backup_db.call_count
 
 ##__________________________________________________________________||
-params = [ ]
+params = [
+    pytest.param(
+        '''
+          mutation m {
+            createMapFilePath(input: {
+              path: "nersc:/go/to/my/new_map_v1",
+              note: "- Note 1",
+              productId: 1001,
+              noSuchField: "xxx"
+            }) { mapFilePath { path } }
+          }
+        ''',
+        '''
+          {
+            allMapFilePaths {
+              edges {
+                node {
+                  productId
+                }
+              }
+            }
+          }
+        ''',
+        id='createMapFilePath-noSuchField'
+    ),
+]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):

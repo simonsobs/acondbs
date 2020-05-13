@@ -37,15 +37,6 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                 'edges': [
                     {
                         'node': {
-                            'note': '- Note 1 updated',
-                            'path': 'nersc:/go/to/my/new_map_v2',
-                            'product': {
-                                'productId': '1012'
-                            }
-                        }
-                    },
-                    {
-                        'node': {
                             'note': 'lat only',
                             'path': 'nersc:/go/to/my/maps_v2',
                             'product': {
@@ -65,6 +56,41 @@ snapshots['test_schema_success[updateMapFilePath] 2'] = {
                 ]
             },
             'producedBy': 'pwg-pmn'
+        }
+    }
+}
+
+snapshots['test_schema_error[updateMapFilePath-immutableField] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 49,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {productId: 1012}.
+In field "productId": Unknown field.'''
+        }
+    ]
+}
+
+snapshots['test_schema_error[updateMapFilePath-immutableField] 2'] = {
+    'data': {
+        'map': {
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'note': '',
+                            'path': 'nersc:/go/to/my/maps',
+                            'product': {
+                                'productId': '1001'
+                            }
+                        }
+                    }
+                ]
+            }
         }
     }
 }

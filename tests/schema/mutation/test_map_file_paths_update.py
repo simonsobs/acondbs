@@ -11,7 +11,6 @@ params = [
             updateMapFilePath(pathId: 1, input: {
               path: "nersc:/go/to/my/new_map_v2",
               note: "- Note 1 updated",
-              productId: 1012
             }) { mapFilePath { path } }
           }
         ''',
@@ -42,7 +41,25 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert 1 == mock_request_backup_db.call_count
 
 ##__________________________________________________________________||
-params = [ ]
+params = [
+    pytest.param(
+        '''
+          mutation m {
+            updateMapFilePath(pathId: 1, input: {
+              productId: 1012
+            }) { mapFilePath { path } }
+          }
+        ''',
+        '''
+          {
+            map(productId: 1001) {
+              paths { edges { node { path note product { productId } } } }
+            }
+          }
+        ''',
+        id='updateMapFilePath-immutableField'
+    ),
+]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
