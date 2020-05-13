@@ -42,14 +42,14 @@ class CreateBeam(graphene.Mutation):
     beam = graphene.Field(lambda: Beam)
 
     def mutate(root, info, input):
-        beam = BeamModel(**input)
+        product = BeamModel(**input)
         today = datetime.date.today()
-        beam.date_posted = today
-        sa.session.add(beam)
+        product.date_posted = today
+        sa.session.add(product)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateBeam(beam=beam, ok=ok)
+        return CreateBeam(beam=product, ok=ok)
 
 class UpdateBeam(graphene.Mutation):
     class Arguments:
@@ -60,15 +60,15 @@ class UpdateBeam(graphene.Mutation):
     beam = graphene.Field(lambda: Beam)
 
     def mutate(root, info, product_id, input):
-        beam = BeamModel.query.filter_by(product_id=product_id).first()
+        product = BeamModel.query.filter_by(product_id=product_id).first()
         for k, v in input.items():
-            setattr(beam, k, v)
+            setattr(product, k, v)
         today = datetime.date.today()
-        beam.date_updated = today
+        product.date_updated = today
         sa.session.commit()
         ok = True
         request_backup_db()
-        return UpdateBeam(beam=beam, ok=ok)
+        return UpdateBeam(beam=product, ok=ok)
 
 class DeleteBeam(graphene.Mutation):
     class Arguments:
@@ -77,8 +77,8 @@ class DeleteBeam(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, product_id):
-        beam = BeamModel.query.filter_by(product_id=product_id).first()
-        sa.session.delete(beam)
+        product = BeamModel.query.filter_by(product_id=product_id).first()
+        sa.session.delete(product)
         sa.session.commit()
         ok = True
         request_backup_db()
