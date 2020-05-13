@@ -127,6 +127,7 @@ def mock_request_backup_db(monkeypatch):
     monkeypatch.setattr("acondbs.schema.map_.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.map_file_path.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.beam.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.beam_file_path.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.simulation.request_backup_db", y)
     yield y
 
