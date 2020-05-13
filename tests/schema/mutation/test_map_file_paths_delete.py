@@ -38,7 +38,27 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert 1 == mock_request_backup_db.call_count
 
 ##__________________________________________________________________||
-params = [ ]
+params = [
+    pytest.param(
+        '''
+          mutation m {
+            deleteMapFilePath(pathId: 15) { ok }
+          }
+        ''',
+        '''
+          {
+            allMapFilePaths {
+              edges {
+                node {
+                  productId
+                }
+              }
+            }
+          }
+        ''',
+        id='deleteMapFilePath-error'
+    ),
+]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):

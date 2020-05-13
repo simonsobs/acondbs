@@ -34,3 +34,52 @@ snapshots['test_schema_success[deleteMapFilePath] 2'] = {
         }
     }
 }
+
+snapshots['test_schema_error[deleteMapFilePath-error] 1'] = {
+    'data': {
+        'deleteMapFilePath': None
+    },
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 13,
+                    'line': 3
+                }
+            ],
+            'message': "Class 'builtins.NoneType' is not mapped",
+            'path': [
+                'deleteMapFilePath'
+            ]
+        }
+    ]
+}
+
+snapshots['test_schema_error[deleteMapFilePath-error] 2'] = {
+    'data': {
+        'allMapFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'productId': 1001
+                    }
+                },
+                {
+                    'node': {
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'productId': 1013
+                    }
+                }
+            ]
+        }
+    }
+}
