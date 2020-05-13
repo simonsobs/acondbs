@@ -27,29 +27,30 @@ class CommonProductFields:
     updated_by = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
 
+class CommonFilePathFields:
+    path_id = sa.Column(sa.Integer(), primary_key=True)
+    path = sa.Column(sa.Text())
+    note = sa.Column(sa.Text())
+
 ##__________________________________________________________________||
 class Simulation(sa.Model, CommonProductFields):
     __tablename__ = 'simulations'
 
-class SimulationFilePath(sa.Model):
+class SimulationFilePath(sa.Model, CommonFilePathFields):
     __tablename__ = 'simulation_file_paths'
-    path_id = sa.Column(sa.Integer(), primary_key=True)
     product_id = sa.Column(sa.ForeignKey('simulations.product_id'))
-    path = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
     product = sa.relationship("Simulation", backref=sa.backref("paths"))
 
+##__________________________________________________________________||
 class Map(sa.Model, CommonProductFields):
     __tablename__ = 'maps'
 
-class MapFilePath(sa.Model):
+class MapFilePath(sa.Model, CommonFilePathFields):
     __tablename__ = 'map_file_paths'
-    path_id = sa.Column(sa.Integer(), primary_key=True)
     product_id = sa.Column(sa.ForeignKey('maps.product_id'))
-    path = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
     product = sa.relationship("Map", backref=sa.backref("paths"))
 
+##__________________________________________________________________||
 class Beam(sa.Model, CommonProductFields):
     __tablename__ = 'beams'
     input_map_product_id = sa.Column(sa.ForeignKey('maps.product_id'))
@@ -58,12 +59,9 @@ class Beam(sa.Model, CommonProductFields):
     parent_beam = sa.relationship(lambda: Beam, remote_side="Beam.product_id", backref=sa.backref("child_beams"))
 
 
-class BeamFilePath(sa.Model):
+class BeamFilePath(sa.Model, CommonFilePathFields):
     __tablename__ = 'beam_file_paths'
-    path_id = sa.Column(sa.Integer(), primary_key=True)
     product_id = sa.Column(sa.ForeignKey('beams.product_id'))
-    path = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
     product = sa.relationship("Beam", backref=sa.backref("paths"))
 
 ##__________________________________________________________________||

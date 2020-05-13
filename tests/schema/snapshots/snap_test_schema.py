@@ -80,13 +80,13 @@ snapshots['test_object[SimulationFilePath] 1'] = {
                     'name': 'pathId'
                 },
                 {
-                    'name': 'productId'
-                },
-                {
                     'name': 'path'
                 },
                 {
                     'name': 'note'
+                },
+                {
+                    'name': 'productId'
                 },
                 {
                     'name': 'product'
@@ -193,13 +193,13 @@ snapshots['test_object[MapFilePath] 1'] = {
                     'name': 'pathId'
                 },
                 {
-                    'name': 'productId'
-                },
-                {
                     'name': 'path'
                 },
                 {
                     'name': 'note'
+                },
+                {
+                    'name': 'productId'
                 },
                 {
                     'name': 'product'
@@ -318,13 +318,13 @@ snapshots['test_object[BeamFilePath] 1'] = {
                     'name': 'pathId'
                 },
                 {
-                    'name': 'productId'
-                },
-                {
                     'name': 'path'
                 },
                 {
                     'name': 'note'
+                },
+                {
+                    'name': 'productId'
                 },
                 {
                     'name': 'product'
