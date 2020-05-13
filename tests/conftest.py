@@ -127,6 +127,7 @@ def mock_request_backup_db(monkeypatch):
     monkeypatch.setattr("acondbs.schema.map_.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.map_file_path.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.beam.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.simulation.request_backup_db", y)
     yield y
 
 ##__________________________________________________________________||
@@ -138,6 +139,7 @@ def mock_datetime(monkeypatch):
     y.date.today.return_value = datetime.date(2020, 5, 4)
     monkeypatch.setattr("acondbs.schema.map_.datetime", y)
     monkeypatch.setattr("acondbs.schema.beam.datetime", y)
+    monkeypatch.setattr("acondbs.schema.simulation.datetime", y)
     yield y
 
 ##__________________________________________________________________||
