@@ -15,7 +15,7 @@ https://docs.sqlalchhttps://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-
 from .db.sa import sa
 
 ##__________________________________________________________________||
-class CommonFields:
+class CommonProductFields:
     product_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
     contact = sa.Column(sa.Text())
@@ -28,7 +28,7 @@ class CommonFields:
     note = sa.Column(sa.Text())
 
 ##__________________________________________________________________||
-class Simulation(sa.Model, CommonFields):
+class Simulation(sa.Model, CommonProductFields):
     __tablename__ = 'simulations'
 
 class SimulationFilePath(sa.Model):
@@ -39,7 +39,7 @@ class SimulationFilePath(sa.Model):
     note = sa.Column(sa.Text())
     product = sa.relationship("Simulation", backref=sa.backref("paths"))
 
-class Map(sa.Model, CommonFields):
+class Map(sa.Model, CommonProductFields):
     __tablename__ = 'maps'
 
 class MapFilePath(sa.Model):
@@ -50,7 +50,7 @@ class MapFilePath(sa.Model):
     note = sa.Column(sa.Text())
     product = sa.relationship("Map", backref=sa.backref("paths"))
 
-class Beam(sa.Model, CommonFields):
+class Beam(sa.Model, CommonProductFields):
     __tablename__ = 'beams'
     input_map_product_id = sa.Column(sa.ForeignKey('maps.product_id'))
     input_beam_product_id = sa.Column(sa.ForeignKey('beams.product_id'))
