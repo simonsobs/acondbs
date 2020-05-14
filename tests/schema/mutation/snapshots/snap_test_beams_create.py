@@ -24,30 +24,63 @@ In field "name": Expected "String!", found null.'''
 
 snapshots['test_schema_error[createBeam-error-no-name] 2'] = {
     'data': {
+        'allBeamFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20190304',
+                        'productId': 1070
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20190607',
+                        'productId': 1120
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200123',
+                        'productId': 1130
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200207',
+                        'productId': 1150
+                    }
+                }
+            ]
+        },
         'allBeams': {
             'edges': [
                 {
                     'node': {
+                        'name': '20180101',
                         'productId': '1010'
                     }
                 },
                 {
                     'node': {
+                        'name': '20190304',
                         'productId': '1070'
                     }
                 },
                 {
                     'node': {
+                        'name': '20190607',
                         'productId': '1120'
                     }
                 },
                 {
                     'node': {
+                        'name': '20200123',
                         'productId': '1130'
                     }
                 },
                 {
                     'node': {
+                        'name': '20200207',
                         'productId': '1150'
                     }
                 }
@@ -77,6 +110,16 @@ snapshots['test_schema_success[createBeam-all-options] 2'] = {
             'note': '- Item 1',
             'paths': {
                 'edges': [
+                    {
+                        'node': {
+                            'path': '/path/to/new/product1'
+                        }
+                    },
+                    {
+                        'node': {
+                            'path': '/another/location/of/product1'
+                        }
+                    }
                 ]
             },
             'postedBy': 'poster',

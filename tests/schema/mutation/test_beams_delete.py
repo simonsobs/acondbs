@@ -8,14 +8,26 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteBeam(productId: 1010) { ok }
+          deleteBeam(productId: 1070) { ok }
         }
          ''',
         '''
           {
-            beam(productId: 1010) {
-              name dateProduced producedBy note
-              paths { edges { node { path } } }
+            allBeams {
+              edges {
+                node {
+                  productId
+                  name
+                }
+              }
+            }
+            allBeamFilePaths {
+              edges {
+                node {
+                  path
+                  productId
+                }
+              }
             }
           }
         ''',
@@ -51,6 +63,14 @@ params = [
                 node {
                   productId
                   name
+                }
+              }
+            }
+            allBeamFilePaths {
+              edges {
+                node {
+                  path
+                  productId
                 }
               }
             }

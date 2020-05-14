@@ -7,6 +7,7 @@ class CommonProductInputFields:
     """
     contact = graphene.String()
     note = graphene.String()
+    paths = graphene.List(graphene.String)
 
 class CommonCreateProductInputFields(CommonProductInputFields):
     """Common input fields of mutations for creating different kinds of products

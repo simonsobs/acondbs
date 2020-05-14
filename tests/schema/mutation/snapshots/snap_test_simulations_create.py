@@ -16,7 +16,7 @@ snapshots['test_schema_error[createSimulation-error-no-name] 1'] = {
                     'line': 3
                 }
             ],
-            'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn"}.
+            'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn", paths: ["/path/to/new/product1", "/another/location/of/product1"]}.
 In field "name": Expected "String!", found null.'''
         }
     ]
@@ -24,10 +24,27 @@ In field "name": Expected "String!", found null.'''
 
 snapshots['test_schema_error[createSimulation-error-no-name] 2'] = {
     'data': {
+        'allSimulationFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/simulations',
+                        'productId': 1001
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'abcde:/path/to/the/simulations',
+                        'productId': 1001
+                    }
+                }
+            ]
+        },
         'allSimulations': {
             'edges': [
                 {
                     'node': {
+                        'name': 'xyz-s1234-20200101',
                         'productId': '1001'
                     }
                 }
@@ -57,6 +74,16 @@ snapshots['test_schema_success[createSimulation-all-options] 2'] = {
             'note': '- Item 1',
             'paths': {
                 'edges': [
+                    {
+                        'node': {
+                            'path': '/path/to/new/product1'
+                        }
+                    },
+                    {
+                        'node': {
+                            'path': '/another/location/of/product1'
+                        }
+                    }
                 ]
             },
             'postedBy': 'poster',

@@ -16,7 +16,11 @@ params = [
               dateProduced: "2020-02-20",
               producedBy: "producer",
               postedBy: "poster",
-              note: "- Item 1"
+              note: "- Item 1",
+              paths: [
+                "/path/to/new/product1",
+                "/another/location/of/product1"
+              ]
             }) { map { name } }
           }
         ''',
@@ -81,6 +85,10 @@ params = [
           mutation m {
             createMap(input: {
               producedBy: "pwg-pmn"
+              paths: [
+                "/path/to/new/product1",
+                "/another/location/of/product1"
+              ]
             }) { map { name } }
           }
         ''',
@@ -89,6 +97,15 @@ params = [
             allMaps {
               edges {
                 node {
+                  productId
+                  name
+                }
+              }
+            }
+            allMapFilePaths {
+              edges {
+                node {
+                  path
                   productId
                 }
               }

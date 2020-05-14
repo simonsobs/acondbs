@@ -29,6 +29,22 @@ snapshots['test_schema_error[deleteSimulation-error] 1'] = {
 
 snapshots['test_schema_error[deleteSimulation-error] 2'] = {
     'data': {
+        'allSimulationFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/simulations',
+                        'productId': 1001
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'abcde:/path/to/the/simulations',
+                        'productId': 1001
+                    }
+                }
+            ]
+        },
         'allSimulations': {
             'edges': [
                 {
@@ -52,6 +68,13 @@ snapshots['test_schema_success[deleteSimulation] 1'] = {
 
 snapshots['test_schema_success[deleteSimulation] 2'] = {
     'data': {
-        'simulation': None
+        'allSimulationFilePaths': {
+            'edges': [
+            ]
+        },
+        'allSimulations': {
+            'edges': [
+            ]
+        }
     }
 }

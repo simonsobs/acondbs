@@ -4,6 +4,7 @@ from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ..models import Beam as BeamModel
+from ..models import BeamFilePath as BeamFilePathModel
 
 from ..db.sa import sa
 from ..db.backup import request_backup_db
@@ -42,7 +43,10 @@ class CreateBeam(graphene.Mutation):
     beam = graphene.Field(lambda: Beam)
 
     def mutate(root, info, input):
+        paths = input.pop('paths', None)
         product = BeamModel(**input)
+        if paths:
+            product.paths = ([BeamFilePathModel(path=p) for p in paths])
         today = datetime.date.today()
         product.date_posted = today
         sa.session.add(product)
@@ -78,6 +82,9 @@ class DeleteBeam(graphene.Mutation):
 
     def mutate(root, info, product_id):
         product = BeamModel.query.filter_by(product_id=product_id).first()
+        if product:
+            for path in product.paths:
+                sa.session.delete(path)
         sa.session.delete(product)
         sa.session.commit()
         ok = True

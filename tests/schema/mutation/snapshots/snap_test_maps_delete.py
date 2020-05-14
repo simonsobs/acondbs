@@ -37,6 +37,34 @@ snapshots['test_schema_error[deleteMap-error] 1'] = {
 
 snapshots['test_schema_error[deleteMap-error] 2'] = {
     'data': {
+        'allMapFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/maps',
+                        'productId': 1001
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/maps_v2',
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'abcde:/path/to/the/maps_v2',
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/maps_v3',
+                        'productId': 1013
+                    }
+                }
+            ]
+        },
         'allMaps': {
             'edges': [
                 {
@@ -64,6 +92,43 @@ snapshots['test_schema_error[deleteMap-error] 2'] = {
 
 snapshots['test_schema_success[deleteMap] 2'] = {
     'data': {
-        'map': None
+        'allMapFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/maps_v2',
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'abcde:/path/to/the/maps_v2',
+                        'productId': 1012
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/maps_v3',
+                        'productId': 1013
+                    }
+                }
+            ]
+        },
+        'allMaps': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'lat20200120',
+                        'productId': '1012'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'lat20200201',
+                        'productId': '1013'
+                    }
+                }
+            ]
+        }
     }
 }

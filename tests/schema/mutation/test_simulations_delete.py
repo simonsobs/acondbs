@@ -13,9 +13,21 @@ params = [
          ''',
         '''
           {
-            simulation(productId: 1001) {
-              name dateProduced producedBy note
-              paths { edges { node { path } } }
+            allSimulations {
+              edges {
+                node {
+                  productId
+                  name
+                }
+              }
+            }
+            allSimulationFilePaths {
+              edges {
+                node {
+                  path
+                  productId
+                }
+              }
             }
           }
         ''',
@@ -51,6 +63,14 @@ params = [
                 node {
                   productId
                   name
+                }
+              }
+            }
+            allSimulationFilePaths {
+              edges {
+                node {
+                  path
+                  productId
                 }
               }
             }

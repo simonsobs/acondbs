@@ -13,10 +13,21 @@ params = [
          ''',
         '''
           {
-            map(productId: 1001) {
-              name dateProduced producedBy note
-              beams { edges { node { name } } }
-              paths { edges { node { path } } }
+            allMaps {
+              edges {
+                node {
+                  productId
+                  name
+                }
+              }
+            }
+            allMapFilePaths {
+              edges {
+                node {
+                  path
+                  productId
+                }
+              }
             }
           }
         ''',
@@ -52,6 +63,14 @@ params = [
                 node {
                   productId
                   name
+                }
+              }
+            }
+            allMapFilePaths {
+              edges {
+                node {
+                  path
+                  productId
                 }
               }
             }
