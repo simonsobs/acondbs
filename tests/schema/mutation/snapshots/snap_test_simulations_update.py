@@ -22,7 +22,7 @@ snapshots['test_schema_success[updateSimulation] 2'] = {
     'data': {
         'simulation': {
             'contact': 'new-contact',
-            'datePosted': None,
+            'datePosted': '2019-03-15',
             'dateProduced': '2019-03-15',
             'dateUpdated': '2020-05-04',
             'name': 'xyz-s1234-20200101',
@@ -41,7 +41,7 @@ snapshots['test_schema_success[updateSimulation] 2'] = {
                     }
                 ]
             },
-            'postedBy': '',
+            'postedBy': 'abc-def',
             'producedBy': 'abc-def',
             'updatedBy': 'updater'
         }

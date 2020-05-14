@@ -54,7 +54,7 @@ snapshots['test_schema_success[createSimulationFilePath] 1'] = {
 snapshots['test_schema_success[createSimulationFilePath] 2'] = {
     'data': {
         'simulation': {
-            'datePosted': None,
+            'datePosted': '2019-03-15',
             'name': 'xyz-s1234-20200101',
             'note': '''- note 1
 - note 2''',

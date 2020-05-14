@@ -64,9 +64,9 @@ snapshots['test_schema_success[createBeamFilePath] 1'] = {
 snapshots['test_schema_success[createBeamFilePath] 2'] = {
     'data': {
         'beam': {
-            'datePosted': None,
+            'datePosted': '2018-01-01',
             'name': '20180101',
-            'note': '',
+            'note': '- test entry',
             'paths': {
                 'edges': [
                     {
@@ -80,7 +80,7 @@ snapshots['test_schema_success[createBeamFilePath] 2'] = {
                     }
                 ]
             },
-            'producedBy': ''
+            'producedBy': 'pwg-pmn'
         }
     }
 }
