@@ -17,6 +17,10 @@ params = [
               producedBy: "producer",
               postedBy: "poster",
               note: "- Item 1"
+              paths: [
+                "/path/to/new/product1",
+                "/another/location/of/product1"
+              ]
             }) { simulation { name } }
           }
         ''',
@@ -79,6 +83,10 @@ params = [
           mutation m {
             createSimulation(input: {
               producedBy: "pwg-pmn"
+              paths: [
+                "/path/to/new/product1",
+                "/another/location/of/product1"
+              ]
             }) { simulation { name } }
           }
         ''',
@@ -87,6 +95,15 @@ params = [
             allSimulations {
               edges {
                 node {
+                  productId
+                  name
+                }
+              }
+            }
+            allSimulationFilePaths {
+              edges {
+                node {
+                  path
                   productId
                 }
               }

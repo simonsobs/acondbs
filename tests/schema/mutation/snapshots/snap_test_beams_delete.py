@@ -17,7 +17,56 @@ snapshots['test_schema_success[deleteBeam] 1'] = {
 
 snapshots['test_schema_success[deleteBeam] 2'] = {
     'data': {
-        'beam': None
+        'allBeamFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20190607',
+                        'productId': 1120
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200123',
+                        'productId': 1130
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200207',
+                        'productId': 1150
+                    }
+                }
+            ]
+        },
+        'allBeams': {
+            'edges': [
+                {
+                    'node': {
+                        'name': '20180101',
+                        'productId': '1010'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20190607',
+                        'productId': '1120'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20200123',
+                        'productId': '1130'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20200207',
+                        'productId': '1150'
+                    }
+                }
+            ]
+        }
     }
 }
 
@@ -43,6 +92,34 @@ snapshots['test_schema_error[deleteBeam-error] 1'] = {
 
 snapshots['test_schema_error[deleteBeam-error] 2'] = {
     'data': {
+        'allBeamFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20190304',
+                        'productId': 1070
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20190607',
+                        'productId': 1120
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200123',
+                        'productId': 1130
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200207',
+                        'productId': 1150
+                    }
+                }
+            ]
+        },
         'allBeams': {
             'edges': [
                 {

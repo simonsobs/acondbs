@@ -4,6 +4,7 @@ from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ..models import Map as MapModel
+from ..models import MapFilePath as MapFilePathModel
 
 from ..db.sa import sa
 from ..db.backup import request_backup_db
@@ -38,7 +39,10 @@ class CreateMap(graphene.Mutation):
     map = graphene.Field(lambda: Map)
 
     def mutate(root, info, input):
+        paths = input.pop('paths', None)
         product = MapModel(**input)
+        if paths:
+            product.paths = ([MapFilePathModel(path=p) for p in paths])
         today = datetime.date.today()
         product.date_posted = today
         sa.session.add(product)
@@ -74,6 +78,9 @@ class DeleteMap(graphene.Mutation):
 
     def mutate(root, info, product_id):
         product = MapModel.query.filter_by(product_id=product_id).first()
+        if product:
+            for path in product.paths:
+                sa.session.delete(path)
         sa.session.delete(product)
         sa.session.commit()
         ok = True

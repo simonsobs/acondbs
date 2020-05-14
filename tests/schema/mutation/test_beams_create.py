@@ -17,6 +17,10 @@ params = [
               producedBy: "producer",
               postedBy: "poster",
               note: "- Item 1"
+              paths: [
+                "/path/to/new/product1",
+                "/another/location/of/product1"
+              ]
             }) { beam { name } }
           }
         ''',
@@ -64,6 +68,15 @@ params = [
             allBeams {
               edges {
                 node {
+                  productId
+                  name
+                }
+              }
+            }
+            allBeamFilePaths {
+              edges {
+                node {
+                  path
                   productId
                 }
               }
