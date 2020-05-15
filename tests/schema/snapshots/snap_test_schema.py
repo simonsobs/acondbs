@@ -7,350 +7,1421 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_object[Simulation] 1'] = {
+snapshots['test_types 1'] = {
     'data': {
-        '__type': {
-            'description': None,
-            'fields': [
+        '__schema': {
+            'types': [
                 {
-                    'name': 'productId'
+                    'fields': [
+                        {
+                            'name': 'version',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'Node'
+                            }
+                        },
+                        {
+                            'name': 'allSimulations',
+                            'type': {
+                                'name': 'SimulationConnection'
+                            }
+                        },
+                        {
+                            'name': 'allMaps',
+                            'type': {
+                                'name': 'MapConnection'
+                            }
+                        },
+                        {
+                            'name': 'allBeams',
+                            'type': {
+                                'name': 'BeamConnection'
+                            }
+                        },
+                        {
+                            'name': 'allSimulationFilePaths',
+                            'type': {
+                                'name': 'SimulationFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'allMapFilePaths',
+                            'type': {
+                                'name': 'MapFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'allBeamFilePaths',
+                            'type': {
+                                'name': 'BeamFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'simulation',
+                            'type': {
+                                'name': 'Simulation'
+                            }
+                        },
+                        {
+                            'name': 'map',
+                            'type': {
+                                'name': 'Map'
+                            }
+                        },
+                        {
+                            'name': 'beam',
+                            'type': {
+                                'name': 'Beam'
+                            }
+                        }
+                    ],
+                    'name': 'Query'
                 },
                 {
-                    'name': 'name'
+                    'fields': None,
+                    'name': 'String'
                 },
                 {
-                    'name': 'contact'
+                    'fields': [
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'Node'
                 },
                 {
-                    'name': 'dateProduced'
+                    'fields': None,
+                    'name': 'ID'
                 },
                 {
-                    'name': 'producedBy'
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'SimulationConnection'
                 },
                 {
-                    'name': 'datePosted'
+                    'fields': [
+                        {
+                            'name': 'hasNextPage',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'hasPreviousPage',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'startCursor',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'endCursor',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'name': 'PageInfo'
                 },
                 {
-                    'name': 'postedBy'
+                    'fields': None,
+                    'name': 'Boolean'
                 },
                 {
-                    'name': 'dateUpdated'
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'Simulation'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'SimulationEdge'
                 },
                 {
-                    'name': 'updatedBy'
+                    'fields': [
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'contact',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateProduced',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'producedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'datePosted',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'postedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateUpdated',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'updatedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'paths',
+                            'type': {
+                                'name': 'SimulationFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'Simulation'
                 },
                 {
-                    'name': 'note'
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'SimulationFilePathConnection'
                 },
                 {
-                    'name': 'paths'
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'SimulationFilePath'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'SimulationFilePathEdge'
                 },
                 {
-                    'name': 'id'
+                    'fields': [
+                        {
+                            'name': 'pathId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'path',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'product',
+                            'type': {
+                                'name': 'Simulation'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'SimulationFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'Int'
+                },
+                {
+                    'fields': None,
+                    'name': 'SimulationSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'MapConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'Map'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'MapEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'contact',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateProduced',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'producedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'datePosted',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'postedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateUpdated',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'updatedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'paths',
+                            'type': {
+                                'name': 'MapFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'beams',
+                            'type': {
+                                'name': 'BeamConnection'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'Map'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'MapFilePathConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'MapFilePath'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'MapFilePathEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pathId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'path',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'product',
+                            'type': {
+                                'name': 'Map'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'MapFilePath'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'BeamConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'Beam'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'BeamEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'contact',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateProduced',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'producedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'datePosted',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'postedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateUpdated',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'updatedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'inputMapProductId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'inputBeamProductId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'map',
+                            'type': {
+                                'name': 'Map'
+                            }
+                        },
+                        {
+                            'name': 'parentBeam',
+                            'type': {
+                                'name': 'Beam'
+                            }
+                        },
+                        {
+                            'name': 'childBeams',
+                            'type': {
+                                'name': 'BeamConnection'
+                            }
+                        },
+                        {
+                            'name': 'paths',
+                            'type': {
+                                'name': 'BeamFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'Beam'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'BeamFilePathConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'BeamFilePath'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'BeamFilePathEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pathId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'path',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'product',
+                            'type': {
+                                'name': 'Beam'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'BeamFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'MapSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'BeamSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'SimulationFilePathSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'MapFilePathSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'BeamFilePathSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'createMap',
+                            'type': {
+                                'name': 'CreateMap'
+                            }
+                        },
+                        {
+                            'name': 'updateMap',
+                            'type': {
+                                'name': 'UpdateMap'
+                            }
+                        },
+                        {
+                            'name': 'deleteMap',
+                            'type': {
+                                'name': 'DeleteMap'
+                            }
+                        },
+                        {
+                            'name': 'createMapFilePath',
+                            'type': {
+                                'name': 'CreateMapFilePath'
+                            }
+                        },
+                        {
+                            'name': 'updateMapFilePath',
+                            'type': {
+                                'name': 'UpdateMapFilePath'
+                            }
+                        },
+                        {
+                            'name': 'deleteMapFilePath',
+                            'type': {
+                                'name': 'DeleteMapFilePath'
+                            }
+                        },
+                        {
+                            'name': 'createBeam',
+                            'type': {
+                                'name': 'CreateBeam'
+                            }
+                        },
+                        {
+                            'name': 'updateBeam',
+                            'type': {
+                                'name': 'UpdateBeam'
+                            }
+                        },
+                        {
+                            'name': 'deleteBeam',
+                            'type': {
+                                'name': 'DeleteBeam'
+                            }
+                        },
+                        {
+                            'name': 'createBeamFilePath',
+                            'type': {
+                                'name': 'CreateBeamFilePath'
+                            }
+                        },
+                        {
+                            'name': 'updateBeamFilePath',
+                            'type': {
+                                'name': 'UpdateBeamFilePath'
+                            }
+                        },
+                        {
+                            'name': 'deleteBeamFilePath',
+                            'type': {
+                                'name': 'DeleteBeamFilePath'
+                            }
+                        },
+                        {
+                            'name': 'createSimulation',
+                            'type': {
+                                'name': 'CreateSimulation'
+                            }
+                        },
+                        {
+                            'name': 'updateSimulation',
+                            'type': {
+                                'name': 'UpdateSimulation'
+                            }
+                        },
+                        {
+                            'name': 'deleteSimulation',
+                            'type': {
+                                'name': 'DeleteSimulation'
+                            }
+                        },
+                        {
+                            'name': 'createSimulationFilePath',
+                            'type': {
+                                'name': 'CreateSimulationFilePath'
+                            }
+                        },
+                        {
+                            'name': 'updateSimulationFilePath',
+                            'type': {
+                                'name': 'UpdateSimulationFilePath'
+                            }
+                        },
+                        {
+                            'name': 'deleteSimulationFilePath',
+                            'type': {
+                                'name': 'DeleteSimulationFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'Mutation'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'map',
+                            'type': {
+                                'name': 'Map'
+                            }
+                        }
+                    ],
+                    'name': 'CreateMap'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateMapInput'
+                },
+                {
+                    'fields': None,
+                    'name': 'Date'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'map',
+                            'type': {
+                                'name': 'Map'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateMap'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateMapInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteMap'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'mapFilePath',
+                            'type': {
+                                'name': 'MapFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'CreateMapFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateMapFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'mapFilePath',
+                            'type': {
+                                'name': 'MapFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateMapFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateMapFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteMapFilePath'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'beam',
+                            'type': {
+                                'name': 'Beam'
+                            }
+                        }
+                    ],
+                    'name': 'CreateBeam'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateBeamInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'beam',
+                            'type': {
+                                'name': 'Beam'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateBeam'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateBeamInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteBeam'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'beamFilePath',
+                            'type': {
+                                'name': 'BeamFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'CreateBeamFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateBeamFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'beamFilePath',
+                            'type': {
+                                'name': 'BeamFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateBeamFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateBeamFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteBeamFilePath'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'simulation',
+                            'type': {
+                                'name': 'Simulation'
+                            }
+                        }
+                    ],
+                    'name': 'CreateSimulation'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateSimulationInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'simulation',
+                            'type': {
+                                'name': 'Simulation'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateSimulation'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateSimulationInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteSimulation'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'simulationFilePath',
+                            'type': {
+                                'name': 'SimulationFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'CreateSimulationFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateSimulationFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'simulationFilePath',
+                            'type': {
+                                'name': 'SimulationFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateSimulationFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateSimulationFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteSimulationFilePath'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'types',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'queryType',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'mutationType',
+                            'type': {
+                                'name': '__Type'
+                            }
+                        },
+                        {
+                            'name': 'subscriptionType',
+                            'type': {
+                                'name': '__Type'
+                            }
+                        },
+                        {
+                            'name': 'directives',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': '__Schema'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'kind',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'description',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'fields',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'interfaces',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'possibleTypes',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'enumValues',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'inputFields',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'ofType',
+                            'type': {
+                                'name': '__Type'
+                            }
+                        }
+                    ],
+                    'name': '__Type'
+                },
+                {
+                    'fields': None,
+                    'name': '__TypeKind'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'description',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'args',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'type',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'isDeprecated',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'deprecationReason',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'name': '__Field'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'description',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'type',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'defaultValue',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'name': '__InputValue'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'description',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'isDeprecated',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'deprecationReason',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'name': '__EnumValue'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'description',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'locations',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'args',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': '__Directive'
+                },
+                {
+                    'fields': None,
+                    'name': '__DirectiveLocation'
                 }
-            ],
-            'name': 'Simulation'
-        }
-    }
-}
-
-snapshots['test_object[SimulationConnection] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pageInfo'
-                },
-                {
-                    'name': 'edges'
-                }
-            ],
-            'name': 'SimulationConnection'
-        }
-    }
-}
-
-snapshots['test_object[SimulationFilePath] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pathId'
-                },
-                {
-                    'name': 'path'
-                },
-                {
-                    'name': 'note'
-                },
-                {
-                    'name': 'productId'
-                },
-                {
-                    'name': 'product'
-                },
-                {
-                    'name': 'id'
-                }
-            ],
-            'name': 'SimulationFilePath'
-        }
-    }
-}
-
-snapshots['test_object[SimulationFilePathConnection] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pageInfo'
-                },
-                {
-                    'name': 'edges'
-                }
-            ],
-            'name': 'SimulationFilePathConnection'
-        }
-    }
-}
-
-snapshots['test_object[Map] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'productId'
-                },
-                {
-                    'name': 'name'
-                },
-                {
-                    'name': 'contact'
-                },
-                {
-                    'name': 'dateProduced'
-                },
-                {
-                    'name': 'producedBy'
-                },
-                {
-                    'name': 'datePosted'
-                },
-                {
-                    'name': 'postedBy'
-                },
-                {
-                    'name': 'dateUpdated'
-                },
-                {
-                    'name': 'updatedBy'
-                },
-                {
-                    'name': 'note'
-                },
-                {
-                    'name': 'paths'
-                },
-                {
-                    'name': 'beams'
-                },
-                {
-                    'name': 'id'
-                }
-            ],
-            'name': 'Map'
-        }
-    }
-}
-
-snapshots['test_object[MapConnection] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pageInfo'
-                },
-                {
-                    'name': 'edges'
-                }
-            ],
-            'name': 'MapConnection'
-        }
-    }
-}
-
-snapshots['test_object[MapFilePath] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pathId'
-                },
-                {
-                    'name': 'path'
-                },
-                {
-                    'name': 'note'
-                },
-                {
-                    'name': 'productId'
-                },
-                {
-                    'name': 'product'
-                },
-                {
-                    'name': 'id'
-                }
-            ],
-            'name': 'MapFilePath'
-        }
-    }
-}
-
-snapshots['test_object[MapFilePathConnection] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pageInfo'
-                },
-                {
-                    'name': 'edges'
-                }
-            ],
-            'name': 'MapFilePathConnection'
-        }
-    }
-}
-
-snapshots['test_object[Beam] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'productId'
-                },
-                {
-                    'name': 'name'
-                },
-                {
-                    'name': 'contact'
-                },
-                {
-                    'name': 'dateProduced'
-                },
-                {
-                    'name': 'producedBy'
-                },
-                {
-                    'name': 'datePosted'
-                },
-                {
-                    'name': 'postedBy'
-                },
-                {
-                    'name': 'dateUpdated'
-                },
-                {
-                    'name': 'updatedBy'
-                },
-                {
-                    'name': 'note'
-                },
-                {
-                    'name': 'inputMapProductId'
-                },
-                {
-                    'name': 'inputBeamProductId'
-                },
-                {
-                    'name': 'map'
-                },
-                {
-                    'name': 'parentBeam'
-                },
-                {
-                    'name': 'childBeams'
-                },
-                {
-                    'name': 'paths'
-                },
-                {
-                    'name': 'id'
-                }
-            ],
-            'name': 'Beam'
-        }
-    }
-}
-
-snapshots['test_object[BeamConnection] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pageInfo'
-                },
-                {
-                    'name': 'edges'
-                }
-            ],
-            'name': 'BeamConnection'
-        }
-    }
-}
-
-snapshots['test_object[BeamFilePath] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pathId'
-                },
-                {
-                    'name': 'path'
-                },
-                {
-                    'name': 'note'
-                },
-                {
-                    'name': 'productId'
-                },
-                {
-                    'name': 'product'
-                },
-                {
-                    'name': 'id'
-                }
-            ],
-            'name': 'BeamFilePath'
-        }
-    }
-}
-
-snapshots['test_object[BeamFilePathConnection] 1'] = {
-    'data': {
-        '__type': {
-            'description': None,
-            'fields': [
-                {
-                    'name': 'pageInfo'
-                },
-                {
-                    'name': 'edges'
-                }
-            ],
-            'name': 'BeamFilePathConnection'
+            ]
         }
     }
 }

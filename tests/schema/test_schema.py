@@ -4,33 +4,31 @@ from graphene.test import Client
 from acondbs.schema.schema import schema
 
 ##__________________________________________________________________||
-params = [
-    'Simulation', 'SimulationConnection',
-    'SimulationFilePath', 'SimulationFilePathConnection',
-    'Map', 'MapConnection',
-    'MapFilePath', 'MapFilePathConnection',
-    'Beam', 'BeamConnection',
-    'BeamFilePath', 'BeamFilePathConnection',
-]
+def test_types(app, snapshot):
 
-@pytest.mark.parametrize('type_name', params)
-def test_object(app, snapshot, type_name):
-    '''test objects defined
-    '''
     query = '''
-      query q($type: String!) {
-        __type(name: $type) {
-          name
-          description
-          fields {
+      {
+        __schema {
+          types {
             name
+            fields {
+              name
+              type {
+                name
+              }
+            }
           }
         }
       }
     '''
-    variables = {'type': type_name}
+
     client = Client(schema)
+
     with app.app_context():
-        snapshot.assert_match(client.execute(query, variables=variables))
+        result = client.execute(query)
+
+    assert 'errors' not in result
+
+    snapshot.assert_match(result)
 
 ##__________________________________________________________________||
