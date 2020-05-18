@@ -12,8 +12,16 @@ from .simulation_file_path import SimulationFilePath, SimulationFilePathModel
 
 from .product import Product, ProductModel
 from .product_file_path import ProductFilePath, ProductFilePathModel
+from .product_type import ProductType, ProductTypeModel
 
 ##__________________________________________________________________||
+class ProductFilter(FilterSet):
+   class Meta:
+       model = ProductModel
+       fields = {
+           'product_type_id': ['eq', ],
+       }
+
 class MapFilter(FilterSet):
    class Meta:
        model = MapModel
@@ -39,7 +47,9 @@ class Query(graphene.ObjectType):
     all_map_file_paths = FilterableConnectionField(MapFilePath._meta.connection)
     all_beam_file_paths = FilterableConnectionField(BeamFilePath._meta.connection)
 
-    all_products = FilterableConnectionField(Product._meta.connection)
+    all_product_types = FilterableConnectionField(ProductType._meta.connection)
+
+    all_products = FilterableConnectionField(Product._meta.connection, filters=ProductFilter())
     all_product_file_paths = FilterableConnectionField(ProductFilePath._meta.connection)
 
     product = graphene.Field(Product, product_id=graphene.Int(), name=graphene.String())

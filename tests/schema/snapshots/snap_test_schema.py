@@ -62,6 +62,12 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'allProductTypes',
+                            'type': {
+                                'name': 'ProductTypeConnection'
+                            }
+                        },
+                        {
                             'name': 'allProducts',
                             'type': {
                                 'name': 'ProductConnection'
@@ -797,6 +803,69 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
+                    'name': 'ProductTypeConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductTypeEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'productTypeId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'products',
+                            'type': {
+                                'name': 'ProductConnection'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductType'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
                     'name': 'ProductConnection'
                 },
                 {
@@ -882,6 +951,12 @@ snapshots['test_types 1'] = {
                             'name': 'note',
                             'type': {
                                 'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
                             }
                         },
                         {
@@ -973,6 +1048,14 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'name': 'ProductFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductTypeSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductFilter'
                 },
                 {
                     'fields': None,
