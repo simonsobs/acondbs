@@ -1,6 +1,7 @@
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
+from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
 
 from .simulation import Simulation, SimulationModel
 from .map_ import Map, MapModel
@@ -19,12 +20,12 @@ class Query(graphene.ObjectType):
         return __version__
 
     node = relay.Node.Field()
-    all_simulations = SQLAlchemyConnectionField(Simulation._meta.connection)
-    all_maps = SQLAlchemyConnectionField(Map._meta.connection)
-    all_beams = SQLAlchemyConnectionField(Beam._meta.connection)
-    all_simulation_file_paths = SQLAlchemyConnectionField(SimulationFilePath._meta.connection)
-    all_map_file_paths = SQLAlchemyConnectionField(MapFilePath._meta.connection)
-    all_beam_file_paths = SQLAlchemyConnectionField(BeamFilePath._meta.connection)
+    all_simulations = FilterableConnectionField(Simulation._meta.connection)
+    all_maps = FilterableConnectionField(Map._meta.connection)
+    all_beams = FilterableConnectionField(Beam._meta.connection)
+    all_simulation_file_paths = FilterableConnectionField(SimulationFilePath._meta.connection)
+    all_map_file_paths = FilterableConnectionField(MapFilePath._meta.connection)
+    all_beam_file_paths = FilterableConnectionField(BeamFilePath._meta.connection)
 
     simulation = graphene.Field(Simulation, product_id=graphene.Int(), name=graphene.String())
 
