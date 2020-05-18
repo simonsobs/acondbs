@@ -11,6 +11,7 @@ from .simulation_file_path import CreateSimulationFilePath, UpdateSimulationFile
 
 from .product import CreateProduct, UpdateProduct, DeleteProduct
 from .product_file_path import CreateProductFilePath, UpdateProductFilePath, DeleteProductFilePath
+from .product_type import CreateProductType, DeleteProductType
 
 from .query import Query
 
@@ -47,5 +48,8 @@ class Mutation(graphene.ObjectType):
     create_product_file_path = CreateProductFilePath.Field()
     update_product_file_path = UpdateProductFilePath.Field()
     delete_product_file_path = DeleteProductFilePath.Field()
+
+    create_product_type = CreateProductType.Field()
+    delete_product_type = DeleteProductType.Field()
 
 ##__________________________________________________________________||
