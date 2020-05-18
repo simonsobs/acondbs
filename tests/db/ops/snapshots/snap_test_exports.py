@@ -173,6 +173,10 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'updated_by': 'pwg-pmn'
         }
     ],
+    'product_types': [
+    ],
+    'products': [
+    ],
     'simulation_file_paths': [
         {
             'note': '',

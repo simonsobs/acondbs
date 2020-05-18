@@ -173,6 +173,10 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'updated_by': 'pwg-pmn'
         }
     ],
+    'product_types': [
+    ],
+    'products': [
+    ],
     'simulation_file_paths': [
         {
             'note': '',
