@@ -7,21 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_error[createProduct-error-no-name] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 34,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn", paths: ["/path/to/new/product1", "/another/location/of/product1"]}.
-In field "name": Expected "String!", found null.'''
-        }
-    ]
-}
-
 snapshots['test_schema_success[createProduct-all-options] 1'] = {
     'data': {
         'createProduct': {
@@ -90,6 +75,21 @@ snapshots['test_schema_success[createProduct-selective-options] 2'] = {
             'updatedBy': None
         }
     }
+}
+
+snapshots['test_schema_error[createProduct-error-no-name] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 34,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn", paths: ["/path/to/new/product1", "/another/location/of/product1"]}.
+In field "name": Expected "String!", found null.'''
+        }
+    ]
 }
 
 snapshots['test_schema_error[createProduct-error-no-name] 2'] = {

@@ -7,6 +7,27 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[deleteSimulation] 1'] = {
+    'data': {
+        'deleteSimulation': {
+            'ok': True
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteSimulation] 2'] = {
+    'data': {
+        'allSimulationFilePaths': {
+            'edges': [
+            ]
+        },
+        'allSimulations': {
+            'edges': [
+            ]
+        }
+    }
+}
+
 snapshots['test_schema_error[deleteSimulation-error] 1'] = {
     'data': {
         'deleteSimulation': None
@@ -53,27 +74,6 @@ snapshots['test_schema_error[deleteSimulation-error] 2'] = {
                         'productId': '1001'
                     }
                 }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteSimulation] 1'] = {
-    'data': {
-        'deleteSimulation': {
-            'ok': True
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteSimulation] 2'] = {
-    'data': {
-        'allSimulationFilePaths': {
-            'edges': [
-            ]
-        },
-        'allSimulations': {
-            'edges': [
             ]
         }
     }

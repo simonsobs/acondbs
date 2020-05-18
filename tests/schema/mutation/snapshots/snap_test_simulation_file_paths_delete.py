@@ -7,6 +7,39 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[deleteSimulationFilePath] 1'] = {
+    'data': {
+        'deleteSimulationFilePath': {
+            'ok': True
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteSimulationFilePath] 2'] = {
+    'data': {
+        'simulation': {
+            'datePosted': '2019-03-15',
+            'name': 'xyz-s1234-20200101',
+            'note': '''- note 1
+- note 2''',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'note': '',
+                            'path': 'abcde:/path/to/the/simulations',
+                            'product': {
+                                'productId': '1001'
+                            }
+                        }
+                    }
+                ]
+            },
+            'producedBy': 'abc-def'
+        }
+    }
+}
+
 snapshots['test_schema_error[deleteSimulationFilePath-error] 1'] = {
     'data': {
         'deleteSimulationFilePath': None
@@ -42,39 +75,6 @@ snapshots['test_schema_error[deleteSimulationFilePath-error] 2'] = {
                     }
                 }
             ]
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteSimulationFilePath] 1'] = {
-    'data': {
-        'deleteSimulationFilePath': {
-            'ok': True
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteSimulationFilePath] 2'] = {
-    'data': {
-        'simulation': {
-            'datePosted': '2019-03-15',
-            'name': 'xyz-s1234-20200101',
-            'note': '''- note 1
-- note 2''',
-            'paths': {
-                'edges': [
-                    {
-                        'node': {
-                            'note': '',
-                            'path': 'abcde:/path/to/the/simulations',
-                            'product': {
-                                'productId': '1001'
-                            }
-                        }
-                    }
-                ]
-            },
-            'producedBy': 'abc-def'
         }
     }
 }

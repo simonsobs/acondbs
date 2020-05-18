@@ -18,21 +18,6 @@ snapshots['test_schema_success[updateMap] 1'] = {
     }
 }
 
-snapshots['test_schema_error[updateMap-error-immutable-fields] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 45,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {name: "new-name"}.
-In field "name": Unknown field.'''
-        }
-    ]
-}
-
 snapshots['test_schema_success[updateMap] 2'] = {
     'data': {
         'map': {
@@ -60,6 +45,21 @@ snapshots['test_schema_success[updateMap] 2'] = {
             'updatedBy': 'updater'
         }
     }
+}
+
+snapshots['test_schema_error[updateMap-error-immutable-fields] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 45,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {name: "new-name"}.
+In field "name": Unknown field.'''
+        }
+    ]
 }
 
 snapshots['test_schema_error[updateMap-error-immutable-fields] 2'] = {

@@ -7,50 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_error[updateSimulationFilePath-immutableField] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 56,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {productId: 1002}.
-In field "productId": Unknown field.'''
-        }
-    ]
-}
-
-snapshots['test_schema_error[updateSimulationFilePath-immutableField] 2'] = {
-    'data': {
-        'simulation': {
-            'paths': {
-                'edges': [
-                    {
-                        'node': {
-                            'note': '',
-                            'path': 'nersc:/go/to/my/simulations',
-                            'product': {
-                                'productId': '1001'
-                            }
-                        }
-                    },
-                    {
-                        'node': {
-                            'note': '',
-                            'path': 'abcde:/path/to/the/simulations',
-                            'product': {
-                                'productId': '1001'
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    }
-}
-
 snapshots['test_schema_success[updateSimulationFilePath] 1'] = {
     'data': {
         'updateSimulationFilePath': {
@@ -91,6 +47,50 @@ snapshots['test_schema_success[updateSimulationFilePath] 2'] = {
                 ]
             },
             'producedBy': 'abc-def'
+        }
+    }
+}
+
+snapshots['test_schema_error[updateSimulationFilePath-immutableField] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 56,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {productId: 1002}.
+In field "productId": Unknown field.'''
+        }
+    ]
+}
+
+snapshots['test_schema_error[updateSimulationFilePath-immutableField] 2'] = {
+    'data': {
+        'simulation': {
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'note': '',
+                            'path': 'nersc:/go/to/my/simulations',
+                            'product': {
+                                'productId': '1001'
+                            }
+                        }
+                    },
+                    {
+                        'node': {
+                            'note': '',
+                            'path': 'abcde:/path/to/the/simulations',
+                            'product': {
+                                'productId': '1001'
+                            }
+                        }
+                    }
+                ]
+            }
         }
     }
 }

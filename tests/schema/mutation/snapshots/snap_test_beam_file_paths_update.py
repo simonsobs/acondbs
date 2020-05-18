@@ -7,6 +7,22 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[updateBeamFilePath] 1'] = {
+    'data': {
+        'updateBeamFilePath': {
+            'beamFilePath': {
+                'path': 'nersc:/go/to/my/new_beam_v2'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[updateBeamFilePath] 2'] = {
+    'data': {
+        'beam': None
+    }
+}
+
 snapshots['test_schema_error[updateBeamFilePath-immutableField] 1'] = {
     'errors': [
         {
@@ -23,22 +39,6 @@ In field "productId": Unknown field.'''
 }
 
 snapshots['test_schema_error[updateBeamFilePath-immutableField] 2'] = {
-    'data': {
-        'beam': None
-    }
-}
-
-snapshots['test_schema_success[updateBeamFilePath] 1'] = {
-    'data': {
-        'updateBeamFilePath': {
-            'beamFilePath': {
-                'path': 'nersc:/go/to/my/new_beam_v2'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[updateBeamFilePath] 2'] = {
     'data': {
         'beam': None
     }

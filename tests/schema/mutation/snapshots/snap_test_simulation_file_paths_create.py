@@ -7,40 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_error[createSimulationFilePath-noSuchField] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 45,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {path: "nersc:/go/to/my/new_simulation_v1", note: "- Note 1", productId: 1001, noSuchField: "xxx"}.
-In field "noSuchField": Unknown field.'''
-        }
-    ]
-}
-
-snapshots['test_schema_error[createSimulationFilePath-noSuchField] 2'] = {
-    'data': {
-        'allSimulationFilePaths': {
-            'edges': [
-                {
-                    'node': {
-                        'productId': 1001
-                    }
-                },
-                {
-                    'node': {
-                        'productId': 1001
-                    }
-                }
-            ]
-        }
-    }
-}
-
 snapshots['test_schema_success[createSimulationFilePath] 1'] = {
     'data': {
         'createSimulationFilePath': {
@@ -90,6 +56,40 @@ snapshots['test_schema_success[createSimulationFilePath] 2'] = {
                 ]
             },
             'producedBy': 'abc-def'
+        }
+    }
+}
+
+snapshots['test_schema_error[createSimulationFilePath-noSuchField] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 45,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {path: "nersc:/go/to/my/new_simulation_v1", note: "- Note 1", productId: 1001, noSuchField: "xxx"}.
+In field "noSuchField": Unknown field.'''
+        }
+    ]
+}
+
+snapshots['test_schema_error[createSimulationFilePath-noSuchField] 2'] = {
+    'data': {
+        'allSimulationFilePaths': {
+            'edges': [
+                {
+                    'node': {
+                        'productId': 1001
+                    }
+                },
+                {
+                    'node': {
+                        'productId': 1001
+                    }
+                }
+            ]
         }
     }
 }

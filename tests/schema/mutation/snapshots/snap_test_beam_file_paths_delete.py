@@ -7,6 +7,20 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[deleteBeamFilePath] 1'] = {
+    'data': {
+        'deleteBeamFilePath': {
+            'ok': True
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteBeamFilePath] 2'] = {
+    'data': {
+        'beam': None
+    }
+}
+
 snapshots['test_schema_error[deleteBeamFilePath-error] 1'] = {
     'data': {
         'deleteBeamFilePath': None
@@ -53,19 +67,5 @@ snapshots['test_schema_error[deleteBeamFilePath-error] 2'] = {
                 }
             ]
         }
-    }
-}
-
-snapshots['test_schema_success[deleteBeamFilePath] 1'] = {
-    'data': {
-        'deleteBeamFilePath': {
-            'ok': True
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteBeamFilePath] 2'] = {
-    'data': {
-        'beam': None
     }
 }

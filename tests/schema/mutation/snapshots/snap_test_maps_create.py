@@ -17,31 +17,6 @@ snapshots['test_schema_success[createMap-all-options] 1'] = {
     }
 }
 
-snapshots['test_schema_success[createMap-selective-options] 1'] = {
-    'data': {
-        'createMap': {
-            'map': {
-                'name': 'map1'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_error[createMap-error-no-name] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 30,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn", paths: ["/path/to/new/product1", "/another/location/of/product1"]}.
-In field "name": Expected "String!", found null.'''
-        }
-    ]
-}
-
 snapshots['test_schema_success[createMap-all-options] 2'] = {
     'data': {
         'map': {
@@ -76,6 +51,16 @@ snapshots['test_schema_success[createMap-all-options] 2'] = {
     }
 }
 
+snapshots['test_schema_success[createMap-selective-options] 1'] = {
+    'data': {
+        'createMap': {
+            'map': {
+                'name': 'map1'
+            }
+        }
+    }
+}
+
 snapshots['test_schema_success[createMap-selective-options] 2'] = {
     'data': {
         'map': {
@@ -98,6 +83,21 @@ snapshots['test_schema_success[createMap-selective-options] 2'] = {
             'updatedBy': None
         }
     }
+}
+
+snapshots['test_schema_error[createMap-error-no-name] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 30,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn", paths: ["/path/to/new/product1", "/another/location/of/product1"]}.
+In field "name": Expected "String!", found null.'''
+        }
+    ]
 }
 
 snapshots['test_schema_error[createMap-error-no-name] 2'] = {

@@ -7,6 +7,40 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[createBeamFilePath] 1'] = {
+    'data': {
+        'createBeamFilePath': {
+            'beamFilePath': {
+                'path': 'nersc:/go/to/my/new_beam_v1'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createBeamFilePath] 2'] = {
+    'data': {
+        'beam': {
+            'datePosted': '2018-01-01',
+            'name': '20180101',
+            'note': '- test entry',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'note': '- Note 1',
+                            'path': 'nersc:/go/to/my/new_beam_v1',
+                            'product': {
+                                'productId': '1010'
+                            }
+                        }
+                    }
+                ]
+            },
+            'producedBy': 'pwg-pmn'
+        }
+    }
+}
+
 snapshots['test_schema_error[createBeamFilePath-noSuchField] 1'] = {
     'errors': [
         {
@@ -47,40 +81,6 @@ snapshots['test_schema_error[createBeamFilePath-noSuchField] 2'] = {
                     }
                 }
             ]
-        }
-    }
-}
-
-snapshots['test_schema_success[createBeamFilePath] 1'] = {
-    'data': {
-        'createBeamFilePath': {
-            'beamFilePath': {
-                'path': 'nersc:/go/to/my/new_beam_v1'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[createBeamFilePath] 2'] = {
-    'data': {
-        'beam': {
-            'datePosted': '2018-01-01',
-            'name': '20180101',
-            'note': '- test entry',
-            'paths': {
-                'edges': [
-                    {
-                        'node': {
-                            'note': '- Note 1',
-                            'path': 'nersc:/go/to/my/new_beam_v1',
-                            'product': {
-                                'productId': '1010'
-                            }
-                        }
-                    }
-                ]
-            },
-            'producedBy': 'pwg-pmn'
         }
     }
 }
