@@ -49,6 +49,18 @@ class Query(graphene.ObjectType):
 
     all_product_types = FilterableConnectionField(ProductType._meta.connection)
 
+    product_type = graphene.Field(ProductType, product_type_id=graphene.Int(), name=graphene.String())
+
+    def resolve_product_type(self, info, **kwargs):
+        fields = ('product_type_id', 'name')
+        query = ProductType.get_query(info)
+        for f in fields:
+            v = kwargs.get(f)
+            if v is not None:
+                query = query.filter(getattr(ProductTypeModel, f)==v)
+                return query.first()
+        return None
+
     all_products = FilterableConnectionField(Product._meta.connection, filters=ProductFilter())
     all_product_file_paths = FilterableConnectionField(ProductFilePath._meta.connection)
 

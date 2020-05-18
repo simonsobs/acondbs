@@ -68,6 +68,12 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        },
+                        {
                             'name': 'allProducts',
                             'type': {
                                 'name': 'ProductConnection'
