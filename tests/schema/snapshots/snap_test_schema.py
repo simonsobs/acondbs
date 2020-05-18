@@ -1216,6 +1216,18 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': 'DeleteProductFilePath'
                             }
+                        },
+                        {
+                            'name': 'createProductType',
+                            'type': {
+                                'name': 'CreateProductType'
+                            }
+                        },
+                        {
+                            'name': 'deleteProductType',
+                            'type': {
+                                'name': 'DeleteProductType'
+                            }
                         }
                     ],
                     'name': 'Mutation'
@@ -1647,6 +1659,38 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'name': 'DeleteProductFilePath'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        }
+                    ],
+                    'name': 'CreateProductType'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateProductTypeInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteProductType'
                 },
                 {
                     'fields': [
