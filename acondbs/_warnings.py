@@ -12,7 +12,10 @@ _module_path = Path(__file__).resolve().parent.parent
 # i.e., the one dir above the module path.
 
 def format(message, category, filename, lineno, file=None, line=None):
-    filename = Path(filename).resolve().relative_to(_module_path)
+    try:
+        filename = Path(filename).resolve().relative_to(_module_path)
+    except:
+        pass
     ret = '{}:{}: {}\n'.format(filename, lineno, message)
     return ret
 
