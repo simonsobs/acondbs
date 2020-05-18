@@ -1,6 +1,7 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
+from ..models import Product as ProductModel
 from ..models import ProductType as ProductTypeModel
 
 from ..db.sa import sa
@@ -40,6 +41,9 @@ class DeleteProductType(graphene.Mutation):
 
     def mutate(root, info, product_type_id):
         product_type = ProductTypeModel.query.filter_by(product_type_id=product_type_id).first()
+        products = ProductModel.query.filter_by(product_type_id=product_type_id).all()
+        if products:
+            raise ValueError('Cannot delete the product type "{}". Products of this type exist'.format(product_type.name))
         sa.session.delete(product_type)
         sa.session.commit()
         ok = True
