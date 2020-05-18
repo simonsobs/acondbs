@@ -7,11 +7,27 @@ from acondbs.schema.schema import schema
 params = [
     pytest.param(
         '''
+        { allProducts {
+             edges { node { name } }
+           } }
+         ''',
+        id='allProducts'
+    ),
+    pytest.param(
+        '''
+        { allProducts(filters: {productTypeId: 1}, first: 2) {
+             edges { node { name } }
+           } }
+         ''',
+        id='allProducts-filtes-productTypeId-one-first-two'
+    ),
+    pytest.param(
+        '''
         { allProducts(first: 2) {
              edges { node { name } }
            } }
          ''',
-        id='allProductsFirstTwo'
+        id='allProducts-first-two'
     ),
     pytest.param(
         '''
@@ -19,25 +35,25 @@ params = [
              edges { node { name } }
            } }
          ''',
-        id='allProductsFirstTwoSort'
+        id='allProducts-first-two-sort'
     ),
     pytest.param(
         '''
         { product(productId: 1001) { name } }
          ''',
-        id='productByProductID'
+        id='product-by-ProductID'
     ),
     pytest.param(
         '''
         { product(productId: 2001) { name } }
          ''',
-        id='productByProductID-nonexistent'
+        id='product-by-ProductID-nonexistent'
     ),
     pytest.param(
         '''
         { product(name: "lat20190213") { productId } }
          ''',
-        id='productByName'
+        id='product-by-name'
     ),
 ]
 
