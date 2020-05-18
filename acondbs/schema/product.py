@@ -9,8 +9,6 @@ from ..models import ProductFilePath as ProductFilePathModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
-from .common import CommonCreateProductInputFields, CommonUpdateProductInputFields
-
 ##__________________________________________________________________||
 class Product(SQLAlchemyObjectType):
     class Meta:
@@ -18,12 +16,24 @@ class Product(SQLAlchemyObjectType):
         interfaces = (relay.Node, )
 
 ##__________________________________________________________________||
-class CreateProductInput(graphene.InputObjectType, CommonCreateProductInputFields):
-    pass
+class CommonInputFields:
+    """Common input fields of mutations for creating and updating products
 
-class UpdateProductInput(graphene.InputObjectType, CommonUpdateProductInputFields):
-    pass
+    """
+    contact = graphene.String()
+    note = graphene.String()
+    paths = graphene.List(graphene.String)
 
+class CreateProductInput(graphene.InputObjectType, CommonInputFields):
+    name = graphene.String(required=True)
+    date_produced = graphene.Date()
+    produced_by = graphene.String()
+    posted_by = graphene.String()
+
+class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
+    updated_by = graphene.String()
+
+##__________________________________________________________________||
 class CreateProduct(graphene.Mutation):
     class Arguments:
         input = CreateProductInput(required=True)
