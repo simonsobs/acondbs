@@ -85,6 +85,16 @@ snapshots['test_schema[allProductTypes] 1'] = {
                             ]
                         }
                     }
+                },
+                {
+                    'node': {
+                        'name': 'anchor',
+                        'productTypeId': '4',
+                        'products': {
+                            'edges': [
+                            ]
+                        }
+                    }
                 }
             ]
         }

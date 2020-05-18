@@ -66,6 +66,11 @@ snapshots['test_schema_error[createProduct-error-already-exist] 2'] = {
                     'node': {
                         'name': 'simulation'
                     }
+                },
+                {
+                    'node': {
+                        'name': 'anchor'
+                    }
                 }
             ]
         }

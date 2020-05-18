@@ -247,6 +247,10 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
         {
             'name': 'simulation',
             'product_type_id': 3
+        },
+        {
+            'name': 'anchor',
+            'product_type_id': 4
         }
     ],
     'products': [

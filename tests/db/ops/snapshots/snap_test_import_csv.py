@@ -247,6 +247,10 @@ snapshots['test_import_tables_from_csv_files 1'] = {
         {
             'name': 'simulation',
             'product_type_id': 3
+        },
+        {
+            'name': 'anchor',
+            'product_type_id': 4
         }
     ],
     'products': [
