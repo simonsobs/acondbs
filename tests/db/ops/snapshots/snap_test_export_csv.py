@@ -173,6 +173,8 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'updated_by': 'pwg-pmn'
         }
     ],
+    'product_file_paths': [
+    ],
     'product_types': [
         {
             'name': 'map',
