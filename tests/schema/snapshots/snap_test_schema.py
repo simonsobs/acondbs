@@ -62,6 +62,24 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'allProducts',
+                            'type': {
+                                'name': 'ProductConnection'
+                            }
+                        },
+                        {
+                            'name': 'allProductFilePaths',
+                            'type': {
+                                'name': 'ProductFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'product',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
                             'name': 'simulation',
                             'type': {
                                 'name': 'Simulation'
@@ -767,6 +785,206 @@ snapshots['test_types 1'] = {
                 {
                     'fields': [
                         {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'productTypeId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'contact',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateProduced',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'producedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'datePosted',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'postedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'dateUpdated',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'updatedBy',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'paths',
+                            'type': {
+                                'name': 'ProductFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'Product'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductFilePathConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'ProductFilePath'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductFilePathEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pathId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'path',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'note',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'productId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'product',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductFilePathSortEnum'
+                },
+                {
+                    'fields': [
+                        {
                             'name': 'createMap',
                             'type': {
                                 'name': 'CreateMap'
@@ -872,6 +1090,42 @@ snapshots['test_types 1'] = {
                             'name': 'deleteSimulationFilePath',
                             'type': {
                                 'name': 'DeleteSimulationFilePath'
+                            }
+                        },
+                        {
+                            'name': 'createProduct',
+                            'type': {
+                                'name': 'CreateProduct'
+                            }
+                        },
+                        {
+                            'name': 'updateProduct',
+                            'type': {
+                                'name': 'UpdateProduct'
+                            }
+                        },
+                        {
+                            'name': 'deleteProduct',
+                            'type': {
+                                'name': 'DeleteProduct'
+                            }
+                        },
+                        {
+                            'name': 'createProductFilePath',
+                            'type': {
+                                'name': 'CreateProductFilePath'
+                            }
+                        },
+                        {
+                            'name': 'updateProductFilePath',
+                            'type': {
+                                'name': 'UpdateProductFilePath'
+                            }
+                        },
+                        {
+                            'name': 'deleteProductFilePath',
+                            'type': {
+                                'name': 'DeleteProductFilePath'
                             }
                         }
                     ],
@@ -1198,6 +1452,112 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'name': 'DeleteSimulationFilePath'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'product',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        }
+                    ],
+                    'name': 'CreateProduct'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateProductInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'product',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateProduct'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateProductInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteProduct'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'productFilePath',
+                            'type': {
+                                'name': 'ProductFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'CreateProductFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateProductFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'productFilePath',
+                            'type': {
+                                'name': 'ProductFilePath'
+                            }
+                        }
+                    ],
+                    'name': 'UpdateProductFilePath'
+                },
+                {
+                    'fields': None,
+                    'name': 'UpdateProductFilePathInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteProductFilePath'
                 },
                 {
                     'fields': [

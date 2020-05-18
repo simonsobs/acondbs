@@ -10,6 +10,9 @@ from .beam_file_path import BeamFilePath, BeamFilePathModel
 from .map_file_path import MapFilePath, MapFilePathModel
 from .simulation_file_path import SimulationFilePath, SimulationFilePathModel
 
+from .product import Product, ProductModel
+from .product_file_path import ProductFilePath, ProductFilePathModel
+
 ##__________________________________________________________________||
 class MapFilter(FilterSet):
    class Meta:
@@ -35,6 +38,24 @@ class Query(graphene.ObjectType):
     all_simulation_file_paths = FilterableConnectionField(SimulationFilePath._meta.connection)
     all_map_file_paths = FilterableConnectionField(MapFilePath._meta.connection)
     all_beam_file_paths = FilterableConnectionField(BeamFilePath._meta.connection)
+
+    all_products = FilterableConnectionField(Product._meta.connection)
+    all_product_file_paths = FilterableConnectionField(ProductFilePath._meta.connection)
+
+    product = graphene.Field(Product, product_id=graphene.Int(), name=graphene.String())
+
+    def resolve_product(self, info, **kwargs):
+        import time, random
+        # print(kwargs)
+        # time.sleep(random.randint(1, 5))
+        fields = ('product_id', 'name')
+        query = Product.get_query(info)
+        for f in fields:
+            v = kwargs.get(f)
+            if v is not None:
+                query = query.filter(getattr(ProductModel, f)==v)
+                return query.first()
+        return None
 
     simulation = graphene.Field(Simulation, product_id=graphene.Int(), name=graphene.String())
 
