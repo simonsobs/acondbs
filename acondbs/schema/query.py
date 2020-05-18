@@ -11,6 +11,15 @@ from .map_file_path import MapFilePath, MapFilePathModel
 from .simulation_file_path import SimulationFilePath, SimulationFilePathModel
 
 ##__________________________________________________________________||
+class MapFilter(FilterSet):
+   class Meta:
+       model = MapModel
+       fields = {
+           'name': ['eq', 'ne', 'in', 'ilike'],
+           'date_produced': [...],
+       }
+
+##__________________________________________________________________||
 class Query(graphene.ObjectType):
 
     version = graphene.String()
@@ -21,7 +30,7 @@ class Query(graphene.ObjectType):
 
     node = relay.Node.Field()
     all_simulations = FilterableConnectionField(Simulation._meta.connection)
-    all_maps = FilterableConnectionField(Map._meta.connection)
+    all_maps = FilterableConnectionField(Map._meta.connection, filters=MapFilter())
     all_beams = FilterableConnectionField(Beam._meta.connection)
     all_simulation_file_paths = FilterableConnectionField(SimulationFilePath._meta.connection)
     all_map_file_paths = FilterableConnectionField(MapFilePath._meta.connection)
