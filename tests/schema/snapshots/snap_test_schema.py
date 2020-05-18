@@ -738,6 +738,14 @@ snapshots['test_types 1'] = {
                 },
                 {
                     'fields': None,
+                    'name': 'MapFilter'
+                },
+                {
+                    'fields': None,
+                    'name': 'StringRange'
+                },
+                {
+                    'fields': None,
                     'name': 'MapSortEnum'
                 },
                 {
