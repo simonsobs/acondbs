@@ -3,3 +3,9 @@ path_id,product_id,path,note
 2,1012,nersc:/go/to/my/maps_v2,lat only
 3,1012,abcde:/path/to/the/maps_v2,lat only
 4,1013,nersc:/go/to/my/maps_v3,lat only
+5,1070,BEAM_DEPOT/Beams/20190304,
+6,1120,BEAM_DEPOT/Beams/20190607,
+7,1130,BEAM_DEPOT/Beams/20200123,
+8,1150,BEAM_DEPOT/Beams/20200207,
+9,1002,nersc:/go/to/my/simulations,
+10,1002,abcde:/path/to/the/simulations,

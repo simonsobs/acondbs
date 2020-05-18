@@ -18,7 +18,7 @@ snapshots['test_schema[allProductsFirstTwo] 1'] = {
                 },
                 {
                     'node': {
-                        'name': 'lat20200120'
+                        'name': 'xyz-s1234-20200101'
                     }
                 }
             ]
@@ -32,12 +32,12 @@ snapshots['test_schema[allProductsFirstTwoSort] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'name': 'lat20200201'
+                        'name': '20200207'
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200120'
+                        'name': 'lat20200201'
                     }
                 }
             ]

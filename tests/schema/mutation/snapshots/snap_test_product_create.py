@@ -119,6 +119,42 @@ snapshots['test_schema_error[createProduct-error-no-name] 2'] = {
                         'path': 'nersc:/go/to/my/maps_v3',
                         'productId': 1013
                     }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20190304',
+                        'productId': 1070
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20190607',
+                        'productId': 1120
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200123',
+                        'productId': 1130
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'BEAM_DEPOT/Beams/20200207',
+                        'productId': 1150
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'nersc:/go/to/my/simulations',
+                        'productId': 1002
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'abcde:/path/to/the/simulations',
+                        'productId': 1002
+                    }
                 }
             ]
         },
@@ -132,6 +168,18 @@ snapshots['test_schema_error[createProduct-error-no-name] 2'] = {
                 },
                 {
                     'node': {
+                        'name': 'xyz-s1234-20200101',
+                        'productId': '1002'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20180101',
+                        'productId': '1010'
+                    }
+                },
+                {
+                    'node': {
                         'name': 'lat20200120',
                         'productId': '1012'
                     }
@@ -140,6 +188,30 @@ snapshots['test_schema_error[createProduct-error-no-name] 2'] = {
                     'node': {
                         'name': 'lat20200201',
                         'productId': '1013'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20190304',
+                        'productId': '1070'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20190607',
+                        'productId': '1120'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20200123',
+                        'productId': '1130'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20200207',
+                        'productId': '1150'
                     }
                 }
             ]
