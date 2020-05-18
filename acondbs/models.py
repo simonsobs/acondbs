@@ -15,6 +15,11 @@ https://docs.sqlalchhttps://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-
 from .db.sa import sa
 
 ##__________________________________________________________________||
+class ProductType(sa.Model):
+    __tablename__ = 'product_types'
+    product_type_id = sa.Column(sa.Integer(), primary_key=True)
+    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+
 class Product(sa.Model):
     __tablename__ = 'products'
     product_id = sa.Column(sa.Integer(), primary_key=True)
@@ -30,10 +35,6 @@ class Product(sa.Model):
     note = sa.Column(sa.Text())
     product_type = sa.relationship("ProductType", backref=sa.backref("products"))
 
-class ProductType(sa.Model):
-    __tablename__ = 'product_types'
-    product_type_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
 
 ##__________________________________________________________________||
 class CommonProductFields:
