@@ -8,7 +8,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteProductRelationType(typeId: 1) { ok }
+          deleteProductRelationType(typeId: 3) { ok }
         }
          ''',
         '''
@@ -62,26 +62,26 @@ params = [
         ''',
         id='deleteProductRelationType-error-nonexistent'
     ),
-#    pytest.param(
-#        '''
-#        mutation m {
-#          deleteProductRelationType(typeId: 1) { ok }
-#        }
-#         ''',
-#        '''
-#          {
-#            allProductRelationTypes {
-#              edges {
-#                node {
-#                  name
-#                  typeId
-#                }
-#              }
-#            }
-#          }
-#        ''',
-#        id='deleteProductRelationType-error-unempty'
-#    ),
+    pytest.param(
+        '''
+        mutation m {
+          deleteProductRelationType(typeId: 1) { ok }
+        }
+         ''',
+        '''
+          {
+            allProductRelationTypes {
+              edges {
+                node {
+                  name
+                  typeId
+                }
+              }
+            }
+          }
+        ''',
+        id='deleteProductRelationType-error-unempty'
+    ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)

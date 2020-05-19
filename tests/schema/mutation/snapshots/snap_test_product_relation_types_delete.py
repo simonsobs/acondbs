@@ -42,6 +42,59 @@ snapshots['test_schema_error[deleteProductRelationType-error-nonexistent] 2'] = 
                         'name': 'child',
                         'typeId': '2'
                     }
+                },
+                {
+                    'node': {
+                        'name': 'invigilator',
+                        'typeId': '3'
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema_error[deleteProductRelationType-error-unempty] 1'] = {
+    'data': {
+        'deleteProductRelationType': None
+    },
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 11,
+                    'line': 3
+                }
+            ],
+            'message': 'Cannot delete the product relation type "parent". Products with this relation type exist',
+            'path': [
+                'deleteProductRelationType'
+            ]
+        }
+    ]
+}
+
+snapshots['test_schema_error[deleteProductRelationType-error-unempty] 2'] = {
+    'data': {
+        'allProductRelationTypes': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'parent',
+                        'typeId': '1'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'child',
+                        'typeId': '2'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'invigilator',
+                        'typeId': '3'
+                    }
                 }
             ]
         }
@@ -60,6 +113,12 @@ snapshots['test_schema_success[deleteProductRelationType] 2'] = {
     'data': {
         'allProductRelationTypes': {
             'edges': [
+                {
+                    'node': {
+                        'name': 'parent',
+                        'typeId': '1'
+                    }
+                },
                 {
                     'node': {
                         'name': 'child',
