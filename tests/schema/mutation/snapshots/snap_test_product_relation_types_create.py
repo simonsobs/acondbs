@@ -7,6 +7,24 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[createProductRelationType] 1'] = {
+    'data': {
+        'createProductRelationType': {
+            'productRelationType': {
+                'name': 'proctor'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createProductRelationType] 2'] = {
+    'data': {
+        'productRelationType': {
+            'name': 'proctor'
+        }
+    }
+}
+
 snapshots['test_schema_error[createProduct-error-already-exist] 1'] = {
     'errors': [
         {
@@ -41,24 +59,6 @@ snapshots['test_schema_error[createProduct-error-already-exist] 2'] = {
                     }
                 }
             ]
-        }
-    }
-}
-
-snapshots['test_schema_success[createProductRelationType] 1'] = {
-    'data': {
-        'createProductRelationType': {
-            'productRelationType': {
-                'name': 'proctor'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[createProductRelationType] 2'] = {
-    'data': {
-        'productRelationType': {
-            'name': 'proctor'
         }
     }
 }

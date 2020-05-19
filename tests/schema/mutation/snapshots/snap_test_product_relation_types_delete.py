@@ -7,6 +7,35 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[deleteProductRelationType] 1'] = {
+    'data': {
+        'deleteProductRelationType': {
+            'ok': True
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteProductRelationType] 2'] = {
+    'data': {
+        'allProductRelationTypes': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'parent',
+                        'typeId': '1'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'child',
+                        'typeId': '2'
+                    }
+                }
+            ]
+        }
+    }
+}
+
 snapshots['test_schema_error[deleteProductRelationType-error-nonexistent] 1'] = {
     'data': {
         'deleteProductRelationType': None
@@ -94,35 +123,6 @@ snapshots['test_schema_error[deleteProductRelationType-error-unempty] 2'] = {
                     'node': {
                         'name': 'invigilator',
                         'typeId': '3'
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteProductRelationType] 1'] = {
-    'data': {
-        'deleteProductRelationType': {
-            'ok': True
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteProductRelationType] 2'] = {
-    'data': {
-        'allProductRelationTypes': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'parent',
-                        'typeId': '1'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'child',
-                        'typeId': '2'
                     }
                 }
             ]

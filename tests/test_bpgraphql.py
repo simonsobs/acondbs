@@ -5,7 +5,7 @@ import pytest
 def test_graphql(client):
     response = client.get(
         '/graphql',
-        query_string=dict(query='{allMaps { edges { node { id name } } }}'))
+        query_string=dict(query='{ allProducts { edges { node { id name } } }}'))
     assert 200 == response.status_code
 
     un_jsonified = json.loads(response.data)

@@ -124,12 +124,6 @@ def db_backup_global_variables(monkeypatch):
 @pytest.fixture(autouse=True)
 def mock_request_backup_db(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.map_.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.map_file_path.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.beam.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.beam_file_path.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.simulation.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.simulation_file_path.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.product.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.product_file_path.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.product_type.request_backup_db", y)
@@ -143,9 +137,6 @@ def mock_datetime(monkeypatch):
     """
     y = mock.Mock(wraps=datetime)
     y.date.today.return_value = datetime.date(2020, 5, 4)
-    monkeypatch.setattr("acondbs.schema.map_.datetime", y)
-    monkeypatch.setattr("acondbs.schema.beam.datetime", y)
-    monkeypatch.setattr("acondbs.schema.simulation.datetime", y)
     monkeypatch.setattr("acondbs.schema.product.datetime", y)
     yield y
 

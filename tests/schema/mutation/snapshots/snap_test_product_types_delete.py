@@ -7,46 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_error[deleteProductType-error-nonexistent] 1'] = {
-    'data': {
-        'deleteProductType': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 11,
-                    'line': 3
-                }
-            ],
-            'message': "Class 'builtins.NoneType' is not mapped",
-            'path': [
-                'deleteProductType'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
-    'data': {
-        'deleteProductType': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 11,
-                    'line': 3
-                }
-            ],
-            'message': 'Cannot delete the product type "map". Products of this type exist',
-            'path': [
-                'deleteProductType'
-            ]
-        }
-    ]
-}
-
 snapshots['test_schema_success[deleteProductType] 1'] = {
     'data': {
         'deleteProductType': {
@@ -82,6 +42,26 @@ snapshots['test_schema_success[deleteProductType] 2'] = {
     }
 }
 
+snapshots['test_schema_error[deleteProductType-error-nonexistent] 1'] = {
+    'data': {
+        'deleteProductType': None
+    },
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 11,
+                    'line': 3
+                }
+            ],
+            'message': "Class 'builtins.NoneType' is not mapped",
+            'path': [
+                'deleteProductType'
+            ]
+        }
+    ]
+}
+
 snapshots['test_schema_error[deleteProductType-error-nonexistent] 2'] = {
     'data': {
         'allProductTypes': {
@@ -113,6 +93,26 @@ snapshots['test_schema_error[deleteProductType-error-nonexistent] 2'] = {
             ]
         }
     }
+}
+
+snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
+    'data': {
+        'deleteProductType': None
+    },
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 11,
+                    'line': 3
+                }
+            ],
+            'message': 'Cannot delete the product type "map". Products of this type exist',
+            'path': [
+                'deleteProductType'
+            ]
+        }
+    ]
 }
 
 snapshots['test_schema_error[deleteProductType-error-unempty] 2'] = {
