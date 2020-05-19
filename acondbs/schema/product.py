@@ -15,6 +15,13 @@ class Product(SQLAlchemyObjectType):
         model = ProductModel
         interfaces = (relay.Node, )
 
+# class ProductConnection(relay.Connection):
+#     class Meta:
+#         node = Product
+
+## Product._meta.connection is used instead
+## https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-478744077
+
 ##__________________________________________________________________||
 class CommonInputFields:
     """Common input fields of mutations for creating and updating products
