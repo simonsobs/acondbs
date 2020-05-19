@@ -77,7 +77,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1001',
                         'productType': {
                             'name': 'map',
-                            'productTypeId': '1'
+                            'typeId': '1'
                         },
                         'relations': {
                             'edges': [
@@ -91,7 +91,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1002',
                         'productType': {
                             'name': 'simulation',
-                            'productTypeId': '3'
+                            'typeId': '3'
                         },
                         'relations': {
                             'edges': [
@@ -105,7 +105,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1010',
                         'productType': {
                             'name': 'beam',
-                            'productTypeId': '2'
+                            'typeId': '2'
                         },
                         'relations': {
                             'edges': [
@@ -119,7 +119,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1012',
                         'productType': {
                             'name': 'map',
-                            'productTypeId': '1'
+                            'typeId': '1'
                         },
                         'relations': {
                             'edges': [
@@ -151,7 +151,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1013',
                         'productType': {
                             'name': 'map',
-                            'productTypeId': '1'
+                            'typeId': '1'
                         },
                         'relations': {
                             'edges': [
@@ -183,7 +183,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1070',
                         'productType': {
                             'name': 'beam',
-                            'productTypeId': '2'
+                            'typeId': '2'
                         },
                         'relations': {
                             'edges': [
@@ -197,7 +197,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1120',
                         'productType': {
                             'name': 'beam',
-                            'productTypeId': '2'
+                            'typeId': '2'
                         },
                         'relations': {
                             'edges': [
@@ -211,7 +211,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1130',
                         'productType': {
                             'name': 'beam',
-                            'productTypeId': '2'
+                            'typeId': '2'
                         },
                         'relations': {
                             'edges': [
@@ -261,7 +261,7 @@ snapshots['test_schema[allProducts] 1'] = {
                         'productId': '1150',
                         'productType': {
                             'name': 'beam',
-                            'productTypeId': '2'
+                            'typeId': '2'
                         },
                         'relations': {
                             'edges': [
@@ -310,7 +310,7 @@ snapshots['test_schema[allProducts] 1'] = {
     }
 }
 
-snapshots['test_schema[allProducts-filtes-productTypeId-one-first-two] 1'] = {
+snapshots['test_schema[allProducts-filtes-typeId-one-first-two] 1'] = {
     'data': {
         'allProducts': {
             'edges': [

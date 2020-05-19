@@ -14,7 +14,6 @@ snapshots['test_schema[allProductTypes] 1'] = {
                 {
                     'node': {
                         'name': 'map',
-                        'productTypeId': '1',
                         'products': {
                             'edges': [
                                 {
@@ -33,13 +32,13 @@ snapshots['test_schema[allProductTypes] 1'] = {
                                     }
                                 }
                             ]
-                        }
+                        },
+                        'typeId': '1'
                     }
                 },
                 {
                     'node': {
                         'name': 'beam',
-                        'productTypeId': '2',
                         'products': {
                             'edges': [
                                 {
@@ -68,13 +67,13 @@ snapshots['test_schema[allProductTypes] 1'] = {
                                     }
                                 }
                             ]
-                        }
+                        },
+                        'typeId': '2'
                     }
                 },
                 {
                     'node': {
                         'name': 'simulation',
-                        'productTypeId': '3',
                         'products': {
                             'edges': [
                                 {
@@ -83,17 +82,18 @@ snapshots['test_schema[allProductTypes] 1'] = {
                                     }
                                 }
                             ]
-                        }
+                        },
+                        'typeId': '3'
                     }
                 },
                 {
                     'node': {
                         'name': 'anchor',
-                        'productTypeId': '4',
                         'products': {
                             'edges': [
                             ]
-                        }
+                        },
+                        'typeId': '4'
                     }
                 }
             ]
@@ -101,7 +101,7 @@ snapshots['test_schema[allProductTypes] 1'] = {
     }
 }
 
-snapshots['test_schema[productType-by-productTypeId-one)] 1'] = {
+snapshots['test_schema[productType-by-typeId-one)] 1'] = {
     'data': {
         'productType': {
             'name': 'map'

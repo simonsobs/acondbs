@@ -7,41 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[deleteProductType] 1'] = {
-    'data': {
-        'deleteProductType': {
-            'ok': True
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteProductType] 2'] = {
-    'data': {
-        'allProductTypes': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'map',
-                        'productTypeId': '1'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'beam',
-                        'productTypeId': '2'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'simulation',
-                        'productTypeId': '3'
-                    }
-                }
-            ]
-        }
-    }
-}
-
 snapshots['test_schema_error[deleteProductType-error-nonexistent] 1'] = {
     'data': {
         'deleteProductType': None
@@ -60,39 +25,6 @@ snapshots['test_schema_error[deleteProductType-error-nonexistent] 1'] = {
             ]
         }
     ]
-}
-
-snapshots['test_schema_error[deleteProductType-error-nonexistent] 2'] = {
-    'data': {
-        'allProductTypes': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'map',
-                        'productTypeId': '1'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'beam',
-                        'productTypeId': '2'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'simulation',
-                        'productTypeId': '3'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'anchor',
-                        'productTypeId': '4'
-                    }
-                }
-            ]
-        }
-    }
 }
 
 snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
@@ -115,6 +47,74 @@ snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
     ]
 }
 
+snapshots['test_schema_success[deleteProductType] 1'] = {
+    'data': {
+        'deleteProductType': {
+            'ok': True
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteProductType] 2'] = {
+    'data': {
+        'allProductTypes': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map',
+                        'typeId': '1'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'beam',
+                        'typeId': '2'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'simulation',
+                        'typeId': '3'
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema_error[deleteProductType-error-nonexistent] 2'] = {
+    'data': {
+        'allProductTypes': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map',
+                        'typeId': '1'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'beam',
+                        'typeId': '2'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'simulation',
+                        'typeId': '3'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'anchor',
+                        'typeId': '4'
+                    }
+                }
+            ]
+        }
+    }
+}
+
 snapshots['test_schema_error[deleteProductType-error-unempty] 2'] = {
     'data': {
         'allProductTypes': {
@@ -122,25 +122,25 @@ snapshots['test_schema_error[deleteProductType-error-unempty] 2'] = {
                 {
                     'node': {
                         'name': 'map',
-                        'productTypeId': '1'
+                        'typeId': '1'
                     }
                 },
                 {
                     'node': {
                         'name': 'beam',
-                        'productTypeId': '2'
+                        'typeId': '2'
                     }
                 },
                 {
                     'node': {
                         'name': 'simulation',
-                        'productTypeId': '3'
+                        'typeId': '3'
                     }
                 },
                 {
                     'node': {
                         'name': 'anchor',
-                        'productTypeId': '4'
+                        'typeId': '4'
                     }
                 }
             ]

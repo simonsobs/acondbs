@@ -14,7 +14,7 @@ params = [
                 productId
                 name
                 productType {
-                  productTypeId
+                  typeId
                   name
                 }
                 relations {
@@ -46,11 +46,11 @@ params = [
     ),
     pytest.param(
         '''
-        { allProducts(filters: {productTypeId: 1}, first: 2) {
+        { allProducts(filters: {typeId: 1}, first: 2) {
              edges { node { name } }
            } }
          ''',
-        id='allProducts-filtes-productTypeId-one-first-two'
+        id='allProducts-filtes-typeId-one-first-two'
     ),
     pytest.param(
         '''

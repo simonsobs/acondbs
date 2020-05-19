@@ -35,13 +35,13 @@ class CreateProductType(graphene.Mutation):
 
 class DeleteProductType(graphene.Mutation):
     class Arguments:
-        product_type_id = graphene.Int()
+        type_id = graphene.Int()
 
     ok = graphene.Boolean()
 
-    def mutate(root, info, product_type_id):
-        product_type = ProductTypeModel.query.filter_by(product_type_id=product_type_id).first()
-        products = ProductModel.query.filter_by(product_type_id=product_type_id).all()
+    def mutate(root, info, type_id):
+        product_type = ProductTypeModel.query.filter_by(type_id=type_id).first()
+        products = ProductModel.query.filter_by(type_id=type_id).all()
         if products:
             raise ValueError('Cannot delete the product type "{}". Products of this type exist'.format(product_type.name))
         sa.session.delete(product_type)

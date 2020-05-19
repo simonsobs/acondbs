@@ -1,4 +1,4 @@
-product_id,product_type_id,name,contact,date_produced,produced_by,date_posted,posted_by,date_updated,updated_by,note
+product_id,type_id,name,contact,date_produced,produced_by,date_posted,posted_by,date_updated,updated_by,note
 1001,1,lat20190213,pwg-pmn,2019-02-13,pwg-pmn,2019-02-13,pwg-pmn,2019-02-13,pwg-pmn,"- This is a dummy test with a lat map
 - This should not depend on any beam"
 1012,1,lat20200120,pwg-pmn,2020-01-20,pwg-pmn,2020-01-20,pwg-pmn,2020-01-20,pwg-pmn,"- This is a dummy test with a lat map

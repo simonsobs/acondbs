@@ -8,7 +8,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteProductType(productTypeId: 4) { ok }
+          deleteProductType(typeId: 4) { ok }
         }
          ''',
         '''
@@ -17,7 +17,7 @@ params = [
               edges {
                 node {
                   name
-                  productTypeId
+                  typeId
                 }
               }
             }
@@ -45,7 +45,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteProductType(productTypeId: 12) { ok }
+          deleteProductType(typeId: 12) { ok }
         }
          ''',
         '''
@@ -54,7 +54,7 @@ params = [
               edges {
                 node {
                   name
-                  productTypeId
+                  typeId
                 }
               }
             }
@@ -65,7 +65,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteProductType(productTypeId: 1) { ok }
+          deleteProductType(typeId: 1) { ok }
         }
          ''',
         '''
@@ -74,7 +74,7 @@ params = [
               edges {
                 node {
                   name
-                  productTypeId
+                  typeId
                 }
               }
             }

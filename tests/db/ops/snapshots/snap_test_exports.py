@@ -292,19 +292,19 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'product_types': [
         {
             'name': 'map',
-            'product_type_id': 1
+            'type_id': 1
         },
         {
             'name': 'beam',
-            'product_type_id': 2
+            'type_id': 2
         },
         {
             'name': 'simulation',
-            'product_type_id': 3
+            'type_id': 3
         },
         {
             'name': 'anchor',
-            'product_type_id': 4
+            'type_id': 4
         }
     ],
     'products': [
@@ -319,7 +319,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1001,
-            'product_type_id': 1,
+            'type_id': 1,
             'updated_by': 'pwg-pmn'
         },
         {
@@ -333,7 +333,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'abc-def',
             'produced_by': 'abc-def',
             'product_id': 1002,
-            'product_type_id': 3,
+            'type_id': 3,
             'updated_by': ''
         },
         {
@@ -346,7 +346,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1010,
-            'product_type_id': 2,
+            'type_id': 2,
             'updated_by': ''
         },
         {
@@ -360,7 +360,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1012,
-            'product_type_id': 1,
+            'type_id': 1,
             'updated_by': 'pwg-pmn'
         },
         {
@@ -374,7 +374,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1013,
-            'product_type_id': 1,
+            'type_id': 1,
             'updated_by': 'pwg-pmn'
         },
         {
@@ -387,7 +387,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1070,
-            'product_type_id': 2,
+            'type_id': 2,
             'updated_by': ''
         },
         {
@@ -400,7 +400,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1120,
-            'product_type_id': 2,
+            'type_id': 2,
             'updated_by': ''
         },
         {
@@ -413,7 +413,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1130,
-            'product_type_id': 2,
+            'type_id': 2,
             'updated_by': ''
         },
         {
@@ -426,7 +426,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1150,
-            'product_type_id': 2,
+            'type_id': 2,
             'updated_by': ''
         }
     ],

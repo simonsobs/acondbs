@@ -849,7 +849,7 @@ snapshots['test_types 1'] = {
                 {
                     'fields': [
                         {
-                            'name': 'productTypeId',
+                            'name': 'typeId',
                             'type': {
                                 'name': None
                             }
@@ -918,7 +918,7 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'productTypeId',
+                            'name': 'typeId',
                             'type': {
                                 'name': 'Int'
                             }

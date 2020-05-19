@@ -21,7 +21,7 @@ class ProductFilter(FilterSet):
    class Meta:
        model = ProductModel
        fields = {
-           'product_type_id': ['eq', ],
+           'type_id': ['eq', ],
        }
 
 class MapFilter(FilterSet):
@@ -51,10 +51,10 @@ class Query(graphene.ObjectType):
 
     all_product_types = FilterableConnectionField(ProductType._meta.connection)
 
-    product_type = graphene.Field(ProductType, product_type_id=graphene.Int(), name=graphene.String())
+    product_type = graphene.Field(ProductType, type_id=graphene.Int(), name=graphene.String())
 
     def resolve_product_type(self, info, **kwargs):
-        fields = ('product_type_id', 'name')
+        fields = ('type_id', 'name')
         query = ProductType.get_query(info)
         for f in fields:
             v = kwargs.get(f)

@@ -17,13 +17,13 @@ from .db.sa import sa
 ##__________________________________________________________________||
 class ProductType(sa.Model):
     __tablename__ = 'product_types'
-    product_type_id = sa.Column(sa.Integer(), primary_key=True)
+    type_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
 
 class Product(sa.Model):
     __tablename__ = 'products'
     product_id = sa.Column(sa.Integer(), primary_key=True)
-    product_type_id = sa.Column(sa.ForeignKey('product_types.product_type_id'))
+    type_id = sa.Column(sa.ForeignKey('product_types.type_id'))
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
     contact = sa.Column(sa.Text())
     date_produced = sa.Column(sa.Date())

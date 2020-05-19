@@ -10,7 +10,7 @@ params = [
           { allProductTypes {
             edges {
               node {
-                productTypeId
+                typeId
                 name
                 products {
                   edges {
@@ -28,12 +28,12 @@ params = [
     pytest.param(
         '''
           {
-            productType(productTypeId: 1) {
+            productType(typeId: 1) {
               name
             }
           }
          ''',
-        id='productType-by-productTypeId-one)'
+        id='productType-by-typeId-one)'
     ),
 ]
 
