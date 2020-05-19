@@ -133,6 +133,7 @@ def mock_request_backup_db(monkeypatch):
     monkeypatch.setattr("acondbs.schema.product.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.product_file_path.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.product_type.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product_relation_type.request_backup_db", y)
     yield y
 
 ##__________________________________________________________________||

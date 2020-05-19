@@ -236,6 +236,14 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
         }
     ],
     'product_relation_types': [
+        {
+            'name': 'parent',
+            'type_id': 1
+        },
+        {
+            'name': 'child',
+            'type_id': 2
+        }
     ],
     'product_relations': [
     ],

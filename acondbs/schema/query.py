@@ -13,6 +13,7 @@ from .simulation_file_path import SimulationFilePath, SimulationFilePathModel
 from .product import Product, ProductModel
 from .product_file_path import ProductFilePath, ProductFilePathModel
 from .product_type import ProductType, ProductTypeModel
+from .product_relation_type import ProductRelationType, ProductRelationTypeModel
 
 ##__________________________________________________________________||
 class ProductFilter(FilterSet):
@@ -76,6 +77,20 @@ class Query(graphene.ObjectType):
             v = kwargs.get(f)
             if v is not None:
                 query = query.filter(getattr(ProductModel, f)==v)
+                return query.first()
+        return None
+
+    all_product_relation_types = FilterableConnectionField(ProductRelationType._meta.connection)
+
+    product_relation_type = graphene.Field(ProductRelationType, type_id=graphene.Int(), name=graphene.String())
+
+    def resolve_product_relation_type(self, info, **kwargs):
+        fields = ('type_id', 'name')
+        query = ProductRelationType.get_query(info)
+        for f in fields:
+            v = kwargs.get(f)
+            if v is not None:
+                query = query.filter(getattr(ProductRelationTypeModel, f)==v)
                 return query.first()
         return None
 

@@ -92,6 +92,18 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'allProductRelationTypes',
+                            'type': {
+                                'name': 'ProductRelationTypeConnection'
+                            }
+                        },
+                        {
+                            'name': 'productRelationType',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        },
+                        {
                             'name': 'simulation',
                             'type': {
                                 'name': 'Simulation'
@@ -1074,6 +1086,67 @@ snapshots['test_types 1'] = {
                 {
                     'fields': [
                         {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelationTypeConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelationTypeEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'typeId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelationType'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductRelationTypeSortEnum'
+                },
+                {
+                    'fields': [
+                        {
                             'name': 'createMap',
                             'type': {
                                 'name': 'CreateMap'
@@ -1227,6 +1300,18 @@ snapshots['test_types 1'] = {
                             'name': 'deleteProductType',
                             'type': {
                                 'name': 'DeleteProductType'
+                            }
+                        },
+                        {
+                            'name': 'createProductRelationType',
+                            'type': {
+                                'name': 'CreateProductRelationType'
+                            }
+                        },
+                        {
+                            'name': 'deleteProductRelationType',
+                            'type': {
+                                'name': 'DeleteProductRelationType'
                             }
                         }
                     ],
@@ -1691,6 +1776,38 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'name': 'DeleteProductType'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'productRelationType',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        }
+                    ],
+                    'name': 'CreateProductRelationType'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateProductRelationTypeInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteProductRelationType'
                 },
                 {
                     'fields': [

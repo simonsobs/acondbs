@@ -236,6 +236,14 @@ snapshots['test_import_tables_from_csv_files 1'] = {
         }
     ],
     'product_relation_types': [
+        {
+            'name': 'parent',
+            'type_id': 1
+        },
+        {
+            'name': 'child',
+            'type_id': 2
+        }
     ],
     'product_relations': [
     ],
