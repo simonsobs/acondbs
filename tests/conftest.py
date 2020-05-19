@@ -14,7 +14,7 @@ from acondbs.db.ops import define_tables, import_tables_from_csv_files
 from .constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session")
 def create_db_with_csv_files():
     """create a test DB, load data from CSV files
 
@@ -31,7 +31,7 @@ def create_db_with_csv_files():
 
 ##__________________________________________________________________||
 @pytest.fixture
-def database_uri(tmpdir_factory):
+def database_uri(create_db_with_csv_files, tmpdir_factory):
     """the database URI for a temporarily copy of the test data
 
     The fixture copies the test data `product.sqlite3` to a
