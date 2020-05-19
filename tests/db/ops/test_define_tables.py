@@ -36,11 +36,6 @@ def test_define_tables_start_with_empty_db(app_with_empty_db, snapshot):
     with app.app_context():
         metadata = MetaData()
         metadata.reflect(bind=sa.engine)
-        tbl_names = {
-            'simulations', 'simulation_file_paths',
-            'maps', 'map_file_paths',
-            'beams', 'beam_file_paths'
-        }
         snapshot.assert_match(metadata.tables)
 
 ##__________________________________________________________________||
@@ -69,11 +64,6 @@ def test_define_tables_start_with_nonempty_db(app, snapshot):
     with app.app_context():
         metadata = MetaData()
         metadata.reflect(bind=sa.engine)
-        tbl_names = {
-            'simulations', 'simulation_file_paths',
-            'maps', 'map_file_paths',
-            'beams', 'beam_file_paths'
-        }
         snapshot.assert_match(metadata.tables)
         total_nentries = sum([len([r for r in
                                sa.engine.execute(tbl.select())]) for tbl in
