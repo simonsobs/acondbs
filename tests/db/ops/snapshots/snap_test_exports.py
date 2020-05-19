@@ -246,6 +246,48 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
         }
     ],
     'product_relations': [
+        {
+            'other_product_id': 1012,
+            'relation_id': 1,
+            'reverse_relation_id': 2,
+            'self_product_id': 1130,
+            'type_id': 1
+        },
+        {
+            'other_product_id': 1130,
+            'relation_id': 2,
+            'reverse_relation_id': 1,
+            'self_product_id': 1012,
+            'type_id': 2
+        },
+        {
+            'other_product_id': 1013,
+            'relation_id': 3,
+            'reverse_relation_id': 4,
+            'self_product_id': 1150,
+            'type_id': 1
+        },
+        {
+            'other_product_id': 1150,
+            'relation_id': 4,
+            'reverse_relation_id': 3,
+            'self_product_id': 1013,
+            'type_id': 2
+        },
+        {
+            'other_product_id': 1130,
+            'relation_id': 5,
+            'reverse_relation_id': 6,
+            'self_product_id': 1150,
+            'type_id': 1
+        },
+        {
+            'other_product_id': 1150,
+            'relation_id': 6,
+            'reverse_relation_id': 5,
+            'self_product_id': 1130,
+            'type_id': 2
+        }
     ],
     'product_types': [
         {
