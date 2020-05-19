@@ -14,6 +14,7 @@ from .product import Product, ProductModel
 from .product_file_path import ProductFilePath, ProductFilePathModel
 from .product_type import ProductType, ProductTypeModel
 from .product_relation_type import ProductRelationType, ProductRelationTypeModel
+from .product_relation import ProductRelation, ProductRelationModel
 
 ##__________________________________________________________________||
 class ProductFilter(FilterSet):
@@ -93,6 +94,8 @@ class Query(graphene.ObjectType):
                 query = query.filter(getattr(ProductRelationTypeModel, f)==v)
                 return query.first()
         return None
+
+    all_product_relations = FilterableConnectionField(ProductRelation._meta.connection)
 
     simulation = graphene.Field(Simulation, product_id=graphene.Int(), name=graphene.String())
 

@@ -7,9 +7,40 @@ from acondbs.schema.schema import schema
 params = [
     pytest.param(
         '''
-        { allProducts {
-             edges { node { name } }
-           } }
+        {
+          allProducts {
+            edges {
+              node {
+                productId
+                name
+                productType {
+                  productTypeId
+                  name
+                }
+                relations {
+                  edges {
+                    node {
+                      type_ {
+                        name
+                      }
+                      other {
+                        name
+                        productType {
+                          name
+                        }
+                      }
+                      reverse {
+                        type_ {
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
          ''',
         id='allProducts'
     ),

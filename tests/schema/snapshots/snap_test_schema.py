@@ -104,6 +104,12 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'allProductRelations',
+                            'type': {
+                                'name': 'ProductRelationConnection'
+                            }
+                        },
+                        {
                             'name': 'simulation',
                             'type': {
                                 'name': 'Simulation'
@@ -984,6 +990,12 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'relations',
+                            'type': {
+                                'name': 'ProductRelationConnection'
+                            }
+                        },
+                        {
                             'name': 'id',
                             'type': {
                                 'name': None
@@ -1068,6 +1080,128 @@ snapshots['test_types 1'] = {
                     'name': 'ProductFilePath'
                 },
                 {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelationConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'ProductRelation'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelationEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'relationId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'typeId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'selfProductId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'otherProductId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'reverseRelationId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'type_',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        },
+                        {
+                            'name': 'self_',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'name': 'other',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'name': 'reverse',
+                            'type': {
+                                'name': 'ProductRelation'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelation'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'typeId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelationType'
+                },
+                {
                     'fields': None,
                     'name': 'ProductTypeSortEnum'
                 },
@@ -1118,31 +1252,12 @@ snapshots['test_types 1'] = {
                     'name': 'ProductRelationTypeEdge'
                 },
                 {
-                    'fields': [
-                        {
-                            'name': 'typeId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'name': 'name',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'ProductRelationType'
+                    'fields': None,
+                    'name': 'ProductRelationTypeSortEnum'
                 },
                 {
                     'fields': None,
-                    'name': 'ProductRelationTypeSortEnum'
+                    'name': 'ProductRelationSortEnum'
                 },
                 {
                     'fields': [
