@@ -1,0 +1,11 @@
+path_id,path,note,product_id
+1,nersc:/go/to/my/maps,,1001
+2,nersc:/go/to/my/maps_v2,lat only,1012
+3,abcde:/path/to/the/maps_v2,lat only,1012
+4,nersc:/go/to/my/maps_v3,lat only,1013
+5,BEAM_DEPOT/Beams/20190304,,1070
+6,BEAM_DEPOT/Beams/20190607,,1120
+7,BEAM_DEPOT/Beams/20200123,,1130
+8,BEAM_DEPOT/Beams/20200207,,1150
+9,nersc:/go/to/my/simulations,,1002
+10,abcde:/path/to/the/simulations,,1002

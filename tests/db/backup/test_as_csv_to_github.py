@@ -55,12 +55,12 @@ def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
     # change the DB content
     mutation = '''
           mutation m {
-            createMap(input: {
-              name: "map1",
+            createProduct(input: {
+              name: "product1",
               dateProduced: "2020-02-20",
               producedBy: "pwg-pmn",
               note: "- Item 1"
-            }) { map { name } }
+            }) { product { name } }
           }
         '''
     client = Client(schema)

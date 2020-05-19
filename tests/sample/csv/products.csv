@@ -1,0 +1,14 @@
+product_id,type_id,name,contact,date_produced,produced_by,date_posted,posted_by,date_updated,updated_by,note
+1001,1,lat20190213,pwg-pmn,2019-02-13,pwg-pmn,2019-02-13,pwg-pmn,2019-02-13,pwg-pmn,"- This is a dummy test with a lat map
+- This should not depend on any beam"
+1002,3,xyz-s1234-20200101,abc-def,2019-03-15,abc-def,2019-03-15,abc-def,,,"- note 1
+- note 2"
+1010,2,20180101,pwg-pmn,2018-01-01,pwg-pmn,2018-01-01,pwg-pmn,,,- test entry
+1012,1,lat20200120,pwg-pmn,2020-01-20,pwg-pmn,2020-01-20,pwg-pmn,2020-01-20,pwg-pmn,"- This is a dummy test with a lat map
+- A beam depends on this map"
+1013,1,lat20200201,pwg-pmn,2020-02-01,pwg-pmn,2020-02-01,pwg-pmn,2020-02-01,pwg-pmn,"- This is a dummy test with a lat map
+- A beam depends on this map"
+1070,2,20190304,pwg-pmn,2019-03-04,pwg-pmn,2019-03-04,pwg-pmn,,,- test entry
+1120,2,20190607,pwg-pmn,2019-06-07,pwg-pmn,2019-06-07,pwg-pmn,,,- test entry
+1130,2,20200123,pwg-pmn,2020-01-23,pwg-pmn,2020-01-23,pwg-pmn,,,- test entry
+1150,2,20200207,pwg-pmn,2020-02-07,pwg-pmn,2020-02-07,pwg-pmn,,,- test entry

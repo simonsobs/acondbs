@@ -8,105 +8,7 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_import_tables_from_csv_files 1'] = {
-    'beam_file_paths': [
-        {
-            'note': '',
-            'path': 'BEAM_DEPOT/Beams/20190304',
-            'path_id': 1,
-            'product_id': 1070
-        },
-        {
-            'note': '',
-            'path': 'BEAM_DEPOT/Beams/20190607',
-            'path_id': 2,
-            'product_id': 1120
-        },
-        {
-            'note': '',
-            'path': 'BEAM_DEPOT/Beams/20200123',
-            'path_id': 3,
-            'product_id': 1130
-        },
-        {
-            'note': '',
-            'path': 'BEAM_DEPOT/Beams/20200207',
-            'path_id': 4,
-            'product_id': 1150
-        }
-    ],
-    'beams': [
-        {
-            'contact': 'pwg-pmn',
-            'date_posted': GenericRepr('datetime.date(2018, 1, 1)'),
-            'date_produced': GenericRepr('datetime.date(2018, 1, 1)'),
-            'date_updated': None,
-            'input_beam_product_id': '',
-            'input_map_product_id': '',
-            'name': '20180101',
-            'note': '- test entry',
-            'posted_by': 'pwg-pmn',
-            'produced_by': 'pwg-pmn',
-            'product_id': 1010,
-            'updated_by': ''
-        },
-        {
-            'contact': 'pwg-pmn',
-            'date_posted': GenericRepr('datetime.date(2019, 3, 4)'),
-            'date_produced': GenericRepr('datetime.date(2019, 3, 4)'),
-            'date_updated': None,
-            'input_beam_product_id': '',
-            'input_map_product_id': '',
-            'name': '20190304',
-            'note': '- test entry',
-            'posted_by': 'pwg-pmn',
-            'produced_by': 'pwg-pmn',
-            'product_id': 1070,
-            'updated_by': ''
-        },
-        {
-            'contact': 'pwg-pmn',
-            'date_posted': GenericRepr('datetime.date(2019, 6, 7)'),
-            'date_produced': GenericRepr('datetime.date(2019, 6, 7)'),
-            'date_updated': None,
-            'input_beam_product_id': '',
-            'input_map_product_id': '',
-            'name': '20190607',
-            'note': '- test entry',
-            'posted_by': 'pwg-pmn',
-            'produced_by': 'pwg-pmn',
-            'product_id': 1120,
-            'updated_by': ''
-        },
-        {
-            'contact': 'pwg-pmn',
-            'date_posted': GenericRepr('datetime.date(2020, 1, 23)'),
-            'date_produced': GenericRepr('datetime.date(2020, 1, 23)'),
-            'date_updated': None,
-            'input_beam_product_id': '',
-            'input_map_product_id': 1012,
-            'name': '20200123',
-            'note': '- test entry',
-            'posted_by': 'pwg-pmn',
-            'produced_by': 'pwg-pmn',
-            'product_id': 1130,
-            'updated_by': ''
-        },
-        {
-            'contact': 'pwg-pmn',
-            'date_posted': GenericRepr('datetime.date(2020, 2, 7)'),
-            'date_produced': GenericRepr('datetime.date(2020, 2, 7)'),
-            'date_updated': None,
-            'input_beam_product_id': 1130,
-            'input_map_product_id': 1013,
-            'name': '20200207',
-            'note': '- test entry',
-            'posted_by': 'pwg-pmn',
-            'produced_by': 'pwg-pmn',
-            'product_id': 1150,
-            'updated_by': ''
-        }
-    ],
-    'map_file_paths': [
+    'product_file_paths': [
         {
             'note': '',
             'path': 'nersc:/go/to/my/maps',
@@ -130,9 +32,121 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'path': 'nersc:/go/to/my/maps_v3',
             'path_id': 4,
             'product_id': 1013
+        },
+        {
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20190304',
+            'path_id': 5,
+            'product_id': 1070
+        },
+        {
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20190607',
+            'path_id': 6,
+            'product_id': 1120
+        },
+        {
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20200123',
+            'path_id': 7,
+            'product_id': 1130
+        },
+        {
+            'note': '',
+            'path': 'BEAM_DEPOT/Beams/20200207',
+            'path_id': 8,
+            'product_id': 1150
+        },
+        {
+            'note': '',
+            'path': 'nersc:/go/to/my/simulations',
+            'path_id': 9,
+            'product_id': 1002
+        },
+        {
+            'note': '',
+            'path': 'abcde:/path/to/the/simulations',
+            'path_id': 10,
+            'product_id': 1002
         }
     ],
-    'maps': [
+    'product_relation_types': [
+        {
+            'name': 'parent',
+            'type_id': 1
+        },
+        {
+            'name': 'child',
+            'type_id': 2
+        },
+        {
+            'name': 'invigilator',
+            'type_id': 3
+        }
+    ],
+    'product_relations': [
+        {
+            'other_product_id': 1012,
+            'relation_id': 1,
+            'reverse_relation_id': 2,
+            'self_product_id': 1130,
+            'type_id': 1
+        },
+        {
+            'other_product_id': 1130,
+            'relation_id': 2,
+            'reverse_relation_id': 1,
+            'self_product_id': 1012,
+            'type_id': 2
+        },
+        {
+            'other_product_id': 1013,
+            'relation_id': 3,
+            'reverse_relation_id': 4,
+            'self_product_id': 1150,
+            'type_id': 1
+        },
+        {
+            'other_product_id': 1150,
+            'relation_id': 4,
+            'reverse_relation_id': 3,
+            'self_product_id': 1013,
+            'type_id': 2
+        },
+        {
+            'other_product_id': 1130,
+            'relation_id': 5,
+            'reverse_relation_id': 6,
+            'self_product_id': 1150,
+            'type_id': 1
+        },
+        {
+            'other_product_id': 1150,
+            'relation_id': 6,
+            'reverse_relation_id': 5,
+            'self_product_id': 1130,
+            'type_id': 2
+        }
+    ],
+    'product_types': [
+        {
+            'name': 'map',
+            'type_id': 1
+        },
+        {
+            'name': 'beam',
+            'type_id': 2
+        },
+        {
+            'name': 'simulation',
+            'type_id': 3
+        },
+        {
+            'name': 'anchor',
+            'type_id': 4
+        }
+    ],
+    'products': [
         {
             'contact': 'pwg-pmn',
             'date_posted': GenericRepr('datetime.date(2019, 2, 13)'),
@@ -144,7 +158,35 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1001,
+            'type_id': 1,
             'updated_by': 'pwg-pmn'
+        },
+        {
+            'contact': 'abc-def',
+            'date_posted': GenericRepr('datetime.date(2019, 3, 15)'),
+            'date_produced': GenericRepr('datetime.date(2019, 3, 15)'),
+            'date_updated': None,
+            'name': 'xyz-s1234-20200101',
+            'note': '''- note 1
+- note 2''',
+            'posted_by': 'abc-def',
+            'produced_by': 'abc-def',
+            'product_id': 1002,
+            'type_id': 3,
+            'updated_by': ''
+        },
+        {
+            'contact': 'pwg-pmn',
+            'date_posted': GenericRepr('datetime.date(2018, 1, 1)'),
+            'date_produced': GenericRepr('datetime.date(2018, 1, 1)'),
+            'date_updated': None,
+            'name': '20180101',
+            'note': '- test entry',
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'product_id': 1010,
+            'type_id': 2,
+            'updated_by': ''
         },
         {
             'contact': 'pwg-pmn',
@@ -157,6 +199,7 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1012,
+            'type_id': 1,
             'updated_by': 'pwg-pmn'
         },
         {
@@ -170,35 +213,59 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'posted_by': 'pwg-pmn',
             'produced_by': 'pwg-pmn',
             'product_id': 1013,
+            'type_id': 1,
             'updated_by': 'pwg-pmn'
-        }
-    ],
-    'simulation_file_paths': [
-        {
-            'note': '',
-            'path': 'nersc:/go/to/my/simulations',
-            'path_id': 1,
-            'product_id': 1001
         },
         {
-            'note': '',
-            'path': 'abcde:/path/to/the/simulations',
-            'path_id': 2,
-            'product_id': 1001
-        }
-    ],
-    'simulations': [
-        {
-            'contact': 'abc-def',
-            'date_posted': GenericRepr('datetime.date(2019, 3, 15)'),
-            'date_produced': GenericRepr('datetime.date(2019, 3, 15)'),
+            'contact': 'pwg-pmn',
+            'date_posted': GenericRepr('datetime.date(2019, 3, 4)'),
+            'date_produced': GenericRepr('datetime.date(2019, 3, 4)'),
             'date_updated': None,
-            'name': 'xyz-s1234-20200101',
-            'note': '''- note 1
-- note 2''',
-            'posted_by': 'abc-def',
-            'produced_by': 'abc-def',
-            'product_id': 1001,
+            'name': '20190304',
+            'note': '- test entry',
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'product_id': 1070,
+            'type_id': 2,
+            'updated_by': ''
+        },
+        {
+            'contact': 'pwg-pmn',
+            'date_posted': GenericRepr('datetime.date(2019, 6, 7)'),
+            'date_produced': GenericRepr('datetime.date(2019, 6, 7)'),
+            'date_updated': None,
+            'name': '20190607',
+            'note': '- test entry',
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'product_id': 1120,
+            'type_id': 2,
+            'updated_by': ''
+        },
+        {
+            'contact': 'pwg-pmn',
+            'date_posted': GenericRepr('datetime.date(2020, 1, 23)'),
+            'date_produced': GenericRepr('datetime.date(2020, 1, 23)'),
+            'date_updated': None,
+            'name': '20200123',
+            'note': '- test entry',
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'product_id': 1130,
+            'type_id': 2,
+            'updated_by': ''
+        },
+        {
+            'contact': 'pwg-pmn',
+            'date_posted': GenericRepr('datetime.date(2020, 2, 7)'),
+            'date_produced': GenericRepr('datetime.date(2020, 2, 7)'),
+            'date_updated': None,
+            'name': '20200207',
+            'note': '- test entry',
+            'posted_by': 'pwg-pmn',
+            'produced_by': 'pwg-pmn',
+            'product_id': 1150,
+            'type_id': 2,
             'updated_by': ''
         }
     ]

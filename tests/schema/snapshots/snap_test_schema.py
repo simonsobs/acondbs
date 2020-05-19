@@ -26,57 +26,51 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'allSimulations',
+                            'name': 'allProductTypes',
                             'type': {
-                                'name': 'SimulationConnection'
+                                'name': 'ProductTypeConnection'
                             }
                         },
                         {
-                            'name': 'allMaps',
+                            'name': 'productType',
                             'type': {
-                                'name': 'MapConnection'
+                                'name': 'ProductType'
                             }
                         },
                         {
-                            'name': 'allBeams',
+                            'name': 'allProducts',
                             'type': {
-                                'name': 'BeamConnection'
+                                'name': 'ProductConnection'
                             }
                         },
                         {
-                            'name': 'allSimulationFilePaths',
+                            'name': 'allProductFilePaths',
                             'type': {
-                                'name': 'SimulationFilePathConnection'
+                                'name': 'ProductFilePathConnection'
                             }
                         },
                         {
-                            'name': 'allMapFilePaths',
+                            'name': 'product',
                             'type': {
-                                'name': 'MapFilePathConnection'
+                                'name': 'Product'
                             }
                         },
                         {
-                            'name': 'allBeamFilePaths',
+                            'name': 'allProductRelationTypes',
                             'type': {
-                                'name': 'BeamFilePathConnection'
+                                'name': 'ProductRelationTypeConnection'
                             }
                         },
                         {
-                            'name': 'simulation',
+                            'name': 'productRelationType',
                             'type': {
-                                'name': 'Simulation'
+                                'name': 'ProductRelationType'
                             }
                         },
                         {
-                            'name': 'map',
+                            'name': 'allProductRelations',
                             'type': {
-                                'name': 'Map'
-                            }
-                        },
-                        {
-                            'name': 'beam',
-                            'type': {
-                                'name': 'Beam'
+                                'name': 'ProductRelationConnection'
                             }
                         }
                     ],
@@ -116,7 +110,7 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'SimulationConnection'
+                    'name': 'ProductTypeConnection'
                 },
                 {
                     'fields': [
@@ -156,7 +150,7 @@ snapshots['test_types 1'] = {
                         {
                             'name': 'node',
                             'type': {
-                                'name': 'Simulation'
+                                'name': 'ProductType'
                             }
                         },
                         {
@@ -166,7 +160,70 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'SimulationEdge'
+                    'name': 'ProductTypeEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'typeId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'products',
+                            'type': {
+                                'name': 'ProductConnection'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductType'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductEdge'
                 },
                 {
                     'fields': [
@@ -174,6 +231,12 @@ snapshots['test_types 1'] = {
                             'name': 'productId',
                             'type': {
                                 'name': None
+                            }
+                        },
+                        {
+                            'name': 'typeId',
+                            'type': {
+                                'name': 'Int'
                             }
                         },
                         {
@@ -231,9 +294,21 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        },
+                        {
                             'name': 'paths',
                             'type': {
-                                'name': 'SimulationFilePathConnection'
+                                'name': 'ProductFilePathConnection'
+                            }
+                        },
+                        {
+                            'name': 'relations',
+                            'type': {
+                                'name': 'ProductRelationConnection'
                             }
                         },
                         {
@@ -243,92 +318,13 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'Simulation'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'name': 'edges',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'SimulationFilePathConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node',
-                            'type': {
-                                'name': 'SimulationFilePath'
-                            }
-                        },
-                        {
-                            'name': 'cursor',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'SimulationFilePathEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pathId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'name': 'path',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'note',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'productId',
-                            'type': {
-                                'name': 'Int'
-                            }
-                        },
-                        {
-                            'name': 'product',
-                            'type': {
-                                'name': 'Simulation'
-                            }
-                        },
-                        {
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'SimulationFilePath'
+                    'name': 'Product'
                 },
                 {
                     'fields': None,
                     'name': 'Int'
                 },
                 {
-                    'fields': None,
-                    'name': 'SimulationSortEnum'
-                },
-                {
                     'fields': [
                         {
                             'name': 'pageInfo',
@@ -343,14 +339,14 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'MapConnection'
+                    'name': 'ProductFilePathConnection'
                 },
                 {
                     'fields': [
                         {
                             'name': 'node',
                             'type': {
-                                'name': 'Map'
+                                'name': 'ProductFilePath'
                             }
                         },
                         {
@@ -360,124 +356,7 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'MapEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'productId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'name': 'name',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'name': 'contact',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'dateProduced',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'producedBy',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'datePosted',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'postedBy',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'dateUpdated',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'updatedBy',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'note',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'paths',
-                            'type': {
-                                'name': 'MapFilePathConnection'
-                            }
-                        },
-                        {
-                            'name': 'beams',
-                            'type': {
-                                'name': 'BeamConnection'
-                            }
-                        },
-                        {
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'Map'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'name': 'edges',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'MapFilePathConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node',
-                            'type': {
-                                'name': 'MapFilePath'
-                            }
-                        },
-                        {
-                            'name': 'cursor',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'MapFilePathEdge'
+                    'name': 'ProductFilePathEdge'
                 },
                 {
                     'fields': [
@@ -508,7 +387,7 @@ snapshots['test_types 1'] = {
                         {
                             'name': 'product',
                             'type': {
-                                'name': 'Map'
+                                'name': 'Product'
                             }
                         },
                         {
@@ -518,7 +397,7 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'MapFilePath'
+                    'name': 'ProductFilePath'
                 },
                 {
                     'fields': [
@@ -535,14 +414,14 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'BeamConnection'
+                    'name': 'ProductRelationConnection'
                 },
                 {
                     'fields': [
                         {
                             'name': 'node',
                             'type': {
-                                'name': 'Beam'
+                                'name': 'ProductRelation'
                             }
                         },
                         {
@@ -552,12 +431,77 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'BeamEdge'
+                    'name': 'ProductRelationEdge'
                 },
                 {
                     'fields': [
                         {
-                            'name': 'productId',
+                            'name': 'relationId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'name': 'typeId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'selfProductId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'otherProductId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'reverseRelationId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'type_',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        },
+                        {
+                            'name': 'self_',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'name': 'other',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'name': 'reverse',
+                            'type': {
+                                'name': 'ProductRelation'
+                            }
+                        },
+                        {
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'name': 'ProductRelation'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'typeId',
                             'type': {
                                 'name': None
                             }
@@ -569,97 +513,29 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'contact',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'dateProduced',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'producedBy',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'datePosted',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'postedBy',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'dateUpdated',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'updatedBy',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'note',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'name': 'inputMapProductId',
-                            'type': {
-                                'name': 'Int'
-                            }
-                        },
-                        {
-                            'name': 'inputBeamProductId',
-                            'type': {
-                                'name': 'Int'
-                            }
-                        },
-                        {
-                            'name': 'map',
-                            'type': {
-                                'name': 'Map'
-                            }
-                        },
-                        {
-                            'name': 'parentBeam',
-                            'type': {
-                                'name': 'Beam'
-                            }
-                        },
-                        {
-                            'name': 'childBeams',
-                            'type': {
-                                'name': 'BeamConnection'
-                            }
-                        },
-                        {
-                            'name': 'paths',
-                            'type': {
-                                'name': 'BeamFilePathConnection'
-                            }
-                        },
-                        {
                             'name': 'id',
                             'type': {
                                 'name': None
                             }
                         }
                     ],
-                    'name': 'Beam'
+                    'name': 'ProductRelationType'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductTypeSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductFilter'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductFilePathSortEnum'
                 },
                 {
                     'fields': [
@@ -676,14 +552,14 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'BeamFilePathConnection'
+                    'name': 'ProductRelationTypeConnection'
                 },
                 {
                     'fields': [
                         {
                             'name': 'node',
                             'type': {
-                                'name': 'BeamFilePath'
+                                'name': 'ProductRelationType'
                             }
                         },
                         {
@@ -693,177 +569,76 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'BeamFilePathEdge'
+                    'name': 'ProductRelationTypeEdge'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductRelationTypeSortEnum'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductRelationSortEnum'
                 },
                 {
                     'fields': [
                         {
-                            'name': 'pathId',
+                            'name': 'createProduct',
                             'type': {
-                                'name': None
+                                'name': 'CreateProduct'
                             }
                         },
                         {
-                            'name': 'path',
+                            'name': 'updateProduct',
                             'type': {
-                                'name': 'String'
+                                'name': 'UpdateProduct'
                             }
                         },
                         {
-                            'name': 'note',
+                            'name': 'deleteProduct',
                             'type': {
-                                'name': 'String'
+                                'name': 'DeleteProduct'
                             }
                         },
                         {
-                            'name': 'productId',
+                            'name': 'createProductFilePath',
                             'type': {
-                                'name': 'Int'
+                                'name': 'CreateProductFilePath'
                             }
                         },
                         {
-                            'name': 'product',
+                            'name': 'updateProductFilePath',
                             'type': {
-                                'name': 'Beam'
+                                'name': 'UpdateProductFilePath'
                             }
                         },
                         {
-                            'name': 'id',
+                            'name': 'deleteProductFilePath',
                             'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'name': 'BeamFilePath'
-                },
-                {
-                    'fields': None,
-                    'name': 'MapSortEnum'
-                },
-                {
-                    'fields': None,
-                    'name': 'BeamSortEnum'
-                },
-                {
-                    'fields': None,
-                    'name': 'SimulationFilePathSortEnum'
-                },
-                {
-                    'fields': None,
-                    'name': 'MapFilePathSortEnum'
-                },
-                {
-                    'fields': None,
-                    'name': 'BeamFilePathSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'createMap',
-                            'type': {
-                                'name': 'CreateMap'
+                                'name': 'DeleteProductFilePath'
                             }
                         },
                         {
-                            'name': 'updateMap',
+                            'name': 'createProductType',
                             'type': {
-                                'name': 'UpdateMap'
+                                'name': 'CreateProductType'
                             }
                         },
                         {
-                            'name': 'deleteMap',
+                            'name': 'deleteProductType',
                             'type': {
-                                'name': 'DeleteMap'
+                                'name': 'DeleteProductType'
                             }
                         },
                         {
-                            'name': 'createMapFilePath',
+                            'name': 'createProductRelationType',
                             'type': {
-                                'name': 'CreateMapFilePath'
+                                'name': 'CreateProductRelationType'
                             }
                         },
                         {
-                            'name': 'updateMapFilePath',
+                            'name': 'deleteProductRelationType',
                             'type': {
-                                'name': 'UpdateMapFilePath'
-                            }
-                        },
-                        {
-                            'name': 'deleteMapFilePath',
-                            'type': {
-                                'name': 'DeleteMapFilePath'
-                            }
-                        },
-                        {
-                            'name': 'createBeam',
-                            'type': {
-                                'name': 'CreateBeam'
-                            }
-                        },
-                        {
-                            'name': 'updateBeam',
-                            'type': {
-                                'name': 'UpdateBeam'
-                            }
-                        },
-                        {
-                            'name': 'deleteBeam',
-                            'type': {
-                                'name': 'DeleteBeam'
-                            }
-                        },
-                        {
-                            'name': 'createBeamFilePath',
-                            'type': {
-                                'name': 'CreateBeamFilePath'
-                            }
-                        },
-                        {
-                            'name': 'updateBeamFilePath',
-                            'type': {
-                                'name': 'UpdateBeamFilePath'
-                            }
-                        },
-                        {
-                            'name': 'deleteBeamFilePath',
-                            'type': {
-                                'name': 'DeleteBeamFilePath'
-                            }
-                        },
-                        {
-                            'name': 'createSimulation',
-                            'type': {
-                                'name': 'CreateSimulation'
-                            }
-                        },
-                        {
-                            'name': 'updateSimulation',
-                            'type': {
-                                'name': 'UpdateSimulation'
-                            }
-                        },
-                        {
-                            'name': 'deleteSimulation',
-                            'type': {
-                                'name': 'DeleteSimulation'
-                            }
-                        },
-                        {
-                            'name': 'createSimulationFilePath',
-                            'type': {
-                                'name': 'CreateSimulationFilePath'
-                            }
-                        },
-                        {
-                            'name': 'updateSimulationFilePath',
-                            'type': {
-                                'name': 'UpdateSimulationFilePath'
-                            }
-                        },
-                        {
-                            'name': 'deleteSimulationFilePath',
-                            'type': {
-                                'name': 'DeleteSimulationFilePath'
+                                'name': 'DeleteProductRelationType'
                             }
                         }
                     ],
@@ -878,17 +653,17 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'map',
+                            'name': 'product',
                             'type': {
-                                'name': 'Map'
+                                'name': 'Product'
                             }
                         }
                     ],
-                    'name': 'CreateMap'
+                    'name': 'CreateProduct'
                 },
                 {
                     'fields': None,
-                    'name': 'CreateMapInput'
+                    'name': 'CreateProductInput'
                 },
                 {
                     'fields': None,
@@ -903,17 +678,17 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'map',
+                            'name': 'product',
                             'type': {
-                                'name': 'Map'
+                                'name': 'Product'
                             }
                         }
                     ],
-                    'name': 'UpdateMap'
+                    'name': 'UpdateProduct'
                 },
                 {
                     'fields': None,
-                    'name': 'UpdateMapInput'
+                    'name': 'UpdateProductInput'
                 },
                 {
                     'fields': [
@@ -924,7 +699,7 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'DeleteMap'
+                    'name': 'DeleteProduct'
                 },
                 {
                     'fields': [
@@ -935,17 +710,17 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'mapFilePath',
+                            'name': 'productFilePath',
                             'type': {
-                                'name': 'MapFilePath'
+                                'name': 'ProductFilePath'
                             }
                         }
                     ],
-                    'name': 'CreateMapFilePath'
+                    'name': 'CreateProductFilePath'
                 },
                 {
                     'fields': None,
-                    'name': 'CreateMapFilePathInput'
+                    'name': 'CreateProductFilePathInput'
                 },
                 {
                     'fields': [
@@ -956,17 +731,17 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'mapFilePath',
+                            'name': 'productFilePath',
                             'type': {
-                                'name': 'MapFilePath'
+                                'name': 'ProductFilePath'
                             }
                         }
                     ],
-                    'name': 'UpdateMapFilePath'
+                    'name': 'UpdateProductFilePath'
                 },
                 {
                     'fields': None,
-                    'name': 'UpdateMapFilePathInput'
+                    'name': 'UpdateProductFilePathInput'
                 },
                 {
                     'fields': [
@@ -977,7 +752,7 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'DeleteMapFilePath'
+                    'name': 'DeleteProductFilePath'
                 },
                 {
                     'fields': [
@@ -988,17 +763,28 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'beam',
+                            'name': 'productType',
                             'type': {
-                                'name': 'Beam'
+                                'name': 'ProductType'
                             }
                         }
                     ],
-                    'name': 'CreateBeam'
+                    'name': 'CreateProductType'
                 },
                 {
                     'fields': None,
-                    'name': 'CreateBeamInput'
+                    'name': 'CreateProductTypeInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteProductType'
                 },
                 {
                     'fields': [
@@ -1009,17 +795,17 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'beam',
+                            'name': 'productRelationType',
                             'type': {
-                                'name': 'Beam'
+                                'name': 'ProductRelationType'
                             }
                         }
                     ],
-                    'name': 'UpdateBeam'
+                    'name': 'CreateProductRelationType'
                 },
                 {
                     'fields': None,
-                    'name': 'UpdateBeamInput'
+                    'name': 'CreateProductRelationTypeInput'
                 },
                 {
                     'fields': [
@@ -1030,166 +816,7 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'DeleteBeam'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'name': 'beamFilePath',
-                            'type': {
-                                'name': 'BeamFilePath'
-                            }
-                        }
-                    ],
-                    'name': 'CreateBeamFilePath'
-                },
-                {
-                    'fields': None,
-                    'name': 'CreateBeamFilePathInput'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'name': 'beamFilePath',
-                            'type': {
-                                'name': 'BeamFilePath'
-                            }
-                        }
-                    ],
-                    'name': 'UpdateBeamFilePath'
-                },
-                {
-                    'fields': None,
-                    'name': 'UpdateBeamFilePathInput'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'name': 'DeleteBeamFilePath'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'name': 'simulation',
-                            'type': {
-                                'name': 'Simulation'
-                            }
-                        }
-                    ],
-                    'name': 'CreateSimulation'
-                },
-                {
-                    'fields': None,
-                    'name': 'CreateSimulationInput'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'name': 'simulation',
-                            'type': {
-                                'name': 'Simulation'
-                            }
-                        }
-                    ],
-                    'name': 'UpdateSimulation'
-                },
-                {
-                    'fields': None,
-                    'name': 'UpdateSimulationInput'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'name': 'DeleteSimulation'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'name': 'simulationFilePath',
-                            'type': {
-                                'name': 'SimulationFilePath'
-                            }
-                        }
-                    ],
-                    'name': 'CreateSimulationFilePath'
-                },
-                {
-                    'fields': None,
-                    'name': 'CreateSimulationFilePathInput'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'name': 'simulationFilePath',
-                            'type': {
-                                'name': 'SimulationFilePath'
-                            }
-                        }
-                    ],
-                    'name': 'UpdateSimulationFilePath'
-                },
-                {
-                    'fields': None,
-                    'name': 'UpdateSimulationFilePathInput'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'name': 'DeleteSimulationFilePath'
+                    'name': 'DeleteProductRelationType'
                 },
                 {
                     'fields': [

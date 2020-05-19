@@ -1,5 +1,5 @@
 from acondbs.db.sa import sa
-from acondbs.models import Map
+from acondbs.models import Product
 
 # __________________________________________________________________||
 def test_simple(app):
@@ -7,13 +7,13 @@ def test_simple(app):
     '''
 
     with app.app_context():
-        map1 = Map.query.filter_by(product_id=1012).first()
-        assert 'lat20200120' == map1.name
-        map1.name = 'new-map-name'
+        product1 = Product.query.filter_by(product_id=1012).first()
+        assert 'lat20200120' == product1.name
+        product1.name = 'new-product-name'
         sa.session.commit()
 
     with app.app_context():
-        map1 = Map.query.filter_by(product_id=1012).first()
-        assert 'new-map-name' == map1.name
+        product1 = Product.query.filter_by(product_id=1012).first()
+        assert 'new-product-name' == product1.name
 
 # __________________________________________________________________||

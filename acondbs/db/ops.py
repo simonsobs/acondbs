@@ -188,10 +188,19 @@ def import_table_from_csv_file(tbl_name, path):
 
     with open(path, 'r') as f:
         rows = list(csv.reader(f))
+
+    if not rows:
+        return
+
     fields = rows[0]
     rows = rows[1:]
+
+    if not rows:
+        return
+
     data = [{f: convert_data_type_for_insert(e, tbl.columns[f].type)
              for f, e in zip(fields, r)} for r in rows]
+
     ins = tbl.insert()
     connection = get_db_connection()
     connection.execute(ins, data)

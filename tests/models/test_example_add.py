@@ -1,5 +1,5 @@
 from acondbs.db.sa import sa
-from acondbs.models import Map, Beam
+from acondbs.models import Product, ProductFilePath
 
 # These tests are written primarily for the developer to understand
 # how models in flask_sqlalchemy work.
@@ -11,106 +11,106 @@ def test_simple(app):
 
     with app.app_context():
 
-        # save the initial number of the maps to compare later
-        nmaps = len(Map.query.all())
+        # save the initial number of the products to compare later
+        nproducts = len(Product.query.all())
 
     # this instantiation doesn't need be within a app context
-    map1 = Map(name="map1")
+    product1 = Product(name="product1")
 
     with app.app_context():
-        sa.session.add(map1)
+        sa.session.add(product1)
         sa.session.commit()
 
     with app.app_context():
 
-        # test the number of the maps is increased by one
-        assert (nmaps + 1) == len(Map.query.all())
+        # test the number of the products is increased by one
+        assert (nproducts + 1) == len(Product.query.all())
 
-        # the new map can be retrieved in a different app context
-        map1_ = Map.query.filter_by(name='map1').first()
-        assert isinstance(map1_, Map)
+        # the new product can be retrieved in a different app context
+        product1_ = Product.query.filter_by(name='product1').first()
+        assert isinstance(product1_, Product)
 
 # __________________________________________________________________||
 def test_python_object(app):
     '''A simple test about Python object
     '''
 
-    map1 = Map(name="map1")
+    product1 = Product(name="product1")
 
     with app.app_context():
-        sa.session.add(map1)
+        sa.session.add(product1)
         sa.session.commit()
 
-        map1_ = Map.query.filter_by(name='map1').first()
+        product1_ = Product.query.filter_by(name='product1').first()
 
         # the query returns the same Python object
-        assert map1 is map1_
+        assert product1 is product1_
 
     with app.app_context():
-        map1_ = Map.query.filter_by(name='map1').first()
+        product1_ = Product.query.filter_by(name='product1').first()
 
         # In a different app context, no longer the same Python object
-        assert map1 is not map1_
+        assert product1 is not product1_
 
 # __________________________________________________________________||
 def test_primary_key(app):
     '''A simple test about the primary key
     '''
 
-    map1 = Map(name="map1")
+    product1 = Product(name="product1")
 
     # The primary key (product_id) is None at this point
-    assert map1.product_id is None
+    assert product1.product_id is None
 
     with app.app_context():
-        sa.session.add(map1)
+        sa.session.add(product1)
         sa.session.commit()
 
         # After the commit, product_id is automatically assigned
-        product_id = map1.product_id
+        product_id = product1.product_id
         assert product_id is not None
 
     with app.app_context():
 
         # The object can be retrived by the product_id in another context
-        map1 = Map.query.filter_by(product_id=product_id).first()
-        assert 'map1' == map1.name
+        product1 = Product.query.filter_by(product_id=product_id).first()
+        assert 'product1' == product1.name
 
 # __________________________________________________________________||
 def test_relation(app):
     '''A simple test of adding an object with relation
     '''
 
-    map1 = Map(name="map1")
-    beam1 = Beam(name="beam1", map=map1)
+    product1 = Product(name="product1")
+    path1 = ProductFilePath(path="/a/b/c", product=product1)
 
     # The relation has been already established
-    assert map1 is beam1.map
-    assert [beam1] == map1.beams
+    assert product1 is path1.product
+    assert [path1] == product1.paths
 
     # The primary and foreign keys are still None
-    assert map1.product_id is None
-    assert beam1.product_id is None
-    assert beam1.input_map_product_id is None
+    assert product1.product_id is None
+    assert path1.path_id is None
+    assert path1.product_id is None
 
     with app.app_context():
-        sa.session.add(map1)
+        sa.session.add(product1)
         sa.session.commit()
 
         # The primary keys are assigned
-        assert map1.product_id is not None
-        assert beam1.product_id is not None
+        assert product1.product_id is not None
+        assert path1.path_id is not None
 
         # The foreign key is correctly set
-        assert map1.product_id == beam1.input_map_product_id
+        assert product1.product_id == path1.product_id
 
     with app.app_context():
-        map1 = Map.query.filter_by(name='map1').first()
-        beam1 = Beam.query.filter_by(name='beam1').first()
+        product1 = Product.query.filter_by(name='product1').first()
 
         # The relation is preserved in a different app context
-        assert map1 is beam1.map
-        assert beam1 is map1.beams[0]
-        assert map1.product_id == beam1.input_map_product_id
+        path1 = product1.paths[0]
+        assert "/a/b/c" == path1.path
+        assert product1 is path1.product
+        assert product1.product_id == path1.product_id
 
 # __________________________________________________________________||

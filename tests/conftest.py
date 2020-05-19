@@ -14,7 +14,7 @@ from acondbs.db.ops import define_tables, import_tables_from_csv_files
 from .constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session")
 def create_db_with_csv_files():
     """create a test DB, load data from CSV files
 
@@ -31,7 +31,7 @@ def create_db_with_csv_files():
 
 ##__________________________________________________________________||
 @pytest.fixture
-def database_uri(tmpdir_factory):
+def database_uri(create_db_with_csv_files, tmpdir_factory):
     """the database URI for a temporarily copy of the test data
 
     The fixture copies the test data `product.sqlite3` to a
@@ -124,12 +124,10 @@ def db_backup_global_variables(monkeypatch):
 @pytest.fixture(autouse=True)
 def mock_request_backup_db(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.map_.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.map_file_path.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.beam.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.beam_file_path.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.simulation.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.simulation_file_path.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product_file_path.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product_type.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product_relation_type.request_backup_db", y)
     yield y
 
 ##__________________________________________________________________||
@@ -139,9 +137,7 @@ def mock_datetime(monkeypatch):
     """
     y = mock.Mock(wraps=datetime)
     y.date.today.return_value = datetime.date(2020, 5, 4)
-    monkeypatch.setattr("acondbs.schema.map_.datetime", y)
-    monkeypatch.setattr("acondbs.schema.beam.datetime", y)
-    monkeypatch.setattr("acondbs.schema.simulation.datetime", y)
+    monkeypatch.setattr("acondbs.schema.product.datetime", y)
     yield y
 
 ##__________________________________________________________________||
