@@ -43,6 +43,28 @@ class ProductFilePath(sa.Model):
     product_id = sa.Column(sa.ForeignKey('products.product_id'))
     product = sa.relationship("Product", backref=sa.backref("paths"))
 
+class ProductRelationType(sa.Model):
+    __tablename__ = 'product_relation_types'
+    type_id = sa.Column(sa.Integer(), primary_key=True)
+    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+
+class ProductRelation(sa.Model):
+    __tablename__ = 'product_relations'
+    relation_id = sa.Column(sa.Integer(), primary_key=True)
+    type_id = sa.Column(sa.ForeignKey('product_relation_types.type_id'))
+    type_ = sa.relationship("ProductRelationType")
+    self_product_id = sa.Column(sa.ForeignKey('products.product_id'))
+    self_ = sa.relationship("Product", foreign_keys=[self_product_id], backref=sa.backref("relations"))
+    other_product_id = sa.Column(sa.ForeignKey('products.product_id'))
+    other = sa.relationship("Product", foreign_keys=[other_product_id])
+    reverse_relation_id = sa.Column(sa.ForeignKey('product_relations.relation_id'))
+    reverse = sa.relationship(
+        lambda: ProductRelation,
+        uselist=False,
+        foreign_keys=[reverse_relation_id],
+        remote_side="ProductRelation.relation_id",
+        post_update=True)
+
 ##__________________________________________________________________||
 class CommonProductFields:
     product_id = sa.Column(sa.Integer(), primary_key=True)

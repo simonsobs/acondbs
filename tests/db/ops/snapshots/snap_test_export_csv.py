@@ -235,6 +235,10 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'product_id': 1002
         }
     ],
+    'product_relation_types': [
+    ],
+    'product_relations': [
+    ],
     'product_types': [
         {
             'name': 'map',
