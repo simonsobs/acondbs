@@ -22,6 +22,12 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                         'name': 'child',
                         'typeId': '2'
                     }
+                },
+                {
+                    'node': {
+                        'name': 'invigilator',
+                        'typeId': '3'
+                    }
                 }
             ]
         }

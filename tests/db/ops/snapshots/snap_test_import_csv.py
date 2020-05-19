@@ -243,6 +243,10 @@ snapshots['test_import_tables_from_csv_files 1'] = {
         {
             'name': 'child',
             'type_id': 2
+        },
+        {
+            'name': 'invigilator',
+            'type_id': 3
         }
     ],
     'product_relations': [

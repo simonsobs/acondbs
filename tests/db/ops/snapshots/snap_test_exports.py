@@ -243,6 +243,10 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
         {
             'name': 'child',
             'type_id': 2
+        },
+        {
+            'name': 'invigilator',
+            'type_id': 3
         }
     ],
     'product_relations': [

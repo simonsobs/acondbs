@@ -243,6 +243,10 @@ snapshots['test_export_db_to_csv_files 1'] = {
         {
             'name': 'child',
             'type_id': 2
+        },
+        {
+            'name': 'invigilator',
+            'type_id': 3
         }
     ],
     'product_relations': [

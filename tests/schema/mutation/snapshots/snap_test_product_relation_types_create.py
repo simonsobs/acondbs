@@ -34,6 +34,11 @@ snapshots['test_schema_error[createProduct-error-already-exist] 2'] = {
                     'node': {
                         'name': 'child'
                     }
+                },
+                {
+                    'node': {
+                        'name': 'invigilator'
+                    }
                 }
             ]
         }
