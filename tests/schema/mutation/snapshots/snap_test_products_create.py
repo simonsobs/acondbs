@@ -237,7 +237,7 @@ snapshots['test_schema_error[createProduct-error-the-same-type-and-name] 1'] = {
                     'line': 3
                 }
             ],
-            'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: products.name
+            'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: products.type_id, products.name
 [SQL: INSERT INTO products (type_id, name, contact, date_produced, produced_by, date_posted, posted_by, date_updated, updated_by, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
 [parameters: (1, 'lat20190213', None, None, 'pwg-pmn', '2020-05-04', None, None, None, None)]
 (Background on this error at: http://sqlalche.me/e/gkpj)''',
@@ -371,6 +371,45 @@ snapshots['test_schema_error[createProduct-error-the-same-type-and-name] 2'] = {
                     }
                 }
             ]
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-error-the-same-name-different-type] 1'] = {
+    'data': {
+        'createProduct': {
+            'product': {
+                'name': 'lat20190213'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-error-the-same-name-different-type] 2'] = {
+    'data': {
+        'product': {
+            'contact': 'pwg-pmn',
+            'datePosted': '2019-02-13',
+            'dateProduced': '2019-02-13',
+            'dateUpdated': '2019-02-13',
+            'name': 'lat20190213',
+            'note': '''- This is a dummy test with a lat map
+- This should not depend on any beam''',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'path': 'nersc:/go/to/my/maps'
+                        }
+                    }
+                ]
+            },
+            'postedBy': 'pwg-pmn',
+            'producedBy': 'pwg-pmn',
+            'productType': {
+                'name': 'map'
+            },
+            'updatedBy': 'pwg-pmn'
         }
     }
 }

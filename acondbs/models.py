@@ -24,7 +24,7 @@ class Product(sa.Model):
     __tablename__ = 'products'
     product_id = sa.Column(sa.Integer(), primary_key=True)
     type_id = sa.Column(sa.ForeignKey('product_types.type_id'))
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+    name = sa.Column(sa.Text(), nullable=False)
     contact = sa.Column(sa.Text())
     date_produced = sa.Column(sa.Date())
     produced_by = sa.Column(sa.Text())
@@ -34,6 +34,7 @@ class Product(sa.Model):
     updated_by = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
     product_type = sa.relationship("ProductType", backref=sa.backref("products"))
+    __table_args__ = (sa.UniqueConstraint('type_id', 'name', name='_type_id_name'), )
 
 class ProductFilePath(sa.Model):
     __tablename__ = 'product_file_paths'

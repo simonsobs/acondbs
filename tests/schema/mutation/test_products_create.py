@@ -65,6 +65,35 @@ params = [
         ''',
         id='createProduct-selective-options'
     ),
+    pytest.param(
+        '''
+          mutation m {
+            createProduct(input: {
+              typeId: 2,
+              name: "lat20190213",
+              producedBy: "pwg-pmn"
+              paths: [
+                "/path/to/new/product1",
+                "/another/location/of/product1"
+              ]
+            }) { product { name } }
+          }
+        ''',
+        '''
+          {
+            product(name: "lat20190213") {
+              productType { name }
+              name contact
+              datePosted postedBy
+              dateProduced producedBy
+              dateUpdated updatedBy
+              note
+              paths { edges { node { path } } }
+            }
+          }
+        ''',
+        id='createProduct-error-the-same-name-different-type'
+    ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
