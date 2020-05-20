@@ -32,6 +32,7 @@ class CommonInputFields:
     paths = graphene.List(graphene.String)
 
 class CreateProductInput(graphene.InputObjectType, CommonInputFields):
+    type_id = graphene.Int(required=True)
     name = graphene.String(required=True)
     date_produced = graphene.Date()
     produced_by = graphene.String()

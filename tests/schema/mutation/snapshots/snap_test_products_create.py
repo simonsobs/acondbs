@@ -7,76 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[createProduct-all-options] 1'] = {
-    'data': {
-        'createProduct': {
-            'product': {
-                'name': 'product1'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-all-options] 2'] = {
-    'data': {
-        'product': {
-            'contact': 'contact-person',
-            'datePosted': '2020-05-04',
-            'dateProduced': '2020-02-20',
-            'dateUpdated': None,
-            'name': 'product1',
-            'note': '- Item 1',
-            'paths': {
-                'edges': [
-                    {
-                        'node': {
-                            'path': '/path/to/new/product1'
-                        }
-                    },
-                    {
-                        'node': {
-                            'path': '/another/location/of/product1'
-                        }
-                    }
-                ]
-            },
-            'postedBy': 'poster',
-            'producedBy': 'producer',
-            'updatedBy': None
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-selective-options] 1'] = {
-    'data': {
-        'createProduct': {
-            'product': {
-                'name': 'product1'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-selective-options] 2'] = {
-    'data': {
-        'product': {
-            'contact': None,
-            'datePosted': '2020-05-04',
-            'dateProduced': None,
-            'dateUpdated': None,
-            'name': 'product1',
-            'note': None,
-            'paths': {
-                'edges': [
-                ]
-            },
-            'postedBy': None,
-            'producedBy': 'pwg-pmn',
-            'updatedBy': None
-        }
-    }
-}
-
 snapshots['test_schema_error[createProduct-error-no-name] 1'] = {
     'errors': [
         {
@@ -87,6 +17,7 @@ snapshots['test_schema_error[createProduct-error-no-name] 1'] = {
                 }
             ],
             'message': '''Argument "input" has invalid value {producedBy: "pwg-pmn", paths: ["/path/to/new/product1", "/another/location/of/product1"]}.
+In field "typeId": Expected "Int!", found null.
 In field "name": Expected "String!", found null.'''
         }
     ]
@@ -215,6 +146,82 @@ snapshots['test_schema_error[createProduct-error-no-name] 2'] = {
                     }
                 }
             ]
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-all-options] 1'] = {
+    'data': {
+        'createProduct': {
+            'product': {
+                'name': 'product1'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-all-options] 2'] = {
+    'data': {
+        'product': {
+            'contact': 'contact-person',
+            'datePosted': '2020-05-04',
+            'dateProduced': '2020-02-20',
+            'dateUpdated': None,
+            'name': 'product1',
+            'note': '- Item 1',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'path': '/path/to/new/product1'
+                        }
+                    },
+                    {
+                        'node': {
+                            'path': '/another/location/of/product1'
+                        }
+                    }
+                ]
+            },
+            'postedBy': 'poster',
+            'producedBy': 'producer',
+            'productType': {
+                'name': 'map'
+            },
+            'updatedBy': None
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-selective-options] 1'] = {
+    'data': {
+        'createProduct': {
+            'product': {
+                'name': 'product1'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-selective-options] 2'] = {
+    'data': {
+        'product': {
+            'contact': None,
+            'datePosted': '2020-05-04',
+            'dateProduced': None,
+            'dateUpdated': None,
+            'name': 'product1',
+            'note': None,
+            'paths': {
+                'edges': [
+                ]
+            },
+            'postedBy': None,
+            'producedBy': 'pwg-pmn',
+            'productType': {
+                'name': 'map'
+            },
+            'updatedBy': None
         }
     }
 }

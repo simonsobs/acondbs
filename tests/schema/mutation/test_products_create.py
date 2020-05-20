@@ -11,6 +11,7 @@ params = [
         '''
           mutation m {
             createProduct(input: {
+              typeId: 1,
               name: "product1",
               contact: "contact-person",
               dateProduced: "2020-02-20",
@@ -27,6 +28,7 @@ params = [
         '''
           {
             product(name: "product1") {
+              productType { name }
               name contact
               datePosted postedBy
               dateProduced producedBy
@@ -42,6 +44,7 @@ params = [
         '''
           mutation m {
             createProduct(input: {
+              typeId: 1,
               name: "product1",
               producedBy: "pwg-pmn"
             }) { product { name } }
@@ -50,6 +53,7 @@ params = [
         '''
           {
             product(name: "product1") {
+              productType { name }
               name contact
               datePosted postedBy
               dateProduced producedBy

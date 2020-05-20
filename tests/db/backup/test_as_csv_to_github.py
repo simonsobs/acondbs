@@ -56,6 +56,7 @@ def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
     mutation = '''
           mutation m {
             createProduct(input: {
+              typeId: 1,
               name: "product1",
               dateProduced: "2020-02-20",
               producedBy: "pwg-pmn",
