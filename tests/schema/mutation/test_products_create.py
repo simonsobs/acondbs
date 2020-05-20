@@ -86,6 +86,7 @@ params = [
         '''
           mutation m {
             createProduct(input: {
+              typeId: 1,
               producedBy: "pwg-pmn"
               paths: [
                 "/path/to/new/product1",
@@ -115,6 +116,42 @@ params = [
           }
         ''',
         id='createProduct-error-no-name'
+    ),
+    pytest.param(
+        '''
+          mutation m {
+            createProduct(input: {
+              typeId: 1,
+              name: "lat20190213",
+              producedBy: "pwg-pmn"
+              paths: [
+                "/path/to/new/product1",
+                "/another/location/of/product1"
+              ]
+            }) { product { name } }
+          }
+        ''',
+        '''
+          {
+            allProducts {
+              edges {
+                node {
+                  productId
+                  name
+                }
+              }
+            }
+            allProductFilePaths {
+              edges {
+                node {
+                  path
+                  productId
+                }
+              }
+            }
+          }
+        ''',
+        id='createProduct-error-the-same-type-and-name'
     ),
 ]
 
