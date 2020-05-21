@@ -81,7 +81,7 @@ params = [
         ''',
         '''
           {
-            product(name: "lat20190213") {
+            product(typeId: 2, name: "lat20190213") {
               productType { name }
               name contact
               datePosted postedBy

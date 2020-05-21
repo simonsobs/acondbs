@@ -9,19 +9,37 @@ params = [
         '''
         { product(productId: 1001) { name } }
          ''',
-        id='product-by-ProductID'
+        id='product_id'
     ),
     pytest.param(
         '''
         { product(productId: 2001) { name } }
          ''',
-        id='product-by-ProductID-nonexistent'
+        id='product_id-nonexistent'
     ),
     pytest.param(
         '''
         { product(name: "lat20190213") { productId } }
          ''',
-        id='product-by-name'
+        id='name'
+    ),
+    pytest.param(
+        '''
+        { product(productId: 1001, name: "lat20190213") { productId } }
+         ''',
+        id='product_id-name'
+    ),
+    pytest.param(
+        '''
+        { product(productId: 1002, name: "lat20190213") { productId } }
+         ''',
+        id='product_id-name-nonexistent'
+    ),
+    pytest.param(
+        '''
+        { product(typeId: 1, name: "lat20190213") { productId } }
+         ''',
+        id='type_id-name'
     ),
 ]
 

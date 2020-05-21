@@ -388,28 +388,32 @@ snapshots['test_schema_success[createProduct-error-the-same-name-different-type]
 snapshots['test_schema_success[createProduct-error-the-same-name-different-type] 2'] = {
     'data': {
         'product': {
-            'contact': 'pwg-pmn',
-            'datePosted': '2019-02-13',
-            'dateProduced': '2019-02-13',
-            'dateUpdated': '2019-02-13',
+            'contact': None,
+            'datePosted': '2020-05-04',
+            'dateProduced': None,
+            'dateUpdated': None,
             'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
+            'note': None,
             'paths': {
                 'edges': [
                     {
                         'node': {
-                            'path': 'nersc:/go/to/my/maps'
+                            'path': '/path/to/new/product1'
+                        }
+                    },
+                    {
+                        'node': {
+                            'path': '/another/location/of/product1'
                         }
                     }
                 ]
             },
-            'postedBy': 'pwg-pmn',
+            'postedBy': None,
             'producedBy': 'pwg-pmn',
             'productType': {
-                'name': 'map'
+                'name': 'beam'
             },
-            'updatedBy': 'pwg-pmn'
+            'updatedBy': None
         }
     }
 }

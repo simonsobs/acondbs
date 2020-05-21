@@ -45,20 +45,18 @@ class Query(graphene.ObjectType):
     all_products = FilterableConnectionField(Product._meta.connection, filters=ProductFilter())
     all_product_file_paths = FilterableConnectionField(ProductFilePath._meta.connection)
 
-    product = graphene.Field(Product, product_id=graphene.Int(), name=graphene.String())
+    product = graphene.Field(
+        Product,
+        product_id=graphene.Int(),
+        type_id=graphene.Int(),
+        name=graphene.String())
 
     def resolve_product(self, info, **kwargs):
-        import time, random
-        # print(kwargs)
-        # time.sleep(random.randint(1, 5))
-        fields = ('product_id', 'name')
-        query = Product.get_query(info)
-        for f in fields:
-            v = kwargs.get(f)
-            if v is not None:
-                query = query.filter(getattr(ProductModel, f)==v)
-                return query.first()
-        return None
+
+        filter = [getattr(ProductModel, k)==v for k, v in kwargs.items()]
+        # e.g., [ProductModel.type_id == 1, ProductModel.name == 'map_001']
+
+        return Product.get_query(info).filter(*filter).one_or_none()
 
     all_product_relation_types = FilterableConnectionField(ProductRelationType._meta.connection)
 
