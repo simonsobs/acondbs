@@ -28,7 +28,7 @@ params = [
         '''
           {
             product(name: "product1") {
-              productType { name }
+              type_ { name }
               name contact
               datePosted postedBy
               dateProduced producedBy
@@ -53,7 +53,7 @@ params = [
         '''
           {
             product(name: "product1") {
-              productType { name }
+              type_ { name }
               name contact
               datePosted postedBy
               dateProduced producedBy
@@ -82,7 +82,7 @@ params = [
         '''
           {
             product(typeId: 2, name: "lat20190213") {
-              productType { name }
+              type_ { name }
               name contact
               datePosted postedBy
               dateProduced producedBy

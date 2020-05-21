@@ -13,7 +13,7 @@ params = [
               node {
                 productId
                 name
-                productType {
+                type_ {
                   typeId
                   name
                 }
@@ -25,7 +25,7 @@ params = [
                       }
                       other {
                         name
-                        productType {
+                        type_ {
                           name
                         }
                       }

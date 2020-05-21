@@ -294,7 +294,7 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'productType',
+                            'name': 'type_',
                             'type': {
                                 'name': 'ProductType'
                             }
