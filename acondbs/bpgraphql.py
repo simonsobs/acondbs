@@ -4,6 +4,13 @@ from flask_graphql import GraphQLView
 from .schema.schema import schema
 
 ##__________________________________________________________________||
+# from flask import request
+# class GraphQLView(GraphQLView):
+#     def dispatch_request(self):
+#         print(request.data)
+#         return super().dispatch_request()
+
+##__________________________________________________________________||
 bp = Blueprint('graphql', __name__)
 
 bp.add_url_rule(
