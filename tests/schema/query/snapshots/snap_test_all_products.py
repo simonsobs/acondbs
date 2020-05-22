@@ -7,63 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[allProducts-filtes-typeId-one-first-two] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'lat20190213'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'lat20200120'
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema[allProducts-first-two] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'lat20190213'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'xyz-s1234-20200101'
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema[allProducts-first-two-sort] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': '20200207'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'lat20200201'
-                    }
-                }
-            ]
-        }
-    }
-}
-
 snapshots['test_schema[allProducts] 1'] = {
     'data': {
         'allProducts': {
@@ -307,6 +250,25 @@ snapshots['test_schema[allProducts] 1'] = {
     }
 }
 
+snapshots['test_schema[allProducts-filtes-typeId-one-first-two] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'lat20190213'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'lat20200120'
+                    }
+                }
+            ]
+        }
+    }
+}
+
 snapshots['test_schema[allProducts-filtes-typeName-beam-first-two] 1'] = {
     'data': {
         'allProducts': {
@@ -319,6 +281,44 @@ snapshots['test_schema[allProducts-filtes-typeName-beam-first-two] 1'] = {
                 {
                     'node': {
                         'name': '20190304'
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[allProducts-first-two] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'lat20190213'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'xyz-s1234-20200101'
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[allProducts-first-two-sort] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': '20200207'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'lat20200201'
                     }
                 }
             ]
