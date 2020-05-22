@@ -28,6 +28,75 @@ params = [
          ''',
         id='productType-by-typeId-one)'
     ),
+    pytest.param(
+        '''
+          {
+            productType(name: "map") {
+              typeId
+              name
+              order
+              indefArticle
+              singular
+              plural
+              icon
+              products {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
+            }
+          }
+         ''',
+        id='productType-by-name-map)'
+    ),
+    pytest.param(
+        '''
+          {
+            productType(typeId: 1, name: "map") {
+              typeId
+              name
+              order
+              indefArticle
+              singular
+              plural
+              icon
+              products {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
+            }
+          }
+         ''',
+        id='productType-by-id-and-name-map)'
+    ),
+    pytest.param(
+        '''
+          {
+            productType(typeId: 2, name: "map") {
+              typeId
+              name
+              order
+              indefArticle
+              singular
+              plural
+              icon
+              products {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
+            }
+          }
+         ''',
+        id='productType-by-id-and-name-nonexistent)'
+    ),
 ]
 
 @pytest.mark.parametrize('query', params)

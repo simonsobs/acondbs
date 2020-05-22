@@ -43,14 +43,10 @@ class Query(graphene.ObjectType):
     product_type = graphene.Field(ProductType, type_id=graphene.Int(), name=graphene.String())
 
     def resolve_product_type(self, info, **kwargs):
-        fields = ('type_id', 'name')
-        query = ProductType.get_query(info)
-        for f in fields:
-            v = kwargs.get(f)
-            if v is not None:
-                query = query.filter(getattr(ProductTypeModel, f)==v)
-                return query.first()
-        return None
+        filter = [getattr(ProductTypeModel, k)==v for k, v in kwargs.items()]
+        # e.g., [ProductTypeModel.type_id == 1, ProductTypeModel.name == 'map']
+
+        return ProductType.get_query(info).filter(*filter).one_or_none()
 
     all_products = FilterableConnectionField(Product._meta.connection, filters=ProductFilter())
     all_product_file_paths = FilterableConnectionField(ProductFilePath._meta.connection)
