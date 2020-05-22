@@ -130,35 +130,35 @@ snapshots['test_import_tables_from_csv_files 1'] = {
     ],
     'product_types': [
         {
-            'icon': None,
-            'indef_article': None,
+            'icon': '',
+            'indef_article': '',
             'name': 'map',
-            'plural': None,
-            'singular': None,
+            'plural': '',
+            'singular': '',
             'type_id': 1
         },
         {
-            'icon': None,
-            'indef_article': None,
+            'icon': '',
+            'indef_article': '',
             'name': 'beam',
-            'plural': None,
-            'singular': None,
+            'plural': '',
+            'singular': '',
             'type_id': 2
         },
         {
-            'icon': None,
-            'indef_article': None,
+            'icon': '',
+            'indef_article': '',
             'name': 'simulation',
-            'plural': None,
-            'singular': None,
+            'plural': '',
+            'singular': '',
             'type_id': 3
         },
         {
-            'icon': None,
-            'indef_article': None,
+            'icon': '',
+            'indef_article': '',
             'name': 'anchor',
-            'plural': None,
-            'singular': None,
+            'plural': '',
+            'singular': '',
             'type_id': 4
         }
     ],
