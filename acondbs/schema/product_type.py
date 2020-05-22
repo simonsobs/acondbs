@@ -16,6 +16,10 @@ class ProductType(SQLAlchemyObjectType):
 ##__________________________________________________________________||
 class CreateProductTypeInput(graphene.InputObjectType):
     name = graphene.String(required=True)
+    indef_article = graphene.String()
+    singular = graphene.String()
+    plural = graphene.String()
+    icon = graphene.String()
 
 ##__________________________________________________________________||
 class CreateProductType(graphene.Mutation):

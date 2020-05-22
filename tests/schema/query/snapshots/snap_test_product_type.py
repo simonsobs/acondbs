@@ -13,7 +13,10 @@ snapshots['test_schema[allProductTypes] 1'] = {
             'edges': [
                 {
                     'node': {
+                        'icon': 'mdi-map',
+                        'indefArticle': 'a',
                         'name': 'map',
+                        'plural': 'maps',
                         'products': {
                             'edges': [
                                 {
@@ -33,12 +36,16 @@ snapshots['test_schema[allProductTypes] 1'] = {
                                 }
                             ]
                         },
+                        'singular': 'map',
                         'typeId': '1'
                     }
                 },
                 {
                     'node': {
+                        'icon': 'mdi-spotlight-beam',
+                        'indefArticle': 'a',
                         'name': 'beam',
+                        'plural': 'beams',
                         'products': {
                             'edges': [
                                 {
@@ -68,12 +75,16 @@ snapshots['test_schema[allProductTypes] 1'] = {
                                 }
                             ]
                         },
+                        'singular': 'beam',
                         'typeId': '2'
                     }
                 },
                 {
                     'node': {
+                        'icon': 'mdi-creation',
+                        'indefArticle': 'a',
                         'name': 'simulation',
+                        'plural': 'simulations',
                         'products': {
                             'edges': [
                                 {
@@ -83,16 +94,21 @@ snapshots['test_schema[allProductTypes] 1'] = {
                                 }
                             ]
                         },
+                        'singular': 'simulation',
                         'typeId': '3'
                     }
                 },
                 {
                     'node': {
+                        'icon': '',
+                        'indefArticle': '',
                         'name': 'anchor',
+                        'plural': '',
                         'products': {
                             'edges': [
                             ]
                         },
+                        'singular': '',
                         'typeId': '4'
                     }
                 }
@@ -104,7 +120,31 @@ snapshots['test_schema[allProductTypes] 1'] = {
 snapshots['test_schema[productType-by-typeId-one)] 1'] = {
     'data': {
         'productType': {
-            'name': 'map'
+            'icon': 'mdi-map',
+            'indefArticle': 'a',
+            'name': 'map',
+            'plural': 'maps',
+            'products': {
+                'edges': [
+                    {
+                        'node': {
+                            'name': 'lat20190213'
+                        }
+                    },
+                    {
+                        'node': {
+                            'name': 'lat20200120'
+                        }
+                    },
+                    {
+                        'node': {
+                            'name': 'lat20200201'
+                        }
+                    }
+                ]
+            },
+            'singular': 'map',
+            'typeId': '1'
         }
     }
 }

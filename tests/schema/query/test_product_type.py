@@ -12,6 +12,10 @@ params = [
               node {
                 typeId
                 name
+                indefArticle
+                singular
+                plural
+                icon
                 products {
                   edges {
                     node {
@@ -29,7 +33,19 @@ params = [
         '''
           {
             productType(typeId: 1) {
+              typeId
               name
+              indefArticle
+              singular
+              plural
+              icon
+              products {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
             }
           }
          ''',

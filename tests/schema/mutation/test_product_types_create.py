@@ -12,13 +12,29 @@ params = [
           mutation m {
             createProductType(input: {
               name: "compass",
+              indefArticle: "a",
+              singular: "compass",
+              plural: "compasses",
+              icon: "mdi-compass"
             }) { productType { name } }
           }
         ''',
         '''
           {
             productType(name: "compass") {
+              typeId
               name
+              indefArticle
+              singular
+              plural
+              icon
+              products {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
             }
           }
         ''',
