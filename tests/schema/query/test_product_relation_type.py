@@ -27,6 +27,28 @@ params = [
          ''',
         id='productRelationType-by-name-parent)'
     ),
+    pytest.param(
+        '''
+          {
+            productRelationType(typeId: 1, name: "parent") {
+              typeId
+              name
+            }
+          }
+         ''',
+        id='productRelationType-by-id-and-name-parent)'
+    ),
+    pytest.param(
+        '''
+          {
+            productRelationType(typeId: 2, name: "parent") {
+              typeId
+              name
+            }
+          }
+         ''',
+        id='productRelationType-by-id-and-name-nonexistent)'
+    ),
 ]
 
 @pytest.mark.parametrize('query', params)

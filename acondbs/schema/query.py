@@ -69,14 +69,8 @@ class Query(graphene.ObjectType):
     product_relation_type = graphene.Field(ProductRelationType, type_id=graphene.Int(), name=graphene.String())
 
     def resolve_product_relation_type(self, info, **kwargs):
-        fields = ('type_id', 'name')
-        query = ProductRelationType.get_query(info)
-        for f in fields:
-            v = kwargs.get(f)
-            if v is not None:
-                query = query.filter(getattr(ProductRelationTypeModel, f)==v)
-                return query.first()
-        return None
+        filter = [getattr(ProductRelationTypeModel, k)==v for k, v in kwargs.items()]
+        return ProductRelationType.get_query(info).filter(*filter).one_or_none()
 
     all_product_relations = FilterableConnectionField(ProductRelation._meta.connection)
 
