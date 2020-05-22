@@ -1,5 +1,5 @@
 type_id,name,icon,indef_article,plural,singular
-1,map,,,,
-2,beam,,,,
-3,simulation,,,,
+1,map,mdi-map,a,maps,map
+2,beam,mdi-spotlight-beam,a,beams,beam
+3,simulation,mdi-creation,a,simulations,simulation
 4,anchor,,,,

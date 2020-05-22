@@ -130,27 +130,27 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'product_types': [
         {
-            'icon': '',
-            'indef_article': '',
+            'icon': 'mdi-map',
+            'indef_article': 'a',
             'name': 'map',
-            'plural': '',
-            'singular': '',
+            'plural': 'maps',
+            'singular': 'map',
             'type_id': 1
         },
         {
-            'icon': '',
-            'indef_article': '',
+            'icon': 'mdi-spotlight-beam',
+            'indef_article': 'a',
             'name': 'beam',
-            'plural': '',
-            'singular': '',
+            'plural': 'beams',
+            'singular': 'beam',
             'type_id': 2
         },
         {
-            'icon': '',
-            'indef_article': '',
+            'icon': 'mdi-creation',
+            'indef_article': 'a',
             'name': 'simulation',
-            'plural': '',
-            'singular': '',
+            'plural': 'simulations',
+            'singular': 'simulation',
             'type_id': 3
         },
         {
