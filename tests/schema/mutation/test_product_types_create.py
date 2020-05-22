@@ -12,6 +12,7 @@ params = [
           mutation m {
             createProductType(input: {
               name: "compass",
+              order: 5,
               indefArticle: "a",
               singular: "compass",
               plural: "compasses",

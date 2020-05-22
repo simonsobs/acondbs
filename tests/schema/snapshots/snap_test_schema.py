@@ -177,6 +177,12 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'order',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
                             'name': 'indefArticle',
                             'type': {
                                 'name': 'String'
@@ -214,6 +220,10 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'name': 'ProductType'
+                },
+                {
+                    'fields': None,
+                    'name': 'Int'
                 },
                 {
                     'fields': [
@@ -343,10 +353,6 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'name': 'Product'
-                },
-                {
-                    'fields': None,
-                    'name': 'Int'
                 },
                 {
                     'fields': [

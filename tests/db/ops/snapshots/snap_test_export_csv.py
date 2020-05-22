@@ -133,6 +133,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'icon': 'mdi-map',
             'indef_article': 'a',
             'name': 'map',
+            'order': 2,
             'plural': 'maps',
             'singular': 'map',
             'type_id': 1
@@ -141,6 +142,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'icon': 'mdi-spotlight-beam',
             'indef_article': 'a',
             'name': 'beam',
+            'order': 3,
             'plural': 'beams',
             'singular': 'beam',
             'type_id': 2
@@ -149,6 +151,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'icon': 'mdi-creation',
             'indef_article': 'a',
             'name': 'simulation',
+            'order': 1,
             'plural': 'simulations',
             'singular': 'simulation',
             'type_id': 3
@@ -157,6 +160,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'icon': '',
             'indef_article': '',
             'name': 'anchor',
+            'order': 4,
             'plural': '',
             'singular': '',
             'type_id': 4

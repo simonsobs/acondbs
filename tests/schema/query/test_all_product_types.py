@@ -7,26 +7,28 @@ from acondbs.schema.schema import schema
 params = [
     pytest.param(
         '''
-          {
-            productType(typeId: 1) {
-              typeId
-              name
-              order
-              indefArticle
-              singular
-              plural
-              icon
-              products {
-                edges {
-                  node {
-                    name
+          { allProductTypes(sort: ORDER_ASC) {
+            edges {
+              node {
+                typeId
+                name
+                order
+                indefArticle
+                singular
+                plural
+                icon
+                products {
+                  edges {
+                    node {
+                      name
+                    }
                   }
                 }
               }
             }
-          }
+          }}
          ''',
-        id='productType-by-typeId-one)'
+        id='allProductTypes'
     ),
 ]
 
