@@ -8,24 +8,17 @@ params = [
     pytest.param(
         '''
           {
-            productRelationType(typeId: 1) {
-              typeId
-              name
+            allProductRelationTypes {
+              edges {
+                node {
+                  typeId
+                  name
+                }
+              }
             }
           }
          ''',
-        id='productRelationType-by-TypeId-one)'
-    ),
-    pytest.param(
-        '''
-          {
-            productRelationType(name: "parent") {
-              typeId
-              name
-            }
-          }
-         ''',
-        id='productRelationType-by-name-parent)'
+        id='allProductRelationTypes'
     ),
 ]
 
