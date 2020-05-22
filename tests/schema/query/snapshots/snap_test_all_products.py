@@ -306,3 +306,22 @@ snapshots['test_schema[allProducts] 1'] = {
         }
     }
 }
+
+snapshots['test_schema[allProducts-filtes-typeName-beam-first-two] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': '20180101'
+                    }
+                },
+                {
+                    'node': {
+                        'name': '20190304'
+                    }
+                }
+            ]
+        }
+    }
+}

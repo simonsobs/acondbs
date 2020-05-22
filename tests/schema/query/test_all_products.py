@@ -54,6 +54,14 @@ params = [
     ),
     pytest.param(
         '''
+        { allProducts(filters: {typeName: "beam"}, first: 2) {
+             edges { node { name } }
+           } }
+         ''',
+        id='allProducts-filtes-typeName-beam-first-two'
+    ),
+    pytest.param(
+        '''
         { allProducts(first: 2) {
              edges { node { name } }
            } }
