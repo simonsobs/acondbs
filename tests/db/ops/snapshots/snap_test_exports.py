@@ -130,19 +130,35 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     ],
     'product_types': [
         {
+            'icon': None,
+            'indef_article': None,
             'name': 'map',
+            'plural': None,
+            'singular': None,
             'type_id': 1
         },
         {
+            'icon': None,
+            'indef_article': None,
             'name': 'beam',
+            'plural': None,
+            'singular': None,
             'type_id': 2
         },
         {
+            'icon': None,
+            'indef_article': None,
             'name': 'simulation',
+            'plural': None,
+            'singular': None,
             'type_id': 3
         },
         {
+            'icon': None,
+            'indef_article': None,
             'name': 'anchor',
+            'plural': None,
+            'singular': None,
             'type_id': 4
         }
     ],

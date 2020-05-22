@@ -38,8 +38,8 @@ snapshots['test_schema_error[createProduct-error-already-exist] 1'] = {
                 }
             ],
             'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: product_types.name
-[SQL: INSERT INTO product_types (name) VALUES (?)]
-[parameters: ('map',)]
+[SQL: INSERT INTO product_types (name, indef_article, singular, plural, icon) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('map', None, None, None, None)]
 (Background on this error at: http://sqlalche.me/e/gkpj)''',
             'path': [
                 'createProductType'

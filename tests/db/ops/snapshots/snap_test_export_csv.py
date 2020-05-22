@@ -130,19 +130,35 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'product_types': [
         {
+            'icon': '',
+            'indef_article': '',
             'name': 'map',
+            'plural': '',
+            'singular': '',
             'type_id': 1
         },
         {
+            'icon': '',
+            'indef_article': '',
             'name': 'beam',
+            'plural': '',
+            'singular': '',
             'type_id': 2
         },
         {
+            'icon': '',
+            'indef_article': '',
             'name': 'simulation',
+            'plural': '',
+            'singular': '',
             'type_id': 3
         },
         {
+            'icon': '',
+            'indef_article': '',
             'name': 'anchor',
+            'plural': '',
+            'singular': '',
             'type_id': 4
         }
     ],

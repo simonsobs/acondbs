@@ -19,6 +19,10 @@ class ProductType(sa.Model):
     __tablename__ = 'product_types'
     type_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+    indef_article = sa.Column(sa.Text())
+    singular = sa.Column(sa.Text())
+    plural = sa.Column(sa.Text())
+    icon = sa.Column(sa.Text())
 
 class Product(sa.Model):
     __tablename__ = 'products'
