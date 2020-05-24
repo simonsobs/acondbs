@@ -27,7 +27,7 @@ class ProductFilter(FilterSet):
    def type_name_filter(info, query, value):
        # "Filters that require join":
        # https://github.com/art1415926535/graphene-sqlalchemy-filter/tree/1.10.2#filters-that-require-join
-       query = ProductModel.query.join(ProductTypeModel)
+       query = query.join(ProductTypeModel)
        filter_ = ProductTypeModel.name == value
        return query, filter_
 
