@@ -8,11 +8,14 @@ from ..models import ProductFilePath as ProductFilePathModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
+from .filter_ import PFilterableConnectionField
+
 ##__________________________________________________________________||
 class ProductFilePath(SQLAlchemyObjectType):
     class Meta:
         model = ProductFilePathModel
         interfaces = (relay.Node, )
+        connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
 class CommonInputFields:

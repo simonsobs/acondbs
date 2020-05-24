@@ -8,11 +8,14 @@ from ..models import ProductRelationType as ProductRelationTypeModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
+from .filter_ import PFilterableConnectionField
+
 ##__________________________________________________________________||
 class ProductRelationType(SQLAlchemyObjectType):
     class Meta:
         model = ProductRelationTypeModel
         interfaces = (graphene.relay.Node, )
+        connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
 class CreateProductRelationTypeInput(graphene.InputObjectType):
