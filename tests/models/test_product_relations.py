@@ -8,16 +8,30 @@ from acondbs.models import Product, ProductRelation, ProductRelationType
 
 ##__________________________________________________________________||
 @pytest.fixture
-def app():
+def app_empty():
     database_uri ="sqlite:///:memory:"
-    app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
-    with app.app_context():
+    y = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
+    with y.app_context():
         define_tables()
-    yield app
+    yield y
 
+@pytest.fixture
+def app(app_empty):
 
-# __________________________________________________________________||
-def test_product_relations(app):
+    y = app_empty
+
+    #                              +--------+
+    #               --(child)-->   |        |
+    #                              | child1 |
+    #  +---------+  <-(parent)--   |        |
+    #  |         |                 +--------+
+    #  | parent1 |
+    #  |         |                 +--------+
+    #  +---------+  --(child)-->   |        |
+    #                              | child2 |
+    #               <-(parent)--   |        |
+    #                              +--------+
+
 
     relation_type_parent = ProductRelationType(name='parent')
     relation_type_child = ProductRelationType(name='child')
@@ -57,11 +71,14 @@ def test_product_relations(app):
     relation_child2_to_parent1.reverse = relation_parent1_to_child2
 
     # commit
-    with app.app_context():
+    with y.app_context():
         sa.session.add(parent1)
         sa.session.commit()
+    yield y
 
-    # assert relations
+# __________________________________________________________________||
+def test_relations(app):
+
     with app.app_context():
         parent1 = Product.query.filter_by(name='parent1').first()
         child1 = Product.query.filter_by(name='child1').first()
@@ -88,7 +105,8 @@ def test_product_relations(app):
         assert parent1.relations[1] is child2.relations[0].reverse
         assert parent1.relations[1].reverse is child2.relations[0]
 
-    # how to query
+def test_example_how_to_query(app):
+
     with app.app_context():
 
         parent1 = Product.query.filter_by(name='parent1').first()
