@@ -17,7 +17,7 @@ params = [
 def test_schema(app, query, expected):
     with app.app_context():
         client = Client(schema)
-        result = client.execute(query)
+        result = client.execute(query, context_value={})
         assert {'data': expected} == result
 
 ##__________________________________________________________________||

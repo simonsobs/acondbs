@@ -25,7 +25,7 @@ def test_types(app, snapshot):
     client = Client(schema)
 
     with app.app_context():
-        result = client.execute(query)
+        result = client.execute(query, context_value={})
 
     assert 'errors' not in result
 

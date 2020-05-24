@@ -66,7 +66,7 @@ def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
         '''
     client = Client(schema)
     with app.app_context():
-        result = client.execute(mutation)
+        result = client.execute(mutation, context_value={})
         assert 'errors' not in result
 
     # take backup

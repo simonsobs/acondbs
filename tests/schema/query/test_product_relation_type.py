@@ -55,7 +55,7 @@ params = [
 def test_schema(app, snapshot, query):
     client = Client(schema)
     with app.app_context():
-        result = client.execute(query)
+        result = client.execute(query, context_value={})
         assert 'errors' not in result
         snapshot.assert_match(result)
 
