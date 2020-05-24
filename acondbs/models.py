@@ -62,7 +62,10 @@ class ProductRelation(sa.Model):
     type_id = sa.Column(sa.ForeignKey('product_relation_types.type_id'))
     type_ = sa.relationship("ProductRelationType")
     self_product_id = sa.Column(sa.ForeignKey('products.product_id'))
-    self_ = sa.relationship("Product", foreign_keys=[self_product_id], backref=sa.backref("relations"))
+    self_ = sa.relationship(
+        "Product",
+        foreign_keys=[self_product_id],
+        backref=sa.backref("relations", cascade="all, delete-orphan"))
     other_product_id = sa.Column(sa.ForeignKey('products.product_id'))
     other = sa.relationship("Product", foreign_keys=[other_product_id])
     reverse_relation_id = sa.Column(sa.ForeignKey('product_relations.relation_id'))
@@ -71,6 +74,7 @@ class ProductRelation(sa.Model):
         uselist=False,
         foreign_keys=[reverse_relation_id],
         remote_side="ProductRelation.relation_id",
+        cascade="all",
         post_update=True)
 
 ##__________________________________________________________________||
