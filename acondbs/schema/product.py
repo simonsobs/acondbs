@@ -92,9 +92,6 @@ class DeleteProduct(graphene.Mutation):
 
     def mutate(root, info, product_id):
         product = ProductModel.query.filter_by(product_id=product_id).first()
-        if product:
-            for path in product.paths:
-                sa.session.delete(path)
         sa.session.delete(product)
         sa.session.commit()
         ok = True
