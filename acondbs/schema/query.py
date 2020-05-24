@@ -1,7 +1,7 @@
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
-from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
+from graphene_sqlalchemy_filter import FilterableConnectionField
 
 from .product import Product, ProductModel
 from .product_file_path import ProductFilePath, ProductFilePathModel
@@ -9,23 +9,7 @@ from .product_type import ProductType, ProductTypeModel
 from .product_relation_type import ProductRelationType, ProductRelationTypeModel
 from .product_relation import ProductRelation, ProductRelationModel
 
-##__________________________________________________________________||
-class ProductFilter(FilterSet):
-   type_name = graphene.String()
-
-   class Meta:
-       model = ProductModel
-       fields = {
-           'type_id': ['eq', ],
-       }
-
-   @staticmethod
-   def type_name_filter(info, query, value):
-       # "Filters that require join":
-       # https://github.com/art1415926535/graphene-sqlalchemy-filter/tree/1.10.2#filters-that-require-join
-       query = ProductModel.query.join(ProductTypeModel)
-       filter_ = ProductTypeModel.name == value
-       return query, filter_
+from .filter_ import ProductFilter
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
