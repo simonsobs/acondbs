@@ -26,7 +26,7 @@ params = [
             }
           }
          ''',
-        id='productType-by-typeId-one)'
+        id='productType-by-typeId-one'
     ),
     pytest.param(
         '''
@@ -49,7 +49,7 @@ params = [
             }
           }
          ''',
-        id='productType-by-name-map)'
+        id='productType-by-name-map'
     ),
     pytest.param(
         '''
@@ -72,7 +72,7 @@ params = [
             }
           }
          ''',
-        id='productType-by-id-and-name-map)'
+        id='productType-by-id-and-name-map'
     ),
     pytest.param(
         '''
@@ -95,7 +95,7 @@ params = [
             }
           }
          ''',
-        id='productType-by-id-and-name-nonexistent)'
+        id='productType-by-id-and-name-nonexistent'
     ),
 ]
 
