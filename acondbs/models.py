@@ -47,7 +47,9 @@ class ProductFilePath(sa.Model):
     path = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
     product_id = sa.Column(sa.ForeignKey('products.product_id'))
-    product = sa.relationship("Product", backref=sa.backref("paths"))
+    product = sa.relationship(
+        "Product",
+        backref=sa.backref("paths", cascade="all, delete-orphan"))
 
 class ProductRelationType(sa.Model):
     __tablename__ = 'product_relation_types'
