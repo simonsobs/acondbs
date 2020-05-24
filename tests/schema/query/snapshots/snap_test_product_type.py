@@ -111,3 +111,36 @@ snapshots['test_schema[productType-by-id-and-name-nonexistent] 1'] = {
         'productType': None
     }
 }
+
+snapshots['test_schema[productType-by-typeId-one-sort-products] 1'] = {
+    'data': {
+        'productType': {
+            'icon': 'mdi-map',
+            'indefArticle': 'a',
+            'name': 'map',
+            'order': 2,
+            'plural': 'maps',
+            'products': {
+                'edges': [
+                    {
+                        'node': {
+                            'name': 'lat20200201'
+                        }
+                    },
+                    {
+                        'node': {
+                            'name': 'lat20200120'
+                        }
+                    },
+                    {
+                        'node': {
+                            'name': 'lat20190213'
+                        }
+                    }
+                ]
+            },
+            'singular': 'map',
+            'typeId': '1'
+        }
+    }
+}

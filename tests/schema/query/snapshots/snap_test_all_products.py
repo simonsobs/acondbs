@@ -325,3 +325,57 @@ snapshots['test_schema[allProducts] 1'] = {
         }
     }
 }
+
+snapshots['test_schema[allProducts-filtes-typeId-sort] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'id': 'UHJvZHVjdDoxMDEz',
+                        'productId': '1013'
+                    }
+                },
+                {
+                    'node': {
+                        'id': 'UHJvZHVjdDoxMDEy',
+                        'productId': '1012'
+                    }
+                },
+                {
+                    'node': {
+                        'id': 'UHJvZHVjdDoxMDAx',
+                        'productId': '1001'
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[allProducts-filtes-typeName-sort] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'id': 'UHJvZHVjdDoxMDEz',
+                        'productId': '1013'
+                    }
+                },
+                {
+                    'node': {
+                        'id': 'UHJvZHVjdDoxMDEy',
+                        'productId': '1012'
+                    }
+                },
+                {
+                    'node': {
+                        'id': 'UHJvZHVjdDoxMDAx',
+                        'productId': '1001'
+                    }
+                }
+            ]
+        }
+    }
+}

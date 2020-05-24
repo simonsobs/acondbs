@@ -46,6 +46,22 @@ params = [
     ),
     pytest.param(
         '''
+        { allProducts(first: 2) {
+             edges { node { name } }
+           } }
+         ''',
+        id='allProducts-first-two'
+    ),
+    pytest.param(
+        '''
+        { allProducts(first: 2, sort: DATE_POSTED_DESC) {
+             edges { node { name } }
+           } }
+         ''',
+        id='allProducts-first-two-sort'
+    ),
+    pytest.param(
+        '''
         { allProducts(filters: {typeId: 1}, first: 2) {
              edges { node { name } }
            } }
@@ -62,19 +78,33 @@ params = [
     ),
     pytest.param(
         '''
-        { allProducts(first: 2) {
-             edges { node { name } }
-           } }
-         ''',
-        id='allProducts-first-two'
+          {
+            allProducts(filters: {typeId: 1}, sort: PRODUCT_ID_DESC) {
+              edges {
+                node {
+                  id
+                  productId
+                }
+              }
+            }
+          }
+        ''',
+        id='allProducts-filtes-typeId-sort'
     ),
     pytest.param(
         '''
-        { allProducts(first: 2, sort: DATE_POSTED_DESC) {
-             edges { node { name } }
-           } }
-         ''',
-        id='allProducts-first-two-sort'
+          {
+            allProducts(filters: {typeName: "map"}, sort: PRODUCT_ID_DESC) {
+              edges {
+                node {
+                  id
+                  productId
+                }
+              }
+            }
+          }
+        ''',
+        id='allProducts-filtes-typeName-sort'
     ),
 ]
 

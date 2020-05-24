@@ -97,6 +97,29 @@ params = [
          ''',
         id='productType-by-id-and-name-nonexistent'
     ),
+    pytest.param(
+        '''
+          {
+            productType(typeId: 1) {
+              typeId
+              name
+              order
+              indefArticle
+              singular
+              plural
+              icon
+              products(sort: DATE_PRODUCED_DESC) {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
+            }
+          }
+         ''',
+        id='productType-by-typeId-one-sort-products'
+    ),
 ]
 
 @pytest.mark.parametrize('query', params)
