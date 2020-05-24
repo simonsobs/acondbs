@@ -430,6 +430,10 @@ snapshots['test_types 1'] = {
                     'name': 'ProductFilePath'
                 },
                 {
+                    'fields': None,
+                    'name': 'ProductFilePathSortEnum'
+                },
+                {
                     'fields': [
                         {
                             'name': 'pageInfo',
@@ -553,7 +557,7 @@ snapshots['test_types 1'] = {
                 },
                 {
                     'fields': None,
-                    'name': 'ProductTypeSortEnum'
+                    'name': 'ProductRelationSortEnum'
                 },
                 {
                     'fields': None,
@@ -565,7 +569,11 @@ snapshots['test_types 1'] = {
                 },
                 {
                     'fields': None,
-                    'name': 'ProductFilePathSortEnum'
+                    'name': 'ProductTypeFilter'
+                },
+                {
+                    'fields': None,
+                    'name': 'ProductTypeSortEnum'
                 },
                 {
                     'fields': [
@@ -604,10 +612,6 @@ snapshots['test_types 1'] = {
                 {
                     'fields': None,
                     'name': 'ProductRelationTypeSortEnum'
-                },
-                {
-                    'fields': None,
-                    'name': 'ProductRelationSortEnum'
                 },
                 {
                     'fields': [

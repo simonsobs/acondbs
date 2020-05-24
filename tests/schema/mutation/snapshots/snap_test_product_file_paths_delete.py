@@ -15,22 +15,6 @@ snapshots['test_schema_success[deleteProductFilePath] 1'] = {
     }
 }
 
-snapshots['test_schema_success[deleteProductFilePath] 2'] = {
-    'data': {
-        'product': {
-            'datePosted': '2019-02-13',
-            'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
-            'paths': {
-                'edges': [
-                ]
-            },
-            'producedBy': 'pwg-pmn'
-        }
-    }
-}
-
 snapshots['test_schema_error[deleteProductFilePath-error] 1'] = {
     'data': {
         'deleteProductFilePath': None
@@ -106,6 +90,22 @@ snapshots['test_schema_error[deleteProductFilePath-error] 2'] = {
                     }
                 }
             ]
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteProductFilePath] 2'] = {
+    'data': {
+        'product': {
+            'datePosted': '2019-02-13',
+            'name': 'lat20190213',
+            'note': '''- This is a dummy test with a lat map
+- This should not depend on any beam''',
+            'paths': {
+                'edges': [
+                ]
+            },
+            'producedBy': 'pwg-pmn'
         }
     }
 }
