@@ -4,7 +4,7 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 from acondbs.db.sa import sa
-from acondbs.models import Product, ProductRelation, ProductRelationType
+from acondbs.models import ProductType, Product, ProductRelation, ProductRelationType
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -32,15 +32,15 @@ def app(app_empty):
     #               <-(parent)--   |        |
     #                              +--------+
 
+    type_ = ProductType(name='robot')
+    parent1 = Product(name="parent1", type_=type_)
+    child1 = Product(name="child1", type_=type_)
+    child2 = Product(name="child2", type_=type_)
 
     relation_type_parent = ProductRelationType(name='parent')
     relation_type_child = ProductRelationType(name='child')
     relation_type_parent.reverse = relation_type_child
     relation_type_child.reverse = relation_type_parent
-
-    parent1 = Product(name="parent1")
-    child1 = Product(name="child1")
-    child2 = Product(name="child2")
 
     # parent1 --(child)--> child1
     relation_parent1_to_child1 = ProductRelation()

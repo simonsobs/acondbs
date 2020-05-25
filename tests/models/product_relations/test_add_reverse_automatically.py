@@ -3,7 +3,7 @@ import pytest
 from itertools import permutations
 
 from acondbs.db.sa import sa
-from acondbs.models import Product, ProductRelation, ProductRelationType
+from acondbs.models import ProductType, Product, ProductRelation, ProductRelationType
 
 # __________________________________________________________________||
 params = list(permutations([1, 2, 3]))
@@ -25,13 +25,14 @@ def test_permutations(app_empty, perm):
     # +---------+                 +--------+
     #
 
+    type_ = ProductType(name='robot')
+    parent1 = Product(name="parent1", type_=type_)
+    child1 = Product(name="child1", type_=type_)
+
     relation_type_parent = ProductRelationType(name='parent')
     relation_type_child = ProductRelationType(name='child')
     relation_type_parent.reverse = relation_type_child
     relation_type_child.reverse = relation_type_parent
-
-    parent1 = Product(name="parent1")
-    child1 = Product(name="child1")
 
     relation_parent1_to_child1 = ProductRelation()
 
@@ -80,11 +81,13 @@ def test_self_reverse_type(app_empty, perm):
     # +----------+                 +----------+
     #
 
+    type_ = ProductType(name='robot')
+    sibling1 = Product(name="sibling1", type_=type_)
+    sibling2 = Product(name="sibling2", type_=type_)
+
     relation_type_sibling = ProductRelationType(name='sibling')
     relation_type_sibling.reverse = relation_type_sibling
 
-    sibling1 = Product(name="sibling1")
-    sibling2 = Product(name="sibling2")
 
     relation_sibling1_to_sibling2 = ProductRelation()
 
