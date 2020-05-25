@@ -28,18 +28,30 @@ def app(app_empty):
     #  +--------+                +-------+
     #
 
+    #
+    #  +------- -+
+    #  |         | --(reverse)-+
+    #  | sibling |             |
+    #  |         | <-----------+
+    #  +------ --+
+    #
+
     parent = ProductRelationType(name='parent')
     child = ProductRelationType(name='child')
     parent.reverse = child
 
+    sibling = ProductRelationType(name='sibling')
+    sibling.reverse = sibling
+
     # commit
     with y.app_context():
         sa.session.add(parent)
+        sa.session.add(sibling)
         sa.session.commit()
     yield y
 
 # __________________________________________________________________||
-def test_relations(app):
+def test_relations_parent_child(app):
 
     with app.app_context():
         parent = ProductRelationType.query.filter_by(name='parent').one_or_none()
@@ -49,6 +61,13 @@ def test_relations(app):
         assert child is not None
 
         assert child is parent.reverse
+
+def test_relations_sibling(app):
+
+    with app.app_context():
+        sibling = ProductRelationType.query.filter_by(name='sibling').one_or_none()
+        assert sibling is not None
+        assert sibling is sibling.reverse
 
 def test_cascade_delete(app):
 
