@@ -30,7 +30,10 @@ class ProductType(sa.Model):
 class Product(sa.Model):
     __tablename__ = 'products'
     product_id = sa.Column(sa.Integer(), primary_key=True)
-    type_id = sa.Column(sa.ForeignKey('product_types.type_id'))
+    type_id = sa.Column(
+        sa.ForeignKey('product_types.type_id'),
+        nullable=False
+    )
     type_ = sa.relationship("ProductType", backref=sa.backref("products"))
     name = sa.Column(sa.Text(), nullable=False)
     contact = sa.Column(sa.Text())

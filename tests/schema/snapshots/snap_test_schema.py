@@ -270,7 +270,7 @@ snapshots['test_types 1'] = {
                         {
                             'name': 'typeId',
                             'type': {
-                                'name': 'Int'
+                                'name': None
                             }
                         },
                         {
