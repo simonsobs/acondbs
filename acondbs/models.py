@@ -8,7 +8,7 @@ Python classes inheriting the Model class in Flask-SQLAlchemy.
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
 
 "Declare a Mapping" in SQLAlchemy doc:
-https://docs.sqlalchhttps://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping
+https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping
 
 """
 
