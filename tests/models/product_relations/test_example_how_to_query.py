@@ -3,6 +3,19 @@ from acondbs.models import Product, ProductRelation, ProductRelationType
 # __________________________________________________________________||
 def test_example_how_to_query(app):
 
+    #                              +--------+
+    #               --(child)-->   |        |
+    #                    |         | child1 |
+    #  +---------+  <-(parent)--   |        |
+    #  |         |                 +--------+
+    #  | parent1 |
+    #  |         |                 +--------+
+    #  +---------+  --(child)-->   |        |
+    #                    |         | child2 |
+    #               <-(parent)--   |        |
+    #                              +--------+
+
+
     with app.app_context():
 
         parent1 = Product.query.filter_by(name='parent1').first()

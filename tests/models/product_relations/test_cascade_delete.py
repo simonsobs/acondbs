@@ -4,6 +4,19 @@ from acondbs.models import Product, ProductRelation, ProductRelationType
 # __________________________________________________________________||
 def test_cascade_delete_children(app):
 
+    #                              +--------+
+    #               --(child)-->   |        |
+    #                    |         | child1 |
+    #  +---------+  <-(parent)--   |        |
+    #  |         |                 +--------+
+    #  | parent1 |
+    #  |         |                 +--------+
+    #  +---------+  --(child)-->   |        |
+    #                    |         | child2 |
+    #               <-(parent)--   |        |
+    #                              +--------+
+
+
     # delete child1
     with app.app_context():
         child1 = Product.query.filter_by(name='child1').one_or_none()
@@ -75,6 +88,19 @@ def test_cascade_delete_children(app):
 # __________________________________________________________________||
 def test_cascade_delete_parent(app):
 
+    #                              +--------+
+    #               --(child)-->   |        |
+    #                    |         | child1 |
+    #  +---------+  <-(parent)--   |        |
+    #  |         |                 +--------+
+    #  | parent1 |
+    #  |         |                 +--------+
+    #  +---------+  --(child)-->   |        |
+    #                    |         | child2 |
+    #               <-(parent)--   |        |
+    #                              +--------+
+
+    # delete parent1
     with app.app_context():
         parent1 = Product.query.filter_by(name='parent1').first()
         sa.session.delete(parent1)
@@ -108,6 +134,18 @@ def test_cascade_delete_parent(app):
 
 # __________________________________________________________________||
 def test_cascade_delete_relations(app):
+
+    #                              +--------+
+    #               --(child)-->   |        |
+    #                    |         | child1 |
+    #  +---------+  <-(parent)--   |        |
+    #  |         |                 +--------+
+    #  | parent1 |
+    #  |         |                 +--------+
+    #  +---------+  --(child)-->   |        |
+    #                    |         | child2 |
+    #               <-(parent)--   |        |
+    #                              +--------+
 
     # delete the relation from child1 to parent1
     with app.app_context():
