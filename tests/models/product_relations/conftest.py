@@ -48,14 +48,8 @@ def app(app_empty):
     relation_parent1_to_child1.self_ = parent1
     relation_parent1_to_child1.other = child1
 
-    # child1 --(parent)--> parent1
-    relation_child1_to_parent1 = ProductRelation()
-    relation_child1_to_parent1.type_ = relation_type_parent
-    relation_child1_to_parent1.self_ = child1
-    relation_child1_to_parent1.other = parent1
-
-    relation_parent1_to_child1.reverse = relation_child1_to_parent1
-    relation_child1_to_parent1.reverse = relation_parent1_to_child1
+    ## the reverse relation child1 --(parent)--> parent1 will be
+    ## automatically set
 
     # parent1 --(child)--> child2
     relation_parent1_to_child2 = ProductRelation()
@@ -63,14 +57,8 @@ def app(app_empty):
     relation_parent1_to_child2.self_ = parent1
     relation_parent1_to_child2.other = child2
 
-    # child2 --(parent)--> parent1
-    relation_child2_to_parent1 = ProductRelation()
-    relation_child2_to_parent1.type_ = relation_type_parent
-    relation_child2_to_parent1.self_ = child2
-    relation_child2_to_parent1.other = parent1
-
-    relation_parent1_to_child2.reverse = relation_child2_to_parent1
-    relation_child2_to_parent1.reverse = relation_parent1_to_child2
+    ## the reverse relation child2 --(parent)--> parent1 will be
+    ## automatically set
 
     # commit
     with y.app_context():
