@@ -12,7 +12,7 @@ https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping
 
 """
 
-from .db.sa import sa
+from ..db.sa import sa
 
 from sqlalchemy.event import listens_for
 
