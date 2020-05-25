@@ -1,73 +1,6 @@
-"""declare ORM models
-
-In this module, ORM (Object-relational mapping) models are declared.
-One model is mapped to one table in the DB. Models are declared as
-Python classes inheriting the Model class in Flask-SQLAlchemy.
-
-"Declaring Models" in Flask-SQLAlchemy doc:
-https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
-
-"Declare a Mapping" in SQLAlchemy doc:
-https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping
-
-"""
-
 from ..db.sa import sa
 
 from sqlalchemy.event import listens_for
-
-##__________________________________________________________________||
-class ProductType(sa.Model):
-    __tablename__ = 'product_types'
-    type_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    order = sa.Column(sa.Integer())
-    indef_article = sa.Column(sa.Text())
-    singular = sa.Column(sa.Text())
-    plural = sa.Column(sa.Text())
-    icon = sa.Column(sa.Text())
-
-class Product(sa.Model):
-    __tablename__ = 'products'
-    product_id = sa.Column(sa.Integer(), primary_key=True)
-    type_id = sa.Column(
-        sa.ForeignKey('product_types.type_id'),
-        nullable=False
-    )
-    type_ = sa.relationship("ProductType", backref=sa.backref("products"))
-    name = sa.Column(sa.Text(), nullable=False)
-    contact = sa.Column(sa.Text())
-    date_produced = sa.Column(sa.Date())
-    produced_by = sa.Column(sa.Text())
-    date_posted = sa.Column(sa.Date())
-    posted_by = sa.Column(sa.Text())
-    date_updated = sa.Column(sa.Date())
-    updated_by = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
-    __table_args__ = (sa.UniqueConstraint('type_id', 'name', name='_type_id_name'), )
-
-class ProductFilePath(sa.Model):
-    __tablename__ = 'product_file_paths'
-    path_id = sa.Column(sa.Integer(), primary_key=True)
-    path = sa.Column(sa.Text())
-    note = sa.Column(sa.Text())
-    product_id = sa.Column(sa.ForeignKey('products.product_id'))
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("paths", cascade="all, delete-orphan"))
-
-class ProductRelationType(sa.Model):
-    __tablename__ = 'product_relation_types'
-    type_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    reverse_type_id = sa.Column(sa.ForeignKey('product_relation_types.type_id'))
-    reverse = sa.relationship(
-        lambda: ProductRelationType,
-        uselist=False,
-        foreign_keys=[reverse_type_id],
-        remote_side="ProductRelationType.type_id",
-        cascade="all",
-        post_update=True)
 
 ##__________________________________________________________________||
 class ProductRelation(sa.Model):
@@ -97,6 +30,7 @@ class ProductRelation(sa.Model):
         cascade="all",
         post_update=True)
 
+##__________________________________________________________________||
 @listens_for(ProductRelation.type_, 'set')
 def set_reverse_type(target, value, oldvalue, initiator):
     relation = target
