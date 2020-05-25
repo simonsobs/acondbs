@@ -547,6 +547,18 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'reverseTypeId',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'name': 'reverse',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        },
+                        {
                             'name': 'id',
                             'type': {
                                 'name': None

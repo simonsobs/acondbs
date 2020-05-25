@@ -73,14 +73,17 @@ snapshots['test_import_tables_from_csv_files 1'] = {
     'product_relation_types': [
         {
             'name': 'parent',
+            'reverse_type_id': None,
             'type_id': 1
         },
         {
             'name': 'child',
+            'reverse_type_id': None,
             'type_id': 2
         },
         {
             'name': 'invigilator',
+            'reverse_type_id': None,
             'type_id': 3
         }
     ],

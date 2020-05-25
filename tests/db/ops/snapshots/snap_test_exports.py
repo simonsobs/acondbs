@@ -73,14 +73,17 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'product_relation_types': [
         {
             'name': 'parent',
+            'reverse_type_id': None,
             'type_id': 1
         },
         {
             'name': 'child',
+            'reverse_type_id': None,
             'type_id': 2
         },
         {
             'name': 'invigilator',
+            'reverse_type_id': None,
             'type_id': 3
         }
     ],
