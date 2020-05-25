@@ -55,7 +55,12 @@ snapshots['test_schema_error[createProduct-error-already-exist] 2'] = {
                 },
                 {
                     'node': {
-                        'name': 'invigilator'
+                        'name': 'plaintiff'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'defendant'
                     }
                 }
             ]

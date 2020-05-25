@@ -73,18 +73,23 @@ snapshots['test_export_db_to_csv_files 1'] = {
     'product_relation_types': [
         {
             'name': 'parent',
-            'reverse_type_id': '',
+            'reverse_type_id': 2,
             'type_id': 1
         },
         {
             'name': 'child',
-            'reverse_type_id': '',
+            'reverse_type_id': 1,
             'type_id': 2
         },
         {
-            'name': 'invigilator',
-            'reverse_type_id': '',
+            'name': 'plaintiff',
+            'reverse_type_id': 4,
             'type_id': 3
+        },
+        {
+            'name': 'defendant',
+            'reverse_type_id': 3,
+            'type_id': 4
         }
     ],
     'product_relations': [

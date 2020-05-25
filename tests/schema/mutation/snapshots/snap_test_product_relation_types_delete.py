@@ -74,8 +74,14 @@ snapshots['test_schema_error[deleteProductRelationType-error-nonexistent] 2'] = 
                 },
                 {
                     'node': {
-                        'name': 'invigilator',
+                        'name': 'plaintiff',
                         'typeId': '3'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'defendant',
+                        'typeId': '4'
                     }
                 }
             ]
@@ -121,8 +127,14 @@ snapshots['test_schema_error[deleteProductRelationType-error-unempty] 2'] = {
                 },
                 {
                     'node': {
-                        'name': 'invigilator',
+                        'name': 'plaintiff',
                         'typeId': '3'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'defendant',
+                        'typeId': '4'
                     }
                 }
             ]

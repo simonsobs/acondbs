@@ -25,8 +25,14 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                 },
                 {
                     'node': {
-                        'name': 'invigilator',
+                        'name': 'plaintiff',
                         'typeId': '3'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'defendant',
+                        'typeId': '4'
                     }
                 }
             ]
