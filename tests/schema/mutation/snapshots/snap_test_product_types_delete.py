@@ -107,7 +107,10 @@ snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
                     'line': 3
                 }
             ],
-            'message': 'Cannot delete the product type "map". Products of this type exist',
+            'message': '''(sqlite3.IntegrityError) NOT NULL constraint failed: products.type_id
+[SQL: UPDATE products SET type_id=? WHERE products.product_id = ?]
+[parameters: ((None, 1001), (None, 1012), (None, 1013))]
+(Background on this error at: http://sqlalche.me/e/gkpj)''',
             'path': [
                 'deleteProductType'
             ]
