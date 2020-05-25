@@ -559,6 +559,12 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'relations',
+                            'type': {
+                                'name': 'ProductRelationConnection'
+                            }
+                        },
+                        {
                             'name': 'id',
                             'type': {
                                 'name': None

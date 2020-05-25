@@ -71,7 +71,10 @@ class ProductRelation(sa.Model):
     __tablename__ = 'product_relations'
     relation_id = sa.Column(sa.Integer(), primary_key=True)
     type_id = sa.Column(sa.ForeignKey('product_relation_types.type_id'))
-    type_ = sa.relationship("ProductRelationType")
+    type_ = sa.relationship(
+        "ProductRelationType",
+        backref=sa.backref("relations")
+    )
     self_product_id = sa.Column(sa.ForeignKey('products.product_id'))
     self_ = sa.relationship(
         "Product",
