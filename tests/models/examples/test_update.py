@@ -1,5 +1,21 @@
+import pytest
+
 from acondbs.db.sa import sa
-from acondbs.models import Product
+from acondbs.models import ProductType, Product
+
+# __________________________________________________________________||
+@pytest.fixture
+def app(app):
+    y = app
+
+    type_map = ProductType(name='map')
+    map1 = Product(name="map1", contact='xyz', type_=type_map)
+
+    with y.app_context():
+        sa.session.add(type_map)
+        sa.session.commit()
+
+    yield y
 
 # __________________________________________________________________||
 def test_simple(app):
@@ -7,13 +23,13 @@ def test_simple(app):
     '''
 
     with app.app_context():
-        product1 = Product.query.filter_by(product_id=1012).first()
-        assert 'lat20200120' == product1.name
-        product1.name = 'new-product-name'
+        product1 = Product.query.filter_by(name='map1').first()
+        assert 'xyz' == product1.contact
+        product1.contact = 'abc'
         sa.session.commit()
 
     with app.app_context():
-        product1 = Product.query.filter_by(product_id=1012).first()
-        assert 'new-product-name' == product1.name
+        product1 = Product.query.filter_by(name='map1').first()
+        assert 'abc' == product1.contact
 
 # __________________________________________________________________||

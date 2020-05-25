@@ -2,10 +2,27 @@ import pytest
 
 from flask_sqlalchemy import BaseQuery
 
-from acondbs.models import Product
+from acondbs.db.sa import sa
+from acondbs.models import ProductType, Product
 
 # These tests are written primarily for the developer to understand
 # how models in flask_sqlalchemy work.
+
+# __________________________________________________________________||
+@pytest.fixture
+def app(app):
+    y = app
+
+    type_map = ProductType(name='map')
+    map1 = Product(name="map1", type_=type_map)
+    map2 = Product(name="map2", type_=type_map)
+    map3 = Product(name="map3", type_=type_map)
+
+    with y.app_context():
+        sa.session.add(type_map)
+        sa.session.commit()
+
+    yield y
 
 # __________________________________________________________________||
 def test_context(app):
@@ -27,7 +44,7 @@ def test_query_all(app):
 
         # query.all() returns a list of products
         results = query.all()
-        # e.g., [<Product 1001>, <Product 1012>, <Product 1013>]
+        # e.g., [<Product 1>, <Product 2>, <Product 3>]
 
         assert isinstance(results[0], Product)
 
@@ -36,18 +53,18 @@ def test_query_filter(app):
     with app.app_context():
 
         # filter_by() returns an instance of BaseQuery
-        query = Product.query.filter_by(name='lat20200120')
+        query = Product.query.filter_by(name='map1')
         assert isinstance(query, BaseQuery)
 
         # the results are a list with one element
         results = query.all()
         assert 1 == len(results)
-        assert ['lat20200120'] == [e.name for e in results]
+        assert ['map1'] == [e.name for e in results]
 
         # first() returns a product
         product = query.first()
         assert isinstance(product, Product)
-        assert 'lat20200120' == product.name
+        assert 'map1' == product.name
 
 def test_query_filter_nonexistent(app):
 
