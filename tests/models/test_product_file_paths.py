@@ -4,7 +4,7 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 from acondbs.db.sa import sa
-from acondbs.models import Product, ProductFilePath
+from acondbs.models import ProductType, Product, ProductFilePath
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -24,7 +24,8 @@ def app(app_empty):
     # product --- path1
     #          |
     #          +- path2
-    product = Product(name="product")
+    type1 = ProductType(name='type1')
+    product = Product(name="product", type_=type1)
     path1 = ProductFilePath(path="/path1")
     path2 = ProductFilePath(path="/path2")
     product.paths = [path1, path2]
