@@ -101,7 +101,10 @@ snapshots['test_schema_error[deleteProductRelationType-error-unempty] 1'] = {
                     'line': 3
                 }
             ],
-            'message': 'Cannot delete the product relation type "parent". Products with this relation type exist',
+            'message': '''(sqlite3.IntegrityError) NOT NULL constraint failed: product_relations.type_id
+[SQL: UPDATE product_relations SET type_id=? WHERE product_relations.relation_id = ?]
+[parameters: ((None, 1), (None, 2), (None, 3), (None, 4), (None, 5), (None, 6))]
+(Background on this error at: http://sqlalche.me/e/gkpj)''',
             'path': [
                 'deleteProductRelationType'
             ]

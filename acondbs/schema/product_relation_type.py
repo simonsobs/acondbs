@@ -45,11 +45,6 @@ class DeleteProductRelationType(graphene.Mutation):
 
     def mutate(root, info, type_id):
         type_ = ProductRelationTypeModel.query.filter_by(type_id=type_id).first()
-        products = ProductModel.query.join(
-            ProductRelationModel,
-            (ProductModel.product_id == ProductRelationModel.self_product_id)).join(ProductRelationTypeModel).filter(ProductRelationTypeModel.type_id==type_id).all()
-        if products:
-            raise ValueError('Cannot delete the product relation type "{}". Products with this relation type exist'.format(type_.name))
         sa.session.delete(type_)
         sa.session.commit()
         ok = True
