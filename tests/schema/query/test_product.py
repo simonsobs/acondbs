@@ -3,7 +3,7 @@ import textwrap
 
 from .funcs import assert_query_success
 
-from .gql import productFragment
+from .gql import FRAGMENT_PRODUCT_DEEP
 
 ##__________________________________________________________________||
 params = [
@@ -11,55 +11,55 @@ params = [
         textwrap.dedent('''
         {
           product(productId: 1001) {
-            ...productFragment
+            ...fragmentProductDeep
           }
         }
-         ''') + productFragment,
+         ''') + FRAGMENT_PRODUCT_DEEP,
         id='product_id'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(productId: 2001) {
-            ...productFragment
+            ...fragmentProductDeep
           }
         }
-         ''') + productFragment,
+         ''') + FRAGMENT_PRODUCT_DEEP,
         id='product_id-nonexistent'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(name: "lat20190213") {
-            ...productFragment
+            ...fragmentProductDeep
           }
         }
-         ''') + productFragment,
+         ''') + FRAGMENT_PRODUCT_DEEP,
         id='name'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(productId: 1001, name: "lat20190213") {
-            ...productFragment
+            ...fragmentProductDeep
           }
         }
-         ''') + productFragment,
+         ''') + FRAGMENT_PRODUCT_DEEP,
         id='product_id-name'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(productId: 1002, name: "lat20190213") {
-            ...productFragment
+            ...fragmentProductDeep
           }
         }
-         ''') + productFragment,
+         ''') + FRAGMENT_PRODUCT_DEEP,
         id='product_id-name-nonexistent'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(typeId: 1, name: "lat20190213") {
-            ...productFragment
+            ...fragmentProductDeep
           }
         }
-         ''') + productFragment,
+         ''') + FRAGMENT_PRODUCT_DEEP,
         id='type_id-name'
     ),
 ]

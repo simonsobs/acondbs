@@ -1,7 +1,7 @@
 
 ##__________________________________________________________________||
-productFragment = '''
-fragment productFragment on Product {
+FRAGMENT_PRODUCT_DEEP = '''
+fragment fragmentProductDeep on Product {
   productId
   typeId
   type_ {
@@ -61,14 +61,14 @@ fragment productFragment on Product {
 '''
 
 ##__________________________________________________________________||
-productConnectionFragment = '''
-fragment productConnectionFragment on ProductConnection {
+FRAGMENT_PRODUCT_CONNECTION_DEEP = '''
+fragment fragmentProductConnectionDeep on ProductConnection {
   edges {
     node {
-     ...productFragment
+     ...fragmentProductDeep
     }
   }
 }
-''' + productFragment
+''' + FRAGMENT_PRODUCT_DEEP
 
 ##__________________________________________________________________||

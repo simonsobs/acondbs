@@ -3,7 +3,7 @@ import textwrap
 
 from .funcs import assert_query_success
 
-from .gql import productConnectionFragment
+from .gql import FRAGMENT_PRODUCT_CONNECTION_DEEP
 
 ##__________________________________________________________________||
 params = [
@@ -11,70 +11,70 @@ params = [
         textwrap.dedent('''
         {
           allProducts {
-            ...productConnectionFragment
+            ...fragmentProductConnectionDeep
           }
         }
-         ''') + productConnectionFragment,
+         ''') + FRAGMENT_PRODUCT_CONNECTION_DEEP,
         id='allProducts'
     ),
     pytest.param(
         textwrap.dedent('''
         {
           allProducts(first: 2) {
-            ...productConnectionFragment
+            ...fragmentProductConnectionDeep
           }
         }
-         ''') + productConnectionFragment,
+         ''') + FRAGMENT_PRODUCT_CONNECTION_DEEP,
         id='allProducts-first-two'
     ),
     pytest.param(
         textwrap.dedent('''
         {
           allProducts(first: 2, sort: DATE_POSTED_DESC) {
-            ...productConnectionFragment
+            ...fragmentProductConnectionDeep
           }
         }
-         ''') + productConnectionFragment,
+         ''') + FRAGMENT_PRODUCT_CONNECTION_DEEP,
         id='allProducts-first-two-sort'
     ),
     pytest.param(
         textwrap.dedent('''
         {
           allProducts(filters: {typeId: 1}, first: 2) {
-            ...productConnectionFragment
+            ...fragmentProductConnectionDeep
           }
         }
-         ''') + productConnectionFragment,
+         ''') + FRAGMENT_PRODUCT_CONNECTION_DEEP,
         id='allProducts-filtes-typeId-one-first-two'
     ),
     pytest.param(
         textwrap.dedent('''
         {
           allProducts(filters: {typeName: "beam"}, first: 2) {
-            ...productConnectionFragment
+            ...fragmentProductConnectionDeep
           }
         }
-         ''') + productConnectionFragment,
+         ''') + FRAGMENT_PRODUCT_CONNECTION_DEEP,
         id='allProducts-filtes-typeName-beam-first-two'
     ),
     pytest.param(
         textwrap.dedent('''
         {
           allProducts(filters: {typeId: 1}, sort: PRODUCT_ID_DESC) {
-            ...productConnectionFragment
+            ...fragmentProductConnectionDeep
           }
         }
-         ''') + productConnectionFragment,
+         ''') + FRAGMENT_PRODUCT_CONNECTION_DEEP,
         id='allProducts-filtes-typeId-sort'
     ),
     pytest.param(
         textwrap.dedent('''
         {
           allProducts(filters: {typeName: "map"}, sort: PRODUCT_ID_DESC) {
-            ...productConnectionFragment
+            ...fragmentProductConnectionDeep
           }
         }
-         ''') + productConnectionFragment,
+         ''') + FRAGMENT_PRODUCT_CONNECTION_DEEP,
         id='allProducts-filtes-typeName-sort'
     ),
 ]
