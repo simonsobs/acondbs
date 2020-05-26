@@ -1,5 +1,24 @@
 
 ##__________________________________________________________________||
+FRAGMENT_PRODUCT_SHALLOW = '''
+fragment fragmentProductShallow on Product {
+  productId
+  typeId
+  name
+}
+'''
+
+FRAGMENT_PRODUCT_CONNECTION_SHALLOW = '''
+fragment fragmentProductConnectionShallow on ProductConnection {
+  edges {
+    node {
+     ...fragmentProductShallow
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_SHALLOW
+
+##__________________________________________________________________||
 FRAGMENT_PRODUCT_DEEP = '''
 fragment fragmentProductDeep on Product {
   productId
@@ -60,7 +79,6 @@ fragment fragmentProductDeep on Product {
 }
 '''
 
-##__________________________________________________________________||
 FRAGMENT_PRODUCT_CONNECTION_DEEP = '''
 fragment fragmentProductConnectionDeep on ProductConnection {
   edges {
