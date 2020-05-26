@@ -48,16 +48,20 @@ def app(app_empty):
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
+        textwrap.dedent('''
           mutation m {
             createProductRelationType(input: {
               name: "plaintiff",
               indefArticle: "a",
               singular: "plaintiff",
-              plural: "plaintiffs",
-            }) { productRelationType { name } }
+              plural: "plaintiffs"
+              }) {
+              productRelationType {
+                ...fragmentProductRelationType
+              }
+            }
           }
-        ''',
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
         textwrap.dedent('''
         {
           allProductRelationTypes {

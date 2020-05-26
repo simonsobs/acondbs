@@ -11,7 +11,16 @@ snapshots['test_schema_success[create] 1'] = {
     'data': {
         'createProductRelationType': {
             'productRelationType': {
-                'name': 'plaintiff'
+                'indefArticle': 'a',
+                'name': 'plaintiff',
+                'plural': 'plaintiffs',
+                'relations': {
+                    'edges': [
+                    ]
+                },
+                'reverse': None,
+                'singular': 'plaintiff',
+                'typeId': '3'
             }
         }
     }
