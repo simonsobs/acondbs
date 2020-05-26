@@ -3,10 +3,7 @@ import textwrap
 
 from .funcs import assert_mutation_success, assert_mutation_error
 
-from ..gql import (
-    FRAGMENT_PRODUCT_RELATION_TYPE,
-    FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
-    )
+from ..gql import FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
 
 ##__________________________________________________________________||
 params = [
