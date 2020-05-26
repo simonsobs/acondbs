@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[allProductRelationTypes] 1'] = {
+snapshots['test_schema[query] 1'] = {
     'data': {
         'allProductRelationTypes': {
             'edges': [
@@ -22,15 +22,11 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                                     'node': {
                                         'other': {
                                             'name': 'lat20200120',
-                                            'type_': {
-                                                'name': 'map'
-                                            }
+                                            'productId': '1012'
                                         },
                                         'self_': {
                                             'name': '20200123',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1130'
                                         }
                                     }
                                 },
@@ -38,15 +34,11 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                                     'node': {
                                         'other': {
                                             'name': 'lat20200201',
-                                            'type_': {
-                                                'name': 'map'
-                                            }
+                                            'productId': '1013'
                                         },
                                         'self_': {
                                             'name': '20200207',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1150'
                                         }
                                     }
                                 },
@@ -54,15 +46,11 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                                     'node': {
                                         'other': {
                                             'name': '20200123',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1130'
                                         },
                                         'self_': {
                                             'name': '20200207',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1150'
                                         }
                                     }
                                 }
@@ -87,15 +75,11 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                                     'node': {
                                         'other': {
                                             'name': '20200123',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1130'
                                         },
                                         'self_': {
                                             'name': 'lat20200120',
-                                            'type_': {
-                                                'name': 'map'
-                                            }
+                                            'productId': '1012'
                                         }
                                     }
                                 },
@@ -103,15 +87,11 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                                     'node': {
                                         'other': {
                                             'name': '20200207',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1150'
                                         },
                                         'self_': {
                                             'name': 'lat20200201',
-                                            'type_': {
-                                                'name': 'map'
-                                            }
+                                            'productId': '1013'
                                         }
                                     }
                                 },
@@ -119,15 +99,11 @@ snapshots['test_schema[allProductRelationTypes] 1'] = {
                                     'node': {
                                         'other': {
                                             'name': '20200207',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1150'
                                         },
                                         'self_': {
                                             'name': '20200123',
-                                            'type_': {
-                                                'name': 'beam'
-                                            }
+                                            'productId': '1130'
                                         }
                                     }
                                 }

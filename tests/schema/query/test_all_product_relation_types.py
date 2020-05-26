@@ -1,48 +1,21 @@
 import pytest
+import textwrap
 
 from .funcs import assert_query_success
+
+from ..gql import FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
+        textwrap.dedent('''
           {
             allProductRelationTypes {
-              edges {
-                node {
-                  typeId
-                  name
-                  indefArticle
-                  singular
-                  plural
-                  reverse {
-                    typeId
-                    name
-                  }
-                  relations {
-                    edges {
-                      node {
-                        self_ {
-                          name
-                          type_ {
-                            name
-                          }
-                        }
-                        other {
-                          name
-                          type_ {
-                            name
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+              ...fragmentProductRelationTypeConnection
             }
           }
-         ''',
-        id='allProductRelationTypes'
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='query'
     ),
 ]
 
