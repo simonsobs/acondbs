@@ -12,6 +12,31 @@ params = [
                 node {
                   typeId
                   name
+                  indefArticle
+                  singular
+                  plural
+                  reverse {
+                    typeId
+                    name
+                  }
+                  relations {
+                    edges {
+                      node {
+                        self_ {
+                          name
+                          type_ {
+                            name
+                          }
+                        }
+                        other {
+                          name
+                          type_ {
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
