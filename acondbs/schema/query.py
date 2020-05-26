@@ -57,4 +57,10 @@ class Query(graphene.ObjectType):
 
     all_product_relations = PFilterableConnectionField(ProductRelation._meta.connection)
 
+    product_relation = graphene.Field(ProductRelation, relation_id=graphene.Int())
+
+    def resolve_product_relation(self, info, **kwargs):
+        filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
+        return ProductRelation.get_query(info).filter(*filter).one_or_none()
+
 ##__________________________________________________________________||
