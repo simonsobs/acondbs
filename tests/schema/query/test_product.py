@@ -3,7 +3,7 @@ import textwrap
 
 from .funcs import assert_query_success
 
-from .product_fragment import productFragment
+from .gql import productFragment
 
 ##__________________________________________________________________||
 params = [
