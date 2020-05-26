@@ -1,52 +1,51 @@
 import pytest
+import textwrap
 
 from .funcs import assert_query_success
+
+from ..gql import FRAGMENT_PRODUCT_RELATION_TYPE
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
+        textwrap.dedent('''
           {
             productRelationType(typeId: 1) {
-              typeId
-              name
+              ...fragmentProductRelationType
             }
           }
-         ''',
-        id='productRelationType-by-TypeId-one)'
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
+        id='type_id'
     ),
     pytest.param(
-        '''
+        textwrap.dedent('''
           {
             productRelationType(name: "parent") {
-              typeId
-              name
+              ...fragmentProductRelationType
             }
           }
-         ''',
-        id='productRelationType-by-name-parent)'
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
+        id='name'
     ),
     pytest.param(
-        '''
+        textwrap.dedent('''
           {
             productRelationType(typeId: 1, name: "parent") {
-              typeId
-              name
+              ...fragmentProductRelationType
             }
           }
-         ''',
-        id='productRelationType-by-id-and-name-parent)'
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
+        id='type_id-and-name'
     ),
     pytest.param(
-        '''
+        textwrap.dedent('''
           {
             productRelationType(typeId: 2, name: "parent") {
-              typeId
-              name
+              ...fragmentProductRelationType
             }
           }
-         ''',
-        id='productRelationType-by-id-and-name-nonexistent)'
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
+        id='type_id-and-name-nonexistent)'
     ),
 ]
 
