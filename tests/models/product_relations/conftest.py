@@ -40,7 +40,6 @@ def app(app_empty):
     relation_type_parent = ProductRelationType(name='parent')
     relation_type_child = ProductRelationType(name='child')
     relation_type_parent.reverse = relation_type_child
-    relation_type_child.reverse = relation_type_parent
 
     # parent1 --(child)--> child1
     relation_parent1_to_child1 = ProductRelation()

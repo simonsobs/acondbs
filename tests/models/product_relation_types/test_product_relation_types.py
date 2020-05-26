@@ -39,6 +39,7 @@ def app(app_empty):
     parent = ProductRelationType(name='parent')
     child = ProductRelationType(name='child')
     parent.reverse = child
+    assert child.reverse == parent
 
     sibling = ProductRelationType(name='sibling')
     sibling.reverse = sibling
@@ -61,6 +62,7 @@ def test_relations_parent_child(app):
         assert child is not None
 
         assert child is parent.reverse
+        assert parent is child.reverse
 
 def test_relations_sibling(app):
 
