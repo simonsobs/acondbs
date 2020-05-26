@@ -553,6 +553,24 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'name': 'indefArticle',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'singular',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'name': 'plural',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
                             'name': 'reverse',
                             'type': {
                                 'name': 'ProductRelationType'

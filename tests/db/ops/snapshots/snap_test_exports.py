@@ -72,23 +72,35 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     ],
     'product_relation_types': [
         {
+            'indef_article': None,
             'name': 'parent',
+            'plural': None,
             'reverse_type_id': 2,
+            'singular': None,
             'type_id': 1
         },
         {
+            'indef_article': None,
             'name': 'child',
+            'plural': None,
             'reverse_type_id': 1,
+            'singular': None,
             'type_id': 2
         },
         {
+            'indef_article': None,
             'name': 'plaintiff',
+            'plural': None,
             'reverse_type_id': 4,
+            'singular': None,
             'type_id': 3
         },
         {
+            'indef_article': None,
             'name': 'defendant',
+            'plural': None,
             'reverse_type_id': 3,
+            'singular': None,
             'type_id': 4
         }
     ],
