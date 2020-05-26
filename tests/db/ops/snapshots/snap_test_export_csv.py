@@ -72,35 +72,35 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'product_relation_types': [
         {
-            'indef_article': '',
+            'indef_article': 'a',
             'name': 'parent',
-            'plural': '',
+            'plural': 'parents',
             'reverse_type_id': 2,
-            'singular': '',
+            'singular': 'parent',
             'type_id': 1
         },
         {
-            'indef_article': '',
+            'indef_article': 'a',
             'name': 'child',
-            'plural': '',
+            'plural': 'children',
             'reverse_type_id': 1,
-            'singular': '',
+            'singular': 'child',
             'type_id': 2
         },
         {
-            'indef_article': '',
+            'indef_article': 'a',
             'name': 'plaintiff',
-            'plural': '',
+            'plural': 'plaintiffs',
             'reverse_type_id': 4,
-            'singular': '',
+            'singular': 'plaintiff',
             'type_id': 3
         },
         {
-            'indef_article': '',
+            'indef_article': 'a',
             'name': 'defendant',
-            'plural': '',
+            'plural': 'defendants',
             'reverse_type_id': 3,
-            'singular': '',
+            'singular': 'defendant',
             'type_id': 4
         }
     ],
