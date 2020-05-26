@@ -29,6 +29,10 @@ class ProductRelation(sa.Model):
         remote_side="ProductRelation.relation_id",
         cascade="all",
         post_update=True)
+    __table_args__ = (
+        sa.UniqueConstraint(
+            'type_id', 'self_product_id', 'other_product_id',
+            name='_type_id_self_product_id_other_product_id'), )
 
 ##__________________________________________________________________||
 @listens_for(ProductRelation.type_, 'set')

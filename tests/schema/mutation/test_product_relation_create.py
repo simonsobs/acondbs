@@ -8,7 +8,8 @@ from acondbs.db.sa import sa
 from acondbs.models import (
     ProductType,
     Product,
-    ProductRelationType
+    ProductRelationType,
+    ProductRelation
     )
 
 from .funcs import assert_mutation_success, assert_mutation_error
@@ -41,6 +42,15 @@ def app(app_empty):
     type_ = ProductType(name='robot')
     parent1 = Product(product_id=1, name="parent1", type_=type_)
     child1 = Product(product_id=2, name="child1", type_=type_)
+
+    parent2 = Product(product_id=3, name="parent2", type_=type_)
+    child2 = Product(product_id=4, name="child12", type_=type_)
+
+    # create a relation (to test duplicate)
+    relation_parent2_to_child2 = ProductRelation()
+    relation_parent2_to_child2.type_ = child_type
+    relation_parent2_to_child2.self_ = parent2
+    relation_parent2_to_child2.other = child2
 
     with y.app_context():
         sa.session.add(parent_type)
@@ -158,6 +168,31 @@ params = [
         }
          ''') + FRAGMENT_PRODUCT_RELATION_CONNECTION,
         id='error-otheer_product_id-nonexistent'
+    ),
+    pytest.param(
+        textwrap.dedent('''
+          mutation m {
+            createProductRelation(
+              input: {
+                typeId: 2,
+                selfProductId: 3,
+                otherProductId: 4
+              }
+              ) {
+              productRelation {
+                ...fragmentProductRelation
+              }
+            }
+          }
+        ''') + FRAGMENT_PRODUCT_RELATION,
+        textwrap.dedent('''
+        {
+          allProductRelations {
+            ...fragmentProductRelationConnection
+          }
+        }
+         ''') + FRAGMENT_PRODUCT_RELATION_CONNECTION,
+        id='error-duplicate'
     ),
 ]
 
