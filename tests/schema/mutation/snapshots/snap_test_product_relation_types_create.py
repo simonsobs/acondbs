@@ -20,7 +20,10 @@ snapshots['test_schema_success[createProductRelationType] 1'] = {
 snapshots['test_schema_success[createProductRelationType] 2'] = {
     'data': {
         'productRelationType': {
-            'name': 'proctor'
+            'indefArticle': 'a',
+            'name': 'proctor',
+            'plural': 'proctors',
+            'singular': 'proctor'
         }
     }
 }
