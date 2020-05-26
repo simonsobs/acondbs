@@ -1,6 +1,82 @@
 import pytest
+import textwrap
+
+from acondbs import create_app
+from acondbs.db.ops import define_tables
+
+from acondbs.db.sa import sa
+from acondbs.models import ProductRelationType
 
 from .funcs import assert_mutation_success, assert_mutation_error
+
+FRAGMENT_PRODUCT_RELATION_TYPE = '''
+fragment fragmentProductRelationType on ProductRelationType {
+  typeId
+  name
+  indefArticle
+  singular
+  plural
+  reverse {
+    typeId
+    name
+  }
+  relations {
+    edges {
+      node {
+        self_ {
+          productId
+          name
+        }
+        other {
+          productId
+          name
+        }
+      }
+    }
+  }
+}
+'''
+
+FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION = '''
+fragment fragmentProductRelationTypeConnection on ProductRelationTypeConnection {
+  edges {
+    node {
+      ...fragmentProductRelationType
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_RELATION_TYPE
+
+##__________________________________________________________________||
+@pytest.fixture
+def app_empty():
+    database_uri ="sqlite:///:memory:"
+    y = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
+    with y.app_context():
+        define_tables()
+    yield y
+
+@pytest.fixture
+def app(app_empty):
+
+    y = app_empty
+
+    #
+    #  +--------+                +-------+
+    #  |        | --(reverse)->  |       |
+    #  | parent |                | child |
+    #  |        | <-(reverse)--  |       |
+    #  +--------+                +-------+
+    #
+
+    parent = ProductRelationType(name='parent')
+    child = ProductRelationType(name='child')
+    parent.reverse = child
+
+    with y.app_context():
+        sa.session.add(parent)
+        sa.session.commit()
+    yield y
 
 ##__________________________________________________________________||
 params = [
@@ -8,24 +84,21 @@ params = [
         '''
           mutation m {
             createProductRelationType(input: {
-              name: "proctor",
+              name: "plaintiff",
               indefArticle: "a",
-              singular: "proctor",
-              plural: "proctors",
+              singular: "plaintiff",
+              plural: "plaintiffs",
             }) { productRelationType { name } }
           }
         ''',
-        '''
-          {
-            productRelationType(name: "proctor") {
-              name
-              indefArticle
-              singular
-              plural
-            }
+        textwrap.dedent('''
+        {
+          allProductRelationTypes {
+            ...fragmentProductRelationTypeConnection
           }
-        ''',
-        id='createProductRelationType'
+        }
+         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='create'
     ),
 ]
 
@@ -43,18 +116,14 @@ params = [
             }) { productType { name } }
           }
         ''',
-        '''
-          {
-            allProductRelationTypes {
-              edges {
-                node {
-                  name
-                }
-              }
-            }
+        textwrap.dedent('''
+        {
+          allProductRelationTypes {
+            ...fragmentProductRelationTypeConnection
           }
-        ''',
-        id='createProduct-error-already-exist'
+        }
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='error-already-exist'
     ),
 ]
 
