@@ -722,6 +722,12 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': 'CreateProductRelation'
                             }
+                        },
+                        {
+                            'name': 'deleteProductRelation',
+                            'type': {
+                                'name': 'DeleteProductRelation'
+                            }
                         }
                     ],
                     'name': 'Mutation'
@@ -920,6 +926,17 @@ snapshots['test_types 1'] = {
                 {
                     'fields': None,
                     'name': 'CreateProductRelationInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'name': 'DeleteProductRelation'
                 },
                 {
                     'fields': [

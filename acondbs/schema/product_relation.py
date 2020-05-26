@@ -47,4 +47,18 @@ class CreateProductRelation(graphene.Mutation):
         request_backup_db()
         return CreateProductRelation(product_relation=relation, ok=ok)
 
+class DeleteProductRelation(graphene.Mutation):
+    class Arguments:
+        relation_id = graphene.Int()
+
+    ok = graphene.Boolean()
+
+    def mutate(root, info, relation_id):
+        relation = ProductRelationModel.query.filter_by(relation_id=relation_id).one_or_none()
+        sa.session.delete(relation)
+        sa.session.commit()
+        ok = True
+        request_backup_db()
+        return DeleteProductRelation(ok=ok)
+
 ##__________________________________________________________________||

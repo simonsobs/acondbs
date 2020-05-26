@@ -4,7 +4,7 @@ from .product import CreateProduct, UpdateProduct, DeleteProduct
 from .product_file_path import CreateProductFilePath, UpdateProductFilePath, DeleteProductFilePath
 from .product_type import CreateProductType, DeleteProductType
 from .product_relation_type import CreateProductRelationTypes, DeleteProductRelationType
-from .product_relation import CreateProductRelation
+from .product_relation import CreateProductRelation, DeleteProductRelation
 
 from .query import Query
 
@@ -26,5 +26,6 @@ class Mutation(graphene.ObjectType):
     delete_product_relation_type = DeleteProductRelationType.Field()
 
     create_product_relation = CreateProductRelation.Field()
+    delete_product_relation = DeleteProductRelation.Field()
 
 ##__________________________________________________________________||
