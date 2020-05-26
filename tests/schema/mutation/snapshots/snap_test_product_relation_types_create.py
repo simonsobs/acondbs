@@ -59,7 +59,10 @@ snapshots['test_schema_success[reverse] 2'] = {
                             'edges': [
                             ]
                         },
-                        'reverse': None,
+                        'reverse': {
+                            'name': 'parent',
+                            'typeId': '1'
+                        },
                         'singular': None,
                         'typeId': '2'
                     }
@@ -90,7 +93,10 @@ snapshots['test_schema_success[reverse] 2'] = {
                             'edges': [
                             ]
                         },
-                        'reverse': None,
+                        'reverse': {
+                            'name': 'plaintiff',
+                            'typeId': '3'
+                        },
                         'singular': 'defendant',
                         'typeId': '4'
                     }
@@ -152,7 +158,10 @@ snapshots['test_schema_success[self_reverse] 2'] = {
                             'edges': [
                             ]
                         },
-                        'reverse': None,
+                        'reverse': {
+                            'name': 'parent',
+                            'typeId': '1'
+                        },
                         'singular': None,
                         'typeId': '2'
                     }
@@ -232,7 +241,10 @@ snapshots['test_schema_error[error-already-exist] 2'] = {
                             'edges': [
                             ]
                         },
-                        'reverse': None,
+                        'reverse': {
+                            'name': 'parent',
+                            'typeId': '1'
+                        },
                         'singular': None,
                         'typeId': '2'
                     }
@@ -292,7 +304,10 @@ snapshots['test_schema_error[error-reverse-and-self_reverse] 2'] = {
                             'edges': [
                             ]
                         },
-                        'reverse': None,
+                        'reverse': {
+                            'name': 'parent',
+                            'typeId': '1'
+                        },
                         'singular': None,
                         'typeId': '2'
                     }

@@ -72,6 +72,12 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': 'ProductRelationConnection'
                             }
+                        },
+                        {
+                            'name': 'productRelation',
+                            'type': {
+                                'name': 'ProductRelation'
+                            }
                         }
                     ],
                     'name': 'Query'
@@ -710,6 +716,12 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': 'DeleteProductRelationType'
                             }
+                        },
+                        {
+                            'name': 'createProductRelation',
+                            'type': {
+                                'name': 'CreateProductRelation'
+                            }
                         }
                     ],
                     'name': 'Mutation'
@@ -887,6 +899,27 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'name': 'DeleteProductRelationType'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'name': 'productRelation',
+                            'type': {
+                                'name': 'ProductRelation'
+                            }
+                        }
+                    ],
+                    'name': 'CreateProductRelation'
+                },
+                {
+                    'fields': None,
+                    'name': 'CreateProductRelationInput'
                 },
                 {
                     'fields': [
