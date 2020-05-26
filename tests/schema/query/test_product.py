@@ -3,7 +3,10 @@ import textwrap
 
 from .funcs import assert_query_success
 
-from .gql import FRAGMENT_PRODUCT_DEEP
+from .gql import (
+    FRAGMENT_PRODUCT_SHALLOW,
+    FRAGMENT_PRODUCT_DEEP
+    )
 
 ##__________________________________________________________________||
 params = [
@@ -15,51 +18,51 @@ params = [
           }
         }
          ''') + FRAGMENT_PRODUCT_DEEP,
-        id='product_id'
+        id='deep'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(productId: 2001) {
-            ...fragmentProductDeep
+            ...fragmentProductShallow
           }
         }
-         ''') + FRAGMENT_PRODUCT_DEEP,
+         ''') + FRAGMENT_PRODUCT_SHALLOW,
         id='product_id-nonexistent'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(name: "lat20190213") {
-            ...fragmentProductDeep
+            ...fragmentProductShallow
           }
         }
-         ''') + FRAGMENT_PRODUCT_DEEP,
+         ''') + FRAGMENT_PRODUCT_SHALLOW,
         id='name'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(productId: 1001, name: "lat20190213") {
-            ...fragmentProductDeep
+            ...fragmentProductShallow
           }
         }
-         ''') + FRAGMENT_PRODUCT_DEEP,
+         ''') + FRAGMENT_PRODUCT_SHALLOW,
         id='product_id-name'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(productId: 1002, name: "lat20190213") {
-            ...fragmentProductDeep
+            ...fragmentProductShallow
           }
         }
-         ''') + FRAGMENT_PRODUCT_DEEP,
+         ''') + FRAGMENT_PRODUCT_SHALLOW,
         id='product_id-name-nonexistent'
     ),
     pytest.param(
         textwrap.dedent('''
         { product(typeId: 1, name: "lat20190213") {
-            ...fragmentProductDeep
+            ...fragmentProductShallow
           }
         }
-         ''') + FRAGMENT_PRODUCT_DEEP,
+         ''') + FRAGMENT_PRODUCT_SHALLOW,
         id='type_id-name'
     ),
 ]
