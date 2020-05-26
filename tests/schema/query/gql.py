@@ -61,3 +61,14 @@ fragment productFragment on Product {
 '''
 
 ##__________________________________________________________________||
+productConnectionFragment = '''
+fragment productConnectionFragment on ProductConnection {
+  edges {
+    node {
+     ...productFragment
+    }
+  }
+}
+''' + productFragment
+
+##__________________________________________________________________||

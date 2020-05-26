@@ -3,17 +3,7 @@ import textwrap
 
 from .funcs import assert_query_success
 
-from .product_fragment import productFragment
-
-productConnectionFragment = '''
-fragment productConnectionFragment on ProductConnection {
-  edges {
-    node {
-     ...productFragment
-    }
-  }
-}
-''' + productFragment
+from .gql import productConnectionFragment
 
 ##__________________________________________________________________||
 params = [
