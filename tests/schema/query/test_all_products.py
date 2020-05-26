@@ -3,7 +3,7 @@ import textwrap
 
 from .funcs import assert_query_success
 
-from .gql import (
+from ..gql import (
     FRAGMENT_PRODUCT_CONNECTION_SHALLOW,
     FRAGMENT_PRODUCT_CONNECTION_DEEP
     )
