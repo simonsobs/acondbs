@@ -4,3 +4,8 @@ from .product import (
     FRAGMENT_PRODUCT_DEEP,
     FRAGMENT_PRODUCT_CONNECTION_DEEP
 )
+
+from .product_relation_type import (
+    FRAGMENT_PRODUCT_RELATION_TYPE,
+    FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
+    )
