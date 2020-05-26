@@ -700,9 +700,9 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'name': 'createProductRelationType',
+                            'name': 'createProductRelationTypes',
                             'type': {
-                                'name': 'CreateProductRelationType'
+                                'name': 'CreateProductRelationTypes'
                             }
                         },
                         {
@@ -871,7 +871,7 @@ snapshots['test_types 1'] = {
                             }
                         }
                     ],
-                    'name': 'CreateProductRelationType'
+                    'name': 'CreateProductRelationTypes'
                 },
                 {
                     'fields': None,
