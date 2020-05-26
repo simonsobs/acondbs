@@ -1,6 +1,12 @@
 import pytest
+import textwrap
 
 from .funcs import assert_mutation_success, assert_mutation_error
+
+from ..gql import (
+    FRAGMENT_PRODUCT_RELATION_TYPE,
+    FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
+    )
 
 ##__________________________________________________________________||
 params = [
@@ -10,19 +16,14 @@ params = [
           deleteProductRelationType(typeId: 3) { ok }
         }
          ''',
-        '''
-          {
-            allProductRelationTypes {
-              edges {
-                node {
-                  name
-                  typeId
-                }
-              }
-            }
+        textwrap.dedent('''
+        {
+          allProductRelationTypes {
+            ...fragmentProductRelationTypeConnection
           }
-        ''',
-        id='deleteProductRelationType'
+        }
+         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='delete'
     ),
 ]
 
@@ -38,19 +39,14 @@ params = [
           deleteProductRelationType(typeId: 512) { ok }
         }
          ''',
-        '''
-          {
-            allProductRelationTypes {
-              edges {
-                node {
-                  name
-                  typeId
-                }
-              }
-            }
+        textwrap.dedent('''
+        {
+          allProductRelationTypes {
+            ...fragmentProductRelationTypeConnection
           }
-        ''',
-        id='deleteProductRelationType-error-nonexistent'
+        }
+         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='error-nonexistent'
     ),
     pytest.param(
         '''
@@ -58,19 +54,14 @@ params = [
           deleteProductRelationType(typeId: 1) { ok }
         }
          ''',
-        '''
-          {
-            allProductRelationTypes {
-              edges {
-                node {
-                  name
-                  typeId
-                }
-              }
-            }
+        textwrap.dedent('''
+        {
+          allProductRelationTypes {
+            ...fragmentProductRelationTypeConnection
           }
-        ''',
-        id='deleteProductRelationType-error-unempty'
+        }
+         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='error-unempty'
     ),
 ]
 
