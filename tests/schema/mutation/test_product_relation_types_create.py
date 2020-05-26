@@ -12,6 +12,9 @@ params = [
           mutation m {
             createProductRelationType(input: {
               name: "proctor",
+              indefArticle: "a",
+              singular: "proctor",
+              plural: "proctors",
             }) { productRelationType { name } }
           }
         ''',
@@ -19,6 +22,9 @@ params = [
           {
             productRelationType(name: "proctor") {
               name
+              indefArticle
+              singular
+              plural
             }
           }
         ''',

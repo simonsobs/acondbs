@@ -20,6 +20,9 @@ class ProductRelationType(SQLAlchemyObjectType):
 ##__________________________________________________________________||
 class CreateProductRelationTypeInput(graphene.InputObjectType):
     name = graphene.String(required=True)
+    indef_article = graphene.String()
+    singular = graphene.String()
+    plural = graphene.String()
 
 ##__________________________________________________________________||
 class CreateProductRelationType(graphene.Mutation):

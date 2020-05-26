@@ -13,5 +13,8 @@ class ProductRelationType(sa.Model):
         remote_side="ProductRelationType.type_id",
         cascade="all",
         post_update=True)
+    indef_article = sa.Column(sa.Text())
+    singular = sa.Column(sa.Text())
+    plural = sa.Column(sa.Text())
 
 ##__________________________________________________________________||
