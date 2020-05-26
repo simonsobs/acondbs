@@ -1,108 +1,90 @@
 import pytest
+import textwrap
 
 from .funcs import assert_query_success
+
+from .product_fragment import productFragment
+
+productConnectionFragment = '''
+fragment productConnectionFragment on ProductConnection {
+  edges {
+    node {
+     ...productFragment
+    }
+  }
+}
+''' + productFragment
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
+        textwrap.dedent('''
         {
           allProducts {
-            edges {
-              node {
-                productId
-                name
-                type_ {
-                  typeId
-                  name
-                }
-                relations {
-                  edges {
-                    node {
-                      type_ {
-                        name
-                      }
-                      other {
-                        name
-                        type_ {
-                          name
-                        }
-                      }
-                      reverse {
-                        type_ {
-                          name
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            ...productConnectionFragment
           }
         }
-         ''',
+         ''') + productConnectionFragment,
         id='allProducts'
     ),
     pytest.param(
-        '''
-        { allProducts(first: 2) {
-             edges { node { name } }
-           } }
-         ''',
+        textwrap.dedent('''
+        {
+          allProducts(first: 2) {
+            ...productConnectionFragment
+          }
+        }
+         ''') + productConnectionFragment,
         id='allProducts-first-two'
     ),
     pytest.param(
-        '''
-        { allProducts(first: 2, sort: DATE_POSTED_DESC) {
-             edges { node { name } }
-           } }
-         ''',
+        textwrap.dedent('''
+        {
+          allProducts(first: 2, sort: DATE_POSTED_DESC) {
+            ...productConnectionFragment
+          }
+        }
+         ''') + productConnectionFragment,
         id='allProducts-first-two-sort'
     ),
     pytest.param(
-        '''
-        { allProducts(filters: {typeId: 1}, first: 2) {
-             edges { node { name } }
-           } }
-         ''',
+        textwrap.dedent('''
+        {
+          allProducts(filters: {typeId: 1}, first: 2) {
+            ...productConnectionFragment
+          }
+        }
+         ''') + productConnectionFragment,
         id='allProducts-filtes-typeId-one-first-two'
     ),
     pytest.param(
-        '''
-        { allProducts(filters: {typeName: "beam"}, first: 2) {
-             edges { node { name } }
-           } }
-         ''',
+        textwrap.dedent('''
+        {
+          allProducts(filters: {typeName: "beam"}, first: 2) {
+            ...productConnectionFragment
+          }
+        }
+         ''') + productConnectionFragment,
         id='allProducts-filtes-typeName-beam-first-two'
     ),
     pytest.param(
-        '''
-          {
-            allProducts(filters: {typeId: 1}, sort: PRODUCT_ID_DESC) {
-              edges {
-                node {
-                  id
-                  productId
-                }
-              }
-            }
+        textwrap.dedent('''
+        {
+          allProducts(filters: {typeId: 1}, sort: PRODUCT_ID_DESC) {
+            ...productConnectionFragment
           }
-        ''',
+        }
+         ''') + productConnectionFragment,
         id='allProducts-filtes-typeId-sort'
     ),
     pytest.param(
-        '''
-          {
-            allProducts(filters: {typeName: "map"}, sort: PRODUCT_ID_DESC) {
-              edges {
-                node {
-                  id
-                  productId
-                }
-              }
-            }
+        textwrap.dedent('''
+        {
+          allProducts(filters: {typeName: "map"}, sort: PRODUCT_ID_DESC) {
+            ...productConnectionFragment
           }
-        ''',
+        }
+         ''') + productConnectionFragment,
         id='allProducts-filtes-typeName-sort'
     ),
 ]
