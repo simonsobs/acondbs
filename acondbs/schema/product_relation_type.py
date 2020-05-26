@@ -25,20 +25,30 @@ class CreateProductRelationTypeInput(graphene.InputObjectType):
     plural = graphene.String()
 
 ##__________________________________________________________________||
-class CreateProductRelationType(graphene.Mutation):
+class CreateProductRelationTypes(graphene.Mutation):
     class Arguments:
-        input = CreateProductRelationTypeInput(required=True)
+        type = CreateProductRelationTypeInput(required=True)
+        reverse = CreateProductRelationTypeInput()
+        self_reverse = graphene.Boolean()
 
     ok = graphene.Boolean()
     product_relation_type = graphene.Field(lambda: ProductRelationType)
 
-    def mutate(root, info, input):
-        type_ = ProductRelationTypeModel(**input)
+    def mutate(root, info, type, reverse=None, self_reverse=False):
+        if self_reverse and reverse:
+            from graphql import GraphQLError
+            raise GraphQLError('"reverse" is given when "self_reverse" is True')
+        type_ = ProductRelationTypeModel(**type)
+        if self_reverse:
+            type_.reverse = type_
+        else:
+            reverse_ = ProductRelationTypeModel(**reverse)
+            type_.reverse = reverse_
         sa.session.add(type_)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateProductRelationType(product_relation_type=type_, ok=ok)
+        return CreateProductRelationTypes(product_relation_type=type_, ok=ok)
 
 class DeleteProductRelationType(graphene.Mutation):
     class Arguments:

@@ -50,12 +50,20 @@ params = [
     pytest.param(
         textwrap.dedent('''
           mutation m {
-            createProductRelationType(input: {
-              name: "plaintiff",
-              indefArticle: "a",
-              singular: "plaintiff",
-              plural: "plaintiffs"
-              }) {
+            createProductRelationTypes(
+              type: {
+                name: "plaintiff",
+                indefArticle: "a",
+                singular: "plaintiff",
+                plural: "plaintiffs"
+              },
+              reverse: {
+                name: "defendant",
+                indefArticle: "a",
+                singular: "defendant",
+                plural: "defendants"
+              }
+              ) {
               productRelationType {
                 ...fragmentProductRelationType
               }
@@ -69,7 +77,34 @@ params = [
           }
         }
          ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
-        id='create'
+        id='reverse'
+    ),
+    pytest.param(
+        textwrap.dedent('''
+          mutation m {
+            createProductRelationTypes(
+              type: {
+                name: "plaintiff",
+                indefArticle: "a",
+                singular: "plaintiff",
+                plural: "plaintiffs"
+              },
+              selfReverse: true
+              ) {
+              productRelationType {
+                ...fragmentProductRelationType
+              }
+            }
+          }
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
+        textwrap.dedent('''
+        {
+          allProductRelationTypes {
+            ...fragmentProductRelationTypeConnection
+          }
+        }
+         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='self_reverse'
     ),
 ]
 
@@ -80,13 +115,28 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
+        textwrap.dedent('''
           mutation m {
-            createProductRelationType(input: {
-              name: "parent",
-            }) { productType { name } }
+            createProductRelationTypes(
+              type: {
+                name: "parent",
+                indefArticle: "a",
+                singular: "parent",
+                plural: "parents"
+              },
+              reverse: {
+                name: "child",
+                indefArticle: "a",
+                singular: "child",
+                plural: "children"
+              }
+              ) {
+              productRelationType {
+                ...fragmentProductRelationType
+              }
+            }
           }
-        ''',
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
         textwrap.dedent('''
         {
           allProductRelationTypes {
@@ -95,6 +145,39 @@ params = [
         }
         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
         id='error-already-exist'
+    ),
+    pytest.param(
+        textwrap.dedent('''
+          mutation m {
+            createProductRelationTypes(
+              type: {
+                name: "plaintiff",
+                indefArticle: "a",
+                singular: "plaintiff",
+                plural: "plaintiffs"
+              },
+              reverse: {
+                name: "defendant",
+                indefArticle: "a",
+                singular: "defendant",
+                plural: "defendants"
+              },
+              selfReverse: true
+              ) {
+              productRelationType {
+                ...fragmentProductRelationType
+              }
+            }
+          }
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
+        textwrap.dedent('''
+        {
+          allProductRelationTypes {
+            ...fragmentProductRelationTypeConnection
+          }
+        }
+        ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        id='error-reverse-and-self_reverse'
     ),
 ]
 
