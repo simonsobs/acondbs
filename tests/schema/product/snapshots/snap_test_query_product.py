@@ -51,16 +51,6 @@ snapshots['test_schema[product_id-nonexistent] 1'] = {
     }
 }
 
-snapshots['test_schema[name] 1'] = {
-    'data': {
-        'product': {
-            'name': 'lat20190213',
-            'productId': '1001',
-            'typeId': 1
-        }
-    }
-}
-
 snapshots['test_schema[product_id-name] 1'] = {
     'data': {
         'product': {

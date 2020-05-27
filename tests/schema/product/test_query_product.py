@@ -1,75 +1,75 @@
 import pytest
 import textwrap
 
-from ..funcs import assert_query_success
+from ..funcs import assert_query
 
 from ..gql import (
     FRAGMENT_PRODUCT_SHALLOW,
     FRAGMENT_PRODUCT_DEEP
-    )
+)
 
-##__________________________________________________________________||
+# __________________________________________________________________||
 params = [
     pytest.param(
-        textwrap.dedent('''
-        {
-          product(productId: 1001) {
-            ...fragmentProductDeep
+        [textwrap.dedent('''
+          query Product($productId: Int) {
+            product(productId: $productId) {
+              ...fragmentProductDeep
+            }
           }
-        }
-         ''') + FRAGMENT_PRODUCT_DEEP,
+          ''') + FRAGMENT_PRODUCT_DEEP, ],
+        {'variables': {'productId': 1001}},
         id='deep'
     ),
     pytest.param(
-        textwrap.dedent('''
-        { product(productId: 2001) {
-            ...fragmentProductShallow
+        [textwrap.dedent('''
+          query Product($productId: Int) {
+            product(productId: $productId) {
+              ...fragmentProductDeep
+            }
           }
-        }
-         ''') + FRAGMENT_PRODUCT_SHALLOW,
+          ''') + FRAGMENT_PRODUCT_DEEP, ],
+        {'variables': {'productId': 2001}},
         id='product_id-nonexistent'
     ),
     pytest.param(
-        textwrap.dedent('''
-        { product(name: "lat20190213") {
-            ...fragmentProductShallow
+        [textwrap.dedent('''
+          query ProductByTypeIdAndName($typeId: Int!, $name: String!) {
+            product(typeId: $typeId, name: $name) {
+              ...fragmentProductShallow
+            }
           }
-        }
-         ''') + FRAGMENT_PRODUCT_SHALLOW,
-        id='name'
+        ''') + FRAGMENT_PRODUCT_SHALLOW, ],
+        {'variables': {'typeId': 1, 'name': "lat20190213"}},
+        id='type_id-name'
     ),
     pytest.param(
-        textwrap.dedent('''
+        [textwrap.dedent('''
         { product(productId: 1001, name: "lat20190213") {
             ...fragmentProductShallow
           }
         }
-         ''') + FRAGMENT_PRODUCT_SHALLOW,
+         ''') + FRAGMENT_PRODUCT_SHALLOW, ],
+        {},
         id='product_id-name'
     ),
     pytest.param(
-        textwrap.dedent('''
+        [textwrap.dedent('''
         { product(productId: 1002, name: "lat20190213") {
             ...fragmentProductShallow
           }
         }
-         ''') + FRAGMENT_PRODUCT_SHALLOW,
+         ''') + FRAGMENT_PRODUCT_SHALLOW, ],
+        {},
         id='product_id-name-nonexistent'
-    ),
-    pytest.param(
-        textwrap.dedent('''
-        { product(typeId: 1, name: "lat20190213") {
-            ...fragmentProductShallow
-          }
-        }
-         ''') + FRAGMENT_PRODUCT_SHALLOW,
-        id='type_id-name'
     ),
 ]
 
-##__________________________________________________________________||
-@pytest.mark.parametrize('query', params)
-def test_schema(app, snapshot, query):
-    assert_query_success(app, snapshot, query)
+# __________________________________________________________________||
 
-##__________________________________________________________________||
+
+@pytest.mark.parametrize('args, kwags', params)
+def test_schema(app, snapshot, args, kwags):
+    assert_query(app, snapshot, [args, kwags])
+
+# __________________________________________________________________||
