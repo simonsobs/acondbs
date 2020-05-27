@@ -90,3 +90,15 @@ fragment fragmentProductConnectionDeep on ProductConnection {
 ''' + FRAGMENT_PRODUCT_DEEP
 
 ##__________________________________________________________________||
+CREATE_PRODUCT = '''
+mutation CreateProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+    ok
+    product {
+      ...fragmentProductDeep
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_DEEP
+
+##__________________________________________________________________||
