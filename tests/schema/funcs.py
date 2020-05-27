@@ -3,6 +3,17 @@ from graphene.test import Client
 from acondbs.schema.schema import schema
 
 ##__________________________________________________________________||
+def assert_query(app, snapshot, query, error=False):
+    args, kwags = query
+    if 'context_value' not in kwags:
+        kwags['context_value'] = {}
+    client = Client(schema)
+    with app.app_context():
+        result = client.execute(*args, **kwags)
+    assert ('errors' in result) == error
+    snapshot.assert_match(result)
+
+##__________________________________________________________________||
 def assert_query_success(app, snapshot, query):
     client = Client(schema)
     with app.app_context():
