@@ -101,4 +101,12 @@ mutation CreateProduct($input: CreateProductInput!) {
 }
 ''' + FRAGMENT_PRODUCT_DEEP
 
+DELETE_PRODUCT = '''
+mutation DeleteProduct($productId: Int!) {
+  deleteProduct(productId: $productId) {
+    ok
+  }
+}
+'''
+
 ##__________________________________________________________________||
