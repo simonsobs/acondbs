@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[deleteProduct] 1'] = {
+snapshots['test_schema_success[delete] 1'] = {
     'data': {
         'deleteProduct': {
             'ok': True
@@ -15,62 +15,87 @@ snapshots['test_schema_success[deleteProduct] 1'] = {
     }
 }
 
-snapshots['test_schema_success[deleteProduct] 2'] = {
+snapshots['test_schema_success[delete] 2'] = {
     'data': {
         'allProductFilePaths': {
             'edges': [
                 {
                     'node': {
-                        'path': 'nersc:/go/to/my/maps_v2',
-                        'productId': 1012
+                        'pathId': '2'
                     }
                 },
                 {
                     'node': {
-                        'path': 'abcde:/path/to/the/maps_v2',
-                        'productId': 1012
+                        'pathId': '3'
                     }
                 },
                 {
                     'node': {
-                        'path': 'nersc:/go/to/my/maps_v3',
-                        'productId': 1013
+                        'pathId': '4'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20190304',
-                        'productId': 1070
+                        'pathId': '5'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20190607',
-                        'productId': 1120
+                        'pathId': '6'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20200123',
-                        'productId': 1130
+                        'pathId': '7'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20200207',
-                        'productId': 1150
+                        'pathId': '8'
                     }
                 },
                 {
                     'node': {
-                        'path': 'nersc:/go/to/my/simulations',
-                        'productId': 1002
+                        'pathId': '9'
                     }
                 },
                 {
                     'node': {
-                        'path': 'abcde:/path/to/the/simulations',
-                        'productId': 1002
+                        'pathId': '10'
+                    }
+                }
+            ]
+        },
+        'allProductRelations': {
+            'edges': [
+                {
+                    'node': {
+                        'relationId': '1'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '2'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '3'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '4'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '5'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '6'
                     }
                 }
             ]
@@ -79,49 +104,41 @@ snapshots['test_schema_success[deleteProduct] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'name': 'xyz-s1234-20200101',
                         'productId': '1002'
                     }
                 },
                 {
                     'node': {
-                        'name': '20180101',
                         'productId': '1010'
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200120',
                         'productId': '1012'
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200201',
                         'productId': '1013'
                     }
                 },
                 {
                     'node': {
-                        'name': '20190304',
                         'productId': '1070'
                     }
                 },
                 {
                     'node': {
-                        'name': '20190607',
                         'productId': '1120'
                     }
                 },
                 {
                     'node': {
-                        'name': '20200123',
                         'productId': '1130'
                     }
                 },
                 {
                     'node': {
-                        'name': '20200207',
                         'productId': '1150'
                     }
                 }
@@ -130,7 +147,7 @@ snapshots['test_schema_success[deleteProduct] 2'] = {
     }
 }
 
-snapshots['test_schema_error[deleteProduct-error] 1'] = {
+snapshots['test_schema_error[error] 1'] = {
     'data': {
         'deleteProduct': None
     },
@@ -138,7 +155,7 @@ snapshots['test_schema_error[deleteProduct-error] 1'] = {
         {
             'locations': [
                 {
-                    'column': 11,
+                    'column': 3,
                     'line': 3
                 }
             ],
@@ -150,68 +167,92 @@ snapshots['test_schema_error[deleteProduct-error] 1'] = {
     ]
 }
 
-snapshots['test_schema_error[deleteProduct-error] 2'] = {
+snapshots['test_schema_error[error] 2'] = {
     'data': {
         'allProductFilePaths': {
             'edges': [
                 {
                     'node': {
-                        'path': 'nersc:/go/to/my/maps',
-                        'productId': 1001
+                        'pathId': '1'
                     }
                 },
                 {
                     'node': {
-                        'path': 'nersc:/go/to/my/maps_v2',
-                        'productId': 1012
+                        'pathId': '2'
                     }
                 },
                 {
                     'node': {
-                        'path': 'abcde:/path/to/the/maps_v2',
-                        'productId': 1012
+                        'pathId': '3'
                     }
                 },
                 {
                     'node': {
-                        'path': 'nersc:/go/to/my/maps_v3',
-                        'productId': 1013
+                        'pathId': '4'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20190304',
-                        'productId': 1070
+                        'pathId': '5'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20190607',
-                        'productId': 1120
+                        'pathId': '6'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20200123',
-                        'productId': 1130
+                        'pathId': '7'
                     }
                 },
                 {
                     'node': {
-                        'path': 'BEAM_DEPOT/Beams/20200207',
-                        'productId': 1150
+                        'pathId': '8'
                     }
                 },
                 {
                     'node': {
-                        'path': 'nersc:/go/to/my/simulations',
-                        'productId': 1002
+                        'pathId': '9'
                     }
                 },
                 {
                     'node': {
-                        'path': 'abcde:/path/to/the/simulations',
-                        'productId': 1002
+                        'pathId': '10'
+                    }
+                }
+            ]
+        },
+        'allProductRelations': {
+            'edges': [
+                {
+                    'node': {
+                        'relationId': '1'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '2'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '3'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '4'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '5'
+                    }
+                },
+                {
+                    'node': {
+                        'relationId': '6'
                     }
                 }
             ]
@@ -220,55 +261,46 @@ snapshots['test_schema_error[deleteProduct-error] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'name': 'lat20190213',
                         'productId': '1001'
                     }
                 },
                 {
                     'node': {
-                        'name': 'xyz-s1234-20200101',
                         'productId': '1002'
                     }
                 },
                 {
                     'node': {
-                        'name': '20180101',
                         'productId': '1010'
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200120',
                         'productId': '1012'
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200201',
                         'productId': '1013'
                     }
                 },
                 {
                     'node': {
-                        'name': '20190304',
                         'productId': '1070'
                     }
                 },
                 {
                     'node': {
-                        'name': '20190607',
                         'productId': '1120'
                     }
                 },
                 {
                     'node': {
-                        'name': '20200123',
                         'productId': '1130'
                     }
                 },
                 {
                     'node': {
-                        'name': '20200207',
                         'productId': '1150'
                     }
                 }

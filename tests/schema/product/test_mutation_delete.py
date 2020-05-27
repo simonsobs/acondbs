@@ -1,77 +1,71 @@
 import pytest
 
-from ..funcs import assert_mutation_success, assert_mutation_error
+from ..funcs import assert_mutation
 
-##__________________________________________________________________||
+from ..gql import DELETE_PRODUCT
+
+QEURY = '''
+{
+  allProducts {
+    edges {
+      node {
+        productId
+      }
+    }
+  }
+  allProductRelations {
+    edges {
+      node {
+        relationId
+      }
+    }
+  }
+  allProductFilePaths {
+    edges {
+      node {
+        pathId
+      }
+    }
+  }
+}
+'''
+
+
+# __________________________________________________________________||
 params = [
     pytest.param(
-        '''
-        mutation m {
-          deleteProduct(productId: 1001) { ok }
-        }
-         ''',
-        '''
-          {
-            allProducts {
-              edges {
-                node {
-                  productId
-                  name
-                }
-              }
-            }
-            allProductFilePaths {
-              edges {
-                node {
-                  path
-                  productId
-                }
-              }
-            }
-          }
-        ''',
-        id='deleteProduct'
+        [
+            [DELETE_PRODUCT],
+            {'variables': {'productId': 1001}},
+        ],
+        [[QEURY], {}],
+        id='delete'
     ),
 ]
+
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=True)
 
-##__________________________________________________________________||
+
+# __________________________________________________________________||
 params = [
     pytest.param(
-        '''
-        mutation m {
-          deleteProduct(productId: 512) { ok }
-        }
-         ''',
-        '''
-          {
-            allProducts {
-              edges {
-                node {
-                  productId
-                  name
-                }
-              }
-            }
-            allProductFilePaths {
-              edges {
-                node {
-                  path
-                  productId
-                }
-              }
-            }
-          }
-        ''',
-        id='deleteProduct-error'
+        [
+            [DELETE_PRODUCT],
+            {'variables': {'productId': 512}},
+        ],
+        [[QEURY], {}],
+        id='error'
     ),
 ]
 
+
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_error(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=False)
 
-##__________________________________________________________________||
+# __________________________________________________________________||
