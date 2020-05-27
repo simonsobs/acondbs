@@ -7,6 +7,125 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_success[createProduct-all-options] 1'] = {
+    'data': {
+        'createProduct': {
+            'product': {
+                'name': 'product1'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-all-options] 2'] = {
+    'data': {
+        'product': {
+            'contact': 'contact-person',
+            'datePosted': '2020-05-04',
+            'dateProduced': '2020-02-20',
+            'dateUpdated': None,
+            'name': 'product1',
+            'note': '- Item 1',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'path': '/path/to/new/product1'
+                        }
+                    },
+                    {
+                        'node': {
+                            'path': '/another/location/of/product1'
+                        }
+                    }
+                ]
+            },
+            'postedBy': 'poster',
+            'producedBy': 'producer',
+            'type_': {
+                'name': 'map'
+            },
+            'updatedBy': None
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-selective-options] 1'] = {
+    'data': {
+        'createProduct': {
+            'product': {
+                'name': 'product1'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-selective-options] 2'] = {
+    'data': {
+        'product': {
+            'contact': None,
+            'datePosted': '2020-05-04',
+            'dateProduced': None,
+            'dateUpdated': None,
+            'name': 'product1',
+            'note': None,
+            'paths': {
+                'edges': [
+                ]
+            },
+            'postedBy': None,
+            'producedBy': 'pwg-pmn',
+            'type_': {
+                'name': 'map'
+            },
+            'updatedBy': None
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-error-the-same-name-different-type] 1'] = {
+    'data': {
+        'createProduct': {
+            'product': {
+                'name': 'lat20190213'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[createProduct-error-the-same-name-different-type] 2'] = {
+    'data': {
+        'product': {
+            'contact': None,
+            'datePosted': '2020-05-04',
+            'dateProduced': None,
+            'dateUpdated': None,
+            'name': 'lat20190213',
+            'note': None,
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'path': '/path/to/new/product1'
+                        }
+                    },
+                    {
+                        'node': {
+                            'path': '/another/location/of/product1'
+                        }
+                    }
+                ]
+            },
+            'postedBy': None,
+            'producedBy': 'pwg-pmn',
+            'type_': {
+                'name': 'beam'
+            },
+            'updatedBy': None
+        }
+    }
+}
+
 snapshots['test_schema_error[createProduct-error-no-name] 1'] = {
     'errors': [
         {
@@ -145,26 +264,6 @@ snapshots['test_schema_error[createProduct-error-no-name] 2'] = {
                     }
                 }
             ]
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-all-options] 1'] = {
-    'data': {
-        'createProduct': {
-            'product': {
-                'name': 'product1'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-selective-options] 1'] = {
-    'data': {
-        'createProduct': {
-            'product': {
-                'name': 'product1'
-            }
         }
     }
 }
@@ -315,105 +414,6 @@ snapshots['test_schema_error[createProduct-error-the-same-type-and-name] 2'] = {
                     }
                 }
             ]
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-error-the-same-name-different-type] 1'] = {
-    'data': {
-        'createProduct': {
-            'product': {
-                'name': 'lat20190213'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-all-options] 2'] = {
-    'data': {
-        'product': {
-            'contact': 'contact-person',
-            'datePosted': '2020-05-04',
-            'dateProduced': '2020-02-20',
-            'dateUpdated': None,
-            'name': 'product1',
-            'note': '- Item 1',
-            'paths': {
-                'edges': [
-                    {
-                        'node': {
-                            'path': '/path/to/new/product1'
-                        }
-                    },
-                    {
-                        'node': {
-                            'path': '/another/location/of/product1'
-                        }
-                    }
-                ]
-            },
-            'postedBy': 'poster',
-            'producedBy': 'producer',
-            'type_': {
-                'name': 'map'
-            },
-            'updatedBy': None
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-selective-options] 2'] = {
-    'data': {
-        'product': {
-            'contact': None,
-            'datePosted': '2020-05-04',
-            'dateProduced': None,
-            'dateUpdated': None,
-            'name': 'product1',
-            'note': None,
-            'paths': {
-                'edges': [
-                ]
-            },
-            'postedBy': None,
-            'producedBy': 'pwg-pmn',
-            'type_': {
-                'name': 'map'
-            },
-            'updatedBy': None
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct-error-the-same-name-different-type] 2'] = {
-    'data': {
-        'product': {
-            'contact': None,
-            'datePosted': '2020-05-04',
-            'dateProduced': None,
-            'dateUpdated': None,
-            'name': 'lat20190213',
-            'note': None,
-            'paths': {
-                'edges': [
-                    {
-                        'node': {
-                            'path': '/path/to/new/product1'
-                        }
-                    },
-                    {
-                        'node': {
-                            'path': '/another/location/of/product1'
-                        }
-                    }
-                ]
-            },
-            'postedBy': None,
-            'producedBy': 'pwg-pmn',
-            'type_': {
-                'name': 'beam'
-            },
-            'updatedBy': None
         }
     }
 }

@@ -17,6 +17,23 @@ snapshots['test_schema_success[createProduct] 1'] = {
     }
 }
 
+snapshots['test_schema_success[createProduct] 2'] = {
+    'data': {
+        'productType': {
+            'icon': 'mdi-compass',
+            'indefArticle': 'a',
+            'name': 'compass',
+            'plural': 'compasses',
+            'products': {
+                'edges': [
+                ]
+            },
+            'singular': 'compass',
+            'typeId': '5'
+        }
+    }
+}
+
 snapshots['test_schema_error[createProduct-error-already-exist] 1'] = {
     'data': {
         'createProductType': None
@@ -65,23 +82,6 @@ snapshots['test_schema_error[createProduct-error-already-exist] 2'] = {
                     }
                 }
             ]
-        }
-    }
-}
-
-snapshots['test_schema_success[createProduct] 2'] = {
-    'data': {
-        'productType': {
-            'icon': 'mdi-compass',
-            'indefArticle': 'a',
-            'name': 'compass',
-            'plural': 'compasses',
-            'products': {
-                'edges': [
-                ]
-            },
-            'singular': 'compass',
-            'typeId': '5'
         }
     }
 }

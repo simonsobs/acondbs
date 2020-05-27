@@ -7,35 +7,56 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[deleteProductFilePath] 1'] = {
+snapshots['test_schema_success[createProductFilePath] 1'] = {
     'data': {
-        'deleteProductFilePath': {
-            'ok': True
+        'createProductFilePath': {
+            'productFilePath': {
+                'path': 'nersc:/go/to/my/new_product_v1'
+            }
         }
     }
 }
 
-snapshots['test_schema_error[deleteProductFilePath-error] 1'] = {
+snapshots['test_schema_success[createProductFilePath] 2'] = {
     'data': {
-        'deleteProductFilePath': None
-    },
+        'product': {
+            'datePosted': '2018-01-01',
+            'name': '20180101',
+            'note': '- test entry',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'note': '- Note 1',
+                            'path': 'nersc:/go/to/my/new_product_v1',
+                            'product': {
+                                'productId': '1010'
+                            }
+                        }
+                    }
+                ]
+            },
+            'producedBy': 'pwg-pmn'
+        }
+    }
+}
+
+snapshots['test_schema_error[createProductFilePath-noSuchField] 1'] = {
     'errors': [
         {
             'locations': [
                 {
-                    'column': 13,
+                    'column': 42,
                     'line': 3
                 }
             ],
-            'message': "Class 'builtins.NoneType' is not mapped",
-            'path': [
-                'deleteProductFilePath'
-            ]
+            'message': '''Argument "input" has invalid value {path: "nersc:/go/to/my/new_product_v1", note: "- Note 1", productId: 1010, noSuchField: "xxx"}.
+In field "noSuchField": Unknown field.'''
         }
     ]
 }
 
-snapshots['test_schema_error[deleteProductFilePath-error] 2'] = {
+snapshots['test_schema_error[createProductFilePath-noSuchField] 2'] = {
     'data': {
         'allProductFilePaths': {
             'edges': [
@@ -90,22 +111,6 @@ snapshots['test_schema_error[deleteProductFilePath-error] 2'] = {
                     }
                 }
             ]
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteProductFilePath] 2'] = {
-    'data': {
-        'product': {
-            'datePosted': '2019-02-13',
-            'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
-            'paths': {
-                'edges': [
-                ]
-            },
-            'producedBy': 'pwg-pmn'
         }
     }
 }

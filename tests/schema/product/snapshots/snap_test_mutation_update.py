@@ -18,21 +18,6 @@ snapshots['test_schema_success[updateProduct] 1'] = {
     }
 }
 
-snapshots['test_schema_error[updateProduct-error-immutable-fields] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 49,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {name: "new-name"}.
-In field "name": Unknown field.'''
-        }
-    ]
-}
-
 snapshots['test_schema_success[updateProduct] 2'] = {
     'data': {
         'product': {
@@ -56,6 +41,21 @@ snapshots['test_schema_success[updateProduct] 2'] = {
             'updatedBy': 'updater'
         }
     }
+}
+
+snapshots['test_schema_error[updateProduct-error-immutable-fields] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 49,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {name: "new-name"}.
+In field "name": Unknown field.'''
+        }
+    ]
 }
 
 snapshots['test_schema_error[updateProduct-error-immutable-fields] 2'] = {

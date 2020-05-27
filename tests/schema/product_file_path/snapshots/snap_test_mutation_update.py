@@ -17,21 +17,6 @@ snapshots['test_schema_success[updateProductFilePath] 1'] = {
     }
 }
 
-snapshots['test_schema_error[updateProductFilePath-immutableField] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 53,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {productId: 1012}.
-In field "productId": Unknown field.'''
-        }
-    ]
-}
-
 snapshots['test_schema_success[updateProductFilePath] 2'] = {
     'data': {
         'product': {
@@ -55,6 +40,21 @@ snapshots['test_schema_success[updateProductFilePath] 2'] = {
             'producedBy': 'pwg-pmn'
         }
     }
+}
+
+snapshots['test_schema_error[updateProductFilePath-immutableField] 1'] = {
+    'errors': [
+        {
+            'locations': [
+                {
+                    'column': 53,
+                    'line': 3
+                }
+            ],
+            'message': '''Argument "input" has invalid value {productId: 1012}.
+In field "productId": Unknown field.'''
+        }
+    ]
 }
 
 snapshots['test_schema_error[updateProductFilePath-immutableField] 2'] = {
