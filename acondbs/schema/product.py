@@ -30,16 +30,22 @@ class CommonInputFields:
     """Common input fields of mutations for creating and updating products
 
     """
-    contact = graphene.String()
-    note = graphene.String()
-    paths = graphene.List(graphene.String)
+    contact = graphene.String(
+        description=('A person or group that can be contacted for questions or '
+                     'issues about the product.'))
+    note = graphene.String(description='Note about the product in MarkDown.')
+    paths = graphene.List(
+        graphene.String,
+        description="Paths to the products. e.g., nersc:/go/to/my/product_v3"
+    )
 
 class CreateProductInput(graphene.InputObjectType, CommonInputFields):
-    type_id = graphene.Int(required=True)
-    name = graphene.String(required=True)
-    date_produced = graphene.Date()
-    produced_by = graphene.String()
-    posted_by = graphene.String()
+    '''Input to createProduct()'''
+    type_id = graphene.Int(required=True, description='The product type ID')
+    name = graphene.String(required=True, description='The name of the product')
+    date_produced = graphene.Date(description='The date on which the product was produced')
+    produced_by = graphene.String(description='The person or group that produced the product')
+    posted_by = graphene.String(description='The person who entered the DB entry.')
 
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     updated_by = graphene.String()
