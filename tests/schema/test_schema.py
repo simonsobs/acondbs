@@ -11,11 +11,18 @@ def test_types(app, snapshot):
         __schema {
           types {
             name
+            description
             fields {
               name
+              description
               type {
                 name
               }
+            }
+            inputFields {
+              name
+              description
+              defaultValue
             }
           }
         }
