@@ -13,6 +13,10 @@ def assert_query(app, snapshot, query, error=False):
     assert ('errors' in result) == error
     snapshot.assert_match(result)
 
+def assert_mutation(app, snapshot, mutation, query, mock_request_backup_db, success=True):
+    assert_query(app, snapshot, mutation, error=not success)
+    assert_query(app, snapshot, query)
+
 ##__________________________________________________________________||
 def assert_query_success(app, snapshot, query):
     client = Client(schema)
@@ -23,6 +27,8 @@ def assert_query_success(app, snapshot, query):
 
 ##__________________________________________________________________||
 def assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_db):
+    '''deprecated. use assert_mutation() instead
+    '''
     client = Client(schema)
     with app.app_context():
         result = client.execute(mutation, context_value={})
@@ -35,6 +41,8 @@ def assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_
     assert 1 == mock_request_backup_db.call_count
 
 def assert_mutation_error(app, snapshot, mutation, query, mock_request_backup_db):
+    '''deprecated. use assert_mutation() instead
+    '''
     client = Client(schema)
     with app.app_context():
         result = client.execute(mutation, context_value={})
