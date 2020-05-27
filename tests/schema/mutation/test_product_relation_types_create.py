@@ -7,7 +7,7 @@ from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 from acondbs.models import ProductRelationType
 
-from .funcs import assert_mutation_success, assert_mutation_error
+from ..funcs import assert_mutation_success, assert_mutation_error
 
 from ..gql import (
     FRAGMENT_PRODUCT_RELATION_TYPE,

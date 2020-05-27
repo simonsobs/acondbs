@@ -1,6 +1,6 @@
 import pytest
 
-from .funcs import assert_mutation_success, assert_mutation_error
+from ..funcs import assert_mutation_success, assert_mutation_error
 
 ##__________________________________________________________________||
 params = [

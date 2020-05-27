@@ -11,3 +11,28 @@ def assert_query_success(app, snapshot, query):
         snapshot.assert_match(result)
 
 ##__________________________________________________________________||
+def assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_db):
+    client = Client(schema)
+    with app.app_context():
+        result = client.execute(mutation, context_value={})
+        assert 'errors' not in result
+        snapshot.assert_match(result)
+    with app.app_context():
+        result = client.execute(query, context_value={})
+        assert 'errors' not in result
+        snapshot.assert_match(result)
+    assert 1 == mock_request_backup_db.call_count
+
+def assert_mutation_error(app, snapshot, mutation, query, mock_request_backup_db):
+    client = Client(schema)
+    with app.app_context():
+        result = client.execute(mutation, context_value={})
+        assert 'errors' in result
+        snapshot.assert_match(result)
+    with app.app_context():
+        result = client.execute(query, context_value={})
+        assert 'errors' not in result
+        snapshot.assert_match(result)
+    assert 0 == mock_request_backup_db.call_count
+
+##__________________________________________________________________||

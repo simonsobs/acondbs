@@ -12,7 +12,7 @@ from acondbs.models import (
     ProductRelation
     )
 
-from .funcs import assert_mutation_success, assert_mutation_error
+from ..funcs import assert_mutation_success, assert_mutation_error
 
 from ..gql import (
     FRAGMENT_PRODUCT_RELATION,
