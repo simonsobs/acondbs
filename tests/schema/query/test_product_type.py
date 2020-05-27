@@ -1,6 +1,6 @@
 import pytest
 
-from .funcs import assert_query_success
+from ..funcs import assert_query_success
 
 ##__________________________________________________________________||
 params = [
