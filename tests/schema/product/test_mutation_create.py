@@ -89,7 +89,7 @@ params = [
     ),
 ]
 
-@ pytest.mark.parametrize('mutation, query', params)
+@pytest.mark.parametrize('mutation, query', params)
 def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=True)
