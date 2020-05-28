@@ -183,3 +183,54 @@ def test_id(app_empty):
         assert parent1.relations[0].reverse is child1.relations[0]
 
 # __________________________________________________________________||
+def test_attach_to_self(app_empty):
+
+    app = app_empty
+
+    #
+    # +---------+                 +--------+
+    # |         |  --(child)-->   |        |
+    # | parent1 |       |         | child1 |
+    # |         |  <-(parent)--   |        |
+    # +---------+                 +--------+
+    #
+
+
+    type_ = ProductType(name='robot')
+    parent1 = Product(product_id=1, name="parent1", type_=type_)
+    child1 = Product(product_id=2, name="child1", type_=type_)
+
+    relation_type_parent = ProductRelationType(type_id=1, name='parent')
+    relation_type_child = ProductRelationType(type_id=2, name='child')
+    relation_type_parent.reverse = relation_type_child
+
+    relation_parent1_to_child1 = ProductRelation(type_=relation_type_child, other=child1)
+
+    parent1.relations = [relation_parent1_to_child1]
+
+    with app.app_context():
+        sa.session.add(parent1)
+        sa.session.add(child1)
+        sa.session.add(relation_type_parent)
+        sa.session.add(relation_parent1_to_child1)
+        sa.session.flush()
+        sa.session.commit()
+
+    with app.app_context():
+        parent1 = Product.query.filter_by(name='parent1').first()
+        child1 = Product.query.filter_by(name='child1').first()
+
+        assert 1 == len(parent1.relations)
+        assert 1 == len(child1.relations)
+
+        assert 'child' == parent1.relations[0].type_.name
+        assert 'parent' == child1.relations[0].type_.name
+
+        assert child1 is parent1.relations[0].other
+
+        assert parent1 is child1.relations[0].other
+
+        assert parent1.relations[0] is child1.relations[0].reverse
+        assert parent1.relations[0].reverse is child1.relations[0]
+
+# __________________________________________________________________||
