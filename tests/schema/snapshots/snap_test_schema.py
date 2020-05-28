@@ -1049,7 +1049,7 @@ value as specified by
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The person who entered the DB entry.',
                             'name': 'updatedBy'
                         }
                     ],

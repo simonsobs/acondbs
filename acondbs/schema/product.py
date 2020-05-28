@@ -48,7 +48,7 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     posted_by = graphene.String(description='The person who entered the DB entry.')
 
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
-    updated_by = graphene.String()
+    updated_by = graphene.String(description='The person who entered the DB entry.')
 
 ##__________________________________________________________________||
 class CreateProduct(graphene.Mutation):
