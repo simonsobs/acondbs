@@ -18,9 +18,7 @@ class ProductType(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
-class CreateProductTypeInput(graphene.InputObjectType):
-    '''Input to createProductType()'''
-    name = graphene.String(required=True, description='The name of the product type')
+class CommonInputFields:
     order = graphene.Int(
         description=('The order in which the type is displayed, for example, '
                      'in navigation bars.'))
@@ -33,6 +31,13 @@ class CreateProductTypeInput(graphene.InputObjectType):
         description=('The plural noun, the product type name in plural.'))
     icon = graphene.String(
         description=('A name of the icon from https://materialdesignicons.com/'))
+
+class CreateProductTypeInput(graphene.InputObjectType, CommonInputFields):
+    '''Input to createProductType()'''
+    name = graphene.String(required=True, description='The name of the product type')
+
+class UpdateProductTypeInput(graphene.InputObjectType,CommonInputFields):
+    '''Input to updateProductType()'''
 
 ##__________________________________________________________________||
 class CreateProductType(graphene.Mutation):
@@ -50,6 +55,24 @@ class CreateProductType(graphene.Mutation):
         ok = True
         request_backup_db()
         return CreateProductType(product_type=product_type, ok=ok)
+
+class UpdateProductType(graphene.Mutation):
+    '''Update a product type'''
+    class Arguments:
+        type_id = graphene.Int(required=True)
+        input = UpdateProductTypeInput(required=True)
+
+    ok = graphene.Boolean()
+    product_type = graphene.Field(lambda: ProductType)
+
+    def mutate(root, info, type_id, input):
+        type_ = ProductTypeModel.query.filter_by(type_id=type_id).one()
+        for k, v in input.items():
+            setattr(type_, k, v)
+        sa.session.commit()
+        ok = True
+        request_backup_db()
+        return UpdateProductType(product_type=type_, ok=ok)
 
 class DeleteProductType(graphene.Mutation):
     '''Delete a product type'''

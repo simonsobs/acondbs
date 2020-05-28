@@ -1,10 +1,15 @@
 import graphene
 
-from .product import CreateProduct, UpdateProduct, DeleteProduct
-from .product_file_path import CreateProductFilePath, UpdateProductFilePath, DeleteProductFilePath
-from .product_type import CreateProductType, DeleteProductType
-from .product_relation_type import CreateProductRelationTypes, DeleteProductRelationType
-from .product_relation import CreateProductRelation, DeleteProductRelation
+from .product import (
+    CreateProduct, UpdateProduct, DeleteProduct)
+from .product_file_path import (
+    CreateProductFilePath, UpdateProductFilePath, DeleteProductFilePath)
+from .product_type import (
+    CreateProductType, UpdateProductType, DeleteProductType)
+from .product_relation_type import (
+    CreateProductRelationTypes, DeleteProductRelationType)
+from .product_relation import (
+    CreateProductRelation, DeleteProductRelation)
 
 from .query import Query
 
@@ -20,6 +25,7 @@ class Mutation(graphene.ObjectType):
     delete_product_file_path = DeleteProductFilePath.Field()
 
     create_product_type = CreateProductType.Field()
+    update_product_type = UpdateProductType.Field()
     delete_product_type = DeleteProductType.Field()
 
     create_product_relation_types = CreateProductRelationTypes.Field()
