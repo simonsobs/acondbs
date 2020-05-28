@@ -928,14 +928,17 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'description': None,
+                            'description': '''Add relations between two products. The arguments only specify the relation
+from one product to the other. The reverse relation will be also added.''',
                             'name': 'createProductRelation',
                             'type': {
                                 'name': 'CreateProductRelation'
                             }
                         },
                         {
-                            'description': None,
+                            'description': '''Remove relations from two products.
+
+    ''',
                             'name': 'deleteProductRelation',
                             'type': {
                                 'name': 'DeleteProductRelation'
@@ -1431,7 +1434,8 @@ value as specified by
                     'name': 'DeleteProductRelationTypes'
                 },
                 {
-                    'description': None,
+                    'description': '''Add relations between two products. The arguments only specify the relation
+from one product to the other. The reverse relation will be also added.''',
                     'fields': [
                         {
                             'description': None,
@@ -1457,24 +1461,26 @@ value as specified by
                     'inputFields': [
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The typeId of the product relation type of the relation from "self" to the "other"',
                             'name': 'typeId'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The productId of the self product',
                             'name': 'selfProductId'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The productId of the other product',
                             'name': 'otherProductId'
                         }
                     ],
                     'name': 'CreateProductRelationInput'
                 },
                 {
-                    'description': None,
+                    'description': '''Remove relations from two products.
+
+    ''',
                     'fields': [
                         {
                             'description': None,

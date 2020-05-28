@@ -19,12 +19,24 @@ class ProductRelation(SQLAlchemyObjectType):
 
 ##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
-    type_id = graphene.Int(required=True)
-    self_product_id = graphene.Int(required=True)
-    other_product_id = graphene.Int(required=True)
+    type_id = graphene.Int(
+        required=True,
+        description=(
+            'The typeId of the product relation type of the relation '
+            'from "self" to the "other"'))
+    self_product_id = graphene.Int(
+        required=True,
+        description=('The productId of the self product'))
+    other_product_id = graphene.Int(
+        required=True,
+        description=('The productId of the other product'))
 
 ##__________________________________________________________________||
 class CreateProductRelation(graphene.Mutation):
+    '''Add relations between two products. The arguments only specify the relation
+    from one product to the other. The reverse relation will be also added.
+
+    '''
     class Arguments:
         input = CreateProductRelationInput(required=True)
 
@@ -48,8 +60,13 @@ class CreateProductRelation(graphene.Mutation):
         return CreateProductRelation(product_relation=relation, ok=ok)
 
 class DeleteProductRelation(graphene.Mutation):
+    '''Remove relations from two products.
+
+    '''
     class Arguments:
-        relation_id = graphene.Int()
+        relation_id = graphene.Int(
+            description=('The relationId of a relation. The reverse relation '
+                         'will also be removed.'))
 
     ok = graphene.Boolean()
 
