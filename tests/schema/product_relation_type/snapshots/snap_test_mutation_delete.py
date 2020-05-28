@@ -15,7 +15,7 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
         {
             'locations': [
                 {
-                    'column': 11,
+                    'column': 3,
                     'line': 3
                 }
             ],
@@ -184,7 +184,7 @@ snapshots['test_schema_error[error-unempty] 1'] = {
         {
             'locations': [
                 {
-                    'column': 11,
+                    'column': 3,
                     'line': 3
                 }
             ],
