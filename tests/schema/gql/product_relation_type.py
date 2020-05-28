@@ -61,4 +61,16 @@ mutation DeleteProductRelationTypes($typeId: Int!) {
 }
 '''
 
+UPDATE_PRODUCT_RELATION_TYPE = '''
+mutation UpdateProductRelationType(
+    $typeId: Int!, $input: UpdateProductRelationTypeInput!) {
+  updateProductRelationType(typeId: $typeId, input: $input) {
+    ok
+    productRelationType {
+      ...fragmentProductRelationType
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_RELATION_TYPE
+
 ##__________________________________________________________________||
