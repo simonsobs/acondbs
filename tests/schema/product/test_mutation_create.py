@@ -46,8 +46,8 @@ params = [
             [CREATE_PRODUCT],
             {'variables': {
                 'input': {
-                    'typeId': 1,
-                    'name': "map_10",
+                    'typeId': 2,
+                    'name': "beam111",
                     'contact': "contact-person",
                     'dateProduced': "2020-02-20",
                     'producedBy': "producer",
@@ -56,6 +56,10 @@ params = [
                     'paths': [
                         "/path/to/new/product1",
                         "/another/location/of/product1"
+                    ],
+                    'relations' : [
+                        {'typeId': 1, 'productId': 1 },
+                        {'typeId': 1, 'productId': 5 }
                     ]
                 }
             }},

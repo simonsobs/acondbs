@@ -16,7 +16,7 @@ snapshots['test_schema_success[create] 1'] = {
                 'datePosted': '2020-05-04',
                 'dateProduced': '2020-02-20',
                 'dateUpdated': None,
-                'name': 'map_10',
+                'name': 'beam111',
                 'note': '- Item 1',
                 'paths': {
                     'edges': [
@@ -41,12 +41,70 @@ snapshots['test_schema_success[create] 1'] = {
                 'productId': '6',
                 'relations': {
                     'edges': [
+                        {
+                            'node': {
+                                'other': {
+                                    'name': 'map1',
+                                    'productId': '1',
+                                    'typeId': 1,
+                                    'type_': {
+                                        'name': 'map',
+                                        'typeId': '1'
+                                    }
+                                },
+                                'otherProductId': 1,
+                                'relationId': '7',
+                                'reverse': {
+                                    'relationId': '8',
+                                    'typeId': 2,
+                                    'type_': {
+                                        'name': 'child',
+                                        'typeId': '2'
+                                    }
+                                },
+                                'reverseRelationId': 8,
+                                'typeId': 1,
+                                'type_': {
+                                    'name': 'parent',
+                                    'typeId': '1'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'other': {
+                                    'name': 'beam2',
+                                    'productId': '5',
+                                    'typeId': 2,
+                                    'type_': {
+                                        'name': 'beam',
+                                        'typeId': '2'
+                                    }
+                                },
+                                'otherProductId': 5,
+                                'relationId': '9',
+                                'reverse': {
+                                    'relationId': '10',
+                                    'typeId': 2,
+                                    'type_': {
+                                        'name': 'child',
+                                        'typeId': '2'
+                                    }
+                                },
+                                'reverseRelationId': 10,
+                                'typeId': 1,
+                                'type_': {
+                                    'name': 'parent',
+                                    'typeId': '1'
+                                }
+                            }
+                        }
                     ]
                 },
-                'typeId': 1,
+                'typeId': 2,
                 'type_': {
-                    'name': 'map',
-                    'typeId': '1'
+                    'name': 'beam',
+                    'typeId': '2'
                 },
                 'updatedBy': None
             }
@@ -189,6 +247,58 @@ snapshots['test_schema_success[create] 2'] = {
                             'name': 'child'
                         }
                     }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam111'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'beam111'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam111'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'beam111'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
                 }
             ]
         },
@@ -221,7 +331,7 @@ snapshots['test_schema_success[create] 2'] = {
                 },
                 {
                     'node': {
-                        'name': 'map_10'
+                        'name': 'beam111'
                     }
                 }
             ]
