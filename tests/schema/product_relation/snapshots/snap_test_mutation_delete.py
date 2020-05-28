@@ -32,7 +32,7 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
         {
             'locations': [
                 {
-                    'column': 13,
+                    'column': 3,
                     'line': 3
                 }
             ],

@@ -1,5 +1,4 @@
 import pytest
-import textwrap
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
@@ -12,12 +11,21 @@ from acondbs.models import (
     ProductRelation
     )
 
-from ..funcs import assert_mutation_success, assert_mutation_error
+from ..funcs import assert_mutation
 
 from ..gql import (
     FRAGMENT_PRODUCT_RELATION,
-    FRAGMENT_PRODUCT_RELATION_CONNECTION
+    FRAGMENT_PRODUCT_RELATION_CONNECTION,
+    DELETE_PRODUCT_RELATION
     )
+
+QEURY = '''
+{
+  allProductRelations {
+    ...fragmentProductRelationConnection
+  }
+}
+''' + FRAGMENT_PRODUCT_RELATION_CONNECTION
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -57,47 +65,35 @@ def app(app_empty):
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
-          mutation m {
-            deleteProductRelation(relationId: 1) { ok }
-          }
-        ''',
-        textwrap.dedent('''
-        {
-          allProductRelations {
-            ...fragmentProductRelationConnection
-          }
-        }
-         ''') + FRAGMENT_PRODUCT_RELATION_CONNECTION,
+        [
+            [DELETE_PRODUCT_RELATION],
+            {'variables': {'relationId': 1}},
+        ],
+        [[QEURY], {}],
         id='create'
     ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=True)
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
-          mutation m {
-            deleteProductRelation(relationId: 120) { ok }
-          }
-        ''',
-        textwrap.dedent('''
-        {
-          allProductRelations {
-            ...fragmentProductRelationConnection
-          }
-        }
-         ''') + FRAGMENT_PRODUCT_RELATION_CONNECTION,
+        [
+            [DELETE_PRODUCT_RELATION],
+            {'variables': {'relationId': 120}},
+        ],
+        [[QEURY], {}],
         id='error-nonexistent'
     ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_error(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=False)
 
 ##__________________________________________________________________||
