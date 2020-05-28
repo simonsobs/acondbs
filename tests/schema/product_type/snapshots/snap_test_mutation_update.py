@@ -21,17 +21,17 @@ snapshots['test_schema_success[update] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'name': 'lat20190213'
+                                'name': 'map1'
                             }
                         },
                         {
                             'node': {
-                                'name': 'lat20200120'
+                                'name': 'map2'
                             }
                         },
                         {
                             'node': {
-                                'name': 'lat20200201'
+                                'name': 'map3'
                             }
                         }
                     ]
@@ -55,16 +55,6 @@ snapshots['test_schema_success[update] 2'] = {
                 {
                     'node': {
                         'name': 'beam'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'simulation'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'anchor'
                     }
                 }
             ]
@@ -104,16 +94,6 @@ snapshots['test_schema_error[error-nonexistent] 2'] = {
                 {
                     'node': {
                         'name': 'beam'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'simulation'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'anchor'
                     }
                 }
             ]

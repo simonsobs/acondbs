@@ -43,16 +43,6 @@ snapshots['test_schema_error[error-already-exist] 2'] = {
                     'node': {
                         'name': 'beam'
                     }
-                },
-                {
-                    'node': {
-                        'name': 'simulation'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'anchor'
-                    }
                 }
             ]
         }
@@ -74,7 +64,7 @@ snapshots['test_schema_success[create] 1'] = {
                     ]
                 },
                 'singular': 'compass',
-                'typeId': '5'
+                'typeId': '3'
             }
         }
     }
@@ -92,16 +82,6 @@ snapshots['test_schema_success[create] 2'] = {
                 {
                     'node': {
                         'name': 'beam'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'simulation'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'anchor'
                     }
                 },
                 {

@@ -22,7 +22,7 @@ params = [
     pytest.param(
         [
             [DELETE_PRODUCT_TYPE],
-            {'variables': { 'typeId': 4 }},
+            {'variables': { 'typeId': 2 }},
         ],
         [[QEURY], {}],
         id='delete'

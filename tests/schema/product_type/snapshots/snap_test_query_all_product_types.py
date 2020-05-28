@@ -13,22 +13,17 @@ snapshots['test_schema[sort-order] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'icon': 'mdi-creation',
+                        'icon': 'mdi-spotlight-beam',
                         'indefArticle': 'a',
-                        'name': 'simulation',
+                        'name': 'beam',
                         'order': 1,
-                        'plural': 'simulations',
+                        'plural': 'beams',
                         'products': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'name': 'xyz-s1234-20200101'
-                                    }
-                                }
                             ]
                         },
-                        'singular': 'simulation',
-                        'typeId': '3'
+                        'singular': 'beam',
+                        'typeId': '2'
                     }
                 },
                 {
@@ -42,78 +37,23 @@ snapshots['test_schema[sort-order] 1'] = {
                             'edges': [
                                 {
                                     'node': {
-                                        'name': 'lat20190213'
+                                        'name': 'map1'
                                     }
                                 },
                                 {
                                     'node': {
-                                        'name': 'lat20200120'
+                                        'name': 'map2'
                                     }
                                 },
                                 {
                                     'node': {
-                                        'name': 'lat20200201'
+                                        'name': 'map3'
                                     }
                                 }
                             ]
                         },
                         'singular': 'map',
                         'typeId': '1'
-                    }
-                },
-                {
-                    'node': {
-                        'icon': 'mdi-spotlight-beam',
-                        'indefArticle': 'a',
-                        'name': 'beam',
-                        'order': 3,
-                        'plural': 'beams',
-                        'products': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'name': '20180101'
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'name': '20190304'
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'name': '20190607'
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'name': '20200123'
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'name': '20200207'
-                                    }
-                                }
-                            ]
-                        },
-                        'singular': 'beam',
-                        'typeId': '2'
-                    }
-                },
-                {
-                    'node': {
-                        'icon': '',
-                        'indefArticle': '',
-                        'name': 'anchor',
-                        'order': 4,
-                        'plural': '',
-                        'products': {
-                            'edges': [
-                            ]
-                        },
-                        'singular': '',
-                        'typeId': '4'
                     }
                 }
             ]

@@ -19,17 +19,17 @@ snapshots['test_schema[type_id] 1'] = {
                 'edges': [
                     {
                         'node': {
-                            'name': 'lat20190213'
+                            'name': 'map1'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20200120'
+                            'name': 'map2'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20200201'
+                            'name': 'map3'
                         }
                     }
                 ]
@@ -52,17 +52,17 @@ snapshots['test_schema[name] 1'] = {
                 'edges': [
                     {
                         'node': {
-                            'name': 'lat20190213'
+                            'name': 'map1'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20200120'
+                            'name': 'map2'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20200201'
+                            'name': 'map3'
                         }
                     }
                 ]
@@ -85,17 +85,17 @@ snapshots['test_schema[type_id-and-name] 1'] = {
                 'edges': [
                     {
                         'node': {
-                            'name': 'lat20190213'
+                            'name': 'map1'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20200120'
+                            'name': 'map2'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20200201'
+                            'name': 'map3'
                         }
                     }
                 ]
@@ -124,17 +124,17 @@ snapshots['test_schema[type_id-sort-products] 1'] = {
                 'edges': [
                     {
                         'node': {
-                            'name': 'lat20200201'
+                            'name': 'map2'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20200120'
+                            'name': 'map3'
                         }
                     },
                     {
                         'node': {
-                            'name': 'lat20190213'
+                            'name': 'map1'
                         }
                     }
                 ]
