@@ -12,6 +12,7 @@ from .filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class ProductRelationType(SQLAlchemyObjectType):
+    '''A type of relations between products'''
     class Meta:
         model = ProductRelationTypeModel
         interfaces = (graphene.relay.Node, )
@@ -19,17 +20,29 @@ class ProductRelationType(SQLAlchemyObjectType):
 
 ##__________________________________________________________________||
 class CreateProductRelationTypeInput(graphene.InputObjectType):
-    name = graphene.String(required=True)
-    indef_article = graphene.String()
-    singular = graphene.String()
-    plural = graphene.String()
+    '''An input to createProductRelationTypes()'''
+    name = graphene.String(
+        required=True,
+        description=('The name of the relation type'))
+    indef_article = graphene.String(
+        description=('The indefinite article placed before the singular noun "'
+                     'i.e., "a" or "an". '))
+    singular = graphene.String(
+        description=('The singular noun, the relation type name in singular.'))
+    plural = graphene.String(
+        description=('The plural noun, the relation type name in plural.'))
 
 ##__________________________________________________________________||
 class CreateProductRelationTypes(graphene.Mutation):
+    '''Create a pair of product relation types'''
     class Arguments:
-        type = CreateProductRelationTypeInput(required=True)
-        reverse = CreateProductRelationTypeInput()
-        self_reverse = graphene.Boolean()
+        type = CreateProductRelationTypeInput(
+            required=True,
+            description=('A relation type'))
+        reverse = CreateProductRelationTypeInput(
+            description=('The reverse relation type'))
+        self_reverse = graphene.Boolean(
+            description=('true if the reverse type is the same'))
 
     ok = graphene.Boolean()
     product_relation_type = graphene.Field(lambda: ProductRelationType)
@@ -51,6 +64,7 @@ class CreateProductRelationTypes(graphene.Mutation):
         return CreateProductRelationTypes(product_relation_type=type_, ok=ok)
 
 class DeleteProductRelationType(graphene.Mutation):
+    '''Delete a product relation type'''
     class Arguments:
         type_id = graphene.Int()
 

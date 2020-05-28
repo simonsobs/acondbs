@@ -651,7 +651,7 @@ snapshots['test_types 1'] = {
                     'name': 'ProductRelation'
                 },
                 {
-                    'description': None,
+                    'description': 'A type of relations between products',
                     'fields': [
                         {
                             'description': None,
@@ -907,14 +907,14 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'description': None,
+                            'description': 'Create a pair of product relation types',
                             'name': 'createProductRelationTypes',
                             'type': {
                                 'name': 'CreateProductRelationTypes'
                             }
                         },
                         {
-                            'description': None,
+                            'description': 'Delete a product relation type',
                             'name': 'deleteProductRelationType',
                             'type': {
                                 'name': 'DeleteProductRelationType'
@@ -1319,7 +1319,7 @@ value as specified by
                     'name': 'DeleteProductType'
                 },
                 {
-                    'description': None,
+                    'description': 'Create a pair of product relation types',
                     'fields': [
                         {
                             'description': None,
@@ -1340,34 +1340,34 @@ value as specified by
                     'name': 'CreateProductRelationTypes'
                 },
                 {
-                    'description': None,
+                    'description': 'An input to createProductRelationTypes()',
                     'fields': None,
                     'inputFields': [
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The name of the relation type',
                             'name': 'name'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
                             'name': 'indefArticle'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The singular noun, the relation type name in singular.',
                             'name': 'singular'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The plural noun, the relation type name in plural.',
                             'name': 'plural'
                         }
                     ],
                     'name': 'CreateProductRelationTypeInput'
                 },
                 {
-                    'description': None,
+                    'description': 'Delete a product relation type',
                     'fields': [
                         {
                             'description': None,
