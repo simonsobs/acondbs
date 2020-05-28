@@ -12,6 +12,7 @@ from .filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class ProductRelation(SQLAlchemyObjectType):
+    '''A relation from one product to another'''
     class Meta:
         model = ProductRelationModel
         interfaces = (graphene.relay.Node, )
@@ -19,6 +20,7 @@ class ProductRelation(SQLAlchemyObjectType):
 
 ##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
+    '''An input to createProductRelation()'''
     type_id = graphene.Int(
         required=True,
         description=(

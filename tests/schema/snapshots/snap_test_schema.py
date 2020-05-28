@@ -574,7 +574,7 @@ snapshots['test_types 1'] = {
                     'name': 'ProductRelationEdge'
                 },
                 {
-                    'description': None,
+                    'description': 'A relation from one product to another',
                     'fields': [
                         {
                             'description': None,
@@ -1456,7 +1456,7 @@ from one product to the other. The reverse relation will be also added.''',
                     'name': 'CreateProductRelation'
                 },
                 {
-                    'description': None,
+                    'description': 'An input to createProductRelation()',
                     'fields': None,
                     'inputFields': [
                         {
