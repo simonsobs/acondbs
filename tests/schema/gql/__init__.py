@@ -4,7 +4,8 @@ from .product import (
     FRAGMENT_PRODUCT_DEEP,
     FRAGMENT_PRODUCT_CONNECTION_DEEP,
     CREATE_PRODUCT,
-    DELETE_PRODUCT
+    DELETE_PRODUCT,
+    UPDATE_PRODUCT
 )
 
 from .product_relation_type import (
