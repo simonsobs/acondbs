@@ -49,12 +49,12 @@ class CreateProductType(graphene.Mutation):
     product_type = graphene.Field(lambda: ProductType)
 
     def mutate(root, info, input):
-        product_type = ProductTypeModel(**input)
-        sa.session.add(product_type)
+        model = ProductTypeModel(**input)
+        sa.session.add(model)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateProductType(product_type=product_type, ok=ok)
+        return CreateProductType(product_type=model, ok=ok)
 
 class UpdateProductType(graphene.Mutation):
     '''Update a product type'''
@@ -66,13 +66,13 @@ class UpdateProductType(graphene.Mutation):
     product_type = graphene.Field(lambda: ProductType)
 
     def mutate(root, info, type_id, input):
-        type_ = ProductTypeModel.query.filter_by(type_id=type_id).one()
+        model = ProductTypeModel.query.filter_by(type_id=type_id).one()
         for k, v in input.items():
-            setattr(type_, k, v)
+            setattr(model, k, v)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return UpdateProductType(product_type=type_, ok=ok)
+        return UpdateProductType(product_type=model, ok=ok)
 
 class DeleteProductType(graphene.Mutation):
     '''Delete a product type'''
@@ -82,8 +82,8 @@ class DeleteProductType(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, type_id):
-        product_type = ProductTypeModel.query.filter_by(type_id=type_id).first()
-        sa.session.delete(product_type)
+        model = ProductTypeModel.query.filter_by(type_id=type_id).one()
+        sa.session.delete(model)
         sa.session.commit()
         ok = True
         request_backup_db()
