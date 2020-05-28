@@ -30,3 +30,15 @@ fragment fragmentProductTypeConnection on ProductTypeConnection {
 ''' + FRAGMENT_PRODUCT_TYPE
 
 ##__________________________________________________________________||
+CREATE_PRODUCT_TYPE = '''
+mutation CreateProductType($input: CreateProductTypeInput!) {
+  createProductType(input: $input) {
+    ok
+    productType {
+      ...fragmentProductType
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_TYPE
+
+##__________________________________________________________________||
