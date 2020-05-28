@@ -53,4 +53,12 @@ mutation CreateProductRelationTypes(
 }
 ''' + FRAGMENT_PRODUCT_RELATION_TYPE
 
+DELETE_PRODUCT_RELATION_TYPES = '''
+mutation DeleteProductRelationTypes($typeId: Int!) {
+  deleteProductRelationTypes(typeId: $typeId) {
+    ok
+  }
+}
+'''
+
 ##__________________________________________________________________||
