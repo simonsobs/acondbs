@@ -17,3 +17,8 @@ from .product_relation import (
     FRAGMENT_PRODUCT_RELATION,
     FRAGMENT_PRODUCT_RELATION_CONNECTION
     )
+
+from .product_type import (
+    FRAGMENT_PRODUCT_TYPE,
+    FRAGMENT_PRODUCT_TYPE_CONNECTION
+    )
