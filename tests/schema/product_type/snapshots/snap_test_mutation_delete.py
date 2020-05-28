@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[deleteProductType] 1'] = {
+snapshots['test_schema_success[delete] 1'] = {
     'data': {
         'deleteProductType': {
             'ok': True
@@ -15,7 +15,7 @@ snapshots['test_schema_success[deleteProductType] 1'] = {
     }
 }
 
-snapshots['test_schema_success[deleteProductType] 2'] = {
+snapshots['test_schema_success[delete] 2'] = {
     'data': {
         'allProductTypes': {
             'edges': [
@@ -42,7 +42,7 @@ snapshots['test_schema_success[deleteProductType] 2'] = {
     }
 }
 
-snapshots['test_schema_error[deleteProductType-error-nonexistent] 1'] = {
+snapshots['test_schema_error[error-nonexistent] 1'] = {
     'data': {
         'deleteProductType': None
     },
@@ -50,7 +50,7 @@ snapshots['test_schema_error[deleteProductType-error-nonexistent] 1'] = {
         {
             'locations': [
                 {
-                    'column': 11,
+                    'column': 3,
                     'line': 3
                 }
             ],
@@ -62,7 +62,7 @@ snapshots['test_schema_error[deleteProductType-error-nonexistent] 1'] = {
     ]
 }
 
-snapshots['test_schema_error[deleteProductType-error-nonexistent] 2'] = {
+snapshots['test_schema_error[error-nonexistent] 2'] = {
     'data': {
         'allProductTypes': {
             'edges': [
@@ -95,7 +95,7 @@ snapshots['test_schema_error[deleteProductType-error-nonexistent] 2'] = {
     }
 }
 
-snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
+snapshots['test_schema_error[error-unempty] 1'] = {
     'data': {
         'deleteProductType': None
     },
@@ -103,7 +103,7 @@ snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
         {
             'locations': [
                 {
-                    'column': 11,
+                    'column': 3,
                     'line': 3
                 }
             ],
@@ -118,7 +118,7 @@ snapshots['test_schema_error[deleteProductType-error-unempty] 1'] = {
     ]
 }
 
-snapshots['test_schema_error[deleteProductType-error-unempty] 2'] = {
+snapshots['test_schema_error[error-unempty] 2'] = {
     'data': {
         'allProductTypes': {
             'edges': [
