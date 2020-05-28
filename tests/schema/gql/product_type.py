@@ -49,4 +49,15 @@ mutation DeleteProductType($typeId: Int!) {
 }
 '''
 
+UPDATE_PRODUCT_TYPE = '''
+mutation UpdateProductType($typeId: Int!, $input: UpdateProductTypeInput!) {
+  updateProductType(typeId: $typeId,input: $input) {
+    ok
+    productType {
+      ...fragmentProductType
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_TYPE
+
 ##__________________________________________________________________||
