@@ -914,7 +914,7 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'description': 'Delete a product relation type',
+                            'description': 'Delete a pair of product relation types',
                             'name': 'deleteProductRelationTypes',
                             'type': {
                                 'name': 'DeleteProductRelationTypes'
@@ -1345,11 +1345,6 @@ value as specified by
                     'inputFields': [
                         {
                             'defaultValue': None,
-                            'description': 'The name of the relation type',
-                            'name': 'name'
-                        },
-                        {
-                            'defaultValue': None,
                             'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
                             'name': 'indefArticle'
                         },
@@ -1362,12 +1357,17 @@ value as specified by
                             'defaultValue': None,
                             'description': 'The plural noun, the relation type name in plural.',
                             'name': 'plural'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The name of the relation type',
+                            'name': 'name'
                         }
                     ],
                     'name': 'CreateProductRelationTypeInput'
                 },
                 {
-                    'description': 'Delete a product relation type',
+                    'description': 'Delete a pair of product relation types',
                     'fields': [
                         {
                             'description': None,
