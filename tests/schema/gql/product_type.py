@@ -41,4 +41,12 @@ mutation CreateProductType($input: CreateProductTypeInput!) {
 }
 ''' + FRAGMENT_PRODUCT_TYPE
 
+DELETE_PRODUCT_TYPE = '''
+mutation DeleteProductType($typeId: Int!) {
+  deleteProductType(typeId: $typeId) {
+    ok
+  }
+}
+'''
+
 ##__________________________________________________________________||
