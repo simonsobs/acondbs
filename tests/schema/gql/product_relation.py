@@ -32,3 +32,15 @@ fragment fragmentProductRelationConnection on ProductRelationConnection {
 ''' + FRAGMENT_PRODUCT_RELATION
 
 ##__________________________________________________________________||
+CREATE_PRODUCT_RELATION = '''
+mutation CreateProductRelation($input: CreateProductRelationInput!) {
+  createProductRelation(input: $input) {
+    ok
+    productRelation {
+      ...fragmentProductRelation
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_RELATION
+
+##__________________________________________________________________||
