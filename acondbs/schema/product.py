@@ -55,7 +55,8 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     relations = graphene.InputField(graphene.List(RelationInputFields))
 
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
-    updated_by = graphene.String(description='The person who entered the DB entry.')
+    '''Input to updateProduct()'''
+    updated_by = graphene.String(description='The person who updated the DB entry.')
 
 ##__________________________________________________________________||
 class CreateProduct(graphene.Mutation):

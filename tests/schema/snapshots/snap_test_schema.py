@@ -1051,7 +1051,7 @@ value as specified by
                     'name': 'UpdateProduct'
                 },
                 {
-                    'description': None,
+                    'description': 'Input to updateProduct()',
                     'fields': None,
                     'inputFields': [
                         {
@@ -1071,7 +1071,7 @@ value as specified by
                         },
                         {
                             'defaultValue': None,
-                            'description': 'The person who entered the DB entry.',
+                            'description': 'The person who updated the DB entry.',
                             'name': 'updatedBy'
                         }
                     ],
