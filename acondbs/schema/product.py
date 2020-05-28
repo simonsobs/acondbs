@@ -67,16 +67,14 @@ class CreateProduct(graphene.Mutation):
     product = graphene.Field(lambda: Product)
 
     def mutate(root, info, input):
-        paths = input.pop('paths', [])
-        relations = input.pop('relations', [])
-        paths = [ProductFilePathModel(path=p) for p in paths]
+        paths = [ProductFilePathModel(path=p) for p in input.pop('paths', [])]
         with sa.session.no_autoflush:
             relations = [
                 ProductRelationModel(
                     type_=ProductRelationTypeModel.query.filter_by(type_id=r['type_id']).one(),
                     other=ProductModel.query.filter_by(product_id=r['product_id']).one()
                 )
-                for r in relations
+                for r in input.pop('relations', [])
             ]
         product = ProductModel(
             date_posted=datetime.date.today(),
