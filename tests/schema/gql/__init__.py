@@ -19,7 +19,8 @@ from .product_relation_type import (
 from .product_relation import (
     FRAGMENT_PRODUCT_RELATION,
     FRAGMENT_PRODUCT_RELATION_CONNECTION,
-    CREATE_PRODUCT_RELATION
+    CREATE_PRODUCT_RELATION,
+    DELETE_PRODUCT_RELATION
     )
 
 from .product_type import (
