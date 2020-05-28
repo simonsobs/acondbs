@@ -19,7 +19,7 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
                     'line': 3
                 }
             ],
-            'message': "Class 'builtins.NoneType' is not mapped",
+            'message': 'No row was found for one()',
             'path': [
                 'deleteProductRelationTypes'
             ]

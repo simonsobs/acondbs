@@ -74,7 +74,7 @@ class DeleteProductRelationTypes(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, type_id):
-        type_ = ProductRelationTypeModel.query.filter_by(type_id=type_id).first()
+        type_ = ProductRelationTypeModel.query.filter_by(type_id=type_id).one()
         sa.session.delete(type_)
         sa.session.commit()
         ok = True
