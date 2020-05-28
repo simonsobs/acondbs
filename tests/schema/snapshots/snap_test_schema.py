@@ -914,6 +914,13 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'description': 'Update a product relation type',
+                            'name': 'updateProductRelationType',
+                            'type': {
+                                'name': 'UpdateProductRelationType'
+                            }
+                        },
+                        {
                             'description': 'Delete a pair of product relation types',
                             'name': 'deleteProductRelationTypes',
                             'type': {
@@ -1365,6 +1372,49 @@ value as specified by
                         }
                     ],
                     'name': 'CreateProductRelationTypeInput'
+                },
+                {
+                    'description': 'Update a product relation type',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productRelationType',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'UpdateProductRelationType'
+                },
+                {
+                    'description': 'An input to updateProductRelationType()',
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
+                            'name': 'indefArticle'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The singular noun, the relation type name in singular.',
+                            'name': 'singular'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The plural noun, the relation type name in plural.',
+                            'name': 'plural'
+                        }
+                    ],
+                    'name': 'UpdateProductRelationTypeInput'
                 },
                 {
                     'description': 'Delete a pair of product relation types',

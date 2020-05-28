@@ -19,11 +19,7 @@ class ProductRelationType(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
-class CreateProductRelationTypeInput(graphene.InputObjectType):
-    '''An input to createProductRelationTypes()'''
-    name = graphene.String(
-        required=True,
-        description=('The name of the relation type'))
+class CommonInputFields:
     indef_article = graphene.String(
         description=('The indefinite article placed before the singular noun "'
                      'i.e., "a" or "an". '))
@@ -31,6 +27,15 @@ class CreateProductRelationTypeInput(graphene.InputObjectType):
         description=('The singular noun, the relation type name in singular.'))
     plural = graphene.String(
         description=('The plural noun, the relation type name in plural.'))
+
+class CreateProductRelationTypeInput(graphene.InputObjectType, CommonInputFields):
+    '''An input to createProductRelationTypes()'''
+    name = graphene.String(
+        required=True,
+        description=('The name of the relation type'))
+
+class UpdateProductRelationTypeInput(graphene.InputObjectType, CommonInputFields):
+    '''An input to updateProductRelationType()'''
 
 ##__________________________________________________________________||
 class CreateProductRelationTypes(graphene.Mutation):
@@ -62,6 +67,25 @@ class CreateProductRelationTypes(graphene.Mutation):
         ok = True
         request_backup_db()
         return CreateProductRelationTypes(product_relation_type=model, ok=ok)
+
+class UpdateProductRelationType(graphene.Mutation):
+    '''Update a product relation type'''
+    class Arguments:
+        type_id = graphene.Int(
+            required=True, description=('The typeId of the product relation type'))
+        input = UpdateProductRelationTypeInput(required=True)
+
+    ok = graphene.Boolean()
+    product_relation_type = graphene.Field(lambda: ProductRelationType)
+
+    def mutate(root, info, type_id, input):
+        model = ProductRelationTypeModel.query.filter_by(type_id=type_id).one()
+        for k, v in input.items():
+            setattr(model, k, v)
+        sa.session.commit()
+        ok = True
+        request_backup_db()
+        return UpdateProductRelationType(product_relation_type=model, ok=ok)
 
 class DeleteProductRelationTypes(graphene.Mutation):
     '''Delete a pair of product relation types'''
