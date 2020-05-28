@@ -594,14 +594,14 @@ snapshots['test_types 1'] = {
                             'description': None,
                             'name': 'selfProductId',
                             'type': {
-                                'name': 'Int'
+                                'name': None
                             }
                         },
                         {
                             'description': None,
                             'name': 'otherProductId',
                             'type': {
-                                'name': 'Int'
+                                'name': None
                             }
                         },
                         {
@@ -995,6 +995,11 @@ snapshots['test_types 1'] = {
                             'defaultValue': None,
                             'description': 'The person who entered the DB entry.',
                             'name': 'postedBy'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': None,
+                            'name': 'relations'
                         }
                     ],
                     'name': 'CreateProductInput'
@@ -1006,6 +1011,23 @@ value as specified by
                     'fields': None,
                     'inputFields': None,
                     'name': 'Date'
+                },
+                {
+                    'description': None,
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'The product ID of the related product',
+                            'name': 'productId'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The relation type ID',
+                            'name': 'typeId'
+                        }
+                    ],
+                    'name': 'RelationInputFields'
                 },
                 {
                     'description': None,
