@@ -51,17 +51,17 @@ class CreateProductRelationTypes(graphene.Mutation):
         if self_reverse and reverse:
             from graphql import GraphQLError
             raise GraphQLError('"reverse" is given when "self_reverse" is True')
-        type_ = ProductRelationTypeModel(**type)
+        model = ProductRelationTypeModel(**type)
         if self_reverse:
-            type_.reverse = type_
+            model.reverse = model
         else:
             reverse_ = ProductRelationTypeModel(**reverse)
-            type_.reverse = reverse_
-        sa.session.add(type_)
+            model.reverse = reverse_
+        sa.session.add(model)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateProductRelationTypes(product_relation_type=type_, ok=ok)
+        return CreateProductRelationTypes(product_relation_type=model, ok=ok)
 
 class DeleteProductRelationTypes(graphene.Mutation):
     '''Delete a pair of product relation types'''
@@ -74,8 +74,8 @@ class DeleteProductRelationTypes(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, type_id):
-        type_ = ProductRelationTypeModel.query.filter_by(type_id=type_id).one()
-        sa.session.delete(type_)
+        model = ProductRelationTypeModel.query.filter_by(type_id=type_id).one()
+        sa.session.delete(model)
         sa.session.commit()
         ok = True
         request_backup_db()
