@@ -7,11 +7,11 @@ from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 from acondbs.models import ProductRelationType
 
-from ..funcs import assert_mutation_success, assert_mutation_error
+from ..funcs import assert_mutation
 
 from ..gql import (
-    FRAGMENT_PRODUCT_RELATION_TYPE,
-    FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
+    FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+    CREATE_PRODUCT_RELATION_TYPES
     )
 
 ##__________________________________________________________________||
@@ -46,143 +46,118 @@ def app(app_empty):
     yield y
 
 ##__________________________________________________________________||
+QEURY = '''
+{
+  allProductRelationTypes {
+   ...fragmentProductRelationTypeConnection
+  }
+}
+''' + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
+
+##__________________________________________________________________||
 params = [
     pytest.param(
-        textwrap.dedent('''
-          mutation m {
-            createProductRelationTypes(
-              type: {
-                name: "plaintiff",
-                indefArticle: "a",
-                singular: "plaintiff",
-                plural: "plaintiffs"
-              },
-              reverse: {
-                name: "defendant",
-                indefArticle: "a",
-                singular: "defendant",
-                plural: "defendants"
-              }
-              ) {
-              productRelationType {
-                ...fragmentProductRelationType
-              }
-            }
-          }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
-        textwrap.dedent('''
-        {
-          allProductRelationTypes {
-            ...fragmentProductRelationTypeConnection
-          }
-        }
-         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        [
+            [CREATE_PRODUCT_RELATION_TYPES],
+            {
+                'variables': {
+                    'type': {
+                        'name': "plaintiff",
+                        'indefArticle': "a",
+                        'singular': "plaintiff",
+                        'plural': "plaintiffs"
+                    },
+                    'reverse': {
+                        'name': "defendant",
+                        'indefArticle': "a",
+                        'singular': "defendant",
+                        'plural': "defendants"
+                    },
+                }}
+        ],
+        [[QEURY], {}],
         id='reverse'
     ),
     pytest.param(
-        textwrap.dedent('''
-          mutation m {
-            createProductRelationTypes(
-              type: {
-                name: "plaintiff",
-                indefArticle: "a",
-                singular: "plaintiff",
-                plural: "plaintiffs"
-              },
-              selfReverse: true
-              ) {
-              productRelationType {
-                ...fragmentProductRelationType
-              }
+        [
+            [CREATE_PRODUCT_RELATION_TYPES],
+            {
+                'variables': {
+                    'type': {
+                        'name': "plaintiff",
+                        'indefArticle': "a",
+                        'singular': "plaintiff",
+                        'plural': "plaintiffs"
+                    },
+                    'selfReverse': True
+                    }
             }
-          }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
-        textwrap.dedent('''
-        {
-          allProductRelationTypes {
-            ...fragmentProductRelationTypeConnection
-          }
-        }
-         ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        ],
+        [[QEURY], {}],
         id='self_reverse'
     ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=True)
+
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        textwrap.dedent('''
-          mutation m {
-            createProductRelationTypes(
-              type: {
-                name: "parent",
-                indefArticle: "a",
-                singular: "parent",
-                plural: "parents"
-              },
-              reverse: {
-                name: "child",
-                indefArticle: "a",
-                singular: "child",
-                plural: "children"
-              }
-              ) {
-              productRelationType {
-                ...fragmentProductRelationType
-              }
-            }
-          }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
-        textwrap.dedent('''
-        {
-          allProductRelationTypes {
-            ...fragmentProductRelationTypeConnection
-          }
-        }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        [
+            [CREATE_PRODUCT_RELATION_TYPES],
+            {
+                'variables': {
+                    'type': {
+                        'name': "parent",
+                        'indefArticle': "a",
+                        'singular': "parent",
+                        'plural': "parents"
+                    },
+                    'reverse': {
+                        'name': "child",
+                        'indefArticle': "a",
+                        'singular': "child",
+                        'plural': "children"
+                    }
+                }
+            },
+        ],
+        [[QEURY], {}],
         id='error-already-exist'
     ),
     pytest.param(
-        textwrap.dedent('''
-          mutation m {
-            createProductRelationTypes(
-              type: {
-                name: "plaintiff",
-                indefArticle: "a",
-                singular: "plaintiff",
-                plural: "plaintiffs"
-              },
-              reverse: {
-                name: "defendant",
-                indefArticle: "a",
-                singular: "defendant",
-                plural: "defendants"
-              },
-              selfReverse: true
-              ) {
-              productRelationType {
-                ...fragmentProductRelationType
-              }
+        [
+            [CREATE_PRODUCT_RELATION_TYPES],
+            {
+                'variables': {
+                    'type': {
+                        'name': "plaintiff",
+                        'indefArticle': "a",
+                        'singular': "plaintiff",
+                        'plural': "plaintiffs"
+                    },
+                    'reverse': {
+                        'name': "defendant",
+                        'indefArticle': "a",
+                        'singular': "defendant",
+                        'plural': "defendants"
+                    },
+                    'selfReverse': True
+                }
             }
-          }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,
-        textwrap.dedent('''
-        {
-          allProductRelationTypes {
-            ...fragmentProductRelationTypeConnection
-          }
-        }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
+        ],
+        [[QEURY], {}],
         id='error-reverse-and-self_reverse'
     ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_error(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=False)
 
 ##__________________________________________________________________||

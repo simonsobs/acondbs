@@ -10,6 +10,7 @@ snapshots = Snapshot()
 snapshots['test_schema_success[reverse] 1'] = {
     'data': {
         'createProductRelationTypes': {
+            'ok': True,
             'productRelationType': {
                 'indefArticle': 'a',
                 'name': 'plaintiff',
@@ -109,6 +110,7 @@ snapshots['test_schema_success[reverse] 2'] = {
 snapshots['test_schema_success[self_reverse] 1'] = {
     'data': {
         'createProductRelationTypes': {
+            'ok': True,
             'productRelationType': {
                 'indefArticle': 'a',
                 'name': 'plaintiff',
@@ -197,7 +199,7 @@ snapshots['test_schema_error[error-already-exist] 1'] = {
             'locations': [
                 {
                     'column': 3,
-                    'line': 3
+                    'line': 6
                 }
             ],
             'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: product_relation_types.name
@@ -263,7 +265,7 @@ snapshots['test_schema_error[error-reverse-and-self_reverse] 1'] = {
             'locations': [
                 {
                     'column': 3,
-                    'line': 3
+                    'line': 6
                 }
             ],
             'message': '"reverse" is given when "self_reverse" is True',
