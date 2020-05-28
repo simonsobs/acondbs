@@ -893,6 +893,13 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'description': 'Update a product type',
+                            'name': 'updateProductType',
+                            'type': {
+                                'name': 'UpdateProductType'
+                            }
+                        },
+                        {
                             'description': 'Delete a product type',
                             'name': 'deleteProductType',
                             'type': {
@@ -1213,9 +1220,62 @@ value as specified by
                     'inputFields': [
                         {
                             'defaultValue': None,
+                            'description': 'The order in which the type is displayed, for example, in navigation bars.',
+                            'name': 'order'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
+                            'name': 'indefArticle'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The singular noun, the product type name in singular.',
+                            'name': 'singular'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The plural noun, the product type name in plural.',
+                            'name': 'plural'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'A name of the icon from https://materialdesignicons.com/',
+                            'name': 'icon'
+                        },
+                        {
+                            'defaultValue': None,
                             'description': 'The name of the product type',
                             'name': 'name'
+                        }
+                    ],
+                    'name': 'CreateProductTypeInput'
+                },
+                {
+                    'description': 'Update a product type',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
                         },
+                        {
+                            'description': None,
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'UpdateProductType'
+                },
+                {
+                    'description': 'Input to updateProductType()',
+                    'fields': None,
+                    'inputFields': [
                         {
                             'defaultValue': None,
                             'description': 'The order in which the type is displayed, for example, in navigation bars.',
@@ -1242,7 +1302,7 @@ value as specified by
                             'name': 'icon'
                         }
                     ],
-                    'name': 'CreateProductTypeInput'
+                    'name': 'UpdateProductTypeInput'
                 },
                 {
                     'description': 'Delete a product type',
