@@ -10,6 +10,7 @@ snapshots = Snapshot()
 snapshots['test_schema_success[create] 1'] = {
     'data': {
         'createProductRelation': {
+            'ok': True,
             'productRelation': {
                 'other': {
                     'name': 'child1',
