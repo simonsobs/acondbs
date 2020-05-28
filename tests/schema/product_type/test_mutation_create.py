@@ -1,76 +1,90 @@
 import pytest
 
-from ..funcs import assert_mutation_success, assert_mutation_error
+from ..funcs import assert_mutation
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
-          mutation m {
-            createProductType(input: {
-              name: "compass",
-              order: 5,
-              indefArticle: "a",
-              singular: "compass",
-              plural: "compasses",
-              icon: "mdi-compass"
-            }) { productType { name } }
-          }
-        ''',
-        '''
-          {
-            productType(name: "compass") {
-              typeId
-              name
-              indefArticle
-              singular
-              plural
-              icon
-              products {
-                edges {
-                  node {
-                    name
+        [
+            ['''
+              mutation m {
+                createProductType(input: {
+                  name: "compass",
+                  order: 5,
+                  indefArticle: "a",
+                  singular: "compass",
+                  plural: "compasses",
+                  icon: "mdi-compass"
+                }) { productType { name } }
+              }
+            '''],
+            {},
+        ],
+        [
+            ['''
+              {
+                productType(name: "compass") {
+                  typeId
+                  name
+                  indefArticle
+                  singular
+                  plural
+                  icon
+                  products {
+                    edges {
+                      node {
+                        name
+                      }
+                    }
                   }
                 }
               }
-            }
-          }
-        ''',
-        id='createProduct'
+            '''],
+            {},
+        ],
+        id='create'
     ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=True)
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
-          mutation m {
-            createProductType(input: {
-              name: "map",
-            }) { productType { name } }
-          }
-        ''',
-        '''
-          {
-            allProductTypes {
-              edges {
-                node {
-                  name
+        [
+            ['''
+              mutation m {
+                createProductType(input: {
+                  name: "map",
+                }) { productType { name } }
+              }
+            '''],
+            {}
+        ],
+        [
+            ['''
+              {
+                allProductTypes {
+                  edges {
+                    node {
+                      name
+                    }
+                  }
                 }
               }
-            }
-          }
-        ''',
-        id='createProduct-error-already-exist'
+            ''',],
+            {}
+        ],
+        id='error-already-exist'
     ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation_error(app, snapshot, mutation, query, mock_request_backup_db)
+    assert_mutation(app, snapshot, mutation, query,
+                    mock_request_backup_db, success=False)
 
 ##__________________________________________________________________||

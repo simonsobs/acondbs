@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[createProduct] 1'] = {
+snapshots['test_schema_success[create] 1'] = {
     'data': {
         'createProductType': {
             'productType': {
@@ -17,7 +17,7 @@ snapshots['test_schema_success[createProduct] 1'] = {
     }
 }
 
-snapshots['test_schema_success[createProduct] 2'] = {
+snapshots['test_schema_success[create] 2'] = {
     'data': {
         'productType': {
             'icon': 'mdi-compass',
@@ -34,7 +34,7 @@ snapshots['test_schema_success[createProduct] 2'] = {
     }
 }
 
-snapshots['test_schema_error[createProduct-error-already-exist] 1'] = {
+snapshots['test_schema_error[error-already-exist] 1'] = {
     'data': {
         'createProductType': None
     },
@@ -42,7 +42,7 @@ snapshots['test_schema_error[createProduct-error-already-exist] 1'] = {
         {
             'locations': [
                 {
-                    'column': 13,
+                    'column': 17,
                     'line': 3
                 }
             ],
@@ -57,7 +57,7 @@ snapshots['test_schema_error[createProduct-error-already-exist] 1'] = {
     ]
 }
 
-snapshots['test_schema_error[createProduct-error-already-exist] 2'] = {
+snapshots['test_schema_error[error-already-exist] 2'] = {
     'data': {
         'allProductTypes': {
             'edges': [
