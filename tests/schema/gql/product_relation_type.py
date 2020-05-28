@@ -39,3 +39,18 @@ fragment fragmentProductRelationTypeConnection on ProductRelationTypeConnection 
 ''' + FRAGMENT_PRODUCT_RELATION_TYPE
 
 ##__________________________________________________________________||
+CREATE_PRODUCT_RELATION_TYPES = '''
+mutation CreateProductRelationTypes(
+    $type: CreateProductRelationTypeInput!,
+    $reverse: CreateProductRelationTypeInput,
+    $selfReverse: Boolean) {
+  createProductRelationTypes(type: $type, reverse: $reverse, selfReverse: $selfReverse) {
+    ok
+    productRelationType {
+      ...fragmentProductRelationType
+    }
+  }
+}
+''' + FRAGMENT_PRODUCT_RELATION_TYPE
+
+##__________________________________________________________________||
