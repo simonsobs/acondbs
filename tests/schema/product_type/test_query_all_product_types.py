@@ -1,38 +1,25 @@
 import pytest
+import textwrap
 
-from ..funcs import assert_query_success
+from ..funcs import assert_query
+
+from ..gql import FRAGMENT_PRODUCT_TYPE_CONNECTION
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
+        [textwrap.dedent('''
           { allProductTypes(sort: ORDER_ASC) {
-            edges {
-              node {
-                typeId
-                name
-                order
-                indefArticle
-                singular
-                plural
-                icon
-                products {
-                  edges {
-                    node {
-                      name
-                    }
-                  }
-                }
-              }
-            }
+            ...fragmentProductTypeConnection
           }}
-         ''',
-        id='allProductTypes'
+         ''' + FRAGMENT_PRODUCT_TYPE_CONNECTION)],
+        {},
+        id='sort-order'
     ),
 ]
 
-@pytest.mark.parametrize('query', params)
-def test_schema(app, snapshot, query):
-    assert_query_success(app, snapshot, query)
+@pytest.mark.parametrize('args, kwags', params)
+def test_schema(app, snapshot, args, kwags):
+    assert_query(app, snapshot, [args, kwags])
 
-##__________________________________________________________________||
+# __________________________________________________________________||
