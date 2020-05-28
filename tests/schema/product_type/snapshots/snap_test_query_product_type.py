@@ -7,7 +7,7 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[productType-by-typeId-one] 1'] = {
+snapshots['test_schema[type_id] 1'] = {
     'data': {
         'productType': {
             'icon': 'mdi-map',
@@ -40,7 +40,7 @@ snapshots['test_schema[productType-by-typeId-one] 1'] = {
     }
 }
 
-snapshots['test_schema[productType-by-name-map] 1'] = {
+snapshots['test_schema[name] 1'] = {
     'data': {
         'productType': {
             'icon': 'mdi-map',
@@ -73,7 +73,7 @@ snapshots['test_schema[productType-by-name-map] 1'] = {
     }
 }
 
-snapshots['test_schema[productType-by-id-and-name-map] 1'] = {
+snapshots['test_schema[type_id-and-name] 1'] = {
     'data': {
         'productType': {
             'icon': 'mdi-map',
@@ -106,13 +106,13 @@ snapshots['test_schema[productType-by-id-and-name-map] 1'] = {
     }
 }
 
-snapshots['test_schema[productType-by-id-and-name-nonexistent] 1'] = {
+snapshots['test_schema[type_id-and-name-nonexistent] 1'] = {
     'data': {
         'productType': None
     }
 }
 
-snapshots['test_schema[productType-by-typeId-one-sort-products] 1'] = {
+snapshots['test_schema[type_id-sort-products] 1'] = {
     'data': {
         'productType': {
             'icon': 'mdi-map',

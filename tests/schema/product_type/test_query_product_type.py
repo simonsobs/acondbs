@@ -1,103 +1,58 @@
 import pytest
+import textwrap
 
-from ..funcs import assert_query_success
+from ..funcs import assert_query
+
+from ..gql import FRAGMENT_PRODUCT_TYPE
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        '''
+        [textwrap.dedent('''
           {
             productType(typeId: 1) {
-              typeId
-              name
-              order
-              indefArticle
-              singular
-              plural
-              icon
-              products {
-                edges {
-                  node {
-                    name
-                  }
-                }
-              }
+              ...fragmentProductType
             }
           }
-         ''',
-        id='productType-by-typeId-one'
+         ''') + FRAGMENT_PRODUCT_TYPE,],
+        {},
+        id='type_id'
     ),
     pytest.param(
-        '''
+        [textwrap.dedent('''
           {
             productType(name: "map") {
-              typeId
-              name
-              order
-              indefArticle
-              singular
-              plural
-              icon
-              products {
-                edges {
-                  node {
-                    name
-                  }
-                }
-              }
+              ...fragmentProductType
             }
           }
-         ''',
-        id='productType-by-name-map'
+         ''') + FRAGMENT_PRODUCT_TYPE,],
+        {},
+        id='name'
     ),
     pytest.param(
-        '''
+        [textwrap.dedent('''
           {
             productType(typeId: 1, name: "map") {
-              typeId
-              name
-              order
-              indefArticle
-              singular
-              plural
-              icon
-              products {
-                edges {
-                  node {
-                    name
-                  }
-                }
-              }
+              ...fragmentProductType
             }
           }
-         ''',
-        id='productType-by-id-and-name-map'
+         ''') + FRAGMENT_PRODUCT_TYPE,],
+        {},
+        id='type_id-and-name'
     ),
     pytest.param(
-        '''
+        [textwrap.dedent('''
           {
             productType(typeId: 2, name: "map") {
-              typeId
-              name
-              order
-              indefArticle
-              singular
-              plural
-              icon
-              products {
-                edges {
-                  node {
-                    name
-                  }
-                }
-              }
+              ...fragmentProductType
             }
           }
-         ''',
-        id='productType-by-id-and-name-nonexistent'
+         ''') + FRAGMENT_PRODUCT_TYPE,],
+        {},
+        id='type_id-and-name-nonexistent'
     ),
     pytest.param(
-        '''
+        ['''
           {
             productType(typeId: 1) {
               typeId
@@ -116,14 +71,15 @@ params = [
               }
             }
           }
-         ''',
-        id='productType-by-typeId-one-sort-products'
+         ''',],
+        {},
+        id='type_id-sort-products'
     ),
 ]
 
 ##__________________________________________________________________||
-@pytest.mark.parametrize('query', params)
-def test_schema(app, snapshot, query):
-    assert_query_success(app, snapshot, query)
+@pytest.mark.parametrize('args, kwags', params)
+def test_schema(app, snapshot, args, kwags):
+    assert_query(app, snapshot, [args, kwags])
 
-##__________________________________________________________________||
+# __________________________________________________________________||
