@@ -5,6 +5,8 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ..models import Product as ProductModel
 from ..models import ProductFilePath as ProductFilePathModel
+from ..models import ProductRelation as ProductRelationModel
+from ..models import ProductRelationType as ProductRelationTypeModel
 
 from ..db.sa import sa
 from ..db.backup import request_backup_db
@@ -26,6 +28,10 @@ class Product(SQLAlchemyObjectType):
 ## https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-478744077
 
 ##__________________________________________________________________||
+class RelationInputFields(graphene.InputObjectType):
+    product_id = graphene.Int(required=True, description='The product ID of the related product')
+    type_id = graphene.Int(required=True, description='The relation type ID')
+
 class CommonInputFields:
     """Common input fields of mutations for creating and updating products
 
@@ -46,6 +52,7 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     date_produced = graphene.Date(description='The date on which the product was produced')
     produced_by = graphene.String(description='The person or group that produced the product')
     posted_by = graphene.String(description='The person who entered the DB entry.')
+    relations = graphene.InputField(graphene.List(RelationInputFields))
 
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     updated_by = graphene.String(description='The person who entered the DB entry.')
@@ -59,12 +66,23 @@ class CreateProduct(graphene.Mutation):
     product = graphene.Field(lambda: Product)
 
     def mutate(root, info, input):
-        paths = input.pop('paths', None)
-        product = ProductModel(**input)
-        if paths:
-            product.paths = ([ProductFilePathModel(path=p) for p in paths])
-        today = datetime.date.today()
-        product.date_posted = today
+        paths = input.pop('paths', [])
+        relations = input.pop('relations', [])
+        paths = [ProductFilePathModel(path=p) for p in paths]
+        with sa.session.no_autoflush:
+            relations = [
+                ProductRelationModel(
+                    type_=ProductRelationTypeModel.query.filter_by(type_id=r['type_id']).one(),
+                    other=ProductModel.query.filter_by(product_id=r['product_id']).one()
+                )
+                for r in relations
+            ]
+        product = ProductModel(
+            date_posted=datetime.date.today(),
+            paths=paths,
+            relations=relations,
+            **input
+        )
         sa.session.add(product)
         sa.session.commit()
         ok = True
