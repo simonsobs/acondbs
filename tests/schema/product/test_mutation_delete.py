@@ -9,21 +9,29 @@ QEURY = '''
   allProducts {
     edges {
       node {
-        productId
+        name
       }
     }
   }
   allProductRelations {
     edges {
       node {
-        relationId
+        type_ {
+          name
+        }
+        self_ {
+          name
+        }
+        other {
+          name
+        }
       }
     }
   }
   allProductFilePaths {
     edges {
       node {
-        pathId
+        path
       }
     }
   }
@@ -36,7 +44,7 @@ params = [
     pytest.param(
         [
             [DELETE_PRODUCT],
-            {'variables': {'productId': 1001}},
+            {'variables': {'productId': 1}},
         ],
         [[QEURY], {}],
         id='delete'

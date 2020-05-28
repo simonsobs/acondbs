@@ -21,47 +21,32 @@ snapshots['test_schema_success[delete] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'pathId': '2'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '3'
+                        'path': 'site1:/path/to/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '4'
+                        'path': 'site2:/another/way/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '5'
+                        'path': 'site1:/path/to/map2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '6'
+                        'path': 'site1:/path/to/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '7'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '8'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '9'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '10'
+                        'path': 'site2:/another/way/map3'
                     }
                 }
             ]
@@ -70,32 +55,28 @@ snapshots['test_schema_success[delete] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'relationId': '1'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '2'
-                    }
-                },
-                {
-                    'node': {
-                        'relationId': '3'
-                    }
-                },
-                {
-                    'node': {
-                        'relationId': '4'
-                    }
-                },
-                {
-                    'node': {
-                        'relationId': '5'
-                    }
-                },
-                {
-                    'node': {
-                        'relationId': '6'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 }
             ]
@@ -104,42 +85,22 @@ snapshots['test_schema_success[delete] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1002'
+                        'name': 'map2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1010'
+                        'name': 'map3'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012'
+                        'name': 'beam1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1070'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1120'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1130'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1150'
+                        'name': 'beam2'
                     }
                 }
             ]
@@ -173,52 +134,42 @@ snapshots['test_schema_error[error] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'pathId': '1'
+                        'path': 'site1:/path/to/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '2'
+                        'path': 'site2:/another/way/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '4'
+                        'path': 'site1:/path/to/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '5'
+                        'path': 'site2:/another/way/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '6'
+                        'path': 'site1:/path/to/map2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '7'
+                        'path': 'site1:/path/to/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '8'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '9'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '10'
+                        'path': 'site2:/another/way/map3'
                     }
                 }
             ]
@@ -227,32 +178,80 @@ snapshots['test_schema_error[error] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'relationId': '1'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '2'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '3'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '4'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '5'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '6'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 }
             ]
@@ -261,47 +260,27 @@ snapshots['test_schema_error[error] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1001'
+                        'name': 'map1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1002'
+                        'name': 'map2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1010'
+                        'name': 'map3'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012'
+                        'name': 'beam1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1070'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1120'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1130'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1150'
+                        'name': 'beam2'
                     }
                 }
             ]

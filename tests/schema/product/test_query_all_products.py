@@ -35,7 +35,7 @@ params = [
     pytest.param(
         [textwrap.dedent('''
           {
-            allProducts(first: 2, sort: DATE_POSTED_DESC) {
+            allProducts(first: 2, sort: DATE_PRODUCED_DESC) {
               ...fragmentProductConnectionShallow
             }
           }
@@ -52,40 +52,40 @@ params = [
           }
          ''') + FRAGMENT_PRODUCT_CONNECTION_SHALLOW,],
         {},
-        id='filtes-typeId-first-two'
+        id='filters-type_id-first-two'
     ),
     pytest.param(
         [textwrap.dedent('''
           {
-            allProducts(filters: {typeName: "beam"}, first: 2) {
+            allProducts(filters: {typeName: "map"}, first: 2) {
               ...fragmentProductConnectionShallow
             }
           }
          ''') + FRAGMENT_PRODUCT_CONNECTION_SHALLOW,],
         {},
-        id='filtes-typeName-first-two'
+        id='filters-type_name-first-two'
     ),
     pytest.param(
         [textwrap.dedent('''
           {
-            allProducts(filters: {typeId: 1}, sort: PRODUCT_ID_DESC) {
+            allProducts(filters: {typeId: 1}, sort: DATE_PRODUCED_DESC) {
               ...fragmentProductConnectionShallow
             }
           }
          ''') + FRAGMENT_PRODUCT_CONNECTION_SHALLOW,],
         {},
-        id='filtes-typeId-sort'
+        id='filters-type_id-sort'
     ),
     pytest.param(
         [textwrap.dedent('''
           {
-            allProducts(filters: {typeName: "map"}, sort: PRODUCT_ID_DESC) {
+            allProducts(filters: {typeName: "map"}, sort: DATE_PRODUCED_DESC) {
               ...fragmentProductConnectionShallow
             }
           }
          ''') + FRAGMENT_PRODUCT_CONNECTION_SHALLOW,],
         {},
-        id='filtes-typeName-sort'
+        id='filters-type_name-sort'
     ),
 ]
 

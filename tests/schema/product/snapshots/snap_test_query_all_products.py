@@ -13,162 +13,86 @@ snapshots['test_schema[deep] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2019-02-13',
-                        'dateProduced': '2019-02-13',
-                        'dateUpdated': '2019-02-13',
-                        'name': 'lat20190213',
-                        'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
+                        'contact': None,
+                        'datePosted': None,
+                        'dateProduced': '2020-02-01',
+                        'dateUpdated': None,
+                        'name': 'map1',
+                        'note': None,
                         'paths': {
                             'edges': [
                                 {
                                     'node': {
-                                        'note': '',
-                                        'path': 'nersc:/go/to/my/maps',
+                                        'note': None,
+                                        'path': 'site1:/path/to/map1',
                                         'pathId': '1'
                                     }
-                                }
-                            ]
-                        },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1001',
-                        'relations': {
-                            'edges': [
-                            ]
-                        },
-                        'typeId': 1,
-                        'type_': {
-                            'name': 'map',
-                            'typeId': '1'
-                        },
-                        'updatedBy': 'pwg-pmn'
-                    }
-                },
-                {
-                    'node': {
-                        'contact': 'abc-def',
-                        'datePosted': '2019-03-15',
-                        'dateProduced': '2019-03-15',
-                        'dateUpdated': None,
-                        'name': 'xyz-s1234-20200101',
-                        'note': '''- note 1
-- note 2''',
-                        'paths': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'note': '',
-                                        'path': 'nersc:/go/to/my/simulations',
-                                        'pathId': '9'
-                                    }
                                 },
                                 {
                                     'node': {
-                                        'note': '',
-                                        'path': 'abcde:/path/to/the/simulations',
-                                        'pathId': '10'
-                                    }
-                                }
-                            ]
-                        },
-                        'postedBy': 'abc-def',
-                        'producedBy': 'abc-def',
-                        'productId': '1002',
-                        'relations': {
-                            'edges': [
-                            ]
-                        },
-                        'typeId': 3,
-                        'type_': {
-                            'name': 'simulation',
-                            'typeId': '3'
-                        },
-                        'updatedBy': ''
-                    }
-                },
-                {
-                    'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2018-01-01',
-                        'dateProduced': '2018-01-01',
-                        'dateUpdated': None,
-                        'name': '20180101',
-                        'note': '- test entry',
-                        'paths': {
-                            'edges': [
-                            ]
-                        },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1010',
-                        'relations': {
-                            'edges': [
-                            ]
-                        },
-                        'typeId': 2,
-                        'type_': {
-                            'name': 'beam',
-                            'typeId': '2'
-                        },
-                        'updatedBy': ''
-                    }
-                },
-                {
-                    'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2020-01-20',
-                        'dateProduced': '2020-01-20',
-                        'dateUpdated': '2020-01-20',
-                        'name': 'lat20200120',
-                        'note': '''- This is a dummy test with a lat map
-- A beam depends on this map''',
-                        'paths': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'note': 'lat only',
-                                        'path': 'nersc:/go/to/my/maps_v2',
+                                        'note': None,
+                                        'path': 'site2:/another/way/map1',
                                         'pathId': '2'
                                     }
+                                }
+                            ]
+                        },
+                        'postedBy': None,
+                        'producedBy': None,
+                        'productId': '1',
+                        'relations': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'other': {
+                                            'name': 'beam1',
+                                            'productId': '4',
+                                            'typeId': 2,
+                                            'type_': {
+                                                'name': 'beam',
+                                                'typeId': '2'
+                                            }
+                                        },
+                                        'otherProductId': 4,
+                                        'relationId': '1',
+                                        'reverse': {
+                                            'relationId': '2',
+                                            'typeId': 1,
+                                            'type_': {
+                                                'name': 'parent',
+                                                'typeId': '1'
+                                            }
+                                        },
+                                        'reverseRelationId': 2,
+                                        'typeId': 2,
+                                        'type_': {
+                                            'name': 'child',
+                                            'typeId': '2'
+                                        }
+                                    }
                                 },
                                 {
                                     'node': {
-                                        'note': 'lat only',
-                                        'path': 'abcde:/path/to/the/maps_v2',
-                                        'pathId': '3'
-                                    }
-                                }
-                            ]
-                        },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1012',
-                        'relations': {
-                            'edges': [
-                                {
-                                    'node': {
                                         'other': {
-                                            'name': '20200123',
-                                            'productId': '1130',
+                                            'name': 'beam2',
+                                            'productId': '5',
                                             'typeId': 2,
                                             'type_': {
                                                 'name': 'beam',
                                                 'typeId': '2'
                                             }
                                         },
-                                        'otherProductId': 1130,
-                                        'relationId': '2',
+                                        'otherProductId': 5,
+                                        'relationId': '6',
                                         'reverse': {
-                                            'relationId': '1',
+                                            'relationId': '4',
                                             'typeId': 1,
                                             'type_': {
                                                 'name': 'parent',
                                                 'typeId': '1'
                                             }
                                         },
-                                        'reverseRelationId': 1,
+                                        'reverseRelationId': 4,
                                         'typeId': 2,
                                         'type_': {
                                             'name': 'child',
@@ -183,187 +107,137 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'map',
                             'typeId': '1'
                         },
-                        'updatedBy': 'pwg-pmn'
+                        'updatedBy': None
                     }
                 },
                 {
                     'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2020-02-01',
-                        'dateProduced': '2020-02-01',
-                        'dateUpdated': '2020-02-01',
-                        'name': 'lat20200201',
-                        'note': '''- This is a dummy test with a lat map
-- A beam depends on this map''',
-                        'paths': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'note': 'lat only',
-                                        'path': 'nersc:/go/to/my/maps_v3',
-                                        'pathId': '4'
-                                    }
-                                }
-                            ]
-                        },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1013',
-                        'relations': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'other': {
-                                            'name': '20200207',
-                                            'productId': '1150',
-                                            'typeId': 2,
-                                            'type_': {
-                                                'name': 'beam',
-                                                'typeId': '2'
-                                            }
-                                        },
-                                        'otherProductId': 1150,
-                                        'relationId': '4',
-                                        'reverse': {
-                                            'relationId': '3',
-                                            'typeId': 1,
-                                            'type_': {
-                                                'name': 'parent',
-                                                'typeId': '1'
-                                            }
-                                        },
-                                        'reverseRelationId': 3,
-                                        'typeId': 2,
-                                        'type_': {
-                                            'name': 'child',
-                                            'typeId': '2'
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        'typeId': 1,
-                        'type_': {
-                            'name': 'map',
-                            'typeId': '1'
-                        },
-                        'updatedBy': 'pwg-pmn'
-                    }
-                },
-                {
-                    'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2019-03-04',
-                        'dateProduced': '2019-03-04',
+                        'contact': None,
+                        'datePosted': None,
+                        'dateProduced': '2020-02-10',
                         'dateUpdated': None,
-                        'name': '20190304',
-                        'note': '- test entry',
+                        'name': 'map2',
+                        'note': None,
                         'paths': {
                             'edges': [
                                 {
                                     'node': {
-                                        'note': '',
-                                        'path': 'BEAM_DEPOT/Beams/20190304',
-                                        'pathId': '5'
-                                    }
-                                }
-                            ]
-                        },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1070',
-                        'relations': {
-                            'edges': [
-                            ]
-                        },
-                        'typeId': 2,
-                        'type_': {
-                            'name': 'beam',
-                            'typeId': '2'
-                        },
-                        'updatedBy': ''
-                    }
-                },
-                {
-                    'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2019-06-07',
-                        'dateProduced': '2019-06-07',
-                        'dateUpdated': None,
-                        'name': '20190607',
-                        'note': '- test entry',
-                        'paths': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'note': '',
-                                        'path': 'BEAM_DEPOT/Beams/20190607',
+                                        'note': None,
+                                        'path': 'site1:/path/to/map2',
                                         'pathId': '6'
                                     }
                                 }
                             ]
                         },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1120',
+                        'postedBy': None,
+                        'producedBy': None,
+                        'productId': '2',
                         'relations': {
                             'edges': [
                             ]
                         },
-                        'typeId': 2,
+                        'typeId': 1,
                         'type_': {
-                            'name': 'beam',
-                            'typeId': '2'
+                            'name': 'map',
+                            'typeId': '1'
                         },
-                        'updatedBy': ''
+                        'updatedBy': None
                     }
                 },
                 {
                     'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2020-01-23',
-                        'dateProduced': '2020-01-23',
+                        'contact': None,
+                        'datePosted': None,
+                        'dateProduced': '2020-03-19',
                         'dateUpdated': None,
-                        'name': '20200123',
-                        'note': '- test entry',
+                        'name': 'map3',
+                        'note': None,
                         'paths': {
                             'edges': [
                                 {
                                     'node': {
-                                        'note': '',
-                                        'path': 'BEAM_DEPOT/Beams/20200123',
+                                        'note': None,
+                                        'path': 'site1:/path/to/map3',
                                         'pathId': '7'
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'note': None,
+                                        'path': 'site2:/another/way/map3',
+                                        'pathId': '8'
                                     }
                                 }
                             ]
                         },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1130',
+                        'postedBy': None,
+                        'producedBy': None,
+                        'productId': '3',
+                        'relations': {
+                            'edges': [
+                            ]
+                        },
+                        'typeId': 1,
+                        'type_': {
+                            'name': 'map',
+                            'typeId': '1'
+                        },
+                        'updatedBy': None
+                    }
+                },
+                {
+                    'node': {
+                        'contact': None,
+                        'datePosted': None,
+                        'dateProduced': '2020-02-05',
+                        'dateUpdated': None,
+                        'name': 'beam1',
+                        'note': None,
+                        'paths': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'note': None,
+                                        'path': 'site1:/path/to/beam1',
+                                        'pathId': '4'
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'note': None,
+                                        'path': 'site2:/another/way/beam1',
+                                        'pathId': '5'
+                                    }
+                                }
+                            ]
+                        },
+                        'postedBy': None,
+                        'producedBy': None,
+                        'productId': '4',
                         'relations': {
                             'edges': [
                                 {
                                     'node': {
                                         'other': {
-                                            'name': 'lat20200120',
-                                            'productId': '1012',
+                                            'name': 'map1',
+                                            'productId': '1',
                                             'typeId': 1,
                                             'type_': {
                                                 'name': 'map',
                                                 'typeId': '1'
                                             }
                                         },
-                                        'otherProductId': 1012,
-                                        'relationId': '1',
+                                        'otherProductId': 1,
+                                        'relationId': '2',
                                         'reverse': {
-                                            'relationId': '2',
+                                            'relationId': '1',
                                             'typeId': 2,
                                             'type_': {
                                                 'name': 'child',
                                                 'typeId': '2'
                                             }
                                         },
-                                        'reverseRelationId': 2,
+                                        'reverseRelationId': 1,
                                         'typeId': 1,
                                         'type_': {
                                             'name': 'parent',
@@ -374,16 +248,16 @@ snapshots['test_schema[deep] 1'] = {
                                 {
                                     'node': {
                                         'other': {
-                                            'name': '20200207',
-                                            'productId': '1150',
+                                            'name': 'beam2',
+                                            'productId': '5',
                                             'typeId': 2,
                                             'type_': {
                                                 'name': 'beam',
                                                 'typeId': '2'
                                             }
                                         },
-                                        'otherProductId': 1150,
-                                        'relationId': '6',
+                                        'otherProductId': 5,
+                                        'relationId': '3',
                                         'reverse': {
                                             'relationId': '5',
                                             'typeId': 1,
@@ -407,75 +281,46 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'beam',
                             'typeId': '2'
                         },
-                        'updatedBy': ''
+                        'updatedBy': None
                     }
                 },
                 {
                     'node': {
-                        'contact': 'pwg-pmn',
-                        'datePosted': '2020-02-07',
-                        'dateProduced': '2020-02-07',
+                        'contact': None,
+                        'datePosted': None,
+                        'dateProduced': '2020-03-04',
                         'dateUpdated': None,
-                        'name': '20200207',
-                        'note': '- test entry',
+                        'name': 'beam2',
+                        'note': None,
                         'paths': {
                             'edges': [
                                 {
                                     'node': {
-                                        'note': '',
-                                        'path': 'BEAM_DEPOT/Beams/20200207',
-                                        'pathId': '8'
+                                        'note': None,
+                                        'path': 'site1:/path/to/beam2',
+                                        'pathId': '3'
                                     }
                                 }
                             ]
                         },
-                        'postedBy': 'pwg-pmn',
-                        'producedBy': 'pwg-pmn',
-                        'productId': '1150',
+                        'postedBy': None,
+                        'producedBy': None,
+                        'productId': '5',
                         'relations': {
                             'edges': [
                                 {
                                     'node': {
                                         'other': {
-                                            'name': 'lat20200201',
-                                            'productId': '1013',
+                                            'name': 'map1',
+                                            'productId': '1',
                                             'typeId': 1,
                                             'type_': {
                                                 'name': 'map',
                                                 'typeId': '1'
                                             }
                                         },
-                                        'otherProductId': 1013,
-                                        'relationId': '3',
-                                        'reverse': {
-                                            'relationId': '4',
-                                            'typeId': 2,
-                                            'type_': {
-                                                'name': 'child',
-                                                'typeId': '2'
-                                            }
-                                        },
-                                        'reverseRelationId': 4,
-                                        'typeId': 1,
-                                        'type_': {
-                                            'name': 'parent',
-                                            'typeId': '1'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'other': {
-                                            'name': '20200123',
-                                            'productId': '1130',
-                                            'typeId': 2,
-                                            'type_': {
-                                                'name': 'beam',
-                                                'typeId': '2'
-                                            }
-                                        },
-                                        'otherProductId': 1130,
-                                        'relationId': '5',
+                                        'otherProductId': 1,
+                                        'relationId': '4',
                                         'reverse': {
                                             'relationId': '6',
                                             'typeId': 2,
@@ -491,6 +336,35 @@ snapshots['test_schema[deep] 1'] = {
                                             'typeId': '1'
                                         }
                                     }
+                                },
+                                {
+                                    'node': {
+                                        'other': {
+                                            'name': 'beam1',
+                                            'productId': '4',
+                                            'typeId': 2,
+                                            'type_': {
+                                                'name': 'beam',
+                                                'typeId': '2'
+                                            }
+                                        },
+                                        'otherProductId': 4,
+                                        'relationId': '5',
+                                        'reverse': {
+                                            'relationId': '3',
+                                            'typeId': 2,
+                                            'type_': {
+                                                'name': 'child',
+                                                'typeId': '2'
+                                            }
+                                        },
+                                        'reverseRelationId': 3,
+                                        'typeId': 1,
+                                        'type_': {
+                                            'name': 'parent',
+                                            'typeId': '1'
+                                        }
+                                    }
                                 }
                             ]
                         },
@@ -499,7 +373,7 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'beam',
                             'typeId': '2'
                         },
-                        'updatedBy': ''
+                        'updatedBy': None
                     }
                 }
             ]
@@ -513,16 +387,16 @@ snapshots['test_schema[first-two] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'name': 'lat20190213',
-                        'productId': '1001',
+                        'name': 'map1',
+                        'productId': '1',
                         'typeId': 1
                     }
                 },
                 {
                     'node': {
-                        'name': 'xyz-s1234-20200101',
-                        'productId': '1002',
-                        'typeId': 3
+                        'name': 'map2',
+                        'productId': '2',
+                        'typeId': 1
                     }
                 }
             ]
@@ -536,61 +410,15 @@ snapshots['test_schema[first-two-sort] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'name': '20200207',
-                        'productId': '1150',
-                        'typeId': 2
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'lat20200201',
-                        'productId': '1013',
-                        'typeId': 1
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema[filtes-typeId-first-two] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'lat20190213',
-                        'productId': '1001',
+                        'name': 'map3',
+                        'productId': '3',
                         'typeId': 1
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200120',
-                        'productId': '1012',
-                        'typeId': 1
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema[filtes-typeName-first-two] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': '20180101',
-                        'productId': '1010',
-                        'typeId': 2
-                    }
-                },
-                {
-                    'node': {
-                        'name': '20190304',
-                        'productId': '1070',
+                        'name': 'beam2',
+                        'productId': '5',
                         'typeId': 2
                     }
                 }
@@ -599,28 +427,21 @@ snapshots['test_schema[filtes-typeName-first-two] 1'] = {
     }
 }
 
-snapshots['test_schema[filtes-typeId-sort] 1'] = {
+snapshots['test_schema[filters-type_name-first-two] 1'] = {
     'data': {
         'allProducts': {
             'edges': [
                 {
                     'node': {
-                        'name': 'lat20200201',
-                        'productId': '1013',
+                        'name': 'map1',
+                        'productId': '1',
                         'typeId': 1
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200120',
-                        'productId': '1012',
-                        'typeId': 1
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'lat20190213',
-                        'productId': '1001',
+                        'name': 'map2',
+                        'productId': '2',
                         'typeId': 1
                     }
                 }
@@ -629,28 +450,81 @@ snapshots['test_schema[filtes-typeId-sort] 1'] = {
     }
 }
 
-snapshots['test_schema[filtes-typeName-sort] 1'] = {
+snapshots['test_schema[filters-type_id-first-two] 1'] = {
     'data': {
         'allProducts': {
             'edges': [
                 {
                     'node': {
-                        'name': 'lat20200201',
-                        'productId': '1013',
+                        'name': 'map1',
+                        'productId': '1',
                         'typeId': 1
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20200120',
-                        'productId': '1012',
+                        'name': 'map2',
+                        'productId': '2',
+                        'typeId': 1
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[filters-type_id-sort] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map3',
+                        'productId': '3',
                         'typeId': 1
                     }
                 },
                 {
                     'node': {
-                        'name': 'lat20190213',
-                        'productId': '1001',
+                        'name': 'map2',
+                        'productId': '2',
+                        'typeId': 1
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'map1',
+                        'productId': '1',
+                        'typeId': 1
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[filters-type_name-sort] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map3',
+                        'productId': '3',
+                        'typeId': 1
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'map2',
+                        'productId': '2',
+                        'typeId': 1
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'map1',
+                        'productId': '1',
                         'typeId': 1
                     }
                 }

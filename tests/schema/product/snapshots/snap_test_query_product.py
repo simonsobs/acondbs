@@ -10,29 +10,93 @@ snapshots = Snapshot()
 snapshots['test_schema[deep] 1'] = {
     'data': {
         'product': {
-            'contact': 'pwg-pmn',
-            'datePosted': '2019-02-13',
-            'dateProduced': '2019-02-13',
-            'dateUpdated': '2019-02-13',
-            'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
+            'contact': None,
+            'datePosted': None,
+            'dateProduced': '2020-02-01',
+            'dateUpdated': None,
+            'name': 'map1',
+            'note': None,
             'paths': {
                 'edges': [
                     {
                         'node': {
-                            'note': '',
-                            'path': 'nersc:/go/to/my/maps',
+                            'note': None,
+                            'path': 'site1:/path/to/map1',
                             'pathId': '1'
+                        }
+                    },
+                    {
+                        'node': {
+                            'note': None,
+                            'path': 'site2:/another/way/map1',
+                            'pathId': '2'
                         }
                     }
                 ]
             },
-            'postedBy': 'pwg-pmn',
-            'producedBy': 'pwg-pmn',
-            'productId': '1001',
+            'postedBy': None,
+            'producedBy': None,
+            'productId': '1',
             'relations': {
                 'edges': [
+                    {
+                        'node': {
+                            'other': {
+                                'name': 'beam1',
+                                'productId': '4',
+                                'typeId': 2,
+                                'type_': {
+                                    'name': 'beam',
+                                    'typeId': '2'
+                                }
+                            },
+                            'otherProductId': 4,
+                            'relationId': '1',
+                            'reverse': {
+                                'relationId': '2',
+                                'typeId': 1,
+                                'type_': {
+                                    'name': 'parent',
+                                    'typeId': '1'
+                                }
+                            },
+                            'reverseRelationId': 2,
+                            'typeId': 2,
+                            'type_': {
+                                'name': 'child',
+                                'typeId': '2'
+                            }
+                        }
+                    },
+                    {
+                        'node': {
+                            'other': {
+                                'name': 'beam2',
+                                'productId': '5',
+                                'typeId': 2,
+                                'type_': {
+                                    'name': 'beam',
+                                    'typeId': '2'
+                                }
+                            },
+                            'otherProductId': 5,
+                            'relationId': '6',
+                            'reverse': {
+                                'relationId': '4',
+                                'typeId': 1,
+                                'type_': {
+                                    'name': 'parent',
+                                    'typeId': '1'
+                                }
+                            },
+                            'reverseRelationId': 4,
+                            'typeId': 2,
+                            'type_': {
+                                'name': 'child',
+                                'typeId': '2'
+                            }
+                        }
+                    }
                 ]
             },
             'typeId': 1,
@@ -40,7 +104,7 @@ snapshots['test_schema[deep] 1'] = {
                 'name': 'map',
                 'typeId': '1'
             },
-            'updatedBy': 'pwg-pmn'
+            'updatedBy': None
         }
     }
 }
@@ -54,8 +118,8 @@ snapshots['test_schema[product_id-nonexistent] 1'] = {
 snapshots['test_schema[product_id-name] 1'] = {
     'data': {
         'product': {
-            'name': 'lat20190213',
-            'productId': '1001',
+            'name': 'map1',
+            'productId': '1',
             'typeId': 1
         }
     }
@@ -70,8 +134,8 @@ snapshots['test_schema[product_id-name-nonexistent] 1'] = {
 snapshots['test_schema[type_id-name] 1'] = {
     'data': {
         'product': {
-            'name': 'lat20190213',
-            'productId': '1001',
+            'name': 'map1',
+            'productId': '1',
             'typeId': 1
         }
     }

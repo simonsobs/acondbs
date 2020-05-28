@@ -18,7 +18,7 @@ params = [
             }
           }
           ''') + FRAGMENT_PRODUCT_DEEP, ],
-        {'variables': {'productId': 1001}},
+        {'variables': {'productId': 1}},
         id='deep'
     ),
     pytest.param(
@@ -29,7 +29,7 @@ params = [
             }
           }
           ''') + FRAGMENT_PRODUCT_DEEP, ],
-        {'variables': {'productId': 2001}},
+        {'variables': {'productId': 9899}},
         id='product_id-nonexistent'
     ),
     pytest.param(
@@ -40,12 +40,12 @@ params = [
             }
           }
         ''') + FRAGMENT_PRODUCT_SHALLOW, ],
-        {'variables': {'typeId': 1, 'name': "lat20190213"}},
+        {'variables': {'typeId': 1, 'name': "map1"}},
         id='type_id-name'
     ),
     pytest.param(
         [textwrap.dedent('''
-        { product(productId: 1001, name: "lat20190213") {
+        { product(productId: 1, name: "map1") {
             ...fragmentProductShallow
           }
         }
@@ -55,7 +55,7 @@ params = [
     ),
     pytest.param(
         [textwrap.dedent('''
-        { product(productId: 1002, name: "lat20190213") {
+        { product(productId: 1, name: "map2") {
             ...fragmentProductShallow
           }
         }

@@ -16,7 +16,7 @@ snapshots['test_schema_success[create] 1'] = {
                 'datePosted': '2020-05-04',
                 'dateProduced': '2020-02-20',
                 'dateUpdated': None,
-                'name': 'product1',
+                'name': 'map_10',
                 'note': '- Item 1',
                 'paths': {
                     'edges': [
@@ -24,21 +24,21 @@ snapshots['test_schema_success[create] 1'] = {
                             'node': {
                                 'note': None,
                                 'path': '/path/to/new/product1',
-                                'pathId': '11'
+                                'pathId': '9'
                             }
                         },
                         {
                             'node': {
                                 'note': None,
                                 'path': '/another/location/of/product1',
-                                'pathId': '12'
+                                'pathId': '10'
                             }
                         }
                     ]
                 },
                 'postedBy': 'poster',
                 'producedBy': 'producer',
-                'productId': '1151',
+                'productId': '6',
                 'relations': {
                     'edges': [
                     ]
@@ -60,62 +60,52 @@ snapshots['test_schema_success[create] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'pathId': '1'
+                        'path': 'site1:/path/to/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '2'
+                        'path': 'site2:/another/way/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '4'
+                        'path': 'site1:/path/to/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '5'
+                        'path': 'site2:/another/way/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '6'
+                        'path': 'site1:/path/to/map2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '7'
+                        'path': 'site1:/path/to/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '8'
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '9'
+                        'path': '/path/to/new/product1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '10'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '11'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '12'
+                        'path': '/another/location/of/product1'
                     }
                 }
             ]
@@ -124,32 +114,80 @@ snapshots['test_schema_success[create] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'relationId': '1'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '2'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '3'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '4'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '5'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '6'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 }
             ]
@@ -158,52 +196,32 @@ snapshots['test_schema_success[create] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1001'
+                        'name': 'map1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1002'
+                        'name': 'map2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1010'
+                        'name': 'map3'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012'
+                        'name': 'beam1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013'
+                        'name': 'beam2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1070'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1120'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1130'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1150'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1151'
+                        'name': 'map_10'
                     }
                 }
             ]
@@ -220,7 +238,7 @@ snapshots['test_schema_error[error-no-name] 1'] = {
                     'line': 2
                 }
             ],
-            'message': '''Variable "$input" got invalid value {"contact": "contact-person", "dateProduced": "2020-02-20", "note": "- Item 1", "paths": ["/path/to/new/product1", "/another/location/of/product1"], "postedBy": "poster", "producedBy": "producer", "typeId": 1}.
+            'message': '''Variable "$input" got invalid value {"typeId": 1}.
 In field "name": Expected "String!", found null.'''
         }
     ]
@@ -232,52 +250,42 @@ snapshots['test_schema_error[error-no-name] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'pathId': '1'
+                        'path': 'site1:/path/to/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '2'
+                        'path': 'site2:/another/way/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '4'
+                        'path': 'site1:/path/to/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '5'
+                        'path': 'site2:/another/way/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '6'
+                        'path': 'site1:/path/to/map2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '7'
+                        'path': 'site1:/path/to/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '8'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '9'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '10'
+                        'path': 'site2:/another/way/map3'
                     }
                 }
             ]
@@ -286,32 +294,80 @@ snapshots['test_schema_error[error-no-name] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'relationId': '1'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '2'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '3'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '4'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '5'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '6'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 }
             ]
@@ -320,47 +376,27 @@ snapshots['test_schema_error[error-no-name] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1001'
+                        'name': 'map1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1002'
+                        'name': 'map2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1010'
+                        'name': 'map3'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012'
+                        'name': 'beam1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1070'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1120'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1130'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1150'
+                        'name': 'beam2'
                     }
                 }
             ]
@@ -385,7 +421,7 @@ snapshots['test_schema_success[minimum] 1'] = {
                 },
                 'postedBy': None,
                 'producedBy': None,
-                'productId': '1151',
+                'productId': '6',
                 'relations': {
                     'edges': [
                     ]
@@ -407,52 +443,42 @@ snapshots['test_schema_success[minimum] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'pathId': '1'
+                        'path': 'site1:/path/to/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '2'
+                        'path': 'site2:/another/way/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '4'
+                        'path': 'site1:/path/to/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '5'
+                        'path': 'site2:/another/way/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '6'
+                        'path': 'site1:/path/to/map2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '7'
+                        'path': 'site1:/path/to/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '8'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '9'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '10'
+                        'path': 'site2:/another/way/map3'
                     }
                 }
             ]
@@ -461,32 +487,80 @@ snapshots['test_schema_success[minimum] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'relationId': '1'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '2'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '3'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '4'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '5'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '6'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 }
             ]
@@ -495,52 +569,32 @@ snapshots['test_schema_success[minimum] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1001'
+                        'name': 'map1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1002'
+                        'name': 'map2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1010'
+                        'name': 'map3'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012'
+                        'name': 'beam1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013'
+                        'name': 'beam2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1070'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1120'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1130'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1150'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1151'
+                        'name': 'product1'
                     }
                 }
             ]
@@ -557,7 +611,7 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                 'datePosted': '2020-05-04',
                 'dateProduced': None,
                 'dateUpdated': None,
-                'name': 'lat20190213',
+                'name': 'map1',
                 'note': None,
                 'paths': {
                     'edges': [
@@ -565,21 +619,21 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                             'node': {
                                 'note': None,
                                 'path': '/path/to/new/product1',
-                                'pathId': '11'
+                                'pathId': '9'
                             }
                         },
                         {
                             'node': {
                                 'note': None,
                                 'path': '/another/location/of/product1',
-                                'pathId': '12'
+                                'pathId': '10'
                             }
                         }
                     ]
                 },
                 'postedBy': None,
                 'producedBy': 'pwg-pmn',
-                'productId': '1151',
+                'productId': '6',
                 'relations': {
                     'edges': [
                     ]
@@ -601,62 +655,52 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'pathId': '1'
+                        'path': 'site1:/path/to/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '2'
+                        'path': 'site2:/another/way/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '4'
+                        'path': 'site1:/path/to/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '5'
+                        'path': 'site2:/another/way/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '6'
+                        'path': 'site1:/path/to/map2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '7'
+                        'path': 'site1:/path/to/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '8'
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '9'
+                        'path': '/path/to/new/product1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '10'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '11'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '12'
+                        'path': '/another/location/of/product1'
                     }
                 }
             ]
@@ -665,32 +709,80 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'relationId': '1'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '2'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '3'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '4'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '5'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '6'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 }
             ]
@@ -699,52 +791,32 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1001'
+                        'name': 'map1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1002'
+                        'name': 'map2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1010'
+                        'name': 'map3'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012'
+                        'name': 'beam1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013'
+                        'name': 'beam2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1070'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1120'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1130'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1150'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1151'
+                        'name': 'map1'
                     }
                 }
             ]
@@ -766,7 +838,7 @@ snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
             ],
             'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: products.type_id, products.name
 [SQL: INSERT INTO products (type_id, name, contact, date_produced, produced_by, date_posted, posted_by, date_updated, updated_by, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
-[parameters: (1, 'lat20190213', 'contact-person', None, 'pwg-pmn', '2020-05-04', None, None, None, None)]
+[parameters: (1, 'map1', None, None, None, '2020-05-04', None, None, None, None)]
 (Background on this error at: http://sqlalche.me/e/gkpj)''',
             'path': [
                 'createProduct'
@@ -781,52 +853,42 @@ snapshots['test_schema_error[error-the-same-type-and-name] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'pathId': '1'
+                        'path': 'site1:/path/to/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '2'
+                        'path': 'site2:/another/way/map1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '4'
+                        'path': 'site1:/path/to/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '5'
+                        'path': 'site2:/another/way/beam1'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '6'
+                        'path': 'site1:/path/to/map2'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '7'
+                        'path': 'site1:/path/to/map3'
                     }
                 },
                 {
                     'node': {
-                        'pathId': '8'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '9'
-                    }
-                },
-                {
-                    'node': {
-                        'pathId': '10'
+                        'path': 'site2:/another/way/map3'
                     }
                 }
             ]
@@ -835,32 +897,80 @@ snapshots['test_schema_error[error-the-same-type-and-name] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'relationId': '1'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '2'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '3'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '4'
+                        'other': {
+                            'name': 'map1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '5'
+                        'other': {
+                            'name': 'beam1'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
+                        }
                     }
                 },
                 {
                     'node': {
-                        'relationId': '6'
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'map1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
                     }
                 }
             ]
@@ -869,47 +979,27 @@ snapshots['test_schema_error[error-the-same-type-and-name] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'productId': '1001'
+                        'name': 'map1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1002'
+                        'name': 'map2'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1010'
+                        'name': 'map3'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1012'
+                        'name': 'beam1'
                     }
                 },
                 {
                     'node': {
-                        'productId': '1013'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1070'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1120'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1130'
-                    }
-                },
-                {
-                    'node': {
-                        'productId': '1150'
+                        'name': 'beam2'
                     }
                 }
             ]

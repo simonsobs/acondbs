@@ -9,21 +9,29 @@ QEURY = '''
   allProducts {
     edges {
       node {
-        productId
+        name
       }
     }
   }
   allProductRelations {
     edges {
       node {
-        relationId
+        type_ {
+          name
+        }
+        self_ {
+          name
+        }
+        other {
+          name
+        }
       }
     }
   }
   allProductFilePaths {
     edges {
       node {
-        pathId
+        path
       }
     }
   }
@@ -39,7 +47,7 @@ params = [
             {'variables': {
                 'input': {
                     'typeId': 1,
-                    'name': "product1",
+                    'name': "map_10",
                     'contact': "contact-person",
                     'dateProduced': "2020-02-20",
                     'producedBy': "producer",
@@ -74,7 +82,7 @@ params = [
             {'variables': {
                 'input': {
                     'typeId': 2,
-                    'name': "lat20190213",
+                    'name': "map1",
                     'contact': "contact-person",
                     'producedBy': "pwg-pmn",
                     'paths': [
@@ -102,15 +110,6 @@ params = [
             {'variables': {
                 'input': {
                     'typeId': 1,
-                    'contact': "contact-person",
-                    'dateProduced': "2020-02-20",
-                    'producedBy': "producer",
-                    'postedBy': "poster",
-                    'note': "- Item 1",
-                    'paths': [
-                        "/path/to/new/product1",
-                        "/another/location/of/product1"
-                    ]
                 }
             }},
         ],
@@ -123,13 +122,7 @@ params = [
             {'variables': {
                 'input': {
                     'typeId': 1,
-                    'name': "lat20190213",
-                    'contact': "contact-person",
-                    'producedBy': "pwg-pmn",
-                    'paths': [
-                        "/path/to/new/product1",
-                        "/another/location/of/product1"
-                    ]
+                    'name': "map1",
                 }
             }},
         ],
