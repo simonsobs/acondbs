@@ -72,7 +72,7 @@ class DeleteProductRelation(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, relation_id):
-        relation = ProductRelationModel.query.filter_by(relation_id=relation_id).one_or_none()
+        relation = ProductRelationModel.query.filter_by(relation_id=relation_id).one()
         sa.session.delete(relation)
         sa.session.commit()
         ok = True
