@@ -18,36 +18,36 @@ snapshots['test_schema[type_id] 1'] = {
                     {
                         'node': {
                             'other': {
-                                'name': 'lat20200120',
-                                'productId': '1012'
+                                'name': 'map1',
+                                'productId': '1'
                             },
                             'self_': {
-                                'name': '20200123',
-                                'productId': '1130'
+                                'name': 'beam2',
+                                'productId': '5'
                             }
                         }
                     },
                     {
                         'node': {
                             'other': {
-                                'name': 'lat20200201',
-                                'productId': '1013'
+                                'name': 'beam1',
+                                'productId': '4'
                             },
                             'self_': {
-                                'name': '20200207',
-                                'productId': '1150'
+                                'name': 'beam2',
+                                'productId': '5'
                             }
                         }
                     },
                     {
                         'node': {
                             'other': {
-                                'name': '20200123',
-                                'productId': '1130'
+                                'name': 'map1',
+                                'productId': '1'
                             },
                             'self_': {
-                                'name': '20200207',
-                                'productId': '1150'
+                                'name': 'beam1',
+                                'productId': '4'
                             }
                         }
                     }
@@ -74,36 +74,36 @@ snapshots['test_schema[name] 1'] = {
                     {
                         'node': {
                             'other': {
-                                'name': 'lat20200120',
-                                'productId': '1012'
+                                'name': 'map1',
+                                'productId': '1'
                             },
                             'self_': {
-                                'name': '20200123',
-                                'productId': '1130'
+                                'name': 'beam2',
+                                'productId': '5'
                             }
                         }
                     },
                     {
                         'node': {
                             'other': {
-                                'name': 'lat20200201',
-                                'productId': '1013'
+                                'name': 'beam1',
+                                'productId': '4'
                             },
                             'self_': {
-                                'name': '20200207',
-                                'productId': '1150'
+                                'name': 'beam2',
+                                'productId': '5'
                             }
                         }
                     },
                     {
                         'node': {
                             'other': {
-                                'name': '20200123',
-                                'productId': '1130'
+                                'name': 'map1',
+                                'productId': '1'
                             },
                             'self_': {
-                                'name': '20200207',
-                                'productId': '1150'
+                                'name': 'beam1',
+                                'productId': '4'
                             }
                         }
                     }
@@ -130,36 +130,36 @@ snapshots['test_schema[type_id-and-name] 1'] = {
                     {
                         'node': {
                             'other': {
-                                'name': 'lat20200120',
-                                'productId': '1012'
+                                'name': 'map1',
+                                'productId': '1'
                             },
                             'self_': {
-                                'name': '20200123',
-                                'productId': '1130'
+                                'name': 'beam2',
+                                'productId': '5'
                             }
                         }
                     },
                     {
                         'node': {
                             'other': {
-                                'name': 'lat20200201',
-                                'productId': '1013'
+                                'name': 'beam1',
+                                'productId': '4'
                             },
                             'self_': {
-                                'name': '20200207',
-                                'productId': '1150'
+                                'name': 'beam2',
+                                'productId': '5'
                             }
                         }
                     },
                     {
                         'node': {
                             'other': {
-                                'name': '20200123',
-                                'productId': '1130'
+                                'name': 'map1',
+                                'productId': '1'
                             },
                             'self_': {
-                                'name': '20200207',
-                                'productId': '1150'
+                                'name': 'beam1',
+                                'productId': '4'
                             }
                         }
                     }
