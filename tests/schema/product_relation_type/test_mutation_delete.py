@@ -10,7 +10,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteProductRelationType(typeId: 3) { ok }
+          deleteProductRelationTypes(typeId: 3) { ok }
         }
          ''',
         textwrap.dedent('''
@@ -33,7 +33,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteProductRelationType(typeId: 512) { ok }
+          deleteProductRelationTypes(typeId: 512) { ok }
         }
          ''',
         textwrap.dedent('''
@@ -48,7 +48,7 @@ params = [
     pytest.param(
         '''
         mutation m {
-          deleteProductRelationType(typeId: 1) { ok }
+          deleteProductRelationTypes(typeId: 1) { ok }
         }
          ''',
         textwrap.dedent('''

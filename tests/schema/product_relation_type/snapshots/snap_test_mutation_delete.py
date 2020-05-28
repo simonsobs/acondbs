@@ -9,7 +9,7 @@ snapshots = Snapshot()
 
 snapshots['test_schema_error[error-nonexistent] 1'] = {
     'data': {
-        'deleteProductRelationType': None
+        'deleteProductRelationTypes': None
     },
     'errors': [
         {
@@ -21,7 +21,7 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
             ],
             'message': "Class 'builtins.NoneType' is not mapped",
             'path': [
-                'deleteProductRelationType'
+                'deleteProductRelationTypes'
             ]
         }
     ]
@@ -178,7 +178,7 @@ snapshots['test_schema_error[error-nonexistent] 2'] = {
 
 snapshots['test_schema_error[error-unempty] 1'] = {
     'data': {
-        'deleteProductRelationType': None
+        'deleteProductRelationTypes': None
     },
     'errors': [
         {
@@ -193,7 +193,7 @@ snapshots['test_schema_error[error-unempty] 1'] = {
 [parameters: ((None, 1), (None, 2), (None, 3), (None, 4), (None, 5), (None, 6))]
 (Background on this error at: http://sqlalche.me/e/gkpj)''',
             'path': [
-                'deleteProductRelationType'
+                'deleteProductRelationTypes'
             ]
         }
     ]
@@ -350,7 +350,7 @@ snapshots['test_schema_error[error-unempty] 2'] = {
 
 snapshots['test_schema_success[delete] 1'] = {
     'data': {
-        'deleteProductRelationType': {
+        'deleteProductRelationTypes': {
             'ok': True
         }
     }

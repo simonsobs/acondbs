@@ -63,7 +63,7 @@ class CreateProductRelationTypes(graphene.Mutation):
         request_backup_db()
         return CreateProductRelationTypes(product_relation_type=type_, ok=ok)
 
-class DeleteProductRelationType(graphene.Mutation):
+class DeleteProductRelationTypes(graphene.Mutation):
     '''Delete a product relation type'''
     class Arguments:
         type_id = graphene.Int()
@@ -76,6 +76,6 @@ class DeleteProductRelationType(graphene.Mutation):
         sa.session.commit()
         ok = True
         request_backup_db()
-        return DeleteProductRelationType(ok=ok)
+        return DeleteProductRelationTypes(ok=ok)
 
 ##__________________________________________________________________||

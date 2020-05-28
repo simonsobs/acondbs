@@ -915,9 +915,9 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': 'Delete a product relation type',
-                            'name': 'deleteProductRelationType',
+                            'name': 'deleteProductRelationTypes',
                             'type': {
-                                'name': 'DeleteProductRelationType'
+                                'name': 'DeleteProductRelationTypes'
                             }
                         },
                         {
@@ -1378,7 +1378,7 @@ value as specified by
                         }
                     ],
                     'inputFields': None,
-                    'name': 'DeleteProductRelationType'
+                    'name': 'DeleteProductRelationTypes'
                 },
                 {
                     'description': None,
