@@ -14,12 +14,18 @@ class ProductRelation(sa.Model):
         "ProductRelationType",
         backref=sa.backref("relations")
     )
-    self_product_id = sa.Column(sa.ForeignKey('products.product_id'))
+    self_product_id = sa.Column(
+        sa.Integer(),
+        sa.ForeignKey('products.product_id'),
+        nullable=False)
     self_ = sa.relationship(
         "Product",
         foreign_keys=[self_product_id],
         backref=sa.backref("relations", cascade="all, delete-orphan"))
-    other_product_id = sa.Column(sa.ForeignKey('products.product_id'))
+    other_product_id = sa.Column(
+        sa.Integer(),
+        sa.ForeignKey('products.product_id'),
+        nullable=False)
     other = sa.relationship("Product", foreign_keys=[other_product_id])
     reverse_relation_id = sa.Column(sa.ForeignKey('product_relations.relation_id'))
     reverse = sa.relationship(
