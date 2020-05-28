@@ -48,16 +48,13 @@ class CreateProductRelation(graphene.Mutation):
         self_ = ProductModel.query.filter_by(product_id=input['self_product_id']).one()
         other = ProductModel.query.filter_by(product_id=input['other_product_id']).one()
 
-        relation = ProductRelationModel()
-        relation.type_ = type_
-        relation.self_ = self_
-        relation.other = other
+        model = ProductRelationModel(type_=type_, self_=self_, other=other)
 
-        sa.session.add(relation)
+        sa.session.add(model)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateProductRelation(product_relation=relation, ok=ok)
+        return CreateProductRelation(product_relation=model, ok=ok)
 
 class DeleteProductRelation(graphene.Mutation):
     '''Remove relations from two products.
@@ -72,8 +69,8 @@ class DeleteProductRelation(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, relation_id):
-        relation = ProductRelationModel.query.filter_by(relation_id=relation_id).one()
-        sa.session.delete(relation)
+        model = ProductRelationModel.query.filter_by(relation_id=relation_id).one()
+        sa.session.delete(model)
         sa.session.commit()
         ok = True
         request_backup_db()
