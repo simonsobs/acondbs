@@ -11,6 +11,7 @@ from .filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class ProductType(SQLAlchemyObjectType):
+    '''A product type'''
     class Meta:
         model = ProductTypeModel
         interfaces = (graphene.relay.Node, )
@@ -18,15 +19,24 @@ class ProductType(SQLAlchemyObjectType):
 
 ##__________________________________________________________________||
 class CreateProductTypeInput(graphene.InputObjectType):
-    name = graphene.String(required=True)
-    order = graphene.Int()
-    indef_article = graphene.String()
-    singular = graphene.String()
-    plural = graphene.String()
-    icon = graphene.String()
+    '''Input to createProductType()'''
+    name = graphene.String(required=True, description='The name of the product type')
+    order = graphene.Int(
+        description=('The order in which the type is displayed, for example, '
+                     'in navigation bars.'))
+    indef_article = graphene.String(
+        description=('The indefinite article placed before the singular noun "'
+                     'i.e., "a" or "an". '))
+    singular = graphene.String(
+        description=('The singular noun, the product type name in singular.'))
+    plural = graphene.String(
+        description=('The plural noun, the product type name in plural.'))
+    icon = graphene.String(
+        description=('A name of the icon from https://materialdesignicons.com/'))
 
 ##__________________________________________________________________||
 class CreateProductType(graphene.Mutation):
+    '''Create a product type'''
     class Arguments:
         input = CreateProductTypeInput(required=True)
 
@@ -42,8 +52,9 @@ class CreateProductType(graphene.Mutation):
         return CreateProductType(product_type=product_type, ok=ok)
 
 class DeleteProductType(graphene.Mutation):
+    '''Delete a product type'''
     class Arguments:
-        type_id = graphene.Int()
+        type_id = graphene.Int(description='The typeId of the product type')
 
     ok = graphene.Boolean()
 

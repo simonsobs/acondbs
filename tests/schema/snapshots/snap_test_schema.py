@@ -205,7 +205,7 @@ snapshots['test_types 1'] = {
                     'name': 'ProductTypeEdge'
                 },
                 {
-                    'description': None,
+                    'description': 'A product type',
                     'fields': [
                         {
                             'description': None,
@@ -886,14 +886,14 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'description': None,
+                            'description': 'Create a product type',
                             'name': 'createProductType',
                             'type': {
                                 'name': 'CreateProductType'
                             }
                         },
                         {
-                            'description': None,
+                            'description': 'Delete a product type',
                             'name': 'deleteProductType',
                             'type': {
                                 'name': 'DeleteProductType'
@@ -1187,7 +1187,7 @@ value as specified by
                     'name': 'DeleteProductFilePath'
                 },
                 {
-                    'description': None,
+                    'description': 'Create a product type',
                     'fields': [
                         {
                             'description': None,
@@ -1208,44 +1208,44 @@ value as specified by
                     'name': 'CreateProductType'
                 },
                 {
-                    'description': None,
+                    'description': 'Input to createProductType()',
                     'fields': None,
                     'inputFields': [
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The name of the product type',
                             'name': 'name'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The order in which the type is displayed, for example, in navigation bars.',
                             'name': 'order'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
                             'name': 'indefArticle'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The singular noun, the product type name in singular.',
                             'name': 'singular'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'The plural noun, the product type name in plural.',
                             'name': 'plural'
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'A name of the icon from https://materialdesignicons.com/',
                             'name': 'icon'
                         }
                     ],
                     'name': 'CreateProductTypeInput'
                 },
                 {
-                    'description': None,
+                    'description': 'Delete a product type',
                     'fields': [
                         {
                             'description': None,
