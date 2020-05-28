@@ -64,9 +64,12 @@ class CreateProductRelationTypes(graphene.Mutation):
         return CreateProductRelationTypes(product_relation_type=type_, ok=ok)
 
 class DeleteProductRelationTypes(graphene.Mutation):
-    '''Delete a product relation type'''
+    '''Delete a pair of product relation types'''
     class Arguments:
-        type_id = graphene.Int()
+        type_id = graphene.Int(
+            required=True,
+            description=('The typeId of a relation type. The reverse relation '
+                         'type will also be deleted.'))
 
     ok = graphene.Boolean()
 
