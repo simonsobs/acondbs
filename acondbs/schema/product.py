@@ -29,7 +29,8 @@ class Product(SQLAlchemyObjectType):
 
 ##__________________________________________________________________||
 class RelationInputFields(graphene.InputObjectType):
-    product_id = graphene.Int(required=True, description='The product ID of the related product')
+    '''A relation to another product'''
+    product_id = graphene.Int(required=True, description='The product ID of the other product')
     type_id = graphene.Int(required=True, description='The relation type ID')
 
 class CommonInputFields:
@@ -52,7 +53,10 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     date_produced = graphene.Date(description='The date on which the product was produced')
     produced_by = graphene.String(description='The person or group that produced the product')
     posted_by = graphene.String(description='The person who entered the DB entry.')
-    relations = graphene.InputField(graphene.List(RelationInputFields))
+    relations = graphene.InputField(
+        graphene.List(RelationInputFields),
+        description=('Relations to other products')
+    )
 
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     '''Input to updateProduct()'''
@@ -60,8 +64,12 @@ class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
 
 ##__________________________________________________________________||
 class CreateProduct(graphene.Mutation):
+    '''Create a product'''
     class Arguments:
-        input = CreateProductInput(required=True)
+        input = CreateProductInput(
+            required=True,
+            description=('the input to createProduct()')
+        )
 
     ok = graphene.Boolean()
     product = graphene.Field(lambda: Product)
@@ -89,9 +97,18 @@ class CreateProduct(graphene.Mutation):
         return CreateProduct(product=product, ok=ok)
 
 class UpdateProduct(graphene.Mutation):
+    '''Update a product. Note: This is to update the DB entry about a product. If the
+    product itself has been updated, a new entry should be added by
+    createProduct()
+
+    '''
     class Arguments:
-        product_id = graphene.Int()
-        input = UpdateProductInput(required=True)
+        product_id = graphene.Int(
+            description='The productId of a product to be updated.')
+        input = UpdateProductInput(
+            required=True,
+            description='an input to updateProduct()'
+        )
 
     ok = graphene.Boolean()
     product = graphene.Field(lambda: Product)
@@ -108,8 +125,10 @@ class UpdateProduct(graphene.Mutation):
         return UpdateProduct(product=product, ok=ok)
 
 class DeleteProduct(graphene.Mutation):
+    '''Delete a product'''
     class Arguments:
-        product_id = graphene.Int()
+        product_id = graphene.Int(
+            description='The productId of a product to be deleted.')
 
     ok = graphene.Boolean()
 

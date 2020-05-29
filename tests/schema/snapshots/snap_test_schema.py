@@ -844,21 +844,23 @@ snapshots['test_types 1'] = {
                     'description': None,
                     'fields': [
                         {
-                            'description': None,
+                            'description': 'Create a product',
                             'name': 'createProduct',
                             'type': {
                                 'name': 'CreateProduct'
                             }
                         },
                         {
-                            'description': None,
+                            'description': '''Update a product. Note: This is to update the DB entry about a product. If the
+product itself has been updated, a new entry should be added by
+createProduct()''',
                             'name': 'updateProduct',
                             'type': {
                                 'name': 'UpdateProduct'
                             }
                         },
                         {
-                            'description': None,
+                            'description': 'Delete a product',
                             'name': 'deleteProduct',
                             'type': {
                                 'name': 'DeleteProduct'
@@ -949,7 +951,7 @@ from one product to the other. The reverse relation will be also added.''',
                     'name': 'Mutation'
                 },
                 {
-                    'description': None,
+                    'description': 'Create a product',
                     'fields': [
                         {
                             'description': None,
@@ -1015,7 +1017,7 @@ from one product to the other. The reverse relation will be also added.''',
                         },
                         {
                             'defaultValue': None,
-                            'description': None,
+                            'description': 'Relations to other products',
                             'name': 'relations'
                         }
                     ],
@@ -1030,12 +1032,12 @@ value as specified by
                     'name': 'Date'
                 },
                 {
-                    'description': None,
+                    'description': 'A relation to another product',
                     'fields': None,
                     'inputFields': [
                         {
                             'defaultValue': None,
-                            'description': 'The product ID of the related product',
+                            'description': 'The product ID of the other product',
                             'name': 'productId'
                         },
                         {
@@ -1047,7 +1049,9 @@ value as specified by
                     'name': 'RelationInputFields'
                 },
                 {
-                    'description': None,
+                    'description': '''Update a product. Note: This is to update the DB entry about a product. If the
+product itself has been updated, a new entry should be added by
+createProduct()''',
                     'fields': [
                         {
                             'description': None,
@@ -1095,7 +1099,7 @@ value as specified by
                     'name': 'UpdateProductInput'
                 },
                 {
-                    'description': None,
+                    'description': 'Delete a product',
                     'fields': [
                         {
                             'description': None,
