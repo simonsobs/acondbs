@@ -56,6 +56,24 @@ params = [
         [[QEURY], {}],
         id='update'
     ),
+    pytest.param(
+        [
+            [UPDATE_PRODUCT],
+            {'variables': {
+                'productId': 1,
+                'input': {
+                    'updatedBy': "updater",
+                    'paths': [
+                        "site1:/path/to/map1",
+                        "site2:/updated/way/map1",
+                        "site4:/additional/map1"
+                    ],
+                }
+            }},
+        ],
+        [[QEURY], {}],
+        id='update-paths'
+    ),
 ]
 
 @pytest.mark.parametrize('mutation, query', params)

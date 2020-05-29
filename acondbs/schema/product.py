@@ -116,10 +116,19 @@ class UpdateProduct(graphene.Mutation):
 
     def mutate(root, info, product_id, input):
         model = ProductModel.query.filter_by(product_id=product_id).one()
+
+        # update paths
+        pdict = {p.path: p for p in model.paths}
+        model.paths = [
+            pdict[p] if p in pdict else ProductFilePathModel(path=p)
+            for p in input.pop('paths', [])]
+
+        # update scalar fields
         for k, v in input.items():
             setattr(model, k, v)
-        today = datetime.date.today()
-        model.date_updated = today
+
+        model.date_updated = datetime.date.today()
+
         sa.session.commit()
         ok = True
         request_backup_db()
