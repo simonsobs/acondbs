@@ -104,6 +104,7 @@ class UpdateProduct(graphene.Mutation):
     '''
     class Arguments:
         product_id = graphene.Int(
+            required=True,
             description='The productId of a product to be updated.')
         input = UpdateProductInput(
             required=True,
@@ -128,6 +129,7 @@ class DeleteProduct(graphene.Mutation):
     '''Delete a product'''
     class Arguments:
         product_id = graphene.Int(
+            required=True,
             description='The productId of a product to be deleted.')
 
     ok = graphene.Boolean()
