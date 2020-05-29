@@ -11,20 +11,20 @@ snapshots['test_schema[type_id] 1'] = {
     'data': {
         'productRelation': {
             'other': {
-                'name': 'lat20200120',
-                'productId': '1012'
+                'name': 'beam1',
+                'productId': '4'
             },
             'relationId': '1',
             'reverse': {
                 'relationId': '2'
             },
             'self_': {
-                'name': '20200123',
-                'productId': '1130'
+                'name': 'map1',
+                'productId': '1'
             },
             'type_': {
-                'name': 'parent',
-                'typeId': '1'
+                'name': 'child',
+                'typeId': '2'
             }
         }
     }
