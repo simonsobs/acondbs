@@ -992,6 +992,11 @@ from one product to the other. The reverse relation will be also added.''',
                         },
                         {
                             'defaultValue': None,
+                            'description': 'Relations to other products',
+                            'name': 'relations'
+                        },
+                        {
+                            'defaultValue': None,
                             'description': 'The product type ID',
                             'name': 'typeId'
                         },
@@ -1014,22 +1019,9 @@ from one product to the other. The reverse relation will be also added.''',
                             'defaultValue': None,
                             'description': 'The person who entered the DB entry.',
                             'name': 'postedBy'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'Relations to other products',
-                            'name': 'relations'
                         }
                     ],
                     'name': 'CreateProductInput'
-                },
-                {
-                    'description': '''The `Date` scalar type represents a Date
-value as specified by
-[iso8601](https://en.wikipedia.org/wiki/ISO_8601).''',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'Date'
                 },
                 {
                     'description': 'A relation to another product',
@@ -1047,6 +1039,14 @@ value as specified by
                         }
                     ],
                     'name': 'RelationInputFields'
+                },
+                {
+                    'description': '''The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).''',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'Date'
                 },
                 {
                     'description': '''Update a product. Note: This is to update the DB entry about a product. If the
@@ -1089,6 +1089,11 @@ createProduct()''',
                             'defaultValue': None,
                             'description': 'Paths to the products. e.g., nersc:/go/to/my/product_v3',
                             'name': 'paths'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Relations to other products',
+                            'name': 'relations'
                         },
                         {
                             'defaultValue': None,

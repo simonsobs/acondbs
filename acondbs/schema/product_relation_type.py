@@ -93,7 +93,7 @@ class DeleteProductRelationTypes(graphene.Mutation):
         type_id = graphene.Int(
             required=True,
             description=('The typeId of a relation type. The reverse relation '
-                         'type will also be deleted.'))
+                         'type will automatically be deleted.'))
 
     ok = graphene.Boolean()
 
