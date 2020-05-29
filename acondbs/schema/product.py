@@ -84,17 +84,17 @@ class CreateProduct(graphene.Mutation):
                 )
                 for r in input.pop('relations', [])
             ]
-        product = ProductModel(
+        model = ProductModel(
             date_posted=datetime.date.today(),
             paths=paths,
             relations=relations,
             **input
         )
-        sa.session.add(product)
+        sa.session.add(model)
         sa.session.commit()
         ok = True
         request_backup_db()
-        return CreateProduct(product=product, ok=ok)
+        return CreateProduct(product=model, ok=ok)
 
 class UpdateProduct(graphene.Mutation):
     '''Update a product. Note: This is to update the DB entry about a product. If the
@@ -115,15 +115,15 @@ class UpdateProduct(graphene.Mutation):
     product = graphene.Field(lambda: Product)
 
     def mutate(root, info, product_id, input):
-        product = ProductModel.query.filter_by(product_id=product_id).one()
+        model = ProductModel.query.filter_by(product_id=product_id).one()
         for k, v in input.items():
-            setattr(product, k, v)
+            setattr(model, k, v)
         today = datetime.date.today()
-        product.date_updated = today
+        model.date_updated = today
         sa.session.commit()
         ok = True
         request_backup_db()
-        return UpdateProduct(product=product, ok=ok)
+        return UpdateProduct(product=model, ok=ok)
 
 class DeleteProduct(graphene.Mutation):
     '''Delete a product'''
@@ -135,8 +135,8 @@ class DeleteProduct(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, product_id):
-        product = ProductModel.query.filter_by(product_id=product_id).one()
-        sa.session.delete(product)
+        model = ProductModel.query.filter_by(product_id=product_id).one()
+        sa.session.delete(model)
         sa.session.commit()
         ok = True
         request_backup_db()
