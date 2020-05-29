@@ -118,10 +118,12 @@ class UpdateProduct(graphene.Mutation):
         model = ProductModel.query.filter_by(product_id=product_id).one()
 
         # update paths
-        pdict = {p.path: p for p in model.paths}
-        model.paths = [
-            pdict[p] if p in pdict else ProductFilePathModel(path=p)
-            for p in input.pop('paths', [])]
+        input_paths = input.pop('paths', None)
+        if input_paths is not None:
+            pdict = {p.path: p for p in model.paths}
+            model.paths = [
+                pdict[p] if p in pdict else ProductFilePathModel(path=p)
+                for p in input_paths]
 
         # update scalar fields
         for k, v in input.items():
