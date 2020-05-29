@@ -43,8 +43,10 @@ class CommonInputFields:
     note = graphene.String(description='Note about the product in MarkDown.')
     paths = graphene.List(
         graphene.String,
-        description="Paths to the products. e.g., nersc:/go/to/my/product_v3"
-    )
+        description="Paths to the products. e.g., nersc:/go/to/my/product_v3")
+    relations = graphene.InputField(
+        graphene.List(RelationInputFields),
+        description=('Relations to other products'))
 
 class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     '''Input to createProduct()'''
@@ -53,10 +55,6 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     date_produced = graphene.Date(description='The date on which the product was produced')
     produced_by = graphene.String(description='The person or group that produced the product')
     posted_by = graphene.String(description='The person who entered the DB entry.')
-    relations = graphene.InputField(
-        graphene.List(RelationInputFields),
-        description=('Relations to other products')
-    )
 
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     '''Input to updateProduct()'''
@@ -125,6 +123,21 @@ class UpdateProduct(graphene.Mutation):
                 pdict[p] if p in pdict else ProductFilePathModel(path=p)
                 for p in input_paths]
 
+        # update relations
+        input_relations = input.pop('relations', None)
+        if input_relations is not None:
+            with sa.session.no_autoflush:
+                old_relations_dict = {(r.type_id, r.self_product_id, r.other_product_id): r for r in model.relations}
+                for r in input_relations:
+                    rmodel = old_relations_dict.pop((r['type_id'], model.product_id, r['product_id']), None)
+                    if not rmodel:
+                        type_ = ProductRelationTypeModel.query.filter_by(type_id=r['type_id']).one()
+                        other = ProductModel.query.filter_by(product_id=r['product_id']).one()
+                        m = ProductRelationModel(self_=model, type_=type_, other=other)
+                        sa.session.add(m)
+                for m in old_relations_dict.values():
+                    sa.session.delete(m)
+                  
         # update scalar fields
         for k, v in input.items():
             setattr(model, k, v)
