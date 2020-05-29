@@ -115,7 +115,7 @@ class UpdateProduct(graphene.Mutation):
     product = graphene.Field(lambda: Product)
 
     def mutate(root, info, product_id, input):
-        product = ProductModel.query.filter_by(product_id=product_id).first()
+        product = ProductModel.query.filter_by(product_id=product_id).one()
         for k, v in input.items():
             setattr(product, k, v)
         today = datetime.date.today()
@@ -135,7 +135,7 @@ class DeleteProduct(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, product_id):
-        product = ProductModel.query.filter_by(product_id=product_id).first()
+        product = ProductModel.query.filter_by(product_id=product_id).one()
         sa.session.delete(product)
         sa.session.commit()
         ok = True
