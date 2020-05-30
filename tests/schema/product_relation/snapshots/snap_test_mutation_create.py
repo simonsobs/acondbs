@@ -348,7 +348,7 @@ snapshots['test_schema_error[error-duplicate] 1'] = {
             ],
             'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: product_relations.type_id, product_relations.self_product_id, product_relations.other_product_id
 [SQL: INSERT INTO product_relations (type_id, self_product_id, other_product_id, reverse_relation_id) VALUES (?, ?, ?, ?)]
-[parameters: (2, 1, 4, None)]
+[parameters: (1, 4, 1, None)]
 (Background on this error at: http://sqlalche.me/e/gkpj)''',
             'path': [
                 'createProductRelation'
@@ -455,9 +455,9 @@ snapshots['test_schema_success[create] 1'] = {
                     'name': 'map1',
                     'productId': '1'
                 },
-                'relationId': '5',
+                'relationId': '6',
                 'reverse': {
-                    'relationId': '6'
+                    'relationId': '5'
                 },
                 'self_': {
                     'name': 'beam2',
@@ -559,32 +559,12 @@ snapshots['test_schema_success[create] 2'] = {
                 {
                     'node': {
                         'other': {
-                            'name': 'map1',
-                            'productId': '1'
+                            'name': 'beam2',
+                            'productId': '5'
                         },
                         'relationId': '5',
                         'reverse': {
                             'relationId': '6'
-                        },
-                        'self_': {
-                            'name': 'beam2',
-                            'productId': '5'
-                        },
-                        'type_': {
-                            'name': 'parent',
-                            'typeId': '1'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2',
-                            'productId': '5'
-                        },
-                        'relationId': '6',
-                        'reverse': {
-                            'relationId': '5'
                         },
                         'self_': {
                             'name': 'map1',
@@ -593,6 +573,26 @@ snapshots['test_schema_success[create] 2'] = {
                         'type_': {
                             'name': 'child',
                             'typeId': '2'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'map1',
+                            'productId': '1'
+                        },
+                        'relationId': '6',
+                        'reverse': {
+                            'relationId': '5'
+                        },
+                        'self_': {
+                            'name': 'beam2',
+                            'productId': '5'
+                        },
+                        'type_': {
+                            'name': 'parent',
+                            'typeId': '1'
                         }
                     }
                 }

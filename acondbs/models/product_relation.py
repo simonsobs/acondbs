@@ -46,7 +46,7 @@ def set_reverse_type(target, value, oldvalue, initiator):
     relation = target
 
     try:
-        if relation.reverse.__avoid_recursive:
+        if relation.__avoid_recursive:
             return
     except:
         pass
@@ -58,12 +58,12 @@ def set_reverse_type(target, value, oldvalue, initiator):
         reverse = ProductRelation()
         reverse.reverse = relation
         relation.reverse = reverse
-        relation.reverse.__avoid_recursive = True
+        reverse.__avoid_recursive = True
         if relation.self_:
             reverse.other = relation.self_
         if relation.other:
             reverse.self_ = relation.other
-        del relation.reverse.__avoid_recursive
+        del reverse.__avoid_recursive
     if not relation.reverse.type_:
         relation.reverse.__avoid_recursive = True
         relation.reverse.type_ = value.reverse
@@ -77,7 +77,7 @@ def set_reverse_other(target, value, oldvalue, initiator):
         return
 
     try:
-        if relation.reverse.__avoid_recursive:
+        if relation.__avoid_recursive:
             return
     except:
         pass
@@ -95,7 +95,7 @@ def set_reverse_self(target, value, oldvalue, initiator):
         return
 
     try:
-        if relation.reverse.__avoid_recursive:
+        if relation.__avoid_recursive:
             return
     except:
         pass

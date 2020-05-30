@@ -53,16 +53,16 @@ snapshots['test_schema_success[create] 1'] = {
                                     }
                                 },
                                 'otherProductId': 1,
-                                'relationId': '7',
+                                'relationId': '8',
                                 'reverse': {
-                                    'relationId': '8',
+                                    'relationId': '7',
                                     'typeId': 2,
                                     'type_': {
                                         'name': 'child',
                                         'typeId': '2'
                                     }
                                 },
-                                'reverseRelationId': 8,
+                                'reverseRelationId': 7,
                                 'typeId': 1,
                                 'type_': {
                                     'name': 'parent',
@@ -82,16 +82,16 @@ snapshots['test_schema_success[create] 1'] = {
                                     }
                                 },
                                 'otherProductId': 5,
-                                'relationId': '9',
+                                'relationId': '10',
                                 'reverse': {
-                                    'relationId': '10',
+                                    'relationId': '9',
                                     'typeId': 2,
                                     'type_': {
                                         'name': 'child',
                                         'typeId': '2'
                                     }
                                 },
-                                'reverseRelationId': 10,
+                                'reverseRelationId': 9,
                                 'typeId': 1,
                                 'type_': {
                                     'name': 'parent',
@@ -251,19 +251,6 @@ snapshots['test_schema_success[create] 2'] = {
                 {
                     'node': {
                         'other': {
-                            'name': 'map1'
-                        },
-                        'self_': {
-                            'name': 'beam111'
-                        },
-                        'type_': {
-                            'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
                             'name': 'beam111'
                         },
                         'self_': {
@@ -277,7 +264,7 @@ snapshots['test_schema_success[create] 2'] = {
                 {
                     'node': {
                         'other': {
-                            'name': 'beam2'
+                            'name': 'map1'
                         },
                         'self_': {
                             'name': 'beam111'
@@ -297,6 +284,19 @@ snapshots['test_schema_success[create] 2'] = {
                         },
                         'type_': {
                             'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam111'
+                        },
+                        'type_': {
+                            'name': 'parent'
                         }
                     }
                 }
