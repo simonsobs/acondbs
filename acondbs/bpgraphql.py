@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_graphql import GraphQLView
 
-from .schema.schema import schema
+from .schema.schema import create_schema
 
 ##__________________________________________________________________||
 # from flask import request
@@ -48,7 +48,11 @@ bp.add_url_rule('/graphql', view_func=GraphQLViewW.as_view('graphql', graphiql=T
 
 ##__________________________________________________________________||
 def init_app(app):
+    with app.app_context():
+        enable_mutation = not app.config.get('ACONDBS_SCHEME_MUTATION_DISABLE', False)
+        schema = create_schema(enable_mutation=enable_mutation)
     schema_holder[:] = [schema]
+
     app.register_blueprint(bp)
 
 ##__________________________________________________________________||
