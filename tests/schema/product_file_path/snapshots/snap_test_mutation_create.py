@@ -46,7 +46,7 @@ snapshots['test_schema_error[createProductFilePath-noSuchField] 1'] = {
         {
             'locations': [
                 {
-                    'column': 42,
+                    'column': 50,
                     'line': 3
                 }
             ],

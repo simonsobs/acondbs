@@ -39,7 +39,7 @@ snapshots['test_schema_error[deleteProductFilePath-error] 1'] = {
         {
             'locations': [
                 {
-                    'column': 13,
+                    'column': 21,
                     'line': 3
                 }
             ],

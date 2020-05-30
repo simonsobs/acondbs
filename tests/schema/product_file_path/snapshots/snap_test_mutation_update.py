@@ -47,7 +47,7 @@ snapshots['test_schema_error[updateProductFilePath-immutableField] 1'] = {
         {
             'locations': [
                 {
-                    'column': 53,
+                    'column': 61,
                     'line': 3
                 }
             ],
