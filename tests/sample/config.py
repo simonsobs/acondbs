@@ -12,6 +12,8 @@ ACONDBS_DB_BACKUP_CSV_GIT_PAUSE = 1.0 # second
 ACONDBS_DB_BACKUP_CSV_GIT_LOCK = ACONDBS_DB_BACKUP_CSV_GIT_FOLDER.joinpath('.lock')
 ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT = 2.0 # second
 
+ACONDBS_SCHEME_MUTATION_DISABLE = False
+
 ##__________________________________________________________________||
 del _THISDIR
 del Path
