@@ -21,16 +21,6 @@ def assert_mutation(app, snapshot, mutation, query, mock_request_backup_db, succ
     assert_query(app, snapshot, query)
 
 ##__________________________________________________________________||
-def assert_query_success(app, snapshot, query):
-    '''deprecated. use assert_query() instead
-    '''
-    client = Client(schema)
-    with app.app_context():
-        result = client.execute(query, context_value={})
-        assert 'errors' not in result
-        snapshot.assert_match(result)
-
-##__________________________________________________________________||
 def assert_mutation_success(app, snapshot, mutation, query, mock_request_backup_db):
     '''deprecated. use assert_mutation() instead
     '''
