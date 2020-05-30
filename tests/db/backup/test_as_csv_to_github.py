@@ -6,7 +6,7 @@ from graphene.test import Client
 
 
 from acondbs.db.ops import export_db_to_csv_files
-from acondbs.schema.schema import schema
+from acondbs.schema.schema import create_schema
 
 from acondbs.db.backup import backup_db_as_csv_to_github
 
@@ -64,6 +64,7 @@ def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
             }) { product { name } }
           }
         '''
+    schema = create_schema()
     client = Client(schema)
     with app.app_context():
         result = client.execute(mutation, context_value={})

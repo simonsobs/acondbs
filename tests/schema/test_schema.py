@@ -1,7 +1,4 @@
-import pytest
-from graphene.test import Client
-
-from acondbs.schema.schema import schema
+from .funcs import assert_query
 
 ##__________________________________________________________________||
 def test_types(app, snapshot):
@@ -29,13 +26,6 @@ def test_types(app, snapshot):
       }
     '''
 
-    client = Client(schema)
-
-    with app.app_context():
-        result = client.execute(query, context_value={})
-
-    assert 'errors' not in result
-
-    snapshot.assert_match(result)
+    assert_query(app, snapshot, [[query], {}])
 
 ##__________________________________________________________________||

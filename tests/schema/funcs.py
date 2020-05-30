@@ -1,12 +1,13 @@
 from graphene.test import Client
 
-from acondbs.schema.schema import schema
+from acondbs.schema.schema import create_schema
 
 ##__________________________________________________________________||
 def assert_query(app, snapshot, query, error=False):
     args, kwags = query
     if 'context_value' not in kwags:
         kwags['context_value'] = {}
+    schema = create_schema()
     client = Client(schema)
     with app.app_context():
         result = client.execute(*args, **kwags)
