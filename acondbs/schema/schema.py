@@ -1,5 +1,3 @@
-from flask import g, current_app
-
 import graphene
 
 from .query import Query
