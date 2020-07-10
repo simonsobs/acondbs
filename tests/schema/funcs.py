@@ -30,8 +30,9 @@ def assert_query(app, snapshot, query, error=False):
     # assert errors
     if error:
         assert 'errors' in result
-    else:
-        assert 'errors' not in result
+        return
+
+    assert 'errors' not in result
 
     # snapshot test
     #   https://github.com/syrusakbary/snapshottest/

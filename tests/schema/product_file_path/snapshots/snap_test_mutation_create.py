@@ -42,21 +42,6 @@ snapshots['test_schema_success[createProductFilePath] 2'] = {
 }
 
 snapshots['test_schema_error[createProductFilePath-noSuchField] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 50,
-                    'line': 3
-                }
-            ],
-            'message': '''Argument "input" has invalid value {path: "nersc:/go/to/my/new_product_v1", note: "- Note 1", productId: 1010, noSuchField: "xxx"}.
-In field "noSuchField": Unknown field.'''
-        }
-    ]
-}
-
-snapshots['test_schema_error[createProductFilePath-noSuchField] 2'] = {
     'data': {
         'allProductFilePaths': {
             'edges': [

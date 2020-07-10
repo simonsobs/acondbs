@@ -8,21 +8,6 @@ from snapshottest import Snapshot
 snapshots = Snapshot()
 
 snapshots['test_schema_error[error-immutable-field] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 20,
-                    'line': 3
-                }
-            ],
-            'message': '''Variable "$input" got invalid value {"name": "mmap"}.
-In field "name": Unknown field.'''
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-immutable-field] 2'] = {
     'data': {
         'allProductRelationTypes': {
             'edges': [

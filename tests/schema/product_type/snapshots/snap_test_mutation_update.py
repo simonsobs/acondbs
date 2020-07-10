@@ -64,26 +64,6 @@ snapshots['test_schema_success[update] 2'] = {
 
 snapshots['test_schema_error[error-nonexistent] 1'] = {
     'data': {
-        'updateProductType': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 3
-                }
-            ],
-            'message': 'No row was found for one()',
-            'path': [
-                'updateProductType'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-nonexistent] 2'] = {
-    'data': {
         'allProductTypes': {
             'edges': [
                 {

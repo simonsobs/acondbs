@@ -110,26 +110,6 @@ snapshots['test_schema_success[delete] 2'] = {
 
 snapshots['test_schema_error[error] 1'] = {
     'data': {
-        'deleteProduct': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 3
-                }
-            ],
-            'message': 'No row was found for one()',
-            'path': [
-                'deleteProduct'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error] 2'] = {
-    'data': {
         'allProductFilePaths': {
             'edges': [
                 {

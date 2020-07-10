@@ -66,26 +66,6 @@ snapshots['test_schema_success[create] 2'] = {
 
 snapshots['test_schema_error[error-nonexistent] 1'] = {
     'data': {
-        'deleteProductRelation': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 3
-                }
-            ],
-            'message': 'No row was found for one()',
-            'path': [
-                'deleteProductRelation'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-nonexistent] 2'] = {
-    'data': {
         'allProductRelations': {
             'edges': [
                 {

@@ -33,26 +33,6 @@ snapshots['test_schema_success[deleteProductFilePath] 2'] = {
 
 snapshots['test_schema_error[deleteProductFilePath-error] 1'] = {
     'data': {
-        'deleteProductFilePath': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 21,
-                    'line': 3
-                }
-            ],
-            'message': "Class 'builtins.NoneType' is not mapped",
-            'path': [
-                'deleteProductFilePath'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[deleteProductFilePath-error] 2'] = {
-    'data': {
         'allProductFilePaths': {
             'edges': [
                 {

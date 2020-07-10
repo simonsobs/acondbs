@@ -9,29 +9,6 @@ snapshots = Snapshot()
 
 snapshots['test_schema_error[error-already-exist] 1'] = {
     'data': {
-        'createProductRelationTypes': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 6
-                }
-            ],
-            'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: product_relation_types.name
-[SQL: INSERT INTO product_relation_types (name, reverse_type_id, indef_article, singular, plural) VALUES (?, ?, ?, ?, ?)]
-[parameters: ('parent', None, 'a', 'parent', 'parents')]
-(Background on this error at: http://sqlalche.me/e/gkpj)''',
-            'path': [
-                'createProductRelationTypes'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-already-exist] 2'] = {
-    'data': {
         'allProductRelationTypes': {
             'edges': [
                 {
@@ -180,26 +157,6 @@ snapshots['test_schema_error[error-already-exist] 2'] = {
 }
 
 snapshots['test_schema_error[error-reverse-and-self_reverse] 1'] = {
-    'data': {
-        'createProductRelationTypes': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 6
-                }
-            ],
-            'message': '"reverse" is given when "self_reverse" is True',
-            'path': [
-                'createProductRelationTypes'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-reverse-and-self_reverse] 2'] = {
     'data': {
         'allProductRelationTypes': {
             'edges': [

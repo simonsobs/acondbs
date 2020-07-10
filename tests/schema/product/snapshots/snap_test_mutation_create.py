@@ -340,21 +340,6 @@ snapshots['test_schema_success[create] 2'] = {
 }
 
 snapshots['test_schema_error[error-no-name] 1'] = {
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 24,
-                    'line': 2
-                }
-            ],
-            'message': '''Variable "$input" got invalid value {"typeId": 1}.
-In field "name": Expected "String!", found null.'''
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-no-name] 2'] = {
     'data': {
         'allProductFilePaths': {
             'edges': [
@@ -935,29 +920,6 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
 }
 
 snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
-    'data': {
-        'createProduct': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 3
-                }
-            ],
-            'message': '''(sqlite3.IntegrityError) UNIQUE constraint failed: products.type_id, products.name
-[SQL: INSERT INTO products (type_id, name, contact, date_produced, produced_by, date_posted, posted_by, date_updated, updated_by, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
-[parameters: (1, 'map1', None, None, None, '2020-05-04', None, None, None, None)]
-(Background on this error at: http://sqlalche.me/e/gkpj)''',
-            'path': [
-                'createProduct'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-the-same-type-and-name] 2'] = {
     'data': {
         'allProductFilePaths': {
             'edges': [

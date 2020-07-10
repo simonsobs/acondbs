@@ -9,26 +9,6 @@ snapshots = Snapshot()
 
 snapshots['test_schema_error[error-nonexistent] 1'] = {
     'data': {
-        'deleteProductRelationTypes': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 3
-                }
-            ],
-            'message': 'No row was found for one()',
-            'path': [
-                'deleteProductRelationTypes'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-nonexistent] 2'] = {
-    'data': {
         'allProductRelationTypes': {
             'edges': [
                 {
@@ -177,29 +157,6 @@ snapshots['test_schema_error[error-nonexistent] 2'] = {
 }
 
 snapshots['test_schema_error[error-unempty] 1'] = {
-    'data': {
-        'deleteProductRelationTypes': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 3,
-                    'line': 3
-                }
-            ],
-            'message': '''(sqlite3.IntegrityError) NOT NULL constraint failed: product_relations.type_id
-[SQL: UPDATE product_relations SET type_id=? WHERE product_relations.relation_id = ?]
-[parameters: ((None, 1), (None, 2), (None, 3), (None, 4), (None, 5), (None, 6))]
-(Background on this error at: http://sqlalche.me/e/gkpj)''',
-            'path': [
-                'deleteProductRelationTypes'
-            ]
-        }
-    ]
-}
-
-snapshots['test_schema_error[error-unempty] 2'] = {
     'data': {
         'allProductRelationTypes': {
             'edges': [
