@@ -38,7 +38,7 @@ setup(
     ],
     extras_require={
         'tests': [
-            'pytest>-5.4',
+            'pytest>=5.4',
             'pytest-cov>=2.8',
             'snapshottest>0.5'
         ]
