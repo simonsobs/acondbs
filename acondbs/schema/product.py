@@ -24,7 +24,7 @@ class Product(SQLAlchemyObjectType):
 #     class Meta:
 #         node = Product
 
-## Product._meta.connection is used instead
+## Product.connection is used instead
 ## https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-478744077
 
 ##__________________________________________________________________||

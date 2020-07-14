@@ -21,7 +21,7 @@ class Query(graphene.ObjectType):
 
     node = relay.Node.Field()
 
-    all_product_types = PFilterableConnectionField(ProductType._meta.connection)
+    all_product_types = PFilterableConnectionField(ProductType.connection)
 
     product_type = graphene.Field(ProductType, type_id=graphene.Int(), name=graphene.String())
 
@@ -31,8 +31,8 @@ class Query(graphene.ObjectType):
 
         return ProductType.get_query(info).filter(*filter).one_or_none()
 
-    all_products = PFilterableConnectionField(Product._meta.connection)
-    all_product_file_paths = PFilterableConnectionField(ProductFilePath._meta.connection)
+    all_products = PFilterableConnectionField(Product.connection)
+    all_product_file_paths = PFilterableConnectionField(ProductFilePath.connection)
 
     product = graphene.Field(
         Product,
@@ -47,7 +47,7 @@ class Query(graphene.ObjectType):
 
         return Product.get_query(info).filter(*filter).one_or_none()
 
-    all_product_relation_types = PFilterableConnectionField(ProductRelationType._meta.connection)
+    all_product_relation_types = PFilterableConnectionField(ProductRelationType.connection)
 
     product_relation_type = graphene.Field(ProductRelationType, type_id=graphene.Int(), name=graphene.String())
 
@@ -55,7 +55,7 @@ class Query(graphene.ObjectType):
         filter = [getattr(ProductRelationTypeModel, k)==v for k, v in kwargs.items()]
         return ProductRelationType.get_query(info).filter(*filter).one_or_none()
 
-    all_product_relations = PFilterableConnectionField(ProductRelation._meta.connection)
+    all_product_relations = PFilterableConnectionField(ProductRelation.connection)
 
     product_relation = graphene.Field(ProductRelation, relation_id=graphene.Int())
 
