@@ -3,25 +3,34 @@ import textwrap
 
 from ..funcs import assert_query
 
-from ..gql import FRAGMENT_PRODUCT_RELATION_CONNECTION
+from ..gql import (
+    FRAGMENT_PRODUCT_CONNECTION_SHALLOW,
+    FRAGMENT_PRODUCT_CONNECTION_DEEP
+    )
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
         [textwrap.dedent('''
           {
-            allProductRelations {
-              ...fragmentProductRelationConnection
+            allProductFilePaths {
+              edges {
+                node {
+                  pathId
+                  path
+                  note
+                }
+              }
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION_CONNECTION,],
+        '''),],
         {},
-        id='query'
+        id='all'
     ),
     pytest.param(
         [textwrap.dedent('''
           {
-            allProductRelations {
+            allProductFilePaths {
               totalCount
             }
           }
@@ -36,4 +45,4 @@ params = [
 def test_schema(app, snapshot, args, kwags):
     assert_query(app, snapshot, [args, kwags])
 
-# __________________________________________________________________||
+##__________________________________________________________________||

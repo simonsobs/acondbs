@@ -16,6 +16,17 @@ params = [
         {},
         id='sort-order'
     ),
+    pytest.param(
+        [textwrap.dedent('''
+          {
+            allProductTypes {
+              totalCount
+            }
+          }
+        '''),],
+        {},
+        id='total-count'
+    ),
 ]
 
 @pytest.mark.parametrize('args, kwags', params)

@@ -95,3 +95,11 @@ snapshots['test_schema[query] 1'] = {
         }
     }
 }
+
+snapshots['test_schema[total-count] 1'] = {
+    'data': {
+        'allProductRelations': {
+            'totalCount': 4
+        }
+    }
+}

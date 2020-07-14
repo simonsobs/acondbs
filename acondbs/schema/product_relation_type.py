@@ -8,6 +8,7 @@ from ..models import ProductRelationType as ProductRelationTypeModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
+from .connection import CountedConnection
 from .filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
@@ -16,6 +17,7 @@ class ProductRelationType(SQLAlchemyObjectType):
     class Meta:
         model = ProductRelationTypeModel
         interfaces = (graphene.relay.Node, )
+        connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||

@@ -532,3 +532,11 @@ snapshots['test_schema[filters-type_name-sort] 1'] = {
         }
     }
 }
+
+snapshots['test_schema[total-count] 1'] = {
+    'data': {
+        'allProducts': {
+            'totalCount': 3
+        }
+    }
+}

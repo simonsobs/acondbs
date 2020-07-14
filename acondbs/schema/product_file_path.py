@@ -8,6 +8,7 @@ from ..models import ProductFilePath as ProductFilePathModel
 from ..db.sa import sa
 from ..db.backup import request_backup_db
 
+from .connection import CountedConnection
 from .filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
@@ -15,6 +16,7 @@ class ProductFilePath(SQLAlchemyObjectType):
     class Meta:
         model = ProductFilePathModel
         interfaces = (relay.Node, )
+        connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||

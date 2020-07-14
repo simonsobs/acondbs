@@ -18,6 +18,17 @@ params = [
         {},
         id='query'
     ),
+    pytest.param(
+        [textwrap.dedent('''
+          {
+            allProductRelationTypes {
+              totalCount
+            }
+          }
+        '''),],
+        {},
+        id='total-count'
+    ),
 ]
 
 ##__________________________________________________________________||

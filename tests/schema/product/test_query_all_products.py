@@ -87,6 +87,17 @@ params = [
         {},
         id='filters-type_name-sort'
     ),
+    pytest.param(
+        [textwrap.dedent('''
+          {
+            allProducts(filters: {typeName: "map"}, first: 2) {
+              totalCount
+            }
+          }
+         '''),],
+        {},
+        id='total-count'
+    ),
 ]
 
 ##__________________________________________________________________||

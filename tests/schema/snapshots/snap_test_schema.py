@@ -137,6 +137,13 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': None
                             }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -296,6 +303,13 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': None
                             }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -450,6 +464,13 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': None
                             }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -544,6 +565,13 @@ snapshots['test_types 1'] = {
                         {
                             'description': 'Contains the nodes in this connection.',
                             'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
                             'type': {
                                 'name': None
                             }
@@ -805,6 +833,13 @@ snapshots['test_types 1'] = {
                         {
                             'description': 'Contains the nodes in this connection.',
                             'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
                             'type': {
                                 'name': None
                             }
