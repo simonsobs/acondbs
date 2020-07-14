@@ -32,7 +32,7 @@ setup(
         'Flask-GraphQL>=2.0',
         'Flask-Migrate>=2.5',
         'Flask-SQLAlchemy>=2.4',
-        'graphene-sqlalchemy>=2.2',
+        'graphene-sqlalchemy>=2.3',
         'graphene-sqlalchemy-filter>=1.10',
         'gitpython>=3.1'
     ],
