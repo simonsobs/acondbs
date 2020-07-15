@@ -6,8 +6,29 @@ from .schema.schema import create_schema
 ##__________________________________________________________________||
 # from flask import request
 # class GraphQLView(GraphQLView):
+#     def print_request(self):
+#         import json
+#         import textwrap
+#         data_dict = json.loads(request.data)
+#         m = '\n'.join([
+#             textwrap.dedent('''
+#             {}:
+#             {}
+#             ''').lstrip().format(k, textwrap.indent(str(v), '    ').rstrip()) for k, v in data_dict.items()]
+#         )
+#         msg = textwrap.dedent('''
+#         - received query
+#         {}
+#         --- end of query ---
+#         ''').format(textwrap.indent(m, '    '))
+#         print(msg)
+#         return super().dispatch_request()
 #     def dispatch_request(self):
-#         print(request.data.decode('unicode_escape'))
+#         try:
+#             self.print_request()
+#         except BaseException as error:
+#             import traceback
+#             traceback.print_exc()
 #         return super().dispatch_request()
 
 ##__________________________________________________________________||
