@@ -7,7 +7,7 @@ from .schema.schema import create_schema
 # from flask import request
 # class GraphQLView(GraphQLView):
 #     def dispatch_request(self):
-#         print(request.data)
+#         print(request.data.decode('unicode_escape'))
 #         return super().dispatch_request()
 
 ##__________________________________________________________________||
