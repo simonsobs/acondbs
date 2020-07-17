@@ -22,7 +22,6 @@ from .schema.schema import create_schema
 #         --- end of query ---
 #         ''').format(textwrap.indent(m, '    '))
 #         print(msg)
-#         return super().dispatch_request()
 #     def dispatch_request(self):
 #         try:
 #             self.print_request()
