@@ -139,7 +139,7 @@ class UpdateProduct(graphene.Mutation):
                         sa.session.add(m)
                 for m in old_relations_dict.values():
                     sa.session.delete(m)
-                  
+
         # update scalar fields
         for k, v in input.items():
             setattr(model, k, v)
