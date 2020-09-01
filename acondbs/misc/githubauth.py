@@ -48,11 +48,16 @@ def get_username(token):
          'Authorization': 'token {}'.format(token)
     }
 
-    # r = requests.get('https://api.github.com/user?access_token={token}'.format(token=token))
     r = requests.get('https://api.github.com/user', headers=headers)
+
     r = r.json()
-    # e.g., {"login": "octocat", "id": 1, "node_id": "MDQ6VXNlcjE=",  ... }
-    # https://docs.github.com/en/rest/reference/users
+    # examples:
+    #   success:
+    #     r = {"login": "octocat", "id": 1, "node_id": "MDQ6VXNlcjE=",  ... }
+    #   https://docs.github.com/en/rest/reference/users
+    #
+    #   error:
+    #     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/rest'}
 
     user = r['login']
 
