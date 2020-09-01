@@ -30,7 +30,7 @@ def get_token(code):
     # type(r): <class 'dict'>
     # e.g., r = {'access_token': 'xxx', 'token_type': 'bearer', 'scope': 'user'}
 
-    token = r['access_token']
+    token = r.get('access_token')
     return token
 
 ##__________________________________________________________________||
