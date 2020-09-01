@@ -28,7 +28,16 @@ def get_token(code):
     r = requests.post(token_url, json=params, headers=headers)
     r = r.json()
     # type(r): <class 'dict'>
-    # e.g., r = {'access_token': 'xxx', 'token_type': 'bearer', 'scope': 'user'}
+    # examples:
+    #   success:
+    #     r = {'access_token': 'xxx', 'token_type': 'bearer', 'scope': 'user'}
+    #
+    #   error:
+    #     r = {
+    #         'error': 'bad_verification_code',
+    #         'error_description': 'The code passed is incorrect or expired.',
+    #         'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
+    #     }
 
     token = r.get('access_token')
     return token
