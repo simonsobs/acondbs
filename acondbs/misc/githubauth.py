@@ -59,8 +59,7 @@ def get_username(token):
     #   error:
     #     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/rest'}
 
-    user = r['login']
-
+    user = r.get('login')
     return user
 
 ##__________________________________________________________________||
