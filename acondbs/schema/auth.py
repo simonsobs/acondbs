@@ -1,6 +1,8 @@
 import graphene
 import requests
 
+from flask import current_app
+
 ##__________________________________________________________________||
 class AuthPayload(graphene.ObjectType):
     token = graphene.String()
@@ -14,11 +16,11 @@ class GitHubAuth(graphene.Mutation):
     authPayload = graphene.Field(lambda: AuthPayload)
 
     def mutate(root, info, code):
-        github_client_id = '1ce266dd301a653ca64f'
-        github_client_secret = 'adb99c5ef0cdfbc052af1e3573684026bd2c1c23'
-        authorize_url = 'https://github.com/login/oauth/authorize'
-        token_url = 'https://github.com/login/oauth/access_token'
-        redirect_uri = 'http://localhost:8081/signin'
+        github_client_id = current_app.config['GITHUB_AUTH_CLIENT_ID']
+        github_client_secret = current_app.config['GITHUB_AUTH_CLIENT_SECRET']
+        authorize_url = current_app.config['GITHUB_AUTH_AUTHORIZE_URL']
+        token_url = current_app.config['GITHUB_AUTH_TOKEN_URL']
+        redirect_uri = current_app.config['GITHUB_AUTH_REDIRECT_URI']
 
         params = {
             'grant_type': 'authorization_code',
