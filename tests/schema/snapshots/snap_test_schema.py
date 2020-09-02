@@ -987,6 +987,13 @@ from one product to the other. The reverse relation will be also added.''',
                             'type': {
                                 'name': 'GitHubAuth'
                             }
+                        },
+                        {
+                            'description': None,
+                            'name': 'githubUser',
+                            'type': {
+                                'name': 'GitHubUser'
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -1578,6 +1585,20 @@ from one product to the other. The reverse relation will be also added.''',
                     ],
                     'inputFields': None,
                     'name': 'AuthPayload'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'authPayload',
+                            'type': {
+                                'name': 'AuthPayload'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubUser'
                 },
                 {
                     'description': 'A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation and subscription operations.',

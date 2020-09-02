@@ -21,3 +21,15 @@ class GitHubAuth(graphene.Mutation):
         return GitHubAuth(authPayload=authPayload)
 
 ##__________________________________________________________________||
+class GitHubUser(graphene.Mutation):
+    class Arguments:
+        token = graphene.String(required=True)
+
+    authPayload = graphene.Field(lambda: AuthPayload)
+
+    def mutate(root, info, token):
+        user = githubauth.get_username(token)
+        authPayload = AuthPayload(token=token, user=user)
+        return GitHubAuth(authPayload=authPayload)
+
+##__________________________________________________________________||
