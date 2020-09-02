@@ -11,7 +11,7 @@ from .product_relation_type import (
 from .product_relation import (
     CreateProductRelation, DeleteProductRelation)
 
-from .auth import GitHubAuth, GitHubUser
+from .auth import GitHubAuth
 
 from .query import Query
 
@@ -38,7 +38,5 @@ class Mutation(graphene.ObjectType):
     delete_product_relation = DeleteProductRelation.Field()
 
     github_auth = GitHubAuth.Field()
-    github_user = GitHubUser.Field()
-
 
 ##__________________________________________________________________||

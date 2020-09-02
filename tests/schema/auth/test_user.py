@@ -10,7 +10,7 @@ from acondbs.schema.schema import create_schema
 @pytest.fixture(autouse=True)
 def mock_githubauth(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.auth.githubauth", y)
+    monkeypatch.setattr("acondbs.schema.query.githubauth", y)
     yield y
 
 
@@ -18,13 +18,8 @@ def mock_githubauth(monkeypatch):
 def test_auth(app, mock_githubauth):
 
     query = textwrap.dedent('''
-        mutation GitHubUser($token: String!) {
-          githubUser(token: $token) {
-            authPayload {
-              token
-              user
-            }
-          }
+        query GitHubUsername($token: String!) {
+          githubUsername(token: $token)
         }
     '''[1:])
 
@@ -33,12 +28,7 @@ def test_auth(app, mock_githubauth):
     mock_githubauth.get_username.return_value = 'UserNameABC'
 
     expected = {
-        'githubUser': {
-            'authPayload': {
-                'token': 'token0123',
-                'user': 'UserNameABC'
-            }
-        }
+        'githubUsername': 'UserNameABC'
     }
 
     with app.app_context():

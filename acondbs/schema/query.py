@@ -10,6 +10,8 @@ from .product_relation import ProductRelation, ProductRelationModel
 
 from .filter_ import PFilterableConnectionField
 
+from ..misc import githubauth
+
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
 
@@ -62,5 +64,11 @@ class Query(graphene.ObjectType):
     def resolve_product_relation(self, info, **kwargs):
         filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
         return ProductRelation.get_query(info).filter(*filter).one_or_none()
+
+    github_username = graphene.String(token=graphene.String(required=True))
+
+    def resolve_github_username(self, info, token):
+        user = githubauth.get_username(token)
+        return user;
 
 ##__________________________________________________________________||
