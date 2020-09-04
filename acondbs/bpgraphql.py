@@ -9,6 +9,8 @@ from .schema.schema import create_schema
 #     def print_request(self):
 #         import json
 #         import textwrap
+#         h = request.headers
+#         h = str(h)
 #         data_dict = json.loads(request.data)
 #         m = '\n'.join([
 #             textwrap.dedent('''
@@ -17,10 +19,15 @@ from .schema.schema import create_schema
 #             ''').lstrip().format(k, textwrap.indent(str(v), '    ').rstrip()) for k, v in data_dict.items()]
 #         )
 #         msg = textwrap.dedent('''
+#         - received header
+#         {h}
 #         - received query
-#         {}
-#         --- end of query ---
-#         ''').format(textwrap.indent(m, '    '))
+#         {q}
+#         --- end ---
+#         ''').format(
+#             h=textwrap.indent(h, '    '),
+#             q=textwrap.indent(m, '    ')
+#         )
 #         print(msg)
 #     def dispatch_request(self):
 #         try:
