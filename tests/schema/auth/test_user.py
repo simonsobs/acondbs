@@ -1,5 +1,6 @@
-import textwrap
 from graphene.test import Client
+from graphene import Context
+from werkzeug.datastructures import Headers
 
 import pytest
 import unittest.mock as mock
@@ -17,13 +18,7 @@ def mock_githubauth(monkeypatch):
 ##__________________________________________________________________||
 def test_auth(app, mock_githubauth):
 
-    query = textwrap.dedent('''
-        query GitHubUsername($token: String!) {
-          githubUsername(token: $token)
-        }
-    '''[1:])
-
-    variables = { 'token': 'token0123' }
+    query = '{ githubUsername }'
 
     mock_githubauth.get_username.return_value = 'UserNameABC'
 
@@ -31,10 +26,12 @@ def test_auth(app, mock_githubauth):
         'githubUsername': 'UserNameABC'
     }
 
+    context = Context(headers=Headers({'Authorization': 'token token0123'}))
+
     with app.app_context():
         schema = create_schema()
         client = Client(schema)
-        result = client.execute(query, variables=variables, context_value={})
+        result = client.execute(query, context_value=context)
         assert {'data': expected} == result
 
 ##__________________________________________________________________||

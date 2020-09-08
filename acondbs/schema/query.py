@@ -1,6 +1,7 @@
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
+from graphql import GraphQLError
 
 from .product import Product, ProductModel
 from .product_file_path import ProductFilePath, ProductFilePathModel
@@ -65,9 +66,19 @@ class Query(graphene.ObjectType):
         filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
         return ProductRelation.get_query(info).filter(*filter).one_or_none()
 
-    github_username = graphene.String(token=graphene.String(required=True))
+    github_username = graphene.String()
 
-    def resolve_github_username(self, info, token):
+    def resolve_github_username(self, info):
+
+        auth = info.context.headers.get('Authorization')
+        # e.g., "token xxxx"
+
+        if not auth:
+            raise GraphQLError('Authorization is required')
+
+        token = auth.split()[1]
+        # e.g., "xxxx"
+
         user = githubauth.get_username(token)
         return user;
 
