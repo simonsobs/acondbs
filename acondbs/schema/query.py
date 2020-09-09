@@ -1,6 +1,7 @@
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
+from graphql import GraphQLError
 
 from .product import Product, ProductModel
 from .product_file_path import ProductFilePath, ProductFilePathModel
@@ -9,6 +10,8 @@ from .product_relation_type import ProductRelationType, ProductRelationTypeModel
 from .product_relation import ProductRelation, ProductRelationModel
 
 from .filter_ import PFilterableConnectionField
+
+from ..misc import githubauth
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
@@ -62,5 +65,21 @@ class Query(graphene.ObjectType):
     def resolve_product_relation(self, info, **kwargs):
         filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
         return ProductRelation.get_query(info).filter(*filter).one_or_none()
+
+    github_username = graphene.String()
+
+    def resolve_github_username(self, info):
+
+        auth = info.context.headers.get('Authorization')
+        # e.g., "token xxxx"
+
+        if not auth:
+            raise GraphQLError('Authorization is required')
+
+        token = auth.split()[1]
+        # e.g., "xxxx"
+
+        user = githubauth.get_username(token)
+        return user;
 
 ##__________________________________________________________________||

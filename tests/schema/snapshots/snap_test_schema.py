@@ -90,6 +90,13 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': 'ProductRelation'
                             }
+                        },
+                        {
+                            'description': None,
+                            'name': 'githubUsername',
+                            'type': {
+                                'name': 'String'
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -980,6 +987,13 @@ from one product to the other. The reverse relation will be also added.''',
                             'type': {
                                 'name': 'DeleteProductRelation'
                             }
+                        },
+                        {
+                            'description': None,
+                            'name': 'githubAuth',
+                            'type': {
+                                'name': 'GitHubAuth'
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -1536,6 +1550,41 @@ from one product to the other. The reverse relation will be also added.''',
                     ],
                     'inputFields': None,
                     'name': 'DeleteProductRelation'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'authPayload',
+                            'type': {
+                                'name': 'AuthPayload'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubAuth'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'token',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'user',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'AuthPayload'
                 },
                 {
                     'description': 'A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation and subscription operations.',
