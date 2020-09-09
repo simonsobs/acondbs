@@ -15,11 +15,11 @@ ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT = 2.0 # second
 ACONDBS_SCHEME_MUTATION_DISABLE = False
 
 ##__________________________________________________________________||
-GITHUB_AUTH_CLIENT_ID = '1ce266dd301a653ca64f'
-GITHUB_AUTH_CLIENT_SECRET = 'adb99c5ef0cdfbc052af1e3573684026bd2c1c23'
+GITHUB_AUTH_CLIENT_ID = '0123456789abcdefghij'
+GITHUB_AUTH_CLIENT_SECRET = 'abcdefghijklmnupqrstuvwxyz0123456789abcd'
 GITHUB_AUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
 GITHUB_AUTH_TOKEN_URL = 'https://github.com/login/oauth/access_token'
-GITHUB_AUTH_REDIRECT_URI = 'http://localhost:8081/signin'
+GITHUB_AUTH_REDIRECT_URI = 'http://localhost:8080/signin'
 
 ##__________________________________________________________________||
 del _THISDIR
