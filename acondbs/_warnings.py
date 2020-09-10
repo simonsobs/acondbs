@@ -19,6 +19,6 @@ def format(message, category, filename, lineno, file=None, line=None):
     ret = '{}:{}: {}\n'.format(filename, lineno, message)
     return ret
 
-warnings.formatwarning =format
+warnings.formatwarning = format
 
 ##__________________________________________________________________||
