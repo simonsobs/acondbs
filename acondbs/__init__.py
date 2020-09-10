@@ -4,6 +4,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from . import _warnings
+from . import _logging
 
 ##__________________________________________________________________||
 DEFAULT_CONFIG_DICT = dict(
@@ -14,6 +15,8 @@ DEFAULT_CONFIG_DICT = dict(
 
 ##__________________________________________________________________||
 def create_app(config_path=None, **kwargs):
+
+    _logging.configure_logging()
 
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_mapping(**DEFAULT_CONFIG_DICT)
@@ -46,6 +49,7 @@ def create_app(config_path=None, **kwargs):
 
     CORS(app, resources={r'/*': {'origins': '*'}})
 
+    app.logger.info('"app" initialized')
     return app
 
 ##__________________________________________________________________||
