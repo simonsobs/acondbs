@@ -12,7 +12,7 @@ from .product_relation import ProductRelation, ProductRelationModel
 
 from .filter_ import PFilterableConnectionField
 
-from .auth import OAuthAppInfo
+from .auth import OAuthAppInfo, GitHubUser
 
 from ..misc import githubauth
 
@@ -84,6 +84,25 @@ class Query(graphene.ObjectType):
 
         user = githubauth.get_username(token)
         return user;
+
+    github_user = graphene.Field(GitHubUser)
+
+    def resolve_github_user(self, info):
+
+        auth = info.context.headers.get('Authorization')
+        # e.g., "token xxxx"
+
+        if not auth:
+            raise GraphQLError('Authorization is required')
+
+        token = auth.split()[1]
+        # e.g., "xxxx"
+
+        user = githubauth.get_user(token)
+        if not user:
+            raise GraphQLError('Unsuccessful to obtain the user')
+
+        return GitHubUser(**user);
 
     oauth_app_info = graphene.Field(OAuthAppInfo)
 

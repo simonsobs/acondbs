@@ -11,6 +11,12 @@ class OAuthAppInfo(graphene.ObjectType):
     redirect_uri = graphene.String()
 
 ##__________________________________________________________________||
+class GitHubUser(graphene.ObjectType):
+    login = graphene.String()
+    name = graphene.String()
+    avatarUrl = graphene.String() # Camel case so can easily be instantiated
+
+##__________________________________________________________________||
 class AuthPayload(graphene.ObjectType):
     token = graphene.String()
     user = graphene.String()

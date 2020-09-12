@@ -100,6 +100,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'githubUser',
+                            'type': {
+                                'name': 'GitHubUser'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'oauthAppInfo',
                             'type': {
                                 'name': 'OAuthAppInfo'
@@ -888,6 +895,34 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'ProductRelationTypeSortEnum'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'login',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'name',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'avatarUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubUser'
                 },
                 {
                     'description': None,

@@ -100,6 +100,9 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'githubUsername'
                 },
                 {
+                    'name': 'githubUser'
+                },
+                {
                     'name': 'oauthAppInfo'
                 }
             ],
@@ -149,6 +152,9 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                 },
                 {
                     'name': 'githubUsername'
+                },
+                {
+                    'name': 'githubUser'
                 },
                 {
                     'name': 'oauthAppInfo'
@@ -250,6 +256,9 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                 },
                 {
                     'name': 'githubUsername'
+                },
+                {
+                    'name': 'githubUser'
                 },
                 {
                     'name': 'oauthAppInfo'
