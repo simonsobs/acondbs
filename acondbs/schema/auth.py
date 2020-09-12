@@ -4,6 +4,13 @@ from graphql import GraphQLError
 from ..misc import githubauth
 
 ##__________________________________________________________________||
+class OAuthAppInfo(graphene.ObjectType):
+    client_id = graphene.String()
+    authorize_url = graphene.String()
+    token_url = graphene.String()
+    redirect_uri = graphene.String()
+
+##__________________________________________________________________||
 class AuthPayload(graphene.ObjectType):
     token = graphene.String()
     user = graphene.String()

@@ -97,6 +97,13 @@ snapshots['test_types 1'] = {
                             'type': {
                                 'name': 'String'
                             }
+                        },
+                        {
+                            'description': None,
+                            'name': 'oauthAppInfo',
+                            'type': {
+                                'name': 'OAuthAppInfo'
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -881,6 +888,41 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'ProductRelationTypeSortEnum'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'clientId',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'authorizeUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'tokenUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'redirectUri',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'OAuthAppInfo'
                 },
                 {
                     'description': None,

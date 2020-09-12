@@ -1,3 +1,4 @@
+from flask import current_app
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
@@ -10,6 +11,8 @@ from .product_relation_type import ProductRelationType, ProductRelationTypeModel
 from .product_relation import ProductRelation, ProductRelationModel
 
 from .filter_ import PFilterableConnectionField
+
+from .auth import OAuthAppInfo
 
 from ..misc import githubauth
 
@@ -81,5 +84,15 @@ class Query(graphene.ObjectType):
 
         user = githubauth.get_username(token)
         return user;
+
+    oauth_app_info = graphene.Field(OAuthAppInfo)
+
+    def resolve_oauth_app_info(self, info):
+        return OAuthAppInfo(
+            client_id=current_app.config['GITHUB_AUTH_CLIENT_ID'],
+            authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
+            token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
+            redirect_uri=current_app.config['GITHUB_AUTH_REDIRECT_URI']
+        )
 
 ##__________________________________________________________________||
