@@ -44,6 +44,8 @@ def get_token(code):
 
 ##__________________________________________________________________||
 def get_username(token):
+    '''deprecated. replaced with get_user()
+    '''
     headers = {
          'Authorization': 'token {}'.format(token)
     }
@@ -60,6 +62,30 @@ def get_username(token):
     #     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/rest'}
 
     user = r.get('login')
+
+    return user
+
+##__________________________________________________________________||
+def get_user(token):
+    headers = {
+         'Authorization': 'token {}'.format(token)
+    }
+
+    json = {'query': '{ viewer { login name avatarUrl } }'}
+
+    r = requests.post('https://api.github.com/graphql', json=json, headers=headers)
+
+    r = r.json()
+    # examples:
+    #   success:
+    #     r = {'data': {
+    #           'viewer': {
+    #             "login": "octocat", "name": "monalisa octocat", "avatar_url": "..."
+    #           }}}
+    #   error:
+    #     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/graphql'}
+
+    user = r.get('data', {}).get('viewer')
     return user
 
 ##__________________________________________________________________||
