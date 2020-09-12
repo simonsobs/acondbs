@@ -1,4 +1,5 @@
 import graphene
+from graphql import GraphQLError
 
 from ..misc import githubauth
 
@@ -16,7 +17,11 @@ class GitHubAuth(graphene.Mutation):
 
     def mutate(root, info, code):
         token = githubauth.get_token(code)
+        if not token:
+            raise GraphQLError('Unsuccessful to obtain the token')
         user = githubauth.get_username(token)
+        if not user:
+            raise GraphQLError('Unsuccessful to obtain the username')
         authPayload = AuthPayload(token=token, user=user)
         return GitHubAuth(authPayload=authPayload)
 
