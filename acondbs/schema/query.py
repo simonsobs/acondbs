@@ -90,12 +90,12 @@ class Query(graphene.ObjectType):
     def resolve_github_user(self, info):
 
         auth = info.context.headers.get('Authorization')
-        # e.g., "token xxxx"
+        # e.g., 'Bearer "xxxx"'
 
         if not auth:
             raise GraphQLError('Authorization is required')
 
-        token = auth.split()[1]
+        token = auth.split()[1].strip('"')
         # e.g., "xxxx"
 
         user = githubauth.get_user(token)

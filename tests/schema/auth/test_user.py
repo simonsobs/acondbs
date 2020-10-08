@@ -31,12 +31,13 @@ def test_auth(app, mock_githubauth):
         'githubUser': viewer
     }
 
-    context = Context(headers=Headers({'Authorization': 'token token0123'}))
+    context = Context(headers=Headers({'Authorization': 'Bearer "token0123"'}))
 
     with app.app_context():
         schema = create_schema()
         client = Client(schema)
         result = client.execute(query, context_value=context)
+        assert [mock.call('token0123')] == mock_githubauth.get_user.call_args_list
         assert {'data': expected} == result
 
 ##__________________________________________________________________||
