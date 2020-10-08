@@ -43,29 +43,6 @@ def get_token(code):
     return token
 
 ##__________________________________________________________________||
-def get_username(token):
-    '''deprecated. replaced with get_user()
-    '''
-    headers = {
-         'Authorization': 'token {}'.format(token)
-    }
-
-    r = requests.get('https://api.github.com/user', headers=headers)
-
-    r = r.json()
-    # examples:
-    #   success:
-    #     r = {"login": "octocat", "id": 1, "node_id": "MDQ6VXNlcjE=",  ... }
-    #   https://docs.github.com/en/rest/reference/users
-    #
-    #   error:
-    #     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/rest'}
-
-    user = r.get('login')
-
-    return user
-
-##__________________________________________________________________||
 def get_user(token):
     headers = {
          'Authorization': 'token {}'.format(token)

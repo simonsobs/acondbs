@@ -97,9 +97,6 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'productRelation'
                 },
                 {
-                    'name': 'githubUsername'
-                },
-                {
                     'name': 'githubUser'
                 },
                 {
@@ -149,9 +146,6 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                 },
                 {
                     'name': 'productRelation'
-                },
-                {
-                    'name': 'githubUsername'
                 },
                 {
                     'name': 'githubUser'
@@ -253,9 +247,6 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                 },
                 {
                     'name': 'productRelation'
-                },
-                {
-                    'name': 'githubUsername'
                 },
                 {
                     'name': 'githubUser'

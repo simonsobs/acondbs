@@ -93,13 +93,6 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'githubUsername',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
                             'name': 'githubUser',
                             'type': {
                                 'name': 'GitHubUser'

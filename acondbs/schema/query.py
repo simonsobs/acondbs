@@ -69,22 +69,6 @@ class Query(graphene.ObjectType):
         filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
         return ProductRelation.get_query(info).filter(*filter).one_or_none()
 
-    github_username = graphene.String()
-
-    def resolve_github_username(self, info):
-
-        auth = info.context.headers.get('Authorization')
-        # e.g., "token xxxx"
-
-        if not auth:
-            raise GraphQLError('Authorization is required')
-
-        token = auth.split()[1]
-        # e.g., "xxxx"
-
-        user = githubauth.get_username(token)
-        return user;
-
     github_user = graphene.Field(GitHubUser)
 
     def resolve_github_user(self, info):
