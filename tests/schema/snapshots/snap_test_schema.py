@@ -1644,13 +1644,6 @@ from one product to the other. The reverse relation will be also added.''',
                             'type': {
                                 'name': 'String'
                             }
-                        },
-                        {
-                            'description': None,
-                            'name': 'user',
-                            'type': {
-                                'name': 'String'
-                            }
                         }
                     ],
                     'inputFields': None,

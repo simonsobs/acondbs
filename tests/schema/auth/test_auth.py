@@ -22,7 +22,6 @@ def test_auth(app, mock_githubauth):
           githubAuth(code: $code) {
             authPayload {
               token
-              user
             }
           }
         }
@@ -31,13 +30,11 @@ def test_auth(app, mock_githubauth):
     variables = { 'code': 'xyz' }
 
     mock_githubauth.get_token.return_value = 'token0123'
-    mock_githubauth.get_username.return_value = 'UserNameABC'
 
     expected = {
         'githubAuth': {
             'authPayload': {
-                'token': 'token0123',
-                'user': 'UserNameABC'
+                'token': 'token0123'
             }
         }
     }

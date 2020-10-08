@@ -19,7 +19,6 @@ class GitHubUser(graphene.ObjectType):
 ##__________________________________________________________________||
 class AuthPayload(graphene.ObjectType):
     token = graphene.String()
-    user = graphene.String()
 
 ##__________________________________________________________________||
 class GitHubAuth(graphene.Mutation):
@@ -32,10 +31,7 @@ class GitHubAuth(graphene.Mutation):
         token = githubauth.get_token(code)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
-        user = githubauth.get_username(token)
-        if not user:
-            raise GraphQLError('Unsuccessful to obtain the username')
-        authPayload = AuthPayload(token=token, user=user)
+        authPayload = AuthPayload(token=token)
         return GitHubAuth(authPayload=authPayload)
 
 ##__________________________________________________________________||
