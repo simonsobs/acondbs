@@ -19,4 +19,6 @@ from .product_file_path import ProductFilePath
 from .product_relation_type import ProductRelationType
 from .product_relation import ProductRelation
 
+from .web_config import WebConfig
+
 ##__________________________________________________________________||

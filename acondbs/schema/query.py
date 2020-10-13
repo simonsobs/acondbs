@@ -10,6 +10,8 @@ from .product_type import ProductType, ProductTypeModel
 from .product_relation_type import ProductRelationType, ProductRelationTypeModel
 from .product_relation import ProductRelation, ProductRelationModel
 
+from .web_config import WebConfig
+
 from .filter_ import PFilterableConnectionField
 
 from .auth import OAuthAppInfo, GitHubUser
@@ -26,6 +28,11 @@ class Query(graphene.ObjectType):
         return __version__
 
     node = relay.Node.Field()
+
+    web_config = graphene.Field(WebConfig)
+
+    def resolve_web_config(self, info, **kwargs):
+        return WebConfig.get_query(info).one_or_none()
 
     all_product_types = PFilterableConnectionField(ProductType.connection)
 

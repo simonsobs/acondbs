@@ -308,5 +308,16 @@ snapshots['test_import_tables_from_csv_files 1'] = {
             'type_id': 2,
             'updated_by': ''
         }
+    ],
+    'web_config': [
+        {
+            'config_id': 1,
+            'devtool_loadingstate': True,
+            'head_title': 'Product DB (test)',
+            'product_creation_dialog': True,
+            'product_deletion_dialog': False,
+            'product_update_dialog': True,
+            'toolbar_title': 'Product DB (test)'
+        }
     ]
 }
