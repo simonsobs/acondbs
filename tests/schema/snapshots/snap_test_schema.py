@@ -30,6 +30,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'webConfig',
+                            'type': {
+                                'name': 'WebConfig'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'allProductTypes',
                             'type': {
                                 'name': 'ProductTypeConnection'
@@ -136,6 +143,75 @@ snapshots['test_types 1'] = {
                     'name': 'ID'
                 },
                 {
+                    'description': 'Web configuration',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'configId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'headTitle',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'toolbarTitle',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'devtoolLoadingstate',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productCreationDialog',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productUpdateDialog',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productDeletionDialog',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'WebConfig'
+                },
+                {
+                    'description': 'The `Boolean` scalar type represents `true` or `false`.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'Boolean'
+                },
+                {
                     'description': None,
                     'fields': [
                         {
@@ -197,12 +273,6 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'PageInfo'
-                },
-                {
-                    'description': 'The `Boolean` scalar type represents `true` or `false`.',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'Boolean'
                 },
                 {
                     'description': 'A Relay edge containing a `ProductType` and its cursor.',
