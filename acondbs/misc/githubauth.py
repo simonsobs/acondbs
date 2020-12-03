@@ -19,7 +19,7 @@ def get_token(code):
         'client_secret': github_client_secret,
         'redirect_uri': redirect_uri,
         'code': code
-    };
+    }
 
     headers = {
         'Accept': "application/vnd.github.v3+json, application/json",
