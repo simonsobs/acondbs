@@ -3,8 +3,8 @@ import pytest
 from ..funcs import assert_query
 
 OAUTH_APP_INFO = '''
-{
-  oauthAppInfo {
+query OauthAppInfo($admin: Boolean) {
+  oauthAppInfo(admin: $admin) {
     clientId
     authorizeUrl
     tokenUrl
@@ -17,7 +17,13 @@ OAUTH_APP_INFO = '''
 params = [
     pytest.param(
         [OAUTH_APP_INFO],
-        { }
+        {'variables': {'admin': False}},
+        id='app'
+    ),
+    pytest.param(
+        [OAUTH_APP_INFO],
+        {'variables': {'admin': True}},
+        id='app-admin'
     )
 ]
 

@@ -7,7 +7,18 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema[args0-kwags0] 1'] = {
+snapshots['test_schema[app-admin] 1'] = {
+    'data': {
+        'oauthAppInfo': {
+            'authorizeUrl': 'https://github.com/login/oauth/authorize',
+            'clientId': 'abcdefghij0123456789',
+            'redirectUri': 'http://localhost:8080/admin/signin',
+            'tokenUrl': 'https://github.com/login/oauth/access_token'
+        }
+    }
+}
+
+snapshots['test_schema[app] 1'] = {
     'data': {
         'oauthAppInfo': {
             'authorizeUrl': 'https://github.com/login/oauth/authorize',
