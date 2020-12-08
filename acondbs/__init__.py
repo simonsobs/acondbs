@@ -3,6 +3,11 @@ from pathlib import Path
 from flask import Flask
 from flask_cors import CORS
 
+from flask import debughelpers
+# This import prevents the error, ImportError: cannot import name
+# 'attach_enctype_error_multidict' from partially initialized module
+# 'flask.debughelpers' (most likely due to a circular import)
+
 from . import _warnings
 from . import _logging
 
