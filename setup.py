@@ -34,6 +34,8 @@ setup(
         'Flask-SQLAlchemy>=2.4',
         'graphene-sqlalchemy>=2.3',
         'graphene-sqlalchemy-filter>=1.10',
+        'SQLAlchemy-Utils>=0.36',
+        'cryptography>=3.2',
         'gitpython>=3.1',
         'requests>=2.24'
     ],
