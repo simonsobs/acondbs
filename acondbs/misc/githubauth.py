@@ -5,13 +5,18 @@ from flask import current_app
 import requests
 
 ##__________________________________________________________________||
-def get_token(code):
+def get_token(code, admin=False):
 
-    github_client_id = current_app.config['GITHUB_AUTH_CLIENT_ID']
-    github_client_secret = current_app.config['GITHUB_AUTH_CLIENT_SECRET']
-    authorize_url = current_app.config['GITHUB_AUTH_AUTHORIZE_URL']
     token_url = current_app.config['GITHUB_AUTH_TOKEN_URL']
-    redirect_uri = current_app.config['GITHUB_AUTH_REDIRECT_URI']
+
+    if admin:
+        github_client_id = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_ID']
+        github_client_secret = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_SECRET']
+        redirect_uri = current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
+    else:
+        github_client_id = current_app.config['GITHUB_AUTH_CLIENT_ID']
+        github_client_secret = current_app.config['GITHUB_AUTH_CLIENT_SECRET']
+        redirect_uri = current_app.config['GITHUB_AUTH_REDIRECT_URI']
 
     params = {
         'grant_type': 'authorization_code',
