@@ -19,7 +19,6 @@ GITHUB_AUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
 GITHUB_AUTH_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 
 GITHUB_AUTH_CLIENT_ID = 'client_id_0123456789'
-GITHUB_AUTH_CLIENT_SECRET = 'abcdefghijklmnupqrstuvwxyz0123456789abcd'
 GITHUB_AUTH_CLIENT_SECRET = 'client_secret_abcdefghijklmnupqrstuvwxyz'
 GITHUB_AUTH_REDIRECT_URI = 'http://localhost:8080/signin'
 
