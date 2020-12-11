@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/acondbs.svg)](https://badge.fury.io/py/acondbs) [![Build Status](https://travis-ci.org/simonsobs/acondbs.svg?branch=master)](https://travis-ci.org/simonsobs/acondbs) [![codecov](https://codecov.io/gh/simonsobs/acondbs/branch/master/graph/badge.svg)](https://codecov.io/gh/simonsobs/acondbs)
+[![PyPI version](https://badge.fury.io/py/acondbs.svg)](https://badge.fury.io/py/acondbs) [![Test Status](https://github.com/simonsobs/acondbs/workflows/Test/badge.svg)](https://github.com/simonsobs/acondbs/actions?query=workflow%3ATest) [![codecov](https://codecov.io/gh/simonsobs/acondbs/branch/master/graph/badge.svg)](https://codecov.io/gh/simonsobs/acondbs)
 
 # Acondbs
 
