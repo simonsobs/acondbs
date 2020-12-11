@@ -233,6 +233,10 @@ def convert_data_type_for_insert(str_, type_):
         if str_:
             return ast.literal_eval(str_)
         return None
+    if isinstance(type_, sqlalchemy.sql.sqltypes.BLOB):
+        if str_:
+            return ast.literal_eval(str_)
+        return None
     return str_
 
 ##__________________________________________________________________||

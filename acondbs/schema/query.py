@@ -95,14 +95,25 @@ class Query(graphene.ObjectType):
 
         return GitHubUser(**user);
 
-    oauth_app_info = graphene.Field(OAuthAppInfo)
+    oauth_app_info = graphene.Field(
+        OAuthAppInfo,
+        admin=graphene.Boolean(default_value=False)
+        )
 
-    def resolve_oauth_app_info(self, info):
+    def resolve_oauth_app_info(self, info, admin):
+        print(admin)
+        if admin:
+            return OAuthAppInfo(
+                client_id=current_app.config['GITHUB_AUTH_ADMIN_CLIENT_ID'],
+                authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
+                token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
+                redirect_uri=current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
+            )
+
         return OAuthAppInfo(
             client_id=current_app.config['GITHUB_AUTH_CLIENT_ID'],
             authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
             token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
             redirect_uri=current_app.config['GITHUB_AUTH_REDIRECT_URI']
         )
-
 ##__________________________________________________________________||

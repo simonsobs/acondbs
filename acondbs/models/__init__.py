@@ -21,4 +21,6 @@ from .product_relation import ProductRelation
 
 from .web_config import WebConfig
 
+from .admin_app_token import AdminAppToken
+
 ##__________________________________________________________________||

@@ -11,9 +11,10 @@ from ...constants import SAMPLE_DIR
 ##__________________________________________________________________||
 @pytest.fixture
 def app():
+    config_path = Path(SAMPLE_DIR, 'config.py')
     database_uri ="sqlite:///:memory:"
+    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     csvdir = Path(SAMPLE_DIR, 'csv')
-    app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     with app.app_context():
         define_tables()
         import_tables_from_csv_files(csvdir)
