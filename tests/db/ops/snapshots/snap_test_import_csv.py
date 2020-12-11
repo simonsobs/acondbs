@@ -7,7 +7,13 @@ from snapshottest import GenericRepr, Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_import_tables_from_csv_files 1'] = {
+snapshots['test_non_empty 1'] = {
+    'admin_app_token': [
+        {
+            'token': b'aKjGknYDHY39Z2xAaN7+sQ==',
+            'token_id': 1
+        }
+    ],
     'product_file_paths': [
         {
             'note': '',

@@ -8,6 +8,12 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_export_db_to_csv_files 1'] = {
+    'admin_app_token': [
+        {
+            'token': b'aKjGknYDHY39Z2xAaN7+sQ==',
+            'token_id': 1
+        }
+    ],
     'product_file_paths': [
         {
             'note': '',

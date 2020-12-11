@@ -1,12 +1,18 @@
+from pathlib import Path
+
 import textwrap
 from graphene.test import Client
 
 import pytest
 import unittest.mock as mock
 
+from acondbs import create_app
+from acondbs.db.ops import define_tables
 from acondbs.schema.schema import create_schema
 from acondbs.db.sa import sa
 from acondbs.models import AdminAppToken
+
+from ...constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
 STORE_ADMIN_APP_TOKEN = '''
@@ -16,6 +22,17 @@ mutation StoreAdminAppToken($code: String!) {
   }
 }
 '''
+
+##__________________________________________________________________||
+@pytest.fixture
+def app():
+    config_path = Path(SAMPLE_DIR, 'config.py')
+    database_uri ="sqlite:///:memory:"
+    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
+    with app.app_context():
+        define_tables()
+    yield app
+
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
