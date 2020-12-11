@@ -60,12 +60,28 @@ def get_user(token):
     r = r.json()
     # examples:
     #   success:
-    #     r = {'data': {
-    #           'viewer': {
-    #             "login": "octocat", "name": "monalisa octocat", "avatar_url": "..."
-    #           }}}
-    #   error:
+    #     r = {
+    #         "data": {
+    #             "viewer": {
+    #                 "id": "MDQ6VXNlcjU4MzIzMQ==",
+    #                 "name": "The Octocat",
+    #                 "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
+    #             }
+    #         }
+    #     }
+    #
+    #   error (bad credentials):
     #     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/graphql'}
+    #
+    #   error (query error):
+    #     r = {'errors': [
+    #         {
+    #             'path': ['query', 'viewer', 'idii'],
+    #             'extensions': {'code': 'undefinedField', 'typeName': 'User', 'fieldName': 'idii'},
+    #             'locations': [{'line': 1, 'column': 12}],
+    #             'message': "Field 'idii' doesn't exist on type 'User'"
+    #         }
+    #     ]}
 
     user = r.get('data', {}).get('viewer')
     return user
