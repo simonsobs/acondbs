@@ -4,6 +4,7 @@ branch = True
 concurrency = multiprocessing
 omit =
      acondbs/_version.py
+     versioneer.py
      venv/*
      */site-packages/*
      /home/travis/virtualenv/*
