@@ -43,7 +43,7 @@ def mock_get_token(monkeypatch):
 
 
 ##__________________________________________________________________||
-def test_store_admin_app_token(app, mock_get_token):
+def test_store_admin_app_token(app, mock_get_token, snapshot):
 
     query = STORE_ADMIN_APP_TOKEN
     variables = { 'code': 'xyz' }
@@ -64,9 +64,9 @@ def test_store_admin_app_token(app, mock_get_token):
     with app.app_context():
         token = AdminAppToken.query.one()
         assert 'token0123' == token.token
-        print(token.token)
+        snapshot.assert_match(mock_get_token.call_args_list)
 
-def test_store_admin_app_token_update(app, mock_get_token):
+def test_store_admin_app_token_update(app, mock_get_token, snapshot):
 
     with app.app_context():
         row = AdminAppToken(token='old_token_xyz')
@@ -88,6 +88,7 @@ def test_store_admin_app_token_update(app, mock_get_token):
         client = Client(schema)
         result = client.execute(query, variables=variables, context_value={})
         assert {'data': expected} == result
+        snapshot.assert_match(mock_get_token.call_args_list)
 
     with app.app_context():
         token = AdminAppToken.query.one()

@@ -1,4 +1,3 @@
-
 import pytest
 import unittest.mock as mock
 
@@ -11,23 +10,33 @@ def mock_requests(monkeypatch):
     monkeypatch.setattr("acondbs.github.auth.requests", y)
     yield y
 
-
 ##__________________________________________________________________||
-def test_success(app, mock_requests):
+def test_success(mock_requests, snapshot):
 
     code = 'code-xyz'
+
+    token_url = 'https://github.com/login/oauth/access_token'
+    client_id = 'client_id_0123'
+    client_secret = 'client_secret_0123'
+    redirect_uri = 'http://localhost/auth'
 
     r = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
     mock_requests.post().json.return_value = r
-    with app.app_context():
-        token = get_token(code)
+
+    token = get_token(code, token_url, client_id, client_secret, redirect_uri)
 
     assert 'token-xxx' == token
+    snapshot.assert_match(mock_requests.post.call_args_list)
 
 ##__________________________________________________________________||
-def test_error(app, mock_requests):
+def test_error(mock_requests, snapshot):
 
     code = 'code-xyz'
+
+    token_url = 'https://github.com/login/oauth/access_token'
+    client_id = 'client_id_0123'
+    client_secret = 'client_secret_0123'
+    redirect_uri = 'http://localhost/auth'
 
     r = {
         'error': 'bad_verification_code',
@@ -35,9 +44,10 @@ def test_error(app, mock_requests):
         'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
     }
     mock_requests.post().json.return_value = r
-    with app.app_context():
-        token = get_token(code)
+
+    token = get_token(code, token_url, client_id, client_secret, redirect_uri)
 
     assert token is None
+    snapshot.assert_match(mock_requests.post.call_args_list)
 
 ##__________________________________________________________________||

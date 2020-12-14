@@ -21,7 +21,7 @@ def mock_is_member(monkeypatch):
     yield y
 
 ##__________________________________________________________________||
-def test_auth(app, mock_get_token):
+def test_auth(app, mock_get_token, mock_is_member, snapshot):
 
     query = textwrap.dedent('''
         mutation GitHubAuth($code: String!) {
@@ -35,12 +35,12 @@ def test_auth(app, mock_get_token):
 
     variables = { 'code': 'xyz' }
 
-    mock_get_token.return_value = 'token0123'
+    mock_get_token.return_value = 'user_token_xyz'
 
     expected = {
         'githubAuth': {
             'authPayload': {
-                'token': 'token0123'
+                'token': 'user_token_xyz'
             }
         }
     }
@@ -50,5 +50,7 @@ def test_auth(app, mock_get_token):
         client = Client(schema)
         result = client.execute(query, variables=variables, context_value={})
         assert {'data': expected} == result
+        snapshot.assert_match(mock_get_token.call_args_list)
+        snapshot.assert_match(mock_is_member.call_args_list)
 
 ##__________________________________________________________________||
