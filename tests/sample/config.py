@@ -30,6 +30,9 @@ GITHUB_AUTH_ADMIN_CLIENT_SECRET = 'client_secret_admin_abcdefghijklmnupqrst'
 GITHUB_AUTH_ADMIN_REDIRECT_URI = 'http://localhost:8080/admin/signin'
 
 ##__________________________________________________________________||
+GITHUB_ORG = 'test_github_org_name'
+
+##__________________________________________________________________||
 del _THISDIR
 del Path
 
