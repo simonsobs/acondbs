@@ -5,6 +5,10 @@ import requests
 
 ##__________________________________________________________________||
 def get_token(code, token_url, client_id, client_secret, redirect_uri):
+    """exchange a code for an access token
+
+    https://docs.github.com/en/free-pro-team@latest/developers/apps/authorizing-oauth-apps#2-users-are-redirected-back-to-your-site-by-github
+    """
 
     params = {
         'grant_type': 'authorization_code',
