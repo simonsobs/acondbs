@@ -8,14 +8,20 @@ from acondbs.schema.schema import create_schema
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
-def mock_githubauth(monkeypatch):
+def mock_get_token(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.auth.githubauth", y)
+    monkeypatch.setattr("acondbs.schema.auth.get_token", y)
     yield y
 
+@pytest.fixture(autouse=True)
+def mock_is_member(monkeypatch):
+    y = mock.Mock()
+    monkeypatch.setattr("acondbs.schema.auth.is_member", y)
+    y.return_value = True
+    yield y
 
 ##__________________________________________________________________||
-def test_auth(app, mock_githubauth):
+def test_auth(app, mock_get_token):
 
     query = textwrap.dedent('''
         mutation GitHubAuth($code: String!) {
@@ -29,7 +35,7 @@ def test_auth(app, mock_githubauth):
 
     variables = { 'code': 'xyz' }
 
-    mock_githubauth.get_token.return_value = 'token0123'
+    mock_get_token.return_value = 'token0123'
 
     expected = {
         'githubAuth': {

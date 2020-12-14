@@ -2,7 +2,8 @@ import graphene
 from graphql import GraphQLError
 
 from ..models import AdminAppToken as AdminAppTokenModel
-from ..github import githubauth
+from ..github.auth import get_token
+from ..github.api import is_member
 
 from ..db.sa import sa
 
@@ -31,11 +32,11 @@ class GitHubAuth(graphene.Mutation):
     authPayload = graphene.Field(lambda: AuthPayload)
 
     def mutate(root, info, code):
-        token = githubauth.get_token(code)
+        token = get_token(code)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
         admin_token = AdminAppTokenModel.query.one()
-        if not githubauth.is_member(user_token=token, admin_token=admin_token.token):
+        if not is_member(user_token=token, admin_token=admin_token.token):
             raise GraphQLError('The user is not a member.')
         authPayload = AuthPayload(token=token)
         return GitHubAuth(authPayload=authPayload)
@@ -48,7 +49,7 @@ class StoreAdminAppToken(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, code):
-        token = githubauth.get_token(code, admin=True)
+        token = get_token(code, admin=True)
 
         row = AdminAppTokenModel.query.one_or_none()
         if row:

@@ -9,14 +9,14 @@ from acondbs.schema.schema import create_schema
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
-def mock_githubauth(monkeypatch):
+def mock_get_user(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.query.githubauth", y)
+    monkeypatch.setattr("acondbs.schema.query.get_user", y)
     yield y
 
 
 ##__________________________________________________________________||
-def test_auth(app, mock_githubauth):
+def test_auth(app, mock_get_user):
 
     query = '{ githubUser { login name avatarUrl } }'
 
@@ -25,7 +25,7 @@ def test_auth(app, mock_githubauth):
         "name": "monalisa octocat",
         "avatarUrl": "https://github.com/images/error/octocat_happy.gif"
     }
-    mock_githubauth.get_user.return_value = viewer
+    mock_get_user.return_value = viewer
 
     expected = {
         'githubUser': viewer
@@ -37,7 +37,7 @@ def test_auth(app, mock_githubauth):
         schema = create_schema()
         client = Client(schema)
         result = client.execute(query, context_value=context)
-        assert [mock.call('token0123')] == mock_githubauth.get_user.call_args_list
+        assert [mock.call('token0123')] == mock_get_user.call_args_list
         assert {'data': expected} == result
 
 ##__________________________________________________________________||

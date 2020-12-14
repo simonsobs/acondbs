@@ -36,18 +36,18 @@ def app():
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
-def mock_githubauth(monkeypatch):
+def mock_get_token(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.auth.githubauth", y)
+    monkeypatch.setattr("acondbs.schema.auth.get_token", y)
     yield y
 
 
 ##__________________________________________________________________||
-def test_store_admin_app_token(app, mock_githubauth):
+def test_store_admin_app_token(app, mock_get_token):
 
     query = STORE_ADMIN_APP_TOKEN
     variables = { 'code': 'xyz' }
-    mock_githubauth.get_token.return_value = 'token0123'
+    mock_get_token.return_value = 'token0123'
 
     expected = {
         'storeAdminAppToken': {
@@ -66,7 +66,7 @@ def test_store_admin_app_token(app, mock_githubauth):
         assert 'token0123' == token.token
         print(token.token)
 
-def test_store_admin_app_token_update(app, mock_githubauth):
+def test_store_admin_app_token_update(app, mock_get_token):
 
     with app.app_context():
         row = AdminAppToken(token='old_token_xyz')
@@ -75,7 +75,7 @@ def test_store_admin_app_token_update(app, mock_githubauth):
 
     query = STORE_ADMIN_APP_TOKEN
     variables = { 'code': 'xyz' }
-    mock_githubauth.get_token.return_value = 'new_token_0123'
+    mock_get_token.return_value = 'new_token_0123'
 
     expected = {
         'storeAdminAppToken': {

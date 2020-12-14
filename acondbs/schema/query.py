@@ -16,7 +16,7 @@ from .filter_ import PFilterableConnectionField
 
 from .auth import OAuthAppInfo, GitHubUser
 
-from ..github import githubauth
+from ..github.api import get_user
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
@@ -89,7 +89,7 @@ class Query(graphene.ObjectType):
         token = auth.split()[1].strip('"')
         # e.g., "xxxx"
 
-        user = githubauth.get_user(token)
+        user = get_user(token)
         if not user:
             raise GraphQLError('Unsuccessful to obtain the user')
 

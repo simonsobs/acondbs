@@ -2,13 +2,12 @@
 import pytest
 import unittest.mock as mock
 
-from acondbs.github import githubauth
-
+from acondbs.github.api import get_user
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.github.githubauth.requests", y)
+    monkeypatch.setattr("acondbs.github.api.requests", y)
     yield y
 
 
@@ -26,7 +25,7 @@ def test_success(app, mock_requests):
 
     mock_requests.post().json.return_value = r
     with app.app_context():
-        user = githubauth.get_user(token)
+        user = get_user(token)
 
     assert viewer == user
 
@@ -38,7 +37,7 @@ def test_error(app, mock_requests):
     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/graphql'}
     mock_requests.post().json.return_value = r
     with app.app_context():
-        user = githubauth.get_user(token)
+        user = get_user(token)
 
     assert user is None
 

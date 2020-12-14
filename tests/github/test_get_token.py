@@ -2,13 +2,13 @@
 import pytest
 import unittest.mock as mock
 
-from acondbs.github import githubauth
+from acondbs.github.auth import get_token
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.github.githubauth.requests", y)
+    monkeypatch.setattr("acondbs.github.auth.requests", y)
     yield y
 
 
@@ -20,7 +20,7 @@ def test_success(app, mock_requests):
     r = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
     mock_requests.post().json.return_value = r
     with app.app_context():
-        token = githubauth.get_token(code)
+        token = get_token(code)
 
     assert 'token-xxx' == token
 
@@ -36,7 +36,7 @@ def test_error(app, mock_requests):
     }
     mock_requests.post().json.return_value = r
     with app.app_context():
-        token = githubauth.get_token(code)
+        token = get_token(code)
 
     assert token is None
 
