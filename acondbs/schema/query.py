@@ -16,7 +16,7 @@ from .filter_ import PFilterableConnectionField
 
 from .auth import OAuthAppInfo, GitHubUser
 
-from ..misc import githubauth
+from ..github import githubauth
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):

@@ -2,7 +2,7 @@ import graphene
 from graphql import GraphQLError
 
 from ..models import AdminAppToken as AdminAppTokenModel
-from ..misc import githubauth
+from ..github import githubauth
 
 from ..db.sa import sa
 

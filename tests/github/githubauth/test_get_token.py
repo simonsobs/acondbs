@@ -2,44 +2,42 @@
 import pytest
 import unittest.mock as mock
 
-from acondbs.misc import githubauth
+from acondbs.github import githubauth
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.misc.githubauth.requests", y)
+    monkeypatch.setattr("acondbs.github.githubauth.requests", y)
     yield y
 
 
 ##__________________________________________________________________||
 def test_success(app, mock_requests):
 
-    token = 'token-xxx'
+    code = 'code-xyz'
 
-    viewer = {
-        "login": "octocat",
-        "name": "monalisa octocat",
-        "avatar_url": "https://github.com/images/error/octocat_happy.gif"
-    }
-    r = {'data': {'viewer': viewer}}
-
+    r = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
     mock_requests.post().json.return_value = r
     with app.app_context():
-        user = githubauth.get_user(token)
+        token = githubauth.get_token(code)
 
-    assert viewer == user
+    assert 'token-xxx' == token
 
 ##__________________________________________________________________||
 def test_error(app, mock_requests):
 
-    token = 'token-xxx'
+    code = 'code-xyz'
 
-    r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/graphql'}
+    r = {
+        'error': 'bad_verification_code',
+        'error_description': 'The code passed is incorrect or expired.',
+        'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
+    }
     mock_requests.post().json.return_value = r
     with app.app_context():
-        user = githubauth.get_user(token)
+        token = githubauth.get_token(code)
 
-    assert user is None
+    assert token is None
 
 ##__________________________________________________________________||
