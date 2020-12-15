@@ -31,14 +31,15 @@ def call_api(query, variables=None, token=None):
     #     }
     #
     #   Error: sometimes, the 'data' field still exists.
-    #     response = {'errors': [
-    #         {
-    #             'path': ['query', 'viewer', 'idii'],
-    #             'extensions': {'code': 'undefinedField', 'typeName': 'User', 'fieldName': 'idii'},
-    #             'locations': [{'line': 1, 'column': 12}],
-    #             'message': "Field 'idii' doesn't exist on type 'User'"
-    #         }
-    #     ]}
+    #     response = {
+    #         'errors': [
+    #             {
+    #                 'path': ['query', 'viewer', 'idii'],
+    #                 'extensions': {'code': 'undefinedField', 'typeName': 'User', 'fieldName': 'idii'},
+    #                 'locations': [{'line': 1, 'column': 12}],
+    #                 'message': "Field 'idii' doesn't exist on type 'User'"
+    #             }
+    #         ]}
     #
     #   Bad credentials:
     #     response = {
@@ -126,27 +127,26 @@ def get_org_member_ids(org_name, token):
     r = call_api(query=query, variables=variables, token=token)
     # e.g.,
     # {
-    #     'data': {
-    #         'organization': {
-    #             'login': 'urban-octo-disco',
-    #             'membersWithRole': {
-    #                 'edges': [
-    #                     {
-    #                         'node': {
-    #                             'id': 'MDQ6VXNlcjEzODgwODE=',
-    #                             'login': 'TaiSakuma'
-    #                         },
-    #                         'role': 'MEMBER'
+    #     'organization': {
+    #         'login': 'urban-octo-disco',
+    #         'membersWithRole': {
+    #             'edges': [
+    #                 {
+    #                     'node': {
+    #                         'id': 'MDQ6VXNlcjEzODgwODE=',
+    #                         'login': 'TaiSakuma'
     #                     },
-    #                     {
-    #                         'node': {
-    #                             'id': 'MDQ6VXNlcjE1Njg1Njk3',
-    #                             'login': 'tai-sakuma'
-    #                         },
-    #                         'role': 'ADMIN'
-    #                     }
-    #                 ]}
-    #         }}
+    #                     'role': 'MEMBER'
+    #                 },
+    #                 {
+    #                     'node': {
+    #                         'id': 'MDQ6VXNlcjE1Njg1Njk3',
+    #                         'login': 'tai-sakuma'
+    #                     },
+    #                     'role': 'ADMIN'
+    #                 }
+    #             ]}
+    #     }
     # }
 
     edges = r['organization']['membersWithRole']['edges']
