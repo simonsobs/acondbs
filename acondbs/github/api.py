@@ -40,7 +40,7 @@ def call_api(query, variables=None, token=None):
     #         }
     #     ]}
     #
-    #   Bad credentials):
+    #   Bad credentials:
     #     response = {
     #         'message': 'Bad credentials',
     #         'documentation_url': 'https://docs.github.com/graphql'
