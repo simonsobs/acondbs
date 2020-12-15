@@ -53,23 +53,21 @@ def call_api(query, variables=None, token=None):
     if 'data' not in response:
       raise Exception(response)
 
-    return response
+    return response['data']
 
 ##__________________________________________________________________||
 def get_user(token):
     query = '{ viewer { login name avatarUrl } }'
     r = call_api(query=query, token=token)
     # e.g., https://github.com/octocat
-    #  {
-    #      "data": {
-    #          "viewer": {
-    #              "login": "octocat",
-    #              "name": "The Octocat",
-    #              "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
-    #          }
-    #      }
-    #  }
-    user = r.get('data', {}).get('viewer')
+    # {
+    #     "viewer": {
+    #         "login": "octocat",
+    #         "name": "The Octocat",
+    #         "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
+    #     }
+    # }
+    user = r.get('viewer')
     return user
 
 ##__________________________________________________________________||

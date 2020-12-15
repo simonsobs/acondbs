@@ -31,7 +31,7 @@ def test_simple(mock_requests, snapshot):
 
     r = call_api(query=query, token=token)
 
-    assert response == r
+    assert response['data'] == r
 
     snapshot.assert_match(mock_requests.post.call_args_list)
 
@@ -64,7 +64,7 @@ def test_variables(mock_requests, snapshot):
 
     r = call_api(query=query, variables=variables, token=token)
 
-    assert response == r
+    assert response['data'] == r
 
     snapshot.assert_match(mock_requests.post.call_args_list)
 
