@@ -1,83 +1,40 @@
 from pathlib import Path
-import git
+import warnings
 
 import pytest
-from graphene.test import Client
+import unittest.mock as mock
 
-
-from acondbs.db.ops import export_db_to_csv_files
-from acondbs.schema.schema import create_schema
-
-from acondbs.db.backup import backup_db_as_csv_to_github_
+from acondbs.db.backup import backup_db_as_csv_to_github
 
 ##__________________________________________________________________||
-@pytest.fixture
-def local_repo(app, tmpdir_factory):
-    """
-    """
+@pytest.fixture()
+def mock_backup_db_as_csv_to_github_(monkeypatch):
+    y = mock.Mock()
+    monkeypatch.setattr("acondbs.db.backup.backup_db_as_csv_to_github_", y)
+    yield y
 
-    # create a local repo with CSV files
-    local_folder = Path(tmpdir_factory.mktemp('backup'))
-    with app.app_context():
-        export_db_to_csv_files(local_folder)
-    local_repo = git.Repo.init(local_folder)
-    local_repo.git.add(A=True)
-    local_repo.index.commit('initial commit')
-
-    yield local_repo
-
-@pytest.fixture
-def remote_repo(local_repo, tmpdir_factory):
-    """remote repo
-
-    """
-
-    # create a remote repo (bare repo)
+@pytest.fixture()
+def mock_lock_path(app, monkeypatch, tmpdir_factory):
     folder = Path(tmpdir_factory.mktemp('backup'))
-    remote_repo = git.Repo.init(folder, bare=True)
-    remote_url = remote_repo.git_dir
-
-    # push the current branch of the local repo to the remote repo
-    remote = local_repo.create_remote('origin', url=remote_url)
-    branch_name = local_repo.active_branch.name
-    remote.push(refspec='{}:{}'.format(branch_name, branch_name))
-    local_repo.heads.master.set_tracking_branch(remote.refs.master)
-
-    yield remote_repo
+    y = folder.joinpath('lock')
+    monkeypatch.setitem(app.config, 'ACONDBS_DB_BACKUP_CSV_GIT_LOCK', str(y))
+    monkeypatch.setitem(app.config, 'ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT', 0.01)
+    yield y
 
 ##__________________________________________________________________||
-def test_backup_db_as_csv_to_github_(app, local_repo, remote_repo):
-
-    repo_path = local_repo.working_tree_dir
-    head_sha_old = local_repo.head.commit.hexsha
-    assert head_sha_old == remote_repo.head.commit.hexsha
-
-    # change the DB content
-    mutation = '''
-          mutation m {
-            createProduct(input: {
-              typeId: 1,
-              name: "product1",
-              dateProduced: "2020-02-20",
-              producedBy: "pwg-pmn",
-              note: "- Item 1"
-            }) { product { name } }
-          }
-        '''
-    schema = create_schema()
-    client = Client(schema)
+def test_backup_db_as_csv_to_github(app, mock_lock_path, mock_backup_db_as_csv_to_github_):
     with app.app_context():
-        result = client.execute(mutation, context_value={})
-        assert 'errors' not in result
+        repo_path = app.config['ACONDBS_DB_BACKUP_CSV_GIT_FOLDER']
+        backup_db_as_csv_to_github()
+    assert [mock.call(repo_path)] == mock_backup_db_as_csv_to_github_.call_args_list
 
-    # take backup
+##__________________________________________________________________||
+def test_backup_db_locked(app, mock_lock_path, mock_backup_db_as_csv_to_github_):
+    mock_lock_path.touch()
     with app.app_context():
-        backup_db_as_csv_to_github_(repo_path)
-
-    # assert
-    assert not local_repo.is_dirty(untracked_files=True)
-    head_sha_new = local_repo.head.commit.hexsha
-    assert not head_sha_old == head_sha_new
-    assert head_sha_new == remote_repo.head.commit.hexsha
+        with warnings.catch_warnings(record=True) as w:
+            backup_db_as_csv_to_github()
+    assert [] == mock_backup_db_as_csv_to_github_.call_args_list
+    assert len(w) == 1
 
 ##__________________________________________________________________||

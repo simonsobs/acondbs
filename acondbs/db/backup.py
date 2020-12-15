@@ -54,6 +54,10 @@ def run_flask_backup_db():
 
 ##__________________________________________________________________||
 def backup_db():
+    backup_db_as_csv_to_github()
+
+##__________________________________________________________________||
+def backup_db_as_csv_to_github():
     repo_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_FOLDER']
     lock_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_LOCK']
     timeout = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT']
@@ -63,7 +67,6 @@ def backup_db():
     except lock.TimeOutAcquiringLock:
         warnings.warn('Time out! unable to acquire the lock in {} seconds: {}'.format(timeout, lock_path))
 
-##__________________________________________________________________||
 def backup_db_as_csv_to_github_(repo_path):
     repo_path = Path(repo_path)
     for csv_file in repo_path.glob('*.csv'):
