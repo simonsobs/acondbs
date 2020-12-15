@@ -41,5 +41,7 @@ def assert_query(app, snapshot, query, error=False):
 def assert_mutation(app, snapshot, mutation, query, mock_request_backup_db, success=True):
     assert_query(app, snapshot, mutation, error=not success)
     assert_query(app, snapshot, query)
+    if success:
+        mock_request_backup_db.assert_called()
 
 ##__________________________________________________________________||
