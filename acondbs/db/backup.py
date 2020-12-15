@@ -15,6 +15,8 @@ from acondbs.misc import lock
 
 ##__________________________________________________________________||
 def request_backup_db():
+    """reqeust to take a backup of the DB.
+    """
     global _lock
     global _capped_backup_func
     with _lock:
