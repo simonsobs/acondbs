@@ -24,7 +24,7 @@ def call_api(query, variables=None, token=None):
     #     response = {
     #         "data": {
     #             "viewer": {
-    #                 "id": "MDQ6VXNlcjU4MzIzMQ==",
+    #                 "login": "octocat",
     #                 "name": "The Octocat",
     #                 "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
     #             }
@@ -59,11 +59,11 @@ def call_api(query, variables=None, token=None):
 def get_user(token):
     query = '{ viewer { login name avatarUrl } }'
     r = call_api(query=query, token=token)
-    # e.g.,
+    # e.g., https://github.com/octocat
     #  {
     #      "data": {
     #          "viewer": {
-    #              "id": "MDQ6VXNlcjU4MzIzMQ==",
+    #              "login": "octocat",
     #              "name": "The Octocat",
     #              "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
     #          }
