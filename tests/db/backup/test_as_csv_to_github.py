@@ -8,7 +8,7 @@ from graphene.test import Client
 from acondbs.db.ops import export_db_to_csv_files
 from acondbs.schema.schema import create_schema
 
-from acondbs.db.backup import backup_db_as_csv_to_github
+from acondbs.db.backup import backup_db_as_csv_to_github_
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -46,7 +46,7 @@ def remote_repo(local_repo, tmpdir_factory):
     yield remote_repo
 
 ##__________________________________________________________________||
-def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
+def test_backup_db_as_csv_to_github_(app, local_repo, remote_repo):
 
     repo_path = local_repo.working_tree_dir
     head_sha_old = local_repo.head.commit.hexsha
@@ -72,7 +72,7 @@ def test_backup_db_as_csv_to_github(app, local_repo, remote_repo):
 
     # take backup
     with app.app_context():
-        backup_db_as_csv_to_github(repo_path)
+        backup_db_as_csv_to_github_(repo_path)
 
     # assert
     assert not local_repo.is_dirty(untracked_files=True)
