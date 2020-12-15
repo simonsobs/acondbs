@@ -27,6 +27,7 @@ snapshots['test_auth 2'] = [
         ),
         {
             'admin_token': 'token123',
+            'org_name': 'test_github_org_name',
             'user_token': 'user_token_xyz'
         }
     )

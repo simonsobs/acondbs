@@ -41,7 +41,8 @@ class GitHubAuth(graphene.Mutation):
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
         admin_token = AdminAppTokenModel.query.one()
-        if not is_member(user_token=token, admin_token=admin_token.token):
+        org_name = current_app.config['GITHUB_ORG']
+        if not is_member(user_token=token, admin_token=admin_token.token, org_name=org_name):
             raise GraphQLError('The user is not a member.')
         authPayload = AuthPayload(token=token)
         return GitHubAuth(authPayload=authPayload)
