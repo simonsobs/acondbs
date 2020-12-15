@@ -4,20 +4,24 @@
 from flask import current_app
 import requests
 
+API_URL = 'https://api.github.com/graphql'
+
 ##__________________________________________________________________||
-def get_user(token):
-    headers = {
-         'Authorization': 'token {}'.format(token)
-    }
+def call_api(query, variables=None, token=None):
 
-    json = {'query': '{ viewer { login name avatarUrl } }'}
+    headers = {}
+    if token:
+      headers['Authorization'] = 'token {}'.format(token)
 
-    r = requests.post('https://api.github.com/graphql', json=json, headers=headers)
+    json = {'query': query }
+    if variables:
+        json['variables'] = variables
 
-    r = r.json()
-    # examples:
-    #   success:
-    #     r = {
+    response = requests.post(API_URL, json=json, headers=headers)
+    response = response.json()
+    # Examples: query = '{ viewer { login name avatarUrl } }'
+    #   Success:
+    #     response = {
     #         "data": {
     #             "viewer": {
     #                 "id": "MDQ6VXNlcjU4MzIzMQ==",
@@ -27,11 +31,8 @@ def get_user(token):
     #         }
     #     }
     #
-    #   error (bad credentials):
-    #     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/graphql'}
-    #
-    #   error (query error):
-    #     r = {'errors': [
+    #   Error: sometimes, the 'data' field still exists.
+    #     response = {'errors': [
     #         {
     #             'path': ['query', 'viewer', 'idii'],
     #             'extensions': {'code': 'undefinedField', 'typeName': 'User', 'fieldName': 'idii'},
@@ -39,10 +40,35 @@ def get_user(token):
     #             'message': "Field 'idii' doesn't exist on type 'User'"
     #         }
     #     ]}
+    #
+    #   Bad credentials):
+    #     response = {
+    #         'message': 'Bad credentials',
+    #         'documentation_url': 'https://docs.github.com/graphql'
+    #     }
 
-    if 'errors' in r:
-      raise Exception(r['errors'])
+    if 'errors' in response:
+      raise Exception(response['errors'])
 
+    if 'data' not in response:
+      raise Exception(response)
+
+    return response
+
+##__________________________________________________________________||
+def get_user(token):
+    query = '{ viewer { login name avatarUrl } }'
+    r = call_api(query=query, token=token)
+    # e.g.,
+    #  {
+    #      "data": {
+    #          "viewer": {
+    #              "id": "MDQ6VXNlcjU4MzIzMQ==",
+    #              "name": "The Octocat",
+    #              "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
+    #          }
+    #      }
+    #  }
     user = r.get('data', {}).get('viewer')
     return user
 
