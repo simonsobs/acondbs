@@ -12,7 +12,7 @@ def mock_requests(monkeypatch):
 
 
 ##__________________________________________________________________||
-def test_success(app, mock_requests):
+def test_success(mock_requests):
 
     token = 'token-xxx'
 
@@ -24,21 +24,22 @@ def test_success(app, mock_requests):
     r = {'data': {'viewer': viewer}}
 
     mock_requests.post().json.return_value = r
-    with app.app_context():
-        user = get_user(token)
+
+    user = get_user(token)
 
     assert viewer == user
 
 ##__________________________________________________________________||
-def test_bad_credentials(app, mock_requests):
+def test_bad_credentials(mock_requests):
 
     token = 'token-xxx'
 
     r = {'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/graphql'}
     mock_requests.post().json.return_value = r
-    with app.app_context():
-        with pytest.raises(Exception) as e:
-            get_user(token)
+
+    with pytest.raises(Exception) as e:
+        get_user(token)
+
     assert r == e.value.args[0]
 
 ##__________________________________________________________________||
