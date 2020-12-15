@@ -21,7 +21,7 @@ def request_backup_db():
     global _capped_backup_func
     with _lock:
         if not _capped_backup_func:
-            pause = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_PAUSE']
+            pause = current_app.config['ACONDBS_DB_BACKUP_PAUSE']
             _capped_backup_func = cap_exec_rate(
                 func=run_flask_backup_db,
                 pause_time=pause, daemon=True)

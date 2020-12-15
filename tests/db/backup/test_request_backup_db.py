@@ -14,7 +14,7 @@ def mock_cap_exec_rate(monkeypatch):
 ##__________________________________________________________________||
 def test_request_backup_db(app, mock_cap_exec_rate):
     with app.app_context():
-        pause = app.config['ACONDBS_DB_BACKUP_CSV_GIT_PAUSE']
+        pause = app.config['ACONDBS_DB_BACKUP_PAUSE']
 
     nrequests = 3
     with app.app_context():
