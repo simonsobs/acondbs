@@ -23,4 +23,6 @@ from .web_config import WebConfig
 
 from .admin_app_token import AdminAppToken
 
+from .github_accepted_org import GitHubAcceptedOrg
+
 ##__________________________________________________________________||

@@ -1,0 +1,22 @@
+import pytest
+
+from sqlalchemy import exc
+
+from acondbs.db.sa import sa
+from acondbs.models import GitHubAcceptedOrg
+
+# __________________________________________________________________||
+def test_entry(app_empty):
+    app = app_empty
+
+    row = GitHubAcceptedOrg(login="urban-octo-disco")
+
+    with app.app_context():
+        sa.session.add(row)
+        sa.session.commit()
+
+    with app.app_context():
+        row = GitHubAcceptedOrg.query.filter_by(login='urban-octo-disco').one()
+        assert 'urban-octo-disco' == row.login
+
+# __________________________________________________________________||
