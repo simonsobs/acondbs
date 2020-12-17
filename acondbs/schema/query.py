@@ -7,7 +7,7 @@ from graphql import GraphQLError
 from .version import version_field
 
 from .product import Product, ProductModel
-from .product_file_path import ProductFilePath, ProductFilePathModel
+from .product_file_path import all_product_file_paths_field
 from .product_type import product_type_field, all_product_types_field
 from .product_relation_type import ProductRelationType, ProductRelationTypeModel
 from .product_relation import ProductRelation, ProductRelationModel
@@ -32,8 +32,9 @@ class Query(graphene.ObjectType):
     product_type = product_type_field
     all_product_types = all_product_types_field
 
+    all_product_file_paths = all_product_file_paths_field
+
     all_products = PFilterableConnectionField(Product.connection)
-    all_product_file_paths = PFilterableConnectionField(ProductFilePath.connection)
 
     product = graphene.Field(
         Product,

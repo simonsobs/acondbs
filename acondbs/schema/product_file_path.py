@@ -19,6 +19,8 @@ class ProductFilePath(SQLAlchemyObjectType):
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
+all_product_file_paths_field = PFilterableConnectionField(ProductFilePath.connection)
+
 ##__________________________________________________________________||
 class CommonInputFields:
     """Common input fields of mutations for creating and updating file paths
