@@ -9,7 +9,7 @@ from .version import version_field
 from .product import product_field, all_products_field
 from .product_file_path import all_product_file_paths_field
 from .product_type import product_type_field, all_product_types_field
-from .product_relation_type import ProductRelationType, ProductRelationTypeModel
+from .product_relation_type import product_relation_type_field, all_product_relation_types_field
 from .product_relation import ProductRelation, ProductRelationModel
 
 from .web_config import web_config_field
@@ -37,13 +37,8 @@ class Query(graphene.ObjectType):
     product = product_field
     all_products = all_products_field
 
-    all_product_relation_types = PFilterableConnectionField(ProductRelationType.connection)
-
-    product_relation_type = graphene.Field(ProductRelationType, type_id=graphene.Int(), name=graphene.String())
-
-    def resolve_product_relation_type(parent, info, **kwargs):
-        filter = [getattr(ProductRelationTypeModel, k)==v for k, v in kwargs.items()]
-        return ProductRelationType.get_query(info).filter(*filter).one_or_none()
+    product_relation_type = product_relation_type_field
+    all_product_relation_types = all_product_relation_types_field
 
     all_product_relations = PFilterableConnectionField(ProductRelation.connection)
 
