@@ -20,6 +20,18 @@ class ProductRelation(SQLAlchemyObjectType):
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
+def resolve_product_relation(parent, info, **kwargs):
+    filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
+    return ProductRelation.get_query(info).filter(*filter).one_or_none()
+
+product_relation_field = graphene.Field(
+    ProductRelation,
+    relation_id=graphene.Int(),
+    resolver=resolve_product_relation)
+
+all_product_relations_field = PFilterableConnectionField(ProductRelation.connection)
+
+
 ##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
     '''An input to createProductRelation()'''

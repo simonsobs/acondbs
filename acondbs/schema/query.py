@@ -10,7 +10,7 @@ from .product import product_field, all_products_field
 from .product_file_path import all_product_file_paths_field
 from .product_type import product_type_field, all_product_types_field
 from .product_relation_type import product_relation_type_field, all_product_relation_types_field
-from .product_relation import ProductRelation, ProductRelationModel
+from .product_relation import product_relation_field, all_product_relations_field
 
 from .web_config import web_config_field
 
@@ -40,13 +40,8 @@ class Query(graphene.ObjectType):
     product_relation_type = product_relation_type_field
     all_product_relation_types = all_product_relation_types_field
 
-    all_product_relations = PFilterableConnectionField(ProductRelation.connection)
-
-    product_relation = graphene.Field(ProductRelation, relation_id=graphene.Int())
-
-    def resolve_product_relation(parent, info, **kwargs):
-        filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
-        return ProductRelation.get_query(info).filter(*filter).one_or_none()
+    product_relation = product_relation_field
+    all_product_relations = all_product_relations_field
 
     github_user = graphene.Field(GitHubUser)
 
