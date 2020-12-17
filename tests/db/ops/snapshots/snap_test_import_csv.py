@@ -14,6 +14,12 @@ snapshots['test_non_empty 1'] = {
             'token_id': 1
         }
     ],
+    'github_accepted_orgs': [
+    ],
+    'github_org_memberships': [
+    ],
+    'github_users': [
+    ],
     'product_file_paths': [
         {
             'note': '',
