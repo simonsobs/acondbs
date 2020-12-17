@@ -1,10 +1,10 @@
-from flask import current_app
 import graphene
 from graphene import relay
-from graphene_sqlalchemy import SQLAlchemyConnectionField
-from graphql import GraphQLError
 
 from .version import version_field
+from .web_config import web_config_field
+
+from .auth import github_user_field, oauth_app_info_field
 
 from .product import product_field, all_products_field
 from .product_file_path import all_product_file_paths_field
@@ -12,11 +12,6 @@ from .product_type import product_type_field, all_product_types_field
 from .product_relation_type import product_relation_type_field, all_product_relation_types_field
 from .product_relation import product_relation_field, all_product_relations_field
 
-from .web_config import web_config_field
-
-from .filter_ import PFilterableConnectionField
-
-from .auth import github_user_field, oauth_app_info_field
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
