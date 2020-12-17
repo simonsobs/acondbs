@@ -6,7 +6,7 @@ from graphql import GraphQLError
 
 from .version import version_field
 
-from .product import Product, ProductModel
+from .product import product_field, all_products_field
 from .product_file_path import all_product_file_paths_field
 from .product_type import product_type_field, all_product_types_field
 from .product_relation_type import ProductRelationType, ProductRelationTypeModel
@@ -34,20 +34,8 @@ class Query(graphene.ObjectType):
 
     all_product_file_paths = all_product_file_paths_field
 
-    all_products = PFilterableConnectionField(Product.connection)
-
-    product = graphene.Field(
-        Product,
-        product_id=graphene.Int(),
-        type_id=graphene.Int(),
-        name=graphene.String())
-
-    def resolve_product(parent, info, **kwargs):
-
-        filter = [getattr(ProductModel, k)==v for k, v in kwargs.items()]
-        # e.g., [ProductModel.type_id == 1, ProductModel.name == 'map_001']
-
-        return Product.get_query(info).filter(*filter).one_or_none()
+    product = product_field
+    all_products = all_products_field
 
     all_product_relation_types = PFilterableConnectionField(ProductRelationType.connection)
 

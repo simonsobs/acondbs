@@ -22,6 +22,22 @@ class Product(SQLAlchemyObjectType):
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
+def resolve_product(parent, info, **kwargs):
+
+    filter = [getattr(ProductModel, k)==v for k, v in kwargs.items()]
+    # e.g., [ProductModel.type_id == 1, ProductModel.name == 'map_001']
+
+    return Product.get_query(info).filter(*filter).one_or_none()
+
+product_field = graphene.Field(
+    Product,
+    product_id=graphene.Int(),
+    type_id=graphene.Int(),
+    name=graphene.String(),
+    resolver=resolve_product)
+
+all_products_field = PFilterableConnectionField(Product.connection)
+
 ##__________________________________________________________________||
 class RelationInputFields(graphene.InputObjectType):
     '''A relation to another product'''
