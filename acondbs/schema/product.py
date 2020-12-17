@@ -22,13 +22,6 @@ class Product(SQLAlchemyObjectType):
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
-# class ProductConnection(relay.Connection):
-#     class Meta:
-#         node = Product
-
-## Product.connection is used instead
-## https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-478744077
-
 ##__________________________________________________________________||
 class RelationInputFields(graphene.InputObjectType):
     '''A relation to another product'''
