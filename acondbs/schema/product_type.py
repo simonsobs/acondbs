@@ -19,6 +19,20 @@ class ProductType(SQLAlchemyObjectType):
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
+def resolve_product_type(parent, info, **kwargs):
+    filter = [getattr(ProductTypeModel, k) == v for k, v in kwargs.items()]
+    # e.g., [ProductTypeModel.type_id == 1, ProductTypeModel.name == 'map']
+
+    return ProductType.get_query(info).filter(*filter).one_or_none()
+
+product_type_field = graphene.Field(
+    ProductType,
+    type_id=graphene.Int(),
+    name=graphene.String(),
+    resolver=resolve_product_type)
+
+all_product_types_field = PFilterableConnectionField(ProductType.connection)
+
 ##__________________________________________________________________||
 class CommonInputFields:
     order = graphene.Int(
