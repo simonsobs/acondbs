@@ -23,7 +23,7 @@ class Query(graphene.ObjectType):
 
     version = graphene.String()
 
-    def resolve_version(self, info):
+    def resolve_version(parent, info):
         from .. import __version__
         return __version__
 
@@ -31,14 +31,14 @@ class Query(graphene.ObjectType):
 
     web_config = graphene.Field(WebConfig)
 
-    def resolve_web_config(self, info, **kwargs):
+    def resolve_web_config(parent, info, **kwargs):
         return WebConfig.get_query(info).one_or_none()
 
     all_product_types = PFilterableConnectionField(ProductType.connection)
 
     product_type = graphene.Field(ProductType, type_id=graphene.Int(), name=graphene.String())
 
-    def resolve_product_type(self, info, **kwargs):
+    def resolve_product_type(parent, info, **kwargs):
         filter = [getattr(ProductTypeModel, k)==v for k, v in kwargs.items()]
         # e.g., [ProductTypeModel.type_id == 1, ProductTypeModel.name == 'map']
 
@@ -53,7 +53,7 @@ class Query(graphene.ObjectType):
         type_id=graphene.Int(),
         name=graphene.String())
 
-    def resolve_product(self, info, **kwargs):
+    def resolve_product(parent, info, **kwargs):
 
         filter = [getattr(ProductModel, k)==v for k, v in kwargs.items()]
         # e.g., [ProductModel.type_id == 1, ProductModel.name == 'map_001']
@@ -64,7 +64,7 @@ class Query(graphene.ObjectType):
 
     product_relation_type = graphene.Field(ProductRelationType, type_id=graphene.Int(), name=graphene.String())
 
-    def resolve_product_relation_type(self, info, **kwargs):
+    def resolve_product_relation_type(parent, info, **kwargs):
         filter = [getattr(ProductRelationTypeModel, k)==v for k, v in kwargs.items()]
         return ProductRelationType.get_query(info).filter(*filter).one_or_none()
 
@@ -72,13 +72,13 @@ class Query(graphene.ObjectType):
 
     product_relation = graphene.Field(ProductRelation, relation_id=graphene.Int())
 
-    def resolve_product_relation(self, info, **kwargs):
+    def resolve_product_relation(parent, info, **kwargs):
         filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
         return ProductRelation.get_query(info).filter(*filter).one_or_none()
 
     github_user = graphene.Field(GitHubUser)
 
-    def resolve_github_user(self, info):
+    def resolve_github_user(parent, info):
 
         auth = info.context.headers.get('Authorization')
         # e.g., 'Bearer "xxxx"'
@@ -100,7 +100,7 @@ class Query(graphene.ObjectType):
         admin=graphene.Boolean(default_value=False)
         )
 
-    def resolve_oauth_app_info(self, info, admin):
+    def resolve_oauth_app_info(parent, info, admin):
         print(admin)
         if admin:
             return OAuthAppInfo(
