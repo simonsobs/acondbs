@@ -16,7 +16,7 @@ from .web_config import web_config_field
 
 from .filter_ import PFilterableConnectionField
 
-from .auth import OAuthAppInfo, github_user_field
+from .auth import github_user_field, oauth_app_info_field
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
@@ -43,25 +43,6 @@ class Query(graphene.ObjectType):
 
     github_user = github_user_field
 
-    oauth_app_info = graphene.Field(
-        OAuthAppInfo,
-        admin=graphene.Boolean(default_value=False)
-        )
+    oauth_app_info = oauth_app_info_field
 
-    def resolve_oauth_app_info(parent, info, admin):
-        print(admin)
-        if admin:
-            return OAuthAppInfo(
-                client_id=current_app.config['GITHUB_AUTH_ADMIN_CLIENT_ID'],
-                authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
-                token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
-                redirect_uri=current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
-            )
-
-        return OAuthAppInfo(
-            client_id=current_app.config['GITHUB_AUTH_CLIENT_ID'],
-            authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
-            token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
-            redirect_uri=current_app.config['GITHUB_AUTH_REDIRECT_URI']
-        )
 ##__________________________________________________________________||
