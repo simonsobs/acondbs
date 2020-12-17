@@ -12,7 +12,7 @@ from .product_type import ProductType, ProductTypeModel
 from .product_relation_type import ProductRelationType, ProductRelationTypeModel
 from .product_relation import ProductRelation, ProductRelationModel
 
-from .web_config import WebConfig
+from .web_config import web_config_field
 
 from .filter_ import PFilterableConnectionField
 
@@ -27,10 +27,7 @@ class Query(graphene.ObjectType):
 
     node = relay.Node.Field()
 
-    web_config = graphene.Field(WebConfig)
-
-    def resolve_web_config(parent, info, **kwargs):
-        return WebConfig.get_query(info).one_or_none()
+    web_config = web_config_field
 
     all_product_types = PFilterableConnectionField(ProductType.connection)
 
