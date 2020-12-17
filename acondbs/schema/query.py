@@ -16,9 +16,7 @@ from .web_config import web_config_field
 
 from .filter_ import PFilterableConnectionField
 
-from .auth import OAuthAppInfo, GitHubUser
-
-from ..github.api import get_user
+from .auth import OAuthAppInfo, github_user_field
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
@@ -43,24 +41,7 @@ class Query(graphene.ObjectType):
     product_relation = product_relation_field
     all_product_relations = all_product_relations_field
 
-    github_user = graphene.Field(GitHubUser)
-
-    def resolve_github_user(parent, info):
-
-        auth = info.context.headers.get('Authorization')
-        # e.g., 'Bearer "xxxx"'
-
-        if not auth:
-            raise GraphQLError('Authorization is required')
-
-        token = auth.split()[1].strip('"')
-        # e.g., "xxxx"
-
-        user = get_user(token)
-        if not user:
-            raise GraphQLError('Unsuccessful to obtain the user')
-
-        return GitHubUser(**user);
+    github_user = github_user_field
 
     oauth_app_info = graphene.Field(
         OAuthAppInfo,

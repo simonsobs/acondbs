@@ -11,7 +11,7 @@ from acondbs.schema.schema import create_schema
 @pytest.fixture(autouse=True)
 def mock_get_user(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.query.get_user", y)
+    monkeypatch.setattr("acondbs.schema.auth.get_user", y)
     yield y
 
 

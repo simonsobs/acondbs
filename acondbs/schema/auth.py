@@ -8,6 +8,8 @@ from ..github.api import is_member
 
 from ..db.sa import sa
 
+from ..github.api import get_user
+
 ##__________________________________________________________________||
 class OAuthAppInfo(graphene.ObjectType):
     client_id = graphene.String()
@@ -20,6 +22,25 @@ class GitHubUser(graphene.ObjectType):
     login = graphene.String()
     name = graphene.String()
     avatarUrl = graphene.String() # Camel case so can easily be instantiated
+
+def resolve_github_user(parent, info):
+
+    auth = info.context.headers.get('Authorization')
+    # e.g., 'Bearer "xxxx"'
+
+    if not auth:
+        raise GraphQLError('Authorization is required')
+
+    token = auth.split()[1].strip('"')
+    # e.g., "xxxx"
+
+    user = get_user(token)
+    if not user:
+        raise GraphQLError('Unsuccessful to obtain the user')
+
+    return GitHubUser(**user);
+
+github_user_field = graphene.Field(GitHubUser, resolver=resolve_github_user)
 
 ##__________________________________________________________________||
 class AuthPayload(graphene.ObjectType):
