@@ -4,6 +4,8 @@ from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField
 from graphql import GraphQLError
 
+from .version import version_field
+
 from .product import Product, ProductModel
 from .product_file_path import ProductFilePath, ProductFilePathModel
 from .product_type import ProductType, ProductTypeModel
@@ -21,11 +23,7 @@ from ..github.api import get_user
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
 
-    version = graphene.String()
-
-    def resolve_version(parent, info):
-        from .. import __version__
-        return __version__
+    version = version_field
 
     node = relay.Node.Field()
 
