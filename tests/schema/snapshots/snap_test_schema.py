@@ -22,13 +22,6 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'description': 'The ID of the object',
-                            'name': 'node',
-                            'type': {
-                                'name': 'Node'
-                            }
-                        },
-                        {
                             'description': None,
                             'name': 'webConfig',
                             'type': {
@@ -37,16 +30,23 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'allProductTypes',
+                            'name': 'oauthAppInfo',
                             'type': {
-                                'name': 'ProductTypeConnection'
+                                'name': 'OAuthAppInfo'
                             }
                         },
                         {
                             'description': None,
-                            'name': 'productType',
+                            'name': 'githubUser',
                             'type': {
-                                'name': 'ProductType'
+                                'name': 'GitHubUser'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'product',
+                            'type': {
+                                'name': 'Product'
                             }
                         },
                         {
@@ -65,16 +65,16 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'product',
+                            'name': 'productType',
                             'type': {
-                                'name': 'Product'
+                                'name': 'ProductType'
                             }
                         },
                         {
                             'description': None,
-                            'name': 'allProductRelationTypes',
+                            'name': 'allProductTypes',
                             'type': {
-                                'name': 'ProductRelationTypeConnection'
+                                'name': 'ProductTypeConnection'
                             }
                         },
                         {
@@ -86,9 +86,9 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'allProductRelations',
+                            'name': 'allProductRelationTypes',
                             'type': {
-                                'name': 'ProductRelationConnection'
+                                'name': 'ProductRelationTypeConnection'
                             }
                         },
                         {
@@ -100,16 +100,16 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'githubUser',
+                            'name': 'allProductRelations',
                             'type': {
-                                'name': 'GitHubUser'
+                                'name': 'ProductRelationConnection'
                             }
                         },
                         {
-                            'description': None,
-                            'name': 'oauthAppInfo',
+                            'description': 'The ID of the object',
+                            'name': 'node',
                             'type': {
-                                'name': 'OAuthAppInfo'
+                                'name': 'Node'
                             }
                         }
                     ],
@@ -121,26 +121,6 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'String'
-                },
-                {
-                    'description': 'An object with an ID',
-                    'fields': [
-                        {
-                            'description': 'The ID of the object.',
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'Node'
-                },
-                {
-                    'description': 'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'ID'
                 },
                 {
                     'description': 'Web configuration',
@@ -206,154 +186,8 @@ snapshots['test_types 1'] = {
                     'name': 'WebConfig'
                 },
                 {
-                    'description': 'The `Boolean` scalar type represents `true` or `false`.',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'Boolean'
-                },
-                {
-                    'description': None,
+                    'description': 'An object with an ID',
                     'fields': [
-                        {
-                            'description': 'Pagination data for this connection.',
-                            'name': 'pageInfo',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'Contains the nodes in this connection.',
-                            'name': 'edges',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'totalCount',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'ProductTypeConnection'
-                },
-                {
-                    'description': 'The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.',
-                    'fields': [
-                        {
-                            'description': 'When paginating forwards, are there more items?',
-                            'name': 'hasNextPage',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'When paginating backwards, are there more items?',
-                            'name': 'hasPreviousPage',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'When paginating backwards, the cursor to continue.',
-                            'name': 'startCursor',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': 'When paginating forwards, the cursor to continue.',
-                            'name': 'endCursor',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'PageInfo'
-                },
-                {
-                    'description': 'A Relay edge containing a `ProductType` and its cursor.',
-                    'fields': [
-                        {
-                            'description': 'The item at the end of the edge',
-                            'name': 'node',
-                            'type': {
-                                'name': 'ProductType'
-                            }
-                        },
-                        {
-                            'description': 'A cursor for use in pagination',
-                            'name': 'cursor',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'ProductTypeEdge'
-                },
-                {
-                    'description': 'A product type',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'typeId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'name',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'order',
-                            'type': {
-                                'name': 'Int'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'indefArticle',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'singular',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'plural',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'icon',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'products',
-                            'type': {
-                                'name': 'ProductConnection'
-                            }
-                        },
                         {
                             'description': 'The ID of the object.',
                             'name': 'id',
@@ -363,62 +197,82 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'ProductType'
+                    'name': 'Node'
                 },
                 {
-                    'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
+                    'description': 'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.',
                     'fields': None,
                     'inputFields': None,
-                    'name': 'Int'
+                    'name': 'ID'
+                },
+                {
+                    'description': 'The `Boolean` scalar type represents `true` or `false`.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'Boolean'
                 },
                 {
                     'description': None,
                     'fields': [
                         {
-                            'description': 'Pagination data for this connection.',
-                            'name': 'pageInfo',
+                            'description': None,
+                            'name': 'clientId',
                             'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'Contains the nodes in this connection.',
-                            'name': 'edges',
-                            'type': {
-                                'name': None
+                                'name': 'String'
                             }
                         },
                         {
                             'description': None,
-                            'name': 'totalCount',
+                            'name': 'authorizeUrl',
                             'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'ProductConnection'
-                },
-                {
-                    'description': 'A Relay edge containing a `Product` and its cursor.',
-                    'fields': [
-                        {
-                            'description': 'The item at the end of the edge',
-                            'name': 'node',
-                            'type': {
-                                'name': 'Product'
+                                'name': 'String'
                             }
                         },
                         {
-                            'description': 'A cursor for use in pagination',
-                            'name': 'cursor',
+                            'description': None,
+                            'name': 'tokenUrl',
                             'type': {
-                                'name': None
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'redirectUri',
+                            'type': {
+                                'name': 'String'
                             }
                         }
                     ],
                     'inputFields': None,
-                    'name': 'ProductEdge'
+                    'name': 'OAuthAppInfo'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'login',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'name',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'avatarUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubUser'
                 },
                 {
                     'description': None,
@@ -531,6 +385,204 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'Product'
+                },
+                {
+                    'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'Int'
+                },
+                {
+                    'description': 'A product type',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'typeId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'name',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'order',
+                            'type': {
+                                'name': 'Int'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'indefArticle',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'singular',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'plural',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'icon',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'products',
+                            'type': {
+                                'name': 'ProductConnection'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'ProductType'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'ProductConnection'
+                },
+                {
+                    'description': 'The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.',
+                    'fields': [
+                        {
+                            'description': 'When paginating forwards, are there more items?',
+                            'name': 'hasNextPage',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'When paginating backwards, are there more items?',
+                            'name': 'hasPreviousPage',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'When paginating backwards, the cursor to continue.',
+                            'name': 'startCursor',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': 'When paginating forwards, the cursor to continue.',
+                            'name': 'endCursor',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'PageInfo'
+                },
+                {
+                    'description': 'A Relay edge containing a `Product` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'ProductEdge'
+                },
+                {
+                    'description': None,
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'Exact match.',
+                            'name': 'typeId'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Conjunction of filters joined by ``AND``.',
+                            'name': 'and'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Conjunction of filters joined by ``OR``.',
+                            'name': 'or'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Negation of filters.',
+                            'name': 'not'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': None,
+                            'name': 'typeName'
+                        }
+                    ],
+                    'name': 'ProductFilter'
+                },
+                {
+                    'description': 'An enumeration.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'ProductSortEnum'
                 },
                 {
                     'description': None,
@@ -840,41 +892,52 @@ snapshots['test_types 1'] = {
                 },
                 {
                     'description': None,
-                    'fields': None,
-                    'inputFields': [
+                    'fields': [
                         {
-                            'defaultValue': None,
-                            'description': 'Exact match.',
-                            'name': 'typeId'
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
                         },
                         {
-                            'defaultValue': None,
-                            'description': 'Conjunction of filters joined by ``AND``.',
-                            'name': 'and'
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
                         },
                         {
-                            'defaultValue': None,
-                            'description': 'Conjunction of filters joined by ``OR``.',
-                            'name': 'or'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'Negation of filters.',
-                            'name': 'not'
-                        },
-                        {
-                            'defaultValue': None,
                             'description': None,
-                            'name': 'typeName'
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
                         }
                     ],
-                    'name': 'ProductFilter'
+                    'inputFields': None,
+                    'name': 'ProductTypeConnection'
                 },
                 {
-                    'description': 'An enumeration.',
-                    'fields': None,
+                    'description': 'A Relay edge containing a `ProductType` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
                     'inputFields': None,
-                    'name': 'ProductSortEnum'
+                    'name': 'ProductTypeEdge'
                 },
                 {
                     'description': None,
@@ -958,69 +1021,6 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'ProductRelationTypeSortEnum'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'login',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'name',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'avatarUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'GitHubUser'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'clientId',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'authorizeUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'tokenUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'redirectUri',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'OAuthAppInfo'
                 },
                 {
                     'description': None,

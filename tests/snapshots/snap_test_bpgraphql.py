@@ -70,16 +70,16 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'version'
                 },
                 {
-                    'name': 'node'
-                },
-                {
                     'name': 'webConfig'
                 },
                 {
-                    'name': 'allProductTypes'
+                    'name': 'oauthAppInfo'
                 },
                 {
-                    'name': 'productType'
+                    'name': 'githubUser'
+                },
+                {
+                    'name': 'product'
                 },
                 {
                     'name': 'allProducts'
@@ -88,25 +88,25 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'allProductFilePaths'
                 },
                 {
-                    'name': 'product'
+                    'name': 'productType'
                 },
                 {
-                    'name': 'allProductRelationTypes'
+                    'name': 'allProductTypes'
                 },
                 {
                     'name': 'productRelationType'
                 },
                 {
-                    'name': 'allProductRelations'
+                    'name': 'allProductRelationTypes'
                 },
                 {
                     'name': 'productRelation'
                 },
                 {
-                    'name': 'githubUser'
+                    'name': 'allProductRelations'
                 },
                 {
-                    'name': 'oauthAppInfo'
+                    'name': 'node'
                 }
             ],
             'name': 'Query'
@@ -124,16 +124,16 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                     'name': 'version'
                 },
                 {
-                    'name': 'node'
-                },
-                {
                     'name': 'webConfig'
                 },
                 {
-                    'name': 'allProductTypes'
+                    'name': 'oauthAppInfo'
                 },
                 {
-                    'name': 'productType'
+                    'name': 'githubUser'
+                },
+                {
+                    'name': 'product'
                 },
                 {
                     'name': 'allProducts'
@@ -142,25 +142,25 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                     'name': 'allProductFilePaths'
                 },
                 {
-                    'name': 'product'
+                    'name': 'productType'
                 },
                 {
-                    'name': 'allProductRelationTypes'
+                    'name': 'allProductTypes'
                 },
                 {
                     'name': 'productRelationType'
                 },
                 {
-                    'name': 'allProductRelations'
+                    'name': 'allProductRelationTypes'
                 },
                 {
                     'name': 'productRelation'
                 },
                 {
-                    'name': 'githubUser'
+                    'name': 'allProductRelations'
                 },
                 {
-                    'name': 'oauthAppInfo'
+                    'name': 'node'
                 }
             ],
             'name': 'Query'
@@ -231,16 +231,16 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'version'
                 },
                 {
-                    'name': 'node'
-                },
-                {
                     'name': 'webConfig'
                 },
                 {
-                    'name': 'allProductTypes'
+                    'name': 'oauthAppInfo'
                 },
                 {
-                    'name': 'productType'
+                    'name': 'githubUser'
+                },
+                {
+                    'name': 'product'
                 },
                 {
                     'name': 'allProducts'
@@ -249,25 +249,25 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'allProductFilePaths'
                 },
                 {
-                    'name': 'product'
+                    'name': 'productType'
                 },
                 {
-                    'name': 'allProductRelationTypes'
+                    'name': 'allProductTypes'
                 },
                 {
                     'name': 'productRelationType'
                 },
                 {
-                    'name': 'allProductRelations'
+                    'name': 'allProductRelationTypes'
                 },
                 {
                     'name': 'productRelation'
                 },
                 {
-                    'name': 'githubUser'
+                    'name': 'allProductRelations'
                 },
                 {
-                    'name': 'oauthAppInfo'
+                    'name': 'node'
                 }
             ],
             'name': 'Query'
