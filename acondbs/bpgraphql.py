@@ -77,7 +77,7 @@ bp.add_url_rule('/graphql', view_func=GraphQLViewW.as_view('graphql', graphiql=T
 def init_app(app):
     with app.app_context():
         enable_mutation = not app.config.get('ACONDBS_SCHEME_MUTATION_DISABLE', False)
-        schema = create_schema(enable_mutation=enable_mutation)
+    schema = create_schema(enable_mutation=enable_mutation)
     schema_holder[:] = [schema]
 
     app.register_blueprint(bp)
