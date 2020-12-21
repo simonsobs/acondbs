@@ -8,13 +8,13 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_non_empty 1'] = {
-    'admin_app_token': [
+    'github_accepted_orgs': [
+    ],
+    'github_admin_app_token': [
         {
             'token': b'aKjGknYDHY39Z2xAaN7+sQ==',
             'token_id': 1
         }
-    ],
-    'github_accepted_orgs': [
     ],
     'github_org_memberships': [
     ],
