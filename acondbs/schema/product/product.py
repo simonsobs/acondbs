@@ -3,16 +3,18 @@ import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
-from ..models import Product as ProductModel
-from ..models import ProductFilePath as ProductFilePathModel
-from ..models import ProductRelation as ProductRelationModel
-from ..models import ProductRelationType as ProductRelationTypeModel
+from ...models import (
+    Product as ProductModel,
+    ProductFilePath as ProductFilePathModel,
+    ProductRelation as ProductRelationModel,
+    ProductRelationType as ProductRelationTypeModel
+    )
 
-from ..db.sa import sa
-from ..db.backup import request_backup_db
+from ...db.sa import sa
+from ...db.backup import request_backup_db
 
-from .connection import CountedConnection
-from .filter_ import PFilterableConnectionField
+from ..connection import CountedConnection
+from ..filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class Product(SQLAlchemyObjectType):

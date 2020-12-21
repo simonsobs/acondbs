@@ -6,12 +6,7 @@ from .web_config import web_config_field
 
 from .auth import github_user_field, oauth_app_info_field
 
-from .product import product_field, all_products_field
-from .product_file_path import all_product_file_paths_field
-from .product_type import product_type_field, all_product_types_field
-from .product_relation_type import product_relation_type_field, all_product_relation_types_field
-from .product_relation import product_relation_field, all_product_relations_field
-
+from . import product as p
 
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
@@ -22,19 +17,19 @@ class Query(graphene.ObjectType):
 
     web_config = web_config_field
 
-    product_type = product_type_field
-    all_product_types = all_product_types_field
+    product_type = p.product_type_field
+    all_product_types = p.all_product_types_field
 
-    all_product_file_paths = all_product_file_paths_field
+    all_product_file_paths = p.all_product_file_paths_field
 
-    product = product_field
-    all_products = all_products_field
+    product = p.product_field
+    all_products = p.all_products_field
 
-    product_relation_type = product_relation_type_field
-    all_product_relation_types = all_product_relation_types_field
+    product_relation_type = p.product_relation_type_field
+    all_product_relation_types = p.all_product_relation_types_field
 
-    product_relation = product_relation_field
-    all_product_relations = all_product_relations_field
+    product_relation = p.product_relation_field
+    all_product_relations = p.all_product_relations_field
 
     github_user = github_user_field
 
