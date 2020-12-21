@@ -40,7 +40,7 @@ from .schema import create_schema
 ##__________________________________________________________________||
 bp = Blueprint('graphql', __name__)
 
-schema_holder = []
+schema = None
 
 class GraphQLViewW(GraphQLView):
     '''A wrapper.
@@ -66,7 +66,7 @@ class GraphQLViewW(GraphQLView):
 
     '''
     def __init__(self, **kwargs):
-        kwargs['schema'] = schema_holder[0]
+        kwargs['schema'] = schema
         super().__init__(**kwargs)
 
 
@@ -74,10 +74,10 @@ bp.add_url_rule('/graphql', view_func=GraphQLViewW.as_view('graphql', graphiql=T
 
 ##__________________________________________________________________||
 def init_app(app):
+    global schema
     with app.app_context():
         enable_mutation = not app.config.get('ACONDBS_SCHEME_MUTATION_DISABLE', False)
     schema = create_schema(enable_mutation=enable_mutation)
-    schema_holder[:] = [schema]
 
     app.register_blueprint(bp)
 
