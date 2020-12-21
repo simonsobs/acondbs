@@ -7,7 +7,7 @@ from acondbs.db.ops import import_tables_from_csv_files
 from acondbs.db.ops import export_db_to_dict_of_dict_list
 from acondbs.db.ops import export_db_to_csv_files
 
-from acondbs.models import AdminAppToken
+from acondbs.models import GitHubAdminAppToken
 
 from ...constants import SAMPLE_DIR
 
@@ -45,7 +45,7 @@ def test_encrypted_field(app):
     csvdir = Path(SAMPLE_DIR, 'csv')
     with app.app_context():
         import_tables_from_csv_files(csvdir)
-        assert 'token123' == AdminAppToken.query.one().token
+        assert 'token123' == GitHubAdminAppToken.query.one().token
 
 def test_how_to_encrypt_and_decrypt(app, snapshot):
     unencrypted = 'token123'

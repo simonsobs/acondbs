@@ -21,7 +21,7 @@ from .product_relation import ProductRelation
 
 from .web_config import WebConfig
 
-from .github_admin_app_token import AdminAppToken
+from .github_admin_app_token import GitHubAdminAppToken
 from .github_accepted_org import GitHubAcceptedOrg
 from .github_user import GitHubUser
 from .github_org_membership import GitHubOrgMembership

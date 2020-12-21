@@ -2,7 +2,7 @@ from flask import current_app
 import graphene
 from graphql import GraphQLError
 
-from ..models import AdminAppToken as AdminAppTokenModel
+from ..models import GitHubAdminAppToken as GitHubAdminAppTokenModel
 from ..github.auth import get_token
 from ..github.api import is_member
 
@@ -83,7 +83,7 @@ class GitHubAuth(graphene.Mutation):
         token = get_token(code, token_url, client_id, client_secret, redirect_uri)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
-        admin_token = AdminAppTokenModel.query.one()
+        admin_token = GitHubAdminAppTokenModel.query.one()
         org_name = current_app.config['GITHUB_ORG']
         if not is_member(user_token=token, admin_token=admin_token.token, org_name=org_name):
             raise GraphQLError('The user is not a member.')
@@ -104,11 +104,11 @@ class StoreAdminAppToken(graphene.Mutation):
         redirect_uri = current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
         token = get_token(code, token_url, client_id, client_secret, redirect_uri)
 
-        row = AdminAppTokenModel.query.one_or_none()
+        row = GitHubAdminAppTokenModel.query.one_or_none()
         if row:
             row.token = token
         else:
-            row = AdminAppTokenModel(token=token)
+            row = GitHubAdminAppTokenModel(token=token)
             sa.session.add(row)
         sa.session.commit()
         ok = True

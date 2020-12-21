@@ -10,7 +10,7 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 from acondbs.schema.schema import create_schema
 from acondbs.db.sa import sa
-from acondbs.models import AdminAppToken
+from acondbs.models import GitHubAdminAppToken
 
 from ...constants import SAMPLE_DIR
 
@@ -62,14 +62,14 @@ def test_store_admin_app_token(app, mock_get_token, snapshot):
         assert {'data': expected} == result
 
     with app.app_context():
-        token = AdminAppToken.query.one()
+        token = GitHubAdminAppToken.query.one()
         assert 'token0123' == token.token
         snapshot.assert_match(mock_get_token.call_args_list)
 
 def test_store_admin_app_token_update(app, mock_get_token, snapshot):
 
     with app.app_context():
-        row = AdminAppToken(token='old_token_xyz')
+        row = GitHubAdminAppToken(token='old_token_xyz')
         sa.session.add(row)
         sa.session.commit()
 
@@ -91,7 +91,7 @@ def test_store_admin_app_token_update(app, mock_get_token, snapshot):
         snapshot.assert_match(mock_get_token.call_args_list)
 
     with app.app_context():
-        token = AdminAppToken.query.one()
+        token = GitHubAdminAppToken.query.one()
         assert 'new_token_0123' == token.token
 
 ##__________________________________________________________________||
