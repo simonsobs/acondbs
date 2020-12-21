@@ -1,4 +1,4 @@
-from ..db.sa import sa
+from ...db.sa import sa
 
 ##__________________________________________________________________||
 class WebConfig(sa.Model):

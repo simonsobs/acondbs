@@ -1,7 +1,7 @@
 from flask import current_app
 from sqlalchemy_utils import EncryptedType
 
-from ..db.sa import sa
+from ...db.sa import sa
 
 def encription_key():
     return current_app.config['SECRET_KEY']

@@ -13,17 +13,21 @@ https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping
 """
 
 ##__________________________________________________________________||
-from .product_type import ProductType
-from .product import Product
-from .product_file_path import ProductFilePath
-from .product_relation_type import ProductRelationType
-from .product_relation import ProductRelation
+from .product import (
+    ProductType,
+    Product,
+    ProductFilePath,
+    ProductRelationType,
+    ProductRelation
+)
 
-from .web_config import WebConfig
+from .github import (
+    GitHubAdminAppToken,
+    GitHubAcceptedOrg,
+    GitHubUser,
+    GitHubOrgMembership
+)
 
-from .github_admin_app_token import GitHubAdminAppToken
-from .github_accepted_org import GitHubAcceptedOrg
-from .github_user import GitHubUser
-from .github_org_membership import GitHubOrgMembership
+from .web import WebConfig
 
-##__________________________________________________________________||
+# __________________________________________________________________||
