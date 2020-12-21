@@ -8,7 +8,7 @@ import unittest.mock as mock
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
-from acondbs.schema.schema import create_schema
+from acondbs.schema import create_schema
 from acondbs.db.sa import sa
 from acondbs.models import GitHubAdminAppToken
 

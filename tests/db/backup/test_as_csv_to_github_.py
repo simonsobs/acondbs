@@ -6,7 +6,7 @@ from graphene.test import Client
 
 
 from acondbs.db.ops import export_db_to_csv_files
-from acondbs.schema.schema import create_schema
+from acondbs.schema import create_schema
 
 from acondbs.db.backup import backup_db_as_csv_to_github_
 

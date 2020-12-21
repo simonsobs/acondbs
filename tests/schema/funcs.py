@@ -1,6 +1,6 @@
 from graphene.test import Client
 
-from acondbs.schema.schema import create_schema
+from acondbs.schema import create_schema
 
 ##__________________________________________________________________||
 def assert_query(app, snapshot, query, error=False):

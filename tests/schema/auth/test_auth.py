@@ -4,7 +4,7 @@ from graphene.test import Client
 import pytest
 import unittest.mock as mock
 
-from acondbs.schema.schema import create_schema
+from acondbs.schema import create_schema
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)

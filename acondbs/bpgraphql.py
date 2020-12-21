@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_graphql import GraphQLView
 
-from .schema.schema import create_schema
+from .schema import create_schema
 
 ##__________________________________________________________________||
 # from flask import request
