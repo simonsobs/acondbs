@@ -4,7 +4,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 from ..models import WebConfig as WebConfigModel
 
 from .connection import CountedConnection
-from .filter_ import PFilterableConnectionField
+from .product.filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class WebConfig(SQLAlchemyObjectType):

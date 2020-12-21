@@ -10,7 +10,7 @@ from ...db.sa import sa
 from ...db.backup import request_backup_db
 
 from ..connection import CountedConnection
-from ..filter_ import PFilterableConnectionField
+from .filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class ProductType(SQLAlchemyObjectType):
