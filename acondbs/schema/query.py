@@ -2,7 +2,7 @@ import graphene
 from graphene import relay
 
 from .version import version_field
-from .web_config import web_config_field
+from .web import web_config_field
 
 from .auth import github_user_field, oauth_app_info_field
 

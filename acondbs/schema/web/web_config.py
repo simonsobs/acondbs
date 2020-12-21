@@ -1,9 +1,9 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
-from ..models import WebConfig as WebConfigModel
+from ...models import WebConfig as WebConfigModel
 
-from .connection import CountedConnection
+from ..connection import CountedConnection
 
 ##__________________________________________________________________||
 class WebConfig(SQLAlchemyObjectType):
