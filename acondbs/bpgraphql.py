@@ -52,12 +52,11 @@ class GraphQLViewW(GraphQLView):
     (https://github.com/graphql-python/flask-graphql/tree/v2.0.1#usage) is as
     follows
       bp.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
-    The schema needs to be defined in the global scope.
+    The schema needs to have already been created.
 
-    In this app, the schema is not available globally because its creation
-    depends on the configuration. The configuration is not available globally.
-    It is only available in the app context. Therefore, the schema is created
-    in init_app(). Then it is place in the schema_holder.
+    In this app, the schema has not yet been created because its creation
+    depends on the configuration. The configuration is only available in the
+    app context. The schema is created in init_app().
 
     The __init__() will be called in each view from
     https://github.com/pallets/flask/blob/1.1.2/src/flask/views.py#L88
