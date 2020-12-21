@@ -15,7 +15,7 @@ snapshots['test_types 1'] = {
                     'description': None,
                     'fields': [
                         {
-                            'description': None,
+                            'description': 'The version of Acondbs',
                             'name': 'version',
                             'type': {
                                 'name': 'String'
