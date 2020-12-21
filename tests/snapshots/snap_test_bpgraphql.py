@@ -70,6 +70,15 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'version'
                 },
                 {
+                    'name': 'webConfig'
+                },
+                {
+                    'name': 'oauthAppInfo'
+                },
+                {
+                    'name': 'githubUser'
+                },
+                {
                     'name': 'product'
                 },
                 {
@@ -95,15 +104,6 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                 },
                 {
                     'name': 'allProductRelations'
-                },
-                {
-                    'name': 'webConfig'
-                },
-                {
-                    'name': 'oauthAppInfo'
-                },
-                {
-                    'name': 'githubUser'
                 },
                 {
                     'name': 'node'
@@ -124,6 +124,15 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                     'name': 'version'
                 },
                 {
+                    'name': 'webConfig'
+                },
+                {
+                    'name': 'oauthAppInfo'
+                },
+                {
+                    'name': 'githubUser'
+                },
+                {
                     'name': 'product'
                 },
                 {
@@ -149,15 +158,6 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                 },
                 {
                     'name': 'allProductRelations'
-                },
-                {
-                    'name': 'webConfig'
-                },
-                {
-                    'name': 'oauthAppInfo'
-                },
-                {
-                    'name': 'githubUser'
                 },
                 {
                     'name': 'node'
@@ -231,6 +231,15 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'version'
                 },
                 {
+                    'name': 'webConfig'
+                },
+                {
+                    'name': 'oauthAppInfo'
+                },
+                {
+                    'name': 'githubUser'
+                },
+                {
                     'name': 'product'
                 },
                 {
@@ -256,15 +265,6 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                 },
                 {
                     'name': 'allProductRelations'
-                },
-                {
-                    'name': 'webConfig'
-                },
-                {
-                    'name': 'oauthAppInfo'
-                },
-                {
-                    'name': 'githubUser'
                 },
                 {
                     'name': 'node'

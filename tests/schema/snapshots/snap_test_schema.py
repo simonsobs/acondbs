@@ -23,6 +23,27 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'webConfig',
+                            'type': {
+                                'name': 'WebConfig'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'oauthAppInfo',
+                            'type': {
+                                'name': 'OAuthAppInfo'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'githubUser',
+                            'type': {
+                                'name': 'GitHubUser'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'product',
                             'type': {
                                 'name': 'Product'
@@ -85,27 +106,6 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
-                            'description': None,
-                            'name': 'webConfig',
-                            'type': {
-                                'name': 'WebConfig'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'oauthAppInfo',
-                            'type': {
-                                'name': 'OAuthAppInfo'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'githubUser',
-                            'type': {
-                                'name': 'GitHubUser'
-                            }
-                        },
-                        {
                             'description': 'The ID of the object',
                             'name': 'node',
                             'type': {
@@ -121,6 +121,158 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'String'
+                },
+                {
+                    'description': 'Web configuration',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'configId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'headTitle',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'toolbarTitle',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'devtoolLoadingstate',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productCreationDialog',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productUpdateDialog',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productDeletionDialog',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'WebConfig'
+                },
+                {
+                    'description': 'An object with an ID',
+                    'fields': [
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'Node'
+                },
+                {
+                    'description': 'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'ID'
+                },
+                {
+                    'description': 'The `Boolean` scalar type represents `true` or `false`.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'Boolean'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'clientId',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'authorizeUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'tokenUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'redirectUri',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'OAuthAppInfo'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'login',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'name',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'avatarUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubUser'
                 },
                 {
                     'description': None,
@@ -233,26 +385,6 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'Product'
-                },
-                {
-                    'description': 'An object with an ID',
-                    'fields': [
-                        {
-                            'description': 'The ID of the object.',
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'Node'
-                },
-                {
-                    'description': 'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'ID'
                 },
                 {
                     'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
@@ -392,12 +524,6 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'PageInfo'
-                },
-                {
-                    'description': 'The `Boolean` scalar type represents `true` or `false`.',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'Boolean'
                 },
                 {
                     'description': 'A Relay edge containing a `Product` and its cursor.',
@@ -895,132 +1021,6 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'ProductRelationTypeSortEnum'
-                },
-                {
-                    'description': 'Web configuration',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'configId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'headTitle',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'toolbarTitle',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'devtoolLoadingstate',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productCreationDialog',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productUpdateDialog',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productDeletionDialog',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': 'The ID of the object.',
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'WebConfig'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'clientId',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'authorizeUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'tokenUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'redirectUri',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'OAuthAppInfo'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'login',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'name',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'avatarUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'GitHubUser'
                 },
                 {
                     'description': None,

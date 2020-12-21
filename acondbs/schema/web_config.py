@@ -4,7 +4,6 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 from ..models import WebConfig as WebConfigModel
 
 from .connection import CountedConnection
-from .product.filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class WebConfig(SQLAlchemyObjectType):
@@ -13,7 +12,6 @@ class WebConfig(SQLAlchemyObjectType):
         model = WebConfigModel
         interfaces = (graphene.relay.Node, )
         connection_class = CountedConnection
-        connection_field_factory = PFilterableConnectionField.factory
 
 def resolve_web_config(parent, info, **kwargs):
     return WebConfig.get_query(info).one_or_none()
