@@ -38,7 +38,7 @@ def app():
 @pytest.fixture(autouse=True)
 def mock_get_token(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.auth.get_token", y)
+    monkeypatch.setattr("acondbs.schema.github.auth.get_token", y)
     yield y
 
 

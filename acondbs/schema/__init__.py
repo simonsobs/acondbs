@@ -4,12 +4,7 @@ from graphene import relay
 from .version import version_field
 from .web import web_config_field
 
-from .auth import (
-    github_user_field, oauth_app_info_field,
-    GitHubAuth, StoreAdminAppToken
-)
-
-from . import product as p
+from . import (github, product as p)
 
 ##__________________________________________________________________||
 def create_schema(enable_mutation=True):
@@ -40,9 +35,9 @@ class Query(graphene.ObjectType):
     product_relation = p.product_relation_field
     all_product_relations = p.all_product_relations_field
 
-    github_user = github_user_field
+    github_user = github.github_user_field
 
-    oauth_app_info = oauth_app_info_field
+    oauth_app_info = github.oauth_app_info_field
 
 ##__________________________________________________________________||
 class Mutation(graphene.ObjectType):
@@ -66,7 +61,7 @@ class Mutation(graphene.ObjectType):
     create_product_relation = p.CreateProductRelation.Field()
     delete_product_relation = p.DeleteProductRelation.Field()
 
-    github_auth = GitHubAuth.Field()
-    store_admin_app_token = StoreAdminAppToken.Field()
+    github_auth = github.GitHubAuth.Field()
+    store_admin_app_token = github.StoreAdminAppToken.Field()
 
 ##__________________________________________________________________||

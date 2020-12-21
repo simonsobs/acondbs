@@ -2,13 +2,11 @@ from flask import current_app
 import graphene
 from graphql import GraphQLError
 
-from ..models import GitHubAdminAppToken as GitHubAdminAppTokenModel
-from ..github.auth import get_token
-from ..github.api import is_member
+from ...models import GitHubAdminAppToken as GitHubAdminAppTokenModel
+from ...github.auth import get_token
+from ...github.api import is_member, get_user
 
-from ..db.sa import sa
-
-from ..github.api import get_user
+from ...db.sa import sa
 
 ##__________________________________________________________________||
 class OAuthAppInfo(graphene.ObjectType):

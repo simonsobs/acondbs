@@ -10,13 +10,13 @@ from acondbs.schema import create_schema
 @pytest.fixture(autouse=True)
 def mock_get_token(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.auth.get_token", y)
+    monkeypatch.setattr("acondbs.schema.github.auth.get_token", y)
     yield y
 
 @pytest.fixture(autouse=True)
 def mock_is_member(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.auth.is_member", y)
+    monkeypatch.setattr("acondbs.schema.github.auth.is_member", y)
     y.return_value = True
     yield y
 
