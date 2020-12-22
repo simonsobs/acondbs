@@ -67,7 +67,7 @@ class AuthPayload(graphene.ObjectType):
     token = graphene.String()
 
 ##__________________________________________________________________||
-class GitHubAuth(graphene.Mutation):
+class AuthenticateWithGitHub(graphene.Mutation):
     class Arguments:
         code = graphene.String(required=True)
 
@@ -86,7 +86,7 @@ class GitHubAuth(graphene.Mutation):
         if not is_member(user_token=token, admin_token=admin_token.token, org_name=org_name):
             raise GraphQLError('The user is not a member.')
         authPayload = AuthPayload(token=token)
-        return GitHubAuth(authPayload=authPayload)
+        return AuthenticateWithGitHub(authPayload=authPayload)
 
 ##__________________________________________________________________||
 class StoreAdminAppToken(graphene.Mutation):

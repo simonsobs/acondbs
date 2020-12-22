@@ -1132,7 +1132,7 @@ from one product to the other. The reverse relation will be also added.''',
                             'description': None,
                             'name': 'githubAuth',
                             'type': {
-                                'name': 'GitHubAuth'
+                                'name': 'AuthenticateWithGitHub'
                             }
                         },
                         {
@@ -1710,7 +1710,7 @@ from one product to the other. The reverse relation will be also added.''',
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubAuth'
+                    'name': 'AuthenticateWithGitHub'
                 },
                 {
                     'description': None,
