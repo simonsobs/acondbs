@@ -61,7 +61,7 @@ class Mutation(graphene.ObjectType):
     create_product_relation = p.CreateProductRelation.Field()
     delete_product_relation = p.DeleteProductRelation.Field()
 
-    github_auth = github.AuthenticateWithGitHub.Field()
+    authenticate_with_git_hub = github.AuthenticateWithGitHub.Field()
     store_admin_app_token = github.StoreAdminAppToken.Field()
 
 ##__________________________________________________________________||

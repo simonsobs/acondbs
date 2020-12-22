@@ -55,7 +55,7 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'deleteProductRelation'
                 },
                 {
-                    'name': 'githubAuth'
+                    'name': 'authenticateWithGitHub'
                 },
                 {
                     'name': 'storeAdminAppToken'
@@ -216,7 +216,7 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'deleteProductRelation'
                 },
                 {
-                    'name': 'githubAuth'
+                    'name': 'authenticateWithGitHub'
                 },
                 {
                     'name': 'storeAdminAppToken'

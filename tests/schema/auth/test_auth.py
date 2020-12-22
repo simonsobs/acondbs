@@ -24,8 +24,8 @@ def mock_is_member(monkeypatch):
 def test_auth(app, mock_get_token, mock_is_member, snapshot):
 
     query = textwrap.dedent('''
-        mutation GitHubAuth($code: String!) {
-          githubAuth(code: $code) {
+        mutation AuthenticateWithGitHub($code: String!) {
+          authenticateWithGitHub(code: $code) {
             authPayload {
               token
             }
@@ -38,7 +38,7 @@ def test_auth(app, mock_get_token, mock_is_member, snapshot):
     mock_get_token.return_value = 'user_token_xyz'
 
     expected = {
-        'githubAuth': {
+        'authenticateWithGitHub': {
             'authPayload': {
                 'token': 'user_token_xyz'
             }
