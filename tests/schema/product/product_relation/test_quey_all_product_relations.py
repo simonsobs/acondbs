@@ -1,27 +1,27 @@
 import pytest
 import textwrap
 
-from ..funcs import assert_query
+from ...funcs import assert_query
 
-from ..gql import FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION
+from ..gql import FRAGMENT_PRODUCT_RELATION_CONNECTION
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
         [textwrap.dedent('''
           {
-            allProductRelationTypes {
-              ...fragmentProductRelationTypeConnection
+            allProductRelations {
+              ...fragmentProductRelationConnection
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,],
+        ''') + FRAGMENT_PRODUCT_RELATION_CONNECTION,],
         {},
         id='query'
     ),
     pytest.param(
         [textwrap.dedent('''
           {
-            allProductRelationTypes {
+            allProductRelations {
               totalCount
             }
           }

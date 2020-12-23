@@ -1,26 +1,36 @@
 import pytest
 
-from ..funcs import assert_mutation
+from ...funcs import assert_mutation
 
-from ..gql import (
-    FRAGMENT_PRODUCT_RELATION_CONNECTION,
-    DELETE_PRODUCT_RELATION
-    )
+from ..gql import CREATE_PRODUCT_TYPE
 
 QEURY = '''
 {
-  allProductRelations {
-    ...fragmentProductRelationConnection
+  allProductTypes {
+    edges {
+      node {
+        name
+      }
+    }
   }
 }
-''' + FRAGMENT_PRODUCT_RELATION_CONNECTION
+'''
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
         [
-            [DELETE_PRODUCT_RELATION],
-            {'variables': {'relationId': 2}},
+            [CREATE_PRODUCT_TYPE],
+            {'variables': {
+                'input': {
+                  'name': "compass",
+                  'order': 5,
+                  'indefArticle': "a",
+                  'singular': "compass",
+                  'plural': "compasses",
+                  'icon': "mdi-compass"
+                }
+            }},
         ],
         [[QEURY], {}],
         id='create'
@@ -36,11 +46,20 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
 params = [
     pytest.param(
         [
-            [DELETE_PRODUCT_RELATION],
-            {'variables': {'relationId': 120}},
+            [CREATE_PRODUCT_TYPE],
+            {'variables': {
+                'input': {
+                  'name': "map",
+                  'order': 5,
+                  'indefArticle': "a",
+                  'singular': "map",
+                  'plural': "maps",
+                  'icon': "mdi-map"
+                }
+            }},
         ],
         [[QEURY], {}],
-        id='error-nonexistent'
+        id='error-already-exist'
     ),
 ]
 

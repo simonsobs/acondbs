@@ -1,79 +1,62 @@
 import pytest
 
-from ..funcs import assert_mutation
+from ...funcs import assert_mutation
 
-from ..gql import DELETE_PRODUCT
+from ..gql import DELETE_PRODUCT_TYPE
 
 QEURY = '''
 {
-  allProducts {
+  allProductTypes {
     edges {
       node {
         name
-      }
-    }
-  }
-  allProductRelations {
-    edges {
-      node {
-        type_ {
-          name
-        }
-        self_ {
-          name
-        }
-        other {
-          name
-        }
-      }
-    }
-  }
-  allProductFilePaths {
-    edges {
-      node {
-        path
+        typeId
       }
     }
   }
 }
 '''
 
-
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [
-            [DELETE_PRODUCT],
-            {'variables': {'productId': 1}},
+            [DELETE_PRODUCT_TYPE],
+            {'variables': { 'typeId': 2 }},
         ],
         [[QEURY], {}],
         id='delete'
     ),
 ]
 
-
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=True)
 
-
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [
-            [DELETE_PRODUCT],
-            {'variables': {'productId': 512}},
+            [DELETE_PRODUCT_TYPE],
+            {'variables': { 'typeId': 12 }},
         ],
         [[QEURY], {}],
-        id='error'
+        id='error-nonexistent'
+    ),
+    pytest.param(
+        [
+            [DELETE_PRODUCT_TYPE],
+            {'variables': { 'typeId': 1 }},
+        ],
+        [[QEURY], {}],
+        id='error-unempty'
     ),
 ]
-
 
 @pytest.mark.parametrize('mutation, query', params)
 def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=False)
 
-# __________________________________________________________________||
+##__________________________________________________________________||

@@ -1,6 +1,6 @@
 import pytest
 
-from ..funcs import assert_mutation
+from ...funcs import assert_mutation
 
 from ..gql import UPDATE_PRODUCT
 

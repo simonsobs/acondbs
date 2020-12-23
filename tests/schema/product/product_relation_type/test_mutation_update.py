@@ -1,11 +1,10 @@
 import pytest
-import textwrap
 
-from ..funcs import assert_mutation
+from ...funcs import assert_mutation
 
 from ..gql import (
     FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
-    DELETE_PRODUCT_RELATION_TYPES
+    UPDATE_PRODUCT_RELATION_TYPE
     )
 
 ##__________________________________________________________________||
@@ -21,11 +20,19 @@ QEURY = '''
 params = [
     pytest.param(
         [
-            [DELETE_PRODUCT_RELATION_TYPES],
-            { 'variables': { 'typeId': 3 } }
+            [UPDATE_PRODUCT_RELATION_TYPE],
+            {
+                'variables': {
+                    'typeId': 1,
+                    'input': {
+                        'indefArticle': "an",
+                        'singular': "mmap",
+                        'plural': "mmaps"
+                    },
+                }}
         ],
         [[QEURY], {}],
-        id='delete'
+        id='update'
     ),
 ]
 
@@ -34,23 +41,22 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=True)
 
+
 ##__________________________________________________________________||
 params = [
     pytest.param(
         [
-            [DELETE_PRODUCT_RELATION_TYPES],
-            { 'variables': { 'typeId': 512 } }
+            [UPDATE_PRODUCT_RELATION_TYPE],
+            {
+                'variables': {
+                    'typeId': 1,
+                    'input': {
+                        'name': "mmap",
+                    },
+                }}
         ],
         [[QEURY], {}],
-        id='error-nonexistent'
-    ),
-    pytest.param(
-        [
-            [DELETE_PRODUCT_RELATION_TYPES],
-            { 'variables': { 'typeId': 1 } }
-        ],
-        [[QEURY], {}],
-        id='error-unempty'
+        id='error-immutable-field'
     ),
 ]
 

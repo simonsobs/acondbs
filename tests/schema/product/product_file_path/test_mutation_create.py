@@ -1,6 +1,6 @@
 import pytest
 
-from ..funcs import assert_mutation
+from ...funcs import assert_mutation
 
 ##__________________________________________________________________||
 params = [
@@ -9,7 +9,11 @@ params = [
             [
                 '''
                   mutation m {
-                    deleteProductFilePath(pathId: 1) { ok }
+                    createProductFilePath(input: {
+                      path: "nersc:/go/to/my/new_product_v1",
+                      note: "- Note 1",
+                      productId: 1010
+                    }) { productFilePath { path } }
                   }
                 ''',
                 ],
@@ -19,7 +23,7 @@ params = [
             [
                 '''
                   {
-                    product(productId: 1001 ) {
+                    product(productId: 1010) {
                       name datePosted producedBy note
                       paths { edges { node { path note product { productId } } } }
                     }
@@ -28,7 +32,7 @@ params = [
             ],
             {},
         ],
-        id='deleteProductFilePath'
+        id='createProductFilePath'
     ),
 ]
 
@@ -44,7 +48,12 @@ params = [
             [
                 '''
                   mutation m {
-                    deleteProductFilePath(pathId: 15) { ok }
+                    createProductFilePath(input: {
+                      path: "nersc:/go/to/my/new_product_v1",
+                      note: "- Note 1",
+                      productId: 1010,
+                      noSuchField: "xxx"
+                    }) { productFilePath { path } }
                   }
                 ''',
             ],
@@ -66,7 +75,7 @@ params = [
             ],
             {},
         ],
-        id='deleteProductFilePath-error'
+        id='createProductFilePath-noSuchField'
     ),
 ]
 
