@@ -79,6 +79,9 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'githubUser'
                 },
                 {
+                    'name': 'allGitHubAdminAppTokens'
+                },
+                {
                     'name': 'product'
                 },
                 {
@@ -131,6 +134,9 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                 },
                 {
                     'name': 'githubUser'
+                },
+                {
+                    'name': 'allGitHubAdminAppTokens'
                 },
                 {
                     'name': 'product'
@@ -238,6 +244,9 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                 },
                 {
                     'name': 'githubUser'
+                },
+                {
+                    'name': 'allGitHubAdminAppTokens'
                 },
                 {
                     'name': 'product'

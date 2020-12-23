@@ -44,6 +44,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'allGitHubAdminAppTokens',
+                            'type': {
+                                'name': 'GitHubAdminAppTokenConnection'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'product',
                             'type': {
                                 'name': 'Product'
@@ -278,6 +285,130 @@ snapshots['test_types 1'] = {
                     'description': None,
                     'fields': [
                         {
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubAdminAppTokenConnection'
+                },
+                {
+                    'description': 'The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.',
+                    'fields': [
+                        {
+                            'description': 'When paginating forwards, are there more items?',
+                            'name': 'hasNextPage',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'When paginating backwards, are there more items?',
+                            'name': 'hasPreviousPage',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'When paginating backwards, the cursor to continue.',
+                            'name': 'startCursor',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': 'When paginating forwards, the cursor to continue.',
+                            'name': 'endCursor',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'PageInfo'
+                },
+                {
+                    'description': 'A Relay edge containing a `GitHubAdminAppToken` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'GitHubAdminAppToken'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubAdminAppTokenEdge'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'tokenId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'tokenMasked',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubAdminAppToken'
+                },
+                {
+                    'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'Int'
+                },
+                {
+                    'description': 'An enumeration.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'GitHubAdminAppTokenSortEnum'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
                             'description': None,
                             'name': 'productId',
                             'type': {
@@ -387,12 +518,6 @@ snapshots['test_types 1'] = {
                     'name': 'Product'
                 },
                 {
-                    'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'Int'
-                },
-                {
                     'description': 'A product type',
                     'fields': [
                         {
@@ -489,41 +614,6 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'ProductConnection'
-                },
-                {
-                    'description': 'The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.',
-                    'fields': [
-                        {
-                            'description': 'When paginating forwards, are there more items?',
-                            'name': 'hasNextPage',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'When paginating backwards, are there more items?',
-                            'name': 'hasPreviousPage',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'When paginating backwards, the cursor to continue.',
-                            'name': 'startCursor',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': 'When paginating forwards, the cursor to continue.',
-                            'name': 'endCursor',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'PageInfo'
                 },
                 {
                     'description': 'A Relay edge containing a `Product` and its cursor.',
