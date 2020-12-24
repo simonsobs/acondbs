@@ -1231,6 +1231,20 @@ from one product to the other. The reverse relation will be also added.''',
                             'type': {
                                 'name': 'StoreAdminAppToken'
                             }
+                        },
+                        {
+                            'description': 'Add a token for a GitHub Admin App',
+                            'name': 'addGitHubAdminAppToken',
+                            'type': {
+                                'name': 'AddGitHubAdminAppToken'
+                            }
+                        },
+                        {
+                            'description': 'Delete a token for a GitHub Admin App',
+                            'name': 'deleteGitHubAdminAppToken',
+                            'type': {
+                                'name': 'DeleteGitHubAdminAppToken'
+                            }
                         }
                     ],
                     'inputFields': None,
@@ -1829,6 +1843,34 @@ from one product to the other. The reverse relation will be also added.''',
                     ],
                     'inputFields': None,
                     'name': 'StoreAdminAppToken'
+                },
+                {
+                    'description': 'Add a token for a GitHub Admin App',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'AddGitHubAdminAppToken'
+                },
+                {
+                    'description': 'Delete a token for a GitHub Admin App',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'DeleteGitHubAdminAppToken'
                 },
                 {
                     'description': 'A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation and subscription operations.',
