@@ -58,7 +58,7 @@ def resolve_github_user(parent, info):
     if not user:
         raise GraphQLError('Unsuccessful to obtain the user')
 
-    return GitHubUser(**user);
+    return GitHubUser(**user)
 
 github_user_field = graphene.Field(GitHubUser, resolver=resolve_github_user)
 
