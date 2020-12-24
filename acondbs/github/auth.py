@@ -22,9 +22,9 @@ def get_token(code, token_url, client_id, client_secret, redirect_uri):
         'Accept': "application/vnd.github.v3+json, application/json",
     }
 
-    r = requests.post(token_url, json=params, headers=headers)
-    r = r.json()
-    # type(r): <class 'dict'>
+    response = requests.post(token_url, json=params, headers=headers)
+    response = response.json()
+    # type(response): <class 'dict'>
     # examples:
     #   success:
     #     r = {'access_token': 'xxx', 'token_type': 'bearer', 'scope': 'user'}
@@ -36,7 +36,7 @@ def get_token(code, token_url, client_id, client_secret, redirect_uri):
     #         'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
     #     }
 
-    token = r.get('access_token')
+    token = response.get('access_token')
     return token
 
 ##__________________________________________________________________||
