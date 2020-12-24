@@ -66,4 +66,7 @@ class Mutation(graphene.ObjectType):
     authenticate_with_git_hub = github.AuthenticateWithGitHub.Field()
     store_admin_app_token = github.StoreAdminAppToken.Field()
 
+    add_git_hub_admin_app_token = github.AddGitHubAdminAppToken.Field()
+    delete_git_hub_admin_app_token = github.DeleteGitHubAdminAppToken.Field()
+
 ##__________________________________________________________________||
