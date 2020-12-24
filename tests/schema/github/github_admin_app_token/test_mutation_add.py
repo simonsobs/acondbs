@@ -26,10 +26,28 @@ ALL_GITHUB_ADMIN_APP_TOKENS = '''
 '''
 
 ##__________________________________________________________________||
-@pytest.fixture(autouse=True)
-def mock_get_token(monkeypatch):
+@pytest.fixture()
+def mock_auth_requests_success(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.github.github_admin_app_token.get_token", y)
+    monkeypatch.setattr("acondbs.github.auth.requests", y)
+    response = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
+    r = mock.Mock()
+    r.json.return_value = response
+    y.post.return_value = r
+    yield y
+
+@pytest.fixture()
+def mock_auth_requests_error(monkeypatch):
+    y = mock.Mock()
+    monkeypatch.setattr("acondbs.github.auth.requests", y)
+    response = {
+        'error': 'bad_verification_code',
+        'error_description': 'The code passed is incorrect or expired.',
+        'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
+    }
+    r = mock.Mock()
+    r.json.return_value = response
+    y.post.return_value = r
     yield y
 
 # __________________________________________________________________||
@@ -47,11 +65,10 @@ params = [
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
-def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db, mock_get_token):
-    mock_get_token.return_value = 'token_0123'
-
+def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db, mock_auth_requests_success):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=True)
+    snapshot.assert_match(mock_auth_requests_success.post.call_args_list)
 
 # __________________________________________________________________||
 params = [
@@ -68,10 +85,9 @@ params = [
 ]
 
 @pytest.mark.parametrize('mutation, query', params)
-def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db, mock_get_token):
-    mock_get_token.return_value = None
-
+def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db, mock_auth_requests_error):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=False)
+    snapshot.assert_match(mock_auth_requests_error.post.call_args_list)
 
 # __________________________________________________________________||
