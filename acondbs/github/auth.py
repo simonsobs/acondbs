@@ -36,7 +36,10 @@ def get_token(code, token_url, client_id, client_secret, redirect_uri):
     #         'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
     #     }
 
-    token = response.get('access_token')
+    if 'access_token' not in response:
+        raise Exception(response)
+
+    token = response['access_token']
     return token
 
 ##__________________________________________________________________||

@@ -38,16 +38,18 @@ def test_error(mock_requests, snapshot):
     client_secret = 'client_secret_0123'
     redirect_uri = 'http://localhost/auth'
 
-    r = {
+    response = {
         'error': 'bad_verification_code',
         'error_description': 'The code passed is incorrect or expired.',
         'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
     }
-    mock_requests.post().json.return_value = r
+    mock_requests.post().json.return_value = response
 
-    token = get_token(code, token_url, client_id, client_secret, redirect_uri)
+    with pytest.raises(Exception) as e:
+        get_token(code, token_url, client_id, client_secret, redirect_uri)
 
-    assert token is None
+    assert response == e.value.args[0]
+
     snapshot.assert_match(mock_requests.post.call_args_list)
 
 ##__________________________________________________________________||
