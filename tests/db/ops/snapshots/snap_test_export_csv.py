@@ -12,13 +12,23 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'github_admin_app_token': [
         {
+            'scope': 'read:org',
             'token': b'aKjGknYDHY39Z2xAaN7+sQ==',
-            'token_id': 1
+            'token_id': 1,
+            'user_id': 1
         }
     ],
     'github_org_memberships': [
     ],
     'github_users': [
+        {
+            'login': 'octocat',
+            'user_id': 1
+        },
+        {
+            'login': 'dojocat',
+            'user_id': 2
+        }
     ],
     'product_file_paths': [
         {
