@@ -19,6 +19,7 @@ ALL_GITHUB_ADMIN_APP_TOKENS = '''
       node {
         tokenId
         tokenMasked
+        scope
       }
     }
   }
@@ -50,6 +51,12 @@ def mock_auth_requests_error(monkeypatch):
     y.post.return_value = r
     yield y
 
+@pytest.fixture(autouse=True)
+def mock_get_user(monkeypatch):
+    y = mock.Mock()
+    monkeypatch.setattr("acondbs.schema.github.github_admin_app_token.get_user", y)
+    yield y
+
 # __________________________________________________________________||
 params = [
     pytest.param(
@@ -60,12 +67,33 @@ params = [
             }},
         ],
         [[ALL_GITHUB_ADMIN_APP_TOKENS], {}],
-        id='add'
+        {
+            "login": "octocat",
+            "name": "monalisa octocat",
+            "avatarUrl": "https://github.com/images/error/octocat_happy.gif"
+        },
+        id='existing-user'
+    ),
+    pytest.param(
+        [
+            [ADD_GIT_HUB_ADMIN_APP_TOKEN],
+            {'variables': {
+                'code': 'code_01234'
+            }},
+        ],
+        [[ALL_GITHUB_ADMIN_APP_TOKENS], {}],
+        {
+            "login": "dojocat",
+            "name": "dojocat",
+            "avatarUrl": "https://avatars0.githubusercontent.com/u/9758946?v=4"
+        },
+        id='new-user'
     ),
 ]
 
-@pytest.mark.parametrize('mutation, query', params)
-def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db, mock_auth_requests_success):
+@pytest.mark.parametrize('mutation, query, viewer', params)
+def test_schema_success(app, snapshot, mutation, query, viewer, mock_request_backup_db, mock_auth_requests_success, mock_get_user):
+    mock_get_user.return_value = viewer
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=True)
     snapshot.assert_match(mock_auth_requests_success.post.call_args_list)

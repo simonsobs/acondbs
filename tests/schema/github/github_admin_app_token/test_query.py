@@ -10,6 +10,7 @@ ALL_GITHUB_ADMIN_APP_TOKENS = '''
       node {
         tokenId
         tokenMasked
+        scope
       }
     }
   }

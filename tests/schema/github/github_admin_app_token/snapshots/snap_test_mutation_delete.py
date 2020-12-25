@@ -13,12 +13,20 @@ snapshots['test_schema_error[delete] 1'] = {
             'edges': [
                 {
                     'node': {
+                        'scope': 'read:org',
                         'tokenId': '1',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': 'read:org',
+                        'tokenId': '2',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 }
             ],
-            'totalCount': 1
+            'totalCount': 2
         }
     }
 }
@@ -35,8 +43,15 @@ snapshots['test_schema_success[delete] 2'] = {
     'data': {
         'allGitHubAdminAppTokens': {
             'edges': [
+                {
+                    'node': {
+                        'scope': 'read:org',
+                        'tokenId': '2',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                }
             ],
-            'totalCount': 0
+            'totalCount': 1
         }
     }
 }

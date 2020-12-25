@@ -13,12 +13,20 @@ snapshots['test_schema[simple] 1'] = {
             'edges': [
                 {
                     'node': {
+                        'scope': 'read:org',
                         'tokenId': '1',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': 'read:org',
+                        'tokenId': '2',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 }
             ],
-            'totalCount': 1
+            'totalCount': 2
         }
     }
 }
