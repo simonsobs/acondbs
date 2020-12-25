@@ -89,25 +89,3 @@ class AuthenticateWithGitHub(graphene.Mutation):
         return AuthenticateWithGitHub(authPayload=authPayload)
 
 ##__________________________________________________________________||
-class StoreAdminAppToken(graphene.Mutation):
-    class Arguments:
-        code = graphene.String(required=True)
-
-    ok = graphene.Boolean()
-
-    def mutate(root, info, code):
-        token_url = current_app.config['GITHUB_AUTH_TOKEN_URL']
-        client_id = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_ID']
-        client_secret = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_SECRET']
-        redirect_uri = current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
-        token = get_token(code, token_url, client_id, client_secret, redirect_uri)
-
-        row = GitHubAdminAppTokenModel.query.one_or_none()
-        if row:
-            row.token = token
-        else:
-            row = GitHubAdminAppTokenModel(token=token)
-            sa.session.add(row)
-        sa.session.commit()
-        ok = True
-        return StoreAdminAppToken(ok=ok)
