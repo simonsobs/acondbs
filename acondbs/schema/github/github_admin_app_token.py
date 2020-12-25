@@ -6,8 +6,12 @@ from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 
 from graphql import GraphQLError
 
-from ...models import GitHubAdminAppToken as GitHubAdminAppTokenModel
+from ...models import (
+    GitHubAdminAppToken as GitHubAdminAppTokenModel,
+    GitHubUser as GitHubUserModel
+)
 from ...github.auth import get_token
+from ...github.api import get_user
 
 from ...db.sa import sa
 from ...db.backup import request_backup_db
@@ -44,7 +48,11 @@ class AddGitHubAdminAppToken(graphene.Mutation):
         token = get_token(code, token_url, client_id, client_secret, redirect_uri)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
-        model = GitHubAdminAppTokenModel(token=token)
+        user = get_user(token)
+        userModel = GitHubUserModel.query.filter_by(login=user['login']).one_or_none()
+        if userModel is None:
+            userModel = GitHubUserModel(login=user['login'])
+        model = GitHubAdminAppTokenModel(token=token, user=userModel)
         sa.session.add(model)
         sa.session.commit()
         ok = True
