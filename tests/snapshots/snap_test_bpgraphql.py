@@ -58,9 +58,6 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'authenticateWithGitHub'
                 },
                 {
-                    'name': 'storeAdminAppToken'
-                },
-                {
                     'name': 'addGitHubAdminAppToken'
                 },
                 {
@@ -229,9 +226,6 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                 },
                 {
                     'name': 'authenticateWithGitHub'
-                },
-                {
-                    'name': 'storeAdminAppToken'
                 },
                 {
                     'name': 'addGitHubAdminAppToken'

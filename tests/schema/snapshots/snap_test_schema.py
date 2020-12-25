@@ -376,6 +376,20 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'description': None,
+                            'name': 'scope',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'userId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
                             'description': 'The ID of the object.',
                             'name': 'id',
                             'type': {
@@ -1226,13 +1240,6 @@ from one product to the other. The reverse relation will be also added.''',
                             }
                         },
                         {
-                            'description': None,
-                            'name': 'storeAdminAppToken',
-                            'type': {
-                                'name': 'StoreAdminAppToken'
-                            }
-                        },
-                        {
                             'description': 'Add a token for a GitHub Admin App',
                             'name': 'addGitHubAdminAppToken',
                             'type': {
@@ -1829,20 +1836,6 @@ from one product to the other. The reverse relation will be also added.''',
                     ],
                     'inputFields': None,
                     'name': 'AuthPayload'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'StoreAdminAppToken'
                 },
                 {
                     'description': 'Add a token for a GitHub Admin App',
