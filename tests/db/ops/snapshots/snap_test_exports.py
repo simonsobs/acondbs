@@ -10,15 +10,15 @@ snapshots = Snapshot()
 snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'github_accepted_orgs': [
     ],
-    'github_admin_app_token': [
+    'github_org_memberships': [
+    ],
+    'github_tokens': [
         {
             'scope': 'read:org',
             'token': b'aKjGknYDHY39Z2xAaN7+sQ==',
             'token_id': 1,
             'user_id': 1
         }
-    ],
-    'github_org_memberships': [
     ],
     'github_users': [
         {
