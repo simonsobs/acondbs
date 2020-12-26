@@ -18,7 +18,7 @@ class GitHubAdminAppToken(sa.Model):
     )
     user = sa.relationship(
         "GitHubUser",
-        backref=sa.backref("admin_app_tokens", cascade="all, delete-orphan")
+        backref=sa.backref("tokens", cascade="all, delete-orphan")
         )
 
 ##__________________________________________________________________||
