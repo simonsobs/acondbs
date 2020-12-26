@@ -8,7 +8,7 @@ def encription_key():
 
 ##__________________________________________________________________||
 class GitHubAdminAppToken(sa.Model):
-    __tablename__ = 'github_admin_app_token'
+    __tablename__ = 'github_tokens'
     token_id = sa.Column(sa.Integer(), primary_key=True)
     token = sa.Column(EncryptedType(sa.Text(), key=encription_key))
     scope = sa.Column(sa.Text())
