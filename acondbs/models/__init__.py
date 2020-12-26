@@ -23,7 +23,7 @@ from .product import (
 
 from .github import (
     GitHubToken,
-    GitHubAcceptedOrg,
+    GitHubOrg,
     GitHubUser,
     GitHubOrgMembership
 )

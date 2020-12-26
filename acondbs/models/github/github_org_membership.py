@@ -9,7 +9,7 @@ class GitHubOrgMembership(sa.Model):
         nullable=False
     )
     org = sa.relationship(
-        "GitHubAcceptedOrg",
+        "GitHubOrg",
         backref=sa.backref("memberships", cascade="all"),
         )
     member_id = sa.Column(

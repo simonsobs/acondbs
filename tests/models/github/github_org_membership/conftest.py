@@ -4,7 +4,7 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 from acondbs.db.sa import sa
-from acondbs.models import GitHubAcceptedOrg, GitHubUser, GitHubOrgMembership
+from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -20,7 +20,7 @@ def app_empty():
 def app(app_empty):
     y = app_empty
 
-    org1 = GitHubAcceptedOrg(login="org1")
+    org1 = GitHubOrg(login="org1")
     user1 = GitHubUser(login="user1")
     membership = GitHubOrgMembership(org=org1, member=user1)
 

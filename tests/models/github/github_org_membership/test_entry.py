@@ -3,14 +3,14 @@ import pytest
 from sqlalchemy import exc
 
 from acondbs.db.sa import sa
-from acondbs.models import GitHubAcceptedOrg, GitHubUser, GitHubOrgMembership
+from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
 
 # __________________________________________________________________||
 def test_relation(app):
 
     with app.app_context():
         membership = GitHubOrgMembership.query.one()
-        org1 = GitHubAcceptedOrg.query.one()
+        org1 = GitHubOrg.query.one()
         user1 = GitHubUser.query.one()
         assert org1 == membership.org
         assert user1 == membership.member
@@ -21,13 +21,13 @@ def test_relation(app):
 def test_cascade_delete_org(app):
 
     with app.app_context():
-        org1 = GitHubAcceptedOrg.query.filter_by(login="org1").one()
+        org1 = GitHubOrg.query.filter_by(login="org1").one()
         sa.session.delete(org1)
         sa.session.commit()
 
     with app.app_context():
         memberships = GitHubOrgMembership.query.all()
-        orgs = GitHubAcceptedOrg.query.all()
+        orgs = GitHubOrg.query.all()
         users = GitHubUser.query.all()
         assert len(memberships) == 0
         assert len(orgs) == 0
@@ -42,7 +42,7 @@ def test_cascade_delete_user(app):
 
     with app.app_context():
         memberships = GitHubOrgMembership.query.all()
-        orgs = GitHubAcceptedOrg.query.all()
+        orgs = GitHubOrg.query.all()
         users = GitHubUser.query.all()
         assert len(memberships) == 0
         assert len(orgs) == 1
@@ -57,7 +57,7 @@ def test_cascade_delete_membership(app):
 
     with app.app_context():
         memberships = GitHubOrgMembership.query.all()
-        orgs = GitHubAcceptedOrg.query.all()
+        orgs = GitHubOrg.query.all()
         users = GitHubUser.query.all()
         assert len(memberships) == 0
         assert len(orgs) == 1
