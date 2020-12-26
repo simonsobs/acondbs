@@ -22,6 +22,13 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'description': 'The version of Alembic migration',
+                            'name': 'alembicVersion',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
                             'description': None,
                             'name': 'webConfig',
                             'type': {

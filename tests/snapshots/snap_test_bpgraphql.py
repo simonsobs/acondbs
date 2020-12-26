@@ -73,6 +73,9 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'version'
                 },
                 {
+                    'name': 'alembicVersion'
+                },
+                {
                     'name': 'webConfig'
                 },
                 {
@@ -128,6 +131,9 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
             'fields': [
                 {
                     'name': 'version'
+                },
+                {
+                    'name': 'alembicVersion'
                 },
                 {
                     'name': 'webConfig'
@@ -241,6 +247,9 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
             'fields': [
                 {
                     'name': 'version'
+                },
+                {
+                    'name': 'alembicVersion'
                 },
                 {
                     'name': 'webConfig'
