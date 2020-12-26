@@ -265,9 +265,16 @@ snapshots['test_types 1'] = {
                     'fields': [
                         {
                             'description': None,
+                            'name': 'userId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'login',
                             'type': {
-                                'name': 'String'
+                                'name': None
                             }
                         },
                         {
@@ -282,6 +289,20 @@ snapshots['test_types 1'] = {
                             'name': 'avatarUrl',
                             'type': {
                                 'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'tokens',
+                            'type': {
+                                'name': 'GitHubAdminAppTokenConnection'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
                             }
                         }
                     ],
@@ -394,6 +415,13 @@ snapshots['test_types 1'] = {
                             'name': 'userId',
                             'type': {
                                 'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'user',
+                            'type': {
+                                'name': 'GitHubUser'
                             }
                         },
                         {
