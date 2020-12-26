@@ -1,7 +1,7 @@
 import graphene
 from graphene import relay
 
-from .version import version_field
+from . import version as version_
 from .web import web_config_field
 
 from . import (github, product as p)
@@ -15,7 +15,8 @@ def create_schema(enable_mutation=True):
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
 
-    version = version_field
+    version = version_.version_field
+    alembic_version = version_.alembic_version_field
 
     node = relay.Node.Field()
 
