@@ -8,9 +8,9 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_non_empty 1'] = {
-    'github_accepted_orgs': [
-    ],
     'github_org_memberships': [
+    ],
+    'github_orgs': [
     ],
     'github_tokens': [
         {
