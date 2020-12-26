@@ -22,11 +22,15 @@ snapshots['test_non_empty 1'] = {
     ],
     'github_users': [
         {
+            'avatar_url': 'https://avatars3.githubusercontent.com/u/583231?v=4',
             'login': 'octocat',
+            'name': 'The Octocat',
             'user_id': 1
         },
         {
+            'avatar_url': 'https://avatars0.githubusercontent.com/u/9758946?v=4',
             'login': 'dojocat',
+            'name': 'dojocat',
             'user_id': 2
         }
     ],
