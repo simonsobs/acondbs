@@ -21,11 +21,9 @@ def resolve_alembic_version(parent, info):
     engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)
-    print([tbl.name for tbl in metadata.sorted_tables])
     if tbl_name not in metadata.tables:
         return None
     tbl = metadata.tables[tbl_name]
-    print('here')
     result_proxy = engine.execute(tbl.select())
     result_dict = [dict(r) for r in result_proxy] # e.g., [{'version_num': '63033c01def0'}]
     if result_dict:
