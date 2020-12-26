@@ -11,7 +11,7 @@ from acondbs.schema import create_schema
 @pytest.fixture(autouse=True)
 def mock_get_user(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.github.auth.get_user", y)
+    monkeypatch.setattr("acondbs.schema.github.github_user.get_user", y)
     yield y
 
 
@@ -25,7 +25,7 @@ def test_auth(app, mock_get_user):
         "name": "monalisa octocat",
         "avatarUrl": "https://github.com/images/error/octocat_happy.gif"
     }
-    mock_get_user.return_value = viewer
+    mock_get_user.return_value = dict(viewer) # make a copy because "avatarUrl" will be modified to "avatar_url"
 
     expected = {
         'githubUser': viewer

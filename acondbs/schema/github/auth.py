@@ -4,7 +4,7 @@ from graphql import GraphQLError
 
 from ...models import GitHubToken as GitHubAdminAppTokenModel
 from ...github.auth import get_token
-from ...github.api import is_member, get_user
+from ...github.api import is_member
 
 from ...db.sa import sa
 
@@ -36,31 +36,6 @@ oauth_app_info_field = graphene.Field(
     admin=graphene.Boolean(default_value=False),
     resolver=resolve_oauth_app_info
     )
-
-##__________________________________________________________________||
-class GitHubUser(graphene.ObjectType):
-    login = graphene.String()
-    name = graphene.String()
-    avatarUrl = graphene.String() # Camel case so can easily be instantiated
-
-def resolve_github_user(parent, info):
-
-    auth = info.context.headers.get('Authorization')
-    # e.g., 'Bearer "xxxx"'
-
-    if not auth:
-        raise GraphQLError('Authorization is required')
-
-    token = auth.split()[1].strip('"')
-    # e.g., "xxxx"
-
-    user = get_user(token)
-    if not user:
-        raise GraphQLError('Unsuccessful to obtain the user')
-
-    return GitHubUser(**user)
-
-github_user_field = graphene.Field(GitHubUser, resolver=resolve_github_user)
 
 ##__________________________________________________________________||
 class AuthPayload(graphene.ObjectType):
