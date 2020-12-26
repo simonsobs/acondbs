@@ -1,3 +1,3 @@
-user_id,login
-1,octocat
-2,dojocat
+user_id,login,avatar_url,name
+1,octocat,https://avatars3.githubusercontent.com/u/583231?v=4,The Octocat
+2,dojocat,https://avatars0.githubusercontent.com/u/9758946?v=4,dojocat
