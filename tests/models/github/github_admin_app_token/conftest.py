@@ -5,7 +5,7 @@ from acondbs.db.ops import define_tables
 
 from acondbs.db.sa import sa
 from acondbs.models import (
-    GitHubAdminAppToken,
+    GitHubToken,
     GitHubUser
 )
 
@@ -34,8 +34,8 @@ def app(app_empty):
     #
 
     user1 = GitHubUser(login="octocat")
-    token1 = GitHubAdminAppToken(token="token_001", scope="read:org", user=user1)
-    token2 = GitHubAdminAppToken(token="token_002", scope="read:org", user=user1)
+    token1 = GitHubToken(token="token_001", scope="read:org", user=user1)
+    token2 = GitHubToken(token="token_002", scope="read:org", user=user1)
 
     with y.app_context():
         sa.session.add(user1)

@@ -4,7 +4,7 @@ from sqlalchemy import exc
 
 from acondbs.db.sa import sa
 from acondbs.models import (
-    GitHubAdminAppToken,
+    GitHubToken,
     GitHubUser
 )
 
@@ -29,7 +29,7 @@ def test_add(app):
     with app.app_context():
         user1 = GitHubUser.query.filter_by(login="octocat").one()
         ntokens = len(user1.tokens) # = 2
-        token3 = GitHubAdminAppToken(token="token_003", scope="read:org", user=user1)
+        token3 = GitHubToken(token="token_003", scope="read:org", user=user1)
         sa.session.commit()
 
     with app.app_context():
@@ -70,7 +70,7 @@ def test_delete_cascade(app):
         sa.session.commit()
 
     with app.app_context():
-        tokens = GitHubAdminAppToken.query.all()
+        tokens = GitHubToken.query.all()
         assert 0 == len(tokens)
 
 ##__________________________________________________________________||

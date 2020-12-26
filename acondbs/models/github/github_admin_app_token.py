@@ -7,7 +7,7 @@ def encription_key():
     return current_app.config['SECRET_KEY']
 
 ##__________________________________________________________________||
-class GitHubAdminAppToken(sa.Model):
+class GitHubToken(sa.Model):
     __tablename__ = 'github_tokens'
     token_id = sa.Column(sa.Integer(), primary_key=True)
     token = sa.Column(EncryptedType(sa.Text(), key=encription_key))

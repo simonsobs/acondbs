@@ -7,7 +7,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 from graphql import GraphQLError
 
 from ...models import (
-    GitHubAdminAppToken as GitHubAdminAppTokenModel,
+    GitHubToken as GitHubAdminAppTokenModel,
     GitHubUser as GitHubUserModel
 )
 from ...github.auth import get_token

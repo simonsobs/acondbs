@@ -2,7 +2,7 @@ from flask import current_app
 import graphene
 from graphql import GraphQLError
 
-from ...models import GitHubAdminAppToken as GitHubAdminAppTokenModel
+from ...models import GitHubToken as GitHubAdminAppTokenModel
 from ...github.auth import get_token
 from ...github.api import is_member, get_user
 
