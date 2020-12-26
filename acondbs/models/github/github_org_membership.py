@@ -5,7 +5,7 @@ class GitHubOrgMembership(sa.Model):
     __tablename__ = 'github_org_memberships'
     entry_id = sa.Column(sa.Integer(), primary_key=True)
     org_id = sa.Column(
-        sa.ForeignKey('github_accepted_orgs.org_id'),
+        sa.ForeignKey('github_orgs.org_id'),
         nullable=False
     )
     org = sa.relationship(
