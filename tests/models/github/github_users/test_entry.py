@@ -9,14 +9,18 @@ from acondbs.models import GitHubUser
 def test_entry(app_empty):
     app = app_empty
 
-    row = GitHubUser(login="octocat")
+    user1 = GitHubUser(
+        login="octocat",
+        name="The Octocat",
+        avatar_url="https://avatars3.githubusercontent.com/u/583231?v=4"
+        )
 
     with app.app_context():
-        sa.session.add(row)
+        sa.session.add(user1)
         sa.session.commit()
 
     with app.app_context():
-        row = GitHubUser.query.filter_by(login='octocat').one()
-        assert 'octocat' == row.login
+        user1 = GitHubUser.query.filter_by(login='octocat').one()
+        assert 'octocat' == user1.login
 
 # __________________________________________________________________||
