@@ -2,7 +2,7 @@
 import pytest
 import unittest.mock as mock
 
-from acondbs.github.call import call_api
+from acondbs.github.call import call_graphql_api
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
@@ -29,7 +29,7 @@ def test_simple(mock_requests, snapshot):
     }
     mock_requests.post().json.return_value = response
 
-    r = call_api(query=query, token=token)
+    r = call_graphql_api(query=query, token=token)
 
     assert response['data'] == r
 
@@ -62,7 +62,7 @@ def test_variables(mock_requests, snapshot):
 
     mock_requests.post().json.return_value = response
 
-    r = call_api(query=query, variables=variables, token=token)
+    r = call_graphql_api(query=query, variables=variables, token=token)
 
     assert response['data'] == r
 
@@ -109,7 +109,7 @@ def test_error(mock_requests, snapshot):
     mock_requests.post().json.return_value = response
 
     with pytest.raises(Exception) as e:
-        call_api(query=query, token=token)
+        call_graphql_api(query=query, token=token)
 
     assert response['errors'] == e.value.args[0]
 
@@ -126,7 +126,7 @@ def test_bad_credentials(mock_requests):
     mock_requests.post().json.return_value = response
 
     with pytest.raises(Exception) as e:
-        call_api(query=query, token=token)
+        call_graphql_api(query=query, token=token)
 
     assert response == e.value.args[0]
 

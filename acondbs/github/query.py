@@ -1,12 +1,12 @@
 """Queries
 """
 
-from .call import call_api
+from .call import call_graphql_api
 
 ##__________________________________________________________________||
 def get_user(token):
     query = '{ viewer { login name avatarUrl } }'
-    r = call_api(query=query, token=token)
+    r = call_graphql_api(query=query, token=token)
     # e.g., https://github.com/octocat
     # {
     #     "viewer": {
@@ -21,7 +21,7 @@ def get_user(token):
 ##__________________________________________________________________||
 def get_user_id(token):
     query = '{ viewer { id } }'
-    r = call_api(query=query, token=token)
+    r = call_graphql_api(query=query, token=token)
     # e.g.,
     # {
     #     "viewer": {
@@ -44,7 +44,7 @@ def get_org_member_ids(org_name, token):
       }
     """
     variables = { "org_login": org_name }
-    r = call_api(query=query, variables=variables, token=token)
+    r = call_graphql_api(query=query, variables=variables, token=token)
     # e.g.,
     # {
     #     'organization': {
@@ -72,7 +72,7 @@ def get_org_member_ids(org_name, token):
       }
     """
     variables = { "org_login": org_name, "first": nmembers }
-    r = call_api(query=query, variables=variables, token=token)
+    r = call_graphql_api(query=query, variables=variables, token=token)
     # e.g.,
     # {
     #     'organization': {

@@ -6,7 +6,7 @@ import requests
 API_URL = 'https://api.github.com/graphql'
 
 ##__________________________________________________________________||
-def call_api(query, variables=None, token=None):
+def call_graphql_api(query, variables=None, token=None):
 
     headers = {}
     if token:
