@@ -7,6 +7,30 @@ API_URL = 'https://api.github.com/graphql'
 
 ##__________________________________________________________________||
 def call_graphql_api(query, variables=None, token=None):
+    """Call a GitHub GraphQL API
+
+    Parameters
+    ----------
+    query : str
+        A GraphQL query, e.g.,
+        'query User($login: String!) { user(login: $login) { name } }'
+    variables: dict
+        Variables for the query, e.g., {"login": "octocat"}
+    token: str
+        An access token
+
+    Returns
+    -------
+    dict
+        The data field of the query results, e.g.,
+        { "user": { "name": "The Octocat" } }
+
+    Raises
+    ------
+    Exception
+        If the query results include the field "errors" or don't include the
+        field "data."
+    """
 
     headers = {}
     if token:
