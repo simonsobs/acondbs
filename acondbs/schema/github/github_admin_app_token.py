@@ -10,7 +10,7 @@ from ...models import (
     GitHubToken as GitHubAdminAppTokenModel,
     GitHubUser as GitHubUserModel
 )
-from ...github.auth import get_token
+from ...github.call import get_token
 from ...github.query import get_user
 
 from ...db.sa import sa

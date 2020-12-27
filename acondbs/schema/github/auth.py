@@ -3,7 +3,7 @@ import graphene
 from graphql import GraphQLError
 
 from ...models import GitHubToken as GitHubAdminAppTokenModel
-from ...github.auth import get_token
+from ...github.call import get_token
 from ...github.query import is_member
 
 from ...db.sa import sa

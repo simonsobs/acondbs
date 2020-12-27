@@ -1,13 +1,13 @@
 import pytest
 import unittest.mock as mock
 
-from acondbs.github.auth import get_token
+from acondbs.github.call import get_token
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.github.auth.requests", y)
+    monkeypatch.setattr("acondbs.github.call.requests", y)
     yield y
 
 ##__________________________________________________________________||
