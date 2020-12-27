@@ -86,9 +86,34 @@ def call_graphql_api(query, variables=None, token=None):
 
 ##__________________________________________________________________||
 def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri):
-    """exchange a code for an access token
+    """exchange a OAuth2 authorization code for an access token
 
     https://docs.github.com/en/free-pro-team@latest/developers/apps/authorizing-oauth-apps#2-users-are-redirected-back-to-your-site-by-github
+
+    Parameters
+    ----------
+    code : str
+        An OAuth2 authorization code
+    token_url: str
+        The token URL, i.e., 'https://github.com/login/oauth/access_token'
+    client_id: str
+        The client ID of the OAuth2 app
+    client_secret: str
+        The client secret of the OAuth2 app
+    redirect_uri: str
+        The redirect URI of the OAuth2 app
+
+    Returns
+    -------
+    str
+        An access token
+
+    Raises
+    ------
+    Exception
+        If an access token is not obtained, for example, because of a
+        bad verification code
+
     """
 
     params = {
@@ -104,14 +129,13 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
     }
 
     response = requests.post(token_url, json=params, headers=headers)
-    response = response.json()
-    # type(response): <class 'dict'>
+    response = response.json() # dict
     # examples:
     #   success:
-    #     r = {'access_token': 'xxx', 'token_type': 'bearer', 'scope': 'user'}
+    #     response = {'access_token': 'XXXXXXXXXXXXXXXXXXXX', 'token_type': 'bearer', 'scope': 'user'}
     #
     #   error:
-    #     r = {
+    #     response = {
     #         'error': 'bad_verification_code',
     #         'error_description': 'The code passed is incorrect or expired.',
     #         'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
