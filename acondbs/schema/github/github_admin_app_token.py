@@ -11,7 +11,7 @@ from ...models import (
     GitHubUser as GitHubUserModel
 )
 from ...github.auth import get_token
-from ...github.api import get_user
+from ...github.query import get_user
 
 from ...db.sa import sa
 from ...db.backup import request_backup_db

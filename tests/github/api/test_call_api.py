@@ -2,13 +2,13 @@
 import pytest
 import unittest.mock as mock
 
-from acondbs.github.api import call_api
+from acondbs.github.call import call_api
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.github.api.requests", y)
+    monkeypatch.setattr("acondbs.github.call.requests", y)
     yield y
 
 

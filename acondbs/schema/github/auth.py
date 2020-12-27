@@ -4,7 +4,7 @@ from graphql import GraphQLError
 
 from ...models import GitHubToken as GitHubAdminAppTokenModel
 from ...github.auth import get_token
-from ...github.api import is_member
+from ...github.query import is_member
 
 from ...db.sa import sa
 
