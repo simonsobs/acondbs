@@ -85,7 +85,7 @@ def call_graphql_api(query, variables=None, token=None):
     return response['data']
 
 ##__________________________________________________________________||
-def get_token(code, token_url, client_id, client_secret, redirect_uri):
+def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri):
     """exchange a code for an access token
 
     https://docs.github.com/en/free-pro-team@latest/developers/apps/authorizing-oauth-apps#2-users-are-redirected-back-to-your-site-by-github

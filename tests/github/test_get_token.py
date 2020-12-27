@@ -1,7 +1,7 @@
 import pytest
 import unittest.mock as mock
 
-from acondbs.github.call import get_token
+from acondbs.github.call import exchange_code_for_token
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
@@ -23,7 +23,7 @@ def test_success(mock_requests, snapshot):
     r = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
     mock_requests.post().json.return_value = r
 
-    token = get_token(code, token_url, client_id, client_secret, redirect_uri)
+    token = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
 
     assert 'token-xxx' == token
     snapshot.assert_match(mock_requests.post.call_args_list)
@@ -46,7 +46,7 @@ def test_error(mock_requests, snapshot):
     mock_requests.post().json.return_value = response
 
     with pytest.raises(Exception) as e:
-        get_token(code, token_url, client_id, client_secret, redirect_uri)
+        exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
 
     assert response == e.value.args[0]
 

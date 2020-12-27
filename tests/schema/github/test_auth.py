@@ -8,9 +8,9 @@ from acondbs.schema import create_schema
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
-def mock_get_token(monkeypatch):
+def mock_exchange_code_for_token(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.github.auth.get_token", y)
+    monkeypatch.setattr("acondbs.schema.github.auth.exchange_code_for_token", y)
     yield y
 
 @pytest.fixture(autouse=True)
@@ -21,7 +21,7 @@ def mock_is_member(monkeypatch):
     yield y
 
 ##__________________________________________________________________||
-def test_auth(app, mock_get_token, mock_is_member, snapshot):
+def test_auth(app, mock_exchange_code_for_token, mock_is_member, snapshot):
 
     query = textwrap.dedent('''
         mutation AuthenticateWithGitHub($code: String!) {
@@ -35,7 +35,7 @@ def test_auth(app, mock_get_token, mock_is_member, snapshot):
 
     variables = { 'code': 'xyz' }
 
-    mock_get_token.return_value = 'user_token_xyz'
+    mock_exchange_code_for_token.return_value = 'user_token_xyz'
 
     expected = {
         'authenticateWithGitHub': {
@@ -50,7 +50,7 @@ def test_auth(app, mock_get_token, mock_is_member, snapshot):
         client = Client(schema)
         result = client.execute(query, variables=variables, context_value={})
         assert {'data': expected} == result
-        snapshot.assert_match(mock_get_token.call_args_list)
+        snapshot.assert_match(mock_exchange_code_for_token.call_args_list)
         snapshot.assert_match(mock_is_member.call_args_list)
 
 ##__________________________________________________________________||
