@@ -1,4 +1,9 @@
 """Call GitHub APIs
+
+This module contains functions that actually access to GitHub APIs.
+Other modules in the sub-package access to GitHub APIs via functions
+in this module.
+
 """
 
 import requests
