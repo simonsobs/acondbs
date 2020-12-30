@@ -9,35 +9,6 @@ from ...github.query import is_member
 from ...db.sa import sa
 
 ##__________________________________________________________________||
-class OAuthAppInfo(graphene.ObjectType):
-    client_id = graphene.String()
-    authorize_url = graphene.String()
-    token_url = graphene.String()
-    redirect_uri = graphene.String()
-
-def resolve_oauth_app_info(parent, info, admin):
-    if admin:
-        return OAuthAppInfo(
-            client_id=current_app.config['GITHUB_AUTH_ADMIN_CLIENT_ID'],
-            authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
-            token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
-            redirect_uri=current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
-        )
-
-    return OAuthAppInfo(
-        client_id=current_app.config['GITHUB_AUTH_CLIENT_ID'],
-        authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
-        token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
-        redirect_uri=current_app.config['GITHUB_AUTH_REDIRECT_URI']
-    )
-
-oauth_app_info_field = graphene.Field(
-    OAuthAppInfo,
-    admin=graphene.Boolean(default_value=False),
-    resolver=resolve_oauth_app_info
-    )
-
-##__________________________________________________________________||
 class AuthPayload(graphene.ObjectType):
     token = graphene.String()
 

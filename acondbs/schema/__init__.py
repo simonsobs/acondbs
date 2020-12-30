@@ -38,8 +38,6 @@ class Query(graphene.ObjectType):
 
     github_user = github.github_user_field
 
-    oauth_app_info = github.oauth_app_info_field
-
     all_git_hub_admin_app_tokens = github.all_git_hub_admin_app_tokens_field
 
     git_hub_o_auth_app_info = github.git_hub_o_auth_app_info_field

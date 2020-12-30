@@ -1,7 +1,6 @@
 
 ##__________________________________________________________________||
 from .auth import (
-    oauth_app_info_field,
     AuthenticateWithGitHub
 )
 from .github_user import (
