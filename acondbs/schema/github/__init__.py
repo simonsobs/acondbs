@@ -12,5 +12,8 @@ from .github_admin_app_token import (
     AddGitHubAdminAppToken,
     DeleteGitHubAdminAppToken
 )
+from .github_oauth_app_info import (
+    git_hub_o_auth_app_info_field
+)
 
 ##__________________________________________________________________||
