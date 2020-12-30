@@ -37,13 +37,6 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'oauthAppInfo',
-                            'type': {
-                                'name': 'OAuthAppInfo'
-                            }
-                        },
-                        {
-                            'description': None,
                             'name': 'githubUser',
                             'type': {
                                 'name': 'GitHubUser'
@@ -231,41 +224,6 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'Boolean'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'clientId',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'authorizeUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'tokenUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'redirectUri',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'OAuthAppInfo'
                 },
                 {
                     'description': None,
