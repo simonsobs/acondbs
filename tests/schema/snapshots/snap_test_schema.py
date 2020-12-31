@@ -37,13 +37,6 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'oauthAppInfo',
-                            'type': {
-                                'name': 'OAuthAppInfo'
-                            }
-                        },
-                        {
-                            'description': None,
                             'name': 'githubUser',
                             'type': {
                                 'name': 'GitHubUser'
@@ -54,6 +47,13 @@ snapshots['test_types 1'] = {
                             'name': 'allGitHubAdminAppTokens',
                             'type': {
                                 'name': 'GitHubAdminAppTokenConnection'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'gitHubOAuthAppInfo',
+                            'type': {
+                                'name': 'GitHubOAuthAppInfo'
                             }
                         },
                         {
@@ -224,41 +224,6 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'Boolean'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'clientId',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'authorizeUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'tokenUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'redirectUri',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'OAuthAppInfo'
                 },
                 {
                     'description': None,
@@ -453,6 +418,34 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'GitHubAdminAppTokenSortEnum'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'clientId',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'authorizeUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'redirectUri',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubOAuthAppInfo'
                 },
                 {
                     'description': None,

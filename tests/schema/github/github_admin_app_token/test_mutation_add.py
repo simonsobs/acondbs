@@ -30,7 +30,7 @@ ALL_GITHUB_ADMIN_APP_TOKENS = '''
 @pytest.fixture()
 def mock_auth_requests_success(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.github.auth.requests", y)
+    monkeypatch.setattr("acondbs.github.call.requests", y)
     response = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
     r = mock.Mock()
     r.json.return_value = response
@@ -40,7 +40,7 @@ def mock_auth_requests_success(monkeypatch):
 @pytest.fixture()
 def mock_auth_requests_error(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.github.auth.requests", y)
+    monkeypatch.setattr("acondbs.github.call.requests", y)
     response = {
         'error': 'bad_verification_code',
         'error_description': 'The code passed is incorrect or expired.',

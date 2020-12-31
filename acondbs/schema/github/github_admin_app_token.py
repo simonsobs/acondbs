@@ -10,8 +10,8 @@ from ...models import (
     GitHubToken as GitHubAdminAppTokenModel,
     GitHubUser as GitHubUserModel
 )
-from ...github.auth import get_token
-from ...github.api import get_user
+from ...github.call import exchange_code_for_token
+from ...github.query import get_user
 
 from ...db.sa import sa
 from ...db.backup import request_backup_db
@@ -45,7 +45,7 @@ class AddGitHubAdminAppToken(graphene.Mutation):
         client_id = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_ID']
         client_secret = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_SECRET']
         redirect_uri = current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
-        token = get_token(code, token_url, client_id, client_secret, redirect_uri)
+        token = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
         user = get_user(token)
