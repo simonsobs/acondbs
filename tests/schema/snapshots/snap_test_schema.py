@@ -37,13 +37,6 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'githubUser',
-                            'type': {
-                                'name': 'GitHubUser'
-                            }
-                        },
-                        {
-                            'description': None,
                             'name': 'allGitHubAdminAppTokens',
                             'type': {
                                 'name': 'GitHubAdminAppTokenConnection'
@@ -54,6 +47,13 @@ snapshots['test_types 1'] = {
                             'name': 'gitHubOAuthAppInfo',
                             'type': {
                                 'name': 'GitHubOAuthAppInfo'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'githubUser',
+                            'type': {
+                                'name': 'GitHubUser'
                             }
                         },
                         {
@@ -229,55 +229,6 @@ snapshots['test_types 1'] = {
                     'description': None,
                     'fields': [
                         {
-                            'description': None,
-                            'name': 'userId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'login',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'name',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'avatarUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'tokens',
-                            'type': {
-                                'name': 'GitHubAdminAppTokenConnection'
-                            }
-                        },
-                        {
-                            'description': 'The ID of the object.',
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'GitHubUser'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
                             'description': 'Pagination data for this connection.',
                             'name': 'pageInfo',
                             'type': {
@@ -412,6 +363,55 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'Int'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'userId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'login',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'name',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'avatarUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'tokens',
+                            'type': {
+                                'name': 'GitHubAdminAppTokenConnection'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubUser'
                 },
                 {
                     'description': 'An enumeration.',
