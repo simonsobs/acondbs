@@ -9,8 +9,7 @@ from ...models import (
    GitHubUser as GitHubUserModel,
    GitHubToken as GitHubAdminAppTokenModel
 )
-from ...github.call import exchange_code_for_token
-from ...github.ops import get_github_oauth_app_info
+from ...github.ops import exchange_code_for_token
 from ...github.query import is_member
 from ...github.query import get_user
 
@@ -24,12 +23,7 @@ class AuthenticateWithGitHub(graphene.Mutation):
     authPayload = graphene.Field(lambda: type_.AuthPayload)
 
     def mutate(root, info, code):
-        oauth_app_info = get_github_oauth_app_info()
-        token_url = oauth_app_info['token_url']
-        client_id = oauth_app_info['client_id']
-        client_secret = oauth_app_info['client_secret']
-        redirect_uri = oauth_app_info['redirect_uri']
-        token = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
+        token = exchange_code_for_token(code)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
         admin_token = GitHubAdminAppTokenModel.query.all()[0]
@@ -49,12 +43,7 @@ class AddGitHubAdminAppToken(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, code):
-        oauth_app_info = get_github_oauth_app_info()
-        token_url = oauth_app_info['token_url']
-        client_id = oauth_app_info['client_id']
-        client_secret = oauth_app_info['client_secret']
-        redirect_uri = oauth_app_info['redirect_uri']
-        token = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
+        token = exchange_code_for_token(code)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
         user = get_user(token)

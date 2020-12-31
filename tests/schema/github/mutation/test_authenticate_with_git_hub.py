@@ -33,14 +33,14 @@ def test_auth(app, mock_exchange_code_for_token, mock_is_member, snapshot):
         }
     '''[1:])
 
-    variables = { 'code': 'xyz' }
+    variables = { 'code': 'h443xg9c' }
 
-    mock_exchange_code_for_token.return_value = 'user_token_xyz'
+    mock_exchange_code_for_token.return_value = 'jpdq74xt'
 
     expected = {
         'authenticateWithGitHub': {
             'authPayload': {
-                'token': 'user_token_xyz'
+                'token': 'jpdq74xt'
             }
         }
     }
@@ -50,7 +50,7 @@ def test_auth(app, mock_exchange_code_for_token, mock_is_member, snapshot):
         client = Client(schema)
         result = client.execute(query, variables=variables, context_value={})
         assert {'data': expected} == result
-        snapshot.assert_match(mock_exchange_code_for_token.call_args_list)
+        assert [mock.call('h443xg9c')] == mock_exchange_code_for_token.call_args_list
         snapshot.assert_match(mock_is_member.call_args_list)
 
 ##__________________________________________________________________||
