@@ -48,9 +48,9 @@ class AddGitHubAdminAppToken(graphene.Mutation):
 
     def mutate(root, info, code):
         token_url = current_app.config['GITHUB_AUTH_TOKEN_URL']
-        client_id = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_ID']
-        client_secret = current_app.config['GITHUB_AUTH_ADMIN_CLIENT_SECRET']
-        redirect_uri = current_app.config['GITHUB_AUTH_ADMIN_REDIRECT_URI']
+        client_id = current_app.config['GITHUB_AUTH_CLIENT_ID']
+        client_secret = current_app.config['GITHUB_AUTH_CLIENT_SECRET']
+        redirect_uri = current_app.config['GITHUB_AUTH_REDIRECT_URI']
         token = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
