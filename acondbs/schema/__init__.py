@@ -36,11 +36,11 @@ class Query(graphene.ObjectType):
     product_relation = p.product_relation_field
     all_product_relations = p.all_product_relations_field
 
-    github_user = github.github_user_field
+    github_user = github.query.github_user_field
 
-    all_git_hub_admin_app_tokens = github.all_git_hub_admin_app_tokens_field
+    all_git_hub_admin_app_tokens = github.query.all_git_hub_admin_app_tokens_field
 
-    git_hub_o_auth_app_info = github.git_hub_o_auth_app_info_field
+    git_hub_o_auth_app_info = github.query.git_hub_o_auth_app_info_field
 
 ##__________________________________________________________________||
 class Mutation(graphene.ObjectType):
@@ -64,9 +64,9 @@ class Mutation(graphene.ObjectType):
     create_product_relation = p.CreateProductRelation.Field()
     delete_product_relation = p.DeleteProductRelation.Field()
 
-    authenticate_with_git_hub = github.AuthenticateWithGitHub.Field()
+    authenticate_with_git_hub = github.mutation.AuthenticateWithGitHub.Field()
 
-    add_git_hub_admin_app_token = github.AddGitHubAdminAppToken.Field()
-    delete_git_hub_admin_app_token = github.DeleteGitHubAdminAppToken.Field()
+    add_git_hub_admin_app_token = github.mutation.AddGitHubAdminAppToken.Field()
+    delete_git_hub_admin_app_token = github.mutation.DeleteGitHubAdminAppToken.Field()
 
 ##__________________________________________________________________||

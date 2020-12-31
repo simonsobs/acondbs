@@ -54,7 +54,7 @@ def mock_auth_requests_error(monkeypatch):
 @pytest.fixture(autouse=True)
 def mock_get_user(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.github.github_admin_app_token.get_user", y)
+    monkeypatch.setattr("acondbs.schema.github.mutation.get_user", y)
     yield y
 
 # __________________________________________________________________||

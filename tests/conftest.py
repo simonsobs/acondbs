@@ -131,7 +131,7 @@ def mock_request_backup_db(monkeypatch):
     monkeypatch.setattr("acondbs.schema.product.product_type.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.product.product_relation_type.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.product.product_relation.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.github.github_admin_app_token.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.github.mutation.request_backup_db", y)
     yield y
 
 ##__________________________________________________________________||
