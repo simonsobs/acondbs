@@ -10,7 +10,7 @@ from acondbs.models import (
     GitHubUser
 )
 
-from ....constants import SAMPLE_DIR
+from ...constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
 @pytest.fixture
