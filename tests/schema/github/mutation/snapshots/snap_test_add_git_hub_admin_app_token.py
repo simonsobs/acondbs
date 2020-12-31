@@ -41,11 +41,11 @@ snapshots['test_schema_error[add] 2'] = [
                 'Accept': 'application/vnd.github.v3+json, application/json'
             },
             'json': {
-                'client_id': 'client_id_admin_0123',
-                'client_secret': 'client_secret_admin_abcdefghijklmnupqrst',
+                'client_id': 'client_id_0123456789',
+                'client_secret': 'client_secret_abcdefghijklmnupqrstuvwxyz',
                 'code': 'code_01234',
                 'grant_type': 'authorization_code',
-                'redirect_uri': 'http://localhost:8080/admin/signin'
+                'redirect_uri': 'http://localhost:8080/signin'
             }
         }
     )
@@ -100,11 +100,11 @@ snapshots['test_schema_success[existing-user] 3'] = [
                 'Accept': 'application/vnd.github.v3+json, application/json'
             },
             'json': {
-                'client_id': 'client_id_admin_0123',
-                'client_secret': 'client_secret_admin_abcdefghijklmnupqrst',
+                'client_id': 'client_id_0123456789',
+                'client_secret': 'client_secret_abcdefghijklmnupqrstuvwxyz',
                 'code': 'code_01234',
                 'grant_type': 'authorization_code',
-                'redirect_uri': 'http://localhost:8080/admin/signin'
+                'redirect_uri': 'http://localhost:8080/signin'
             }
         }
     )
@@ -159,11 +159,11 @@ snapshots['test_schema_success[new-user] 3'] = [
                 'Accept': 'application/vnd.github.v3+json, application/json'
             },
             'json': {
-                'client_id': 'client_id_admin_0123',
-                'client_secret': 'client_secret_admin_abcdefghijklmnupqrst',
+                'client_id': 'client_id_0123456789',
+                'client_secret': 'client_secret_abcdefghijklmnupqrstuvwxyz',
                 'code': 'code_01234',
                 'grant_type': 'authorization_code',
-                'redirect_uri': 'http://localhost:8080/admin/signin'
+                'redirect_uri': 'http://localhost:8080/signin'
             }
         }
     )

@@ -32,9 +32,9 @@ GITHUB_AUTH_CLIENT_ID = 'client_id_0123456789'
 GITHUB_AUTH_CLIENT_SECRET = 'client_secret_abcdefghijklmnupqrstuvwxyz'
 GITHUB_AUTH_REDIRECT_URI = 'http://localhost:8080/signin'
 
-GITHUB_AUTH_ADMIN_CLIENT_ID = 'client_id_admin_0123'
-GITHUB_AUTH_ADMIN_CLIENT_SECRET = 'client_secret_admin_abcdefghijklmnupqrst'
-GITHUB_AUTH_ADMIN_REDIRECT_URI = 'http://localhost:8080/admin/signin'
+GITHUB_AUTH_ADMIN_CLIENT_ID = 'client_id_0123456789'
+GITHUB_AUTH_ADMIN_CLIENT_SECRET = 'client_secret_abcdefghijklmnupqrstuvwxyz'
+GITHUB_AUTH_ADMIN_REDIRECT_URI = 'http://localhost:8080/signin'
 
 ##__________________________________________________________________||
 GITHUB_ORG = 'test_github_org_name'
