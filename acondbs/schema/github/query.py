@@ -7,6 +7,7 @@ from ...github.ops import get_github_oauth_app_info
 from . import type_
 
 ##__________________________________________________________________||
+all_git_hub_orgs_field = SQLAlchemyConnectionField(type_.GitHubOrg.connection)
 all_git_hub_tokens_field = SQLAlchemyConnectionField(type_.GitHubToken.connection)
 
 ##__________________________________________________________________||
@@ -43,8 +44,5 @@ def resolve_github_user(parent, info):
     return type_.GitHubUser(**user)
 
 github_user_field = graphene.Field(type_.GitHubUser, resolver=resolve_github_user)
-
-##__________________________________________________________________||
-all_git_hub_orgs_field = SQLAlchemyConnectionField(type_.GitHubOrg.connection)
 
 ##__________________________________________________________________||
