@@ -68,9 +68,9 @@ params = [
         ],
         [[ALL_GITHUB_ADMIN_APP_TOKENS], {}],
         {
-            "login": "octocat",
-            "name": "monalisa octocat",
-            "avatarUrl": "https://github.com/images/error/octocat_happy.gif"
+            "login": "user1",
+            "name": "User One",
+            "avatarUrl": "https://avatars0.githubusercontent.com/u/user1"
         },
         id='existing-user'
     ),
@@ -83,9 +83,9 @@ params = [
         ],
         [[ALL_GITHUB_ADMIN_APP_TOKENS], {}],
         {
-            "login": "dojocat",
-            "name": "dojocat",
-            "avatarUrl": "https://avatars0.githubusercontent.com/u/9758946?v=4"
+            "login": "new-user",
+            "name": "New User",
+            "avatarUrl": "https://avatars0.githubusercontent.com/u/new-user"
         },
         id='new-user'
     ),

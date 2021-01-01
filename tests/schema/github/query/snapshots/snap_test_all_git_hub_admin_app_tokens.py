@@ -20,13 +20,27 @@ snapshots['test_schema[simple] 1'] = {
                 },
                 {
                     'node': {
-                        'scope': 'read:org',
+                        'scope': '',
                         'tokenId': '2',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': '',
+                        'tokenId': '3',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': '',
+                        'tokenId': '4',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 }
             ],
-            'totalCount': 2
+            'totalCount': 4
         }
     }
 }

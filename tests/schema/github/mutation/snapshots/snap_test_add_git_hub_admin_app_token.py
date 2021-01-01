@@ -20,13 +20,27 @@ snapshots['test_schema_error[add] 1'] = {
                 },
                 {
                     'node': {
-                        'scope': 'read:org',
+                        'scope': '',
                         'tokenId': '2',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': '',
+                        'tokenId': '3',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': '',
+                        'tokenId': '4',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 }
             ],
-            'totalCount': 2
+            'totalCount': 4
         }
     }
 }
@@ -72,20 +86,34 @@ snapshots['test_schema_success[existing-user] 2'] = {
                 },
                 {
                     'node': {
-                        'scope': 'read:org',
+                        'scope': '',
                         'tokenId': '2',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 },
                 {
                     'node': {
-                        'scope': None,
+                        'scope': '',
                         'tokenId': '3',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': '',
+                        'tokenId': '4',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': None,
+                        'tokenId': '5',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 }
             ],
-            'totalCount': 3
+            'totalCount': 5
         }
     }
 }
@@ -131,20 +159,34 @@ snapshots['test_schema_success[new-user] 2'] = {
                 },
                 {
                     'node': {
-                        'scope': 'read:org',
+                        'scope': '',
                         'tokenId': '2',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 },
                 {
                     'node': {
-                        'scope': None,
+                        'scope': '',
                         'tokenId': '3',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': '',
+                        'tokenId': '4',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                    }
+                },
+                {
+                    'node': {
+                        'scope': None,
+                        'tokenId': '5',
                         'tokenMasked': 'XXXXXXXXXXXXXXX'
                     }
                 }
             ],
-            'totalCount': 3
+            'totalCount': 5
         }
     }
 }

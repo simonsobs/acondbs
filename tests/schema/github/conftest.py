@@ -6,9 +6,10 @@ from acondbs.db.ops import define_tables
 
 from acondbs.db.sa import sa
 from acondbs.models import (
-    GitHubToken,
+    GitHubOrg,
     GitHubUser,
-    GitHubOrg
+    GitHubOrgMembership,
+    GitHubToken
 )
 
 from ...constants import SAMPLE_DIR
@@ -29,29 +30,52 @@ def app(app_empty):
     y = app_empty
 
     #
-    #  +-------+        +--------+
-    #  | user1 | --+--> | token1 |
-    #  +-------+   |    +--------+
-    #              |
-    #              |    +--------+
-    #              +--> | token2 |
-    #                   +--------+
-    #
-    #
     #  +------+
-    #  | org1 |
-    #  +------+
+    #  |      |       +-------+       +--------+
+    #  | org1 | ----- |       | --+-- | token1 |
+    #  |      |       | user1 |   |   +--------+
+    #  +------+   +-- |       |   |
+    #             |   +-------+   |   +--------+
+    #             |               +-- | token2 |
+    #  +------+   |                   +--------+
+    #  |      | --+   +-------+
+    #  | org2 |       |       |       +--------+
+    #  |      | ----- | user2 | ----- | token3 |
+    #  +------+       |       |       +--------+
+    #                 +-------+
     #
-
-    user1 = GitHubUser(login="octocat")
-    token1 = GitHubToken(token="token_001", scope="read:org", user=user1)
-    token2 = GitHubToken(token="token_002", scope="read:org", user=user1)
+    #  +------+       +-------+
+    #  |      |       |       |       +--------+
+    #  | org3 |       | user3 | ----- | token4 |
+    #  |      |       |       |       +--------+
+    #  +------+       +-------+
+    #
+    #
 
     org1 = GitHubOrg(login="org1")
+    org2 = GitHubOrg(login="org2")
+    org3 = GitHubOrg(login="org3")
+
+    user1 = GitHubUser(login="user1")
+    user2 = GitHubUser(login="user2")
+    user3 = GitHubUser(login="user3")
+
+    GitHubToken(token_id=1, token="token1", scope="read:org", user=user1)
+    GitHubToken(token_id=2, token="token2", scope="", user=user1)
+    GitHubToken(token_id=3, token="token3", scope="", user=user2)
+    GitHubToken(token_id=4, token="token4", scope="", user=user3)
+
+    GitHubOrgMembership(org=org1, member=user1)
+    GitHubOrgMembership(org=org2, member=user1)
+    GitHubOrgMembership(org=org2, member=user2)
 
     with y.app_context():
-        sa.session.add(user1)
         sa.session.add(org1)
+        sa.session.add(org2)
+        sa.session.add(org3)
+        sa.session.add(user1)
+        sa.session.add(user2)
+        sa.session.add(user3)
         sa.session.commit()
     yield y
 

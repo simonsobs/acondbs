@@ -8,8 +8,17 @@ ALL_GITHUB_ORGS = '''
     totalCount
     edges {
       node {
-        orgId
         login
+        memberships {
+          totalCount
+          edges {
+            node {
+              member {
+                login
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -21,7 +30,7 @@ params = [
     pytest.param(
         [ALL_GITHUB_ORGS, ],
         {},
-        id='simple'
+        id='one'
     ),
 ]
 
