@@ -58,6 +58,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'allGitHubOrgs',
+                            'type': {
+                                'name': 'GitHubOrgConnection'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'product',
                             'type': {
                                 'name': 'Product'
@@ -403,6 +410,13 @@ snapshots['test_types 1'] = {
                             }
                         },
                         {
+                            'description': None,
+                            'name': 'memberships',
+                            'type': {
+                                'name': 'GitHubOrgMembershipConnection'
+                            }
+                        },
+                        {
                             'description': 'The ID of the object.',
                             'name': 'id',
                             'type': {
@@ -412,6 +426,139 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'GitHubUser'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubOrgMembershipConnection'
+                },
+                {
+                    'description': 'A Relay edge containing a `GitHubOrgMembership` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'GitHubOrgMembership'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubOrgMembershipEdge'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'entryId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'orgId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'memberId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'org',
+                            'type': {
+                                'name': 'GitHubOrg'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'member',
+                            'type': {
+                                'name': 'GitHubUser'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubOrgMembership'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'orgId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'login',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'memberships',
+                            'type': {
+                                'name': 'GitHubOrgMembershipConnection'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubOrg'
                 },
                 {
                     'description': 'An enumeration.',
@@ -446,6 +593,61 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'GitHubOAuthAppInfo'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubOrgConnection'
+                },
+                {
+                    'description': 'A Relay edge containing a `GitHubOrg` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'GitHubOrg'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubOrgEdge'
+                },
+                {
+                    'description': 'An enumeration.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'GitHubOrgSortEnum'
                 },
                 {
                     'description': None,
