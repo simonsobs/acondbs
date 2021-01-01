@@ -13,6 +13,7 @@ snapshots['test_schema[one] 1'] = {
             'edges': [
                 {
                     'node': {
+                        'avatarUrl': 'avatar.com/user1',
                         'login': 'user1',
                         'memberships': {
                             'edges': [
@@ -31,11 +32,13 @@ snapshots['test_schema[one] 1'] = {
                                     }
                                 }
                             ]
-                        }
+                        },
+                        'name': 'User One'
                     }
                 },
                 {
                     'node': {
+                        'avatarUrl': 'avatar.com/user2',
                         'login': 'user2',
                         'memberships': {
                             'edges': [
@@ -47,16 +50,19 @@ snapshots['test_schema[one] 1'] = {
                                     }
                                 }
                             ]
-                        }
+                        },
+                        'name': 'User Two'
                     }
                 },
                 {
                     'node': {
+                        'avatarUrl': 'avatar.com/user3',
                         'login': 'user3',
                         'memberships': {
                             'edges': [
                             ]
-                        }
+                        },
+                        'name': 'User Three'
                     }
                 }
             ],

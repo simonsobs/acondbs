@@ -56,9 +56,9 @@ def app(app_empty):
     org2 = GitHubOrg(login="org2")
     org3 = GitHubOrg(login="org3")
 
-    user1 = GitHubUser(login="user1")
-    user2 = GitHubUser(login="user2")
-    user3 = GitHubUser(login="user3")
+    user1 = GitHubUser(user_id=1, login="user1", name="User One", avatar_url="avatar.com/user1")
+    user2 = GitHubUser(user_id=2, login="user2", name="User Two", avatar_url="avatar.com/user2")
+    user3 = GitHubUser(user_id=3, login="user3", name="User Three", avatar_url="avatar.com/user3")
 
     GitHubToken(token_id=1, token="token1", scope="read:org", user=user1)
     GitHubToken(token_id=2, token="token2", scope="", user=user1)

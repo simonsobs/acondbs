@@ -9,6 +9,8 @@ ALL_GITHUB_USERS = '''
     edges {
       node {
         login
+        name
+        avatarUrl
         memberships {
           edges {
             node {
