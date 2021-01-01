@@ -44,6 +44,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'allGitHubUsers',
+                            'type': {
+                                'name': 'GitHubUserConnection'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'allGitHubTokens',
                             'type': {
                                 'name': 'GitHubTokenConnection'
@@ -614,6 +621,61 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'GitHubOrgSortEnum'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubUserConnection'
+                },
+                {
+                    'description': 'A Relay edge containing a `GitHubUser` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'GitHubUser'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubUserEdge'
+                },
+                {
+                    'description': 'An enumeration.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'GitHubUserSortEnum'
                 },
                 {
                     'description': 'An enumeration.',
