@@ -7,6 +7,7 @@ from ...github.ops import get_github_oauth_app_info
 from ...models import (
     GitHubUser as GitHubUserModel,
     GitHubOrg as GitHubOrgModel,
+    GitHubOrgMembership as GitHubOrgMembershipModel,
     GitHubToken as GitHubAdminAppTokenModel,
 )
 
@@ -42,6 +43,13 @@ class GitHubUser(SQLAlchemyObjectType):
 class GitHubOrg(SQLAlchemyObjectType):
     class Meta:
         model = GitHubOrgModel
+        interfaces = (relay.Node, )
+        connection_class = CountedConnection
+
+##__________________________________________________________________||
+class GitHubOrgMembership(SQLAlchemyObjectType):
+    class Meta:
+        model = GitHubOrgMembershipModel
         interfaces = (relay.Node, )
         connection_class = CountedConnection
 
