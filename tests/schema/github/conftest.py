@@ -7,7 +7,8 @@ from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 from acondbs.models import (
     GitHubToken,
-    GitHubUser
+    GitHubUser,
+    GitHubOrg
 )
 
 from ...constants import SAMPLE_DIR
@@ -36,13 +37,21 @@ def app(app_empty):
     #              +--> | token2 |
     #                   +--------+
     #
+    #
+    #  +------+
+    #  | org1 |
+    #  +------+
+    #
 
     user1 = GitHubUser(login="octocat")
     token1 = GitHubToken(token="token_001", scope="read:org", user=user1)
     token2 = GitHubToken(token="token_002", scope="read:org", user=user1)
 
+    org1 = GitHubOrg(login="org1")
+
     with y.app_context():
         sa.session.add(user1)
+        sa.session.add(org1)
         sa.session.commit()
     yield y
 

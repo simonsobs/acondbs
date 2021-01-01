@@ -45,3 +45,6 @@ def resolve_github_user(parent, info):
 github_user_field = graphene.Field(type_.GitHubUser, resolver=resolve_github_user)
 
 ##__________________________________________________________________||
+all_git_hub_orgs_field = SQLAlchemyConnectionField(type_.GitHubOrg.connection)
+
+##__________________________________________________________________||

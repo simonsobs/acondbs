@@ -42,6 +42,8 @@ class Query(graphene.ObjectType):
 
     git_hub_o_auth_app_info = github.query.git_hub_o_auth_app_info_field
 
+    all_git_hub_orgs = github.query.all_git_hub_orgs_field
+
 ##__________________________________________________________________||
 class Mutation(graphene.ObjectType):
 
