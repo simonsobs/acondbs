@@ -37,6 +37,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'allGitHubOrgs',
+                            'type': {
+                                'name': 'GitHubOrgConnection'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'allGitHubTokens',
                             'type': {
                                 'name': 'GitHubTokenConnection'
@@ -54,13 +61,6 @@ snapshots['test_types 1'] = {
                             'name': 'githubUser',
                             'type': {
                                 'name': 'GitHubUser'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'allGitHubOrgs',
-                            'type': {
-                                'name': 'GitHubOrgConnection'
                             }
                         },
                         {
@@ -258,7 +258,7 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubTokenConnection'
+                    'name': 'GitHubOrgConnection'
                 },
                 {
                     'description': 'The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.',
@@ -296,13 +296,13 @@ snapshots['test_types 1'] = {
                     'name': 'PageInfo'
                 },
                 {
-                    'description': 'A Relay edge containing a `GitHubToken` and its cursor.',
+                    'description': 'A Relay edge containing a `GitHubOrg` and its cursor.',
                     'fields': [
                         {
                             'description': 'The item at the end of the edge',
                             'name': 'node',
                             'type': {
-                                'name': 'GitHubToken'
+                                'name': 'GitHubOrg'
                             }
                         },
                         {
@@ -314,69 +314,14 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubTokenEdge'
+                    'name': 'GitHubOrgEdge'
                 },
                 {
                     'description': None,
                     'fields': [
                         {
                             'description': None,
-                            'name': 'tokenId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'scope',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'userId',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'user',
-                            'type': {
-                                'name': 'GitHubUser'
-                            }
-                        },
-                        {
-                            'description': 'The ID of the object.',
-                            'name': 'id',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'tokenMasked',
-                            'type': {
-                                'name': 'String'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'GitHubToken'
-                },
-                {
-                    'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'Int'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'userId',
+                            'name': 'orgId',
                             'type': {
                                 'name': None
                             }
@@ -386,27 +331,6 @@ snapshots['test_types 1'] = {
                             'name': 'login',
                             'type': {
                                 'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'name',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'avatarUrl',
-                            'type': {
-                                'name': 'String'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'tokens',
-                            'type': {
-                                'name': 'GitHubTokenConnection'
                             }
                         },
                         {
@@ -425,7 +349,7 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubUser'
+                    'name': 'GitHubOrg'
                 },
                 {
                     'description': None,
@@ -526,11 +450,17 @@ snapshots['test_types 1'] = {
                     'name': 'GitHubOrgMembership'
                 },
                 {
+                    'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'Int'
+                },
+                {
                     'description': None,
                     'fields': [
                         {
                             'description': None,
-                            'name': 'orgId',
+                            'name': 'userId',
                             'type': {
                                 'name': None
                             }
@@ -540,6 +470,27 @@ snapshots['test_types 1'] = {
                             'name': 'login',
                             'type': {
                                 'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'name',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'avatarUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'tokens',
+                            'type': {
+                                'name': 'GitHubTokenConnection'
                             }
                         },
                         {
@@ -558,7 +509,111 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubOrg'
+                    'name': 'GitHubUser'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubTokenConnection'
+                },
+                {
+                    'description': 'A Relay edge containing a `GitHubToken` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'GitHubToken'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubTokenEdge'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'tokenId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'scope',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'userId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'user',
+                            'type': {
+                                'name': 'GitHubUser'
+                            }
+                        },
+                        {
+                            'description': 'The ID of the object.',
+                            'name': 'id',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'tokenMasked',
+                            'type': {
+                                'name': 'String'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'GitHubToken'
+                },
+                {
+                    'description': 'An enumeration.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'GitHubOrgSortEnum'
                 },
                 {
                     'description': 'An enumeration.',
@@ -593,61 +648,6 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'GitHubOAuthAppInfo'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': 'Pagination data for this connection.',
-                            'name': 'pageInfo',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'Contains the nodes in this connection.',
-                            'name': 'edges',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'totalCount',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'GitHubOrgConnection'
-                },
-                {
-                    'description': 'A Relay edge containing a `GitHubOrg` and its cursor.',
-                    'fields': [
-                        {
-                            'description': 'The item at the end of the edge',
-                            'name': 'node',
-                            'type': {
-                                'name': 'GitHubOrg'
-                            }
-                        },
-                        {
-                            'description': 'A cursor for use in pagination',
-                            'name': 'cursor',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'GitHubOrgEdge'
-                },
-                {
-                    'description': 'An enumeration.',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'GitHubOrgSortEnum'
                 },
                 {
                     'description': None,
