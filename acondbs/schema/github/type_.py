@@ -22,7 +22,7 @@ class AuthPayload(graphene.ObjectType):
     token = graphene.String()
 
 ##__________________________________________________________________||
-class GitHubAdminAppToken(SQLAlchemyObjectType):
+class GitHubToken(SQLAlchemyObjectType):
     class Meta:
         model = GitHubTokenModel
         interfaces = (relay.Node, )

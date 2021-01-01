@@ -39,7 +39,7 @@ snapshots['test_types 1'] = {
                             'description': None,
                             'name': 'allGitHubAdminAppTokens',
                             'type': {
-                                'name': 'GitHubAdminAppTokenConnection'
+                                'name': 'GitHubTokenConnection'
                             }
                         },
                         {
@@ -258,7 +258,7 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubAdminAppTokenConnection'
+                    'name': 'GitHubTokenConnection'
                 },
                 {
                     'description': 'The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.',
@@ -296,13 +296,13 @@ snapshots['test_types 1'] = {
                     'name': 'PageInfo'
                 },
                 {
-                    'description': 'A Relay edge containing a `GitHubAdminAppToken` and its cursor.',
+                    'description': 'A Relay edge containing a `GitHubToken` and its cursor.',
                     'fields': [
                         {
                             'description': 'The item at the end of the edge',
                             'name': 'node',
                             'type': {
-                                'name': 'GitHubAdminAppToken'
+                                'name': 'GitHubToken'
                             }
                         },
                         {
@@ -314,7 +314,7 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubAdminAppTokenEdge'
+                    'name': 'GitHubTokenEdge'
                 },
                 {
                     'description': None,
@@ -363,7 +363,7 @@ snapshots['test_types 1'] = {
                         }
                     ],
                     'inputFields': None,
-                    'name': 'GitHubAdminAppToken'
+                    'name': 'GitHubToken'
                 },
                 {
                     'description': 'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).',
@@ -406,7 +406,7 @@ snapshots['test_types 1'] = {
                             'description': None,
                             'name': 'tokens',
                             'type': {
-                                'name': 'GitHubAdminAppTokenConnection'
+                                'name': 'GitHubTokenConnection'
                             }
                         },
                         {
@@ -564,7 +564,7 @@ snapshots['test_types 1'] = {
                     'description': 'An enumeration.',
                     'fields': None,
                     'inputFields': None,
-                    'name': 'GitHubAdminAppTokenSortEnum'
+                    'name': 'GitHubTokenSortEnum'
                 },
                 {
                     'description': None,

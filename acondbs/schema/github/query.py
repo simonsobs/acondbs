@@ -7,7 +7,7 @@ from ...github.ops import get_github_oauth_app_info
 from . import type_
 
 ##__________________________________________________________________||
-all_git_hub_admin_app_tokens_field = SQLAlchemyConnectionField(type_.GitHubAdminAppToken.connection)
+all_git_hub_admin_app_tokens_field = SQLAlchemyConnectionField(type_.GitHubToken.connection)
 
 ##__________________________________________________________________||
 def resolve_git_hub_o_auth_app_info(parent, info):
