@@ -7,7 +7,7 @@ from ...db.backup import request_backup_db
 
 from ...models import (
    GitHubUser as GitHubUserModel,
-   GitHubToken as GitHubAdminAppTokenModel
+   GitHubToken as GitHubTokenModel
 )
 from ...github.ops import exchange_code_for_token
 from ...github.query import is_member
@@ -26,7 +26,7 @@ class AuthenticateWithGitHub(graphene.Mutation):
         token = exchange_code_for_token(code)
         if not token:
             raise GraphQLError('Unsuccessful to obtain the token')
-        admin_token = GitHubAdminAppTokenModel.query.all()[0]
+        admin_token = GitHubTokenModel.query.all()[0]
         org_name = current_app.config['GITHUB_ORG']
         if not is_member(user_token=token, admin_token=admin_token.token, org_name=org_name):
             raise GraphQLError('The user is not a member.')
@@ -50,7 +50,7 @@ class AddGitHubAdminAppToken(graphene.Mutation):
         userModel = GitHubUserModel.query.filter_by(login=user['login']).one_or_none()
         if userModel is None:
             userModel = GitHubUserModel(login=user['login'])
-        model = GitHubAdminAppTokenModel(token=token, user=userModel)
+        model = GitHubTokenModel(token=token, user=userModel)
         sa.session.add(model)
         sa.session.commit()
         ok = True
@@ -67,7 +67,7 @@ class DeleteGitHubAdminAppToken(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, token_id):
-        model = GitHubAdminAppTokenModel.query.filter_by(token_id=token_id).one()
+        model = GitHubTokenModel.query.filter_by(token_id=token_id).one()
         sa.session.delete(model)
         sa.session.commit()
         ok = True

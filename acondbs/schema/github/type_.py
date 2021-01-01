@@ -8,7 +8,7 @@ from ...models import (
     GitHubUser as GitHubUserModel,
     GitHubOrg as GitHubOrgModel,
     GitHubOrgMembership as GitHubOrgMembershipModel,
-    GitHubToken as GitHubAdminAppTokenModel,
+    GitHubToken as GitHubTokenModel,
 )
 
 ##__________________________________________________________________||
@@ -24,7 +24,7 @@ class AuthPayload(graphene.ObjectType):
 ##__________________________________________________________________||
 class GitHubAdminAppToken(SQLAlchemyObjectType):
     class Meta:
-        model = GitHubAdminAppTokenModel
+        model = GitHubTokenModel
         interfaces = (relay.Node, )
         exclude_fields = ['token', ]
         connection_class = CountedConnection
