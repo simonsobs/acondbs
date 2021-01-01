@@ -9,7 +9,7 @@ snapshots = Snapshot()
 
 snapshots['test_schema_error[delete] 1'] = {
     'data': {
-        'allGitHubAdminAppTokens': {
+        'allGitHubTokens': {
             'edges': [
                 {
                     'node': {
@@ -55,7 +55,7 @@ snapshots['test_schema_success[delete] 1'] = {
 
 snapshots['test_schema_success[delete] 2'] = {
     'data': {
-        'allGitHubAdminAppTokens': {
+        'allGitHubTokens': {
             'edges': [
                 {
                     'node': {

@@ -4,7 +4,7 @@ from ...funcs import assert_query
 
 ALL_GITHUB_ADMIN_APP_TOKENS = '''
 {
-  allGitHubAdminAppTokens {
+  allGitHubTokens {
     totalCount
     edges {
       node {

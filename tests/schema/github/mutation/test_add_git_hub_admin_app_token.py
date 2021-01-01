@@ -13,7 +13,7 @@ mutation AddGitHubAdminAppToken($code: String!) {
 
 ALL_GITHUB_ADMIN_APP_TOKENS = '''
 {
-  allGitHubAdminAppTokens {
+  allGitHubTokens {
     totalCount
     edges {
       node {

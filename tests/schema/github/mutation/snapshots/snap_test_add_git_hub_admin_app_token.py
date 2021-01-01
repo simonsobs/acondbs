@@ -9,7 +9,7 @@ snapshots = Snapshot()
 
 snapshots['test_schema_error[add] 1'] = {
     'data': {
-        'allGitHubAdminAppTokens': {
+        'allGitHubTokens': {
             'edges': [
                 {
                     'node': {
@@ -75,7 +75,7 @@ snapshots['test_schema_success[existing-user] 1'] = {
 
 snapshots['test_schema_success[existing-user] 2'] = {
     'data': {
-        'allGitHubAdminAppTokens': {
+        'allGitHubTokens': {
             'edges': [
                 {
                     'node': {
@@ -148,7 +148,7 @@ snapshots['test_schema_success[new-user] 1'] = {
 
 snapshots['test_schema_success[new-user] 2'] = {
     'data': {
-        'allGitHubAdminAppTokens': {
+        'allGitHubTokens': {
             'edges': [
                 {
                     'node': {

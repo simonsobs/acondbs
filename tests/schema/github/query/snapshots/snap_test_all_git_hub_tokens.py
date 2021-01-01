@@ -9,7 +9,7 @@ snapshots = Snapshot()
 
 snapshots['test_schema[simple] 1'] = {
     'data': {
-        'allGitHubAdminAppTokens': {
+        'allGitHubTokens': {
             'edges': [
                 {
                     'node': {

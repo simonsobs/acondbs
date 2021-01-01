@@ -37,7 +37,7 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'allGitHubAdminAppTokens',
+                            'name': 'allGitHubTokens',
                             'type': {
                                 'name': 'GitHubTokenConnection'
                             }
