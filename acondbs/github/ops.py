@@ -3,7 +3,16 @@
 
 from flask import current_app
 
-from . import call
+from ..db.sa import sa
+
+from ..models import (
+    GitHubOrg,
+    GitHubUser,
+    GitHubToken,
+    GitHubOrgMembership
+)
+
+from . import call, query
 
 ##__________________________________________________________________||
 def get_github_oauth_app_info():
@@ -26,5 +35,82 @@ def exchange_code_for_token(code):
         client_secret=current_app.config['GITHUB_AUTH_CLIENT_SECRET'],
         redirect_uri=current_app.config['GITHUB_AUTH_REDIRECT_URI']
         )
+
+##__________________________________________________________________||
+def add_org(login):
+    if GitHubOrg.query.filter_by(login=login).one_or_none() is not None:
+        raise Exception(f'already exists: {login}')
+    if not (tokens := GitHubToken.query.all()):
+        raise Exception('No tokens available.')
+    r = None
+    for token in tokens:
+        try:
+            r = query.org(login, token.token)
+        except:
+            continue
+        break
+    if r is None:
+        raise Exception(f'Unable to find an org: {login}')
+    model = GitHubOrg(login=login)
+    sa.session.add(model)
+    sa.session.commit()
+    return model
+
+def delete_org(login):
+    if (model := GitHubOrg.query.filter_by(login=login).one_or_none()) is None:
+        raise Exception(f'does not exist: {login}')
+    sa.session.delete(model)
+    sa.session.commit()
+
+##__________________________________________________________________||
+def update_org_member_lists():
+    if not (tokens := GitHubToken.query.filter(GitHubToken.scope.like('%read:org%')).all()):
+        raise Exception('No tokens with relevant scopes available.')
+    if not (orgs := GitHubOrg.query.all()):
+        raise Exception('No orgs found.')
+    with sa.session.no_autoflush:
+        memberships = GitHubOrgMembership.query.all()
+        for membership in memberships:
+            sa.session.delete(membership)
+        for org in orgs:
+            edges = None
+            for token in tokens:
+                print(token.scope)
+                try:
+                    edges = query.org_members(org.login, token.token)
+                except Exception as e:
+                    print(e)
+                    continue
+                break
+            if edges is None:
+                raise Exception(f'Unable to find an org: {org.login}')
+            for edge in edges:
+                node = edge['node']
+                if (member := GitHubUser.query.filter_by(login=node['login']).one_or_none()) is None:
+                    member = GitHubUser(
+                        login=node['login'],
+                        name=node['name'],
+                        avatar_url=node['avatarUrl']
+                        )
+                membership = GitHubOrgMembership(org=org, member=member)
+                sa.session.add(membership)
+    sa.session.commit()
+
+##__________________________________________________________________||
+def store_token_for_code(code):
+    token_dict = exchange_code_for_token(code)
+    viewer = query.viewer(token_dict['access_token'])
+    if (user_model := GitHubUser.query.filter_by(login=viewer['login']).one_or_none()) is None:
+        user_model = GitHubUser(
+            login=viewer['login'],
+            name=viewer['name'],
+            avatar_url=viewer['avatarUrl']
+        )
+    token_model = GitHubToken(
+        token=token_dict['access_token'],
+        scope=token_dict['scope'],
+        user=user_model)
+    sa.session.add(token_model)
+    sa.session.commit()
 
 ##__________________________________________________________________||
