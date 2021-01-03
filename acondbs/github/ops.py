@@ -114,3 +114,21 @@ def store_token_for_code(code):
     sa.session.commit()
 
 ##__________________________________________________________________||
+def authenticate(code):
+    token_dict = exchange_code_for_token(code)
+    viewer = query.viewer(token_dict['access_token'])
+    if (user_model := GitHubUser.query.filter_by(login=viewer['login']).one_or_none()) is None:
+        raise Exception(f'{viewer["login"]} is not a member.')
+    if not user_model.memberships:
+        raise Exception(f'{viewer["login"]} is not a member!')
+    # TODO Check a membership
+    # print([m.org for m in user_model.memberships])
+    token_model = GitHubToken(
+        token=token_dict['access_token'],
+        scope=token_dict['scope'],
+        user=user_model)
+    sa.session.add(token_model)
+    sa.session.commit()
+    return token_dict
+
+##__________________________________________________________________||

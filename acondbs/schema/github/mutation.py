@@ -14,7 +14,8 @@ from ...github.ops import (
     update_org_member_lists,
     add_org,
     delete_org,
-    store_token_for_code
+    store_token_for_code,
+    authenticate
 )
 from ...github.query import is_member
 from ...github.query import get_user
@@ -51,15 +52,10 @@ class AuthenticateWithGitHub(graphene.Mutation):
     authPayload = graphene.Field(lambda: type_.AuthPayload)
 
     def mutate(root, info, code):
-        token_dict = exchange_code_for_token(code)
+        token_dict = authenticate(code)
         if not token_dict:
             raise GraphQLError('Unsuccessful to obtain the token')
-        token = token_dict['access_token']
-        admin_token = GitHubTokenModel.query.all()[0]
-        org_name = current_app.config['GITHUB_ORG']
-        if not is_member(user_token=token, admin_token=admin_token.token, org_name=org_name):
-            raise GraphQLError('The user is not a member.')
-        authPayload = type_.AuthPayload(token=token)
+        authPayload = type_.AuthPayload(token=token_dict['access_token'])
         return AuthenticateWithGitHub(authPayload=authPayload)
 
 ##__________________________________________________________________||

@@ -8,20 +8,13 @@ from acondbs.schema import create_schema
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
-def mock_exchange_code_for_token(monkeypatch):
+def mock_authenticate(monkeypatch):
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.github.mutation.exchange_code_for_token", y)
-    yield y
-
-@pytest.fixture(autouse=True)
-def mock_is_member(monkeypatch):
-    y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.github.mutation.is_member", y)
-    y.return_value = True
+    monkeypatch.setattr("acondbs.schema.github.mutation.authenticate", y)
     yield y
 
 ##__________________________________________________________________||
-def test_auth(app, mock_exchange_code_for_token, mock_is_member, snapshot):
+def test_auth(app, mock_authenticate):
 
     query = textwrap.dedent('''
         mutation AuthenticateWithGitHub($code: String!) {
@@ -36,7 +29,7 @@ def test_auth(app, mock_exchange_code_for_token, mock_is_member, snapshot):
     variables = { 'code': 'h443xg9c' }
 
     return_value = {'access_token': 'jpdq74xt', 'token_type': 'bearer', 'scope': ''}
-    mock_exchange_code_for_token.return_value = dict(return_value)
+    mock_authenticate.return_value = dict(return_value)
 
     expected = {
         'authenticateWithGitHub': {
@@ -51,7 +44,6 @@ def test_auth(app, mock_exchange_code_for_token, mock_is_member, snapshot):
         client = Client(schema)
         result = client.execute(query, variables=variables, context_value={})
         assert {'data': expected} == result
-        assert [mock.call('h443xg9c')] == mock_exchange_code_for_token.call_args_list
-        snapshot.assert_match(mock_is_member.call_args_list)
+        assert [mock.call('h443xg9c')] == mock_authenticate.call_args_list
 
 ##__________________________________________________________________||
