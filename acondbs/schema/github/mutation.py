@@ -9,11 +9,39 @@ from ...models import (
    GitHubUser as GitHubUserModel,
    GitHubToken as GitHubTokenModel
 )
-from ...github.ops import exchange_code_for_token
+from ...github.ops import (
+    exchange_code_for_token,
+    update_org_member_lists,
+    add_org,
+    delete_org,
+    store_token_for_code
+)
 from ...github.query import is_member
 from ...github.query import get_user
 
 from . import type_
+
+##__________________________________________________________________||
+class AddGitHubOrg(graphene.Mutation):
+    class Arguments:
+        login = graphene.String(required=True)
+    ok = graphene.Boolean()
+    git_hub_org = graphene.Field(lambda: type_.GitHubOrg)
+    def mutate(root, info, login):
+        model = add_org(login)
+        ok = True
+        # request_backup_db()
+        return AddGitHubOrg(git_hub_org=model, ok=ok)
+
+class DeleteGitHubOrg(graphene.Mutation):
+    class Arguments:
+        login = graphene.String(required=True)
+    ok = graphene.Boolean()
+    def mutate(root, info, login):
+        delete_org(login)
+        ok = True
+        # request_backup_db()
+        return DeleteGitHubOrg(ok=ok)
 
 ##__________________________________________________________________||
 class AuthenticateWithGitHub(graphene.Mutation):
@@ -74,5 +102,17 @@ class DeleteGitHubAdminAppToken(graphene.Mutation):
         ok = True
         request_backup_db()
         return DeleteGitHubAdminAppToken(ok=ok)
+
+##__________________________________________________________________||
+class UpdateGitHubOrgMemberLists(graphene.Mutation):
+    '''Update the member lists of GitHub organizations'''
+
+    ok = graphene.Boolean()
+
+    def mutate(root, info):
+        update_org_member_lists()
+        ok = True
+        # request_backup_db()
+        return UpdateGitHubOrgMemberLists(ok=ok)
 
 ##__________________________________________________________________||
