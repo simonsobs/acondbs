@@ -20,12 +20,12 @@ def test_success(mock_requests, snapshot):
     client_secret = 'client_secret_0123'
     redirect_uri = 'http://localhost/auth'
 
-    r = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
-    mock_requests.post().json.return_value = r
+    return_value = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
+    mock_requests.post().json.return_value = dict(return_value)
 
-    token = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
+    response = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
 
-    assert 'token-xxx' == token
+    assert return_value == response
     snapshot.assert_match(mock_requests.post.call_args_list)
 
 ##__________________________________________________________________||

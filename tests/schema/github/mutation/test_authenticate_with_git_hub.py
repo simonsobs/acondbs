@@ -35,7 +35,8 @@ def test_auth(app, mock_exchange_code_for_token, mock_is_member, snapshot):
 
     variables = { 'code': 'h443xg9c' }
 
-    mock_exchange_code_for_token.return_value = 'jpdq74xt'
+    return_value = {'access_token': 'jpdq74xt', 'token_type': 'bearer', 'scope': ''}
+    mock_exchange_code_for_token.return_value = dict(return_value)
 
     expected = {
         'authenticateWithGitHub': {

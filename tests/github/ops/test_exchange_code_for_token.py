@@ -13,11 +13,11 @@ def mock_call(monkeypatch):
 ##__________________________________________________________________||
 def test_call(app, snapshot, mock_call):
     code = "kp5b8653"
-    token = "wuk5phc8"
-    mock_call.exchange_code_for_token.return_value = token
+    return_value = {'access_token': "wuk5phc8", 'token_type': 'bearer', 'scope': 'user'}
+    mock_call.exchange_code_for_token.return_value = dict(return_value)
     with app.app_context():
         ret = exchange_code_for_token(code)
-    assert ret == token
+    assert ret == return_value
     snapshot.assert_match(mock_call.exchange_code_for_token.call_args_list)
 
 ##__________________________________________________________________||

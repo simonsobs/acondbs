@@ -23,9 +23,10 @@ class AuthenticateWithGitHub(graphene.Mutation):
     authPayload = graphene.Field(lambda: type_.AuthPayload)
 
     def mutate(root, info, code):
-        token = exchange_code_for_token(code)
-        if not token:
+        token_dict = exchange_code_for_token(code)
+        if not token_dict:
             raise GraphQLError('Unsuccessful to obtain the token')
+        token = token_dict['access_token']
         admin_token = GitHubTokenModel.query.all()[0]
         org_name = current_app.config['GITHUB_ORG']
         if not is_member(user_token=token, admin_token=admin_token.token, org_name=org_name):

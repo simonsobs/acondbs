@@ -110,8 +110,8 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
 
     Returns
     -------
-    str
-        An access token
+    dict
+        E.g., {'access_token': 'XXXXXXXXXXXXXXXXXXXX', 'token_type': 'bearer', 'scope': 'user'}
 
     Raises
     ------
@@ -149,7 +149,6 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
     if 'access_token' not in response:
         raise Exception(response)
 
-    token = response['access_token']
-    return token
+    return response
 
 ##__________________________________________________________________||
