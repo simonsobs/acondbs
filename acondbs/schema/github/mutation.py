@@ -72,18 +72,9 @@ class AddGitHubAdminAppToken(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, code):
-        token = exchange_code_for_token(code)
-        if not token:
-            raise GraphQLError('Unsuccessful to obtain the token')
-        user = get_user(token)
-        userModel = GitHubUserModel.query.filter_by(login=user['login']).one_or_none()
-        if userModel is None:
-            userModel = GitHubUserModel(login=user['login'])
-        model = GitHubTokenModel(token=token, user=userModel)
-        sa.session.add(model)
-        sa.session.commit()
+        store_token_for_code(code)
         ok = True
-        request_backup_db()
+        # request_backup_db()
         return AddGitHubAdminAppToken(ok=ok)
 
 ##__________________________________________________________________||
