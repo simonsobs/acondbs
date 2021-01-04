@@ -2,27 +2,55 @@ import pytest
 
 from ...funcs import assert_query
 
-ALL_GITHUB_ADMIN_APP_TOKENS = '''
+GITHUB_TOKEN_FRAGMENT = '''
+fragment GitHubTokenFragment on GitHubToken {
+  tokenId
+  tokenMasked
+  scope
+  timeCreated
+  user {
+    login
+  }
+}
+'''
+
+ALL_GITHUB_TOKENS = '''
 {
   allGitHubTokens {
     totalCount
     edges {
       node {
-        tokenId
-        tokenMasked
-        scope
+        ...GitHubTokenFragment
       }
     }
   }
 }
-'''
+''' + GITHUB_TOKEN_FRAGMENT
+
+ALL_GITHUB_TOKENS_WITH_ORG_ACCESS = '''
+{
+  allGitHubTokens(filters: { scopeIlike: "%read:org%" }) {
+    totalCount
+    edges {
+      node {
+        ...GitHubTokenFragment
+      }
+    }
+  }
+}
+''' + GITHUB_TOKEN_FRAGMENT
 
 # __________________________________________________________________||
 params = [
     pytest.param(
-        [ALL_GITHUB_ADMIN_APP_TOKENS, ],
+        [ALL_GITHUB_TOKENS, ],
         {},
         id='simple'
+    ),
+    pytest.param(
+        [ALL_GITHUB_TOKENS_WITH_ORG_ACCESS, ],
+        {},
+        id='filter'
     ),
 ]
 

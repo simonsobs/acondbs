@@ -7,6 +7,27 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema[filter] 1'] = {
+    'data': {
+        'allGitHubTokens': {
+            'edges': [
+                {
+                    'node': {
+                        'scope': 'read:org',
+                        'timeCreated': '2021-01-04T14:32:20',
+                        'tokenId': '1',
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
+                        'user': {
+                            'login': 'user1'
+                        }
+                    }
+                }
+            ],
+            'totalCount': 1
+        }
+    }
+}
+
 snapshots['test_schema[simple] 1'] = {
     'data': {
         'allGitHubTokens': {
@@ -14,29 +35,45 @@ snapshots['test_schema[simple] 1'] = {
                 {
                     'node': {
                         'scope': 'read:org',
+                        'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '1',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
+                        'user': {
+                            'login': 'user1'
+                        }
                     }
                 },
                 {
                     'node': {
                         'scope': '',
+                        'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '2',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
+                        'user': {
+                            'login': 'user1'
+                        }
                     }
                 },
                 {
                     'node': {
                         'scope': '',
+                        'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '3',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
+                        'user': {
+                            'login': 'user2'
+                        }
                     }
                 },
                 {
                     'node': {
                         'scope': '',
+                        'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '4',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
+                        'user': {
+                            'login': 'user3'
+                        }
                     }
                 }
             ],
