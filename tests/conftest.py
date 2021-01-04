@@ -137,11 +137,15 @@ def mock_request_backup_db(monkeypatch):
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_datetime(monkeypatch):
-    """mock datetime so that  datetime.date.today() always returns the same date
+    """mock datetime so that datetime.date.today() and datetime.datetime.now()
+    always returns the same value
+
     """
     y = mock.Mock(wraps=datetime)
     y.date.today.return_value = datetime.date(2020, 5, 4)
+    y.datetime.now.return_value = datetime.datetime(2021, 1, 4, 14, 32, 20)
     monkeypatch.setattr("acondbs.schema.product.product.datetime", y)
+    monkeypatch.setattr("acondbs.models.github.github_token.datetime", y)
     yield y
 
 ##__________________________________________________________________||
