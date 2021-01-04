@@ -217,6 +217,8 @@ def get_org_member_ids(org_name, token):
     # e.g., ['MDQ6VXNlcjEzODgwODE=', 'MDQ6VXNlcjE1Njg1Njk3']
     # Base64 encoded. To decode, use base64.b64decode
     # [b'04:User1388081', b'04:User15685697']
+    # The 04 is the number of the letters in "User"
+    # For organizations, it is 012, e.g., '012:Organization75631844'
     return member_ids
 
 ##__________________________________________________________________||
