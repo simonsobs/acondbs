@@ -10,7 +10,7 @@ https://github.com/art1415926535/graphene-sqlalchemy-filter/blob/1.10.2/examples
 import graphene
 from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
 
-from ...models import (
+from ..models import (
    Product as ProductModel,
    ProductType as ProductTypeModel
 )
