@@ -229,6 +229,10 @@ def convert_data_type_for_insert(str_, type_):
         if str_:
             return datetime.datetime.strptime(str_, "%Y-%m-%d").date()
         return None
+    if isinstance(type_, sqlalchemy.sql.sqltypes.DATETIME):
+        if str_:
+            return datetime.datetime.fromisoformat(str_)
+        return None
     if isinstance(type_, sqlalchemy.sql.sqltypes.BOOLEAN):
         if str_:
             return ast.literal_eval(str_)
