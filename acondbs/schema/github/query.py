@@ -4,12 +4,13 @@ from graphene_sqlalchemy import SQLAlchemyConnectionField
 
 from ...github.query import get_user
 from ...github.ops import get_github_oauth_app_info
+from ..filter_ import PFilterableConnectionField
 from . import type_
 
 ##__________________________________________________________________||
-all_git_hub_orgs_field = SQLAlchemyConnectionField(type_.GitHubOrg.connection)
-all_git_hub_users_field = SQLAlchemyConnectionField(type_.GitHubUser.connection)
-all_git_hub_tokens_field = SQLAlchemyConnectionField(type_.GitHubToken.connection)
+all_git_hub_orgs_field = PFilterableConnectionField(type_.GitHubOrg.connection)
+all_git_hub_users_field = PFilterableConnectionField(type_.GitHubUser.connection)
+all_git_hub_tokens_field = PFilterableConnectionField(type_.GitHubToken.connection)
 
 ##__________________________________________________________________||
 def resolve_git_hub_o_auth_app_info(parent, info):

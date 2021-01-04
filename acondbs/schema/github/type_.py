@@ -10,6 +10,7 @@ from ...models import (
     GitHubOrgMembership as GitHubOrgMembershipModel,
     GitHubToken as GitHubTokenModel,
 )
+from ..filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
 class GitHubOAuthAppInfo(graphene.ObjectType):
@@ -28,6 +29,7 @@ class GitHubToken(SQLAlchemyObjectType):
         interfaces = (relay.Node, )
         exclude_fields = ['token', ]
         connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
     token_masked = graphene.String()
     def resolve_token_masked(parent, info):
         return "X" * 15
@@ -38,6 +40,7 @@ class GitHubUser(SQLAlchemyObjectType):
         model = GitHubUserModel
         interfaces = (relay.Node, )
         connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
 class GitHubOrg(SQLAlchemyObjectType):
@@ -45,6 +48,7 @@ class GitHubOrg(SQLAlchemyObjectType):
         model = GitHubOrgModel
         interfaces = (relay.Node, )
         connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
 class GitHubOrgMembership(SQLAlchemyObjectType):
@@ -52,5 +56,6 @@ class GitHubOrgMembership(SQLAlchemyObjectType):
         model = GitHubOrgMembershipModel
         interfaces = (relay.Node, )
         connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
