@@ -70,7 +70,7 @@ class AddGitHubAdminAppToken(graphene.Mutation):
     def mutate(root, info, code):
         store_token_for_code(code)
         ok = True
-        # request_backup_db()
+        request_backup_db()
         return AddGitHubAdminAppToken(ok=ok)
 
 ##__________________________________________________________________||
