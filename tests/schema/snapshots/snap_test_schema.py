@@ -335,6 +335,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'gitHubId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'login',
                             'type': {
                                 'name': None
@@ -468,6 +475,13 @@ snapshots['test_types 1'] = {
                         {
                             'description': None,
                             'name': 'userId',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'gitHubId',
                             'type': {
                                 'name': None
                             }
