@@ -1,3 +1,5 @@
+import datetime
+
 import pytest
 
 from sqlalchemy import exc
@@ -33,9 +35,16 @@ def test_add(app):
         sa.session.commit()
 
     with app.app_context():
-        user1 = GitHubUser.query.filter_by(login="octocat").one()
+        token3 = GitHubToken.query.join(GitHubUser).\
+            filter(GitHubUser.login=='octocat').\
+            filter(GitHubToken.token=='token_003').\
+            one()
+        assert 'token_003' == token3.token
+        assert 'read:org' == token3.scope
+        assert datetime.datetime(2021, 1, 4, 14, 32, 20) == token3.time_created # default value set in the fixture mock_datetime
+        user1 = token3.user
+        assert 'octocat' == user1.login
         assert ntokens + 1 == len(user1.tokens)
-        assert 'token_003' in [t.token for t in user1.tokens]
 
 ##__________________________________________________________________||
 def test_delete(app):
