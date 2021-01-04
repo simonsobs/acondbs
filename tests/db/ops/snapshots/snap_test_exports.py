@@ -15,6 +15,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'github_tokens': [
         {
             'scope': 'read:org',
+            'time_created': GenericRepr('datetime.datetime(2020, 1, 4, 14, 32, 15)'),
             'token': b'aKjGknYDHY39Z2xAaN7+sQ==',
             'token_id': 1,
             'user_id': 1

@@ -593,6 +593,13 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'timeCreated',
+                            'type': {
+                                'name': 'DateTime'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'user',
                             'type': {
                                 'name': 'GitHubUser'
@@ -615,6 +622,14 @@ snapshots['test_types 1'] = {
                     ],
                     'inputFields': None,
                     'name': 'GitHubToken'
+                },
+                {
+                    'description': '''The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).''',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'DateTime'
                 },
                 {
                     'description': None,
