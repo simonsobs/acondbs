@@ -51,7 +51,12 @@ def add_org(login):
         break
     if r is None:
         raise Exception(f'Unable to find an org: {login}')
-    model = GitHubOrg(login=login, git_hub_id=r['id'])
+    model = GitHubOrg(
+        login=login,
+        git_hub_id=r['id'],
+        avatar_url=r['avatarUrl'],
+        url=r['url']
+    )
     sa.session.add(model)
     sa.session.commit()
     return model
@@ -91,6 +96,7 @@ def update_org_member_lists():
                 member.login = node['login']
                 member.name = node['name']
                 member.avatar_url = node['avatarUrl']
+                member.url = node['url']
                 membership = GitHubOrgMembership(org=org, member=member)
                 sa.session.add(membership)
     sa.session.commit()
@@ -104,6 +110,7 @@ def store_token_for_code(code):
     user_model.login = viewer['login']
     user_model.name = viewer['name']
     user_model.avatar_url = viewer['avatarUrl']
+    user_model.url = viewer['url']
     token_model = GitHubToken(
         token=token_dict['access_token'],
         scope=token_dict['scope'],
@@ -124,6 +131,7 @@ def authenticate(code):
     user_model.login = viewer['login']
     user_model.name = viewer['name']
     user_model.avatar_url = viewer['avatarUrl']
+    user_model.url = viewer['url']
     token_model = GitHubToken(
         token=token_dict['access_token'],
         scope=token_dict['scope'],

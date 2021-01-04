@@ -12,6 +12,8 @@ def org(login, token):
         organization(login: $login) {
           id
           login
+          avatarUrl
+          url
         }
       }
     """
@@ -19,10 +21,12 @@ def org(login, token):
     r = call_graphql_api(query=query, variables=variables, token=token)
     # e.g.,
     #   {
-    #     "organization": {
-    #       "id": "MDEyOk9yZ2FuaXphdGlvbjc1NjMxODQ0",
-    #       "login": "urban-octo-disco"
-    #     }
+    #       "organization": {
+    #           "id": "MDEyOk9yZ2FuaXphdGlvbjc1NjMxODQ0",
+    #           "login": "urban-octo-disco",
+    #           "avatarUrl": "https://avatars0.githubusercontent.com/u/75631844?v=4",
+    #           "url": "https://github.com/urban-octo-disco"
+    #       }
     #   }
 
     r['organization']['id'] = base64.b64decode(r['organization']['id']).decode()
@@ -66,6 +70,7 @@ def org_members(org_login, token):
                 login
                 name
                 avatarUrl
+                url
               }
             }
           }
@@ -85,7 +90,8 @@ def org_members(org_login, token):
     #                         'id': 'MDQ6VXNlcjEzODgwODE=',
     #                         'login': 'TaiSakuma',
     #                         'name': 'Tai Sakuma',
-    #                         'avatarUrl': 'https://avatars0.githubusercontent.com/u/1388081?v=4'
+    #                         'avatarUrl': 'https://avatars0.githubusercontent.com/u/1388081?v=4',
+    #                         'url': 'https://github.com/TaiSakuma'
     #                     },
     #                     'role': 'MEMBER'
     #                 },
@@ -94,7 +100,8 @@ def org_members(org_login, token):
     #                         'id': 'MDQ6VXNlcjE1Njg1Njk3',
     #                         'login': 'tai-sakuma',
     #                         'name': None,
-    #                         'avatarUrl': 'https://avatars0.githubusercontent.com/u/15685697?v=4'
+    #                         'avatarUrl': 'https://avatars0.githubusercontent.com/u/15685697?v=4',
+    #                         'url': 'https://github.com/tai-sakuma'
     #                     },
     #                     'role': 'ADMIN'
     #                 }
@@ -111,7 +118,7 @@ def org_members(org_login, token):
 
 ##__________________________________________________________________||
 def viewer(token):
-    query = '{ viewer { login id name avatarUrl } }'
+    query = '{ viewer { login id name avatarUrl url } }'
     r = call_graphql_api(query=query, token=token)
     # e.g., https://github.com/octocat
     # {
@@ -119,7 +126,8 @@ def viewer(token):
     #         "id": "MDQ6VXNlcjU4MzIzMQ==",
     #         "login": "octocat",
     #         "name": "The Octocat",
-    #         "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
+    #         "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4",
+    #         "url": "https://github.com/octocat"
     #     }
     # }
 
