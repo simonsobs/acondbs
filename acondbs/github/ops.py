@@ -51,7 +51,7 @@ def add_org(login):
         break
     if r is None:
         raise Exception(f'Unable to find an org: {login}')
-    model = GitHubOrg(login=login)
+    model = GitHubOrg(login=login, git_hub_id=r['id'])
     sa.session.add(model)
     sa.session.commit()
     return model
@@ -86,12 +86,11 @@ def update_org_member_lists():
                 raise Exception(f'Unable to find an org: {org.login}')
             for edge in edges:
                 node = edge['node']
-                if (member := GitHubUser.query.filter_by(login=node['login']).one_or_none()) is None:
-                    member = GitHubUser(
-                        login=node['login'],
-                        name=node['name'],
-                        avatar_url=node['avatarUrl']
-                        )
+                if (member := GitHubUser.query.filter_by(git_hub_id=node['id']).one_or_none()) is None:
+                    member = GitHubUser(git_hub_id=node['id'])
+                member.login = node['login']
+                member.name = node['name']
+                member.avatar_url = node['avatarUrl']
                 membership = GitHubOrgMembership(org=org, member=member)
                 sa.session.add(membership)
     sa.session.commit()
@@ -100,12 +99,11 @@ def update_org_member_lists():
 def store_token_for_code(code):
     token_dict = exchange_code_for_token(code)
     viewer = query.viewer(token_dict['access_token'])
-    if (user_model := GitHubUser.query.filter_by(login=viewer['login']).one_or_none()) is None:
-        user_model = GitHubUser(
-            login=viewer['login'],
-            name=viewer['name'],
-            avatar_url=viewer['avatarUrl']
-        )
+    if (user_model := GitHubUser.query.filter_by(git_hub_id=viewer['id']).one_or_none()) is None:
+        user_model = GitHubUser(git_hub_id=viewer['id'])
+    user_model.login = viewer['login']
+    user_model.name = viewer['name']
+    user_model.avatar_url = viewer['avatarUrl']
     token_model = GitHubToken(
         token=token_dict['access_token'],
         scope=token_dict['scope'],
@@ -117,12 +115,15 @@ def store_token_for_code(code):
 def authenticate(code):
     token_dict = exchange_code_for_token(code)
     viewer = query.viewer(token_dict['access_token'])
-    if (user_model := GitHubUser.query.filter_by(login=viewer['login']).one_or_none()) is None:
+    if (user_model := GitHubUser.query.filter_by(git_hub_id=viewer['id']).one_or_none()) is None:
         raise Exception(f'{viewer["login"]} is not a member.')
     if not user_model.memberships:
         raise Exception(f'{viewer["login"]} is not a member!')
     # TODO Check a membership
     # print([m.org for m in user_model.memberships])
+    user_model.login = viewer['login']
+    user_model.name = viewer['name']
+    user_model.avatar_url = viewer['avatarUrl']
     token_model = GitHubToken(
         token=token_dict['access_token'],
         scope=token_dict['scope'],
