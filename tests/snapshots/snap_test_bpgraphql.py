@@ -55,6 +55,12 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'deleteProductRelation'
                 },
                 {
+                    'name': 'addGitHubOrg'
+                },
+                {
+                    'name': 'deleteGitHubOrg'
+                },
+                {
                     'name': 'authenticateWithGitHub'
                 },
                 {
@@ -62,6 +68,9 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                 },
                 {
                     'name': 'deleteGitHubAdminAppToken'
+                },
+                {
+                    'name': 'updateGitHubOrgMemberLists'
                 }
             ],
             'name': 'Mutation'
@@ -243,6 +252,12 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'deleteProductRelation'
                 },
                 {
+                    'name': 'addGitHubOrg'
+                },
+                {
+                    'name': 'deleteGitHubOrg'
+                },
+                {
                     'name': 'authenticateWithGitHub'
                 },
                 {
@@ -250,6 +265,9 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                 },
                 {
                     'name': 'deleteGitHubAdminAppToken'
+                },
+                {
+                    'name': 'updateGitHubOrgMemberLists'
                 }
             ],
             'name': 'Mutation'

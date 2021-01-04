@@ -1526,6 +1526,20 @@ from one product to the other. The reverse relation will be also added.''',
                         },
                         {
                             'description': None,
+                            'name': 'addGitHubOrg',
+                            'type': {
+                                'name': 'AddGitHubOrg'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'deleteGitHubOrg',
+                            'type': {
+                                'name': 'DeleteGitHubOrg'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'authenticateWithGitHub',
                             'type': {
                                 'name': 'AuthenticateWithGitHub'
@@ -1543,6 +1557,13 @@ from one product to the other. The reverse relation will be also added.''',
                             'name': 'deleteGitHubAdminAppToken',
                             'type': {
                                 'name': 'DeleteGitHubAdminAppToken'
+                            }
+                        },
+                        {
+                            'description': 'Update the member lists of GitHub organizations',
+                            'name': 'updateGitHubOrgMemberLists',
+                            'type': {
+                                'name': 'UpdateGitHubOrgMemberLists'
                             }
                         }
                     ],
@@ -2106,6 +2127,41 @@ from one product to the other. The reverse relation will be also added.''',
                     'fields': [
                         {
                             'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'gitHubOrg',
+                            'type': {
+                                'name': 'GitHubOrg'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'AddGitHubOrg'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'DeleteGitHubOrg'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
                             'name': 'authPayload',
                             'type': {
                                 'name': 'AuthPayload'
@@ -2156,6 +2212,20 @@ from one product to the other. The reverse relation will be also added.''',
                     ],
                     'inputFields': None,
                     'name': 'DeleteGitHubAdminAppToken'
+                },
+                {
+                    'description': 'Update the member lists of GitHub organizations',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'UpdateGitHubOrgMemberLists'
                 },
                 {
                     'description': 'A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation and subscription operations.',
