@@ -349,6 +349,20 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'avatarUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'url',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'memberships',
                             'type': {
                                 'name': 'GitHubOrgMembershipConnection'
@@ -503,6 +517,13 @@ snapshots['test_types 1'] = {
                         {
                             'description': None,
                             'name': 'avatarUrl',
+                            'type': {
+                                'name': 'String'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'url',
                             'type': {
                                 'name': 'String'
                             }

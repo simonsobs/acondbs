@@ -12,9 +12,11 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     ],
     'github_orgs': [
         {
+            'avatar_url': 'https://avatars0.githubusercontent.com/u/75631844?v=4',
             'git_hub_id': '012:Organization75631844',
             'login': 'urban-octo-disco',
-            'org_id': 1
+            'org_id': 1,
+            'url': 'https://github.com/urban-octo-disco'
         }
     ],
     'github_tokens': [
@@ -32,6 +34,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'git_hub_id': '04:User583231',
             'login': 'octocat',
             'name': 'The Octocat',
+            'url': 'https://github.com/octocat',
             'user_id': 1
         },
         {
@@ -39,6 +42,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'git_hub_id': '04:User9758946',
             'login': 'dojocat',
             'name': 'dojocat',
+            'url': 'https://github.com/dojocat',
             'user_id': 2
         }
     ],
