@@ -8,6 +8,7 @@ class GitHubUser(sa.Model):
     login = sa.Column(sa.Text(), unique=True, nullable=False)
     name = sa.Column(sa.Text())
     avatar_url = sa.Column(sa.Text())
+    url = sa.Column(sa.Text())
 
     def __repr__(self):
         return f'<{self.__class__.__name__} {self.login!r}>'
