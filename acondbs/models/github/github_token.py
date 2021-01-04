@@ -20,5 +20,6 @@ class GitHubToken(sa.Model):
         "GitHubUser",
         backref=sa.backref("tokens", cascade="all, delete-orphan")
         )
+    time_created = sa.Column(sa.DateTime())
 
 ##__________________________________________________________________||
