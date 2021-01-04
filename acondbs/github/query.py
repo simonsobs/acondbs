@@ -1,6 +1,8 @@
 """Queries to GitHub API
 """
 
+import base64
+
 from .call import call_graphql_api
 
 ##__________________________________________________________________||
@@ -22,6 +24,9 @@ def org(login, token):
     #       "login": "urban-octo-disco"
     #     }
     #   }
+
+    r['organization']['id'] = base64.b64decode(r['organization']['id']).decode()
+    # e.g., "012:Organization75631844"
 
     return r['organization']
 
@@ -99,6 +104,9 @@ def org_members(org_login, token):
 
     edges = r['organization']['membersWithRole']['edges']
 
+    for e in edges:
+        e['node']['id'] = base64.b64decode(e['node']['id']).decode()
+
     return edges
 
 ##__________________________________________________________________||
@@ -114,8 +122,11 @@ def viewer(token):
     #         "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
     #     }
     # }
-    user = r.get('viewer')
-    return user
+
+    viewer = r['viewer']
+    viewer['id'] = base64.b64decode(viewer['id']).decode()
+
+    return viewer
 
 ##__________________________________________________________________||
 def get_user(token):
