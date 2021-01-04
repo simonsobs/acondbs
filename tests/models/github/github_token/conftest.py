@@ -33,7 +33,7 @@ def app(app_empty):
     #                   +--------+
     #
 
-    user1 = GitHubUser(login="octocat")
+    user1 = GitHubUser(login="octocat", git_hub_id="04:User583231")
     token1 = GitHubToken(token="token_001", scope="read:org", user=user1)
     token2 = GitHubToken(token="token_002", scope="read:org", user=user1)
 

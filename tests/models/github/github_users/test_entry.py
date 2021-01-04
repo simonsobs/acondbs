@@ -11,6 +11,7 @@ def test_entry(app_empty):
 
     user1 = GitHubUser(
         login="octocat",
+        git_hub_id="04:User583231",
         name="The Octocat",
         avatar_url="https://avatars3.githubusercontent.com/u/583231?v=4"
         )
