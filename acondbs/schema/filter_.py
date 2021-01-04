@@ -12,7 +12,8 @@ from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
 
 from ..models import (
    Product as ProductModel,
-   ProductType as ProductTypeModel
+   ProductType as ProductTypeModel,
+   GitHubToken as GitHubTokenModel
 )
 
 ##__________________________________________________________________||
@@ -39,10 +40,19 @@ class ProductTypeFilter(FilterSet):
        fields = { }
 
 ##__________________________________________________________________||
+class GitHubTokenFilter(FilterSet):
+    class Meta:
+        model = GitHubTokenModel
+        fields = {
+            'scope': ['ilike', ],
+        }
+
+##__________________________________________________________________||
 class PFilterableConnectionField(FilterableConnectionField):
     filters = {
         ProductModel: ProductFilter(),
-        ProductTypeModel: ProductTypeFilter()
+        ProductTypeModel: ProductTypeFilter(),
+        GitHubTokenModel: GitHubTokenFilter()
     }
 
 ##__________________________________________________________________||
