@@ -617,6 +617,45 @@ snapshots['test_types 1'] = {
                     'name': 'GitHubToken'
                 },
                 {
+                    'description': None,
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'Case-insensitive containment test.',
+                            'name': 'scopeIlike'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Conjunction of filters joined by ``AND``.',
+                            'name': 'and'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Conjunction of filters joined by ``OR``.',
+                            'name': 'or'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Negation of filters.',
+                            'name': 'not'
+                        }
+                    ],
+                    'name': 'GitHubTokenFilter'
+                },
+                {
+                    'description': 'An enumeration.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'GitHubTokenSortEnum'
+                },
+                {
+                    'description': 'An enumeration.',
+                    'fields': None,
+                    'inputFields': None,
+                    'name': 'GitHubOrgMembershipSortEnum'
+                },
+                {
                     'description': 'An enumeration.',
                     'fields': None,
                     'inputFields': None,
@@ -676,12 +715,6 @@ snapshots['test_types 1'] = {
                     'fields': None,
                     'inputFields': None,
                     'name': 'GitHubUserSortEnum'
-                },
-                {
-                    'description': 'An enumeration.',
-                    'fields': None,
-                    'inputFields': None,
-                    'name': 'GitHubTokenSortEnum'
                 },
                 {
                     'description': None,
