@@ -8,12 +8,15 @@ https://github.com/art1415926535/graphene-sqlalchemy-filter/blob/1.10.2/examples
 
 """
 import graphene
+from sqlalchemy import func
 from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
 
 from ..models import (
     Product as ProductModel,
     ProductType as ProductTypeModel,
-    GitHubToken as GitHubTokenModel
+    GitHubToken as GitHubTokenModel,
+    GitHubUser as GitHubUserModel,
+    GitHubOrgMembership as GitHubOrgMembershipModel
 )
 
 ##__________________________________________________________________||
@@ -48,11 +51,25 @@ class GitHubTokenFilter(FilterSet):
         }
 
 ##__________________________________________________________________||
+class GitHubUserFilter(FilterSet):
+    org_member = graphene.Boolean()
+
+    class Meta:
+        model = GitHubUserModel
+        fields = { }
+
+    @staticmethod
+    def org_member_filter(info, query, value):
+        filter_ = GitHubUserModel.memberships.any() if value else None
+        return query, filter_
+
+##__________________________________________________________________||
 class PFilterableConnectionField(FilterableConnectionField):
     filters = {
         ProductModel: ProductFilter(),
         ProductTypeModel: ProductTypeFilter(),
-        GitHubTokenModel: GitHubTokenFilter()
-    }
+        GitHubTokenModel: GitHubTokenFilter(),
+        GitHubUserModel: GitHubUserFilter()
+   }
 
 ##__________________________________________________________________||

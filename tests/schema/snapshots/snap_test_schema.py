@@ -761,6 +761,33 @@ value as specified by
                     'name': 'GitHubUserEdge'
                 },
                 {
+                    'description': None,
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'Conjunction of filters joined by ``AND``.',
+                            'name': 'and'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Conjunction of filters joined by ``OR``.',
+                            'name': 'or'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'Negation of filters.',
+                            'name': 'not'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': None,
+                            'name': 'orgMember'
+                        }
+                    ],
+                    'name': 'GitHubUserFilter'
+                },
+                {
                     'description': 'An enumeration.',
                     'fields': None,
                     'inputFields': None,
