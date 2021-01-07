@@ -36,34 +36,20 @@ def org(login, token):
 
 ##__________________________________________________________________||
 def org_members(org_login, token):
-    query = """
-      query OrganizationMemberCount($org_login: String!) {
-        organization(login: $org_login) {
-          login
-          membersWithRole {
-            totalCount
-          }
-        }
-      }
-    """
-    variables = { "org_login": org_login }
-    r = call_graphql_api(query=query, variables=variables, token=token)
-    # e.g.,
-    # {
-    #     'organization': {
-    #         'login': 'urban-octo-disco',
-    #         'membersWithRole': {'totalCount': 2}
-    #     }
-    # }
 
-    nmembers = r['organization']['membersWithRole']['totalCount']
+    first = 100
 
     query = """
-      query OrganizationMembers($org_login: String!, $first: Int!) {
+      query OrganizationMembers($org_login: String!, $first: Int!, $after: String) {
         organization(login: $org_login) {
           login
-          membersWithRole(first: $first) {
+          membersWithRole(first: $first, after: $after) {
+            pageInfo {
+              endCursor
+              hasNextPage
+            }
             edges {
+              cursor
               role
               node {
                 id
@@ -77,39 +63,52 @@ def org_members(org_login, token):
         }
       }
     """
-    variables = { "org_login": org_login, "first": nmembers }
-    r = call_graphql_api(query=query, variables=variables, token=token)
-    # e.g.,
-    # {
-    #     'organization': {
-    #         'login': 'urban-octo-disco',
-    #         'membersWithRole': {
-    #             'edges': [
-    #                 {
-    #                     'node': {
-    #                         'id': 'MDQ6VXNlcjEzODgwODE=',
-    #                         'login': 'TaiSakuma',
-    #                         'name': 'Tai Sakuma',
-    #                         'avatarUrl': 'https://avatars0.githubusercontent.com/u/1388081?v=4',
-    #                         'url': 'https://github.com/TaiSakuma'
-    #                     },
-    #                     'role': 'MEMBER'
-    #                 },
-    #                 {
-    #                     'node': {
-    #                         'id': 'MDQ6VXNlcjE1Njg1Njk3',
-    #                         'login': 'tai-sakuma',
-    #                         'name': None,
-    #                         'avatarUrl': 'https://avatars0.githubusercontent.com/u/15685697?v=4',
-    #                         'url': 'https://github.com/tai-sakuma'
-    #                     },
-    #                     'role': 'ADMIN'
-    #                 }
-    #             ]}
-    #     }
-    # }
 
-    edges = r['organization']['membersWithRole']['edges']
+    # an example query result:
+    #   {'organization': {
+    #       'login': 'urban-octo-disco',
+    #       'membersWithRole': {
+    #           'pageInfo': {
+    #               'endCursor': 'Y3Vyc29yOnYyOpHOAO9YQQ==',
+    #               'hasNextPage': False
+    #           },
+    #           'edges': [
+    #               {
+    #                   'cursor': 'Y3Vyc29yOnYyOpHOABUuMQ==',
+    #                   'node': {
+    #                       'id': 'MDQ6VXNlcjEzODgwODE=',
+    #                       'login': 'TaiSakuma',
+    #                       'name': 'Tai Sakuma',
+    #                       'avatarUrl': 'https://avatars0.githubusercontent.com/u/1388081?v=4',
+    #                       'url': 'https://github.com/TaiSakuma'
+    #                   },
+    #                   'role': 'MEMBER'
+    #               },
+    #               {
+    #                   'cursor': 'Y3Vyc29yOnYyOpHOAO9YQQ==',
+    #                   'node': {
+    #                       'id': 'MDQ6VXNlcjE1Njg1Njk3',
+    #                       'login': 'tai-sakuma',
+    #                       'name': None,
+    #                       'avatarUrl': 'https://avatars0.githubusercontent.com/u/15685697?v=4',
+    #                       'url': 'https://github.com/tai-sakuma'
+    #                   },
+    #                   'role': 'ADMIN'
+    #               }
+    #           ],
+    #       }}}
+
+    variables = {"org_login": org_login, "first": first}
+
+    edges = []
+    while True:
+        r = call_graphql_api(query=query, variables=variables, token=token)
+        membersWithRole = r['organization']['membersWithRole']
+        edges.extend(membersWithRole['edges'])
+        pageInfo = membersWithRole['pageInfo']
+        if not pageInfo['hasNextPage']:
+            break
+        variables["after"] = pageInfo['endCursor']
 
     for e in edges:
         e['node']['id'] = base64.b64decode(e['node']['id']).decode()
