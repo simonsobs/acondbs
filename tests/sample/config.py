@@ -33,9 +33,6 @@ GITHUB_AUTH_CLIENT_SECRET = 'client_secret_abcdefghijklmnupqrstuvwxyz'
 GITHUB_AUTH_REDIRECT_URI = 'http://localhost:8080/signin'
 
 ##__________________________________________________________________||
-GITHUB_ORG = 'test_github_org_name'
-
-##__________________________________________________________________||
 del Path
 
 ##__________________________________________________________________||
