@@ -4,55 +4,53 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ..connection import CountedConnection
 from ...models import (
-    GitHubUser as GitHubUserModel,
-    GitHubOrg as GitHubOrgModel,
-    GitHubOrgMembership as GitHubOrgMembershipModel,
-    GitHubToken as GitHubTokenModel,
+    Product as ProductModel,
+    ProductType as ProductTypeModel,
+    ProductFilePath as ProductFilePathModel,
+    ProductRelation as ProductRelationModel,
+    ProductRelationType as ProductRelationTypeModel
 )
 from ..filter_ import PFilterableConnectionField
 
 ##__________________________________________________________________||
-class GitHubOAuthAppInfo(graphene.ObjectType):
-    client_id = graphene.String()
-    authorize_url = graphene.String()
-    redirect_uri = graphene.String()
-
-##__________________________________________________________________||
-class AuthPayload(graphene.ObjectType):
-    token = graphene.String()
-
-##__________________________________________________________________||
-class GitHubToken(SQLAlchemyObjectType):
+class Product(SQLAlchemyObjectType):
     class Meta:
-        model = GitHubTokenModel
-        interfaces = (relay.Node, )
-        exclude_fields = ['token', ]
-        connection_class = CountedConnection
-        connection_field_factory = PFilterableConnectionField.factory
-    token_masked = graphene.String()
-    def resolve_token_masked(parent, info):
-        return "X" * 15
-
-##__________________________________________________________________||
-class GitHubUser(SQLAlchemyObjectType):
-    class Meta:
-        model = GitHubUserModel
+        model = ProductModel
         interfaces = (relay.Node, )
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
-class GitHubOrg(SQLAlchemyObjectType):
+class ProductType(SQLAlchemyObjectType):
+    '''A product type'''
     class Meta:
-        model = GitHubOrgModel
-        interfaces = (relay.Node, )
+        model = ProductTypeModel
+        interfaces = (graphene.relay.Node, )
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||
-class GitHubOrgMembership(SQLAlchemyObjectType):
+class ProductRelation(SQLAlchemyObjectType):
+    '''A relation from one product to another'''
     class Meta:
-        model = GitHubOrgMembershipModel
+        model = ProductRelationModel
+        interfaces = (graphene.relay.Node, )
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+##__________________________________________________________________||
+class ProductRelationType(SQLAlchemyObjectType):
+    '''A type of relations between products'''
+    class Meta:
+        model = ProductRelationTypeModel
+        interfaces = (graphene.relay.Node, )
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+##__________________________________________________________________||
+class ProductFilePath(SQLAlchemyObjectType):
+    class Meta:
+        model = ProductFilePathModel
         interfaces = (relay.Node, )
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory

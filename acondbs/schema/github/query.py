@@ -1,6 +1,5 @@
 import graphene
 from graphql import GraphQLError
-from graphene_sqlalchemy import SQLAlchemyConnectionField
 
 from ...github.query import get_user
 from ...github.ops import get_github_oauth_app_info

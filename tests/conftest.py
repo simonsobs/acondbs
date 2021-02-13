@@ -126,11 +126,11 @@ def mock_request_backup_db(monkeypatch):
     """mock request_backup_db() so that backups won't be actually taken in tests
     """
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.product.product.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.product_file_path.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.product_type.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.product_relation_type.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.product_relation.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product.mutation.product.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product.mutation.product_file_path.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product.mutation.product_type.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product.mutation.product_relation_type.request_backup_db", y)
+    monkeypatch.setattr("acondbs.schema.product.mutation.product_relation.request_backup_db", y)
     monkeypatch.setattr("acondbs.schema.github.mutation.request_backup_db", y)
     yield y
 
@@ -144,7 +144,7 @@ def mock_datetime(monkeypatch):
     y = mock.Mock(wraps=datetime)
     y.date.today.return_value = datetime.date(2020, 5, 4)
     y.datetime.now.return_value = datetime.datetime(2021, 1, 4, 14, 32, 20)
-    monkeypatch.setattr("acondbs.schema.product.product.datetime", y)
+    monkeypatch.setattr("acondbs.schema.product.mutation.product.datetime", y)
     monkeypatch.setattr("acondbs.models.github.github_token.datetime", y)
     yield y
 

@@ -16,43 +16,43 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'createProduct'
                 },
                 {
-                    'name': 'updateProduct'
+                    'name': 'deleteProduct'
                 },
                 {
-                    'name': 'deleteProduct'
+                    'name': 'updateProduct'
                 },
                 {
                     'name': 'createProductFilePath'
                 },
                 {
-                    'name': 'updateProductFilePath'
-                },
-                {
                     'name': 'deleteProductFilePath'
                 },
                 {
-                    'name': 'createProductType'
-                },
-                {
-                    'name': 'updateProductType'
-                },
-                {
-                    'name': 'deleteProductType'
-                },
-                {
-                    'name': 'createProductRelationTypes'
-                },
-                {
-                    'name': 'updateProductRelationType'
-                },
-                {
-                    'name': 'deleteProductRelationTypes'
+                    'name': 'updateProductFilePath'
                 },
                 {
                     'name': 'createProductRelation'
                 },
                 {
                     'name': 'deleteProductRelation'
+                },
+                {
+                    'name': 'createProductRelationTypes'
+                },
+                {
+                    'name': 'deleteProductRelationTypes'
+                },
+                {
+                    'name': 'updateProductRelationType'
+                },
+                {
+                    'name': 'createProductType'
+                },
+                {
+                    'name': 'deleteProductType'
+                },
+                {
+                    'name': 'updateProductType'
                 },
                 {
                     'name': 'addGitHubOrg'
@@ -103,31 +103,31 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'githubUser'
                 },
                 {
-                    'name': 'product'
-                },
-                {
                     'name': 'allProducts'
-                },
-                {
-                    'name': 'allProductFilePaths'
-                },
-                {
-                    'name': 'productType'
                 },
                 {
                     'name': 'allProductTypes'
                 },
                 {
-                    'name': 'productRelationType'
+                    'name': 'allProductRelations'
                 },
                 {
                     'name': 'allProductRelationTypes'
                 },
                 {
+                    'name': 'allProductFilePaths'
+                },
+                {
+                    'name': 'product'
+                },
+                {
+                    'name': 'productType'
+                },
+                {
                     'name': 'productRelation'
                 },
                 {
-                    'name': 'allProductRelations'
+                    'name': 'productRelationType'
                 },
                 {
                     'name': 'node'
@@ -169,31 +169,31 @@ snapshots['test_disable_mutation[kwargs1] 1'] = {
                     'name': 'githubUser'
                 },
                 {
-                    'name': 'product'
-                },
-                {
                     'name': 'allProducts'
-                },
-                {
-                    'name': 'allProductFilePaths'
-                },
-                {
-                    'name': 'productType'
                 },
                 {
                     'name': 'allProductTypes'
                 },
                 {
-                    'name': 'productRelationType'
+                    'name': 'allProductRelations'
                 },
                 {
                     'name': 'allProductRelationTypes'
                 },
                 {
+                    'name': 'allProductFilePaths'
+                },
+                {
+                    'name': 'product'
+                },
+                {
+                    'name': 'productType'
+                },
+                {
                     'name': 'productRelation'
                 },
                 {
-                    'name': 'allProductRelations'
+                    'name': 'productRelationType'
                 },
                 {
                     'name': 'node'
@@ -213,43 +213,43 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'createProduct'
                 },
                 {
-                    'name': 'updateProduct'
+                    'name': 'deleteProduct'
                 },
                 {
-                    'name': 'deleteProduct'
+                    'name': 'updateProduct'
                 },
                 {
                     'name': 'createProductFilePath'
                 },
                 {
-                    'name': 'updateProductFilePath'
-                },
-                {
                     'name': 'deleteProductFilePath'
                 },
                 {
-                    'name': 'createProductType'
-                },
-                {
-                    'name': 'updateProductType'
-                },
-                {
-                    'name': 'deleteProductType'
-                },
-                {
-                    'name': 'createProductRelationTypes'
-                },
-                {
-                    'name': 'updateProductRelationType'
-                },
-                {
-                    'name': 'deleteProductRelationTypes'
+                    'name': 'updateProductFilePath'
                 },
                 {
                     'name': 'createProductRelation'
                 },
                 {
                     'name': 'deleteProductRelation'
+                },
+                {
+                    'name': 'createProductRelationTypes'
+                },
+                {
+                    'name': 'deleteProductRelationTypes'
+                },
+                {
+                    'name': 'updateProductRelationType'
+                },
+                {
+                    'name': 'createProductType'
+                },
+                {
+                    'name': 'deleteProductType'
+                },
+                {
+                    'name': 'updateProductType'
                 },
                 {
                     'name': 'addGitHubOrg'
@@ -300,31 +300,31 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'githubUser'
                 },
                 {
-                    'name': 'product'
-                },
-                {
                     'name': 'allProducts'
-                },
-                {
-                    'name': 'allProductFilePaths'
-                },
-                {
-                    'name': 'productType'
                 },
                 {
                     'name': 'allProductTypes'
                 },
                 {
-                    'name': 'productRelationType'
+                    'name': 'allProductRelations'
                 },
                 {
                     'name': 'allProductRelationTypes'
                 },
                 {
+                    'name': 'allProductFilePaths'
+                },
+                {
+                    'name': 'product'
+                },
+                {
+                    'name': 'productType'
+                },
+                {
                     'name': 'productRelation'
                 },
                 {
-                    'name': 'allProductRelations'
+                    'name': 'productRelationType'
                 },
                 {
                     'name': 'node'
