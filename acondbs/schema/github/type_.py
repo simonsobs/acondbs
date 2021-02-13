@@ -3,7 +3,6 @@ from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ..connection import CountedConnection
-from ...github.ops import get_github_oauth_app_info
 from ...models import (
     GitHubUser as GitHubUserModel,
     GitHubOrg as GitHubOrgModel,
