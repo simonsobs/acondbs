@@ -15,6 +15,7 @@ def create_schema(enable_mutation=True):
 ##__________________________________________________________________||
 class Query(graphene.ObjectType):
 
+    #
     version = version_.version_field
     alembic_version = version_.alembic_version_field
 
@@ -22,28 +23,25 @@ class Query(graphene.ObjectType):
 
     web_config = web_config_field
 
-    product_type = p.query.product_type_field
+    #
+    all_products = p.query.all_products_field
+    all_product_file_paths = p.query.all_product_file_paths_field
+    all_product_relations = p.query.all_product_relations_field
+    all_product_relation_types = p.query.all_product_relation_types_field
     all_product_types = p.query.all_product_types_field
 
-    all_product_file_paths = p.query.all_product_file_paths_field
-
     product = p.query.product_field
-    all_products = p.query.all_products_field
-
-    product_relation_type = p.query.product_relation_type_field
-    all_product_relation_types = p.query.all_product_relation_types_field
-
     product_relation = p.query.product_relation_field
-    all_product_relations = p.query.all_product_relations_field
+    product_relation_type = p.query.product_relation_type_field
+    product_type = p.query.product_type_field
+
+    #
+    all_git_hub_orgs = github.query.all_git_hub_orgs_field
+    all_git_hub_tokens = github.query.all_git_hub_tokens_field
+    all_git_hub_users = github.query.all_git_hub_users_field
 
     github_user = github.query.github_user_field
-
-    all_git_hub_tokens = github.query.all_git_hub_tokens_field
-
     git_hub_o_auth_app_info = github.query.git_hub_o_auth_app_info_field
-
-    all_git_hub_orgs = github.query.all_git_hub_orgs_field
-    all_git_hub_users = github.query.all_git_hub_users_field
 
 ##__________________________________________________________________||
 class Mutation(graphene.ObjectType):
