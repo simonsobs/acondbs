@@ -48,24 +48,24 @@ class Query(graphene.ObjectType):
 ##__________________________________________________________________||
 class Mutation(graphene.ObjectType):
 
-    create_product = p.CreateProduct.Field()
-    update_product = p.UpdateProduct.Field()
-    delete_product = p.DeleteProduct.Field()
+    create_product = p.mutation.CreateProduct.Field()
+    update_product = p.mutation.UpdateProduct.Field()
+    delete_product = p.mutation.DeleteProduct.Field()
 
-    create_product_file_path = p.CreateProductFilePath.Field()
-    update_product_file_path = p.UpdateProductFilePath.Field()
-    delete_product_file_path = p.DeleteProductFilePath.Field()
+    create_product_file_path = p.mutation.CreateProductFilePath.Field()
+    update_product_file_path = p.mutation.UpdateProductFilePath.Field()
+    delete_product_file_path = p.mutation.DeleteProductFilePath.Field()
 
-    create_product_type = p.CreateProductType.Field()
-    update_product_type = p.UpdateProductType.Field()
-    delete_product_type = p.DeleteProductType.Field()
+    create_product_type = p.mutation.CreateProductType.Field()
+    update_product_type = p.mutation.UpdateProductType.Field()
+    delete_product_type = p.mutation.DeleteProductType.Field()
 
-    create_product_relation_types = p.CreateProductRelationTypes.Field()
-    update_product_relation_type = p.UpdateProductRelationType.Field()
-    delete_product_relation_types = p.DeleteProductRelationTypes.Field()
+    create_product_relation_types = p.mutation.CreateProductRelationTypes.Field()
+    update_product_relation_type = p.mutation.UpdateProductRelationType.Field()
+    delete_product_relation_types = p.mutation.DeleteProductRelationTypes.Field()
 
-    create_product_relation = p.CreateProductRelation.Field()
-    delete_product_relation = p.DeleteProductRelation.Field()
+    create_product_relation = p.mutation.CreateProductRelation.Field()
+    delete_product_relation = p.mutation.DeleteProductRelation.Field()
 
     add_git_hub_org = github.mutation.AddGitHubOrg.Field()
     delete_git_hub_org = github.mutation.DeleteGitHubOrg.Field()

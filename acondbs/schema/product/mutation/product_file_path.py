@@ -1,13 +1,13 @@
 import graphene
 
-from ...models import (
+from ....models import (
     ProductFilePath as ProductFilePathModel
 )
 
-from ...db.sa import sa
-from ...db.backup import request_backup_db
+from ....db.sa import sa
+from ....db.backup import request_backup_db
 
-from . import type_
+from .. import type_
 
 ##__________________________________________________________________||
 class CommonInputFields:

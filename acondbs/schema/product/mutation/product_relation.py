@@ -1,15 +1,15 @@
 import graphene
 
-from ...models import (
+from ....models import (
     Product as ProductModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel
 )
 
-from ...db.sa import sa
-from ...db.backup import request_backup_db
+from ....db.sa import sa
+from ....db.backup import request_backup_db
 
-from . import type_
+from .. import type_
 
 ##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
