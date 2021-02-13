@@ -20,6 +20,16 @@ snapshots['test_schema[sort-order] 1'] = {
                         'plural': 'beams',
                         'products': {
                             'edges': [
+                                {
+                                    'node': {
+                                        'name': 'beam1'
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'name': 'beam2'
+                                    }
+                                }
                             ]
                         },
                         'singular': 'beam',

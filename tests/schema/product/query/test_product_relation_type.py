@@ -1,9 +1,9 @@
 import pytest
 import textwrap
 
-from ....funcs import assert_query
+from ...funcs import assert_query
 
-from ...gql import FRAGMENT_PRODUCT_RELATION_TYPE
+from ..gql import FRAGMENT_PRODUCT_RELATION_TYPE
 
 ##__________________________________________________________________||
 params = [

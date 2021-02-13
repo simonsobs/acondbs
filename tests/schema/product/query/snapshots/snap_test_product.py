@@ -20,7 +20,7 @@ snapshots['test_schema[deep] 1'] = {
                 'edges': [
                     {
                         'node': {
-                            'note': None,
+                            'note': 'sample comment',
                             'path': 'site1:/path/to/map1',
                             'pathId': '1'
                         }
@@ -109,7 +109,7 @@ snapshots['test_schema[deep] 1'] = {
     }
 }
 
-snapshots['test_schema[product_id-nonexistent] 1'] = {
+snapshots['test_schema[product_id-name-nonexistent] 1'] = {
     'data': {
         'product': None
     }
@@ -125,7 +125,7 @@ snapshots['test_schema[product_id-name] 1'] = {
     }
 }
 
-snapshots['test_schema[product_id-name-nonexistent] 1'] = {
+snapshots['test_schema[product_id-nonexistent] 1'] = {
     'data': {
         'product': None
     }

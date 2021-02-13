@@ -23,7 +23,7 @@ snapshots['test_schema[deep] 1'] = {
                             'edges': [
                                 {
                                     'node': {
-                                        'note': None,
+                                        'note': 'sample comment',
                                         'path': 'site1:/path/to/map1',
                                         'pathId': '1'
                                     }
@@ -381,75 +381,6 @@ snapshots['test_schema[deep] 1'] = {
     }
 }
 
-snapshots['test_schema[first-two] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'map1',
-                        'productId': '1',
-                        'typeId': 1
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'map2',
-                        'productId': '2',
-                        'typeId': 1
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema[first-two-sort] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'map3',
-                        'productId': '3',
-                        'typeId': 1
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'beam2',
-                        'productId': '5',
-                        'typeId': 2
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema[filters-type_name-first-two] 1'] = {
-    'data': {
-        'allProducts': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'map1',
-                        'productId': '1',
-                        'typeId': 1
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'map2',
-                        'productId': '2',
-                        'typeId': 1
-                    }
-                }
-            ]
-        }
-    }
-}
-
 snapshots['test_schema[filters-type_id-first-two] 1'] = {
     'data': {
         'allProducts': {
@@ -503,6 +434,29 @@ snapshots['test_schema[filters-type_id-sort] 1'] = {
     }
 }
 
+snapshots['test_schema[filters-type_name-first-two] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map1',
+                        'productId': '1',
+                        'typeId': 1
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'map2',
+                        'productId': '2',
+                        'typeId': 1
+                    }
+                }
+            ]
+        }
+    }
+}
+
 snapshots['test_schema[filters-type_name-sort] 1'] = {
     'data': {
         'allProducts': {
@@ -525,6 +479,52 @@ snapshots['test_schema[filters-type_name-sort] 1'] = {
                     'node': {
                         'name': 'map1',
                         'productId': '1',
+                        'typeId': 1
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[first-two-sort] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map3',
+                        'productId': '3',
+                        'typeId': 1
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'beam2',
+                        'productId': '5',
+                        'typeId': 2
+                    }
+                }
+            ]
+        }
+    }
+}
+
+snapshots['test_schema[first-two] 1'] = {
+    'data': {
+        'allProducts': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map1',
+                        'productId': '1',
+                        'typeId': 1
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'map2',
+                        'productId': '2',
                         'typeId': 1
                     }
                 }

@@ -1,9 +1,9 @@
 import pytest
 import textwrap
 
-from ....funcs import assert_query
+from ...funcs import assert_query
 
-from ...gql import (
+from ..gql import (
     FRAGMENT_PRODUCT_CONNECTION_SHALLOW,
     FRAGMENT_PRODUCT_CONNECTION_DEEP
     )
