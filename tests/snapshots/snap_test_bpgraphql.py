@@ -16,43 +16,43 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
                     'name': 'createProduct'
                 },
                 {
-                    'name': 'updateProduct'
+                    'name': 'deleteProduct'
                 },
                 {
-                    'name': 'deleteProduct'
+                    'name': 'updateProduct'
                 },
                 {
                     'name': 'createProductFilePath'
                 },
                 {
-                    'name': 'updateProductFilePath'
-                },
-                {
                     'name': 'deleteProductFilePath'
                 },
                 {
-                    'name': 'createProductType'
-                },
-                {
-                    'name': 'updateProductType'
-                },
-                {
-                    'name': 'deleteProductType'
-                },
-                {
-                    'name': 'createProductRelationTypes'
-                },
-                {
-                    'name': 'updateProductRelationType'
-                },
-                {
-                    'name': 'deleteProductRelationTypes'
+                    'name': 'updateProductFilePath'
                 },
                 {
                     'name': 'createProductRelation'
                 },
                 {
                     'name': 'deleteProductRelation'
+                },
+                {
+                    'name': 'createProductRelationTypes'
+                },
+                {
+                    'name': 'deleteProductRelationTypes'
+                },
+                {
+                    'name': 'updateProductRelationType'
+                },
+                {
+                    'name': 'createProductType'
+                },
+                {
+                    'name': 'deleteProductType'
+                },
+                {
+                    'name': 'updateProductType'
                 },
                 {
                     'name': 'addGitHubOrg'
@@ -213,43 +213,43 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
                     'name': 'createProduct'
                 },
                 {
-                    'name': 'updateProduct'
+                    'name': 'deleteProduct'
                 },
                 {
-                    'name': 'deleteProduct'
+                    'name': 'updateProduct'
                 },
                 {
                     'name': 'createProductFilePath'
                 },
                 {
-                    'name': 'updateProductFilePath'
-                },
-                {
                     'name': 'deleteProductFilePath'
                 },
                 {
-                    'name': 'createProductType'
-                },
-                {
-                    'name': 'updateProductType'
-                },
-                {
-                    'name': 'deleteProductType'
-                },
-                {
-                    'name': 'createProductRelationTypes'
-                },
-                {
-                    'name': 'updateProductRelationType'
-                },
-                {
-                    'name': 'deleteProductRelationTypes'
+                    'name': 'updateProductFilePath'
                 },
                 {
                     'name': 'createProductRelation'
                 },
                 {
                     'name': 'deleteProductRelation'
+                },
+                {
+                    'name': 'createProductRelationTypes'
+                },
+                {
+                    'name': 'deleteProductRelationTypes'
+                },
+                {
+                    'name': 'updateProductRelationType'
+                },
+                {
+                    'name': 'createProductType'
+                },
+                {
+                    'name': 'deleteProductType'
+                },
+                {
+                    'name': 'updateProductType'
                 },
                 {
                     'name': 'addGitHubOrg'

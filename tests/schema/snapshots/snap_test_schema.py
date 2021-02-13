@@ -1539,19 +1539,19 @@ value as specified by
                             }
                         },
                         {
+                            'description': 'Delete a product',
+                            'name': 'deleteProduct',
+                            'type': {
+                                'name': 'DeleteProduct'
+                            }
+                        },
+                        {
                             'description': '''Update a product. Note: This is to update the DB entry about a product. If the
 product itself has been updated, a new entry should be added by
 createProduct()''',
                             'name': 'updateProduct',
                             'type': {
                                 'name': 'UpdateProduct'
-                            }
-                        },
-                        {
-                            'description': 'Delete a product',
-                            'name': 'deleteProduct',
-                            'type': {
-                                'name': 'DeleteProduct'
                             }
                         },
                         {
@@ -1563,58 +1563,16 @@ createProduct()''',
                         },
                         {
                             'description': None,
-                            'name': 'updateProductFilePath',
-                            'type': {
-                                'name': 'UpdateProductFilePath'
-                            }
-                        },
-                        {
-                            'description': None,
                             'name': 'deleteProductFilePath',
                             'type': {
                                 'name': 'DeleteProductFilePath'
                             }
                         },
                         {
-                            'description': 'Create a product type',
-                            'name': 'createProductType',
+                            'description': None,
+                            'name': 'updateProductFilePath',
                             'type': {
-                                'name': 'CreateProductType'
-                            }
-                        },
-                        {
-                            'description': 'Update a product type',
-                            'name': 'updateProductType',
-                            'type': {
-                                'name': 'UpdateProductType'
-                            }
-                        },
-                        {
-                            'description': 'Delete a product type',
-                            'name': 'deleteProductType',
-                            'type': {
-                                'name': 'DeleteProductType'
-                            }
-                        },
-                        {
-                            'description': 'Create a pair of product relation types',
-                            'name': 'createProductRelationTypes',
-                            'type': {
-                                'name': 'CreateProductRelationTypes'
-                            }
-                        },
-                        {
-                            'description': 'Update a product relation type',
-                            'name': 'updateProductRelationType',
-                            'type': {
-                                'name': 'UpdateProductRelationType'
-                            }
-                        },
-                        {
-                            'description': 'Delete a pair of product relation types',
-                            'name': 'deleteProductRelationTypes',
-                            'type': {
-                                'name': 'DeleteProductRelationTypes'
+                                'name': 'UpdateProductFilePath'
                             }
                         },
                         {
@@ -1632,6 +1590,48 @@ from one product to the other. The reverse relation will be also added.''',
                             'name': 'deleteProductRelation',
                             'type': {
                                 'name': 'DeleteProductRelation'
+                            }
+                        },
+                        {
+                            'description': 'Create a pair of product relation types',
+                            'name': 'createProductRelationTypes',
+                            'type': {
+                                'name': 'CreateProductRelationTypes'
+                            }
+                        },
+                        {
+                            'description': 'Delete a pair of product relation types',
+                            'name': 'deleteProductRelationTypes',
+                            'type': {
+                                'name': 'DeleteProductRelationTypes'
+                            }
+                        },
+                        {
+                            'description': 'Update a product relation type',
+                            'name': 'updateProductRelationType',
+                            'type': {
+                                'name': 'UpdateProductRelationType'
+                            }
+                        },
+                        {
+                            'description': 'Create a product type',
+                            'name': 'createProductType',
+                            'type': {
+                                'name': 'CreateProductType'
+                            }
+                        },
+                        {
+                            'description': 'Delete a product type',
+                            'name': 'deleteProductType',
+                            'type': {
+                                'name': 'DeleteProductType'
+                            }
+                        },
+                        {
+                            'description': 'Update a product type',
+                            'name': 'updateProductType',
+                            'type': {
+                                'name': 'UpdateProductType'
                             }
                         },
                         {
@@ -1779,6 +1779,20 @@ value as specified by
                     'name': 'Date'
                 },
                 {
+                    'description': 'Delete a product',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'DeleteProduct'
+                },
+                {
                     'description': '''Update a product. Note: This is to update the DB entry about a product. If the
 product itself has been updated, a new entry should be added by
 createProduct()''',
@@ -1834,20 +1848,6 @@ createProduct()''',
                     'name': 'UpdateProductInput'
                 },
                 {
-                    'description': 'Delete a product',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'DeleteProduct'
-                },
-                {
                     'description': None,
                     'fields': [
                         {
@@ -1899,6 +1899,20 @@ createProduct()''',
                             'type': {
                                 'name': 'Boolean'
                             }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'DeleteProductFilePath'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
                         },
                         {
                             'description': None,
@@ -1927,250 +1941,6 @@ createProduct()''',
                         }
                     ],
                     'name': 'UpdateProductFilePathInput'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'DeleteProductFilePath'
-                },
-                {
-                    'description': 'Create a product type',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productType',
-                            'type': {
-                                'name': 'ProductType'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'CreateProductType'
-                },
-                {
-                    'description': 'Input to createProductType()',
-                    'fields': None,
-                    'inputFields': [
-                        {
-                            'defaultValue': None,
-                            'description': 'The order in which the type is displayed, for example, in navigation bars.',
-                            'name': 'order'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
-                            'name': 'indefArticle'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The singular noun, the product type name in singular.',
-                            'name': 'singular'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The plural noun, the product type name in plural.',
-                            'name': 'plural'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'A name of the icon from https://materialdesignicons.com/',
-                            'name': 'icon'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The name of the product type',
-                            'name': 'name'
-                        }
-                    ],
-                    'name': 'CreateProductTypeInput'
-                },
-                {
-                    'description': 'Update a product type',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productType',
-                            'type': {
-                                'name': 'ProductType'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'UpdateProductType'
-                },
-                {
-                    'description': 'Input to updateProductType()',
-                    'fields': None,
-                    'inputFields': [
-                        {
-                            'defaultValue': None,
-                            'description': 'The order in which the type is displayed, for example, in navigation bars.',
-                            'name': 'order'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
-                            'name': 'indefArticle'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The singular noun, the product type name in singular.',
-                            'name': 'singular'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The plural noun, the product type name in plural.',
-                            'name': 'plural'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'A name of the icon from https://materialdesignicons.com/',
-                            'name': 'icon'
-                        }
-                    ],
-                    'name': 'UpdateProductTypeInput'
-                },
-                {
-                    'description': 'Delete a product type',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'DeleteProductType'
-                },
-                {
-                    'description': 'Create a pair of product relation types',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productRelationType',
-                            'type': {
-                                'name': 'ProductRelationType'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'CreateProductRelationTypes'
-                },
-                {
-                    'description': 'An input to createProductRelationTypes()',
-                    'fields': None,
-                    'inputFields': [
-                        {
-                            'defaultValue': None,
-                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
-                            'name': 'indefArticle'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The singular noun, the relation type name in singular.',
-                            'name': 'singular'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The plural noun, the relation type name in plural.',
-                            'name': 'plural'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The name of the relation type',
-                            'name': 'name'
-                        }
-                    ],
-                    'name': 'CreateProductRelationTypeInput'
-                },
-                {
-                    'description': 'Update a product relation type',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productRelationType',
-                            'type': {
-                                'name': 'ProductRelationType'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'UpdateProductRelationType'
-                },
-                {
-                    'description': 'An input to updateProductRelationType()',
-                    'fields': None,
-                    'inputFields': [
-                        {
-                            'defaultValue': None,
-                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
-                            'name': 'indefArticle'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The singular noun, the relation type name in singular.',
-                            'name': 'singular'
-                        },
-                        {
-                            'defaultValue': None,
-                            'description': 'The plural noun, the relation type name in plural.',
-                            'name': 'plural'
-                        }
-                    ],
-                    'name': 'UpdateProductRelationTypeInput'
-                },
-                {
-                    'description': 'Delete a pair of product relation types',
-                    'fields': [
-                        {
-                            'description': None,
-                            'name': 'ok',
-                            'type': {
-                                'name': 'Boolean'
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'DeleteProductRelationTypes'
                 },
                 {
                     'description': '''Add relations between two products. The arguments only specify the relation
@@ -2231,6 +2001,236 @@ from one product to the other. The reverse relation will be also added.''',
                     ],
                     'inputFields': None,
                     'name': 'DeleteProductRelation'
+                },
+                {
+                    'description': 'Create a pair of product relation types',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productRelationType',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'CreateProductRelationTypes'
+                },
+                {
+                    'description': 'An input to createProductRelationTypes()',
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
+                            'name': 'indefArticle'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The singular noun, the relation type name in singular.',
+                            'name': 'singular'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The plural noun, the relation type name in plural.',
+                            'name': 'plural'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The name of the relation type',
+                            'name': 'name'
+                        }
+                    ],
+                    'name': 'CreateProductRelationTypeInput'
+                },
+                {
+                    'description': 'Delete a pair of product relation types',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'DeleteProductRelationTypes'
+                },
+                {
+                    'description': 'Update a product relation type',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productRelationType',
+                            'type': {
+                                'name': 'ProductRelationType'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'UpdateProductRelationType'
+                },
+                {
+                    'description': 'An input to updateProductRelationType()',
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
+                            'name': 'indefArticle'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The singular noun, the relation type name in singular.',
+                            'name': 'singular'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The plural noun, the relation type name in plural.',
+                            'name': 'plural'
+                        }
+                    ],
+                    'name': 'UpdateProductRelationTypeInput'
+                },
+                {
+                    'description': 'Create a product type',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'CreateProductType'
+                },
+                {
+                    'description': 'Input to createProductType()',
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'The order in which the type is displayed, for example, in navigation bars.',
+                            'name': 'order'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
+                            'name': 'indefArticle'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The singular noun, the product type name in singular.',
+                            'name': 'singular'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The plural noun, the product type name in plural.',
+                            'name': 'plural'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'A name of the icon from https://materialdesignicons.com/',
+                            'name': 'icon'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The name of the product type',
+                            'name': 'name'
+                        }
+                    ],
+                    'name': 'CreateProductTypeInput'
+                },
+                {
+                    'description': 'Delete a product type',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'DeleteProductType'
+                },
+                {
+                    'description': 'Update a product type',
+                    'fields': [
+                        {
+                            'description': None,
+                            'name': 'ok',
+                            'type': {
+                                'name': 'Boolean'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'UpdateProductType'
+                },
+                {
+                    'description': 'Input to updateProductType()',
+                    'fields': None,
+                    'inputFields': [
+                        {
+                            'defaultValue': None,
+                            'description': 'The order in which the type is displayed, for example, in navigation bars.',
+                            'name': 'order'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The indefinite article placed before the singular noun "i.e., "a" or "an". ',
+                            'name': 'indefArticle'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The singular noun, the product type name in singular.',
+                            'name': 'singular'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'The plural noun, the product type name in plural.',
+                            'name': 'plural'
+                        },
+                        {
+                            'defaultValue': None,
+                            'description': 'A name of the icon from https://materialdesignicons.com/',
+                            'name': 'icon'
+                        }
+                    ],
+                    'name': 'UpdateProductTypeInput'
                 },
                 {
                     'description': None,
