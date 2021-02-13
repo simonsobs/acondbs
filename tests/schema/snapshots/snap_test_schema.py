@@ -72,30 +72,9 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'product',
-                            'type': {
-                                'name': 'Product'
-                            }
-                        },
-                        {
-                            'description': None,
                             'name': 'allProducts',
                             'type': {
                                 'name': 'ProductConnection'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'allProductFilePaths',
-                            'type': {
-                                'name': 'ProductFilePathConnection'
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'productType',
-                            'type': {
-                                'name': 'ProductType'
                             }
                         },
                         {
@@ -107,9 +86,9 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'productRelationType',
+                            'name': 'allProductRelations',
                             'type': {
-                                'name': 'ProductRelationType'
+                                'name': 'ProductRelationConnection'
                             }
                         },
                         {
@@ -121,6 +100,27 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
+                            'name': 'allProductFilePaths',
+                            'type': {
+                                'name': 'ProductFilePathConnection'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'product',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'productType',
+                            'type': {
+                                'name': 'ProductType'
+                            }
+                        },
+                        {
+                            'description': None,
                             'name': 'productRelation',
                             'type': {
                                 'name': 'ProductRelation'
@@ -128,9 +128,9 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'allProductRelations',
+                            'name': 'productRelationType',
                             'type': {
-                                'name': 'ProductRelationConnection'
+                                'name': 'ProductRelationType'
                             }
                         },
                         {
@@ -825,6 +825,55 @@ value as specified by
                     'description': None,
                     'fields': [
                         {
+                            'description': 'Pagination data for this connection.',
+                            'name': 'pageInfo',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': 'Contains the nodes in this connection.',
+                            'name': 'edges',
+                            'type': {
+                                'name': None
+                            }
+                        },
+                        {
+                            'description': None,
+                            'name': 'totalCount',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'ProductConnection'
+                },
+                {
+                    'description': 'A Relay edge containing a `Product` and its cursor.',
+                    'fields': [
+                        {
+                            'description': 'The item at the end of the edge',
+                            'name': 'node',
+                            'type': {
+                                'name': 'Product'
+                            }
+                        },
+                        {
+                            'description': 'A cursor for use in pagination',
+                            'name': 'cursor',
+                            'type': {
+                                'name': None
+                            }
+                        }
+                    ],
+                    'inputFields': None,
+                    'name': 'ProductEdge'
+                },
+                {
+                    'description': None,
+                    'fields': [
+                        {
                             'description': None,
                             'name': 'productId',
                             'type': {
@@ -1002,55 +1051,6 @@ value as specified by
                     ],
                     'inputFields': None,
                     'name': 'ProductType'
-                },
-                {
-                    'description': None,
-                    'fields': [
-                        {
-                            'description': 'Pagination data for this connection.',
-                            'name': 'pageInfo',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': 'Contains the nodes in this connection.',
-                            'name': 'edges',
-                            'type': {
-                                'name': None
-                            }
-                        },
-                        {
-                            'description': None,
-                            'name': 'totalCount',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'ProductConnection'
-                },
-                {
-                    'description': 'A Relay edge containing a `Product` and its cursor.',
-                    'fields': [
-                        {
-                            'description': 'The item at the end of the edge',
-                            'name': 'node',
-                            'type': {
-                                'name': 'Product'
-                            }
-                        },
-                        {
-                            'description': 'A cursor for use in pagination',
-                            'name': 'cursor',
-                            'type': {
-                                'name': None
-                            }
-                        }
-                    ],
-                    'inputFields': None,
-                    'name': 'ProductEdge'
                 },
                 {
                     'description': None,
