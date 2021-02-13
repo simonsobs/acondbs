@@ -27,6 +27,8 @@ try:
 
     ACONDBS_SCHEME_MUTATION_DISABLE = ast.literal_eval(os.environ.get('ACONDBS_SCHEME_MUTATION_DISABLE'))
 
+    ACONDBS_GRAPHIQL = ast.literal_eval(os.environ.get('ACONDBS_GRAPHIQL'))
+
     ##______________________________________________________________||
     GITHUB_AUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
     GITHUB_AUTH_TOKEN_URL = 'https://github.com/login/oauth/access_token'

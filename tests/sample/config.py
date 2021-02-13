@@ -22,6 +22,8 @@ ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT = 2.0 # second
 
 ACONDBS_SCHEME_MUTATION_DISABLE = False
 
+ACONDBS_GRAPHIQL = True
+
 del _THISDIR
 
 ##__________________________________________________________________||
