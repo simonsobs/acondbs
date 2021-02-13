@@ -14,8 +14,6 @@ from ..filter_ import PFilterableConnectionField
 from . import type_
 
 ##__________________________________________________________________||
-
-##__________________________________________________________________||
 class CommonInputFields:
     """Common input fields of mutations for creating and updating file paths
 
