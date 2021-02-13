@@ -1,7 +1,5 @@
 import datetime
 import graphene
-from graphene import relay
-from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from ...models import (
     Product as ProductModel,
@@ -12,9 +10,6 @@ from ...models import (
 
 from ...db.sa import sa
 from ...db.backup import request_backup_db
-
-from ..connection import CountedConnection
-from ..filter_ import PFilterableConnectionField
 
 from . import type_
 
