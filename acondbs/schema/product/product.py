@@ -16,29 +16,24 @@ from ...db.backup import request_backup_db
 from ..connection import CountedConnection
 from ..filter_ import PFilterableConnectionField
 
-##__________________________________________________________________||
-class Product(SQLAlchemyObjectType):
-    class Meta:
-        model = ProductModel
-        interfaces = (relay.Node, )
-        connection_class = CountedConnection
-        connection_field_factory = PFilterableConnectionField.factory
+from . import type_
 
+##__________________________________________________________________||
 def resolve_product(parent, info, **kwargs):
 
     filter = [getattr(ProductModel, k)==v for k, v in kwargs.items()]
     # e.g., [ProductModel.type_id == 1, ProductModel.name == 'map_001']
 
-    return Product.get_query(info).filter(*filter).one_or_none()
+    return type_.Product.get_query(info).filter(*filter).one_or_none()
 
 product_field = graphene.Field(
-    Product,
+    type_.Product,
     product_id=graphene.Int(),
     type_id=graphene.Int(),
     name=graphene.String(),
     resolver=resolve_product)
 
-all_products_field = PFilterableConnectionField(Product.connection)
+all_products_field = PFilterableConnectionField(type_.Product.connection)
 
 ##__________________________________________________________________||
 class RelationInputFields(graphene.InputObjectType):
@@ -83,7 +78,7 @@ class CreateProduct(graphene.Mutation):
         )
 
     ok = graphene.Boolean()
-    product = graphene.Field(lambda: Product)
+    product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, input):
         paths = [ProductFilePathModel(path=p) for p in input.pop('paths', [])]
@@ -123,7 +118,7 @@ class UpdateProduct(graphene.Mutation):
         )
 
     ok = graphene.Boolean()
-    product = graphene.Field(lambda: Product)
+    product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, product_id, input):
         model = ProductModel.query.filter_by(product_id=product_id).one()
