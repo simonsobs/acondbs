@@ -12,28 +12,22 @@ from ...db.backup import request_backup_db
 from ..connection import CountedConnection
 from ..filter_ import PFilterableConnectionField
 
-##__________________________________________________________________||
-class ProductType(SQLAlchemyObjectType):
-    '''A product type'''
-    class Meta:
-        model = ProductTypeModel
-        interfaces = (graphene.relay.Node, )
-        connection_class = CountedConnection
-        connection_field_factory = PFilterableConnectionField.factory
+from . import type_
 
+##__________________________________________________________________||
 def resolve_product_type(parent, info, **kwargs):
     filter = [getattr(ProductTypeModel, k) == v for k, v in kwargs.items()]
     # e.g., [ProductTypeModel.type_id == 1, ProductTypeModel.name == 'map']
 
-    return ProductType.get_query(info).filter(*filter).one_or_none()
+    return type_.ProductType.get_query(info).filter(*filter).one_or_none()
 
 product_type_field = graphene.Field(
-    ProductType,
+    type_.ProductType,
     type_id=graphene.Int(),
     name=graphene.String(),
     resolver=resolve_product_type)
 
-all_product_types_field = PFilterableConnectionField(ProductType.connection)
+all_product_types_field = PFilterableConnectionField(type_.ProductType.connection)
 
 ##__________________________________________________________________||
 class CommonInputFields:
@@ -64,7 +58,7 @@ class CreateProductType(graphene.Mutation):
         input = CreateProductTypeInput(required=True)
 
     ok = graphene.Boolean()
-    product_type = graphene.Field(lambda: ProductType)
+    product_type = graphene.Field(lambda: type_.ProductType)
 
     def mutate(root, info, input):
         model = ProductTypeModel(**input)
@@ -81,7 +75,7 @@ class UpdateProductType(graphene.Mutation):
         input = UpdateProductTypeInput(required=True)
 
     ok = graphene.Boolean()
-    product_type = graphene.Field(lambda: ProductType)
+    product_type = graphene.Field(lambda: type_.ProductType)
 
     def mutate(root, info, type_id, input):
         model = ProductTypeModel.query.filter_by(type_id=type_id).one()

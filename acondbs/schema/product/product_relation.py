@@ -13,26 +13,19 @@ from ...db.backup import request_backup_db
 from ..connection import CountedConnection
 from ..filter_ import PFilterableConnectionField
 
-##__________________________________________________________________||
-class ProductRelation(SQLAlchemyObjectType):
-    '''A relation from one product to another'''
-    class Meta:
-        model = ProductRelationModel
-        interfaces = (graphene.relay.Node, )
-        connection_class = CountedConnection
-        connection_field_factory = PFilterableConnectionField.factory
+from . import type_
 
+##__________________________________________________________________||
 def resolve_product_relation(parent, info, **kwargs):
     filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
-    return ProductRelation.get_query(info).filter(*filter).one_or_none()
+    return type_.ProductRelation.get_query(info).filter(*filter).one_or_none()
 
 product_relation_field = graphene.Field(
-    ProductRelation,
+    type_.ProductRelation,
     relation_id=graphene.Int(),
     resolver=resolve_product_relation)
 
-all_product_relations_field = PFilterableConnectionField(ProductRelation.connection)
-
+all_product_relations_field = PFilterableConnectionField(type_.ProductRelation.connection)
 
 ##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
@@ -59,7 +52,7 @@ class CreateProductRelation(graphene.Mutation):
         input = CreateProductRelationInput(required=True)
 
     ok = graphene.Boolean()
-    product_relation = graphene.Field(lambda: ProductRelation)
+    product_relation = graphene.Field(lambda: type_.ProductRelation)
 
     def mutate(root, info, input):
         type_ = ProductRelationTypeModel.query.filter_by(type_id=input['type_id']).one()

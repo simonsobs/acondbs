@@ -11,15 +11,10 @@ from ...db.backup import request_backup_db
 from ..connection import CountedConnection
 from ..filter_ import PFilterableConnectionField
 
-##__________________________________________________________________||
-class ProductFilePath(SQLAlchemyObjectType):
-    class Meta:
-        model = ProductFilePathModel
-        interfaces = (relay.Node, )
-        connection_class = CountedConnection
-        connection_field_factory = PFilterableConnectionField.factory
+from . import type_
 
-all_product_file_paths_field = PFilterableConnectionField(ProductFilePath.connection)
+##__________________________________________________________________||
+all_product_file_paths_field = PFilterableConnectionField(type_.ProductFilePath.connection)
 
 ##__________________________________________________________________||
 class CommonInputFields:
@@ -41,7 +36,7 @@ class CreateProductFilePath(graphene.Mutation):
         input = CreateProductFilePathInput(required=True)
 
     ok = graphene.Boolean()
-    productFilePath = graphene.Field(lambda: ProductFilePath)
+    productFilePath = graphene.Field(lambda: type_.ProductFilePath)
 
     def mutate(root, info, input):
         path = ProductFilePathModel(**input)
@@ -57,7 +52,7 @@ class UpdateProductFilePath(graphene.Mutation):
         input = UpdateProductFilePathInput(required=True)
 
     ok = graphene.Boolean()
-    productFilePath = graphene.Field(lambda: ProductFilePath)
+    productFilePath = graphene.Field(lambda: type_.ProductFilePath)
 
     def mutate(root, info, path_id, input):
         path = ProductFilePathModel.query.filter_by(path_id=path_id).first()

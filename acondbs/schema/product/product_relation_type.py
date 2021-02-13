@@ -13,26 +13,20 @@ from ...db.backup import request_backup_db
 from ..connection import CountedConnection
 from ..filter_ import PFilterableConnectionField
 
-##__________________________________________________________________||
-class ProductRelationType(SQLAlchemyObjectType):
-    '''A type of relations between products'''
-    class Meta:
-        model = ProductRelationTypeModel
-        interfaces = (graphene.relay.Node, )
-        connection_class = CountedConnection
-        connection_field_factory = PFilterableConnectionField.factory
+from . import type_
 
+##__________________________________________________________________||
 def resolve_product_relation_type(parent, info, **kwargs):
     filter = [getattr(ProductRelationTypeModel, k)==v for k, v in kwargs.items()]
-    return ProductRelationType.get_query(info).filter(*filter).one_or_none()
+    return type_.ProductRelationType.get_query(info).filter(*filter).one_or_none()
 
 product_relation_type_field = graphene.Field(
-    ProductRelationType,
+    type_.ProductRelationType,
     type_id=graphene.Int(),
     name=graphene.String(),
     resolver=resolve_product_relation_type)
 
-all_product_relation_types_field = PFilterableConnectionField(ProductRelationType.connection)
+all_product_relation_types_field = PFilterableConnectionField(type_.ProductRelationType.connection)
 
 ##__________________________________________________________________||
 class CommonInputFields:
@@ -66,7 +60,7 @@ class CreateProductRelationTypes(graphene.Mutation):
             description=('true if the reverse type is the same'))
 
     ok = graphene.Boolean()
-    product_relation_type = graphene.Field(lambda: ProductRelationType)
+    product_relation_type = graphene.Field(lambda: type_.ProductRelationType)
 
     def mutate(root, info, type, reverse=None, self_reverse=False):
         if self_reverse and reverse:
@@ -92,7 +86,7 @@ class UpdateProductRelationType(graphene.Mutation):
         input = UpdateProductRelationTypeInput(required=True)
 
     ok = graphene.Boolean()
-    product_relation_type = graphene.Field(lambda: ProductRelationType)
+    product_relation_type = graphene.Field(lambda: type_.ProductRelationType)
 
     def mutate(root, info, type_id, input):
         model = ProductRelationTypeModel.query.filter_by(type_id=type_id).one()
