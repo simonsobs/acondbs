@@ -15,21 +15,6 @@ from ..filter_ import PFilterableConnectionField
 from . import type_
 
 ##__________________________________________________________________||
-def resolve_product_type(parent, info, **kwargs):
-    filter = [getattr(ProductTypeModel, k) == v for k, v in kwargs.items()]
-    # e.g., [ProductTypeModel.type_id == 1, ProductTypeModel.name == 'map']
-
-    return type_.ProductType.get_query(info).filter(*filter).one_or_none()
-
-product_type_field = graphene.Field(
-    type_.ProductType,
-    type_id=graphene.Int(),
-    name=graphene.String(),
-    resolver=resolve_product_type)
-
-all_product_types_field = PFilterableConnectionField(type_.ProductType.connection)
-
-##__________________________________________________________________||
 class CommonInputFields:
     order = graphene.Int(
         description=('The order in which the type is displayed, for example, '

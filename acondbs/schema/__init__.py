@@ -22,19 +22,19 @@ class Query(graphene.ObjectType):
 
     web_config = web_config_field
 
-    product_type = p.product_type_field
-    all_product_types = p.all_product_types_field
+    product_type = p.query.product_type_field
+    all_product_types = p.query.all_product_types_field
 
-    all_product_file_paths = p.all_product_file_paths_field
+    all_product_file_paths = p.query.all_product_file_paths_field
 
-    product = p.product_field
-    all_products = p.all_products_field
+    product = p.query.product_field
+    all_products = p.query.all_products_field
 
-    product_relation_type = p.product_relation_type_field
-    all_product_relation_types = p.all_product_relation_types_field
+    product_relation_type = p.query.product_relation_type_field
+    all_product_relation_types = p.query.all_product_relation_types_field
 
-    product_relation = p.product_relation_field
-    all_product_relations = p.all_product_relations_field
+    product_relation = p.query.product_relation_field
+    all_product_relations = p.query.all_product_relations_field
 
     github_user = github.query.github_user_field
 

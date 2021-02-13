@@ -16,18 +16,6 @@ from ..filter_ import PFilterableConnectionField
 from . import type_
 
 ##__________________________________________________________________||
-def resolve_product_relation(parent, info, **kwargs):
-    filter = [getattr(ProductRelationModel, k)==v for k, v in kwargs.items()]
-    return type_.ProductRelation.get_query(info).filter(*filter).one_or_none()
-
-product_relation_field = graphene.Field(
-    type_.ProductRelation,
-    relation_id=graphene.Int(),
-    resolver=resolve_product_relation)
-
-all_product_relations_field = PFilterableConnectionField(type_.ProductRelation.connection)
-
-##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
     '''An input to createProductRelation()'''
     type_id = graphene.Int(

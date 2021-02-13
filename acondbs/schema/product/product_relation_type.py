@@ -16,19 +16,6 @@ from ..filter_ import PFilterableConnectionField
 from . import type_
 
 ##__________________________________________________________________||
-def resolve_product_relation_type(parent, info, **kwargs):
-    filter = [getattr(ProductRelationTypeModel, k)==v for k, v in kwargs.items()]
-    return type_.ProductRelationType.get_query(info).filter(*filter).one_or_none()
-
-product_relation_type_field = graphene.Field(
-    type_.ProductRelationType,
-    type_id=graphene.Int(),
-    name=graphene.String(),
-    resolver=resolve_product_relation_type)
-
-all_product_relation_types_field = PFilterableConnectionField(type_.ProductRelationType.connection)
-
-##__________________________________________________________________||
 class CommonInputFields:
     indef_article = graphene.String(
         description=('The indefinite article placed before the singular noun "'

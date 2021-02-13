@@ -14,7 +14,6 @@ from ..filter_ import PFilterableConnectionField
 from . import type_
 
 ##__________________________________________________________________||
-all_product_file_paths_field = PFilterableConnectionField(type_.ProductFilePath.connection)
 
 ##__________________________________________________________________||
 class CommonInputFields:
