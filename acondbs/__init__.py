@@ -49,8 +49,8 @@ def create_app(config_path=None, **kwargs):
     from . import db
     db.init_app(app)
 
-    from . import bpgraphql
-    bpgraphql.init_app(app)
+    from . import blueprint
+    blueprint.init_app(app)
 
     CORS(app, resources={r'/*': {'origins': '*'}})
 

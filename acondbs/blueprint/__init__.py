@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_graphql import GraphQLView
 
-from .schema import create_schema
+from ..schema import create_schema
 
 ##__________________________________________________________________||
 # from flask import request
@@ -73,6 +73,7 @@ class GraphQLViewW(GraphQLView):
         kwargs['schema'] = schema
         kwargs['graphiql'] = graphiql
         kwargs['graphiql_template'] = graphiql_template
+        # print(request.headers)
         super().__init__(**kwargs)
 
 
