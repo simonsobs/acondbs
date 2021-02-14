@@ -9,7 +9,7 @@ snapshots = Snapshot()
 
 snapshots['test_success[one] 1'] = {
     'data': {
-        'githubUser': {
+        'gitHubViewer': {
             'avatarUrl': 'avatar.com/user1',
             'login': 'user1',
             'name': 'User One'

@@ -65,7 +65,7 @@ snapshots['test_types 1'] = {
                         },
                         {
                             'description': None,
-                            'name': 'githubUser',
+                            'name': 'gitHubViewer',
                             'type': {
                                 'name': 'GitHubUser'
                             }

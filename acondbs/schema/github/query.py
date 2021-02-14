@@ -26,7 +26,7 @@ git_hub_o_auth_app_info_field = graphene.Field(
     )
 
 ##__________________________________________________________________||
-def resolve_github_user(parent, info):
+def resolve_git_hub_viewer(parent, info):
 
     auth = info.context.headers.get('Authorization')
     # e.g., 'Bearer "xxxx"'
@@ -39,6 +39,6 @@ def resolve_github_user(parent, info):
 
     return get_user_for_token(token)
 
-github_user_field = graphene.Field(type_.GitHubUser, resolver=resolve_github_user)
+git_hub_viewer_field = graphene.Field(type_.GitHubUser, resolver=resolve_git_hub_viewer)
 
 ##__________________________________________________________________||

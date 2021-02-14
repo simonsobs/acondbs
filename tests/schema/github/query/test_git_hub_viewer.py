@@ -6,7 +6,7 @@ from werkzeug.datastructures import Headers
 
 from ...funcs import assert_query
 
-QUERY = '{ githubUser { login name avatarUrl } }'
+QUERY = '{ gitHubViewer { login name avatarUrl } }'
 
 # __________________________________________________________________||
 params = [
