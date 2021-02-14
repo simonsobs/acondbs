@@ -1,43 +1,52 @@
-from graphene.test import Client
+import pytest
+import textwrap
+
 from graphene import Context
 from werkzeug.datastructures import Headers
 
-import pytest
-import unittest.mock as mock
+from ...funcs import assert_query
 
-from acondbs.schema import create_schema
+QUERY = '{ githubUser { login name avatarUrl } }'
 
-##__________________________________________________________________||
-@pytest.fixture(autouse=True)
-def mock_get_user(monkeypatch):
-    y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.github.query.get_user", y)
-    yield y
+# __________________________________________________________________||
+params = [
+    pytest.param(
+        [QUERY, ],
+        {
+            "context_value": Context(
+                headers=Headers(
+                    {'Authorization': 'Bearer "token1"'}
+            ))
+        },
+        id='one'
+    ),
+]
 
+@pytest.mark.parametrize('args, kwags', params)
+def test_success(app, snapshot, args, kwags):
+    assert_query(app, snapshot, [args, kwags])
 
-##__________________________________________________________________||
-def test_auth(app, mock_get_user):
+# __________________________________________________________________||
+params = [
+    pytest.param(
+        [QUERY, ],
+        {
+            "context_value": Context(
+                headers=Headers(
+                    {'Authorization': 'Bearer "no-such-token"'}
+            ))
+        },
+        id='wrong-token'
+    ),
+    pytest.param(
+        [QUERY, ],
+        { },
+        id='no-token'
+    ),
+]
 
-    query = '{ githubUser { login name avatarUrl } }'
+@pytest.mark.parametrize('args, kwags', params)
+def test_error(app, snapshot, args, kwags):
+    assert_query(app, snapshot, [args, kwags], error=True)
 
-    viewer = {
-        "login": "octocat",
-        "name": "monalisa octocat",
-        "avatarUrl": "https://github.com/images/error/octocat_happy.gif"
-    }
-    mock_get_user.return_value = dict(viewer) # make a copy because "avatarUrl" will be modified to "avatar_url"
-
-    expected = {
-        'githubUser': viewer
-    }
-
-    context = Context(headers=Headers({'Authorization': 'Bearer "token0123"'}))
-
-    with app.app_context():
-        schema = create_schema()
-        client = Client(schema)
-        result = client.execute(query, context_value=context)
-        assert [mock.call('token0123')] == mock_get_user.call_args_list
-        assert {'data': expected} == result
-
-##__________________________________________________________________||
+# __________________________________________________________________||
