@@ -46,7 +46,7 @@ def create_app(config_path=None, **kwargs):
     if kwargs:
         app.config.from_mapping(**kwargs)
 
-    from .db import db
+    from . import db
     db.init_app(app)
 
     from . import bpgraphql
