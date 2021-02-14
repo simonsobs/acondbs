@@ -1,12 +1,7 @@
 import graphene
 from graphql import GraphQLError
 
-from ...github.query import get_user
 from ...github.ops import get_github_oauth_app_info, get_user_for_token
-
-from ...models import (
-    GitHubUser as GitHubUserModel
-)
 
 from ..filter_ import PFilterableConnectionField
 from . import type_
@@ -42,13 +37,7 @@ def resolve_github_user(parent, info):
     token = auth.split()[1].strip('"')
     # e.g., "xxxx"
 
-    user_model = get_user_for_token(token)
-
-    # Note: since it is not clear how to instantiate
-    # type_.GitHubUser directly from user_model, here filter is used.
-    return type_.GitHubUser.get_query(info). \
-        filter(user_model.__class__.user_id==user_model.user_id). \
-        one()
+    return get_user_for_token(token)
 
 github_user_field = graphene.Field(type_.GitHubUser, resolver=resolve_github_user)
 
