@@ -112,7 +112,6 @@ def update_org_member_lists():
         for org in orgs:
             edges = None
             for token in tokens:
-                print(token.scope)
                 try:
                     edges = query.org_members(org.login, token.token)
                 except Exception as e:
