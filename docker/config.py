@@ -27,7 +27,9 @@ try:
 
     ACONDBS_SCHEME_MUTATION_DISABLE = ast.literal_eval(os.environ.get('ACONDBS_SCHEME_MUTATION_DISABLE'))
 
+    ##______________________________________________________________||
     ACONDBS_GRAPHIQL = ast.literal_eval(os.environ.get('ACONDBS_GRAPHIQL'))
+    ACONDBS_GRAPHIQL_TEMPLATE_NO = ast.literal_eval(os.environ.get('ACONDBS_GRAPHIQL_TEMPLATE_NO')) # None: default, 1: GraphiQL latest, 2: GraphQL Playground
 
     ##______________________________________________________________||
     GITHUB_AUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
