@@ -131,7 +131,10 @@ def viewer(token):
     # }
 
     viewer = r['viewer']
+
+    # decode the user ID
     viewer['id'] = base64.b64decode(viewer['id']).decode()
+    # e.g., '04:User583231'
 
     return viewer
 
