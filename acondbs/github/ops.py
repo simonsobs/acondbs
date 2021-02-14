@@ -16,6 +16,20 @@ from . import call, query
 
 ##__________________________________________________________________||
 def get_github_oauth_app_info():
+    """Return GitHub OAuth App information
+
+    Returns
+    -------
+    dict
+        e.g.,
+            {
+                'authorize_url': 'https://github.com/login/oauth/authorize',
+                'token_url': 'https://github.com/login/oauth/access_token',
+                'client_id': '2a868f8903ce767aa372',
+                'client_secret': 'a3b5c532fc28f6ceca8fd284635d915300beb7d3',
+                'redirect_uri': 'https://example.org/redirect'
+            }
+    """
     ret = dict(
         authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
         token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
@@ -27,6 +41,24 @@ def get_github_oauth_app_info():
 
 ##__________________________________________________________________||
 def exchange_code_for_token(code):
+    """Exchange an OAuth authentication code for a access token
+
+    Parameters
+    ----------
+    code : str
+        An OAuth authentication code, e.g, '7a31b6726dd2927b0af7'
+
+    Returns
+    -------
+    dict
+        e.g.,
+            {
+                'access_token': 'cc539c02d5c086e200db6aff212ace633a8c5e77',
+                'token_type': 'bearer',
+                'scope': ''
+            }
+
+    """
     oauth_app_info = get_github_oauth_app_info()
     return call.exchange_code_for_token(
         code,
@@ -120,14 +152,40 @@ def store_token_for_code(code):
 
 ##__________________________________________________________________||
 def authenticate(code):
+    """Authenticate a GitHub user with an OAuth authentication code
+
+    This function authenticates a GitHub user with an OAuth
+    authentication code. It also checks the membership of GitHub
+    organizations and updates the DB.
+
+    Parameters
+    ----------
+    code : str
+        An OAuth authentication code, e.g, '7a31b6726dd2927b0af7'
+
+    Returns
+    -------
+    dict
+        e.g.,
+            {
+                'access_token': 'cc539c02d5c086e200db6aff212ace633a8c5e77',
+                'token_type': 'bearer',
+                'scope': ''
+            }
+
+    Raises
+    ------
+    Exception
+        If the authentication is unsuccessful.
+
+    """
+
     token_dict = exchange_code_for_token(code)
     viewer = query.viewer(token_dict['access_token'])
     if (user_model := GitHubUser.query.filter_by(git_hub_id=viewer['id']).one_or_none()) is None:
         raise Exception(f'{viewer["login"]} is not a member.')
     if not user_model.memberships:
         raise Exception(f'{viewer["login"]} is not a member!')
-    # TODO Check a membership
-    # print([m.org for m in user_model.memberships])
     user_model.login = viewer['login']
     user_model.name = viewer['name']
     user_model.avatar_url = viewer['avatarUrl']
