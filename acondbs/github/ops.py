@@ -198,3 +198,12 @@ def authenticate(code):
     return token_dict
 
 ##__________________________________________________________________||
+def get_user_for_token(token):
+    """
+    """
+    user = GitHubUser.query.join(GitHubToken). \
+        filter(GitHubToken.token==token). \
+        one()
+    return user
+
+##__________________________________________________________________||
