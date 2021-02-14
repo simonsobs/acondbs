@@ -18,13 +18,12 @@ from pathlib import Path
 from acondbs.db.ops import define_tables
 
 params = [
-    {},
-    {'ACONDBS_SCHEME_MUTATION_DISABLE': True},
-    {'ACONDBS_SCHEME_MUTATION_DISABLE': False},
+    [{'ACONDBS_SCHEME_MUTATION_DISABLE': True}, False],
+    [{'ACONDBS_SCHEME_MUTATION_DISABLE': False}, True]
 ]
 
-@pytest.mark.parametrize('kwargs', params)
-def test_disable_mutation(kwargs, snapshot):
+@pytest.mark.parametrize('kwargs, mutation', params)
+def test_disable_mutation(kwargs, mutation):
     config_path = Path(SAMPLE_DIR, 'config.py')
     kwargs.update(dict(
         SQLALCHEMY_DATABASE_URI="sqlite:///:memory:"
@@ -37,15 +36,11 @@ def test_disable_mutation(kwargs, snapshot):
     query = '''
         {
           Query: __type(name: "Query") {
-            name
-            description
             fields {
               name
             }
           }
           Mutation: __type(name: "Mutation") {
-            name
-            description
             fields {
               name
             }
@@ -56,8 +51,12 @@ def test_disable_mutation(kwargs, snapshot):
     response = client.get(
         '/graphql',
         query_string=dict(query=query))
+
     assert 200 == response.status_code
-    snapshot.assert_match(json.loads(response.data))
+
+    result = json.loads(response.data)['data']
+    assert result['Query']
+    assert mutation == bool(result['Mutation'])
 
 ##__________________________________________________________________||
 params = [
