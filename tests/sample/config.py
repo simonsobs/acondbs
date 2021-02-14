@@ -22,9 +22,11 @@ ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT = 2.0 # second
 
 ACONDBS_SCHEME_MUTATION_DISABLE = False
 
-ACONDBS_GRAPHIQL = True
-
 del _THISDIR
+
+##__________________________________________________________________||
+ACONDBS_GRAPHIQL = True
+ACONDBS_GRAPHIQL_TEMPLATE_NO = 2 # None: default, 1: GraphiQL latest, 2: GraphQL Playground
 
 ##__________________________________________________________________||
 GITHUB_AUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
