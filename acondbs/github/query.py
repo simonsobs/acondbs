@@ -247,12 +247,6 @@ def get_org_member_ids(org_name, token):
     return member_ids
 
 ##__________________________________________________________________||
-def is_member(user_token, admin_token, org_name):
-    member_ids = get_org_member_ids(org_name=org_name, token=admin_token)
-    user_id = get_user_id(user_token)
-    return user_id in member_ids
-
-##__________________________________________________________________||
 def decode_id(id_):
     """Decode a GitHub user or organization ID returned from GitHub GraphQL API
 

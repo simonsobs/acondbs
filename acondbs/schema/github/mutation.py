@@ -17,7 +17,6 @@ from ...github.ops import (
     store_token_for_code,
     authenticate
 )
-from ...github.query import is_member
 
 from . import type_
 
