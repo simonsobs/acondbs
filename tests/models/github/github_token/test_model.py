@@ -2,8 +2,6 @@ import datetime
 
 import pytest
 
-from sqlalchemy import exc
-
 from acondbs.db.sa import sa
 from acondbs.models import (
     GitHubToken,
