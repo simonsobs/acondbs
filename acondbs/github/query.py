@@ -117,6 +117,26 @@ def org_members(org_login, token):
 
 ##__________________________________________________________________||
 def viewer(token):
+    """Return info about the GitHub user for a token
+
+    Parameters
+    ----------
+    token : str
+        An access token, e.g, '4d5dc8b74eccdf65859d6ac64358a3a98300c351'
+
+    Returns
+    -------
+    dict
+        e.g.,
+            {
+                "id": "04:User583231",
+                "login": "octocat",
+                "name": "The Octocat",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4",
+                "url": "https://github.com/octocat"
+            }
+    """
+
     query = '{ viewer { login id name avatarUrl url } }'
     r = call_graphql_api(query=query, token=token)
     # e.g., https://github.com/octocat
