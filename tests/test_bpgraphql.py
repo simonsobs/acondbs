@@ -36,7 +36,7 @@ def test_disable_mutation(kwargs, snapshot):
 
     query = '''
         {
-          product: __type(name: "Query") {
+          Query: __type(name: "Query") {
             name
             description
             fields {

@@ -75,7 +75,7 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
             ],
             'name': 'Mutation'
         },
-        'product': {
+        'Query': {
             'description': None,
             'fields': [
                 {
@@ -141,7 +141,7 @@ snapshots['test_disable_mutation[kwargs0] 1'] = {
 snapshots['test_disable_mutation[kwargs1] 1'] = {
     'data': {
         'Mutation': None,
-        'product': {
+        'Query': {
             'description': None,
             'fields': [
                 {
@@ -272,7 +272,7 @@ snapshots['test_disable_mutation[kwargs2] 1'] = {
             ],
             'name': 'Mutation'
         },
-        'product': {
+        'Query': {
             'description': None,
             'fields': [
                 {
