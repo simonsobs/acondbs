@@ -18,7 +18,6 @@ from ...github.ops import (
     authenticate
 )
 from ...github.query import is_member
-from ...github.query import get_user
 
 from . import type_
 

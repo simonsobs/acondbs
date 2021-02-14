@@ -158,21 +158,6 @@ def viewer(token):
     return viewer
 
 ##__________________________________________________________________||
-def get_user(token):
-    query = '{ viewer { login name avatarUrl } }'
-    r = call_graphql_api(query=query, token=token)
-    # e.g., https://github.com/octocat
-    # {
-    #     "viewer": {
-    #         "login": "octocat",
-    #         "name": "The Octocat",
-    #         "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
-    #     }
-    # }
-    user = r.get('viewer')
-    return user
-
-##__________________________________________________________________||
 def get_user_id(token):
     query = '{ viewer { id } }'
     r = call_graphql_api(query=query, token=token)
