@@ -158,19 +158,6 @@ def viewer(token):
     return viewer
 
 ##__________________________________________________________________||
-def get_user_id(token):
-    query = '{ viewer { id } }'
-    r = call_graphql_api(query=query, token=token)
-    # e.g.,
-    # {
-    #     "viewer": {
-    #         "id": "MDQ6VXNlcjU4MzIzMQ=="
-    #     }
-    # }
-    ret = r.get('viewer', {}).get('id')
-    return ret
-
-##__________________________________________________________________||
 def get_org_member_ids(org_name, token):
     query = """
       query OrganizationMemberCount($org_login: String!) {
