@@ -152,8 +152,7 @@ def viewer(token):
 
     viewer = r['viewer']
 
-    # decode the user ID
-    viewer['id'] = base64.b64decode(viewer['id']).decode()
+    viewer['id'] = decode_id(viewer['id'])
     # e.g., '04:User583231'
 
     return viewer
@@ -269,3 +268,22 @@ def is_member(user_token, admin_token, org_name):
     return user_id in member_ids
 
 ##__________________________________________________________________||
+def decode_id(id_):
+    """Decode a GitHub user or organization ID returned from GitHub GraphQL API
+
+    Parameters
+    ----------
+    id_ : str
+        An encoded GitHub user or GitHub organization ID returned from
+        GitHub GraphQL API, e.g., "MDQ6VXNlcjU4MzIzMQ=="
+
+    Returns
+    -------
+    str
+        The decoded ID, e.g., "04:User583231", "012:Organization75631844"
+
+    """
+    return base64.b64decode(id_).decode()
+
+##__________________________________________________________________||
+
