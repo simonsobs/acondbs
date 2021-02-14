@@ -152,13 +152,13 @@ def viewer(token):
 
     viewer = r['viewer']
 
-    viewer['id'] = decode_id(viewer['id'])
+    viewer['id'] = _decode_id(viewer['id'])
     # e.g., '04:User583231'
 
     return viewer
 
 ##__________________________________________________________________||
-def decode_id(id_):
+def _decode_id(id_):
     """Decode a GitHub user or organization ID returned from GitHub GraphQL API
 
     Parameters
