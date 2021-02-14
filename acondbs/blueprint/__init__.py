@@ -93,6 +93,8 @@ def init_app(app):
             graphiql_template = GRAPHIQL_NEWER
         elif graphiql_template_no == 2:
             graphiql_template = GRAPHQL_PLAYGROUND
+        else:
+            graphiql_template = None
 
     schema = create_schema(enable_mutation=enable_mutation)
 
