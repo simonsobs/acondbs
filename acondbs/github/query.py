@@ -29,7 +29,7 @@ def org(login, token):
     #       }
     #   }
 
-    r['organization']['id'] = base64.b64decode(r['organization']['id']).decode()
+    r['organization']['id'] = _decode_id(r['organization']['id'])
     # e.g., "012:Organization75631844"
 
     return r['organization']
@@ -111,7 +111,7 @@ def org_members(org_login, token):
         variables["after"] = pageInfo['endCursor']
 
     for e in edges:
-        e['node']['id'] = base64.b64decode(e['node']['id']).decode()
+        e['node']['id'] = _decode_id(e['node']['id'])
 
     return edges
 
