@@ -4,7 +4,7 @@ from acondbs.db.sa import sa
 def test_table_names(app, snapshot):
     '''test the table names
     '''
-    table_names = sa.Model.metadata.tables.keys()
+    table_names = list(sa.Model.metadata.tables.keys())
     snapshot.assert_match(table_names)
 
 # __________________________________________________________________||
