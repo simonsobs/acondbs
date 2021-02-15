@@ -54,8 +54,11 @@ def _add_owners_to_db_as_admins(app):
         owners = app.config.get('ACONDBS_OWNERS_GITHUB_LOGINS', "")
         # e.g., "octocat,dojocat"
 
-        owners = [e.strip() for e in owners.split(",")]
+        owners = {e.strip() for e in owners.split(",")}
         # e.g., ["octocat", ["dojocat"]
+
+        # remove empty strings
+        owners = {e for e in owners if e}
 
         for owner in owners:
             if (admin := AccountAdmin.query.filter_by(git_hub_login=owner).one_or_none()) is None:
