@@ -8,6 +8,8 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_non_empty 1'] = {
+    'account_admins': [
+    ],
     'github_org_memberships': [
     ],
     'github_orgs': [

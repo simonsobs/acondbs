@@ -7,4 +7,4 @@ from snapshottest import GenericRepr, Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_table_names 1'] = GenericRepr("dict_keys(['product_types', 'products', 'product_file_paths', 'product_relation_types', 'product_relations', 'github_tokens', 'github_orgs', 'github_users', 'github_org_memberships', 'web_config'])")
+snapshots['test_table_names 1'] = GenericRepr("dict_keys(['product_types', 'products', 'product_file_paths', 'product_relation_types', 'product_relations', 'github_tokens', 'github_orgs', 'github_users', 'github_org_memberships', 'account_admins', 'web_config'])")

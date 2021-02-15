@@ -8,6 +8,16 @@ from snapshottest import GenericRepr, Snapshot
 snapshots = Snapshot()
 
 snapshots['test_export_db_to_dict_of_dict_list 1'] = {
+    'account_admins': [
+        {
+            'admin_id': 1,
+            'git_hub_login': 'octocat'
+        },
+        {
+            'admin_id': 2,
+            'git_hub_login': 'dojocat'
+        }
+    ],
     'github_org_memberships': [
     ],
     'github_orgs': [
