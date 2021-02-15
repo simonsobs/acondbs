@@ -22,7 +22,6 @@ def test_disable_graphiql(kwargs, data, snapshot):
     ))
     app = create_app(config_path, **kwargs)
     with app.app_context():
-        print(app.config.get('ACONDBS_GRAPHIQL_TEMPLATE_NO', None))
         define_tables()
     client = app.test_client()
 
