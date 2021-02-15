@@ -11,11 +11,11 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'account_admins': [
         {
             'admin_id': 1,
-            'git_hub_login': 'octocat'
+            'git_hub_login': 'dojocat'
         },
         {
             'admin_id': 2,
-            'git_hub_login': 'dojocat'
+            'git_hub_login': 'octocat'
         }
     ],
     'github_org_memberships': [

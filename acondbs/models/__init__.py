@@ -55,10 +55,13 @@ def _add_owners_to_db_as_admins(app):
         # e.g., "octocat,dojocat"
 
         owners = {e.strip() for e in owners.split(",")}
-        # e.g., ["octocat", ["dojocat"]
+        # e.g., {"octocat", "dojocat"}
 
         # remove empty strings
         owners = {e for e in owners if e}
+
+        # sort so that "admin_id" is deterministic in tests
+        owners = sorted(owners)
 
         for owner in owners:
             if (admin := AccountAdmin.query.filter_by(git_hub_login=owner).one_or_none()) is None:
