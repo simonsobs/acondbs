@@ -1,10 +1,12 @@
 import graphene
 from graphene import relay
 
-from . import version as version_
-from .web import web_config_field
-
-from . import (github, product as p)
+from . import (
+    version as version_,
+    web,
+    github,
+    product as p
+)
 
 ##__________________________________________________________________||
 def create_schema(enable_mutation=True):
@@ -21,7 +23,7 @@ class Query(graphene.ObjectType):
 
     node = relay.Node.Field()
 
-    web_config = web_config_field
+    web_config = web.web_config_field
 
     #
     all_products = p.query.all_products_field
