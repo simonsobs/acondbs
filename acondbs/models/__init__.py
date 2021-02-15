@@ -32,4 +32,35 @@ from .account import AccountAdmin
 
 from .web import WebConfig
 
-# __________________________________________________________________||
+##__________________________________________________________________||
+def init_app(app):
+    _add_owners_to_db_as_admins(app)
+
+##__________________________________________________________________||
+def _add_owners_to_db_as_admins(app):
+    import sqlalchemy
+    from ..db.sa import sa
+
+    # Test if tables are defined. For example, tables are not defined
+    # when a migration version is being created.
+    with app.app_context():
+        try:
+            _ = AccountAdmin.query.all()
+        except sqlalchemy.exc.OperationalError as e:
+            return
+
+    with app.app_context():
+
+        owners = app.config.get('ACONDBS_OWNERS_GITHUB_LOGINS', "")
+        # e.g., "octocat,dojocat"
+
+        owners = [e.strip() for e in owners.split(",")]
+        # e.g., ["octocat", ["dojocat"]
+
+        for owner in owners:
+            if (admin := AccountAdmin.query.filter_by(git_hub_login=owner).one_or_none()) is None:
+                admin = AccountAdmin(git_hub_login=owner)
+                sa.session.add(admin)
+        sa.session.commit()
+
+##__________________________________________________________________||

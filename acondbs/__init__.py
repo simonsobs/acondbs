@@ -52,6 +52,9 @@ def create_app(config_path=None, **kwargs):
     from . import blueprint
     blueprint.init_app(app)
 
+    from . import models
+    models.init_app(app)
+
     CORS(app, resources={r'/*': {'origins': '*'}})
 
     app.logger.info('"app" initialized')
