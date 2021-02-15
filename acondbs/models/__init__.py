@@ -28,6 +28,8 @@ from .github import (
     GitHubOrgMembership
 )
 
+from .account import AccountAdmin
+
 from .web import WebConfig
 
 # __________________________________________________________________||
