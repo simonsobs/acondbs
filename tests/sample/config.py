@@ -25,6 +25,9 @@ ACONDBS_SCHEME_MUTATION_DISABLE = False
 del _THISDIR
 
 ##__________________________________________________________________||
+ACONDBS_OWNERS_GITHUB_LOGINS = "octocat,dojocat" # comma separated
+
+##__________________________________________________________________||
 ACONDBS_GRAPHIQL = True
 ACONDBS_GRAPHIQL_TEMPLATE_NO = 2 # None: default, 1: GraphiQL latest, 2: GraphQL Playground
 
