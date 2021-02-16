@@ -1,13 +1,12 @@
 from graphene.test import Client
 
-from acondbs.schema import create_schema
+from acondbs.schema import schema as default_schema
 
 ##__________________________________________________________________||
-def assert_query(app, snapshot, query, error=False):
+def assert_query(app, snapshot, query, error=False, schema=default_schema):
 
     # create test client
     # https://docs.graphene-python.org/en/latest/testing/
-    schema = create_schema()
     client = Client(schema)
 
     # arguments to client.execute()
@@ -38,9 +37,10 @@ def assert_query(app, snapshot, query, error=False):
     #   https://github.com/syrusakbary/snapshottest/
     snapshot.assert_match(result)
 
-def assert_mutation(app, snapshot, mutation, query, mock_request_backup_db, success=True):
-    assert_query(app, snapshot, mutation, error=not success)
-    assert_query(app, snapshot, query)
+def assert_mutation(app, snapshot, mutation, query, mock_request_backup_db,
+                    success=True, schema=default_schema):
+    assert_query(app, snapshot, mutation, error=not success, schema=schema)
+    assert_query(app, snapshot, query, schema=schema)
     if success:
         mock_request_backup_db.assert_called()
 
