@@ -4,7 +4,7 @@ from acondbs.models import ProductType, Product, ProductFilePath
 # These tests are written primarily for the developer to understand
 # how models in flask_sqlalchemy work.
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_simple(app):
     '''A simple test of adding an object
     '''
@@ -30,7 +30,7 @@ def test_simple(app):
         type1_ = ProductType.query.filter_by(name='type1').one_or_none()
         assert isinstance(type1_, ProductType)
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_python_object(app):
     '''A simple test about Python object
     '''
@@ -52,7 +52,7 @@ def test_python_object(app):
         # In a different app context, no longer the same Python object
         assert type1 is not type1_
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_primary_key(app):
     '''A simple test about the primary key
     '''
@@ -76,7 +76,7 @@ def test_primary_key(app):
         type1 = ProductType.query.filter_by(type_id=type_id).first()
         assert 'type1' == type1.name
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_relation(app):
     '''A simple test of adding an object with relation
     '''
@@ -113,4 +113,4 @@ def test_relation(app):
         assert product1 is type1.products[0]
         assert product1.type_id == type1.type_id
 
-# __________________________________________________________________||
+##__________________________________________________________________||

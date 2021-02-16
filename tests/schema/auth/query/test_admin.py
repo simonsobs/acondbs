@@ -4,7 +4,7 @@ from ...funcs import assert_query
 
 QUERY = '{ isAdmin }'
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [QUERY, ], { }, [],
@@ -46,4 +46,4 @@ def test_success(app, snapshot, args, kwargs, request_args, request_kwargs):
     with app.test_request_context(*request_args, **request_kwargs):
         assert_query(app, snapshot, [args, kwargs])
 
-# __________________________________________________________________||
+##__________________________________________________________________||

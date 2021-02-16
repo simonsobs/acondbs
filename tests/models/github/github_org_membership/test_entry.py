@@ -5,7 +5,7 @@ from sqlalchemy import exc
 from acondbs.db.sa import sa
 from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_relation(app):
 
     with app.app_context():
@@ -17,7 +17,7 @@ def test_relation(app):
         assert [membership] == org1.memberships
         assert [membership] == user1.memberships
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_cascade_delete_org(app):
 
     with app.app_context():
@@ -63,4 +63,4 @@ def test_cascade_delete_membership(app):
         assert len(orgs) == 1
         assert len(users) == 1
 
-# __________________________________________________________________||
+##__________________________________________________________________||

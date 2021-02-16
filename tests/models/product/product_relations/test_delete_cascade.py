@@ -1,7 +1,7 @@
 from acondbs.db.sa import sa
 from acondbs.models import Product, ProductRelation, ProductRelationType
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_cascade_delete_children(app):
 
     #                              +--------+
@@ -85,7 +85,7 @@ def test_cascade_delete_children(app):
 
         assert 0 == len(parent1.relations)
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_cascade_delete_parent(app):
 
     #                              +--------+
@@ -132,7 +132,7 @@ def test_cascade_delete_parent(app):
         relations = ProductRelation.query.all()
         assert 0 == len(relations)
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_cascade_delete_relations(app):
 
     #                              +--------+
@@ -216,4 +216,4 @@ def test_cascade_delete_relations(app):
         relations = ProductRelation.query.all()
         assert 0 == len(relations)
 
-# __________________________________________________________________||
+##__________________________________________________________________||

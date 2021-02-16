@@ -33,7 +33,7 @@ def mock_store_token_for_code(monkeypatch):
     monkeypatch.setattr("acondbs.schema.github.mutation.store_token_for_code", y)
     yield y
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [
@@ -58,7 +58,7 @@ def test_schema_success(app, snapshot, mutation, query, viewer, mock_request_bac
                     mock_request_backup_db, success=True)
     snapshot.assert_match(mock_store_token_for_code.call_args_list)
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [
@@ -79,4 +79,4 @@ def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db, mo
                     mock_request_backup_db, success=False)
     snapshot.assert_match(mock_store_token_for_code.call_args_list)
 
-# __________________________________________________________________||
+##__________________________________________________________________||

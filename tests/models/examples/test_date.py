@@ -5,7 +5,7 @@ import pytest
 from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_add(app):
     '''A simple test of adding an object with a date field
     '''
@@ -28,7 +28,7 @@ def test_add(app):
 
         assert datetime.date(2019, 2, 23) == product1.date_posted
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_add_raise(app):
     '''A simple test of adding an object with a wrong type
     '''
@@ -48,4 +48,4 @@ def test_add_raise(app):
         with pytest.raises(sqlalchemy.exc.StatementError):
             sa.session.commit()
 
-# __________________________________________________________________||
+##__________________________________________________________________||

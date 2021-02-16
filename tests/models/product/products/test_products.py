@@ -5,7 +5,7 @@ from sqlalchemy import exc
 from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_product(app_empty):
     app = app_empty
 
@@ -23,7 +23,7 @@ def test_product(app_empty):
         assert 'map' == type_map.name
         assert [map1] == type_map.products
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_constraint_type_required_add(app_empty):
     app = app_empty
 
@@ -38,7 +38,7 @@ def test_constraint_type_required_add(app_empty):
         map1 = Product.query.filter_by(name='map1').one_or_none()
         assert map1 is None
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_constraint_type_required_delete(app_empty):
     app = app_empty
 
@@ -82,4 +82,4 @@ def test_constraint_type_required_delete(app_empty):
         sa.session.delete(type_map)
         sa.session.commit()
 
-# __________________________________________________________________||
+##__________________________________________________________________||

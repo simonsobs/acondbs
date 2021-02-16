@@ -3,7 +3,7 @@ import pytest
 from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 @pytest.fixture
 def app(app):
     y = app
@@ -17,7 +17,7 @@ def app(app):
 
     yield y
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_simple(app):
     '''A simple test of updating an object
     '''
@@ -32,4 +32,4 @@ def test_simple(app):
         product1 = Product.query.filter_by(name='map1').first()
         assert 'abc' == product1.contact
 
-# __________________________________________________________________||
+##__________________________________________________________________||

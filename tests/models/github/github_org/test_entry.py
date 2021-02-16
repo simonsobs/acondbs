@@ -5,7 +5,7 @@ from sqlalchemy import exc
 from acondbs.db.sa import sa
 from acondbs.models import GitHubOrg
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_entry(app_empty):
     app = app_empty
 
@@ -22,4 +22,4 @@ def test_entry(app_empty):
         row = GitHubOrg.query.filter_by(login='urban-octo-disco').one()
         assert 'urban-octo-disco' == row.login
 
-# __________________________________________________________________||
+##__________________________________________________________________||

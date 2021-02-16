@@ -39,7 +39,7 @@ QEURY = '''
 '''
 
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [
@@ -106,7 +106,7 @@ def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=True)
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [
@@ -140,4 +140,4 @@ def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
     assert_mutation(app, snapshot, mutation, query,
                     mock_request_backup_db, success=False)
 
-# __________________________________________________________________||
+##__________________________________________________________________||

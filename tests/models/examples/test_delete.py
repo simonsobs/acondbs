@@ -6,7 +6,7 @@ from acondbs.models import ProductType, Product
 # These tests are written primarily for the developer to understand
 # how models in flask_sqlalchemy work.
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 @pytest.fixture
 def app(app):
     y = app
@@ -22,7 +22,7 @@ def app(app):
 
     yield y
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_simple(app):
     '''A simple test of deleting an object
     '''
@@ -44,4 +44,4 @@ def test_simple(app):
         product1 = Product.query.filter_by(name='map1').first()
         assert product1 is None
 
-# __________________________________________________________________||
+##__________________________________________________________________||

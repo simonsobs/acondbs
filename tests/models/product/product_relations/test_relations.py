@@ -1,6 +1,6 @@
 from acondbs.models import Product
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_relations(app):
 
     #                              +--------+
@@ -42,4 +42,4 @@ def test_relations(app):
         assert parent1.relations[1] is child2.relations[0].reverse
         assert parent1.relations[1].reverse is child2.relations[0]
 
-# __________________________________________________________________||
+##__________________________________________________________________||

@@ -5,7 +5,7 @@ from sqlalchemy import exc
 from acondbs.db.sa import sa
 from acondbs.models import Product, ProductRelation, ProductRelationType
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_delete_type(app):
     """assert ProductRelationType can only be deleted if relations of the
        type don't exist
@@ -78,4 +78,4 @@ def test_delete_type(app):
         assert child1 is not None
         assert child2 is not None
 
-# __________________________________________________________________||
+##__________________________________________________________________||

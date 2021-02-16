@@ -8,7 +8,7 @@ from ...funcs import assert_query
 
 QUERY = '{ gitHubViewer { login name avatarUrl } }'
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [QUERY, ],
@@ -26,7 +26,7 @@ params = [
 def test_success(app, snapshot, args, kwargs):
     assert_query(app, snapshot, [args, kwargs])
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = [
     pytest.param(
         [QUERY, ],
@@ -49,4 +49,4 @@ params = [
 def test_error(app, snapshot, args, kwargs):
     assert_query(app, snapshot, [args, kwargs], error=True)
 
-# __________________________________________________________________||
+##__________________________________________________________________||

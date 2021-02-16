@@ -8,7 +8,7 @@ from acondbs.models import ProductType, Product
 # These tests are written primarily for the developer to understand
 # how models in flask_sqlalchemy work.
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 @pytest.fixture
 def app(app):
     y = app
@@ -24,7 +24,7 @@ def app(app):
 
     yield y
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_context(app):
 
     # query cannot be accessed outside of the app context
@@ -81,4 +81,4 @@ def test_query_filter_nonexistent(app):
         product = query.first()
         assert product is None
 
-# __________________________________________________________________||
+##__________________________________________________________________||

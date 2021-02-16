@@ -5,7 +5,7 @@ from itertools import permutations
 from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product, ProductRelation, ProductRelationType
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 params = list(permutations([1, 2, 3]))
 # i.e., [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
 
@@ -67,7 +67,7 @@ def test_permutations(app_empty, perm):
         assert parent1.relations[0] is child1.relations[0].reverse
         assert parent1.relations[0].reverse is child1.relations[0]
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 @pytest.mark.parametrize('perm', params, ids=ids)
 def test_self_reverse_type(app_empty, perm):
 
@@ -124,7 +124,7 @@ def test_self_reverse_type(app_empty, perm):
         assert sibling1.relations[0] is sibling2.relations[0].reverse
         assert sibling1.relations[0].reverse is sibling2.relations[0]
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 @pytest.mark.xfail(reason="events won't be triggered by foreign keys")
 def test_id(app_empty):
 
@@ -182,7 +182,7 @@ def test_id(app_empty):
         assert parent1.relations[0] is child1.relations[0].reverse
         assert parent1.relations[0].reverse is child1.relations[0]
 
-# __________________________________________________________________||
+##__________________________________________________________________||
 def test_attach_to_self(app_empty):
 
     app = app_empty
@@ -233,4 +233,4 @@ def test_attach_to_self(app_empty):
         assert parent1.relations[0] is child1.relations[0].reverse
         assert parent1.relations[0].reverse is child1.relations[0]
 
-# __________________________________________________________________||
+##__________________________________________________________________||
