@@ -1,6 +1,8 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, current_app
 from flask_graphql import GraphQLView
 
+from .. import auth
+from .. import schema
 from ..schema import create_schema
 
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
@@ -42,50 +44,57 @@ from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 ##__________________________________________________________________||
 bp = Blueprint('graphql', __name__)
 
-schema = None
 graphiql = None
 graphiql_template = None
 
 class GraphQLViewW(GraphQLView):
     '''A wrapper of GraphQLView.
 
-    used to determine arguments to GraphQLView.as_view() in init_app()
-    where app.config is accessible.
+    Used to determine arguments to GraphQLView.as_view() for each view
+    based on on the configuration and request.
 
     The usual usage of GraphQLView in add_url_rule() as in the document
     (https://github.com/graphql-python/flask-graphql/tree/v2.0.1#usage) is
     as follows
       bp.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
 
-    The arguments, schema and graphiql, need to have already been
-    determined.
-
-    In this app, the arguments have not yet been determined because their
-    creations depend on the configuration. The configuration is only
-    available in the app context.
+    The arguments (schema, graphiql) need to have already been
+    determined when the module is imported. In this app, they have not
+    because they depend on the configuration and request.
 
     The __init__() will be called in each view from
     https://github.com/pallets/flask/blob/1.1.2/src/flask/views.py#L88
 
-    In __init__(), the arguments are obtained from global variables and are
-    given to __init__() of GraphQLView.
+    The arguments are determined in In __init__() and given to the
+    base class GraphQLView.
 
     '''
     def __init__(self, **kwargs):
-        kwargs['schema'] = schema
-        kwargs['graphiql'] = graphiql
-        kwargs['graphiql_template'] = graphiql_template
-        # print(request.headers)
+        kwargs.update({
+            'schema': _select_schema(),
+            'graphiql': graphiql,
+            'graphiql_template': graphiql_template
+        })
+        print(auth.is_signed_in())
         super().__init__(**kwargs)
 
 
+##__________________________________________________________________||
+def _select_schema():
+    if auth.is_admin():
+        return schema.schema_admin
+    elif auth.is_signed_in():
+        return schema.schema_private
+    else:
+        return schema.schema_public
+
+##__________________________________________________________________||
 bp.add_url_rule('/graphql', view_func=GraphQLViewW.as_view('graphql'))
 
 ##__________________________________________________________________||
 def init_app(app):
-    global schema, graphiql, graphiql_template
+    global graphiql, graphiql_template
     with app.app_context():
-        enable_mutation = not app.config.get('ACONDBS_SCHEME_MUTATION_DISABLE', False)
         graphiql = app.config.get('ACONDBS_GRAPHIQL', False)
         graphiql_template_no = app.config.get('ACONDBS_GRAPHIQL_TEMPLATE_NO', None)
 
@@ -95,8 +104,6 @@ def init_app(app):
             graphiql_template = GRAPHQL_PLAYGROUND
         else:
             graphiql_template = None
-
-    schema = create_schema(enable_mutation=enable_mutation)
 
     app.register_blueprint(bp)
 

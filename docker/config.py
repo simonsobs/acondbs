@@ -25,8 +25,6 @@ try:
     ACONDBS_DB_BACKUP_CSV_GIT_LOCK = ACONDBS_DB_BACKUP_CSV_GIT_FOLDER.joinpath('.lock')
     ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT = 30.0 # second
 
-    ACONDBS_SCHEME_MUTATION_DISABLE = ast.literal_eval(os.environ.get('ACONDBS_SCHEME_MUTATION_DISABLE'))
-
     ##______________________________________________________________||
     ACONDBS_OWNERS_GITHUB_LOGINS = os.environ.get('ACONDBS_OWNERS_GITHUB_LOGINS') # comma separated e.g., "octocat,dojocat"
 
