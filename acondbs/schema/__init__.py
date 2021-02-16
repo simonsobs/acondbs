@@ -4,6 +4,7 @@ from graphene import relay
 from . import (
     version as version_,
     web,
+    auth,
     github,
     product as p
 )
@@ -24,6 +25,10 @@ class Query(graphene.ObjectType):
     node = relay.Node.Field()
 
     web_config = web.web_config_field
+
+    #
+    is_signed_in = auth.query.is_signed_in_field
+    is_admin = auth.query.is_admin_field
 
     #
     all_products = p.query.all_products_field
