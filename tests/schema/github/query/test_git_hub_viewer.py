@@ -22,9 +22,9 @@ params = [
     ),
 ]
 
-@pytest.mark.parametrize('args, kwags', params)
-def test_success(app, snapshot, args, kwags):
-    assert_query(app, snapshot, [args, kwags])
+@pytest.mark.parametrize('args, kwargs', params)
+def test_success(app, snapshot, args, kwargs):
+    assert_query(app, snapshot, [args, kwargs])
 
 # __________________________________________________________________||
 params = [
@@ -45,8 +45,8 @@ params = [
     ),
 ]
 
-@pytest.mark.parametrize('args, kwags', params)
-def test_error(app, snapshot, args, kwags):
-    assert_query(app, snapshot, [args, kwags], error=True)
+@pytest.mark.parametrize('args, kwargs', params)
+def test_error(app, snapshot, args, kwargs):
+    assert_query(app, snapshot, [args, kwargs], error=True)
 
 # __________________________________________________________________||

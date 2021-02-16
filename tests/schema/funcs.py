@@ -11,12 +11,12 @@ def assert_query(app, snapshot, query, error=False):
     client = Client(schema)
 
     # arguments to client.execute()
-    args, kwags = query
+    args, kwargs = query
 
-    if 'context_value' not in kwags:
+    if 'context_value' not in kwargs:
         # provide an empty dict to prevent errors
         # in graphene_sqlalchemy_filter.
-        kwags['context_value'] = {}
+        kwargs['context_value'] = {}
 
         # The detail is described in the commit message:
         #   https://github.com/simonsobs/acondbs/commit/0c65d5719129c4940eea0763ae7b9cc1bcddfe64
@@ -25,7 +25,7 @@ def assert_query(app, snapshot, query, error=False):
 
     # execute the query
     with app.app_context():
-        result = client.execute(*args, **kwags)
+        result = client.execute(*args, **kwargs)
 
     # assert errors
     if error:

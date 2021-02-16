@@ -19,9 +19,9 @@ params = [
     ),
 ]
 
-@pytest.mark.parametrize('args, kwags', params)
-def test_schema(app, snapshot, args, kwags):
-    assert_query(app, snapshot, [args, kwags])
+@pytest.mark.parametrize('args, kwargs', params)
+def test_schema(app, snapshot, args, kwargs):
+    assert_query(app, snapshot, [args, kwargs])
 
     # Note: the result is None, i.e., {'data': {'alembicVersion': None }}
     # because the migration is not applied in the tests.
