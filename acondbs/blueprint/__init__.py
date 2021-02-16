@@ -1,10 +1,7 @@
-from flask import Blueprint, request, current_app
+from flask import Blueprint, current_app
 from flask_graphql import GraphQLView
 
-from .. import auth
-from .. import schema
-from ..schema import create_schema
-
+from .. import auth, schema
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 
 ##__________________________________________________________________||
@@ -41,12 +38,6 @@ from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 #             traceback.print_exc()
 #         return super().dispatch_request()
 
-##__________________________________________________________________||
-bp = Blueprint('graphql', __name__)
-
-graphiql = None
-graphiql_template = None
-
 class GraphQLViewW(GraphQLView):
     '''A wrapper of GraphQLView.
 
@@ -72,12 +63,17 @@ class GraphQLViewW(GraphQLView):
     def __init__(self, **kwargs):
         kwargs.update({
             'schema': _select_schema(),
-            'graphiql': graphiql,
-            'graphiql_template': graphiql_template
+            'graphiql': current_app.config.get('ACONDBS_GRAPHIQL', False),
+            'graphiql_template': _select_graphiql_template()
         })
-        print(auth.is_signed_in())
         super().__init__(**kwargs)
 
+##__________________________________________________________________||
+bp = Blueprint('graphql', __name__)
+bp.add_url_rule('/graphql', view_func=GraphQLViewW.as_view('graphql'))
+
+def init_app(app):
+    app.register_blueprint(bp)
 
 ##__________________________________________________________________||
 def _select_schema():
@@ -88,23 +84,13 @@ def _select_schema():
     else:
         return schema.schema_public
 
-##__________________________________________________________________||
-bp.add_url_rule('/graphql', view_func=GraphQLViewW.as_view('graphql'))
-
-##__________________________________________________________________||
-def init_app(app):
-    global graphiql, graphiql_template
-    with app.app_context():
-        graphiql = app.config.get('ACONDBS_GRAPHIQL', False)
-        graphiql_template_no = app.config.get('ACONDBS_GRAPHIQL_TEMPLATE_NO', None)
-
-        if graphiql_template_no == 1:
-            graphiql_template = GRAPHIQL_NEWER
-        elif graphiql_template_no == 2:
-            graphiql_template = GRAPHQL_PLAYGROUND
-        else:
-            graphiql_template = None
-
-    app.register_blueprint(bp)
+def _select_graphiql_template():
+    template_no = current_app.config.get('ACONDBS_GRAPHIQL_TEMPLATE_NO', None)
+    if template_no == 1:
+        return GRAPHIQL_NEWER
+    elif template_no == 2:
+        return GRAPHQL_PLAYGROUND
+    else:
+        return None
 
 ##__________________________________________________________________||
