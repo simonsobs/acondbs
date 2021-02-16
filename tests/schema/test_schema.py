@@ -6,20 +6,19 @@ def test_types(app, snapshot):
     query = '''
       {
         __schema {
-          types {
-            name
-            description
+          queryType {
             fields {
               name
-              description
-              type {
-                name
-              }
             }
-            inputFields {
+          }
+          mutationType {
+            fields {
               name
-              description
-              defaultValue
+            }
+          }
+          subscriptionType {
+            fields {
+              name
             }
           }
         }
