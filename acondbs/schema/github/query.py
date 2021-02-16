@@ -29,12 +29,12 @@ git_hub_o_auth_app_info_field = graphene.Field(
 def resolve_git_hub_viewer(parent, info):
 
     auth = info.context.headers.get('Authorization')
-    # e.g., 'Bearer "xxxx"'
+    # e.g., 'Bearer "xxxx"', "Bearer 'xxxx'",  or 'Bearer xxxx'
 
     if not auth:
         raise GraphQLError('Authorization is required')
 
-    token = auth.split()[1].strip('"')
+    token = auth.split()[1].strip('"\'')
     # e.g., "xxxx"
 
     return get_user_for_token(token)
