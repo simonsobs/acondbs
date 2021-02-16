@@ -12,8 +12,10 @@ QUERY = """{
 
 ##__________________________________________________________________||
 def test_graphql(client, snapshot):
+    path = '/graphql'
+
     response = client.get(
-        '/graphql',
+        path,
         query_string=dict(query=QUERY))
     assert 200 == response.status_code
 
