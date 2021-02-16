@@ -1,7 +1,24 @@
+import pytest
+
+from acondbs.schema import (
+    schema,
+    schema_public,
+    schema_private,
+    schema_admin
+)
+
 from .funcs import assert_query
 
 ##__________________________________________________________________||
-def test_types(app, snapshot):
+params = [
+    pytest.param(schema, id='all'),
+    pytest.param(schema_public, id='public'),
+    pytest.param(schema_private, id='private'),
+    pytest.param(schema_admin, id='admin'),
+]
+
+@pytest.mark.parametrize('schema', params)
+def test_types(schema, app, snapshot):
 
     query = '''
       {
@@ -25,6 +42,6 @@ def test_types(app, snapshot):
       }
     '''
 
-    assert_query(app, snapshot, [[query], {}])
+    assert_query(app, snapshot, [[query], {}], schema=schema)
 
 ##__________________________________________________________________||
