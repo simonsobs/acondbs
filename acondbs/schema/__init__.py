@@ -10,12 +10,6 @@ from . import (
 )
 
 ##__________________________________________________________________||
-def create_schema(enable_mutation=True):
-    if enable_mutation:
-        return graphene.Schema(query=Query, mutation=Mutation)
-    return graphene.Schema(query=Query)
-
-##__________________________________________________________________||
 class QueryPublic(graphene.ObjectType):
     web_config = web.web_config_field
     is_signed_in = auth.query.is_signed_in_field

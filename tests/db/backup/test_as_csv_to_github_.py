@@ -6,7 +6,7 @@ from graphene.test import Client
 
 
 from acondbs.db.ops import export_db_to_csv_files
-from acondbs.schema import create_schema
+from acondbs.schema import schema_admin
 
 from acondbs.db.backup import backup_db_as_csv_to_github_
 
@@ -64,8 +64,7 @@ def test_backup_db_as_csv_to_github_(app, local_repo, remote_repo):
             }) { product { name } }
           }
         '''
-    schema = create_schema()
-    client = Client(schema)
+    client = Client(schema_admin)
     with app.app_context():
         result = client.execute(mutation, context_value={})
         assert 'errors' not in result

@@ -4,7 +4,7 @@ from graphene.test import Client
 import pytest
 import unittest.mock as mock
 
-from acondbs.schema import create_schema
+from acondbs.schema import schema_public
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
@@ -40,8 +40,7 @@ def test_auth(app, mock_authenticate):
     }
 
     with app.app_context():
-        schema = create_schema()
-        client = Client(schema)
+        client = Client(schema_public)
         result = client.execute(query, variables=variables, context_value={})
         assert {'data': expected} == result
         assert [mock.call('h443xg9c')] == mock_authenticate.call_args_list
