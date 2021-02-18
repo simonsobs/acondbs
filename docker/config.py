@@ -29,8 +29,8 @@ try:
     ACONDBS_OWNERS_GITHUB_LOGINS = os.environ.get('ACONDBS_OWNERS_GITHUB_LOGINS') # comma separated e.g., "octocat,dojocat"
 
     ##______________________________________________________________||
-    ACONDBS_GRAPHIQL = ast.literal_eval(os.environ.get('ACONDBS_GRAPHIQL'))
-    ACONDBS_GRAPHIQL_TEMPLATE_NO = ast.literal_eval(os.environ.get('ACONDBS_GRAPHIQL_TEMPLATE_NO')) # None: default, 1: GraphiQL latest, 2: GraphQL Playground
+    ACONDBS_GRAPHIQL = ast.literal_eval(os.environ.get('ACONDBS_GRAPHIQL', 'True'))
+    ACONDBS_GRAPHIQL_TEMPLATE_NO = ast.literal_eval(os.environ.get('ACONDBS_GRAPHIQL_TEMPLATE_NO', 'None')) # None: default, 1: GraphiQL latest, 2: GraphQL Playground
 
     ##______________________________________________________________||
     GITHUB_AUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
