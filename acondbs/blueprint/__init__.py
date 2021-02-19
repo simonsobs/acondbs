@@ -5,38 +5,47 @@ from .. import auth, schema
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 
 ##__________________________________________________________________||
-# from flask import request
-# class GraphQLView(GraphQLView):
-#     def print_request(self):
-#         import json
-#         import textwrap
-#         h = request.headers
-#         h = str(h)
-#         data_dict = json.loads(request.data)
-#         m = '\n'.join([
-#             textwrap.dedent('''
-#             {}:
-#             {}
-#             ''').lstrip().format(k, textwrap.indent(str(v), '    ').rstrip()) for k, v in data_dict.items()]
-#         )
-#         msg = textwrap.dedent('''
-#         - received header
-#         {h}
-#         - received query
-#         {q}
-#         --- end ---
-#         ''').format(
-#             h=textwrap.indent(h, '    '),
-#             q=textwrap.indent(m, '    ')
-#         )
-#         print(msg)
-#     def dispatch_request(self):
-#         try:
-#             self.print_request()
-#         except BaseException as error:
-#             import traceback
-#             traceback.print_exc()
-#         return super().dispatch_request()
+from flask import request
+class GraphQLView(GraphQLView):
+    def _format_request_to_str(self):
+        import json
+        import textwrap
+        h = request.headers
+        h = str(h)
+        data_dict = json.loads(request.data)
+        m = '\n'.join([
+            textwrap.dedent('''
+            {}:
+            {}
+            ''').lstrip().format(k, textwrap.indent(str(v), '    ').rstrip()) for k, v in data_dict.items()]
+        )
+        msg = textwrap.dedent('''
+        - received header
+        {h}
+        - received query
+        {q}
+        --- end ---
+        ''').format(
+            h=textwrap.indent(h, '    '),
+            q=textwrap.indent(m, '    ')
+        )
+        # print(msg)
+        return msg
+    def dispatch_request(self):
+
+        res = super().dispatch_request()
+
+        try:
+            if not res.status_code == 200:
+                msg = self._format_request_to_str()
+                print(msg)
+                print(res.status)
+                print(res.response)
+        except BaseException as error:
+            import traceback
+            traceback.print_exc()
+
+        return res
 
 class GraphQLViewW(GraphQLView):
     '''A wrapper of GraphQLView.
