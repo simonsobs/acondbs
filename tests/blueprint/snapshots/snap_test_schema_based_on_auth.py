@@ -108,6 +108,9 @@ snapshots['test_schema_selection[False-True] 1'] = {
                         'name': 'isAdmin'
                     },
                     {
+                        'name': 'gitHubViewer'
+                    },
+                    {
                         'name': 'allProducts'
                     },
                     {
@@ -232,6 +235,9 @@ snapshots['test_schema_selection[True-False] 1'] = {
                         'name': 'isAdmin'
                     },
                     {
+                        'name': 'gitHubViewer'
+                    },
+                    {
                         'name': 'allProducts'
                     },
                     {
@@ -269,9 +275,6 @@ snapshots['test_schema_selection[True-False] 1'] = {
                     },
                     {
                         'name': 'allGitHubTokens'
-                    },
-                    {
-                        'name': 'gitHubViewer'
                     }
                 ]
             },
@@ -368,6 +371,9 @@ snapshots['test_schema_selection[True-True] 1'] = {
                         'name': 'isAdmin'
                     },
                     {
+                        'name': 'gitHubViewer'
+                    },
+                    {
                         'name': 'allProducts'
                     },
                     {
@@ -405,9 +411,6 @@ snapshots['test_schema_selection[True-True] 1'] = {
                     },
                     {
                         'name': 'allGitHubTokens'
-                    },
-                    {
-                        'name': 'gitHubViewer'
                     }
                 ]
             },

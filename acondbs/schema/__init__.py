@@ -28,6 +28,9 @@ class QueryPrivate(QueryPublic):
     node = relay.Node.Field()
 
     #
+    git_hub_viewer = github.query.git_hub_viewer_field
+
+    #
     is_admin = auth.query.is_admin_field
 
     #
@@ -71,8 +74,6 @@ class QueryAdmin(QueryPrivate):
     all_git_hub_orgs = github.query.all_git_hub_orgs_field
     all_git_hub_tokens = github.query.all_git_hub_tokens_field
     all_git_hub_users = github.query.all_git_hub_users_field
-
-    git_hub_viewer = github.query.git_hub_viewer_field
 
 class MutationAdmin(MutationPrivate):
 

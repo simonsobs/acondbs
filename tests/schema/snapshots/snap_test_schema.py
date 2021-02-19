@@ -95,6 +95,9 @@ snapshots['test_types[admin] 1'] = {
                         'name': 'isAdmin'
                     },
                     {
+                        'name': 'gitHubViewer'
+                    },
+                    {
                         'name': 'allProducts'
                     },
                     {
@@ -132,9 +135,6 @@ snapshots['test_types[admin] 1'] = {
                     },
                     {
                         'name': 'allGitHubTokens'
-                    },
-                    {
-                        'name': 'gitHubViewer'
                     }
                 ]
             },
@@ -231,6 +231,9 @@ snapshots['test_types[all] 1'] = {
                         'name': 'isAdmin'
                     },
                     {
+                        'name': 'gitHubViewer'
+                    },
+                    {
                         'name': 'allProducts'
                     },
                     {
@@ -268,9 +271,6 @@ snapshots['test_types[all] 1'] = {
                     },
                     {
                         'name': 'allGitHubTokens'
-                    },
-                    {
-                        'name': 'gitHubViewer'
                     }
                 ]
             },
@@ -350,6 +350,9 @@ snapshots['test_types[private] 1'] = {
                     },
                     {
                         'name': 'isAdmin'
+                    },
+                    {
+                        'name': 'gitHubViewer'
                     },
                     {
                         'name': 'allProducts'
