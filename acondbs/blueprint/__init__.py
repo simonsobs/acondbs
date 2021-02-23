@@ -35,6 +35,10 @@ class GraphQLView(GraphQLView):
 
         res = super().dispatch_request()
 
+        if isinstance(res, str):
+            # e.g, GraphiQL
+            return res
+
         try:
             if not res.status_code == 200:
                 msg = self._format_request_to_str()
