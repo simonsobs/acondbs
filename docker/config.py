@@ -4,8 +4,6 @@ from pathlib import Path
 
 try:
 
-    _PARENT_DIR = Path(__file__).resolve().parent.parent
-
     ##______________________________________________________________||
     SECRET_KEY = os.environ.get('ACONDBS_SECRET_KEY')
 
@@ -21,7 +19,7 @@ try:
     ACONDBS_DB_BACKUP_LOCK = ACONDBS_DB_FOLDER.joinpath('.lock')
     ACONDBS_DB_BACKUP_LOCK_TIMEOUT = 30.0 # second
 
-    ACONDBS_DB_BACKUP_CSV_GIT_FOLDER = _PARENT_DIR.joinpath('db-backup-csv')
+    ACONDBS_DB_BACKUP_CSV_GIT_FOLDER = Path(os.environ.get('ACONDBS_DB_BACKUP_CSV_GIT_FOLDER', '/db-backup-csv'))
     ACONDBS_DB_BACKUP_CSV_GIT_LOCK = ACONDBS_DB_BACKUP_CSV_GIT_FOLDER.joinpath('.lock')
     ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT = 30.0 # second
 
@@ -44,7 +42,6 @@ except Exception as e:
     print(e)
 
 ##__________________________________________________________________||
-del _PARENT_DIR
 del Path
 del os
 del ast
