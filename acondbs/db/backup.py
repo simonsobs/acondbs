@@ -50,17 +50,17 @@ atexit.register(end_backup_thread)
 
 ##__________________________________________________________________||
 def run_flask_backup_db():
-    proc = subprocess.run(['flask', 'backup-db'])
+    proc = subprocess.run(['flask', 'backup-db', '-e', 'github_tokens', '-e', 'account_admins'])
 
 ##__________________________________________________________________||
-def backup_db():
+def backup_db(exclude_csv=None):
     try:
         backup_db_to_github()
     except Exception as e:
         warnings.warn('An exception occured in backup_db_to_github(): {}'.format(e))
 
     try:
-        backup_db_as_csv_to_github()
+        backup_db_as_csv_to_github(exclude=exclude_csv)
     except Exception as e:
         warnings.warn('An exception occured in backup_db_as_csv_to_github(): {}'.format(e))
 
@@ -80,21 +80,21 @@ def backup_db_to_github_(repo_path):
     gitb.push(repo_path)
 
 ##__________________________________________________________________||
-def backup_db_as_csv_to_github():
+def backup_db_as_csv_to_github(exclude=None):
     repo_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_FOLDER']
     lock_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_LOCK']
     timeout = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT']
     try:
         with lock.lock(lock_path, timeout=timeout):
-            backup_db_as_csv_to_github_(repo_path)
+            backup_db_as_csv_to_github_(repo_path, exclude)
     except lock.TimeOutAcquiringLock:
         warnings.warn('Time out! unable to acquire the lock in {} seconds: {}'.format(timeout, lock_path))
 
-def backup_db_as_csv_to_github_(repo_path):
+def backup_db_as_csv_to_github_(repo_path, exclude=None):
     repo_path = Path(repo_path)
     for csv_file in repo_path.glob('*.csv'):
         csv_file.unlink()
-    export_db_to_csv_files(repo_path)
+    export_db_to_csv_files(repo_path, exclude)
     gitb.commit(repo_path)
     gitb.push(repo_path)
 

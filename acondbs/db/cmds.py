@@ -54,12 +54,13 @@ def export_csv_command(csvdir):
 
 ##__________________________________________________________________||
 @click.command("backup-db")
+@click.option("--exclude-csv", "-e", multiple=True, help='table to exclude from CSV backup')
 @with_appcontext
-def backup_db_command():
-    """Back up the DB as CSV to GitHub
+def backup_db_command(exclude_csv):
+    """Back up the DB and its content as CSV to GitHub
 
     """
-    backup_db()
+    backup_db(exclude_csv)
 
 
 ##__________________________________________________________________||

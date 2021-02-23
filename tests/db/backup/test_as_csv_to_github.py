@@ -26,7 +26,7 @@ def test_backup_db_as_csv_to_github(app, mock_lock_path, mock_backup_db_as_csv_t
     with app.app_context():
         repo_path = app.config['ACONDBS_DB_BACKUP_CSV_GIT_FOLDER']
         backup_db_as_csv_to_github()
-    assert [mock.call(repo_path)] == mock_backup_db_as_csv_to_github_.call_args_list
+    assert [mock.call(repo_path, None)] == mock_backup_db_as_csv_to_github_.call_args_list
 
 ##__________________________________________________________________||
 def test_backup_db_locked(app, mock_lock_path, mock_backup_db_as_csv_to_github_):

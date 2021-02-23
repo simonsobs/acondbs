@@ -244,7 +244,7 @@ def convert_data_type_for_insert(str_, type_):
     return str_
 
 ##__________________________________________________________________||
-def export_db_to_csv_files(outdir):
+def export_db_to_csv_files(outdir, exclude=None):
     """export all tables in the DB to CSV files
 
     The CSV files will be stored in the folder `csvdir`: one CSV file
@@ -254,14 +254,21 @@ def export_db_to_csv_files(outdir):
     ----------
     csvdir : str
         a path to a folder to store the CSV files
-
+    exclude : list of str
+        the names of tables to exclude
 
     The tables need to be already defined in the DB.
 
     """
-    tbl_names = get_all_table_names()
+    if exclude is None:
+        exclude = []
+
+    tbl_names = set(get_all_table_names())
+    tbl_names = tbl_names - set(exclude)
 
     Path(outdir).mkdir(parents=True, exist_ok=True)
+
+    print(tbl_names)
 
     for tbl_name in tbl_names:
         csv_filename = '{}.csv'.format(tbl_name)
