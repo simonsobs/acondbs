@@ -7,41 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[updateProductFilePath] 1'] = {
-    'data': {
-        'updateProductFilePath': {
-            'productFilePath': {
-                'path': 'nersc:/go/to/my/new_product_v2'
-            }
-        }
-    }
-}
-
-snapshots['test_schema_success[updateProductFilePath] 2'] = {
-    'data': {
-        'product': {
-            'datePosted': '2019-02-13',
-            'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
-            'paths': {
-                'edges': [
-                    {
-                        'node': {
-                            'note': '- Note 1 updated',
-                            'path': 'nersc:/go/to/my/new_product_v2',
-                            'product': {
-                                'productId': '1001'
-                            }
-                        }
-                    }
-                ]
-            },
-            'producedBy': 'pwg-pmn'
-        }
-    }
-}
-
 snapshots['test_schema_error[updateProductFilePath-immutableField] 1'] = {
     'data': {
         'product': {
@@ -58,6 +23,41 @@ snapshots['test_schema_error[updateProductFilePath-immutableField] 1'] = {
                     }
                 ]
             }
+        }
+    }
+}
+
+snapshots['test_schema_success[updateProductFilePath] 1'] = {
+    'data': {
+        'updateProductFilePath': {
+            'productFilePath': {
+                'path': 'nersc:/go/to/my/new_product_v2'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[updateProductFilePath] 2'] = {
+    'data': {
+        'product': {
+            'name': 'lat20190213',
+            'note': '''- This is a dummy test with a lat map
+- This should not depend on any beam''',
+            'paths': {
+                'edges': [
+                    {
+                        'node': {
+                            'note': '- Note 1 updated',
+                            'path': 'nersc:/go/to/my/new_product_v2',
+                            'product': {
+                                'productId': '1001'
+                            }
+                        }
+                    }
+                ]
+            },
+            'producedBy': 'pwg-pmn',
+            'timePosted': '2019-02-13T10:05:23'
         }
     }
 }

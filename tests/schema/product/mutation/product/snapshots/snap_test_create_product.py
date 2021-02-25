@@ -13,9 +13,7 @@ snapshots['test_schema_success[create] 1'] = {
             'ok': True,
             'product': {
                 'contact': 'contact-person',
-                'datePosted': '2020-05-04',
                 'dateProduced': '2020-02-20',
-                'dateUpdated': None,
                 'name': 'beam111',
                 'note': '- Item 1',
                 'paths': {
@@ -101,6 +99,8 @@ snapshots['test_schema_success[create] 1'] = {
                         }
                     ]
                 },
+                'timePosted': '2021-01-04T14:32:20',
+                'timeUpdated': None,
                 'typeId': 2,
                 'type_': {
                     'name': 'beam',
@@ -505,9 +505,7 @@ snapshots['test_schema_success[minimum] 1'] = {
             'ok': True,
             'product': {
                 'contact': None,
-                'datePosted': '2020-05-04',
                 'dateProduced': None,
-                'dateUpdated': None,
                 'name': 'product1',
                 'note': None,
                 'paths': {
@@ -521,6 +519,8 @@ snapshots['test_schema_success[minimum] 1'] = {
                     'edges': [
                     ]
                 },
+                'timePosted': '2021-01-04T14:32:20',
+                'timeUpdated': None,
                 'typeId': 1,
                 'type_': {
                     'name': 'map',
@@ -703,9 +703,7 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
             'ok': True,
             'product': {
                 'contact': 'contact-person',
-                'datePosted': '2020-05-04',
                 'dateProduced': None,
-                'dateUpdated': None,
                 'name': 'map1',
                 'note': None,
                 'paths': {
@@ -733,6 +731,8 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                     'edges': [
                     ]
                 },
+                'timePosted': '2021-01-04T14:32:20',
+                'timeUpdated': None,
                 'typeId': 2,
                 'type_': {
                     'name': 'beam',
@@ -1078,3 +1078,4 @@ snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
         }
     }
 }
+

@@ -7,30 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_schema_success[deleteProductFilePath] 1'] = {
-    'data': {
-        'deleteProductFilePath': {
-            'ok': True
-        }
-    }
-}
-
-snapshots['test_schema_success[deleteProductFilePath] 2'] = {
-    'data': {
-        'product': {
-            'datePosted': '2019-02-13',
-            'name': 'lat20190213',
-            'note': '''- This is a dummy test with a lat map
-- This should not depend on any beam''',
-            'paths': {
-                'edges': [
-                ]
-            },
-            'producedBy': 'pwg-pmn'
-        }
-    }
-}
-
 snapshots['test_schema_error[deleteProductFilePath-error] 1'] = {
     'data': {
         'allProductFilePaths': {
@@ -86,6 +62,30 @@ snapshots['test_schema_error[deleteProductFilePath-error] 1'] = {
                     }
                 }
             ]
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteProductFilePath] 1'] = {
+    'data': {
+        'deleteProductFilePath': {
+            'ok': True
+        }
+    }
+}
+
+snapshots['test_schema_success[deleteProductFilePath] 2'] = {
+    'data': {
+        'product': {
+            'name': 'lat20190213',
+            'note': '''- This is a dummy test with a lat map
+- This should not depend on any beam''',
+            'paths': {
+                'edges': [
+                ]
+            },
+            'producedBy': 'pwg-pmn',
+            'timePosted': '2019-02-13T10:05:23'
         }
     }
 }
