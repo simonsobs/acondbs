@@ -33,8 +33,14 @@ fragment fragmentProductDeep on Product {
   producedBy
   timePosted
   postedBy
+  postingGitHubUser {
+    login
+  }
   timeUpdated
   updatedBy
+  updatingGitHubUser {
+    login
+  }
   paths {
     edges {
       node {

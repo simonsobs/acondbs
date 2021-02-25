@@ -11,7 +11,9 @@ from acondbs.models import (
     Product,
     ProductFilePath,
     ProductRelationType,
-    ProductRelation
+    ProductRelation,
+    GitHubUser,
+    GitHubToken
     )
 
 ##__________________________________________________________________||
@@ -27,6 +29,13 @@ def app_empty():
 def app(app_empty):
 
     y = app_empty
+
+    user1 = GitHubUser(login="user1", git_hub_id="04:User1")
+    token1 = GitHubToken(token="39d86487d76a84087f1da599c872dac4473e5f07", scope="", user=user1)
+
+    with y.app_context():
+        sa.session.add(user1)
+        sa.session.commit()
 
     # map1 -> beam1
     #   |        |

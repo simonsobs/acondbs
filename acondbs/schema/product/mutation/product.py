@@ -11,6 +11,7 @@ from ....models import (
 from ....db.sa import sa
 from ....db.backup import request_backup_db
 
+from ...funcs import get_git_hub_viewer_from_info
 from .. import type_
 
 ##__________________________________________________________________||
@@ -59,6 +60,7 @@ class CreateProduct(graphene.Mutation):
     product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, input):
+        user = get_git_hub_viewer_from_info(info)
         paths = [ProductFilePathModel(path=p) for p in input.pop('paths', [])]
         with sa.session.no_autoflush:
             relations = [
@@ -69,6 +71,7 @@ class CreateProduct(graphene.Mutation):
                 for r in input.pop('relations', [])
             ]
         model = ProductModel(
+            posting_git_hub_user=user,
             paths=paths,
             relations=relations,
             **input
