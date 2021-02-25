@@ -31,9 +31,9 @@ fragment fragmentProductDeep on Product {
   contact
   dateProduced
   producedBy
-  datePosted
+  timePosted
   postedBy
-  dateUpdated
+  timeUpdated
   updatedBy
   paths {
     edges {
