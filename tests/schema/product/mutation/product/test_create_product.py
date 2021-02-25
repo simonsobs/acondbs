@@ -1,5 +1,8 @@
 import pytest
 
+from graphene import Context
+from werkzeug.datastructures import Headers
+
 from ....funcs import assert_mutation
 
 from ...gql import CREATE_PRODUCT
@@ -44,25 +47,30 @@ params = [
     pytest.param(
         [
             [CREATE_PRODUCT],
-            {'variables': {
-                'input': {
-                    'typeId': 2,
-                    'name': "beam111",
-                    'contact': "contact-person",
-                    'dateProduced': "2020-02-20",
-                    'producedBy': "producer",
-                    'postedBy': "poster",
-                    'note': "- Item 1",
-                    'paths': [
-                        "/path/to/new/product1",
-                        "/another/location/of/product1"
-                    ],
-                    'relations' : [
-                        {'typeId': 1, 'productId': 1 },
-                        {'typeId': 1, 'productId': 5 }
-                    ]
-                }
-            }},
+            {
+                'variables': {
+                    'input': {
+                        'typeId': 2,
+                        'name': "beam111",
+                        'contact': "contact-person",
+                        'dateProduced': "2020-02-20",
+                        'producedBy': "producer",
+                        'postedBy': "poster",
+                        'note': "- Item 1",
+                        'paths': [
+                            "/path/to/new/product1",
+                            "/another/location/of/product1"
+                        ],
+                        'relations' : [
+                            {'typeId': 1, 'productId': 1 },
+                            {'typeId': 1, 'productId': 5 }
+                        ]
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+             },
         ],
         [[QEURY], {}],
         id='create'
@@ -70,12 +78,17 @@ params = [
     pytest.param(
         [
             [CREATE_PRODUCT],
-            {'variables': {
-                'input': {
-                    'typeId': 1,
-                    'name': "product1",
-                }
-            }},
+            {
+                'variables': {
+                    'input': {
+                        'typeId': 1,
+                        'name': "product1",
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='minimum'
@@ -83,18 +96,23 @@ params = [
     pytest.param(
         [
             [CREATE_PRODUCT],
-            {'variables': {
-                'input': {
-                    'typeId': 2,
-                    'name': "map1",
-                    'contact': "contact-person",
-                    'producedBy': "pwg-pmn",
-                    'paths': [
-                        "/path/to/new/product1",
-                        "/another/location/of/product1"
-                    ]
-                }
-            }},
+            {
+                'variables': {
+                    'input': {
+                        'typeId': 2,
+                        'name': "map1",
+                        'contact': "contact-person",
+                        'producedBy': "pwg-pmn",
+                        'paths': [
+                            "/path/to/new/product1",
+                            "/another/location/of/product1"
+                        ]
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='the-same-name-different-type'
@@ -111,11 +129,16 @@ params = [
     pytest.param(
         [
             [CREATE_PRODUCT],
-            {'variables': {
-                'input': {
-                    'typeId': 1,
-                }
-            }},
+            {
+                'variables': {
+                    'input': {
+                        'typeId': 1,
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='error-no-name'
@@ -123,12 +146,17 @@ params = [
     pytest.param(
         [
             [CREATE_PRODUCT],
-            {'variables': {
-                'input': {
-                    'typeId': 1,
-                    'name': "map1",
-                }
-            }},
+            {
+                'variables': {
+                    'input': {
+                        'typeId': 1,
+                        'name': "map1",
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='error-the-same-type-and-name'

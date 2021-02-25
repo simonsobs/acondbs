@@ -14,9 +14,7 @@ snapshots['test_schema[deep] 1'] = {
                 {
                     'node': {
                         'contact': None,
-                        'datePosted': None,
                         'dateProduced': '2020-02-01',
-                        'dateUpdated': None,
                         'name': 'map1',
                         'note': None,
                         'paths': {
@@ -38,6 +36,7 @@ snapshots['test_schema[deep] 1'] = {
                             ]
                         },
                         'postedBy': None,
+                        'postingGitHubUser': None,
                         'producedBy': None,
                         'productId': '1',
                         'relations': {
@@ -102,20 +101,21 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
+                        'timePosted': '2021-01-04T14:32:20',
+                        'timeUpdated': None,
                         'typeId': 1,
                         'type_': {
                             'name': 'map',
                             'typeId': '1'
                         },
-                        'updatedBy': None
+                        'updatedBy': None,
+                        'updatingGitHubUser': None
                     }
                 },
                 {
                     'node': {
                         'contact': None,
-                        'datePosted': None,
                         'dateProduced': '2020-02-10',
-                        'dateUpdated': None,
                         'name': 'map2',
                         'note': None,
                         'paths': {
@@ -130,26 +130,28 @@ snapshots['test_schema[deep] 1'] = {
                             ]
                         },
                         'postedBy': None,
+                        'postingGitHubUser': None,
                         'producedBy': None,
                         'productId': '2',
                         'relations': {
                             'edges': [
                             ]
                         },
+                        'timePosted': '2021-01-04T14:32:20',
+                        'timeUpdated': None,
                         'typeId': 1,
                         'type_': {
                             'name': 'map',
                             'typeId': '1'
                         },
-                        'updatedBy': None
+                        'updatedBy': None,
+                        'updatingGitHubUser': None
                     }
                 },
                 {
                     'node': {
                         'contact': None,
-                        'datePosted': None,
                         'dateProduced': '2020-03-19',
-                        'dateUpdated': None,
                         'name': 'map3',
                         'note': None,
                         'paths': {
@@ -171,26 +173,28 @@ snapshots['test_schema[deep] 1'] = {
                             ]
                         },
                         'postedBy': None,
+                        'postingGitHubUser': None,
                         'producedBy': None,
                         'productId': '3',
                         'relations': {
                             'edges': [
                             ]
                         },
+                        'timePosted': '2021-01-04T14:32:20',
+                        'timeUpdated': None,
                         'typeId': 1,
                         'type_': {
                             'name': 'map',
                             'typeId': '1'
                         },
-                        'updatedBy': None
+                        'updatedBy': None,
+                        'updatingGitHubUser': None
                     }
                 },
                 {
                     'node': {
                         'contact': None,
-                        'datePosted': None,
                         'dateProduced': '2020-02-05',
-                        'dateUpdated': None,
                         'name': 'beam1',
                         'note': None,
                         'paths': {
@@ -212,6 +216,7 @@ snapshots['test_schema[deep] 1'] = {
                             ]
                         },
                         'postedBy': None,
+                        'postingGitHubUser': None,
                         'producedBy': None,
                         'productId': '4',
                         'relations': {
@@ -276,20 +281,21 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
+                        'timePosted': '2021-01-04T14:32:20',
+                        'timeUpdated': None,
                         'typeId': 2,
                         'type_': {
                             'name': 'beam',
                             'typeId': '2'
                         },
-                        'updatedBy': None
+                        'updatedBy': None,
+                        'updatingGitHubUser': None
                     }
                 },
                 {
                     'node': {
                         'contact': None,
-                        'datePosted': None,
                         'dateProduced': '2020-03-04',
-                        'dateUpdated': None,
                         'name': 'beam2',
                         'note': None,
                         'paths': {
@@ -304,6 +310,7 @@ snapshots['test_schema[deep] 1'] = {
                             ]
                         },
                         'postedBy': None,
+                        'postingGitHubUser': None,
                         'producedBy': None,
                         'productId': '5',
                         'relations': {
@@ -368,12 +375,15 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
+                        'timePosted': '2021-01-04T14:32:20',
+                        'timeUpdated': None,
                         'typeId': 2,
                         'type_': {
                             'name': 'beam',
                             'typeId': '2'
                         },
-                        'updatedBy': None
+                        'updatedBy': None,
+                        'updatingGitHubUser': None
                     }
                 }
             ]

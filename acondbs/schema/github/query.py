@@ -1,8 +1,8 @@
 import graphene
-from graphql import GraphQLError
 
-from ...github.ops import get_github_oauth_app_info, get_user_for_token
+from ...github.ops import get_github_oauth_app_info
 
+from ..funcs import get_git_hub_viewer_from_info
 from ..filter_ import PFilterableConnectionField
 from . import type_
 
@@ -27,17 +27,8 @@ git_hub_o_auth_app_info_field = graphene.Field(
 
 ##__________________________________________________________________||
 def resolve_git_hub_viewer(parent, info):
-
-    auth = info.context.headers.get('Authorization')
-    # e.g., 'Bearer "xxxx"', "Bearer 'xxxx'",  or 'Bearer xxxx'
-
-    if not auth:
-        raise GraphQLError('Authorization is required')
-
-    token = auth.split()[1].strip('"\'')
-    # e.g., "xxxx"
-
-    return get_user_for_token(token)
+    user = get_git_hub_viewer_from_info(info)
+    return user
 
 git_hub_viewer_field = graphene.Field(type_.GitHubUser, resolver=resolve_git_hub_viewer)
 

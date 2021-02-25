@@ -12,9 +12,9 @@ def test_add(app):
 
     type1 = ProductType(name="type1")
 
-    # date_produced needs to be initialized with a datetime.date
-    date_produced = datetime.date(2019, 2, 23)
-    product1 = Product(name="product1", date_produced=date_produced, type_=type1)
+    # time_posted needs to be initialized with a datetime.date
+    time_posted = datetime.datetime(2019, 2, 23, 9, 10, 25)
+    product1 = Product(name="product1", time_posted=time_posted, type_=type1)
 
     with app.app_context():
         sa.session.add(product1)
@@ -23,10 +23,10 @@ def test_add(app):
     with app.app_context():
         product1 = Product.query.filter_by(name='product1').first()
 
-        # The type of the field "date_produced" of Product is "datetime.date"
-        assert isinstance(product1.date_produced, datetime.date)
+        # The type of the field "time_posted" of Product is "datetime.date"
+        assert isinstance(product1.time_posted, datetime.date)
 
-        assert datetime.date(2019, 2, 23) == product1.date_produced
+        assert datetime.datetime(2019, 2, 23, 9, 10, 25) == product1.time_posted
 
 ##__________________________________________________________________||
 def test_add_raise(app):
@@ -37,7 +37,7 @@ def test_add_raise(app):
 
     # It is not impossible to instnaiate a date field with a wrong
     # type, e.g, str
-    product1 = Product(name="product1", date_produced="2019-02-13", type_=type1)
+    product1 = Product(name="product1", time_posted="2019-02-13 10:15:21", type_=type1)
 
     with app.app_context():
 

@@ -146,6 +146,7 @@ def mock_datetime(monkeypatch):
     y.datetime.now.return_value = datetime.datetime(2021, 1, 4, 14, 32, 20)
     monkeypatch.setattr("acondbs.schema.product.mutation.product.datetime", y)
     monkeypatch.setattr("acondbs.models.github.github_token.datetime", y)
+    monkeypatch.setattr("acondbs.models.product.product.datetime", y)
     yield y
 
 ##__________________________________________________________________||

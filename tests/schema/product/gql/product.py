@@ -31,10 +31,16 @@ fragment fragmentProductDeep on Product {
   contact
   dateProduced
   producedBy
-  datePosted
+  timePosted
   postedBy
-  dateUpdated
+  postingGitHubUser {
+    login
+  }
+  timeUpdated
   updatedBy
+  updatingGitHubUser {
+    login
+  }
   paths {
     edges {
       node {
