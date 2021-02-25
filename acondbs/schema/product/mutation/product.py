@@ -69,7 +69,6 @@ class CreateProduct(graphene.Mutation):
                 for r in input.pop('relations', [])
             ]
         model = ProductModel(
-            date_posted=datetime.date.today(),
             paths=paths,
             relations=relations,
             **input
@@ -128,7 +127,7 @@ class UpdateProduct(graphene.Mutation):
         for k, v in input.items():
             setattr(model, k, v)
 
-        model.date_updated = datetime.date.today()
+        model.time_updated = datetime.datetime.now()
 
         sa.session.commit()
         ok = True
