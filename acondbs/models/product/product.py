@@ -1,3 +1,5 @@
+import datetime
+
 from ...db.sa import sa
 
 ##__________________________________________________________________||
@@ -13,9 +15,9 @@ class Product(sa.Model):
     contact = sa.Column(sa.Text())
     date_produced = sa.Column(sa.Date())
     produced_by = sa.Column(sa.Text())
-    date_posted = sa.Column(sa.Date())
+    time_posted = sa.Column(sa.DateTime(), default=lambda : datetime.datetime.now())
     posted_by = sa.Column(sa.Text())
-    date_updated = sa.Column(sa.Date())
+    time_updated = sa.Column(sa.DateTime())
     updated_by = sa.Column(sa.Text())
     note = sa.Column(sa.Text())
     __table_args__ = (sa.UniqueConstraint('type_id', 'name', name='_type_id_name'), )
