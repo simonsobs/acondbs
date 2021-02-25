@@ -11,9 +11,7 @@ snapshots['test_schema[deep] 1'] = {
     'data': {
         'product': {
             'contact': None,
-            'datePosted': None,
             'dateProduced': '2020-02-01',
-            'dateUpdated': None,
             'name': 'map1',
             'note': None,
             'paths': {
@@ -99,6 +97,8 @@ snapshots['test_schema[deep] 1'] = {
                     }
                 ]
             },
+            'timePosted': '2021-01-04T14:32:20',
+            'timeUpdated': None,
             'typeId': 1,
             'type_': {
                 'name': 'map',
