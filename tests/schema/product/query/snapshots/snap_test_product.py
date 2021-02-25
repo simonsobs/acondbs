@@ -33,6 +33,7 @@ snapshots['test_schema[deep] 1'] = {
                 ]
             },
             'postedBy': None,
+            'postingGitHubUser': None,
             'producedBy': None,
             'productId': '1',
             'relations': {
@@ -104,7 +105,8 @@ snapshots['test_schema[deep] 1'] = {
                 'name': 'map',
                 'typeId': '1'
             },
-            'updatedBy': None
+            'updatedBy': None,
+            'updatingGitHubUser': None
         }
     }
 }
