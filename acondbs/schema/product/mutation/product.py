@@ -101,6 +101,8 @@ class UpdateProduct(graphene.Mutation):
     product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, product_id, input):
+        user = get_git_hub_viewer_from_info(info)
+
         model = ProductModel.query.filter_by(product_id=product_id).one()
 
         # update paths
@@ -131,6 +133,7 @@ class UpdateProduct(graphene.Mutation):
             setattr(model, k, v)
 
         model.time_updated = datetime.datetime.now()
+        model.updating_git_hub_user = user
 
         sa.session.commit()
         ok = True

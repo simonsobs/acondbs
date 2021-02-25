@@ -1,5 +1,8 @@
 import pytest
 
+from graphene import Context
+from werkzeug.datastructures import Headers
+
 from ....funcs import assert_mutation
 
 from ...gql import UPDATE_PRODUCT
@@ -44,14 +47,19 @@ params = [
     pytest.param(
         [
             [UPDATE_PRODUCT],
-            {'variables': {
-                'productId': 1,
-                'input': {
-                    'contact': "new-contact",
-                    'updatedBy': "updater",
-                    'note': "- updated note 123"
-                }
-            }},
+            {
+                'variables': {
+                    'productId': 1,
+                    'input': {
+                        'contact': "new-contact",
+                        'updatedBy': "updater",
+                        'note': "- updated note 123"
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='update'
@@ -59,17 +67,22 @@ params = [
     pytest.param(
         [
             [UPDATE_PRODUCT],
-            {'variables': {
-                'productId': 1,
-                'input': {
-                    'updatedBy': "updater",
-                    'paths': [
-                        "site1:/path/to/map1",
-                        "site2:/updated/way/map1",
-                        "site4:/additional/map1"
-                    ],
-                }
-            }},
+            {
+                'variables': {
+                    'productId': 1,
+                    'input': {
+                        'updatedBy': "updater",
+                        'paths': [
+                            "site1:/path/to/map1",
+                            "site2:/updated/way/map1",
+                            "site4:/additional/map1"
+                        ],
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='update-paths'
@@ -77,13 +90,18 @@ params = [
     pytest.param(
         [
             [UPDATE_PRODUCT],
-            {'variables': {
-                'productId': 1,
-                'input': {
-                    'updatedBy': "updater",
-                    'paths': [ ],
-                }
-            }},
+            {
+                'variables': {
+                    'productId': 1,
+                    'input': {
+                        'updatedBy': "updater",
+                        'paths': [ ],
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='delete-paths'
@@ -91,16 +109,21 @@ params = [
     pytest.param(
         [
             [UPDATE_PRODUCT],
-            {'variables': {
-                'productId': 5,
-                'input': {
-                    'updatedBy': "updater",
-                    'relations' : [
-                        {'typeId': 1, 'productId': 4 },
-                        {'typeId': 1, 'productId': 2 }
-                    ]
-                }
-            }},
+            {
+                'variables': {
+                    'productId': 5,
+                    'input': {
+                        'updatedBy': "updater",
+                        'relations' : [
+                            {'typeId': 1, 'productId': 4 },
+                            {'typeId': 1, 'productId': 2 }
+                        ]
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='update-relations'
@@ -108,13 +131,18 @@ params = [
     pytest.param(
         [
             [UPDATE_PRODUCT],
-            {'variables': {
-                'productId': 5,
-                'input': {
-                    'updatedBy': "updater",
-                    'relations' : [ ]
-                }
-            }},
+            {
+                'variables': {
+                    'productId': 5,
+                    'input': {
+                        'updatedBy': "updater",
+                        'relations' : [ ]
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='delete-relations'
@@ -132,12 +160,17 @@ params = [
     pytest.param(
         [
             [UPDATE_PRODUCT],
-            {'variables': {
-                'productId': 1,
-                'input': {
-                    'name': "new-name",
-                }
-            }},
+            {
+                'variables': {
+                    'productId': 1,
+                    'input': {
+                        'name': "new-name",
+                    }},
+                "context_value": Context(
+                    headers=Headers(
+                        {'Authorization': 'Bearer 39d86487d76a84087f1da599c872dac4473e5f07'}
+                    ))
+            },
         ],
         [[QEURY], {}],
         id='error-immutable-fields'

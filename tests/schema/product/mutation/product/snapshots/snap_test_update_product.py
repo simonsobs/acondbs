@@ -181,6 +181,7 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                     ]
                 },
                 'postedBy': None,
+                'postingGitHubUser': None,
                 'producedBy': None,
                 'productId': '1',
                 'relations': {
@@ -252,7 +253,10 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': 'updater'
+                'updatedBy': 'updater',
+                'updatingGitHubUser': {
+                    'login': 'user1'
+                }
             }
         }
     }
@@ -429,6 +433,7 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                     ]
                 },
                 'postedBy': None,
+                'postingGitHubUser': None,
                 'producedBy': None,
                 'productId': '5',
                 'relations': {
@@ -442,7 +447,10 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                     'name': 'beam',
                     'typeId': '2'
                 },
-                'updatedBy': 'updater'
+                'updatedBy': 'updater',
+                'updatingGitHubUser': {
+                    'login': 'user1'
+                }
             }
         }
     }
@@ -591,6 +599,7 @@ snapshots['test_schema_success[update-paths] 1'] = {
                     ]
                 },
                 'postedBy': None,
+                'postingGitHubUser': None,
                 'producedBy': None,
                 'productId': '1',
                 'relations': {
@@ -662,7 +671,10 @@ snapshots['test_schema_success[update-paths] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': 'updater'
+                'updatedBy': 'updater',
+                'updatingGitHubUser': {
+                    'login': 'user1'
+                }
             }
         }
     }
@@ -854,6 +866,7 @@ snapshots['test_schema_success[update-relations] 1'] = {
                     ]
                 },
                 'postedBy': None,
+                'postingGitHubUser': None,
                 'producedBy': None,
                 'productId': '5',
                 'relations': {
@@ -925,7 +938,10 @@ snapshots['test_schema_success[update-relations] 1'] = {
                     'name': 'beam',
                     'typeId': '2'
                 },
-                'updatedBy': 'updater'
+                'updatedBy': 'updater',
+                'updatingGitHubUser': {
+                    'login': 'user1'
+                }
             }
         }
     }
@@ -1119,6 +1135,7 @@ snapshots['test_schema_success[update] 1'] = {
                     ]
                 },
                 'postedBy': None,
+                'postingGitHubUser': None,
                 'producedBy': None,
                 'productId': '1',
                 'relations': {
@@ -1190,7 +1207,10 @@ snapshots['test_schema_success[update] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': 'updater'
+                'updatedBy': 'updater',
+                'updatingGitHubUser': {
+                    'login': 'user1'
+                }
             }
         }
     }
