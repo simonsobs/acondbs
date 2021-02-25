@@ -234,12 +234,14 @@ snapshots['test_non_empty 1'] = {
             'note': '''- This is a dummy test with a lat map
 - This should not depend on any beam''',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1001,
             'time_posted': GenericRepr('datetime.datetime(2019, 2, 13, 10, 5, 23)'),
             'time_updated': GenericRepr('datetime.datetime(2019, 2, 13, 16, 45, 30)'),
             'type_id': 1,
-            'updated_by': 'pwg-pmn'
+            'updated_by': 'pwg-pmn',
+            'updating_git_hub_user_id': 2
         },
         {
             'contact': 'abc-def',
@@ -248,12 +250,14 @@ snapshots['test_non_empty 1'] = {
             'note': '''- note 1
 - note 2''',
             'posted_by': 'abc-def',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'abc-def',
             'product_id': 1002,
             'time_posted': GenericRepr('datetime.datetime(2019, 3, 15, 9, 11, 25)'),
             'time_updated': None,
             'type_id': 3,
-            'updated_by': ''
+            'updated_by': '',
+            'updating_git_hub_user_id': ''
         },
         {
             'contact': 'pwg-pmn',
@@ -261,12 +265,14 @@ snapshots['test_non_empty 1'] = {
             'name': '20180101',
             'note': '- test entry',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1010,
             'time_posted': GenericRepr('datetime.datetime(2018, 1, 1, 15, 32, 10)'),
             'time_updated': None,
             'type_id': 2,
-            'updated_by': ''
+            'updated_by': '',
+            'updating_git_hub_user_id': ''
         },
         {
             'contact': 'pwg-pmn',
@@ -275,12 +281,14 @@ snapshots['test_non_empty 1'] = {
             'note': '''- This is a dummy test with a lat map
 - A beam depends on this map''',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1012,
             'time_posted': GenericRepr('datetime.datetime(2020, 1, 20, 18, 10, 5)'),
             'time_updated': GenericRepr('datetime.datetime(2020, 1, 20, 21, 52, 32)'),
             'type_id': 1,
-            'updated_by': 'pwg-pmn'
+            'updated_by': 'pwg-pmn',
+            'updating_git_hub_user_id': 2
         },
         {
             'contact': 'pwg-pmn',
@@ -289,12 +297,14 @@ snapshots['test_non_empty 1'] = {
             'note': '''- This is a dummy test with a lat map
 - A beam depends on this map''',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1013,
             'time_posted': GenericRepr('datetime.datetime(2020, 2, 1, 11, 5, 2)'),
             'time_updated': GenericRepr('datetime.datetime(2020, 2, 1, 19, 2, 15)'),
             'type_id': 1,
-            'updated_by': 'pwg-pmn'
+            'updated_by': 'pwg-pmn',
+            'updating_git_hub_user_id': 2
         },
         {
             'contact': 'pwg-pmn',
@@ -302,12 +312,14 @@ snapshots['test_non_empty 1'] = {
             'name': '20190304',
             'note': '- test entry',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1070,
             'time_posted': GenericRepr('datetime.datetime(2019, 3, 4, 8, 12, 41)'),
             'time_updated': None,
             'type_id': 2,
-            'updated_by': ''
+            'updated_by': '',
+            'updating_git_hub_user_id': ''
         },
         {
             'contact': 'pwg-pmn',
@@ -315,12 +327,14 @@ snapshots['test_non_empty 1'] = {
             'name': '20190607',
             'note': '- test entry',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1120,
             'time_posted': GenericRepr('datetime.datetime(2019, 6, 7, 18, 21, 21)'),
             'time_updated': None,
             'type_id': 2,
-            'updated_by': ''
+            'updated_by': '',
+            'updating_git_hub_user_id': ''
         },
         {
             'contact': 'pwg-pmn',
@@ -328,12 +342,14 @@ snapshots['test_non_empty 1'] = {
             'name': '20200123',
             'note': '- test entry',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1130,
             'time_posted': GenericRepr('datetime.datetime(2020, 1, 23, 12, 11, 45)'),
             'time_updated': None,
             'type_id': 2,
-            'updated_by': ''
+            'updated_by': '',
+            'updating_git_hub_user_id': ''
         },
         {
             'contact': 'pwg-pmn',
@@ -341,12 +357,14 @@ snapshots['test_non_empty 1'] = {
             'name': '20200207',
             'note': '- test entry',
             'posted_by': 'pwg-pmn',
+            'posting_git_hub_user_id': 1,
             'produced_by': 'pwg-pmn',
             'product_id': 1150,
             'time_posted': GenericRepr('datetime.datetime(2020, 2, 7, 9, 42, 11)'),
             'time_updated': None,
             'type_id': 2,
-            'updated_by': ''
+            'updated_by': '',
+            'updating_git_hub_user_id': ''
         }
     ],
     'web_config': [
