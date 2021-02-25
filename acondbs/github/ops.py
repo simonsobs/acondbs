@@ -9,7 +9,8 @@ from ..models import (
     GitHubOrg,
     GitHubUser,
     GitHubToken,
-    GitHubOrgMembership
+    GitHubOrgMembership,
+    AccountAdmin
 )
 
 from . import call, query
@@ -181,10 +182,16 @@ def authenticate(code):
 
     token_dict = exchange_code_for_token(code)
     viewer = query.viewer(token_dict['access_token'])
-    if (user_model := GitHubUser.query.filter_by(git_hub_id=viewer['id']).one_or_none()) is None:
-        raise Exception(f'{viewer["login"]} is not a member.')
-    if not user_model.memberships:
-        raise Exception(f'{viewer["login"]} is not a member!')
+    account_admin_model = AccountAdmin.query.filter_by(git_hub_login=viewer['login']).one_or_none()
+    user_model= GitHubUser.query.filter_by(git_hub_id=viewer['id']).one_or_none()
+    if account_admin_model is None:
+        if user_model is None:
+            raise Exception(f'{viewer["login"]} is not a member.')
+        if not user_model.memberships:
+            raise Exception(f'{viewer["login"]} is not a member!')
+    else:
+        if user_model is None:
+            user_model = GitHubUser(git_hub_id=viewer['id'])
     user_model.login = viewer['login']
     user_model.name = viewer['name']
     user_model.avatar_url = viewer['avatarUrl']
