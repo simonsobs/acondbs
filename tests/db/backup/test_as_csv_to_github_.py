@@ -41,7 +41,7 @@ def remote_repo(local_repo, tmpdir_factory):
     remote = local_repo.create_remote('origin', url=remote_url)
     branch_name = local_repo.active_branch.name
     remote.push(refspec='{}:{}'.format(branch_name, branch_name))
-    local_repo.heads.master.set_tracking_branch(remote.refs.master)
+    local_repo.heads.main.set_tracking_branch(remote.refs.main)
 
     yield remote_repo
 
