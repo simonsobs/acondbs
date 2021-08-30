@@ -1,4 +1,3 @@
-from flask import json
 import pytest
 
 from acondbs import create_app
