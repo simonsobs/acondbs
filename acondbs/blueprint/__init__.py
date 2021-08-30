@@ -12,7 +12,10 @@ class GraphQLView(GraphQLView):
         import textwrap
         h = request.headers
         h = str(h)
-        data_dict = json.loads(request.data)
+        if request.data:
+            data_dict = json.loads(request.data)
+        else:
+            data_dict = {}
         m = '\n'.join([
             textwrap.dedent('''
             {}:
