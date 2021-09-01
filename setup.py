@@ -26,8 +26,8 @@ setup(
     packages=find_packages(exclude=["docs", "tests"]),
     include_package_data=True,
     install_requires=[
-        "SQLAlchemy<1.4.0",  # SQLAlchemy-Utils is not compatible with SQLAlchemy 1.4
-        "SQLAlchemy-Utils>=0.36",
+        "SQLAlchemy>=1.4",
+        "SQLAlchemy-Utils>=0.37",
         "Flask>=1.1",
         "Flask-Cors>=3.0",
         "Flask-GraphQL>=2.0",

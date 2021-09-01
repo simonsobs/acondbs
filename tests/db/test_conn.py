@@ -9,7 +9,7 @@ def test_get_close_db_connection(app):
         conn = get_db_connection()
         assert conn is get_db_connection()
 
-    with pytest.raises(sqlalchemy.exc.StatementError) as e:
+    with pytest.raises(sqlalchemy.exc.ResourceClosedError) as e:
         conn.execute("SELECT 1")
 
     assert "closed" in str(e.value)
