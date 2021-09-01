@@ -3,6 +3,7 @@ import sqlalchemy
 
 from acondbs.db.conn import get_db_connection
 
+
 ##__________________________________________________________________||
 def test_get_close_db_connection(app):
     with app.app_context():
@@ -13,5 +14,6 @@ def test_get_close_db_connection(app):
         conn.execute("SELECT 1")
 
     assert "closed" in str(e.value)
+
 
 ##__________________________________________________________________||
