@@ -8,54 +8,76 @@ from ..gql import FRAGMENT_PRODUCT_RELATION_TYPE
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productRelationType(typeId: 1) {
               ...fragmentProductRelationType
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,],
+        """
+            )
+            + FRAGMENT_PRODUCT_RELATION_TYPE,
+        ],
         {},
-        id='type_id'
+        id="type_id",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productRelationType(name: "parent") {
               ...fragmentProductRelationType
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,],
+        """
+            )
+            + FRAGMENT_PRODUCT_RELATION_TYPE,
+        ],
         {},
-        id='name'
+        id="name",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productRelationType(typeId: 1, name: "parent") {
               ...fragmentProductRelationType
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,],
+        """
+            )
+            + FRAGMENT_PRODUCT_RELATION_TYPE,
+        ],
         {},
-        id='type_id-and-name'
+        id="type_id-and-name",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productRelationType(typeId: 2, name: "parent") {
               ...fragmentProductRelationType
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION_TYPE,],
+        """
+            )
+            + FRAGMENT_PRODUCT_RELATION_TYPE,
+        ],
         {},
-        id='type_id-and-name-nonexistent)'
+        id="type_id-and-name-nonexistent)",
     ),
 ]
 
+
 ##__________________________________________________________________||
-@pytest.mark.parametrize('args, kwargs', params)
+@pytest.mark.parametrize("args, kwargs", params)
 def test_schema(app, snapshot, args, kwargs):
     assert_query(app, snapshot, [args, kwargs])
+
 
 ##__________________________________________________________________||

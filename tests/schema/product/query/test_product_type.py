@@ -8,51 +8,72 @@ from ..gql import FRAGMENT_PRODUCT_TYPE
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productType(typeId: 1) {
               ...fragmentProductType
             }
           }
-         ''') + FRAGMENT_PRODUCT_TYPE,],
+         """
+            )
+            + FRAGMENT_PRODUCT_TYPE,
+        ],
         {},
-        id='type_id'
+        id="type_id",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productType(name: "map") {
               ...fragmentProductType
             }
           }
-         ''') + FRAGMENT_PRODUCT_TYPE,],
+         """
+            )
+            + FRAGMENT_PRODUCT_TYPE,
+        ],
         {},
-        id='name'
+        id="name",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productType(typeId: 1, name: "map") {
               ...fragmentProductType
             }
           }
-         ''') + FRAGMENT_PRODUCT_TYPE,],
+         """
+            )
+            + FRAGMENT_PRODUCT_TYPE,
+        ],
         {},
-        id='type_id-and-name'
+        id="type_id-and-name",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productType(typeId: 2, name: "map") {
               ...fragmentProductType
             }
           }
-         ''') + FRAGMENT_PRODUCT_TYPE,],
+         """
+            )
+            + FRAGMENT_PRODUCT_TYPE,
+        ],
         {},
-        id='type_id-and-name-nonexistent'
+        id="type_id-and-name-nonexistent",
     ),
     pytest.param(
-        ['''
+        [
+            """
           {
             productType(typeId: 1) {
               typeId
@@ -71,15 +92,18 @@ params = [
               }
             }
           }
-         ''',],
+         """,
+        ],
         {},
-        id='type_id-sort-products'
+        id="type_id-sort-products",
     ),
 ]
 
+
 ##__________________________________________________________________||
-@pytest.mark.parametrize('args, kwargs', params)
+@pytest.mark.parametrize("args, kwargs", params)
 def test_schema(app, snapshot, args, kwargs):
     assert_query(app, snapshot, [args, kwargs])
+
 
 ##__________________________________________________________________||

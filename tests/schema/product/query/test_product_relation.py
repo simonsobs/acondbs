@@ -8,32 +8,44 @@ from ..gql import FRAGMENT_PRODUCT_RELATION
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productRelation(relationId: 1) {
               ...fragmentProductRelation
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION,],
+        """
+            )
+            + FRAGMENT_PRODUCT_RELATION,
+        ],
         {},
-        id='type_id'
+        id="type_id",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             productRelation(relationId: 222) {
               ...fragmentProductRelation
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION,],
+        """
+            )
+            + FRAGMENT_PRODUCT_RELATION,
+        ],
         {},
-        id='type_id-nonexistent'
+        id="type_id-nonexistent",
     ),
 ]
 
+
 ##__________________________________________________________________||
-@pytest.mark.parametrize('args, kwargs', params)
+@pytest.mark.parametrize("args, kwargs", params)
 def test_schema(app, snapshot, args, kwargs):
     assert_query(app, snapshot, [args, kwargs])
+
 
 ##__________________________________________________________________||

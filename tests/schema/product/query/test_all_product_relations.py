@@ -8,32 +8,43 @@ from ..gql import FRAGMENT_PRODUCT_RELATION_CONNECTION
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             allProductRelations {
               ...fragmentProductRelationConnection
             }
           }
-        ''') + FRAGMENT_PRODUCT_RELATION_CONNECTION,],
+        """
+            )
+            + FRAGMENT_PRODUCT_RELATION_CONNECTION,
+        ],
         {},
-        id='query'
+        id="query",
     ),
     pytest.param(
-        [textwrap.dedent('''
+        [
+            textwrap.dedent(
+                """
           {
             allProductRelations {
               totalCount
             }
           }
-        '''),],
+        """
+            ),
+        ],
         {},
-        id='total-count'
+        id="total-count",
     ),
 ]
 
+
 ##__________________________________________________________________||
-@pytest.mark.parametrize('args, kwargs', params)
+@pytest.mark.parametrize("args, kwargs", params)
 def test_schema(app, snapshot, args, kwargs):
     assert_query(app, snapshot, [args, kwargs])
+
 
 ##__________________________________________________________________||
