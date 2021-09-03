@@ -45,7 +45,9 @@ def app_users(app_empty):
 
     with y.app_context():
         sa.session.add(user1)
+        sa.session.add(token1)
         sa.session.add(admin1)
+        sa.session.add(token2)
         sa.session.add(user2)
         sa.session.commit()
     yield y
@@ -159,6 +161,9 @@ def app(app_users):
     with y.app_context():
         sa.session.add(Map)
         sa.session.add(Beam)
+        sa.session.add(relation1)
+        sa.session.add(relation2)
+        sa.session.add(relation3)
         sa.session.commit()
     yield y
 
