@@ -7,25 +7,25 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_scratch[dojocat] 1'] = {
+snapshots['test_schema[dojocat] 1'] = {
     'data': {
         'isSignedIn': True
     }
 }
 
-snapshots['test_scratch[no-token] 1'] = {
+snapshots['test_schema[no-token] 1'] = {
     'data': {
         'isSignedIn': False
     }
 }
 
-snapshots['test_scratch[octocat] 1'] = {
+snapshots['test_schema[octocat] 1'] = {
     'data': {
         'isSignedIn': True
     }
 }
 
-snapshots['test_scratch[wrong-token] 1'] = {
+snapshots['test_schema[wrong-token] 1'] = {
     'data': {
         'isSignedIn': False
     }

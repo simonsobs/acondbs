@@ -32,7 +32,7 @@ params = [
 
 @pytest.mark.parametrize("data, headers", params)
 @pytest.mark.asyncio
-async def test_scratch(app, snapshot, data, headers):
+async def test_schema(app, snapshot, data, headers):
     await assert_query(app, snapshot, data, headers)
 
 
