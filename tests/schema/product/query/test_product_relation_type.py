@@ -5,79 +5,81 @@ from ...funcs import assert_query
 
 from ..gql import FRAGMENT_PRODUCT_RELATION_TYPE
 
+HEADERS = {
+    "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
+}
+
+
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [
-            textwrap.dedent(
+        {
+            "query": textwrap.dedent(
                 """
-          {
-            productRelationType(typeId: 1) {
-              ...fragmentProductRelationType
-            }
-          }
-        """
+                {
+                  productRelationType(typeId: 1) {
+                    ...fragmentProductRelationType
+                  }
+                }
+              """
             )
             + FRAGMENT_PRODUCT_RELATION_TYPE,
-        ],
-        {},
+        },
         id="type_id",
     ),
     pytest.param(
-        [
-            textwrap.dedent(
+        {
+            "query": textwrap.dedent(
                 """
-          {
-            productRelationType(name: "parent") {
-              ...fragmentProductRelationType
-            }
-          }
-        """
+                {
+                  productRelationType(name: "parent") {
+                    ...fragmentProductRelationType
+                  }
+                }
+              """
             )
             + FRAGMENT_PRODUCT_RELATION_TYPE,
-        ],
-        {},
+        },
         id="name",
     ),
     pytest.param(
-        [
-            textwrap.dedent(
+        {
+            "query": textwrap.dedent(
                 """
-          {
-            productRelationType(typeId: 1, name: "parent") {
-              ...fragmentProductRelationType
-            }
-          }
-        """
+                {
+                  productRelationType(typeId: 1, name: "parent") {
+                    ...fragmentProductRelationType
+                  }
+                }
+              """
             )
             + FRAGMENT_PRODUCT_RELATION_TYPE,
-        ],
-        {},
+        },
         id="type_id-and-name",
     ),
     pytest.param(
-        [
-            textwrap.dedent(
+        {
+            "query": textwrap.dedent(
                 """
-          {
-            productRelationType(typeId: 2, name: "parent") {
-              ...fragmentProductRelationType
-            }
-          }
-        """
+                {
+                  productRelationType(typeId: 2, name: "parent") {
+                    ...fragmentProductRelationType
+                  }
+                }
+              """
             )
             + FRAGMENT_PRODUCT_RELATION_TYPE,
-        ],
-        {},
+        },
         id="type_id-and-name-nonexistent)",
     ),
 ]
 
 
 ##__________________________________________________________________||
-@pytest.mark.parametrize("args, kwargs", params)
-def test_schema(app, snapshot, args, kwargs):
-    assert_query(app, snapshot, [args, kwargs])
+@pytest.mark.parametrize("data", params)
+@pytest.mark.asyncio
+async def test_schema(app, snapshot, data):
+    await assert_query(app, snapshot, data, HEADERS)
 
 
 ##__________________________________________________________________||
