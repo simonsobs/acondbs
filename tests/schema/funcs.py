@@ -9,7 +9,10 @@ HEADERS_DEFAULT = {"Content-Type:": "application/json"}
 
 
 ##__________________________________________________________________||
-def assert_query(app, snapshot, query, error=False, schema=default_schema):
+async def assert_query(app, snapshot, data, headers, error=False):
+    await assert_query_asgi_client(app, snapshot, data, headers, error=False)
+
+
 async def assert_query_asgi_client(app, snapshot, data, headers, error=False):
 
     app = WSGIMiddleware(app)  # convert a wsgi app to an asgi app
@@ -25,6 +28,9 @@ async def assert_query_asgi_client(app, snapshot, data, headers, error=False):
     snapshot.assert_match(resp.json())
 
 
+def assert_query_graphene_client(
+    app, snapshot, query, error=False, schema=default_schema
+):
 
     # create test client
     # https://docs.graphene-python.org/en/latest/testing/
