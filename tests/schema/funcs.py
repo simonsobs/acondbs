@@ -1,10 +1,30 @@
 from graphene.test import Client
+from async_asgi_testclient import TestClient
+
+from a2wsgi import WSGIMiddleware
 
 from acondbs.schema import schema as default_schema
+
+HEADERS_DEFAULT = {"Content-Type:": "application/json"}
 
 
 ##__________________________________________________________________||
 def assert_query(app, snapshot, query, error=False, schema=default_schema):
+async def assert_query_asgi_client(app, snapshot, data, headers, error=False):
+
+    app = WSGIMiddleware(app)  # convert a wsgi app to an asgi app
+
+    headers_custom = headers
+    headers = HEADERS_DEFAULT.copy()
+    headers.update(headers_custom)
+
+    async with TestClient(app) as client:
+        resp = await client.post("/graphql", json=data, headers=headers)
+
+    # print(resp.json())
+    snapshot.assert_match(resp.json())
+
+
 
     # create test client
     # https://docs.graphene-python.org/en/latest/testing/
