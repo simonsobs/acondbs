@@ -10,7 +10,7 @@ HEADERS_DEFAULT = {"Content-Type:": "application/json"}
 
 ##__________________________________________________________________||
 async def assert_query(app, snapshot, data, headers, error=False):
-    await assert_query_asgi_client(app, snapshot, data, headers, error=False)
+    await assert_query_asgi_client(app, snapshot, data, headers, error=error)
 
 
 async def assert_query_asgi_client(app, snapshot, data, headers, error=False):
@@ -24,8 +24,18 @@ async def assert_query_asgi_client(app, snapshot, data, headers, error=False):
     async with TestClient(app) as client:
         resp = await client.post("/graphql", json=data, headers=headers)
 
-    # print(resp.json())
-    snapshot.assert_match(resp.json())
+    resp_json = resp.json()
+
+    # assert errors
+    if error:
+        assert "errors" in resp_json
+        return
+
+    assert "errors" not in resp_json
+
+    # snapshot test
+    #   https://github.com/syrusakbary/snapshottest/
+    snapshot.assert_match(resp_json)
 
 
 def assert_query_graphene_client(
@@ -65,17 +75,18 @@ def assert_query_graphene_client(
     snapshot.assert_match(result)
 
 
-def assert_mutation(
+async def assert_mutation(
     app,
     snapshot,
-    mutation,
-    query,
+    data_mutation,
+    headers_mutation,
+    data_query,
+    headers_query,
     mock_request_backup_db,
     success=True,
-    schema=default_schema,
 ):
-    assert_query(app, snapshot, mutation, error=not success, schema=schema)
-    assert_query(app, snapshot, query, schema=schema)
+    await assert_query(app, snapshot, data_mutation, headers_mutation, error=not success)
+    await assert_query(app, snapshot, data_query, headers_query)
     if success:
         mock_request_backup_db.assert_called()
 
