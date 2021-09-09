@@ -1,33 +1,34 @@
 import pytest
-import textwrap
 
 from ..funcs import assert_query
+
+QUERY = """
+{ webConfig {
+    configId
+    headTitle
+    toolbarTitle
+    devtoolLoadingstate
+    productCreationDialog
+    productUpdateDialog
+    productDeletionDialog
+  }
+}
+"""
+
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [textwrap.dedent('''
-          { webConfig {
-              configId
-              headTitle
-              toolbarTitle
-              devtoolLoadingstate
-              productCreationDialog
-              productUpdateDialog
-              productDeletionDialog
-            }
-          }
-          '''), ],
-        {},
-        id='query'
+        {"query": QUERY},
+        id="query",
     ),
 ]
 
+
 ##__________________________________________________________________||
-
-
-@pytest.mark.parametrize('args, kwargs', params)
-def test_schema(app, snapshot, args, kwargs):
-    assert_query(app, snapshot, [args, kwargs])
+@pytest.mark.parametrize("data", params)
+@pytest.mark.asyncio
+async def test_schema(app, snapshot, data):
+    await assert_query(app, snapshot, data)
 
 ##__________________________________________________________________||
