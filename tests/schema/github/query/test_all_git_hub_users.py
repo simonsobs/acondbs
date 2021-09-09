@@ -45,28 +45,31 @@ query AllGitHubUsers($orgMember: Boolean){
 }
 ''' + GITHUB_USER_FRAGMENT
 
+HEADERS = {
+    "Authorization": "Bearer token1"  # user1
+}
+
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [ALL_GITHUB_USERS, ],
-        {},
+        {"query": ALL_GITHUB_USERS},
         id='one'
     ),
     pytest.param(
-        [ALL_GITHUB_USERS_WITH_FILTER, ],
-        {'variables': {'orgMember': True}},
+        {"query": ALL_GITHUB_USERS_WITH_FILTER, 'variables': {'orgMember': True}},
         id='filter-on'
     ),
     pytest.param(
-        [ALL_GITHUB_USERS_WITH_FILTER, ],
-        {'variables': {'orgMember': False}},
+        {"query": ALL_GITHUB_USERS_WITH_FILTER, 'variables': {'orgMember': False}},
         id='filter-off'
     ),
 ]
 
+
 ##__________________________________________________________________||
-@pytest.mark.parametrize('args, kwargs', params)
-def test_schema(app, snapshot, args, kwargs):
-    assert_query(app, snapshot, [args, kwargs])
+@pytest.mark.parametrize("data", params)
+@pytest.mark.asyncio
+async def test_schema(app, snapshot, data):
+    await assert_query(app, snapshot, data, HEADERS)
 
 ##__________________________________________________________________||
