@@ -9,7 +9,9 @@ HEADERS_DEFAULT = {"Content-Type:": "application/json"}
 
 
 ##__________________________________________________________________||
-async def assert_query(app, snapshot, data, headers, error=False):
+async def assert_query(app, snapshot, data, headers=None, error=False):
+    if not headers:
+        headers = {}
     await assert_query_asgi_client(app, snapshot, data, headers, error=error)
 
 
