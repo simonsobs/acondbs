@@ -1,52 +1,44 @@
 import pytest
-import textwrap
-
-from graphene import Context
-from werkzeug.datastructures import Headers
 
 from ...funcs import assert_query
 
-QUERY = '{ gitHubViewer { login name avatarUrl } }'
+QUERY = "{ gitHubViewer { login name avatarUrl } }"
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [QUERY, ],
-        {
-            "context_value": Context(
-                headers=Headers(
-                    {'Authorization': 'Bearer "token1"'}
-            ))
-        },
-        id='one'
+        {"query": QUERY},
+        {"Authorization": "Bearer token1"},
+        id="one",
     ),
 ]
 
-@pytest.mark.parametrize('args, kwargs', params)
-def test_success(app, snapshot, args, kwargs):
-    assert_query(app, snapshot, [args, kwargs])
+
+@pytest.mark.parametrize("data, headers", params)
+@pytest.mark.asyncio
+async def test_success(app, snapshot, data, headers):
+    await assert_query(app, snapshot, data, headers)
+
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [QUERY, ],
-        {
-            "context_value": Context(
-                headers=Headers(
-                    {'Authorization': 'Bearer "no-such-token"'}
-            ))
-        },
-        id='wrong-token'
+        {"query": QUERY},
+        {"Authorization": "Bearer no-such-token"},
+        id="wrong-token",
     ),
     pytest.param(
-        [QUERY, ],
-        { },
-        id='no-token'
+        {"query": QUERY},
+        {},
+        id="no-token",
     ),
 ]
 
-@pytest.mark.parametrize('args, kwargs', params)
-def test_error(app, snapshot, args, kwargs):
-    assert_query(app, snapshot, [args, kwargs], error=True)
+
+@pytest.mark.parametrize("data, headers", params)
+@pytest.mark.asyncio
+async def test_error(app, snapshot, data, headers):
+    await assert_query(app, snapshot, data, headers, error=True)
+
 
 ##__________________________________________________________________||

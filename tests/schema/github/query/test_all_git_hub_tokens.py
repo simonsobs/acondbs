@@ -2,7 +2,7 @@ import pytest
 
 from ...funcs import assert_query
 
-GITHUB_TOKEN_FRAGMENT = '''
+GITHUB_TOKEN_FRAGMENT = """
 fragment GitHubTokenFragment on GitHubToken {
   tokenId
   tokenMasked
@@ -12,9 +12,10 @@ fragment GitHubTokenFragment on GitHubToken {
     login
   }
 }
-'''
+"""
 
-ALL_GITHUB_TOKENS = '''
+ALL_GITHUB_TOKENS = (
+    """
 {
   allGitHubTokens {
     totalCount
@@ -25,9 +26,12 @@ ALL_GITHUB_TOKENS = '''
     }
   }
 }
-''' + GITHUB_TOKEN_FRAGMENT
+"""
+    + GITHUB_TOKEN_FRAGMENT
+)
 
-ALL_GITHUB_TOKENS_WITH_ORG_ACCESS = '''
+ALL_GITHUB_TOKENS_WITH_ORG_ACCESS = (
+    """
 {
   allGitHubTokens(filters: { scopeIlike: "%read:org%" }) {
     totalCount
@@ -38,25 +42,32 @@ ALL_GITHUB_TOKENS_WITH_ORG_ACCESS = '''
     }
   }
 }
-''' + GITHUB_TOKEN_FRAGMENT
+"""
+    + GITHUB_TOKEN_FRAGMENT
+)
+
+HEADERS = {
+    "Authorization": "Bearer token1"  # user1
+}
+
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [ALL_GITHUB_TOKENS, ],
-        {},
-        id='simple'
+        {"query": ALL_GITHUB_TOKENS},
+        id="simple",
     ),
     pytest.param(
-        [ALL_GITHUB_TOKENS_WITH_ORG_ACCESS, ],
-        {},
-        id='filter'
+        {"query": ALL_GITHUB_TOKENS_WITH_ORG_ACCESS},
+        id="filter",
     ),
 ]
 
+
 ##__________________________________________________________________||
-@pytest.mark.parametrize('args, kwargs', params)
-def test_schema(app, snapshot, args, kwargs):
-    assert_query(app, snapshot, [args, kwargs])
+@pytest.mark.parametrize("data", params)
+@pytest.mark.asyncio
+async def test_schema(app, snapshot, data):
+    await assert_query(app, snapshot, data, HEADERS)
 
 ##__________________________________________________________________||

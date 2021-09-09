@@ -1,47 +1,59 @@
 import pytest
 
-from acondbs.schema import (
-    schema,
-    schema_public,
-    schema_private,
-    schema_admin
-)
-
 from .funcs import assert_query
+
+QUERY = '''
+  {
+    __schema {
+      queryType {
+        fields {
+          name
+        }
+      }
+      mutationType {
+        fields {
+          name
+        }
+      }
+      subscriptionType {
+        fields {
+          name
+        }
+      }
+    }
+  }
+'''
+
 
 ##__________________________________________________________________||
 params = [
-    pytest.param(schema, id='all'),
-    pytest.param(schema_public, id='public'),
-    pytest.param(schema_private, id='private'),
-    pytest.param(schema_admin, id='admin'),
+    pytest.param(
+        {"query": QUERY},
+        {"Authorization": "Bearer 90b2ee5fed25506df04fd37343bb68d1803dd97f"},
+        id="admin",
+    ),
+    pytest.param(
+        {"query": QUERY},
+        {"Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"},
+        id="private",
+    ),
+    pytest.param(
+        {"query": QUERY},
+        {"Authorization": "Bearer 1a2d18f270df3abacfb85c5413b668f97794b4ce"},
+        id="public-wrong-token",
+    ),
+    pytest.param(
+        {"query": QUERY},
+        {},
+        id="public-no-token",
+    ),
 ]
 
-@pytest.mark.parametrize('schema', params)
-def test_types(schema, app, snapshot):
 
-    query = '''
-      {
-        __schema {
-          queryType {
-            fields {
-              name
-            }
-          }
-          mutationType {
-            fields {
-              name
-            }
-          }
-          subscriptionType {
-            fields {
-              name
-            }
-          }
-        }
-      }
-    '''
+@pytest.mark.parametrize("data, headers", params)
+@pytest.mark.asyncio
+async def test_schema(app_users, snapshot, data, headers):
+    await assert_query(app_users, snapshot, data, headers)
 
-    assert_query(app, snapshot, [[query], {}], schema=schema)
 
 ##__________________________________________________________________||

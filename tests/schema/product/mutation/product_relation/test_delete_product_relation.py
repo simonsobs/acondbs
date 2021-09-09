@@ -2,51 +2,79 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import (
-    FRAGMENT_PRODUCT_RELATION_CONNECTION,
-    DELETE_PRODUCT_RELATION
-    )
+from ...gql import FRAGMENT_PRODUCT_RELATION_CONNECTION, DELETE_PRODUCT_RELATION
 
-QEURY = '''
+QEURY = (
+    """
 {
   allProductRelations {
     ...fragmentProductRelationConnection
   }
 }
-''' + FRAGMENT_PRODUCT_RELATION_CONNECTION
+"""
+    + FRAGMENT_PRODUCT_RELATION_CONNECTION
+)
+
+HEADERS = {
+    "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
+}
+
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [
-            [DELETE_PRODUCT_RELATION],
-            {'variables': {'relationId': 2}},
-        ],
-        [[QEURY], {}],
-        id='create'
+        {"query": DELETE_PRODUCT_RELATION, "variables": {"relationId": 2}},
+        {"query": QEURY},
+        id="create",
     ),
 ]
 
-@pytest.mark.parametrize('mutation, query', params)
-def test_schema_success(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation(app, snapshot, mutation, query,
-                    mock_request_backup_db, success=True)
+
+@pytest.mark.parametrize("data_mutation, data_query", params)
+@pytest.mark.asyncio
+async def test_schema_success(
+    app, snapshot, data_mutation, data_query, mock_request_backup_db
+):
+
+    success = True
+    await assert_mutation(
+        app,
+        snapshot,
+        data_mutation,
+        HEADERS,
+        data_query,
+        HEADERS,
+        mock_request_backup_db,
+        success,
+    )
+
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        [
-            [DELETE_PRODUCT_RELATION],
-            {'variables': {'relationId': 120}},
-        ],
-        [[QEURY], {}],
-        id='error-nonexistent'
+        {"query": DELETE_PRODUCT_RELATION, "variables": {"relationId": 120}},
+        {"query": QEURY},
+        id="error-nonexistent",
     ),
 ]
 
-@pytest.mark.parametrize('mutation, query', params)
-def test_schema_error(app, snapshot, mutation, query, mock_request_backup_db):
-    assert_mutation(app, snapshot, mutation, query,
-                    mock_request_backup_db, success=False)
+
+@pytest.mark.parametrize("data_mutation, data_query", params)
+@pytest.mark.asyncio
+async def test_schema_error(
+    app, snapshot, data_mutation, data_query, mock_request_backup_db
+):
+    success = False
+    await assert_mutation(
+        app,
+        snapshot,
+        data_mutation,
+        HEADERS,
+        data_query,
+        HEADERS,
+        mock_request_backup_db,
+        success,
+    )
+
 
 ##__________________________________________________________________||

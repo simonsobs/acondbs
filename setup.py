@@ -38,6 +38,15 @@ setup(
         "cryptography>=3.2",
         "gitpython>=3.1",
         "requests>=2.24",
+        "a2wsgi>=1.4"
     ],
-    extras_require={"tests": ["pytest>=5.4", "pytest-cov>=2.8", "snapshottest>0.5"]},
+    extras_require={
+        "tests": [
+            "pytest>=6.2",
+            "pytest-cov>=2.12",
+            'pytest-asyncio>=0.14',
+            "snapshottest>=0.6",
+            "async-asgi-testclient>=1.4.6",
+        ]
+    },
 )
