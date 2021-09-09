@@ -85,7 +85,9 @@ async def assert_mutation(
     mock_request_backup_db,
     success=True,
 ):
-    await assert_query(app, snapshot, data_mutation, headers_mutation, error=not success)
+    await assert_query(
+        app, snapshot, data_mutation, headers_mutation, error=not success
+    )
     await assert_query(app, snapshot, data_query, headers_query)
     if success:
         mock_request_backup_db.assert_called()
