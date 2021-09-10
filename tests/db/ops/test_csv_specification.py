@@ -11,39 +11,40 @@ xyz",def,ghi\
 params = [
     pytest.param(
         ('abc,def,ghi', ),
-        [['abc','def','ghi']],
+        [['abc', 'def', 'ghi']],
         id='simple'
     ),
 
     pytest.param(
         ('"abc",def,ghi', ),
-        [['abc','def','ghi']],
+        [['abc', 'def', 'ghi']],
         id='double-quotes-removed'
     ),
 
     pytest.param(
         ("'abc',def,ghi", ),
-        [["'abc'",'def','ghi']],
+        [["'abc'", 'def', 'ghi']],
         id='single-quotes-not-removed'
     ),
 
     pytest.param(
         ('"""abc",def,ghi', ),
-        [['"abc','def','ghi']],
+        [['"abc', 'def', 'ghi']],
         id='to-include-double-quote'),
 
     pytest.param(
         ('"ab,c",def,ghi', ),
-        [['ab,c','def','ghi']],
+        [['ab,c', 'def', 'ghi']],
         id='to-include-comma'
     ),
 
     pytest.param(
         (multiline_entry, ),
-        [['abc\nxyz','def','ghi']],
+        [['abc\nxyz', 'def', 'ghi']],
         id='to-include-linebreak'
     ),
 ]
+
 
 @pytest.mark.parametrize('input, expected', params)
 def test_csv_specification(input, expected):
