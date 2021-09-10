@@ -13,21 +13,21 @@ from acondbs.db.ops import define_tables, import_tables_from_csv_files
 ##__________________________________________________________________||
 from .constants import SAMPLE_DIR
 
+
 ##__________________________________________________________________||
 @pytest.fixture(scope="session")
 def create_db_with_csv_files():
-    """create a test DB, load data from CSV files
-
-    """
-    config_path = Path(SAMPLE_DIR, 'config.py')
-    csvdir = Path(SAMPLE_DIR, 'csv')
+    """create a test DB, load data from CSV files"""
+    config_path = Path(SAMPLE_DIR, "config.py")
+    csvdir = Path(SAMPLE_DIR, "csv")
     app = create_app(config_path=config_path)
     with app.app_context():
         define_tables()
         import_tables_from_csv_files(csvdir)
     yield
-    database_path = Path(SAMPLE_DIR, 'product.sqlite3')
+    database_path = Path(SAMPLE_DIR, "product.sqlite3")
     database_path.unlink()
+
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -38,12 +38,13 @@ def database_uri(create_db_with_csv_files, tmpdir_factory):
     temporarily folder and returns the URI for the copy.
 
     """
-    org_database_path = Path(SAMPLE_DIR, 'product.sqlite3')
-    tmpdir = str(tmpdir_factory.mktemp('instance'))
-    tmp_database_path = Path(tmpdir, 'product.sqlite3')
+    org_database_path = Path(SAMPLE_DIR, "product.sqlite3")
+    tmpdir = str(tmpdir_factory.mktemp("instance"))
+    tmp_database_path = Path(tmpdir, "product.sqlite3")
     shutil.copy2(org_database_path, tmp_database_path)
-    ret = 'sqlite:///{}'.format(tmp_database_path)
+    ret = "sqlite:///{}".format(tmp_database_path)
     yield ret
+
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -62,9 +63,12 @@ def app(database_uri):
     Flask
 
     """
-    config_path = Path(SAMPLE_DIR, 'config.py')
-    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
+    config_path = Path(SAMPLE_DIR, "config.py")
+    app = create_app(
+        config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri
+    )
     yield app
+
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -91,6 +95,7 @@ def client(app):
     """
     yield app.test_client()
 
+
 ##__________________________________________________________________||
 @pytest.fixture
 def runner(app):
@@ -111,28 +116,43 @@ def runner(app):
     """
     yield app.test_cli_runner()
 
+
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def db_backup_global_variables(monkeypatch):
     from acondbs.db import backup
-    monkeypatch.setattr(backup, '_lock', threading.Lock())
-    monkeypatch.setattr(backup, '_capped_backup_func', None)
+
+    monkeypatch.setattr(backup, "_lock", threading.Lock())
+    monkeypatch.setattr(backup, "_capped_backup_func", None)
     yield
     backup.end_backup_thread()
+
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_request_backup_db(monkeypatch):
-    """mock request_backup_db() so that backups won't be actually taken in tests
-    """
+    """mock request_backup_db() so that backups won't be actually taken in tests"""
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.schema.product.mutation.product.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.mutation.product_file_path.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.mutation.product_type.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.mutation.product_relation_type.request_backup_db", y)
-    monkeypatch.setattr("acondbs.schema.product.mutation.product_relation.request_backup_db", y)
+    monkeypatch.setattr(
+        "acondbs.schema.product.mutation.product.request_backup_db", y
+    )
+    monkeypatch.setattr(
+        "acondbs.schema.product.mutation.product_file_path.request_backup_db",
+        y,
+    )
+    monkeypatch.setattr(
+        "acondbs.schema.product.mutation.product_type.request_backup_db", y
+    )
+    monkeypatch.setattr(
+        "acondbs.schema.product.mutation.product_relation_type.request_backup_db",
+        y,
+    )
+    monkeypatch.setattr(
+        "acondbs.schema.product.mutation.product_relation.request_backup_db", y
+    )
     monkeypatch.setattr("acondbs.schema.github.mutation.request_backup_db", y)
     yield y
+
 
 ##__________________________________________________________________||
 @pytest.fixture(autouse=True)
@@ -148,5 +168,6 @@ def mock_datetime(monkeypatch):
     monkeypatch.setattr("acondbs.models.github.github_token.datetime", y)
     monkeypatch.setattr("acondbs.models.product.product.datetime", y)
     yield y
+
 
 ##__________________________________________________________________||

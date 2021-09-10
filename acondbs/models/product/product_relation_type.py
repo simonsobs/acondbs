@@ -2,25 +2,30 @@ from ...db.sa import sa
 
 from sqlalchemy.event import listens_for
 
+
 ##__________________________________________________________________||
 class ProductRelationType(sa.Model):
-    __tablename__ = 'product_relation_types'
+    __tablename__ = "product_relation_types"
     type_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
-    reverse_type_id = sa.Column(sa.ForeignKey('product_relation_types.type_id'))
+    reverse_type_id = sa.Column(
+        sa.ForeignKey("product_relation_types.type_id")
+    )
     reverse = sa.relationship(
         lambda: ProductRelationType,
         uselist=False,
         foreign_keys=[reverse_type_id],
         remote_side="ProductRelationType.type_id",
         cascade="all",
-        post_update=True)
+        post_update=True,
+    )
     indef_article = sa.Column(sa.Text())
     singular = sa.Column(sa.Text())
     plural = sa.Column(sa.Text())
 
+
 ##__________________________________________________________________||
-@listens_for(ProductRelationType.reverse, 'set')
+@listens_for(ProductRelationType.reverse, "set")
 def set_reverse(target, value, oldvalue, initiator):
     """set the reciprocating reverse
 
@@ -40,12 +45,13 @@ def set_reverse(target, value, oldvalue, initiator):
     try:
         if type1.__avoid_recursive:
             return
-    except:
+    except Exception:
         pass
 
     if not type2.reverse:
         type2.__avoid_recursive = True
         type2.reverse = type1
         del type2.__avoid_recursive
+
 
 ##__________________________________________________________________||

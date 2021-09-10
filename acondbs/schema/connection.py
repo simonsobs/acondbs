@@ -4,11 +4,11 @@ from graphene.relay import Connection
 
 ##__________________________________________________________________||
 class CountedConnection(Connection):
-    '''
+    """
 
     copied from https://github.com/graphql-python/graphene-sqlalchemy/issues/153#issuecomment-501949939
 
-    '''
+    """
 
     class Meta:
         # Being abstract is important because we can't reference the

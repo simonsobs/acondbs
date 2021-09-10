@@ -14,6 +14,7 @@ _module_path = Path(__file__).resolve().parent.parent
 # https://docs.python.org/3/library/logging.html#logrecord-objects
 _old_factory = logging.getLogRecordFactory()
 
+
 def record_factory(*args, **kwargs):
     """replace the pathname (the full pathname of the source file) with
     the relative path of the source file in the package
@@ -27,12 +28,16 @@ def record_factory(*args, **kwargs):
 
     record = _old_factory(*args, **kwargs)
     try:
-        record.pathname = Path(record.pathname).resolve().relative_to(_module_path)
-    except:
+        record.pathname = (
+            Path(record.pathname).resolve().relative_to(_module_path)
+        )
+    except Exception:
         pass
     return record
 
+
 logging.setLogRecordFactory(record_factory)
+
 
 ##__________________________________________________________________||
 def configure_logging():
@@ -46,26 +51,32 @@ def configure_logging():
 
     """
 
-    logger_name = __name__.split('.')[0] # i.e., "acondbs" (__name__ = "acondbs._logging")
-    logger_level = 'DEBUG' # 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
-    dictConfig({
-        'version': 1,
-        'formatters': {'default': {
-            'format': '{asctime} {levelname:>8s} {pathname}:{lineno}: {message}',
-            'style': "{",
-            'datefmt': '%Y-%m-%d %H:%M:%S'
-        }},
-        'handlers': {'wsgi': {
-            'class': 'logging.StreamHandler',
-            'stream': 'ext://flask.logging.wsgi_errors_stream',
-            'formatter': 'default'
-        }},
-        'loggers': {
-            logger_name: {
-                'level': logger_level,
-                'handlers': ['wsgi']
-            }
+    logger_name = __name__.split(".")[0]
+    # i.e., "acondbs" (__name__ = "acondbs._logging")
+
+    logger_level = "DEBUG"  # 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+    dictConfig(
+        {
+            "version": 1,
+            "formatters": {
+                "default": {
+                    "format": "{asctime} {levelname:>8s} {pathname}:{lineno}: {message}",
+                    "style": "{",
+                    "datefmt": "%Y-%m-%d %H:%M:%S",
+                }
+            },
+            "handlers": {
+                "wsgi": {
+                    "class": "logging.StreamHandler",
+                    "stream": "ext://flask.logging.wsgi_errors_stream",
+                    "formatter": "default",
+                }
+            },
+            "loggers": {
+                logger_name: {"level": logger_level, "handlers": ["wsgi"]}
+            },
         }
-    })
+    )
+
 
 ##__________________________________________________________________||

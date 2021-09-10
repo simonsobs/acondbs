@@ -1,5 +1,6 @@
 from acondbs.db.sa import sa
 
+
 ##__________________________________________________________________||
 def test_table_names(app, snapshot):
     '''test the table names

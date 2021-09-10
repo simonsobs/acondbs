@@ -2,53 +2,61 @@ from ...db.sa import sa
 
 from sqlalchemy.event import listens_for
 
+
 ##__________________________________________________________________||
 class ProductRelation(sa.Model):
-    __tablename__ = 'product_relations'
+    __tablename__ = "product_relations"
     relation_id = sa.Column(sa.Integer(), primary_key=True)
     type_id = sa.Column(
         sa.Integer(),
-        sa.ForeignKey('product_relation_types.type_id'),
-        nullable=False)
+        sa.ForeignKey("product_relation_types.type_id"),
+        nullable=False,
+    )
     type_ = sa.relationship(
-        "ProductRelationType",
-        backref=sa.backref("relations")
+        "ProductRelationType", backref=sa.backref("relations")
     )
     self_product_id = sa.Column(
-        sa.Integer(),
-        sa.ForeignKey('products.product_id'),
-        nullable=False)
+        sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
+    )
     self_ = sa.relationship(
         "Product",
         foreign_keys=[self_product_id],
-        backref=sa.backref("relations", cascade="all, delete-orphan"))
+        backref=sa.backref("relations", cascade="all, delete-orphan"),
+    )
     other_product_id = sa.Column(
-        sa.Integer(),
-        sa.ForeignKey('products.product_id'),
-        nullable=False)
+        sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
+    )
     other = sa.relationship("Product", foreign_keys=[other_product_id])
-    reverse_relation_id = sa.Column(sa.ForeignKey('product_relations.relation_id'))
+    reverse_relation_id = sa.Column(
+        sa.ForeignKey("product_relations.relation_id")
+    )
     reverse = sa.relationship(
         lambda: ProductRelation,
         uselist=False,
         foreign_keys=[reverse_relation_id],
         remote_side="ProductRelation.relation_id",
         cascade="all",
-        post_update=True)
+        post_update=True,
+    )
     __table_args__ = (
         sa.UniqueConstraint(
-            'type_id', 'self_product_id', 'other_product_id',
-            name='_type_id_self_product_id_other_product_id'), )
+            "type_id",
+            "self_product_id",
+            "other_product_id",
+            name="_type_id_self_product_id_other_product_id",
+        ),
+    )
+
 
 ##__________________________________________________________________||
-@listens_for(ProductRelation.type_, 'set')
+@listens_for(ProductRelation.type_, "set")
 def set_reverse_type(target, value, oldvalue, initiator):
     relation = target
 
     try:
         if relation.__avoid_recursive:
             return
-    except:
+    except Exception:
         pass
 
     if not value.reverse:
@@ -69,7 +77,8 @@ def set_reverse_type(target, value, oldvalue, initiator):
         relation.reverse.type_ = value.reverse
         del relation.reverse.__avoid_recursive
 
-@listens_for(ProductRelation.self_, 'set')
+
+@listens_for(ProductRelation.self_, "set")
 def set_reverse_other(target, value, oldvalue, initiator):
     relation = target
 
@@ -79,7 +88,7 @@ def set_reverse_other(target, value, oldvalue, initiator):
     try:
         if relation.__avoid_recursive:
             return
-    except:
+    except Exception:
         pass
 
     if not relation.reverse.other:
@@ -87,7 +96,8 @@ def set_reverse_other(target, value, oldvalue, initiator):
         relation.reverse.other = value
         del relation.reverse.__avoid_recursive
 
-@listens_for(ProductRelation.other, 'set')
+
+@listens_for(ProductRelation.other, "set")
 def set_reverse_self(target, value, oldvalue, initiator):
     relation = target
 
@@ -97,12 +107,13 @@ def set_reverse_self(target, value, oldvalue, initiator):
     try:
         if relation.__avoid_recursive:
             return
-    except:
+    except Exception:
         pass
 
     if not relation.reverse.self_:
         relation.reverse.__avoid_recursive = True
         relation.reverse.self_ = value
         del relation.reverse.__avoid_recursive
+
 
 ##__________________________________________________________________||

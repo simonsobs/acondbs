@@ -4,19 +4,18 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 from acondbs.db.sa import sa
-from acondbs.models import (
-    GitHubToken,
-    GitHubUser
-)
+from acondbs.models import GitHubToken, GitHubUser
+
 
 ##__________________________________________________________________||
 @pytest.fixture
 def app_empty():
-    database_uri ="sqlite:///:memory:"
+    database_uri = "sqlite:///:memory:"
     y = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     with y.app_context():
         define_tables()
     yield y
+
 
 @pytest.fixture
 def app(app_empty):
@@ -34,12 +33,17 @@ def app(app_empty):
     #
 
     user1 = GitHubUser(login="octocat", git_hub_id="04:User583231")
-    token1 = GitHubToken(token="token_001", scope="read:org", user=user1)
-    token2 = GitHubToken(token="token_002", scope="read:org", user=user1)
+    token1 = GitHubToken(  # noqa: F841
+        token="token_001", scope="read:org", user=user1
+    )
+    token2 = GitHubToken(  # noqa: F841
+        token="token_002", scope="read:org", user=user1
+    )
 
     with y.app_context():
         sa.session.add(user1)
         sa.session.commit()
     yield y
+
 
 ##__________________________________________________________________||

@@ -1,9 +1,6 @@
-import pytest
-
-from sqlalchemy import exc
-
 from acondbs.db.sa import sa
 from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
+
 
 ##__________________________________________________________________||
 def test_relation(app):
@@ -16,6 +13,7 @@ def test_relation(app):
         assert user1 == membership.member
         assert [membership] == org1.memberships
         assert [membership] == user1.memberships
+
 
 ##__________________________________________________________________||
 def test_cascade_delete_org(app):
@@ -33,6 +31,7 @@ def test_cascade_delete_org(app):
         assert len(orgs) == 0
         assert len(users) == 1
 
+
 def test_cascade_delete_user(app):
 
     with app.app_context():
@@ -48,6 +47,7 @@ def test_cascade_delete_user(app):
         assert len(orgs) == 1
         assert len(users) == 0
 
+
 def test_cascade_delete_membership(app):
 
     with app.app_context():
@@ -62,5 +62,6 @@ def test_cascade_delete_membership(app):
         assert len(memberships) == 0
         assert len(orgs) == 1
         assert len(users) == 1
+
 
 ##__________________________________________________________________||

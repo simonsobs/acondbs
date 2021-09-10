@@ -8,16 +8,18 @@ https://github.com/art1415926535/graphene-sqlalchemy-filter/blob/1.10.2/examples
 
 """
 import graphene
-from sqlalchemy import func
-from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
+from graphene_sqlalchemy_filter import (
+    FilterableConnectionField,
+    FilterSet,
+)
 
 from ..models import (
     Product as ProductModel,
     ProductType as ProductTypeModel,
     GitHubToken as GitHubTokenModel,
     GitHubUser as GitHubUserModel,
-    GitHubOrgMembership as GitHubOrgMembershipModel
 )
+
 
 ##__________________________________________________________________||
 class ProductFilter(FilterSet):
@@ -26,7 +28,9 @@ class ProductFilter(FilterSet):
     class Meta:
         model = ProductModel
         fields = {
-            'type_id': ['eq', ],
+            "type_id": [
+                "eq",
+            ],
         }
 
     @staticmethod
@@ -37,18 +41,23 @@ class ProductFilter(FilterSet):
         filter_ = ProductTypeModel.name == value
         return query, filter_
 
+
 class ProductTypeFilter(FilterSet):
     class Meta:
         model = ProductTypeModel
-        fields = { }
+        fields = {}
+
 
 ##__________________________________________________________________||
 class GitHubTokenFilter(FilterSet):
     class Meta:
         model = GitHubTokenModel
         fields = {
-            'scope': ['ilike', ],
+            "scope": [
+                "ilike",
+            ],
         }
+
 
 ##__________________________________________________________________||
 class GitHubUserFilter(FilterSet):
@@ -56,12 +65,13 @@ class GitHubUserFilter(FilterSet):
 
     class Meta:
         model = GitHubUserModel
-        fields = { }
+        fields = {}
 
     @staticmethod
     def org_member_filter(info, query, value):
         filter_ = GitHubUserModel.memberships.any() if value else None
         return query, filter_
+
 
 ##__________________________________________________________________||
 class PFilterableConnectionField(FilterableConnectionField):
@@ -69,7 +79,8 @@ class PFilterableConnectionField(FilterableConnectionField):
         ProductModel: ProductFilter(),
         ProductTypeModel: ProductTypeFilter(),
         GitHubTokenModel: GitHubTokenFilter(),
-        GitHubUserModel: GitHubUserFilter()
-   }
+        GitHubUserModel: GitHubUserFilter(),
+    }
+
 
 ##__________________________________________________________________||

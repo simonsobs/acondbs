@@ -13,29 +13,31 @@ https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping
 """
 
 ##__________________________________________________________________||
-from .product import (
+from .product import (  # noqa: F401
     ProductType,
     Product,
     ProductFilePath,
     ProductRelationType,
-    ProductRelation
+    ProductRelation,
 )
 
-from .github import (
+from .github import (  # noqa: F401
     GitHubToken,
     GitHubOrg,
     GitHubUser,
-    GitHubOrgMembership
+    GitHubOrgMembership,
 )
 
-from .account import AccountAdmin
+from .account import AccountAdmin  # noqa: F401
 
-from .web import WebConfig
+from .web import WebConfig  # noqa: F401
+
 
 ##__________________________________________________________________||
 def init_app(app):
     _add_owners_to_db_as_admins(app)
     # remove_git_hub_tokens_with_invalid_decryption_key(app)
+
 
 ##__________________________________________________________________||
 def _add_owners_to_db_as_admins(app):
@@ -47,12 +49,12 @@ def _add_owners_to_db_as_admins(app):
     with app.app_context():
         try:
             _ = AccountAdmin.query.all()
-        except sqlalchemy.exc.OperationalError as e:
+        except sqlalchemy.exc.OperationalError:
             return
 
     with app.app_context():
 
-        owners = app.config.get('ACONDBS_OWNERS_GITHUB_LOGINS', "")
+        owners = app.config.get("ACONDBS_OWNERS_GITHUB_LOGINS", "")
         # e.g., "octocat,dojocat"
 
         owners = {e.strip() for e in owners.split(",")}
@@ -65,22 +67,32 @@ def _add_owners_to_db_as_admins(app):
         owners = sorted(owners)
 
         for owner in owners:
-            if (admin := AccountAdmin.query.filter_by(git_hub_login=owner).one_or_none()) is None:
+            if (
+                admin := AccountAdmin.query.filter_by(
+                    git_hub_login=owner
+                ).one_or_none()
+            ) is None:
                 admin = AccountAdmin(git_hub_login=owner)
                 sa.session.add(admin)
         sa.session.commit()
 
+
 ##__________________________________________________________________||
 def remove_git_hub_tokens_with_invalid_decryption_key(app):
     from ..db.sa import sa
-    from sqlalchemy import func
+
     with app.app_context():
-        token_ids = [e[0] for e in sa.session.query(GitHubToken.token_id).all()]
+        token_ids = [
+            e[0] for e in sa.session.query(GitHubToken.token_id).all()
+        ]
         for token_id in token_ids:
             try:
-                token = GitHubToken.query.filter_by(token_id=token_id).one()
+                token = GitHubToken.query.filter_by(  # noqa: F841
+                    token_id=token_id
+                ).one()
             except ValueError:
                 sql = f"delete from {GitHubToken.__tablename__} where token_id={token_id};"
                 sa.engine.execute(sql)
+
 
 ##__________________________________________________________________||

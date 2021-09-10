@@ -1,5 +1,6 @@
 from acondbs.models import Product
 
+
 ##__________________________________________________________________||
 def test_relations(app):
 
@@ -15,20 +16,19 @@ def test_relations(app):
     #               <-(parent)--   |        |
     #                              +--------+
 
-
     with app.app_context():
-        parent1 = Product.query.filter_by(name='parent1').first()
-        child1 = Product.query.filter_by(name='child1').first()
-        child2 = Product.query.filter_by(name='child2').first()
+        parent1 = Product.query.filter_by(name="parent1").first()
+        child1 = Product.query.filter_by(name="child1").first()
+        child2 = Product.query.filter_by(name="child2").first()
 
         assert 2 == len(parent1.relations)
         assert 1 == len(child1.relations)
         assert 1 == len(child2.relations)
 
-        assert 'child' == parent1.relations[0].type_.name
-        assert 'child' == parent1.relations[1].type_.name
-        assert 'parent' == child1.relations[0].type_.name
-        assert 'parent' == child2.relations[0].type_.name
+        assert "child" == parent1.relations[0].type_.name
+        assert "child" == parent1.relations[1].type_.name
+        assert "parent" == child1.relations[0].type_.name
+        assert "parent" == child2.relations[0].type_.name
 
         assert child1 is parent1.relations[0].other
         assert child2 is parent1.relations[1].other
@@ -41,5 +41,6 @@ def test_relations(app):
 
         assert parent1.relations[1] is child2.relations[0].reverse
         assert parent1.relations[1].reverse is child2.relations[0]
+
 
 ##__________________________________________________________________||

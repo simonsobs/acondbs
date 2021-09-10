@@ -1,6 +1,7 @@
 from acondbs.db.sa import sa
 from acondbs.models import AccountAdmin
 
+
 ##__________________________________________________________________||
 def test_entry(app_empty):
     app = app_empty
@@ -12,7 +13,8 @@ def test_entry(app_empty):
         sa.session.commit()
 
     with app.app_context():
-        admin1 = AccountAdmin.query.filter_by(git_hub_login='octocat').one()
-        assert 'octocat' == admin1.git_hub_login
+        admin1 = AccountAdmin.query.filter_by(git_hub_login="octocat").one()
+        assert "octocat" == admin1.git_hub_login
+
 
 ##__________________________________________________________________||

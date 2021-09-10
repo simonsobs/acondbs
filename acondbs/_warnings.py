@@ -11,13 +11,15 @@ _module_path = Path(__file__).resolve().parent.parent
 # the path to the dir in which the module is installed,
 # i.e., the one dir above the module path.
 
+
 def format(message, category, filename, lineno, file=None, line=None):
     try:
         filename = Path(filename).resolve().relative_to(_module_path)
-    except:
+    except Exception:
         pass
-    ret = '{}:{}: {}\n'.format(filename, lineno, message)
+    ret = "{}:{}: {}\n".format(filename, lineno, message)
     return ret
+
 
 warnings.formatwarning = format
 

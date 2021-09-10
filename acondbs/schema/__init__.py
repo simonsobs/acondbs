@@ -1,13 +1,8 @@
 import graphene
 from graphene import relay
 
-from . import (
-    version as version_,
-    web,
-    auth,
-    github,
-    product as p
-)
+from . import version as version_, web, auth, github, product as p
+
 
 ##__________________________________________________________________||
 class QueryPublic(graphene.ObjectType):
@@ -15,8 +10,10 @@ class QueryPublic(graphene.ObjectType):
     is_signed_in = auth.query.is_signed_in_field
     git_hub_o_auth_app_info = github.query.git_hub_o_auth_app_info_field
 
+
 class MutationPublic(graphene.ObjectType):
     authenticate_with_git_hub = github.mutation.AuthenticateWithGitHub.Field()
+
 
 ##__________________________________________________________________||
 class QueryPrivate(QueryPublic):
@@ -45,6 +42,7 @@ class QueryPrivate(QueryPublic):
     product_relation_type = p.query.product_relation_type_field
     product_type = p.query.product_type_field
 
+
 class MutationPrivate(MutationPublic):
 
     #
@@ -59,13 +57,18 @@ class MutationPrivate(MutationPublic):
     create_product_relation = p.mutation.CreateProductRelation.Field()
     delete_product_relation = p.mutation.DeleteProductRelation.Field()
 
-    create_product_relation_types = p.mutation.CreateProductRelationTypes.Field()
-    delete_product_relation_types = p.mutation.DeleteProductRelationTypes.Field()
+    create_product_relation_types = (
+        p.mutation.CreateProductRelationTypes.Field()
+    )
+    delete_product_relation_types = (
+        p.mutation.DeleteProductRelationTypes.Field()
+    )
     update_product_relation_type = p.mutation.UpdateProductRelationType.Field()
 
     create_product_type = p.mutation.CreateProductType.Field()
     delete_product_type = p.mutation.DeleteProductType.Field()
     update_product_type = p.mutation.UpdateProductType.Field()
+
 
 ##__________________________________________________________________||
 class QueryAdmin(QueryPrivate):
@@ -75,23 +78,33 @@ class QueryAdmin(QueryPrivate):
     all_git_hub_tokens = github.query.all_git_hub_tokens_field
     all_git_hub_users = github.query.all_git_hub_users_field
 
+
 class MutationAdmin(MutationPrivate):
 
     #
     add_git_hub_org = github.mutation.AddGitHubOrg.Field()
     delete_git_hub_org = github.mutation.DeleteGitHubOrg.Field()
 
-    add_git_hub_admin_app_token = github.mutation.AddGitHubAdminAppToken.Field()
-    delete_git_hub_admin_app_token = github.mutation.DeleteGitHubAdminAppToken.Field()
+    add_git_hub_admin_app_token = (
+        github.mutation.AddGitHubAdminAppToken.Field()
+    )
+    delete_git_hub_admin_app_token = (
+        github.mutation.DeleteGitHubAdminAppToken.Field()
+    )
 
-    update_git_hub_org_member_lists = github.mutation.UpdateGitHubOrgMemberLists.Field()
+    update_git_hub_org_member_lists = (
+        github.mutation.UpdateGitHubOrgMemberLists.Field()
+    )
+
 
 ##__________________________________________________________________||
 class Query(QueryAdmin):
     pass
 
+
 class Mutation(MutationAdmin):
     pass
+
 
 ##__________________________________________________________________||
 schema_public = graphene.Schema(query=QueryPublic, mutation=MutationPublic)

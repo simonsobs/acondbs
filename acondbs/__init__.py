@@ -3,20 +3,21 @@ from pathlib import Path
 from flask import Flask
 from flask_cors import CORS
 
-from flask import debughelpers
 # This import prevents the error, ImportError: cannot import name
 # 'attach_enctype_error_multidict' from partially initialized module
 # 'flask.debughelpers' (most likely due to a circular import)
+from flask import debughelpers  # noqa: F401
 
-from . import _warnings
+from . import _warnings  # noqa: F401
 from . import _logging
 
 ##__________________________________________________________________||
 DEFAULT_CONFIG_DICT = dict(
-    SECRET_KEY='dev',
+    SECRET_KEY="dev",
     SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
-    SQLALCHEMY_TRACK_MODIFICATIONS=False
+    SQLALCHEMY_TRACK_MODIFICATIONS=False,
 )
+
 
 ##__________________________________________________________________||
 def create_app(config_path=None, **kwargs):
@@ -47,24 +48,28 @@ def create_app(config_path=None, **kwargs):
         app.config.from_mapping(**kwargs)
 
     from . import db
+
     db.init_app(app)
 
     from . import blueprint
+
     blueprint.init_app(app)
 
     from . import models
+
     models.init_app(app)
 
-    CORS(app, resources={r'/*': {'origins': '*'}})
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     app.logger.info('"app" initialized')
     return app
 
+
 ##__________________________________________________________________||
 
-from ._version import get_versions
+from ._version import get_versions  # noqa: E402
 
-__version__ = get_versions()['version']
+__version__ = get_versions()["version"]
 """str: version
 
 The version string, e.g., "0.1.2", "0.1.2+83.ga093a20.dirty".

@@ -1,1 +1,1 @@
-from . import query
+from . import query  # noqa: F401

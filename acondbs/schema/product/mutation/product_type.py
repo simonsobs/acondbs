@@ -1,39 +1,56 @@
 import graphene
 
-from ....models import (
-    ProductType as ProductTypeModel
-)
+from ....models import ProductType as ProductTypeModel
 
 from ....db.sa import sa
 from ....db.backup import request_backup_db
 
 from .. import type_
 
+
 ##__________________________________________________________________||
 class CommonInputFields:
     order = graphene.Int(
-        description=('The order in which the type is displayed, for example, '
-                     'in navigation bars.'))
+        description=(
+            "The order in which the type is displayed, for example, "
+            "in navigation bars."
+        )
+    )
     indef_article = graphene.String(
-        description=('The indefinite article placed before the singular noun "'
-                     'i.e., "a" or "an". '))
+        description=(
+            'The indefinite article placed before the singular noun "'
+            'i.e., "a" or "an". '
+        )
+    )
     singular = graphene.String(
-        description=('The singular noun, the product type name in singular.'))
+        description=("The singular noun, the product type name in singular.")
+    )
     plural = graphene.String(
-        description=('The plural noun, the product type name in plural.'))
+        description=("The plural noun, the product type name in plural.")
+    )
     icon = graphene.String(
-        description=('A name of the icon from https://materialdesignicons.com/'))
+        description=(
+            "A name of the icon from https://materialdesignicons.com/"
+        )
+    )
+
 
 class CreateProductTypeInput(graphene.InputObjectType, CommonInputFields):
-    '''Input to createProductType()'''
-    name = graphene.String(required=True, description='The name of the product type')
+    """Input to createProductType()"""
 
-class UpdateProductTypeInput(graphene.InputObjectType,CommonInputFields):
-    '''Input to updateProductType()'''
+    name = graphene.String(
+        required=True, description="The name of the product type"
+    )
+
+
+class UpdateProductTypeInput(graphene.InputObjectType, CommonInputFields):
+    """Input to updateProductType()"""
+
 
 ##__________________________________________________________________||
 class CreateProductType(graphene.Mutation):
-    '''Create a product type'''
+    """Create a product type"""
+
     class Arguments:
         input = CreateProductTypeInput(required=True)
 
@@ -48,8 +65,10 @@ class CreateProductType(graphene.Mutation):
         request_backup_db()
         return CreateProductType(product_type=model, ok=ok)
 
+
 class UpdateProductType(graphene.Mutation):
-    '''Update a product type'''
+    """Update a product type"""
+
     class Arguments:
         type_id = graphene.Int(required=True)
         input = UpdateProductTypeInput(required=True)
@@ -66,10 +85,12 @@ class UpdateProductType(graphene.Mutation):
         request_backup_db()
         return UpdateProductType(product_type=model, ok=ok)
 
+
 class DeleteProductType(graphene.Mutation):
-    '''Delete a product type'''
+    """Delete a product type"""
+
     class Arguments:
-        type_id = graphene.Int(description='The typeId of the product type')
+        type_id = graphene.Int(description="The typeId of the product type")
 
     ok = graphene.Boolean()
 
@@ -80,5 +101,6 @@ class DeleteProductType(graphene.Mutation):
         ok = True
         request_backup_db()
         return DeleteProductType(ok=ok)
+
 
 ##__________________________________________________________________||

@@ -1,27 +1,28 @@
 import graphene
 
-from ....models import (
-    ProductFilePath as ProductFilePathModel
-)
+from ....models import ProductFilePath as ProductFilePathModel
 
 from ....db.sa import sa
 from ....db.backup import request_backup_db
 
 from .. import type_
 
+
 ##__________________________________________________________________||
 class CommonInputFields:
-    """Common input fields of mutations for creating and updating file paths
+    """Common input fields of mutations for creating and updating file paths"""
 
-    """
     path = graphene.String()
     note = graphene.String()
+
 
 class CreateProductFilePathInput(graphene.InputObjectType, CommonInputFields):
     product_id = graphene.Int()
 
+
 class UpdateProductFilePathInput(graphene.InputObjectType, CommonInputFields):
     pass
+
 
 ##__________________________________________________________________||
 class CreateProductFilePath(graphene.Mutation):
@@ -38,6 +39,7 @@ class CreateProductFilePath(graphene.Mutation):
         ok = True
         request_backup_db()
         return CreateProductFilePath(productFilePath=path, ok=ok)
+
 
 class UpdateProductFilePath(graphene.Mutation):
     class Arguments:
@@ -56,6 +58,7 @@ class UpdateProductFilePath(graphene.Mutation):
         request_backup_db()
         return UpdateProductFilePath(productFilePath=path, ok=ok)
 
+
 class DeleteProductFilePath(graphene.Mutation):
     class Arguments:
         path_id = graphene.Int()
@@ -69,5 +72,6 @@ class DeleteProductFilePath(graphene.Mutation):
         ok = True
         request_backup_db()
         return DeleteProductFilePath(ok=ok)
+
 
 ##__________________________________________________________________||

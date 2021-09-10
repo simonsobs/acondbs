@@ -4,16 +4,23 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product, ProductRelation, ProductRelationType
+from acondbs.models import (
+    ProductType,
+    Product,
+    ProductRelation,
+    ProductRelationType,
+)
+
 
 ##__________________________________________________________________||
 @pytest.fixture
 def app_empty():
-    database_uri ="sqlite:///:memory:"
+    database_uri = "sqlite:///:memory:"
     y = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     with y.app_context():
         define_tables()
     yield y
+
 
 @pytest.fixture
 def app(app_empty):
@@ -32,13 +39,13 @@ def app(app_empty):
     #               <-(parent)--   |        |
     #                              +--------+
 
-    type_ = ProductType(name='robot')
+    type_ = ProductType(name="robot")
     parent1 = Product(name="parent1", type_=type_)
     child1 = Product(name="child1", type_=type_)
     child2 = Product(name="child2", type_=type_)
 
-    relation_type_parent = ProductRelationType(name='parent')
-    relation_type_child = ProductRelationType(name='child')
+    relation_type_parent = ProductRelationType(name="parent")
+    relation_type_child = ProductRelationType(name="child")
     relation_type_parent.reverse = relation_type_child
 
     # parent1 --(child)--> child1
@@ -64,5 +71,6 @@ def app(app_empty):
         sa.session.add(parent1)
         sa.session.commit()
     yield y
+
 
 ##__________________________________________________________________||

@@ -1,5 +1,6 @@
 from acondbs.db.sa import sa
-from acondbs.models import Product, ProductRelation, ProductRelationType
+from acondbs.models import Product, ProductRelation
+
 
 ##__________________________________________________________________||
 def test_cascade_delete_children(app):
@@ -16,10 +17,9 @@ def test_cascade_delete_children(app):
     #               <-(parent)--   |        |
     #                              +--------+
 
-
     # delete child1
     with app.app_context():
-        child1 = Product.query.filter_by(name='child1').one_or_none()
+        child1 = Product.query.filter_by(name="child1").one_or_none()
         sa.session.delete(child1)
         sa.session.commit()
 
@@ -35,13 +35,12 @@ def test_cascade_delete_children(app):
     #               <-(parent)--   |        |
     #                              +--------+
 
-
     # assert
     with app.app_context():
 
-        parent1 = Product.query.filter_by(name='parent1').one_or_none()
-        child1 = Product.query.filter_by(name='child1').one_or_none()
-        child2 = Product.query.filter_by(name='child2').one_or_none()
+        parent1 = Product.query.filter_by(name="parent1").one_or_none()
+        child1 = Product.query.filter_by(name="child1").one_or_none()
+        child2 = Product.query.filter_by(name="child2").one_or_none()
 
         assert parent1 is not None
         assert child1 is None
@@ -57,7 +56,7 @@ def test_cascade_delete_children(app):
 
     # delete child2
     with app.app_context():
-        child2 = Product.query.filter_by(name='child2').one_or_none()
+        child2 = Product.query.filter_by(name="child2").one_or_none()
         sa.session.delete(child2)
         sa.session.commit()
 
@@ -72,9 +71,9 @@ def test_cascade_delete_children(app):
     # assert
     with app.app_context():
 
-        parent1 = Product.query.filter_by(name='parent1').one_or_none()
-        child1 = Product.query.filter_by(name='child1').one_or_none()
-        child2 = Product.query.filter_by(name='child2').one_or_none()
+        parent1 = Product.query.filter_by(name="parent1").one_or_none()
+        child1 = Product.query.filter_by(name="child1").one_or_none()
+        child2 = Product.query.filter_by(name="child2").one_or_none()
 
         assert parent1 is not None
         assert child1 is None
@@ -84,6 +83,7 @@ def test_cascade_delete_children(app):
         assert 0 == len(relations)
 
         assert 0 == len(parent1.relations)
+
 
 ##__________________________________________________________________||
 def test_cascade_delete_parent(app):
@@ -102,7 +102,7 @@ def test_cascade_delete_parent(app):
 
     # delete parent1
     with app.app_context():
-        parent1 = Product.query.filter_by(name='parent1').first()
+        parent1 = Product.query.filter_by(name="parent1").first()
         sa.session.delete(parent1)
         sa.session.commit()
 
@@ -121,9 +121,9 @@ def test_cascade_delete_parent(app):
     # assert
     with app.app_context():
 
-        parent1 = Product.query.filter_by(name='parent1').one_or_none()
-        child1 = Product.query.filter_by(name='child1').one_or_none()
-        child2 = Product.query.filter_by(name='child2').one_or_none()
+        parent1 = Product.query.filter_by(name="parent1").one_or_none()
+        child1 = Product.query.filter_by(name="child1").one_or_none()
+        child2 = Product.query.filter_by(name="child2").one_or_none()
 
         assert parent1 is None
         assert child1 is not None
@@ -131,6 +131,7 @@ def test_cascade_delete_parent(app):
 
         relations = ProductRelation.query.all()
         assert 0 == len(relations)
+
 
 ##__________________________________________________________________||
 def test_cascade_delete_relations(app):
@@ -149,7 +150,7 @@ def test_cascade_delete_relations(app):
 
     # delete the relation from child1 to parent1
     with app.app_context():
-        child1 = Product.query.filter_by(name='child1').one_or_none()
+        child1 = Product.query.filter_by(name="child1").one_or_none()
         sa.session.delete(child1.relations[0])
         sa.session.commit()
 
@@ -168,9 +169,9 @@ def test_cascade_delete_relations(app):
     # assert
     with app.app_context():
 
-        parent1 = Product.query.filter_by(name='parent1').one_or_none()
-        child1 = Product.query.filter_by(name='child1').one_or_none()
-        child2 = Product.query.filter_by(name='child2').one_or_none()
+        parent1 = Product.query.filter_by(name="parent1").one_or_none()
+        child1 = Product.query.filter_by(name="child1").one_or_none()
+        child2 = Product.query.filter_by(name="child2").one_or_none()
 
         assert parent1 is not None
         assert child1 is not None
@@ -186,7 +187,7 @@ def test_cascade_delete_relations(app):
 
     # delete the relation from parent1 to child2
     with app.app_context():
-        parent1 = Product.query.filter_by(name='parent1').one_or_none()
+        parent1 = Product.query.filter_by(name="parent1").one_or_none()
         sa.session.delete(parent1.relations[0])
         sa.session.commit()
 
@@ -205,9 +206,9 @@ def test_cascade_delete_relations(app):
     # assert
     with app.app_context():
 
-        parent1 = Product.query.filter_by(name='parent1').one_or_none()
-        child1 = Product.query.filter_by(name='child1').one_or_none()
-        child2 = Product.query.filter_by(name='child2').one_or_none()
+        parent1 = Product.query.filter_by(name="parent1").one_or_none()
+        child1 = Product.query.filter_by(name="child1").one_or_none()
+        child2 = Product.query.filter_by(name="child2").one_or_none()
 
         assert parent1 is not None
         assert child1 is not None
@@ -215,5 +216,6 @@ def test_cascade_delete_relations(app):
 
         relations = ProductRelation.query.all()
         assert 0 == len(relations)
+
 
 ##__________________________________________________________________||

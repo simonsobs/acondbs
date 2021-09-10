@@ -2,13 +2,10 @@ import pytest
 
 from sqlalchemy import exc
 
-from acondbs.models import (
-    Product,
-    ProductRelation,
-    ProductRelationType
-    )
+from acondbs.models import Product, ProductRelation, ProductRelationType
 
 from acondbs.db.sa import sa
+
 
 ##__________________________________________________________________||
 def test_constraint(app):
@@ -27,9 +24,9 @@ def test_constraint(app):
 
     # try to duplicate relation
     with app.app_context():
-        parent1 = Product.query.filter_by(name='parent1').first()
-        child1 = Product.query.filter_by(name='child1').first()
-        type_ = ProductRelationType.query.filter_by(name='child').first()
+        parent1 = Product.query.filter_by(name="parent1").first()
+        child1 = Product.query.filter_by(name="child1").first()
+        type_ = ProductRelationType.query.filter_by(name="child").first()
 
         relation = ProductRelation()
         relation.type_ = type_
@@ -38,5 +35,6 @@ def test_constraint(app):
 
         with pytest.raises(exc.IntegrityError):
             sa.session.commit()
+
 
 ##__________________________________________________________________||

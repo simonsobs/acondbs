@@ -2,6 +2,6 @@
 """
 
 ##__________________________________________________________________||
-from .account_admin import AccountAdmin
+from .account_admin import AccountAdmin  # noqa: F401
 
 ##__________________________________________________________________||
