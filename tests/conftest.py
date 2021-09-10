@@ -132,25 +132,19 @@ def db_backup_global_variables(monkeypatch):
 @pytest.fixture(autouse=True)
 def mock_request_backup_db(monkeypatch):
     """mock request_backup_db() so that backups won't be actually taken in tests"""
-    y = mock.Mock()
-    monkeypatch.setattr(
-        "acondbs.schema.product.mutation.product.request_backup_db", y
-    )
-    monkeypatch.setattr(
+
+    targets = [
+        "acondbs.schema.product.mutation.product.request_backup_db",
         "acondbs.schema.product.mutation.product_file_path.request_backup_db",
-        y,
-    )
-    monkeypatch.setattr(
-        "acondbs.schema.product.mutation.product_type.request_backup_db", y
-    )
-    monkeypatch.setattr(
+        "acondbs.schema.product.mutation.product_type.request_backup_db",
         "acondbs.schema.product.mutation.product_relation_type.request_backup_db",
-        y,
-    )
-    monkeypatch.setattr(
-        "acondbs.schema.product.mutation.product_relation.request_backup_db", y
-    )
-    monkeypatch.setattr("acondbs.schema.github.mutation.request_backup_db", y)
+        "acondbs.schema.product.mutation.product_relation.request_backup_db",
+        "acondbs.schema.github.mutation.request_backup_db",
+    ]
+
+    y = mock.Mock()
+    for t in targets:
+        monkeypatch.setattr(t, y)
     yield y
 
 
@@ -161,12 +155,18 @@ def mock_datetime(monkeypatch):
     always returns the same value
 
     """
+
+    targets = [
+        "acondbs.schema.product.mutation.product.datetime",
+        "acondbs.models.github.github_token.datetime",
+        "acondbs.models.product.product.datetime",
+    ]
+
     y = mock.Mock(wraps=datetime)
     y.date.today.return_value = datetime.date(2020, 5, 4)
     y.datetime.now.return_value = datetime.datetime(2021, 1, 4, 14, 32, 20)
-    monkeypatch.setattr("acondbs.schema.product.mutation.product.datetime", y)
-    monkeypatch.setattr("acondbs.models.github.github_token.datetime", y)
-    monkeypatch.setattr("acondbs.models.product.product.datetime", y)
+    for t in targets:
+        monkeypatch.setattr(t, y)
     yield y
 
 
