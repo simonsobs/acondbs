@@ -18,6 +18,502 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'git_hub_login': 'octocat'
         }
     ],
+    'attribute_date': [
+        {
+            'attribute_id': 1,
+            'name': 'date_produced',
+            'product_id': 1001,
+            'value': GenericRepr('datetime.date(2019, 2, 13)')
+        },
+        {
+            'attribute_id': 2,
+            'name': 'date_produced',
+            'product_id': 1002,
+            'value': GenericRepr('datetime.date(2019, 3, 15)')
+        },
+        {
+            'attribute_id': 3,
+            'name': 'date_produced',
+            'product_id': 1010,
+            'value': GenericRepr('datetime.date(2018, 1, 1)')
+        },
+        {
+            'attribute_id': 4,
+            'name': 'date_produced',
+            'product_id': 1012,
+            'value': GenericRepr('datetime.date(2020, 1, 20)')
+        },
+        {
+            'attribute_id': 5,
+            'name': 'date_produced',
+            'product_id': 1013,
+            'value': GenericRepr('datetime.date(2020, 2, 1)')
+        },
+        {
+            'attribute_id': 6,
+            'name': 'date_produced',
+            'product_id': 1070,
+            'value': GenericRepr('datetime.date(2019, 3, 4)')
+        },
+        {
+            'attribute_id': 7,
+            'name': 'date_produced',
+            'product_id': 1120,
+            'value': GenericRepr('datetime.date(2019, 6, 7)')
+        },
+        {
+            'attribute_id': 8,
+            'name': 'date_produced',
+            'product_id': 1130,
+            'value': GenericRepr('datetime.date(2020, 1, 23)')
+        },
+        {
+            'attribute_id': 9,
+            'name': 'date_produced',
+            'product_id': 1150,
+            'value': GenericRepr('datetime.date(2020, 2, 7)')
+        }
+    ],
+    'attribute_date_time': [
+        {
+            'attribute_id': 1,
+            'name': 'time_posted',
+            'product_id': 1001,
+            'value': GenericRepr('datetime.date(2019, 2, 13)')
+        },
+        {
+            'attribute_id': 2,
+            'name': 'time_updated',
+            'product_id': 1001,
+            'value': GenericRepr('datetime.date(2019, 2, 13)')
+        },
+        {
+            'attribute_id': 3,
+            'name': 'time_posted',
+            'product_id': 1002,
+            'value': GenericRepr('datetime.date(2019, 3, 15)')
+        },
+        {
+            'attribute_id': 4,
+            'name': 'time_updated',
+            'product_id': 1002,
+            'value': None
+        },
+        {
+            'attribute_id': 5,
+            'name': 'time_posted',
+            'product_id': 1010,
+            'value': GenericRepr('datetime.date(2018, 1, 1)')
+        },
+        {
+            'attribute_id': 6,
+            'name': 'time_updated',
+            'product_id': 1010,
+            'value': None
+        },
+        {
+            'attribute_id': 7,
+            'name': 'time_posted',
+            'product_id': 1012,
+            'value': GenericRepr('datetime.date(2020, 1, 20)')
+        },
+        {
+            'attribute_id': 8,
+            'name': 'time_updated',
+            'product_id': 1012,
+            'value': GenericRepr('datetime.date(2020, 1, 20)')
+        },
+        {
+            'attribute_id': 9,
+            'name': 'time_posted',
+            'product_id': 1013,
+            'value': GenericRepr('datetime.date(2020, 2, 1)')
+        },
+        {
+            'attribute_id': 10,
+            'name': 'time_updated',
+            'product_id': 1013,
+            'value': GenericRepr('datetime.date(2020, 2, 1)')
+        },
+        {
+            'attribute_id': 11,
+            'name': 'time_posted',
+            'product_id': 1070,
+            'value': GenericRepr('datetime.date(2019, 3, 4)')
+        },
+        {
+            'attribute_id': 12,
+            'name': 'time_updated',
+            'product_id': 1070,
+            'value': None
+        },
+        {
+            'attribute_id': 13,
+            'name': 'time_posted',
+            'product_id': 1120,
+            'value': GenericRepr('datetime.date(2019, 6, 7)')
+        },
+        {
+            'attribute_id': 14,
+            'name': 'time_updated',
+            'product_id': 1120,
+            'value': None
+        },
+        {
+            'attribute_id': 15,
+            'name': 'time_posted',
+            'product_id': 1130,
+            'value': GenericRepr('datetime.date(2020, 1, 23)')
+        },
+        {
+            'attribute_id': 16,
+            'name': 'time_updated',
+            'product_id': 1130,
+            'value': None
+        },
+        {
+            'attribute_id': 17,
+            'name': 'time_posted',
+            'product_id': 1150,
+            'value': GenericRepr('datetime.date(2020, 2, 7)')
+        },
+        {
+            'attribute_id': 18,
+            'name': 'time_updated',
+            'product_id': 1150,
+            'value': None
+        }
+    ],
+    'attribute_text': [
+        {
+            'attribute_id': 1,
+            'name': 'name',
+            'product_id': 1001,
+            'value': 'lat20190213'
+        },
+        {
+            'attribute_id': 2,
+            'name': 'contact',
+            'product_id': 1001,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 3,
+            'name': 'produced_by',
+            'product_id': 1001,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 4,
+            'name': 'posted_by',
+            'product_id': 1001,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 5,
+            'name': 'updated_by',
+            'product_id': 1001,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 6,
+            'name': 'note',
+            'product_id': 1001,
+            'value': '''- This is a dummy test with a lat map
+- This should not depend on any beam'''
+        },
+        {
+            'attribute_id': 7,
+            'name': 'name',
+            'product_id': 1002,
+            'value': 'xyz-s1234-20200101'
+        },
+        {
+            'attribute_id': 8,
+            'name': 'contact',
+            'product_id': 1002,
+            'value': 'abc-def'
+        },
+        {
+            'attribute_id': 9,
+            'name': 'produced_by',
+            'product_id': 1002,
+            'value': 'abc-def'
+        },
+        {
+            'attribute_id': 10,
+            'name': 'posted_by',
+            'product_id': 1002,
+            'value': 'abc-def'
+        },
+        {
+            'attribute_id': 11,
+            'name': 'updated_by',
+            'product_id': 1002,
+            'value': ''
+        },
+        {
+            'attribute_id': 12,
+            'name': 'note',
+            'product_id': 1002,
+            'value': '''- note 1
+- note 2'''
+        },
+        {
+            'attribute_id': 13,
+            'name': 'name',
+            'product_id': 1010,
+            'value': '20180101'
+        },
+        {
+            'attribute_id': 14,
+            'name': 'contact',
+            'product_id': 1010,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 15,
+            'name': 'produced_by',
+            'product_id': 1010,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 16,
+            'name': 'posted_by',
+            'product_id': 1010,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 17,
+            'name': 'updated_by',
+            'product_id': 1010,
+            'value': ''
+        },
+        {
+            'attribute_id': 18,
+            'name': 'note',
+            'product_id': 1010,
+            'value': '- test entry'
+        },
+        {
+            'attribute_id': 19,
+            'name': 'name',
+            'product_id': 1012,
+            'value': 'lat20200120'
+        },
+        {
+            'attribute_id': 20,
+            'name': 'contact',
+            'product_id': 1012,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 21,
+            'name': 'produced_by',
+            'product_id': 1012,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 22,
+            'name': 'posted_by',
+            'product_id': 1012,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 23,
+            'name': 'updated_by',
+            'product_id': 1012,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 24,
+            'name': 'note',
+            'product_id': 1012,
+            'value': '''- This is a dummy test with a lat map
+- A beam depends on this map'''
+        },
+        {
+            'attribute_id': 25,
+            'name': 'name',
+            'product_id': 1013,
+            'value': 'lat20200201'
+        },
+        {
+            'attribute_id': 26,
+            'name': 'contact',
+            'product_id': 1013,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 27,
+            'name': 'produced_by',
+            'product_id': 1013,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 28,
+            'name': 'posted_by',
+            'product_id': 1013,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 29,
+            'name': 'updated_by',
+            'product_id': 1013,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 30,
+            'name': 'note',
+            'product_id': 1013,
+            'value': '''- This is a dummy test with a lat map
+- A beam depends on this map'''
+        },
+        {
+            'attribute_id': 31,
+            'name': 'name',
+            'product_id': 1070,
+            'value': '20190304'
+        },
+        {
+            'attribute_id': 32,
+            'name': 'contact',
+            'product_id': 1070,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 33,
+            'name': 'produced_by',
+            'product_id': 1070,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 34,
+            'name': 'posted_by',
+            'product_id': 1070,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 35,
+            'name': 'updated_by',
+            'product_id': 1070,
+            'value': ''
+        },
+        {
+            'attribute_id': 36,
+            'name': 'note',
+            'product_id': 1070,
+            'value': '- test entry'
+        },
+        {
+            'attribute_id': 37,
+            'name': 'name',
+            'product_id': 1120,
+            'value': '20190607'
+        },
+        {
+            'attribute_id': 38,
+            'name': 'contact',
+            'product_id': 1120,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 39,
+            'name': 'produced_by',
+            'product_id': 1120,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 40,
+            'name': 'posted_by',
+            'product_id': 1120,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 41,
+            'name': 'updated_by',
+            'product_id': 1120,
+            'value': ''
+        },
+        {
+            'attribute_id': 42,
+            'name': 'note',
+            'product_id': 1120,
+            'value': '- test entry'
+        },
+        {
+            'attribute_id': 43,
+            'name': 'name',
+            'product_id': 1130,
+            'value': '20200123'
+        },
+        {
+            'attribute_id': 44,
+            'name': 'contact',
+            'product_id': 1130,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 45,
+            'name': 'produced_by',
+            'product_id': 1130,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 46,
+            'name': 'posted_by',
+            'product_id': 1130,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 47,
+            'name': 'updated_by',
+            'product_id': 1130,
+            'value': ''
+        },
+        {
+            'attribute_id': 48,
+            'name': 'note',
+            'product_id': 1130,
+            'value': '- test entry'
+        },
+        {
+            'attribute_id': 49,
+            'name': 'name',
+            'product_id': 1150,
+            'value': '20200207'
+        },
+        {
+            'attribute_id': 50,
+            'name': 'contact',
+            'product_id': 1150,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 51,
+            'name': 'produced_by',
+            'product_id': 1150,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 52,
+            'name': 'posted_by',
+            'product_id': 1150,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 53,
+            'name': 'updated_by',
+            'product_id': 1150,
+            'value': ''
+        },
+        {
+            'attribute_id': 54,
+            'name': 'note',
+            'product_id': 1150,
+            'value': '- test entry'
+        }
+    ],
     'github_org_memberships': [
     ],
     'github_orgs': [
