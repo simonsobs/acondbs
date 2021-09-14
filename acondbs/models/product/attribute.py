@@ -7,11 +7,11 @@ class AttributeBase:
     name = sa.Column(sa.Text(), nullable=False)
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} {self.name!r}>"
+        return f"<{self.__class__.__name__} {self.name!r}: {self.value!r}>"
 
 
 ##__________________________________________________________________||
-class AttributeText(sa.Model, AttributeBase):
+class AttributeText(AttributeBase, sa.Model):
     __tablename__ = "attribute_text"
     product_id = sa.Column(
         sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
@@ -23,7 +23,7 @@ class AttributeText(sa.Model, AttributeBase):
     value = sa.Column(sa.Text())
 
 
-class AttributeDate(sa.Model, AttributeBase):
+class AttributeDate(AttributeBase, sa.Model):
     __tablename__ = "attribute_date"
     product_id = sa.Column(
         sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
@@ -35,7 +35,7 @@ class AttributeDate(sa.Model, AttributeBase):
     value = sa.Column(sa.Date())
 
 
-class AttributeDateTime(sa.Model, AttributeBase):
+class AttributeDateTime(AttributeBase, sa.Model):
     __tablename__ = "attribute_date_time"
     product_id = sa.Column(
         sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
