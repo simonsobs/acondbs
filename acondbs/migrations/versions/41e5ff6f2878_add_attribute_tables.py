@@ -38,7 +38,7 @@ def upgrade():
         sa.Column("attribute_id", sa.Integer(), nullable=False),
         sa.Column("name", sa.Text(), nullable=False),
         sa.Column("product_id", sa.Integer(), nullable=False),
-        sa.Column("value", sa.Date(), nullable=True),
+        sa.Column("value", sa.DateTime(), nullable=True),
         sa.ForeignKeyConstraint(
             ["product_id"],
             ["products.product_id"],
