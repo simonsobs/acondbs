@@ -44,6 +44,6 @@ class AttributeDateTime(sa.Model, AttributeBase):
         "Product",
         backref=sa.backref("attributes_date_time", cascade="all, delete-orphan"),
     )
-    value = sa.Column(sa.Date())
+    value = sa.Column(sa.DateTime())
 
 ##__________________________________________________________________||
