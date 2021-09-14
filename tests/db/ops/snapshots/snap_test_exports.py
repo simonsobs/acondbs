@@ -79,19 +79,19 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'attribute_id': 1,
             'name': 'time_posted',
             'product_id': 1001,
-            'value': GenericRepr('datetime.date(2019, 2, 13)')
+            'value': GenericRepr('datetime.datetime(2019, 2, 13, 10, 5, 23)')
         },
         {
             'attribute_id': 2,
             'name': 'time_updated',
             'product_id': 1001,
-            'value': GenericRepr('datetime.date(2019, 2, 13)')
+            'value': GenericRepr('datetime.datetime(2019, 2, 13, 16, 45, 30)')
         },
         {
             'attribute_id': 3,
             'name': 'time_posted',
             'product_id': 1002,
-            'value': GenericRepr('datetime.date(2019, 3, 15)')
+            'value': GenericRepr('datetime.datetime(2019, 3, 15, 9, 11, 25)')
         },
         {
             'attribute_id': 4,
@@ -103,7 +103,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'attribute_id': 5,
             'name': 'time_posted',
             'product_id': 1010,
-            'value': GenericRepr('datetime.date(2018, 1, 1)')
+            'value': GenericRepr('datetime.datetime(2018, 1, 1, 15, 32, 10)')
         },
         {
             'attribute_id': 6,
@@ -115,31 +115,31 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'attribute_id': 7,
             'name': 'time_posted',
             'product_id': 1012,
-            'value': GenericRepr('datetime.date(2020, 1, 20)')
+            'value': GenericRepr('datetime.datetime(2020, 1, 20, 18, 10, 5)')
         },
         {
             'attribute_id': 8,
             'name': 'time_updated',
             'product_id': 1012,
-            'value': GenericRepr('datetime.date(2020, 1, 20)')
+            'value': GenericRepr('datetime.datetime(2020, 1, 20, 21, 52, 32)')
         },
         {
             'attribute_id': 9,
             'name': 'time_posted',
             'product_id': 1013,
-            'value': GenericRepr('datetime.date(2020, 2, 1)')
+            'value': GenericRepr('datetime.datetime(2020, 2, 1, 11, 5, 2)')
         },
         {
             'attribute_id': 10,
             'name': 'time_updated',
             'product_id': 1013,
-            'value': GenericRepr('datetime.date(2020, 2, 1)')
+            'value': GenericRepr('datetime.datetime(2020, 2, 1, 19, 2, 15)')
         },
         {
             'attribute_id': 11,
             'name': 'time_posted',
             'product_id': 1070,
-            'value': GenericRepr('datetime.date(2019, 3, 4)')
+            'value': GenericRepr('datetime.datetime(2019, 3, 4, 8, 12, 41)')
         },
         {
             'attribute_id': 12,
@@ -151,7 +151,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'attribute_id': 13,
             'name': 'time_posted',
             'product_id': 1120,
-            'value': GenericRepr('datetime.date(2019, 6, 7)')
+            'value': GenericRepr('datetime.datetime(2019, 6, 7, 18, 21, 21)')
         },
         {
             'attribute_id': 14,
@@ -163,7 +163,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'attribute_id': 15,
             'name': 'time_posted',
             'product_id': 1130,
-            'value': GenericRepr('datetime.date(2020, 1, 23)')
+            'value': GenericRepr('datetime.datetime(2020, 1, 23, 12, 11, 45)')
         },
         {
             'attribute_id': 16,
@@ -175,7 +175,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'attribute_id': 17,
             'name': 'time_posted',
             'product_id': 1150,
-            'value': GenericRepr('datetime.date(2020, 2, 7)')
+            'value': GenericRepr('datetime.datetime(2020, 2, 7, 9, 42, 11)')
         },
         {
             'attribute_id': 18,
