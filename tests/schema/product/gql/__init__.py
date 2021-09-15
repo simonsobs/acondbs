@@ -12,9 +12,9 @@ from .fragments import (  # noqa: F401
 from .product import (  # noqa: F401
     FRAGMENT_PRODUCT_SHALLOW,
     FRAGMENT_PRODUCT_CONNECTION_SHALLOW,
-    CREATE_PRODUCT,
-    DELETE_PRODUCT,
-    UPDATE_PRODUCT,
+    MUTATION_CREATE_PRODUCT,
+    MUTATION_DELETE_PRODUCT,
+    MUTATION_UPDATE_PRODUCT,
 )
 
 from .product_relation_type import (  # noqa: F401

@@ -2,7 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import CREATE_PRODUCT
+from ...gql import MUTATION_CREATE_PRODUCT
 
 QEURY = """
 {
@@ -45,7 +45,7 @@ HEADERS = {"Authorization": "Bearer 39d86487d76a84087f1da599c872dac4473e5f07"}  
 params = [
     pytest.param(
         {
-            "query": CREATE_PRODUCT,
+            "query": MUTATION_CREATE_PRODUCT,
             "variables": {
                 "input": {
                     "typeId": 2,
@@ -71,7 +71,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": CREATE_PRODUCT,
+            "query": MUTATION_CREATE_PRODUCT,
             "variables": {
                 "input": {
                     "typeId": 1,
@@ -84,7 +84,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": CREATE_PRODUCT,
+            "query": MUTATION_CREATE_PRODUCT,
             "variables": {
                 "input": {
                     "typeId": 2,
@@ -126,7 +126,7 @@ async def test_schema_success(
 params = [
     pytest.param(
         {
-            "query": CREATE_PRODUCT,
+            "query": MUTATION_CREATE_PRODUCT,
             "variables": {
                 "input": {
                     "typeId": 1,
@@ -138,7 +138,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": CREATE_PRODUCT,
+            "query": MUTATION_CREATE_PRODUCT,
             "variables": {
                 "input": {
                     "typeId": 1,

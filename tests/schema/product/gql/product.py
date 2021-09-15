@@ -7,7 +7,7 @@ from .fragments import (
 
 
 ##__________________________________________________________________||
-CREATE_PRODUCT = '''
+MUTATION_CREATE_PRODUCT = '''
 mutation CreateProduct($input: CreateProductInput!) {
   createProduct(input: $input) {
     ok
@@ -18,7 +18,7 @@ mutation CreateProduct($input: CreateProductInput!) {
 }
 ''' + FRAGMENT_PRODUCT
 
-DELETE_PRODUCT = '''
+MUTATION_DELETE_PRODUCT = '''
 mutation DeleteProduct($productId: Int!) {
   deleteProduct(productId: $productId) {
     ok
@@ -26,7 +26,7 @@ mutation DeleteProduct($productId: Int!) {
 }
 '''
 
-UPDATE_PRODUCT = '''
+MUTATION_UPDATE_PRODUCT = '''
 mutation($productId: Int!, $input: UpdateProductInput!) {
   updateProduct(productId: $productId, input: $input) {
     ok
