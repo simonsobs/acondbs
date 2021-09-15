@@ -2,7 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import FRAGMENT_PRODUCT_RELATION_CONNECTION, CREATE_PRODUCT_RELATION
+from ...gql import FRAGMENT_PRODUCT_RELATION_CONNECTION, MUTATION_CREATE_PRODUCT_RELATION
 
 QEURY = (
     """
@@ -24,7 +24,7 @@ HEADERS = {
 params = [
     pytest.param(
         {
-            "query": CREATE_PRODUCT_RELATION,
+            "query": MUTATION_CREATE_PRODUCT_RELATION,
             "variables": {
                 "input": {"typeId": 1, "selfProductId": 5, "otherProductId": 1}
             },
@@ -58,7 +58,7 @@ async def test_schema_success(
 params = [
     pytest.param(
         {
-            "query": CREATE_PRODUCT_RELATION,
+            "query": MUTATION_CREATE_PRODUCT_RELATION,
             "variables": {
                 "input": {"typeId": 20, "selfProductId": 5, "otherProductId": 1}
             },
@@ -68,7 +68,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": CREATE_PRODUCT_RELATION,
+            "query": MUTATION_CREATE_PRODUCT_RELATION,
             "variables": {
                 "input": {"typeId": 1, "selfProductId": 10, "otherProductId": 1}
             },
@@ -78,7 +78,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": CREATE_PRODUCT_RELATION,
+            "query": MUTATION_CREATE_PRODUCT_RELATION,
             "variables": {
                 "input": {"typeId": 1, "selfProductId": 5, "otherProductId": 20}
             },
@@ -88,7 +88,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": CREATE_PRODUCT_RELATION,
+            "query": MUTATION_CREATE_PRODUCT_RELATION,
             "variables": {
                 "input": {"typeId": 2, "selfProductId": 1, "otherProductId": 4}
             },

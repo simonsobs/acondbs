@@ -1,7 +1,7 @@
 from .fragments import FRAGMENT_PRODUCT_RELATION
 
 ##__________________________________________________________________||
-CREATE_PRODUCT_RELATION = '''
+MUTATION_CREATE_PRODUCT_RELATION = '''
 mutation CreateProductRelation($input: CreateProductRelationInput!) {
   createProductRelation(input: $input) {
     ok
@@ -12,7 +12,7 @@ mutation CreateProductRelation($input: CreateProductRelationInput!) {
 }
 ''' + FRAGMENT_PRODUCT_RELATION
 
-DELETE_PRODUCT_RELATION = '''
+MUTATION_DELETE_PRODUCT_RELATION = '''
 mutation DeleteProductRelation($relationId: Int!) {
   deleteProductRelation(relationId: $relationId) {
     ok

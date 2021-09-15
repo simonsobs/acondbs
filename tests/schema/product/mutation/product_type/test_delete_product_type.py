@@ -2,7 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import DELETE_PRODUCT_TYPE
+from ...gql import MUTATION_DELETE_PRODUCT_TYPE
 
 QEURY = """
 {
@@ -25,7 +25,7 @@ HEADERS = {
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {"query": DELETE_PRODUCT_TYPE, "variables": {"typeId": 2}},
+        {"query": MUTATION_DELETE_PRODUCT_TYPE, "variables": {"typeId": 2}},
         {"query": QEURY},
         id="delete",
     ),
@@ -54,12 +54,12 @@ async def test_schema_success(
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {"query": DELETE_PRODUCT_TYPE, "variables": {"typeId": 12}},
+        {"query": MUTATION_DELETE_PRODUCT_TYPE, "variables": {"typeId": 12}},
         {"query": QEURY},
         id="error-nonexistent",
     ),
     pytest.param(
-        {"query": DELETE_PRODUCT_TYPE, "variables": {"typeId": 1}},
+        {"query": MUTATION_DELETE_PRODUCT_TYPE, "variables": {"typeId": 1}},
         {"query": QEURY},
         id="error-unempty",
     ),

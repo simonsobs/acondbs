@@ -4,7 +4,7 @@ from .fragments import (
 )
 
 ##__________________________________________________________________||
-CREATE_PRODUCT_RELATION_TYPES = '''
+MUTATION_CREATE_PRODUCT_RELATION_TYPES = '''
 mutation CreateProductRelationTypes(
     $type: CreateProductRelationTypeInput!,
     $reverse: CreateProductRelationTypeInput,
@@ -18,7 +18,7 @@ mutation CreateProductRelationTypes(
 }
 ''' + FRAGMENT_PRODUCT_RELATION_TYPE
 
-DELETE_PRODUCT_RELATION_TYPES = '''
+MUTATION_DELETE_PRODUCT_RELATION_TYPES = '''
 mutation DeleteProductRelationTypes($typeId: Int!) {
   deleteProductRelationTypes(typeId: $typeId) {
     ok
@@ -26,7 +26,7 @@ mutation DeleteProductRelationTypes($typeId: Int!) {
 }
 '''
 
-UPDATE_PRODUCT_RELATION_TYPE = '''
+MUTATION_UPDATE_PRODUCT_RELATION_TYPE = '''
 mutation UpdateProductRelationType(
     $typeId: Int!, $input: UpdateProductRelationTypeInput!) {
   updateProductRelationType(typeId: $typeId, input: $input) {

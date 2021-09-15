@@ -4,7 +4,7 @@ from ....funcs import assert_mutation
 
 from ...gql import (
     FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
-    UPDATE_PRODUCT_RELATION_TYPE,
+    MUTATION_UPDATE_PRODUCT_RELATION_TYPE,
 )
 
 ##__________________________________________________________________||
@@ -28,7 +28,7 @@ HEADERS = {
 params = [
     pytest.param(
         {
-            "query": UPDATE_PRODUCT_RELATION_TYPE,
+            "query": MUTATION_UPDATE_PRODUCT_RELATION_TYPE,
             "variables": {
                 "typeId": 1,
                 "input": {
@@ -67,7 +67,7 @@ async def test_schema_success(
 params = [
     pytest.param(
         {
-            "query": UPDATE_PRODUCT_RELATION_TYPE,
+            "query": MUTATION_UPDATE_PRODUCT_RELATION_TYPE,
             "variables": {
                 "typeId": 1,
                 "input": {
