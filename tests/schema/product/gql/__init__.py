@@ -11,6 +11,8 @@ from .fragments import (  # noqa: F401
     FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
     FRAGMENT_PRODUCT_RELATION,
     FRAGMENT_PRODUCT_RELATION_CONNECTION,
+    FRAGMENT_PRODUCT_TYPE,
+    FRAGMENT_PRODUCT_TYPE_CONNECTION,
 )
 
 from .mutations import (  # noqa: F401
@@ -31,8 +33,6 @@ from .product_relation import (  # noqa: F401
 )
 
 from .product_type import (  # noqa: F401
-    FRAGMENT_PRODUCT_TYPE,
-    FRAGMENT_PRODUCT_TYPE_CONNECTION,
     CREATE_PRODUCT_TYPE,
     UPDATE_PRODUCT_TYPE,
     DELETE_PRODUCT_TYPE,

@@ -6,3 +6,5 @@ from .fragment_product_relation_type import FRAGMENT_PRODUCT_RELATION_TYPE  # no
 from .fragment_product_relation_type_connection import FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION  # noqa: F401
 from .fragment_product_relation import FRAGMENT_PRODUCT_RELATION  # noqa: F401
 from .fragment_product_relation_connection import FRAGMENT_PRODUCT_RELATION_CONNECTION  # noqa: F401
+from .fragment_product_type import FRAGMENT_PRODUCT_TYPE  # noqa: F401
+from .fragment_product_type_connection import FRAGMENT_PRODUCT_TYPE_CONNECTION  # noqa: F401
