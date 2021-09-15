@@ -9,9 +9,7 @@ from .fragments import (  # noqa: F401
     FRAGMENT_PRODUCT_CONNECTION_SHALLOW
 )
 
-from .product import (  # noqa: F401
-    FRAGMENT_PRODUCT_SHALLOW,
-    FRAGMENT_PRODUCT_CONNECTION_SHALLOW,
+from .mutations import (  # noqa: F401
     MUTATION_CREATE_PRODUCT,
     MUTATION_DELETE_PRODUCT,
     MUTATION_UPDATE_PRODUCT,
