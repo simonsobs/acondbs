@@ -1,99 +1,10 @@
+from .fragments import (
+    FRAGMENT_PRODUCT,
+    FRAGMENT_PRODUCT_CONNECTION,
+    FRAGMENT_PRODUCT_SHALLOW,
+    FRAGMENT_PRODUCT_CONNECTION_SHALLOW
+)
 
-##__________________________________________________________________||
-FRAGMENT_PRODUCT_SHALLOW = '''
-fragment fragmentProductShallow on Product {
-  productId
-  typeId
-  name
-}
-'''
-
-FRAGMENT_PRODUCT_CONNECTION_SHALLOW = '''
-fragment fragmentProductConnectionShallow on ProductConnection {
-  edges {
-    node {
-     ...fragmentProductShallow
-    }
-  }
-}
-''' + FRAGMENT_PRODUCT_SHALLOW
-
-##__________________________________________________________________||
-FRAGMENT_PRODUCT = '''
-fragment fragmentProduct on Product {
-  productId
-  typeId
-  type_ {
-    typeId
-    name
-  }
-  name
-  contact
-  dateProduced
-  producedBy
-  timePosted
-  postedBy
-  postingGitHubUser {
-    login
-  }
-  timeUpdated
-  updatedBy
-  updatingGitHubUser {
-    login
-  }
-  paths {
-    edges {
-      node {
-        pathId
-        path
-        note
-      }
-    }
-  }
-  relations {
-    edges {
-      node {
-        relationId
-        typeId
-        type_ {
-          typeId
-          name
-        }
-        otherProductId
-        other {
-          productId
-          typeId
-          type_ {
-            typeId
-            name
-          }
-          name
-        }
-        reverseRelationId
-        reverse {
-          relationId
-          typeId
-          type_ {
-            typeId
-            name
-          }
-        }
-      }
-    }
-  }
-  note
-}
-'''
-
-FRAGMENT_PRODUCT_CONNECTION = '''
-fragment fragmentProductConnection on ProductConnection {
-  edges {
-    node {
-     ...fragmentProduct
-    }
-  }
-}
-''' + FRAGMENT_PRODUCT
 
 ##__________________________________________________________________||
 CREATE_PRODUCT = '''
