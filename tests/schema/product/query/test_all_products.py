@@ -3,7 +3,7 @@ import textwrap
 
 from ...funcs import assert_query
 
-from ..gql import FRAGMENT_PRODUCT_CONNECTION_SHALLOW, FRAGMENT_PRODUCT_CONNECTION_DEEP
+from ..gql import FRAGMENT_PRODUCT_CONNECTION_SHALLOW, FRAGMENT_PRODUCT_CONNECTION
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
@@ -18,12 +18,12 @@ params = [
                 """
                 {
                   allProducts {
-                    ...fragmentProductConnectionDeep
+                    ...fragmentProductConnection
                   }
                 }
               """
             )
-            + FRAGMENT_PRODUCT_CONNECTION_DEEP,
+            + FRAGMENT_PRODUCT_CONNECTION,
         },
         id="deep",
     ),

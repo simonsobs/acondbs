@@ -3,7 +3,7 @@ import textwrap
 
 from ...funcs import assert_query
 
-from ..gql import FRAGMENT_PRODUCT_SHALLOW, FRAGMENT_PRODUCT_DEEP
+from ..gql import FRAGMENT_PRODUCT_SHALLOW, FRAGMENT_PRODUCT
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
@@ -18,12 +18,12 @@ params = [
                 """
                 query Product($productId: Int) {
                   product(productId: $productId) {
-                    ...fragmentProductDeep
+                    ...fragmentProduct
                   }
                 }
                 """
             )
-            + FRAGMENT_PRODUCT_DEEP,
+            + FRAGMENT_PRODUCT,
             "variables": {"productId": 1},
         },
         id="deep",
@@ -34,12 +34,12 @@ params = [
                 """
                 query Product($productId: Int) {
                   product(productId: $productId) {
-                    ...fragmentProductDeep
+                    ...fragmentProduct
                   }
                 }
                 """
             )
-            + FRAGMENT_PRODUCT_DEEP,
+            + FRAGMENT_PRODUCT,
             "variables": {"productId": 9899},
         },
         id="product_id-nonexistent",

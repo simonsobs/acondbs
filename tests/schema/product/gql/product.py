@@ -19,8 +19,8 @@ fragment fragmentProductConnectionShallow on ProductConnection {
 ''' + FRAGMENT_PRODUCT_SHALLOW
 
 ##__________________________________________________________________||
-FRAGMENT_PRODUCT_DEEP = '''
-fragment fragmentProductDeep on Product {
+FRAGMENT_PRODUCT = '''
+fragment fragmentProduct on Product {
   productId
   typeId
   type_ {
@@ -85,15 +85,15 @@ fragment fragmentProductDeep on Product {
 }
 '''
 
-FRAGMENT_PRODUCT_CONNECTION_DEEP = '''
-fragment fragmentProductConnectionDeep on ProductConnection {
+FRAGMENT_PRODUCT_CONNECTION = '''
+fragment fragmentProductConnection on ProductConnection {
   edges {
     node {
-     ...fragmentProductDeep
+     ...fragmentProduct
     }
   }
 }
-''' + FRAGMENT_PRODUCT_DEEP
+''' + FRAGMENT_PRODUCT
 
 ##__________________________________________________________________||
 CREATE_PRODUCT = '''
@@ -101,11 +101,11 @@ mutation CreateProduct($input: CreateProductInput!) {
   createProduct(input: $input) {
     ok
     product {
-      ...fragmentProductDeep
+      ...fragmentProduct
     }
   }
 }
-''' + FRAGMENT_PRODUCT_DEEP
+''' + FRAGMENT_PRODUCT
 
 DELETE_PRODUCT = '''
 mutation DeleteProduct($productId: Int!) {
@@ -120,10 +120,10 @@ mutation($productId: Int!, $input: UpdateProductInput!) {
   updateProduct(productId: $productId, input: $input) {
     ok
     product {
-      ...fragmentProductDeep
+      ...fragmentProduct
     }
   }
 }
-''' + FRAGMENT_PRODUCT_DEEP
+''' + FRAGMENT_PRODUCT
 
 ##__________________________________________________________________||
