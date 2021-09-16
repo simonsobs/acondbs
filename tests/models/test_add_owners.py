@@ -1,3 +1,6 @@
+"""Assert owners specified in the config file are added as admins in DB
+"""
+
 from pathlib import Path
 import pytest
 
