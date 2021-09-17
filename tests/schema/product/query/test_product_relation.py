@@ -1,9 +1,8 @@
 import pytest
-import textwrap
 
 from ...funcs import assert_query
 
-from ..gql import FRAGMENT_PRODUCT_RELATION
+from ..gql import QUERY_PRODUCT_RELATION
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
@@ -14,31 +13,17 @@ HEADERS = {
 params = [
     pytest.param(
         {
-            "query": textwrap.dedent(
-                """
-                {
-                  productRelation(relationId: 1) {
-                    ...fragmentProductRelation
-                  }
-                }
-              """
-            )
-            + FRAGMENT_PRODUCT_RELATION,
+            #
+            "query": QUERY_PRODUCT_RELATION,
+            "variables": {"relationId": 1},
         },
         id="type_id",
     ),
     pytest.param(
         {
-            "query": textwrap.dedent(
-                """
-                {
-                  productRelation(relationId: 222) {
-                    ...fragmentProductRelation
-                  }
-                }
-              """
-            )
-            + FRAGMENT_PRODUCT_RELATION,
+            #
+            "query": QUERY_PRODUCT_RELATION,
+            "variables": {"relationId": 222},
         },
         id="type_id-nonexistent",
     ),
