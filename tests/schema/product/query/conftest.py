@@ -32,10 +32,18 @@ def app(app_users):
 
     # create relation types
     Parent = ProductRelationType(
-        type_id=1, name="parent", indef_article="a", singular="parent", plural="parents"
+        type_id=1,
+        name="parent",
+        indef_article="a",
+        singular="parent",
+        plural="parents",
     )
     Parent.reverse = ProductRelationType(
-        type_id=2, name="child", indef_article="a", singular="child", plural="children"
+        type_id=2,
+        name="child",
+        indef_article="a",
+        singular="child",
+        plural="children",
     )
     Plaintiff = ProductRelationType(
         type_id=3,
@@ -74,19 +82,34 @@ def app(app_users):
 
     # create products
     map1 = Product(
-        product_id=1, name="map1", date_produced=datetime.date(2020, 2, 1), type_=Map
+        product_id=1,
+        name="map1",
+        date_produced=datetime.date(2020, 2, 1),
+        type_=Map,
     )
     map2 = Product(
-        product_id=2, name="map2", date_produced=datetime.date(2020, 2, 10), type_=Map
+        product_id=2,
+        name="map2",
+        date_produced=datetime.date(2020, 2, 10),
+        type_=Map,
     )
     map3 = Product(
-        product_id=3, name="map3", date_produced=datetime.date(2020, 3, 19), type_=Map
+        product_id=3,
+        name="map3",
+        date_produced=datetime.date(2020, 3, 19),
+        type_=Map,
     )
     beam1 = Product(
-        product_id=4, name="beam1", date_produced=datetime.date(2020, 2, 5), type_=Beam
+        product_id=4,
+        name="beam1",
+        date_produced=datetime.date(2020, 2, 5),
+        type_=Beam,
     )
     beam2 = Product(
-        product_id=5, name="beam2", date_produced=datetime.date(2020, 3, 4), type_=Beam
+        product_id=5,
+        name="beam2",
+        date_produced=datetime.date(2020, 3, 4),
+        type_=Beam,
     )
 
     # add paths
@@ -114,9 +137,15 @@ def app(app_users):
     ]
 
     # create relations
-    relation1 = ProductRelation(relation_id=2, type_=Parent, self_=beam1, other=map1)
-    relation2 = ProductRelation(relation_id=4, type_=Parent, self_=beam2, other=map1)
-    relation3 = ProductRelation(relation_id=5, type_=Parent, self_=beam2, other=beam1)
+    relation1 = ProductRelation(
+        relation_id=2, type_=Parent, self_=beam1, other=map1
+    )
+    relation2 = ProductRelation(
+        relation_id=4, type_=Parent, self_=beam2, other=map1
+    )
+    relation3 = ProductRelation(
+        relation_id=5, type_=Parent, self_=beam2, other=beam1
+    )
 
     with y.app_context():
         sa.session.add(Map)
