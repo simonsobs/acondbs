@@ -10,6 +10,30 @@ snapshots = Snapshot()
 snapshots['test_schema[deep] 1'] = {
     'data': {
         'product': {
+            'attributesDate': {
+                'edges': [
+                    {
+                        'node': {
+                            'name': 'date_produced',
+                            'value': '2020-02-01'
+                        }
+                    }
+                ]
+            },
+            'attributesDateTime': {
+                'edges': [
+                ]
+            },
+            'attributesText': {
+                'edges': [
+                    {
+                        'node': {
+                            'name': 'name',
+                            'value': 'map1'
+                        }
+                    }
+                ]
+            },
             'contact': None,
             'dateProduced': '2020-02-01',
             'name': 'map1',

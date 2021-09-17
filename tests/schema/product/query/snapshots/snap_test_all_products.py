@@ -13,6 +13,30 @@ snapshots['test_schema[deep] 1'] = {
             'edges': [
                 {
                     'node': {
+                        'attributesDate': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'date_produced',
+                                        'value': '2020-02-01'
+                                    }
+                                }
+                            ]
+                        },
+                        'attributesDateTime': {
+                            'edges': [
+                            ]
+                        },
+                        'attributesText': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'name',
+                                        'value': 'map1'
+                                    }
+                                }
+                            ]
+                        },
                         'contact': None,
                         'dateProduced': '2020-02-01',
                         'name': 'map1',
@@ -114,6 +138,30 @@ snapshots['test_schema[deep] 1'] = {
                 },
                 {
                     'node': {
+                        'attributesDate': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'date_produced',
+                                        'value': '2020-02-10'
+                                    }
+                                }
+                            ]
+                        },
+                        'attributesDateTime': {
+                            'edges': [
+                            ]
+                        },
+                        'attributesText': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'name',
+                                        'value': 'map2'
+                                    }
+                                }
+                            ]
+                        },
                         'contact': None,
                         'dateProduced': '2020-02-10',
                         'name': 'map2',
@@ -150,6 +198,30 @@ snapshots['test_schema[deep] 1'] = {
                 },
                 {
                     'node': {
+                        'attributesDate': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'date_produced',
+                                        'value': '2020-03-19'
+                                    }
+                                }
+                            ]
+                        },
+                        'attributesDateTime': {
+                            'edges': [
+                            ]
+                        },
+                        'attributesText': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'name',
+                                        'value': 'map3'
+                                    }
+                                }
+                            ]
+                        },
                         'contact': None,
                         'dateProduced': '2020-03-19',
                         'name': 'map3',
@@ -193,6 +265,30 @@ snapshots['test_schema[deep] 1'] = {
                 },
                 {
                     'node': {
+                        'attributesDate': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'date_produced',
+                                        'value': '2020-02-05'
+                                    }
+                                }
+                            ]
+                        },
+                        'attributesDateTime': {
+                            'edges': [
+                            ]
+                        },
+                        'attributesText': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'name',
+                                        'value': 'beam1'
+                                    }
+                                }
+                            ]
+                        },
                         'contact': None,
                         'dateProduced': '2020-02-05',
                         'name': 'beam1',
@@ -294,6 +390,30 @@ snapshots['test_schema[deep] 1'] = {
                 },
                 {
                     'node': {
+                        'attributesDate': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'date_produced',
+                                        'value': '2020-03-04'
+                                    }
+                                }
+                            ]
+                        },
+                        'attributesDateTime': {
+                            'edges': [
+                            ]
+                        },
+                        'attributesText': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'name',
+                                        'value': 'beam2'
+                                    }
+                                }
+                            ]
+                        },
                         'contact': None,
                         'dateProduced': '2020-03-04',
                         'name': 'beam2',
