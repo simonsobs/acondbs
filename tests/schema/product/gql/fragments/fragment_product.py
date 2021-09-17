@@ -6,6 +6,30 @@ fragment fragmentProduct on Product {
     typeId
     name
   }
+  attributesText {
+    edges {
+      node {
+        name
+        value
+      }
+    }
+  }
+  attributesDate {
+    edges {
+      node {
+        name
+        value
+      }
+    }
+  }
+  attributesDateTime {
+    edges {
+      node {
+        name
+        value
+      }
+    }
+  }
   name
   contact
   dateProduced
