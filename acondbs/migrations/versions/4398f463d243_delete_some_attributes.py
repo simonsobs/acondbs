@@ -16,8 +16,8 @@ from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy
 
 # revision identifiers, used by Alembic.
-revision = '4398f463d243'
-down_revision = '2910eaefa574'
+revision = "4398f463d243"
+down_revision = "2910eaefa574"
 branch_labels = None
 depends_on = None
 
@@ -150,17 +150,19 @@ def upgrade():
         "updated_by",
         "note",
     ]
-    columns_date = ["date_produced"]
+    columns_date = []
+    columns_date_time = ["time_posted", "time_updated"]
 
     products = session.query(Product).all()
     for p in products:
         for c in columns_text:
             for a in session.query(AttributeText).filter_by(name=c):
-                print(a.name, a.value)
                 session.delete(a)
         for c in columns_date:
             for a in session.query(AttributeDate).filter_by(name=c):
-                print(a.name, a.value)
+                session.delete(a)
+        for c in columns_date_time:
+            for a in session.query(AttributeDateTime).filter_by(name=c):
                 session.delete(a)
     session.commit()
 
