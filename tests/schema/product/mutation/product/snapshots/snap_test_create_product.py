@@ -332,6 +332,36 @@ snapshots['test_schema_success[create] 1'] = {
         'createProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': '2020-02-20'
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'contact',
+                                'value': 'contact-person'
+                            }
+                        },
+                        {
+                            'node': {
+                                'name': 'produced_by',
+                                'value': 'producer'
+                            }
+                        }
+                    ]
+                },
                 'contact': 'contact-person',
                 'dateProduced': '2020-02-20',
                 'name': 'beam111',
@@ -668,6 +698,36 @@ snapshots['test_schema_success[minimum] 1'] = {
         'createProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': None
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'contact',
+                                'value': None
+                            }
+                        },
+                        {
+                            'node': {
+                                'name': 'produced_by',
+                                'value': None
+                            }
+                        }
+                    ]
+                },
                 'contact': None,
                 'dateProduced': None,
                 'name': 'product1',
@@ -870,6 +930,36 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
         'createProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': None
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'contact',
+                                'value': 'contact-person'
+                            }
+                        },
+                        {
+                            'node': {
+                                'name': 'produced_by',
+                                'value': 'pwg-pmn'
+                            }
+                        }
+                    ]
+                },
                 'contact': 'contact-person',
                 'dateProduced': None,
                 'name': 'map1',

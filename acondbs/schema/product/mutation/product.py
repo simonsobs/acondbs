@@ -6,6 +6,8 @@ from ....models import (
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
+    AttributeText as AttributeTextModel,
+    AttributeDate as AttributeDateModel,
 )
 
 from ....db.sa import sa
@@ -104,6 +106,15 @@ class CreateProduct(graphene.Mutation):
             relations=relations,
             **input
         )
+        columns_text = [
+            "contact",
+            "produced_by",
+        ]
+        columns_date = ["date_produced"]
+        for c in columns_text:
+            AttributeTextModel(name=c, product=model, value=input.get(c))
+        for c in columns_date:
+            AttributeDateModel(name=c, product=model, value=input.get(c))
         sa.session.add(model)
         sa.session.commit()
         ok = True
@@ -174,6 +185,31 @@ class UpdateProduct(graphene.Mutation):
         # update scalar fields
         for k, v in input.items():
             setattr(model, k, v)
+
+        # update attributes
+        columns_text = [
+            "contact",
+            "produced_by",
+        ]
+        columns_date = ["date_produced"]
+        attr_dict = {a.name: a  for a in model.attributes_text}
+        for c in columns_text:
+            if c not in input:
+                continue
+            attr = attr_dict.get(c)
+            if attr:
+                attr.value = input[c]
+            else:
+                AttributeTextModel(name=c, product=model, value=input[c])
+        attr_dict = {a.name: a  for a in model.attributes_date}
+        for c in columns_date:
+            if c not in input:
+                continue
+            attr = attr_dict.get(c)
+            if attr:
+                attr.value = input[c]
+            else:
+                AttributeDateModel(name=c, product=model, value=input[c])
 
         model.time_updated = datetime.datetime.now()
         model.updating_git_hub_user = user
