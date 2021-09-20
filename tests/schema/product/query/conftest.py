@@ -9,7 +9,6 @@ from acondbs.models import (
     ProductFilePath,
     ProductRelationType,
     ProductRelation,
-    AttributeText,
     AttributeDate,
 )
 
@@ -88,7 +87,6 @@ def app(app_users):
         name="map1",
         date_produced=datetime.date(2020, 2, 1),
         type_=Map,
-        attributes_text=[AttributeText(name="name", value="map1")],
         attributes_date=[
             AttributeDate(
                 name="date_produced", value=datetime.date(2020, 2, 1)
@@ -100,7 +98,6 @@ def app(app_users):
         name="map2",
         date_produced=datetime.date(2020, 2, 10),
         type_=Map,
-        attributes_text=[AttributeText(name="name", value="map2")],
         attributes_date=[
             AttributeDate(
                 name="date_produced", value=datetime.date(2020, 2, 10)
@@ -112,7 +109,6 @@ def app(app_users):
         name="map3",
         date_produced=datetime.date(2020, 3, 19),
         type_=Map,
-        attributes_text=[AttributeText(name="name", value="map3")],
         attributes_date=[
             AttributeDate(
                 name="date_produced", value=datetime.date(2020, 3, 19)
@@ -124,7 +120,6 @@ def app(app_users):
         name="beam1",
         date_produced=datetime.date(2020, 2, 5),
         type_=Beam,
-        attributes_text=[AttributeText(name="name", value="beam1")],
         attributes_date=[
             AttributeDate(
                 name="date_produced", value=datetime.date(2020, 2, 5)
@@ -136,7 +131,6 @@ def app(app_users):
         name="beam2",
         date_produced=datetime.date(2020, 3, 4),
         type_=Beam,
-        attributes_text=[AttributeText(name="name", value="beam2")],
         attributes_date=[
             AttributeDate(
                 name="date_produced", value=datetime.date(2020, 3, 4)

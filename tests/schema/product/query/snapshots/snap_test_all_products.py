@@ -29,12 +29,6 @@ snapshots['test_schema[deep] 1'] = {
                         },
                         'attributesText': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'name': 'name',
-                                        'value': 'map1'
-                                    }
-                                }
                             ]
                         },
                         'contact': None,
@@ -154,12 +148,6 @@ snapshots['test_schema[deep] 1'] = {
                         },
                         'attributesText': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'name': 'name',
-                                        'value': 'map2'
-                                    }
-                                }
                             ]
                         },
                         'contact': None,
@@ -214,12 +202,6 @@ snapshots['test_schema[deep] 1'] = {
                         },
                         'attributesText': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'name': 'name',
-                                        'value': 'map3'
-                                    }
-                                }
                             ]
                         },
                         'contact': None,
@@ -281,12 +263,6 @@ snapshots['test_schema[deep] 1'] = {
                         },
                         'attributesText': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'name': 'name',
-                                        'value': 'beam1'
-                                    }
-                                }
                             ]
                         },
                         'contact': None,
@@ -406,12 +382,6 @@ snapshots['test_schema[deep] 1'] = {
                         },
                         'attributesText': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'name': 'name',
-                                        'value': 'beam2'
-                                    }
-                                }
                             ]
                         },
                         'contact': None,

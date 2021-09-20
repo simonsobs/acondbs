@@ -26,12 +26,6 @@ snapshots['test_schema[deep] 1'] = {
             },
             'attributesText': {
                 'edges': [
-                    {
-                        'node': {
-                            'name': 'name',
-                            'value': 'map1'
-                        }
-                    }
                 ]
             },
             'contact': None,
