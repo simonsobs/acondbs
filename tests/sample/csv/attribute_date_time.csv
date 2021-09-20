@@ -1,19 +1,1 @@
 attribute_id,name,product_id,value
-1,time_posted,1001,2019-02-13 10:05:23
-2,time_updated,1001,2019-02-13 16:45:30
-3,time_posted,1002,2019-03-15 09:11:25
-4,time_updated,1002,
-5,time_posted,1010,2018-01-01 15:32:10
-6,time_updated,1010,
-7,time_posted,1012,2020-01-20 18:10:05
-8,time_updated,1012,2020-01-20 21:52:32
-9,time_posted,1013,2020-02-01 11:05:02
-10,time_updated,1013,2020-02-01 19:02:15
-11,time_posted,1070,2019-03-04 08:12:41
-12,time_updated,1070,
-13,time_posted,1120,2019-06-07 18:21:21
-14,time_updated,1120,
-15,time_posted,1130,2020-01-23 12:11:45
-16,time_updated,1130,
-17,time_posted,1150,2020-02-07 09:42:11
-18,time_updated,1150,

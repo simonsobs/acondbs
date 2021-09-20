@@ -1,59 +1,19 @@
 attribute_id,name,product_id,value
-1,name,1001,lat20190213
 2,contact,1001,pwg-pmn
 3,produced_by,1001,pwg-pmn
-4,posted_by,1001,pwg-pmn
-5,updated_by,1001,pwg-pmn
-6,note,1001,"- This is a dummy test with a lat map
-- This should not depend on any beam"
-7,name,1002,xyz-s1234-20200101
 8,contact,1002,abc-def
 9,produced_by,1002,abc-def
-10,posted_by,1002,abc-def
-11,updated_by,1002,
-12,note,1002,"- note 1
-- note 2"
-13,name,1010,20180101
 14,contact,1010,pwg-pmn
 15,produced_by,1010,pwg-pmn
-16,posted_by,1010,pwg-pmn
-17,updated_by,1010,
-18,note,1010,- test entry
-19,name,1012,lat20200120
 20,contact,1012,pwg-pmn
 21,produced_by,1012,pwg-pmn
-22,posted_by,1012,pwg-pmn
-23,updated_by,1012,pwg-pmn
-24,note,1012,"- This is a dummy test with a lat map
-- A beam depends on this map"
-25,name,1013,lat20200201
 26,contact,1013,pwg-pmn
 27,produced_by,1013,pwg-pmn
-28,posted_by,1013,pwg-pmn
-29,updated_by,1013,pwg-pmn
-30,note,1013,"- This is a dummy test with a lat map
-- A beam depends on this map"
-31,name,1070,20190304
 32,contact,1070,pwg-pmn
 33,produced_by,1070,pwg-pmn
-34,posted_by,1070,pwg-pmn
-35,updated_by,1070,
-36,note,1070,- test entry
-37,name,1120,20190607
 38,contact,1120,pwg-pmn
 39,produced_by,1120,pwg-pmn
-40,posted_by,1120,pwg-pmn
-41,updated_by,1120,
-42,note,1120,- test entry
-43,name,1130,20200123
 44,contact,1130,pwg-pmn
 45,produced_by,1130,pwg-pmn
-46,posted_by,1130,pwg-pmn
-47,updated_by,1130,
-48,note,1130,- test entry
-49,name,1150,20200207
 50,contact,1150,pwg-pmn
 51,produced_by,1150,pwg-pmn
-52,posted_by,1150,pwg-pmn
-53,updated_by,1150,
-54,note,1150,- test entry
