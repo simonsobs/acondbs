@@ -10,9 +10,9 @@ class Product(sa.Model):
     type_id = sa.Column(sa.ForeignKey("product_types.type_id"), nullable=False)
     type_ = sa.relationship("ProductType", backref=sa.backref("products"))
     name = sa.Column(sa.Text(), nullable=False)
-    contact = sa.Column(sa.Text())
-    date_produced = sa.Column(sa.Date())
-    produced_by = sa.Column(sa.Text())
+    contact = sa.Column(sa.Text())  # TODO: move to attribute model
+    date_produced = sa.Column(sa.Date())  # TODO: move to attribute model
+    produced_by = sa.Column(sa.Text())  # TODO: move to attribute model
     time_posted = sa.Column(
         sa.DateTime(), default=lambda: datetime.datetime.now()
     )
