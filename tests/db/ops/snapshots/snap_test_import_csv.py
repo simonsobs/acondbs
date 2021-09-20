@@ -10,6 +10,174 @@ snapshots = Snapshot()
 snapshots['test_non_empty 1'] = {
     'account_admins': [
     ],
+    'attribute_date': [
+        {
+            'attribute_id': 1,
+            'name': 'date_produced',
+            'product_id': 1001,
+            'value': GenericRepr('datetime.date(2019, 2, 13)')
+        },
+        {
+            'attribute_id': 2,
+            'name': 'date_produced',
+            'product_id': 1002,
+            'value': GenericRepr('datetime.date(2019, 3, 15)')
+        },
+        {
+            'attribute_id': 3,
+            'name': 'date_produced',
+            'product_id': 1010,
+            'value': GenericRepr('datetime.date(2018, 1, 1)')
+        },
+        {
+            'attribute_id': 4,
+            'name': 'date_produced',
+            'product_id': 1012,
+            'value': GenericRepr('datetime.date(2020, 1, 20)')
+        },
+        {
+            'attribute_id': 5,
+            'name': 'date_produced',
+            'product_id': 1013,
+            'value': GenericRepr('datetime.date(2020, 2, 1)')
+        },
+        {
+            'attribute_id': 6,
+            'name': 'date_produced',
+            'product_id': 1070,
+            'value': GenericRepr('datetime.date(2019, 3, 4)')
+        },
+        {
+            'attribute_id': 7,
+            'name': 'date_produced',
+            'product_id': 1120,
+            'value': GenericRepr('datetime.date(2019, 6, 7)')
+        },
+        {
+            'attribute_id': 8,
+            'name': 'date_produced',
+            'product_id': 1130,
+            'value': GenericRepr('datetime.date(2020, 1, 23)')
+        },
+        {
+            'attribute_id': 9,
+            'name': 'date_produced',
+            'product_id': 1150,
+            'value': GenericRepr('datetime.date(2020, 2, 7)')
+        }
+    ],
+    'attribute_date_time': [
+    ],
+    'attribute_text': [
+        {
+            'attribute_id': 2,
+            'name': 'contact',
+            'product_id': 1001,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 3,
+            'name': 'produced_by',
+            'product_id': 1001,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 8,
+            'name': 'contact',
+            'product_id': 1002,
+            'value': 'abc-def'
+        },
+        {
+            'attribute_id': 9,
+            'name': 'produced_by',
+            'product_id': 1002,
+            'value': 'abc-def'
+        },
+        {
+            'attribute_id': 14,
+            'name': 'contact',
+            'product_id': 1010,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 15,
+            'name': 'produced_by',
+            'product_id': 1010,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 20,
+            'name': 'contact',
+            'product_id': 1012,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 21,
+            'name': 'produced_by',
+            'product_id': 1012,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 26,
+            'name': 'contact',
+            'product_id': 1013,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 27,
+            'name': 'produced_by',
+            'product_id': 1013,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 32,
+            'name': 'contact',
+            'product_id': 1070,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 33,
+            'name': 'produced_by',
+            'product_id': 1070,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 38,
+            'name': 'contact',
+            'product_id': 1120,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 39,
+            'name': 'produced_by',
+            'product_id': 1120,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 44,
+            'name': 'contact',
+            'product_id': 1130,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 45,
+            'name': 'produced_by',
+            'product_id': 1130,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 50,
+            'name': 'contact',
+            'product_id': 1150,
+            'value': 'pwg-pmn'
+        },
+        {
+            'attribute_id': 51,
+            'name': 'produced_by',
+            'product_id': 1150,
+            'value': 'pwg-pmn'
+        }
+    ],
     'github_org_memberships': [
     ],
     'github_orgs': [

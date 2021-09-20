@@ -172,6 +172,24 @@ snapshots['test_schema_success[delete-paths] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': '2020-02-01'
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                    ]
+                },
                 'contact': None,
                 'dateProduced': '2020-02-01',
                 'name': 'map1',
@@ -417,6 +435,24 @@ snapshots['test_schema_success[delete-relations] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': '2020-03-04'
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                    ]
+                },
                 'contact': None,
                 'dateProduced': '2020-03-04',
                 'name': 'beam2',
@@ -569,6 +605,24 @@ snapshots['test_schema_success[update-paths] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': '2020-02-01'
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                    ]
+                },
                 'contact': None,
                 'dateProduced': '2020-02-01',
                 'name': 'map1',
@@ -850,6 +904,24 @@ snapshots['test_schema_success[update-relations] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': '2020-03-04'
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                    ]
+                },
                 'contact': None,
                 'dateProduced': '2020-03-04',
                 'name': 'beam2',
@@ -1112,6 +1184,30 @@ snapshots['test_schema_success[update] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesDate': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'date_produced',
+                                'value': '2020-02-01'
+                            }
+                        }
+                    ]
+                },
+                'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesText': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'contact',
+                                'value': 'new-contact'
+                            }
+                        }
+                    ]
+                },
                 'contact': 'new-contact',
                 'dateProduced': '2020-02-01',
                 'name': 'map1',

@@ -19,6 +19,9 @@ from .product import (  # noqa: F401
     ProductFilePath,
     ProductRelationType,
     ProductRelation,
+    AttributeText,
+    AttributeDate,
+    AttributeDateTime,
 )
 
 from .github import (  # noqa: F401

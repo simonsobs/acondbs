@@ -1,9 +1,11 @@
 import pytest
-import textwrap
 
 from ...funcs import assert_query
 
-from ..gql import FRAGMENT_PRODUCT_RELATION_CONNECTION
+from ..gql import (
+    QUERY_ALL_PRODUCT_RELATIONS,
+    QUERY_ALL_PRODUCT_RELATIONS_TOTAL_COUNT,
+)
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
@@ -13,32 +15,11 @@ HEADERS = {
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {
-            "query": textwrap.dedent(
-                """
-                {
-                  allProductRelations {
-                    ...fragmentProductRelationConnection
-                  }
-                }
-              """
-            )
-            + FRAGMENT_PRODUCT_RELATION_CONNECTION,
-        },
+        {"query": QUERY_ALL_PRODUCT_RELATIONS},
         id="query",
     ),
     pytest.param(
-        {
-            "query": textwrap.dedent(
-                """
-                {
-                  allProductRelations {
-                    totalCount
-                  }
-                }
-              """
-            ),
-        },
+        {"query": QUERY_ALL_PRODUCT_RELATIONS_TOTAL_COUNT},
         id="total-count",
     ),
 ]

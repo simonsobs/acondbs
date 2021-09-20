@@ -2,7 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import FRAGMENT_PRODUCT_RELATION_CONNECTION, DELETE_PRODUCT_RELATION
+from ...gql import FRAGMENT_PRODUCT_RELATION_CONNECTION, MUTATION_DELETE_PRODUCT_RELATION
 
 QEURY = (
     """
@@ -23,7 +23,7 @@ HEADERS = {
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {"query": DELETE_PRODUCT_RELATION, "variables": {"relationId": 2}},
+        {"query": MUTATION_DELETE_PRODUCT_RELATION, "variables": {"relationId": 2}},
         {"query": QEURY},
         id="create",
     ),
@@ -52,7 +52,7 @@ async def test_schema_success(
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {"query": DELETE_PRODUCT_RELATION, "variables": {"relationId": 120}},
+        {"query": MUTATION_DELETE_PRODUCT_RELATION, "variables": {"relationId": 120}},
         {"query": QEURY},
         id="error-nonexistent",
     ),

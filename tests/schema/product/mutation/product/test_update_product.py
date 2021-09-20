@@ -2,7 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import UPDATE_PRODUCT
+from ...gql import MUTATION_UPDATE_PRODUCT
 
 QEURY = """
 {
@@ -45,7 +45,7 @@ HEADERS = {"Authorization": "Bearer 39d86487d76a84087f1da599c872dac4473e5f07"}  
 params = [
     pytest.param(
         {
-            "query": UPDATE_PRODUCT,
+            "query": MUTATION_UPDATE_PRODUCT,
             "variables": {
                 "productId": 1,
                 "input": {
@@ -60,7 +60,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": UPDATE_PRODUCT,
+            "query": MUTATION_UPDATE_PRODUCT,
             "variables": {
                 "productId": 1,
                 "input": {
@@ -78,7 +78,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": UPDATE_PRODUCT,
+            "query": MUTATION_UPDATE_PRODUCT,
             "variables": {
                 "productId": 1,
                 "input": {
@@ -92,7 +92,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": UPDATE_PRODUCT,
+            "query": MUTATION_UPDATE_PRODUCT,
             "variables": {
                 "productId": 5,
                 "input": {
@@ -109,7 +109,7 @@ params = [
     ),
     pytest.param(
         {
-            "query": UPDATE_PRODUCT,
+            "query": MUTATION_UPDATE_PRODUCT,
             "variables": {
                 "productId": 5,
                 "input": {"updatedBy": "updater", "relations": []},
@@ -143,7 +143,7 @@ async def test_schema_success(
 params = [
     pytest.param(
         {
-            "query": UPDATE_PRODUCT,
+            "query": MUTATION_UPDATE_PRODUCT,
             "variables": {
                 "productId": 1,
                 "input": {

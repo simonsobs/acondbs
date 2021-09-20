@@ -9,6 +9,9 @@ from ...models import (
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
+    AttributeText as AttributeTextModel,
+    AttributeDate as AttributeDateModel,
+    AttributeDateTime as AttributeDateTimeModel,
 )
 from ..filter_ import PFilterableConnectionField
 
@@ -63,5 +66,35 @@ class ProductFilePath(SQLAlchemyObjectType):
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
 
+
+##__________________________________________________________________||
+class AttributeText(SQLAlchemyObjectType):
+    """A text attribute of a product"""
+
+    class Meta:
+        model = AttributeTextModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
+class AttributeDate(SQLAlchemyObjectType):
+    """A date attribute of a product"""
+
+    class Meta:
+        model = AttributeDateModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
+class AttributeDateTime(SQLAlchemyObjectType):
+    """A date time attribute of a product"""
+
+    class Meta:
+        model = AttributeDateTimeModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
 
 ##__________________________________________________________________||

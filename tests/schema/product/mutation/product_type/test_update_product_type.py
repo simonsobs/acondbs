@@ -2,7 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import UPDATE_PRODUCT_TYPE
+from ...gql import MUTATION_UPDATE_PRODUCT_TYPE
 
 QEURY = """
 {
@@ -25,7 +25,7 @@ HEADERS = {
 params = [
     pytest.param(
         {
-            "query": UPDATE_PRODUCT_TYPE,
+            "query": MUTATION_UPDATE_PRODUCT_TYPE,
             "variables": {
                 "typeId": 1,
                 "input": {
@@ -66,7 +66,7 @@ async def test_schema_success(
 params = [
     pytest.param(
         {
-            "query": UPDATE_PRODUCT_TYPE,
+            "query": MUTATION_UPDATE_PRODUCT_TYPE,
             "variables": {
                 "typeId": 5,
                 "input": {

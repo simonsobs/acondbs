@@ -4,7 +4,7 @@ from ....funcs import assert_mutation
 
 from ...gql import (
     FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
-    DELETE_PRODUCT_RELATION_TYPES,
+    MUTATION_DELETE_PRODUCT_RELATION_TYPES,
 )
 
 ##__________________________________________________________________||
@@ -27,7 +27,7 @@ HEADERS = {
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {"query": DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 3}},
+        {"query": MUTATION_DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 3}},
         {"query": QEURY},
         id="delete",
     ),
@@ -56,12 +56,12 @@ async def test_schema_success(
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {"query": DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 512}},
+        {"query": MUTATION_DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 512}},
         {"query": QEURY},
         id="error-nonexistent",
     ),
     pytest.param(
-        {"query": DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 1}},
+        {"query": MUTATION_DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 1}},
         {"query": QEURY},
         id="error-unempty",
     ),

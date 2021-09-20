@@ -11,6 +11,7 @@ from acondbs.models import (
     ProductRelation,
     GitHubUser,
     GitHubToken,
+    AttributeDate,
 )
 
 
@@ -47,19 +48,59 @@ def app(app_empty):
 
     # create products
     map1 = Product(
-        product_id=1, name="map1", date_produced=datetime.date(2020, 2, 1), type_=Map
+        product_id=1,
+        name="map1",
+        date_produced=datetime.date(2020, 2, 1),
+        type_=Map,
+        attributes_date=[
+            AttributeDate(
+                name="date_produced", value=datetime.date(2020, 2, 1)
+            )
+        ],
     )
     map2 = Product(
-        product_id=2, name="map2", date_produced=datetime.date(2020, 2, 10), type_=Map
+        product_id=2,
+        name="map2",
+        date_produced=datetime.date(2020, 2, 10),
+        type_=Map,
+        attributes_date=[
+            AttributeDate(
+                name="date_produced", value=datetime.date(2020, 2, 10)
+            )
+        ],
     )
     map3 = Product(
-        product_id=3, name="map3", date_produced=datetime.date(2020, 3, 19), type_=Map
+        product_id=3,
+        name="map3",
+        date_produced=datetime.date(2020, 3, 19),
+        type_=Map,
+        attributes_date=[
+            AttributeDate(
+                name="date_produced", value=datetime.date(2020, 3, 19)
+            )
+        ],
     )
     beam1 = Product(
-        product_id=4, name="beam1", date_produced=datetime.date(2020, 2, 5), type_=Beam
+        product_id=4,
+        name="beam1",
+        date_produced=datetime.date(2020, 2, 5),
+        type_=Beam,
+        attributes_date=[
+            AttributeDate(
+                name="date_produced", value=datetime.date(2020, 2, 5)
+            )
+        ],
     )
     beam2 = Product(
-        product_id=5, name="beam2", date_produced=datetime.date(2020, 3, 4), type_=Beam
+        product_id=5,
+        name="beam2",
+        date_produced=datetime.date(2020, 3, 4),
+        type_=Beam,
+        attributes_date=[
+            AttributeDate(
+                name="date_produced", value=datetime.date(2020, 3, 4)
+            )
+        ],
     )
 
     # add paths

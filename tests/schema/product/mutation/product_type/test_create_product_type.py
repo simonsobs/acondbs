@@ -2,7 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import CREATE_PRODUCT_TYPE
+from ...gql import MUTATION_CREATE_PRODUCT_TYPE
 
 QEURY = """
 {
@@ -25,7 +25,7 @@ HEADERS = {
 params = [
     pytest.param(
         {
-            "query": CREATE_PRODUCT_TYPE,
+            "query": MUTATION_CREATE_PRODUCT_TYPE,
             "variables": {
                 "input": {
                     "name": "compass",
@@ -66,7 +66,7 @@ async def test_schema_success(
 params = [
     pytest.param(
         {
-            "query": CREATE_PRODUCT_TYPE,
+            "query": MUTATION_CREATE_PRODUCT_TYPE,
             "variables": {
                 "input": {
                     "name": "map",
