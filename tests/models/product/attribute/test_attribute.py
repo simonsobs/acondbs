@@ -12,8 +12,8 @@ def test_map1_attributes(app):
         map1 = Product.query.filter_by(product_id=1).one()
 
         assert len(map1.attributes_text) == 1
-        name = [a for a in map1.attributes_text if a.name == "name"][0]
-        assert name.value == "map1"
+        name = [a for a in map1.attributes_text if a.name == "attr1"][0]
+        assert name.value == "value1"
 
         assert len(map1.attributes_date) == 1
         date_produced = [
@@ -34,11 +34,10 @@ def test_filter(app):
         expected = Product.query.filter_by(product_id=1).one()
         actual = (
             Product.query.join(AttributeText)
-            .filter_by(name="name", value="map1")
+            .filter_by(name="attr1", value="value1")
             .one()
         )
         assert actual is expected
-
 
 def test_order(app):
 
@@ -119,5 +118,19 @@ def test_order_nested(app_empty):
 
         assert actual == expected
 
+
+##__________________________________________________________________||
+def test_delte_orphan(app):
+
+    with app.app_context():
+        map1 = Product.query.filter_by(product_id=1).one()
+        sa.session.delete(map1)
+        sa.session.commit()
+
+    with app.app_context():
+        map1 = Product.query.filter_by(product_id=1).one_or_none()
+        assert map1 is None
+        attr = AttributeText.query.filter_by(name='attr1', value='value1').one_or_none()
+        assert attr is None
 
 ##__________________________________________________________________||
