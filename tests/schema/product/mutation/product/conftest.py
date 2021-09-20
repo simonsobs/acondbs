@@ -47,19 +47,34 @@ def app(app_empty):
 
     # create products
     map1 = Product(
-        product_id=1, name="map1", date_produced=datetime.date(2020, 2, 1), type_=Map
+        product_id=1,
+        name="map1",
+        date_produced=datetime.date(2020, 2, 1),
+        type_=Map,
     )
     map2 = Product(
-        product_id=2, name="map2", date_produced=datetime.date(2020, 2, 10), type_=Map
+        product_id=2,
+        name="map2",
+        date_produced=datetime.date(2020, 2, 10),
+        type_=Map,
     )
     map3 = Product(
-        product_id=3, name="map3", date_produced=datetime.date(2020, 3, 19), type_=Map
+        product_id=3,
+        name="map3",
+        date_produced=datetime.date(2020, 3, 19),
+        type_=Map,
     )
     beam1 = Product(
-        product_id=4, name="beam1", date_produced=datetime.date(2020, 2, 5), type_=Beam
+        product_id=4,
+        name="beam1",
+        date_produced=datetime.date(2020, 2, 5),
+        type_=Beam,
     )
     beam2 = Product(
-        product_id=5, name="beam2", date_produced=datetime.date(2020, 3, 4), type_=Beam
+        product_id=5,
+        name="beam2",
+        date_produced=datetime.date(2020, 3, 4),
+        type_=Beam,
     )
 
     # add paths
