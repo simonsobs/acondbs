@@ -112,10 +112,11 @@ class CreateProduct(graphene.Mutation):
 
 
 class UpdateProduct(graphene.Mutation):
-    """Update a product. Note: This is to update the DB entry about a product. If the
+    """Update a product.
+
+    Note: This is to update the DB entry about a product. If the
     product itself has been updated, a new entry should be added by
     createProduct()
-
     """
 
     class Arguments:
