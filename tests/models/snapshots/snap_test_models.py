@@ -13,7 +13,7 @@ snapshots['test_table_names 1'] = [
     'product_file_paths',
     'product_relation_types',
     'product_relations',
-    'attribute_text',
+    'attribute_unicode_text',
     'attribute_date',
     'attribute_date_time',
     'field',

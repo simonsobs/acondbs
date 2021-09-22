@@ -68,7 +68,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'attribute_date_time': [
     ],
-    'attribute_text': [
+    'attribute_unicode_text': [
         {
             'attribute_id': 2,
             'name': 'contact',

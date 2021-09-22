@@ -68,7 +68,7 @@ snapshots['test_non_empty 1'] = {
     ],
     'attribute_date_time': [
     ],
-    'attribute_text': [
+    'attribute_unicode_text': [
         {
             'attribute_id': 2,
             'name': 'contact',
