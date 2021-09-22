@@ -68,7 +68,7 @@ class ProductFilePath(SQLAlchemyObjectType):
 
 
 ##__________________________________________________________________||
-class AttributeText(SQLAlchemyObjectType):
+class AttributeUnicodeText(SQLAlchemyObjectType):
     """A text attribute of a product"""
 
     class Meta:
