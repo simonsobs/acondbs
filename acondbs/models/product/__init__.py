@@ -15,4 +15,6 @@ from .attribute import (  # noqa: F401
     AttributeDateTime,
 )
 
+from .field import FieldType, Field, TypeFieldAssociation  # noqa: F401
+
 ##__________________________________________________________________||

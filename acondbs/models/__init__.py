@@ -22,6 +22,9 @@ from .product import (  # noqa: F401
     AttributeText,
     AttributeDate,
     AttributeDateTime,
+    FieldType,  # enum
+    Field,
+    TypeFieldAssociation,
 )
 
 from .github import (  # noqa: F401
