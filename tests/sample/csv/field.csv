@@ -1,1 +1,4 @@
 field_id,name,type_
+1,contact,UnicodeText
+2,produced_by,UnicodeText
+3,date_produced,Date
