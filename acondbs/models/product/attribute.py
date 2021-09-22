@@ -1,10 +1,20 @@
+from sqlalchemy.orm import declared_attr
+from sqlalchemy.orm import declarative_mixin
+
 from ...db.sa import sa
 
 
 ##__________________________________________________________________||
+@declarative_mixin
 class AttributeBase:
     attribute_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.Text(), nullable=False)
+
+    @declared_attr
+    def product_id(self):
+        return sa.Column(
+            sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
+        )
 
     def __repr__(self):
         return f"<{self.__class__.__name__} {self.name!r}: {self.value!r}>"
@@ -13,9 +23,6 @@ class AttributeBase:
 ##__________________________________________________________________||
 class AttributeUnicodeText(AttributeBase, sa.Model):
     __tablename__ = "attribute_unicode_text"
-    product_id = sa.Column(
-        sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
-    )
     product = sa.relationship(
         "Product",
         backref=sa.backref("attributes_unicode_text", cascade="all, delete-orphan"),
@@ -25,9 +32,6 @@ class AttributeUnicodeText(AttributeBase, sa.Model):
 
 class AttributeDate(AttributeBase, sa.Model):
     __tablename__ = "attribute_date"
-    product_id = sa.Column(
-        sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
-    )
     product = sa.relationship(
         "Product",
         backref=sa.backref("attributes_date", cascade="all, delete-orphan"),
@@ -37,13 +41,11 @@ class AttributeDate(AttributeBase, sa.Model):
 
 class AttributeDateTime(AttributeBase, sa.Model):
     __tablename__ = "attribute_date_time"
-    product_id = sa.Column(
-        sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
-    )
     product = sa.relationship(
         "Product",
         backref=sa.backref("attributes_date_time", cascade="all, delete-orphan"),
     )
     value = sa.Column(sa.DateTime())
+
 
 ##__________________________________________________________________||
