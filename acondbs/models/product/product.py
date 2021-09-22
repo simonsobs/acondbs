@@ -5,6 +5,8 @@ from ...db.sa import sa
 
 ##__________________________________________________________________||
 class Product(sa.Model):
+    # TODO: rename the class name to be more generic, e.g., "Entry"
+    # TODO: use singular for the table name
     __tablename__ = "products"
     product_id = sa.Column(sa.Integer(), primary_key=True)
     type_id = sa.Column(sa.ForeignKey("product_types.type_id"), nullable=False)
