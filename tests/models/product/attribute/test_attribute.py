@@ -99,19 +99,19 @@ def test_order_nested(app_empty):
 
         # ORM Alias: https://docs.sqlalchemy.org/en/14/tutorial/data_select.html#orm-entity-aliases
         # refer to the same table multiple times
-        AliasedAttributeText1 = aliased(AttributeUnicodeText)
-        AliasedAttributeText2 = aliased(AttributeUnicodeText)
+        AliasedAttributeUnicodeText1 = aliased(AttributeUnicodeText)
+        AliasedAttributeUnicodeText2 = aliased(AttributeUnicodeText)
 
         # sort descending order of attr1 then ascending order of attr2
         query = (
             Product.query.join(ProductType)
             .filter_by(name="map")
-            .join(AliasedAttributeText1)
+            .join(AliasedAttributeUnicodeText1)
             .filter_by(name="attr1")
-            .order_by(AliasedAttributeText1.value.desc())
-            .join(AliasedAttributeText2)
+            .order_by(AliasedAttributeUnicodeText1.value.desc())
+            .join(AliasedAttributeUnicodeText2)
             .filter_by(name="attr2")
-            .order_by(AliasedAttributeText2.value)
+            .order_by(AliasedAttributeUnicodeText2.value)
         )
 
         actual = query.all()
