@@ -187,6 +187,21 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
         }
     ],
     'field': [
+        {
+            'field_id': 1,
+            'name': 'contact',
+            'type_': 'UnicodeText'
+        },
+        {
+            'field_id': 2,
+            'name': 'produced_by',
+            'type_': 'UnicodeText'
+        },
+        {
+            'field_id': 3,
+            'name': 'date_produced',
+            'type_': 'Date'
+        }
     ],
     'github_org_memberships': [
     ],
@@ -546,6 +561,54 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
         }
     ],
     'type_field_association': [
+        {
+            'field_id': 1,
+            'type_id': 1
+        },
+        {
+            'field_id': 2,
+            'type_id': 1
+        },
+        {
+            'field_id': 3,
+            'type_id': 1
+        },
+        {
+            'field_id': 1,
+            'type_id': 2
+        },
+        {
+            'field_id': 2,
+            'type_id': 2
+        },
+        {
+            'field_id': 3,
+            'type_id': 2
+        },
+        {
+            'field_id': 1,
+            'type_id': 3
+        },
+        {
+            'field_id': 2,
+            'type_id': 3
+        },
+        {
+            'field_id': 3,
+            'type_id': 3
+        },
+        {
+            'field_id': 1,
+            'type_id': 4
+        },
+        {
+            'field_id': 2,
+            'type_id': 4
+        },
+        {
+            'field_id': 3,
+            'type_id': 4
+        }
     ],
     'web_config': [
         {
