@@ -19,7 +19,7 @@ from .product import (  # noqa: F401
     ProductFilePath,
     ProductRelationType,
     ProductRelation,
-    AttributeText,
+    AttributeUnicodeText,
     AttributeDate,
     AttributeDateTime,
     FieldType,  # enum

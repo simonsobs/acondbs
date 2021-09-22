@@ -6,7 +6,7 @@ from acondbs.db.sa import sa
 from acondbs.models import (
     ProductType,
     Product,
-    AttributeText,
+    AttributeUnicodeText,
     AttributeDate,
     AttributeDateTime,
 )
@@ -40,7 +40,7 @@ def app(app_empty):
 
     # create products
     map1 = Product(product_id=1, name="map1", type_=Map)
-    AttributeText(product=map1, name="attr1", value="value1")
+    AttributeUnicodeText(product=map1, name="attr1", value="value1")
     AttributeDate(
         product=map1, name="date_produced", value=datetime.date(2020, 2, 1)
     )
@@ -50,7 +50,7 @@ def app(app_empty):
         value=datetime.datetime(2020, 2, 1, 9, 10, 25),
     )
     map2 = Product(product_id=2, name="map2", type_=Map)
-    AttributeText(product=map2, name="attr1", value="value2")
+    AttributeUnicodeText(product=map2, name="attr1", value="value2")
     AttributeDate(
         product=map2, name="date_produced", value=datetime.date(2020, 2, 10)
     )
@@ -60,7 +60,7 @@ def app(app_empty):
         value=datetime.datetime(2020, 2, 10, 13, 20, 2),
     )
     map3 = Product(product_id=3, name="map3", type_=Map)
-    AttributeText(product=map3, name="attr1", value="value3")
+    AttributeUnicodeText(product=map3, name="attr1", value="value3")
     AttributeDate(
         product=map3, name="date_produced", value=datetime.date(2020, 3, 19)
     )
@@ -70,7 +70,7 @@ def app(app_empty):
         value=datetime.datetime(2020, 3, 20, 8, 45, 30),
     )
     beam1 = Product(product_id=4, name="beam1", type_=Beam)
-    AttributeText(product=beam1, name="attr1", value="value4")
+    AttributeUnicodeText(product=beam1, name="attr1", value="value4")
     AttributeDate(
         product=beam1, name="date_produced", value=datetime.date(2020, 2, 5)
     )
@@ -80,7 +80,7 @@ def app(app_empty):
         value=datetime.datetime(2020, 2, 5, 12, 3, 48),
     )
     beam2 = Product(product_id=5, name="beam2", type_=Beam)
-    AttributeText(product=beam2, name="attr1", value="value5")
+    AttributeUnicodeText(product=beam2, name="attr1", value="value5")
     AttributeDate(
         product=beam2, name="date_produced", value=datetime.date(2020, 3, 4)
     )

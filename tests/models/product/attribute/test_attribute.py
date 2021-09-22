@@ -3,7 +3,7 @@ from sqlalchemy.orm import aliased
 
 from acondbs.db.sa import sa
 
-from acondbs.models import Product, ProductType, AttributeText, AttributeDate
+from acondbs.models import Product, ProductType, AttributeUnicodeText, AttributeDate
 
 
 ##__________________________________________________________________||
@@ -33,7 +33,7 @@ def test_filter(app):
     with app.app_context():
         expected = Product.query.filter_by(product_id=1).one()
         actual = (
-            Product.query.join(AttributeText)
+            Product.query.join(AttributeUnicodeText)
             .filter_by(name="attr1", value="value1")
             .one()
         )
@@ -71,17 +71,17 @@ def test_order_nested(app_empty):
     map4 = Product(product_id=4, name="map4", type_=Map)
     map5 = Product(product_id=5, name="map5", type_=Map)
 
-    AttributeText(product=map1, name="attr1", value="1")
-    AttributeText(product=map2, name="attr1", value="2")
-    AttributeText(product=map3, name="attr1", value="1")
-    AttributeText(product=map4, name="attr1", value="2")
-    AttributeText(product=map5, name="attr1", value="1")
+    AttributeUnicodeText(product=map1, name="attr1", value="1")
+    AttributeUnicodeText(product=map2, name="attr1", value="2")
+    AttributeUnicodeText(product=map3, name="attr1", value="1")
+    AttributeUnicodeText(product=map4, name="attr1", value="2")
+    AttributeUnicodeText(product=map5, name="attr1", value="1")
 
-    AttributeText(product=map1, name="attr2", value="b")
-    AttributeText(product=map2, name="attr2", value="a")
-    AttributeText(product=map3, name="attr2", value="c")
-    AttributeText(product=map4, name="attr2", value="b")
-    AttributeText(product=map5, name="attr2", value="a")
+    AttributeUnicodeText(product=map1, name="attr2", value="b")
+    AttributeUnicodeText(product=map2, name="attr2", value="a")
+    AttributeUnicodeText(product=map3, name="attr2", value="c")
+    AttributeUnicodeText(product=map4, name="attr2", value="b")
+    AttributeUnicodeText(product=map5, name="attr2", value="a")
 
     with app.app_context():
         sa.session.add(Map)
@@ -99,8 +99,8 @@ def test_order_nested(app_empty):
 
         # ORM Alias: https://docs.sqlalchemy.org/en/14/tutorial/data_select.html#orm-entity-aliases
         # refer to the same table multiple times
-        AliasedAttributeText1 = aliased(AttributeText)
-        AliasedAttributeText2 = aliased(AttributeText)
+        AliasedAttributeText1 = aliased(AttributeUnicodeText)
+        AliasedAttributeText2 = aliased(AttributeUnicodeText)
 
         # sort descending order of attr1 then ascending order of attr2
         query = (
@@ -130,7 +130,7 @@ def test_delte_orphan(app):
     with app.app_context():
         map1 = Product.query.filter_by(product_id=1).one_or_none()
         assert map1 is None
-        attr = AttributeText.query.filter_by(name='attr1', value='value1').one_or_none()
+        attr = AttributeUnicodeText.query.filter_by(name='attr1', value='value1').one_or_none()
         assert attr is None
 
 ##__________________________________________________________________||

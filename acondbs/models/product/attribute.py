@@ -11,7 +11,7 @@ class AttributeBase:
 
 
 ##__________________________________________________________________||
-class AttributeText(AttributeBase, sa.Model):
+class AttributeUnicodeText(AttributeBase, sa.Model):
     __tablename__ = "attribute_unicode_text"
     product_id = sa.Column(
         sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False

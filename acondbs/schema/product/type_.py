@@ -9,7 +9,7 @@ from ...models import (
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
-    AttributeText as AttributeTextModel,
+    AttributeUnicodeText as AttributeTextModel,
     AttributeDate as AttributeDateModel,
     AttributeDateTime as AttributeDateTimeModel,
 )
