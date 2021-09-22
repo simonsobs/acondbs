@@ -24,7 +24,7 @@ snapshots['test_schema[deep] 1'] = {
                 'edges': [
                 ]
             },
-            'attributesText': {
+            'attributesUnicodeText': {
                 'edges': [
                 ]
             },

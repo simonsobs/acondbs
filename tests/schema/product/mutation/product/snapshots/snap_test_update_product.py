@@ -186,7 +186,7 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                     ]
                 },
@@ -449,7 +449,7 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                     ]
                 },
@@ -619,7 +619,7 @@ snapshots['test_schema_success[update-paths] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                     ]
                 },
@@ -918,7 +918,7 @@ snapshots['test_schema_success[update-relations] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                     ]
                 },
@@ -1198,7 +1198,7 @@ snapshots['test_schema_success[update] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
