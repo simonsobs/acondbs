@@ -20,7 +20,7 @@ class AttributeText(AttributeBase, sa.Model):
         "Product",
         backref=sa.backref("attributes_text", cascade="all, delete-orphan"),
     )
-    value = sa.Column(sa.Text())
+    value = sa.Column(sa.UnicodeText())
 
 
 class AttributeDate(AttributeBase, sa.Model):
