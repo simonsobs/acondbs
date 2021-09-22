@@ -12,9 +12,7 @@ class AttributeBase:
 
     @declared_attr
     def product_id(self):
-        return sa.Column(
-            sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
-        )
+        return sa.Column(sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False)  # fmt: skip
 
     def __repr__(self):
         return f"<{self.__class__.__name__} {self.name!r}: {self.value!r}>"
@@ -25,7 +23,7 @@ class AttributeUnicodeText(AttributeBase, sa.Model):
     __tablename__ = "attribute_unicode_text"
     product = sa.relationship(
         "Product",
-        backref=sa.backref("attributes_unicode_text", cascade="all, delete-orphan"),
+        backref=sa.backref("attributes_unicode_text", cascade="all, delete-orphan"),  # fmt: skip
     )
     value = sa.Column(sa.UnicodeText())
 
@@ -34,7 +32,7 @@ class AttributeDate(AttributeBase, sa.Model):
     __tablename__ = "attribute_date"
     product = sa.relationship(
         "Product",
-        backref=sa.backref("attributes_date", cascade="all, delete-orphan"),
+        backref=sa.backref("attributes_date", cascade="all, delete-orphan"),  # fmt: skip
     )
     value = sa.Column(sa.Date())
 
@@ -43,7 +41,7 @@ class AttributeDateTime(AttributeBase, sa.Model):
     __tablename__ = "attribute_date_time"
     product = sa.relationship(
         "Product",
-        backref=sa.backref("attributes_date_time", cascade="all, delete-orphan"),
+        backref=sa.backref("attributes_date_time", cascade="all, delete-orphan"),  # fmt: skip
     )
     value = sa.Column(sa.DateTime())
 
