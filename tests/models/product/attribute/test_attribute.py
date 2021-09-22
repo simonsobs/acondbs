@@ -11,8 +11,8 @@ def test_map1_attributes(app):
     with app.app_context():
         map1 = Product.query.filter_by(product_id=1).one()
 
-        assert len(map1.attributes_text) == 1
-        name = [a for a in map1.attributes_text if a.name == "attr1"][0]
+        assert len(map1.attributes_unicode_text) == 1
+        name = [a for a in map1.attributes_unicode_text if a.name == "attr1"][0]
         assert name.value == "value1"
 
         assert len(map1.attributes_date) == 1

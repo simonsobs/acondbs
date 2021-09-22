@@ -6,7 +6,7 @@ fragment fragmentProduct on Product {
     typeId
     name
   }
-  attributesText {
+  attributesUnicodeText {
     edges {
       node {
         name

@@ -18,7 +18,7 @@ class AttributeUnicodeText(AttributeBase, sa.Model):
     )
     product = sa.relationship(
         "Product",
-        backref=sa.backref("attributes_text", cascade="all, delete-orphan"),
+        backref=sa.backref("attributes_unicode_text", cascade="all, delete-orphan"),
     )
     value = sa.Column(sa.UnicodeText())
 
