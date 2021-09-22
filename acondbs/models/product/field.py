@@ -8,7 +8,7 @@ class FieldType(enum.Enum):
     # SQLAlchemy generic types: https://docs.sqlalchemy.org/en/14/core/type_basics.html#generic-types
     UnicodeText = 1
     Boolean = 2
-    Int = 3
+    Integer = 3
     Float = 4
     Date = 5
     DateTime = 6
