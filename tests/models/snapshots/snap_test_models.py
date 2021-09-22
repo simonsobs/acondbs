@@ -16,6 +16,8 @@ snapshots['test_table_names 1'] = [
     'attribute_text',
     'attribute_date',
     'attribute_date_time',
+    'field',
+    'type_field_association',
     'github_tokens',
     'github_orgs',
     'github_users',

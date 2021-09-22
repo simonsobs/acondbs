@@ -186,6 +186,8 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'value': 'pwg-pmn'
         }
     ],
+    'field': [
+    ],
     'github_org_memberships': [
     ],
     'github_orgs': [
@@ -542,6 +544,8 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'updated_by': '',
             'updating_git_hub_user_id': ''
         }
+    ],
+    'type_field_association': [
     ],
     'web_config': [
         {
