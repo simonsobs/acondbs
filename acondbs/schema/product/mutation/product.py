@@ -112,7 +112,9 @@ class CreateProduct(graphene.Mutation):
         ]
         columns_date = ["date_produced"]
         for c in columns_text:
-            AttributeUnicodeTextModel(name=c, product=model, value=input.get(c))
+            AttributeUnicodeTextModel(
+                name=c, product=model, value=input.get(c)
+            )
         for c in columns_date:
             AttributeDateModel(name=c, product=model, value=input.get(c))
         sa.session.add(model)
@@ -192,7 +194,7 @@ class UpdateProduct(graphene.Mutation):
             "produced_by",
         ]
         columns_date = ["date_produced"]
-        attr_dict = {a.name: a  for a in model.attributes_unicode_text}
+        attr_dict = {a.name: a for a in model.attributes_unicode_text}
         for c in columns_text:
             if c not in input:
                 continue
@@ -200,8 +202,10 @@ class UpdateProduct(graphene.Mutation):
             if attr:
                 attr.value = input[c]
             else:
-                AttributeUnicodeTextModel(name=c, product=model, value=input[c])
-        attr_dict = {a.name: a  for a in model.attributes_date}
+                AttributeUnicodeTextModel(
+                    name=c, product=model, value=input[c]
+                )
+        attr_dict = {a.name: a for a in model.attributes_date}
         for c in columns_date:
             if c not in input:
                 continue
