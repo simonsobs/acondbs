@@ -1,6 +1,8 @@
 import datetime
 from sqlalchemy.orm import aliased
 
+import pytest
+
 from acondbs.db.sa import sa
 
 from acondbs.models import (
@@ -10,19 +12,72 @@ from acondbs.models import (
     Field,
     TypeFieldAssociation,
     AttributeUnicodeText,
+    AttributeBoolean,
+    AttributeInteger,
+    AttributeFloat,
     AttributeDate,
+    AttributeDateTime,
+    AttributeTime
 )
 
 
 ##__________________________________________________________________||
-def test_repr(app_empty):
+params = [
+    pytest.param(FieldType.UnicodeText, AttributeUnicodeText, "value1 値１", id='UnicodeText'),  # fmt: skip
+    pytest.param(FieldType.Boolean, AttributeBoolean, True, id='Boolean'),  # fmt: skip
+    pytest.param(FieldType.Integer, AttributeInteger, -512442, id='Integer'),  # fmt: skip
+    pytest.param(FieldType.Float, AttributeFloat, 3.14592613, id='Float'),  # fmt: skip
+    pytest.param(FieldType.Date, AttributeDate, datetime.date(2020, 2, 1), id='Date'),  # fmt: skip
+    pytest.param(FieldType.DateTime, AttributeDateTime, datetime.datetime(2020, 2, 1, 9, 10, 25), id='DateTime'),  # fmt: skip
+    pytest.param(FieldType.Time, AttributeTime, datetime.time(9, 10, 25), id='Time'),  # fmt: skip
+]
+
+
+@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+def test_repr(app_empty, field_type, AttributeClass, value):
+    app = app_empty  # noqa: F841
+
+    attr1 = AttributeClass(value=value)
+    repr(attr1)
+
+    attr1.field = Field(name="attr1", type_=field_type)
+    repr(attr1)
+
+
+@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+def test_obj(app_empty, field_type, AttributeClass, value):
+    app = app_empty  # noqa: F841
+    field = Field(name="field1", type_=field_type)
+    attr = AttributeClass(field=field, value=value)  # noqa: F841
+
+
+@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+def test_commit(app_empty, field_type, AttributeClass, value):
     app = app_empty
+    with app.app_context():
+        field = Field(name="field1", type_=field_type)
+        product_type = ProductType(name="map")
+        product_type.fields = [TypeFieldAssociation(field=field)]
+        sa.session.add(product_type)
+        sa.session.commit()
 
-    attr1 = AttributeUnicodeText(value="value1")
-    repr(attr1)
+    with app.app_context():
+        product_type = ProductType.query.filter_by(name="map").one()
+        field = product_type.fields[0].field
+        product = Product(name="product1", type_=product_type)
+        attr = AttributeClass(product=product, field=field, value=value)
+        sa.session.add(attr)
+        sa.session.commit()
 
-    attr1.field = Field(name="attr1", type_=FieldType.UnicodeText)
-    repr(attr1)
+    with app.app_context():
+        attr = AttributeClass.query.one()
+        assert attr.__class__ is AttributeClass
+        assert attr.field.name == 'field1'
+        assert attr.field.type_ is field_type
+        assert attr.value == value
+        assert getattr(attr.product, AttributeClass.backref_column) == [attr]
+        assert getattr(attr.field, AttributeClass.backref_column) == [attr]
+
 
 ##__________________________________________________________________||
 def test_map1_attributes(app):
