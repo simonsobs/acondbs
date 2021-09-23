@@ -11,8 +11,12 @@ from .product_relation import ProductRelation  # noqa: F401
 
 from .attribute import (  # noqa: F401
     AttributeUnicodeText,
+    AttributeBoolean,
+    AttributeInteger,
+    AttributeFloat,
     AttributeDate,
     AttributeDateTime,
+    AttributeTime
 )
 
 from .field import FieldType, Field, TypeFieldAssociation  # noqa: F401

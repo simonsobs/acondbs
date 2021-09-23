@@ -20,8 +20,12 @@ from .product import (  # noqa: F401
     ProductRelationType,
     ProductRelation,
     AttributeUnicodeText,
+    AttributeBoolean,
+    AttributeInteger,
+    AttributeFloat,
     AttributeDate,
     AttributeDateTime,
+    AttributeTime,
     FieldType,  # enum
     Field,
     TypeFieldAssociation,

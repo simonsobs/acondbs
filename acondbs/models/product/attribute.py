@@ -37,6 +37,45 @@ class AttributeUnicodeText(AttributeBase, sa.Model):
     value = sa.Column(sa.UnicodeText())
 
 
+class AttributeBoolean(AttributeBase, sa.Model):
+    __tablename__ = "attribute_boolean"
+    product = sa.relationship(
+        "Product",
+        backref=sa.backref("attributes_boolean", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    field = sa.relationship(
+        "Field",
+        backref=sa.backref("attributes_boolean", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    value = sa.Column(sa.Boolean())
+
+
+class AttributeInteger(AttributeBase, sa.Model):
+    __tablename__ = "attribute_integer"
+    product = sa.relationship(
+        "Product",
+        backref=sa.backref("attributes_integer", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    field = sa.relationship(
+        "Field",
+        backref=sa.backref("attributes_integer", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    value = sa.Column(sa.Integer())
+
+
+class AttributeFloat(AttributeBase, sa.Model):
+    __tablename__ = "attribute_float"
+    product = sa.relationship(
+        "Product",
+        backref=sa.backref("attributes_float", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    field = sa.relationship(
+        "Field",
+        backref=sa.backref("attributes_float", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    value = sa.Column(sa.Float())
+
+
 class AttributeDate(AttributeBase, sa.Model):
     __tablename__ = "attribute_date"
     product = sa.relationship(
@@ -61,6 +100,19 @@ class AttributeDateTime(AttributeBase, sa.Model):
         backref=sa.backref("attributes_date_time", cascade="all, delete-orphan"),  # fmt: skip
     )
     value = sa.Column(sa.DateTime())
+
+
+class AttributeTime(AttributeBase, sa.Model):
+    __tablename__ = "attribute_time"
+    product = sa.relationship(
+        "Product",
+        backref=sa.backref("attributes_time", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    field = sa.relationship(
+        "Field",
+        backref=sa.backref("attributes_time", cascade="all, delete-orphan"),  # fmt: skip
+    )
+    value = sa.Column(sa.Time())
 
 
 ##__________________________________________________________________||
