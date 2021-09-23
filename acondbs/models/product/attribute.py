@@ -15,8 +15,22 @@ class AttributeBase:
         return sa.Column(sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False)  # fmt: skip
 
     @declared_attr
+    def product(self):
+        return sa.relationship(
+            "Product",
+            backref=sa.backref(self.backref_column, cascade="all, delete-orphan"),  # fmt: skip
+        )
+
+    @declared_attr
     def field_id(self):
         return sa.Column(sa.Integer(), sa.ForeignKey("field.field_id"), nullable=False)  # fmt: skip
+
+    @declared_attr
+    def field(self):
+        return sa.relationship(
+            "Field",
+            backref=sa.backref(self.backref_column, cascade="all, delete-orphan"),  # fmt: skip
+        )
 
     def __repr__(self):
         field_name = self.field.name if self.field else self.field
@@ -26,92 +40,43 @@ class AttributeBase:
 ##__________________________________________________________________||
 class AttributeUnicodeText(AttributeBase, sa.Model):
     __tablename__ = "attribute_unicode_text"
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("attributes_unicode_text", cascade="all, delete-orphan"),  # fmt: skip
-    )
-    field = sa.relationship(
-        "Field",
-        backref=sa.backref("attributes_unicode_text", cascade="all, delete-orphan"),  # fmt: skip
-    )
+    backref_column = "attributes_unicode_text"
     value = sa.Column(sa.UnicodeText())
 
 
 class AttributeBoolean(AttributeBase, sa.Model):
     __tablename__ = "attribute_boolean"
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("attributes_boolean", cascade="all, delete-orphan"),  # fmt: skip
-    )
-    field = sa.relationship(
-        "Field",
-        backref=sa.backref("attributes_boolean", cascade="all, delete-orphan"),  # fmt: skip
-    )
+    backref_column = "attributes_boolean"
     value = sa.Column(sa.Boolean())
 
 
 class AttributeInteger(AttributeBase, sa.Model):
     __tablename__ = "attribute_integer"
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("attributes_integer", cascade="all, delete-orphan"),  # fmt: skip
-    )
-    field = sa.relationship(
-        "Field",
-        backref=sa.backref("attributes_integer", cascade="all, delete-orphan"),  # fmt: skip
-    )
+    backref_column = "attributes_integer"
     value = sa.Column(sa.Integer())
 
 
 class AttributeFloat(AttributeBase, sa.Model):
     __tablename__ = "attribute_float"
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("attributes_float", cascade="all, delete-orphan"),  # fmt: skip
-    )
-    field = sa.relationship(
-        "Field",
-        backref=sa.backref("attributes_float", cascade="all, delete-orphan"),  # fmt: skip
-    )
+    backref_column = "attributes_float"
     value = sa.Column(sa.Float())
 
 
 class AttributeDate(AttributeBase, sa.Model):
     __tablename__ = "attribute_date"
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("attributes_date", cascade="all, delete-orphan"),  # fmt: skip
-    )
-    field = sa.relationship(
-        "Field",
-        backref=sa.backref("attributes_date", cascade="all, delete-orphan"),  # fmt: skip
-    )
+    backref_column = "attributes_date"
     value = sa.Column(sa.Date())
 
 
 class AttributeDateTime(AttributeBase, sa.Model):
     __tablename__ = "attribute_date_time"
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("attributes_date_time", cascade="all, delete-orphan"),  # fmt: skip
-    )
-    field = sa.relationship(
-        "Field",
-        backref=sa.backref("attributes_date_time", cascade="all, delete-orphan"),  # fmt: skip
-    )
+    backref_column = "attributes_date_time"
     value = sa.Column(sa.DateTime())
 
 
 class AttributeTime(AttributeBase, sa.Model):
     __tablename__ = "attribute_time"
-    product = sa.relationship(
-        "Product",
-        backref=sa.backref("attributes_time", cascade="all, delete-orphan"),  # fmt: skip
-    )
-    field = sa.relationship(
-        "Field",
-        backref=sa.backref("attributes_time", cascade="all, delete-orphan"),  # fmt: skip
-    )
+    backref_column = "attributes_time"
     value = sa.Column(sa.Time())
 
 
