@@ -12,5 +12,8 @@ class ProductType(sa.Model):
     plural = sa.Column(sa.Text())
     icon = sa.Column(sa.Text())
 
+    def __repr__(self):
+        return f"<{self.__class__.__name__} {self.name!r}>"
+
 
 ##__________________________________________________________________||
