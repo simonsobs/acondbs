@@ -4,6 +4,27 @@ from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
 
 
 ##__________________________________________________________________||
+def test_repr(app_empty):
+    app = app_empty
+
+    assoc = TypeFieldAssociation()
+    repr(assoc)
+
+    field1 = Field(name="field1")
+    repr(field1)
+
+    field1.type_=FieldType.UnicodeText
+    repr(field1)
+
+    type1 = ProductType(name="type1")
+    repr(type1)
+
+    assoc.type_ = type1
+    assoc.field = field1
+    repr(assoc)
+
+
+##__________________________________________________________________||
 def test_one(app):
     with app.app_context():
         field = Field.query.filter_by(name="field1").one()

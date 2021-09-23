@@ -22,7 +22,8 @@ class Field(sa.Model):
     type_ = sa.Column(sa.Enum(FieldType), nullable=False)
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} {self.name!r}>"
+        type_name = self.type_.name if self.type_ else self.type_
+        return f"<{self.__class__.__name__} {self.name!r} {type_name!r}>"
 
 
 class TypeFieldAssociation(sa.Model):
@@ -49,7 +50,9 @@ class TypeFieldAssociation(sa.Model):
     )
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} {self.type_.name!r} {self.field.name!r}>"
+        type_name = self.type_.name if self.type_ else self.type_
+        field_name = self.field.name if self.field else self.field
+        return f"<{self.__class__.__name__} {type_name!r} {field_name!r}>"
 
 
 ##__________________________________________________________________||
