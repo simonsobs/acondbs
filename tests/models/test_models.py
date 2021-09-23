@@ -2,7 +2,7 @@ from acondbs.db.sa import sa
 
 
 ##__________________________________________________________________||
-def test_table_names(app, snapshot):
+def test_table_names(app_empty, snapshot):
     '''test the table names
     '''
     table_names = list(sa.Model.metadata.tables.keys())
