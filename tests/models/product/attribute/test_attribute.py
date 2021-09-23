@@ -3,8 +3,26 @@ from sqlalchemy.orm import aliased
 
 from acondbs.db.sa import sa
 
-from acondbs.models import Product, ProductType, AttributeUnicodeText, AttributeDate
+from acondbs.models import (
+    Product,
+    ProductType,
+    FieldType,
+    Field,
+    TypeFieldAssociation,
+    AttributeUnicodeText,
+    AttributeDate,
+)
 
+
+##__________________________________________________________________||
+def test_repr(app_empty):
+    app = app_empty
+
+    attr1 = AttributeUnicodeText(value="value1")
+    repr(attr1)
+
+    attr1.field = Field(name="attr1", type_=FieldType.UnicodeText)
+    repr(attr1)
 
 ##__________________________________________________________________||
 def test_map1_attributes(app):

@@ -19,7 +19,8 @@ class AttributeBase:
         return sa.Column(sa.Integer(), sa.ForeignKey("field.field_id"), nullable=False)  # fmt: skip
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} {self.name!r}: {self.value!r}>"
+        field_name = self.field.name if self.field else self.field
+        return f"<{self.__class__.__name__} {field_name!r}: {self.value!r}>"
 
 
 ##__________________________________________________________________||
