@@ -10,6 +10,46 @@ fragment fragmentProduct on Product {
     edges {
       node {
         name
+        field {
+          name
+          type_
+        }
+        value
+      }
+    }
+  }
+  attributesBoolean {
+    edges {
+      node {
+        name
+        field {
+          name
+          type_
+        }
+        value
+      }
+    }
+  }
+  attributesInteger {
+    edges {
+      node {
+        name
+        field {
+          name
+          type_
+        }
+        value
+      }
+    }
+  }
+  attributesFloat {
+    edges {
+      node {
+        name
+        field {
+          name
+          type_
+        }
         value
       }
     }
@@ -18,6 +58,10 @@ fragment fragmentProduct on Product {
     edges {
       node {
         name
+        field {
+          name
+          type_
+        }
         value
       }
     }
@@ -26,6 +70,22 @@ fragment fragmentProduct on Product {
     edges {
       node {
         name
+        field {
+          name
+          type_
+        }
+        value
+      }
+    }
+  }
+  attributesTime {
+    edges {
+      node {
+        name
+        field {
+          name
+          type_
+        }
         value
       }
     }
