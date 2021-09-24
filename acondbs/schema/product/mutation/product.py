@@ -2,6 +2,7 @@ import datetime
 import graphene
 
 from ....models import (
+    ProductType as ProductTypeModel,
     Product as ProductModel,
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
@@ -87,6 +88,8 @@ class CreateProduct(graphene.Mutation):
 
     def mutate(root, info, input):
         user = get_git_hub_viewer_from_info(info)
+        type_id = input.pop("type_id")
+        product_type = ProductTypeModel.query.filter_by(type_id=type_id).one()
         paths = [ProductFilePathModel(path=p) for p in input.pop("paths", [])]
         with sa.session.no_autoflush:
             relations = [
@@ -101,22 +104,23 @@ class CreateProduct(graphene.Mutation):
                 for r in input.pop("relations", [])
             ]
         model = ProductModel(
+            type_=product_type,
             posting_git_hub_user=user,
             paths=paths,
             relations=relations,
             **input
         )
-        columns_text = [
-            "contact",
-            "produced_by",
-        ]
+        field_dict = {f.field.name: f.field for f in product_type.fields}
+        columns_text = ["contact", "produced_by"]
         columns_date = ["date_produced"]
         for c in columns_text:
             AttributeUnicodeTextModel(
-                name=c, product=model, value=input.get(c)
+                name=c, field=field_dict[c], product=model, value=input.get(c)
             )
         for c in columns_date:
-            AttributeDateModel(name=c, product=model, value=input.get(c))
+            AttributeDateModel(
+                name=c, field=field_dict[c], product=model, value=input.get(c)
+            )
         sa.session.add(model)
         sa.session.commit()
         ok = True
