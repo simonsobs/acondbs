@@ -172,10 +172,15 @@ snapshots['test_schema_success[delete-paths] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': '2020-02-01'
                             }
@@ -183,6 +188,18 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                     ]
                 },
                 'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
                     'edges': [
                     ]
                 },
@@ -435,10 +452,15 @@ snapshots['test_schema_success[delete-relations] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': '2020-03-04'
                             }
@@ -446,6 +468,18 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                     ]
                 },
                 'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
                     'edges': [
                     ]
                 },
@@ -605,10 +639,15 @@ snapshots['test_schema_success[update-paths] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': '2020-02-01'
                             }
@@ -616,6 +655,18 @@ snapshots['test_schema_success[update-paths] 1'] = {
                     ]
                 },
                 'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
                     'edges': [
                     ]
                 },
@@ -904,10 +955,15 @@ snapshots['test_schema_success[update-relations] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': '2020-03-04'
                             }
@@ -915,6 +971,18 @@ snapshots['test_schema_success[update-relations] 1'] = {
                     ]
                 },
                 'attributesDateTime': {
+                    'edges': [
+                    ]
+                },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
                     'edges': [
                     ]
                 },
@@ -1184,10 +1252,15 @@ snapshots['test_schema_success[update] 1'] = {
         'updateProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': '2020-02-01'
                             }
@@ -1198,10 +1271,23 @@ snapshots['test_schema_success[update] 1'] = {
                     'edges': [
                     ]
                 },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
+                    'edges': [
+                    ]
+                },
                 'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'contact',
                                 'value': 'new-contact'
                             }

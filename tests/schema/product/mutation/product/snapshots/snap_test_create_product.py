@@ -332,10 +332,15 @@ snapshots['test_schema_success[create] 1'] = {
         'createProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': '2020-02-20'
                             }
@@ -346,16 +351,30 @@ snapshots['test_schema_success[create] 1'] = {
                     'edges': [
                     ]
                 },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
+                    'edges': [
+                    ]
+                },
                 'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'contact',
                                 'value': 'contact-person'
                             }
                         },
                         {
                             'node': {
+                                'field': None,
                                 'name': 'produced_by',
                                 'value': 'producer'
                             }
@@ -698,10 +717,15 @@ snapshots['test_schema_success[minimum] 1'] = {
         'createProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': None
                             }
@@ -712,16 +736,30 @@ snapshots['test_schema_success[minimum] 1'] = {
                     'edges': [
                     ]
                 },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
+                    'edges': [
+                    ]
+                },
                 'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'contact',
                                 'value': None
                             }
                         },
                         {
                             'node': {
+                                'field': None,
                                 'name': 'produced_by',
                                 'value': None
                             }
@@ -930,10 +968,15 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
         'createProduct': {
             'ok': True,
             'product': {
+                'attributesBoolean': {
+                    'edges': [
+                    ]
+                },
                 'attributesDate': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'date_produced',
                                 'value': None
                             }
@@ -944,16 +987,30 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                     'edges': [
                     ]
                 },
+                'attributesFloat': {
+                    'edges': [
+                    ]
+                },
+                'attributesInteger': {
+                    'edges': [
+                    ]
+                },
+                'attributesTime': {
+                    'edges': [
+                    ]
+                },
                 'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
+                                'field': None,
                                 'name': 'contact',
                                 'value': 'contact-person'
                             }
                         },
                         {
                             'node': {
+                                'field': None,
                                 'name': 'produced_by',
                                 'value': 'pwg-pmn'
                             }
