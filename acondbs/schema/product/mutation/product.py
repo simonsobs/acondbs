@@ -193,10 +193,8 @@ class UpdateProduct(graphene.Mutation):
             setattr(model, k, v)
 
         # update attributes
-        columns_text = [
-            "contact",
-            "produced_by",
-        ]
+        field_dict = {f.field.name: f.field for f in model.type_.fields}
+        columns_text = ["contact", "produced_by"]
         columns_date = ["date_produced"]
         attr_dict = {a.name: a for a in model.attributes_unicode_text}
         for c in columns_text:
@@ -207,7 +205,7 @@ class UpdateProduct(graphene.Mutation):
                 attr.value = input[c]
             else:
                 AttributeUnicodeTextModel(
-                    name=c, product=model, value=input[c]
+                    name=c, field=field_dict[c], product=model, value=input[c]
                 )
         attr_dict = {a.name: a for a in model.attributes_date}
         for c in columns_date:
@@ -217,7 +215,9 @@ class UpdateProduct(graphene.Mutation):
             if attr:
                 attr.value = input[c]
             else:
-                AttributeDateModel(name=c, product=model, value=input[c])
+                AttributeDateModel(
+                    name=c, field=field_dict[c], product=model, value=input[c]
+                )
 
         model.time_updated = datetime.datetime.now()
         model.updating_git_hub_user = user
