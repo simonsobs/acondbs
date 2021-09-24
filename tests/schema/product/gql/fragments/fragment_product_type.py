@@ -7,6 +7,19 @@ fragment fragmentProductType on ProductType {
   singular
   plural
   icon
+  fields {
+    edges {
+      node {
+        type_ {
+          name
+        }
+        field {
+          name
+          type_
+        }
+      }
+    }
+  }
   products {
     edges {
       node {
