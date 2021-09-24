@@ -3,25 +3,32 @@ import pytest
 from .funcs import assert_query
 
 QUERY = '''
-  {
-    __schema {
-      queryType {
-        fields {
-          name
-        }
+{
+  __schema {
+    types {
+      kind
+      name
+      fields {
+        name
       }
-      mutationType {
-        fields {
-          name
-        }
+    }
+    queryType {
+      fields {
+        name
       }
-      subscriptionType {
-        fields {
-          name
-        }
+    }
+    mutationType {
+      fields {
+        name
+      }
+    }
+    subscriptionType {
+      fields {
+        name
       }
     }
   }
+}
 '''
 
 
