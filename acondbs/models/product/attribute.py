@@ -23,7 +23,8 @@ class AttributeBase:
 
     @declared_attr
     def field_id(self):
-        return sa.Column(sa.Integer(), sa.ForeignKey("field.field_id"), nullable=False)  # fmt: skip
+        return sa.Column(sa.Integer(), sa.ForeignKey("field.field_id"), nullable=True)  # fmt: skip
+        # TODO: Make nullable False
 
     @declared_attr
     def field(self):
