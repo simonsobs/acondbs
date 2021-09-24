@@ -10,10 +10,18 @@ snapshots = Snapshot()
 snapshots['test_schema[deep] 1'] = {
     'data': {
         'product': {
+            'attributesBoolean': {
+                'edges': [
+                ]
+            },
             'attributesDate': {
                 'edges': [
                     {
                         'node': {
+                            'field': {
+                                'name': 'date_produced',
+                                'type_': 'DATE'
+                            },
                             'name': 'date_produced',
                             'value': '2020-02-01'
                         }
@@ -21,6 +29,18 @@ snapshots['test_schema[deep] 1'] = {
                 ]
             },
             'attributesDateTime': {
+                'edges': [
+                ]
+            },
+            'attributesFloat': {
+                'edges': [
+                ]
+            },
+            'attributesInteger': {
+                'edges': [
+                ]
+            },
+            'attributesTime': {
                 'edges': [
                 ]
             },
