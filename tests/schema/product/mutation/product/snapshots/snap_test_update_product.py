@@ -180,7 +180,10 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': '2020-02-01'
                             }
@@ -460,7 +463,10 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': '2020-03-04'
                             }
@@ -647,7 +653,10 @@ snapshots['test_schema_success[update-paths] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': '2020-02-01'
                             }
@@ -963,7 +972,10 @@ snapshots['test_schema_success[update-relations] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': '2020-03-04'
                             }
@@ -1260,7 +1272,10 @@ snapshots['test_schema_success[update] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': '2020-02-01'
                             }

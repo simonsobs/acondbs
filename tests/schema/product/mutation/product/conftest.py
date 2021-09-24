@@ -11,6 +11,9 @@ from acondbs.models import (
     ProductRelation,
     GitHubUser,
     GitHubToken,
+    FieldType,
+    Field,
+    TypeFieldAssociation,
     AttributeDate,
 )
 
@@ -42,9 +45,17 @@ def app(app_empty):
     Parent = ProductRelationType(type_id=1, name="parent")
     Parent.reverse = ProductRelationType(type_id=2, name="child")
 
+    # create fields
+    field_contact = Field(name="contact", type_=FieldType.UnicodeText)
+    field_produced_by = Field(name="produced_by", type_=FieldType.UnicodeText)
+    field_date_produced = Field(name="date_produced", type_=FieldType.Date)
+    fields = [field_contact, field_produced_by, field_date_produced]
+
     # create product types
     Map = ProductType(type_id=1, name="map")
+    Map.fields = [TypeFieldAssociation(field=f) for f in fields]
     Beam = ProductType(type_id=2, name="beam")
+    Beam.fields = [TypeFieldAssociation(field=f) for f in fields]
 
     # create products
     map1 = Product(
@@ -54,7 +65,9 @@ def app(app_empty):
         type_=Map,
         attributes_date=[
             AttributeDate(
-                name="date_produced", value=datetime.date(2020, 2, 1)
+                name="date_produced",
+                field=field_date_produced,
+                value=datetime.date(2020, 2, 1),
             )
         ],
     )
@@ -65,7 +78,9 @@ def app(app_empty):
         type_=Map,
         attributes_date=[
             AttributeDate(
-                name="date_produced", value=datetime.date(2020, 2, 10)
+                name="date_produced",
+                field=field_date_produced,
+                value=datetime.date(2020, 2, 10),
             )
         ],
     )
@@ -76,7 +91,9 @@ def app(app_empty):
         type_=Map,
         attributes_date=[
             AttributeDate(
-                name="date_produced", value=datetime.date(2020, 3, 19)
+                name="date_produced",
+                field=field_date_produced,
+                value=datetime.date(2020, 3, 19),
             )
         ],
     )
@@ -87,7 +104,9 @@ def app(app_empty):
         type_=Beam,
         attributes_date=[
             AttributeDate(
-                name="date_produced", value=datetime.date(2020, 2, 5)
+                name="date_produced",
+                field=field_date_produced,
+                value=datetime.date(2020, 2, 5),
             )
         ],
     )
@@ -98,7 +117,9 @@ def app(app_empty):
         type_=Beam,
         attributes_date=[
             AttributeDate(
-                name="date_produced", value=datetime.date(2020, 3, 4)
+                name="date_produced",
+                field=field_date_produced,
+                value=datetime.date(2020, 3, 4),
             )
         ],
     )
