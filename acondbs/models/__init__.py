@@ -19,9 +19,16 @@ from .product import (  # noqa: F401
     ProductFilePath,
     ProductRelationType,
     ProductRelation,
-    AttributeText,
+    AttributeUnicodeText,
+    AttributeBoolean,
+    AttributeInteger,
+    AttributeFloat,
     AttributeDate,
     AttributeDateTime,
+    AttributeTime,
+    FieldType,  # enum
+    Field,
+    TypeFieldAssociation,
 )
 
 from .github import (  # noqa: F401

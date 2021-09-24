@@ -9,7 +9,7 @@ from ...models import (
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
-    AttributeText as AttributeTextModel,
+    AttributeUnicodeText as AttributeUnicodeTextModel,
     AttributeDate as AttributeDateModel,
     AttributeDateTime as AttributeDateTimeModel,
 )
@@ -68,11 +68,11 @@ class ProductFilePath(SQLAlchemyObjectType):
 
 
 ##__________________________________________________________________||
-class AttributeText(SQLAlchemyObjectType):
+class AttributeUnicodeText(SQLAlchemyObjectType):
     """A text attribute of a product"""
 
     class Meta:
-        model = AttributeTextModel
+        model = AttributeUnicodeTextModel
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory

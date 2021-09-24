@@ -346,7 +346,7 @@ snapshots['test_schema_success[create] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
@@ -712,7 +712,7 @@ snapshots['test_schema_success[minimum] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
@@ -944,7 +944,7 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                     'edges': [
                     ]
                 },
-                'attributesText': {
+                'attributesUnicodeText': {
                     'edges': [
                         {
                             'node': {
