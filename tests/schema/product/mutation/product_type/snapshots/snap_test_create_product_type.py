@@ -31,6 +31,10 @@ snapshots['test_schema_success[create] 1'] = {
         'createProductType': {
             'ok': True,
             'productType': {
+                'fields': {
+                    'edges': [
+                    ]
+                },
                 'icon': 'mdi-compass',
                 'indefArticle': 'a',
                 'name': 'compass',

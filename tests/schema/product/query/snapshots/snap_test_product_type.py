@@ -10,6 +10,10 @@ snapshots = Snapshot()
 snapshots['test_schema[name] 1'] = {
     'data': {
         'productType': {
+            'fields': {
+                'edges': [
+                ]
+            },
             'icon': 'mdi-map',
             'indefArticle': 'a',
             'name': 'map',
@@ -49,6 +53,10 @@ snapshots['test_schema[type_id-and-name-nonexistent] 1'] = {
 snapshots['test_schema[type_id-and-name] 1'] = {
     'data': {
         'productType': {
+            'fields': {
+                'edges': [
+                ]
+            },
             'icon': 'mdi-map',
             'indefArticle': 'a',
             'name': 'map',
@@ -115,6 +123,10 @@ snapshots['test_schema[type_id-sort-products] 1'] = {
 snapshots['test_schema[type_id] 1'] = {
     'data': {
         'productType': {
+            'fields': {
+                'edges': [
+                ]
+            },
             'icon': 'mdi-map',
             'indefArticle': 'a',
             'name': 'map',

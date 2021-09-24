@@ -7,11 +7,34 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema_error[error-nonexistent] 1'] = {
+    'data': {
+        'allProductTypes': {
+            'edges': [
+                {
+                    'node': {
+                        'name': 'map'
+                    }
+                },
+                {
+                    'node': {
+                        'name': 'beam'
+                    }
+                }
+            ]
+        }
+    }
+}
+
 snapshots['test_schema_success[update] 1'] = {
     'data': {
         'updateProductType': {
             'ok': True,
             'productType': {
+                'fields': {
+                    'edges': [
+                    ]
+                },
                 'icon': 'mdi-compass',
                 'indefArticle': 'a',
                 'name': 'map',
@@ -44,25 +67,6 @@ snapshots['test_schema_success[update] 1'] = {
 }
 
 snapshots['test_schema_success[update] 2'] = {
-    'data': {
-        'allProductTypes': {
-            'edges': [
-                {
-                    'node': {
-                        'name': 'map'
-                    }
-                },
-                {
-                    'node': {
-                        'name': 'beam'
-                    }
-                }
-            ]
-        }
-    }
-}
-
-snapshots['test_schema_error[error-nonexistent] 1'] = {
     'data': {
         'allProductTypes': {
             'edges': [

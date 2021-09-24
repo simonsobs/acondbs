@@ -13,6 +13,10 @@ snapshots['test_schema[sort-order] 1'] = {
             'edges': [
                 {
                     'node': {
+                        'fields': {
+                            'edges': [
+                            ]
+                        },
                         'icon': 'mdi-spotlight-beam',
                         'indefArticle': 'a',
                         'name': 'beam',
@@ -38,6 +42,10 @@ snapshots['test_schema[sort-order] 1'] = {
                 },
                 {
                     'node': {
+                        'fields': {
+                            'edges': [
+                            ]
+                        },
                         'icon': 'mdi-map',
                         'indefArticle': 'a',
                         'name': 'map',
