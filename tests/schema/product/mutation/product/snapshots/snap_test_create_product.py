@@ -340,7 +340,10 @@ snapshots['test_schema_success[create] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': '2020-02-20'
                             }
@@ -367,14 +370,20 @@ snapshots['test_schema_success[create] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
                                 'name': 'contact',
                                 'value': 'contact-person'
                             }
                         },
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
                                 'name': 'produced_by',
                                 'value': 'producer'
                             }
@@ -725,7 +734,10 @@ snapshots['test_schema_success[minimum] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': None
                             }
@@ -752,14 +764,20 @@ snapshots['test_schema_success[minimum] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
                                 'name': 'contact',
                                 'value': None
                             }
                         },
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
                                 'name': 'produced_by',
                                 'value': None
                             }
@@ -976,7 +994,10 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
                                 'name': 'date_produced',
                                 'value': None
                             }
@@ -1003,14 +1024,20 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
                                 'name': 'contact',
                                 'value': 'contact-person'
                             }
                         },
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
                                 'name': 'produced_by',
                                 'value': 'pwg-pmn'
                             }
