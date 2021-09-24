@@ -1302,7 +1302,10 @@ snapshots['test_schema_success[update] 1'] = {
                     'edges': [
                         {
                             'node': {
-                                'field': None,
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
                                 'name': 'contact',
                                 'value': 'new-contact'
                             }
