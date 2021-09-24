@@ -9,6 +9,8 @@ from ...models import (
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
+    Field as FieldModel,
+    TypeFieldAssociation as TypeFieldAssociationModel,
     AttributeUnicodeText as AttributeUnicodeTextModel,
     AttributeBoolean as AttributeBooleanModel,
     AttributeInteger as AttributeIntegerModel,
@@ -72,6 +74,22 @@ class ProductFilePath(SQLAlchemyObjectType):
 
 
 ##__________________________________________________________________||
+class Field(SQLAlchemyObjectType):
+    class Meta:
+        model = FieldModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
+class TypeFieldAssociation(SQLAlchemyObjectType):
+    class Meta:
+        model = TypeFieldAssociationModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
 class AttributeUnicodeText(SQLAlchemyObjectType):
     """A unicode text attribute of a product"""
 
