@@ -480,6 +480,9 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'products'
                         },
                         {
+                            'name': 'fields'
+                        },
+                        {
                             'name': 'id'
                         }
                     ],
@@ -495,6 +498,545 @@ snapshots['test_schema[admin] 1'] = {
                     'fields': None,
                     'kind': 'ENUM',
                     'name': 'ProductSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'TypeFieldAssociationConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'TypeFieldAssociationEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'typeId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'type_'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'TypeFieldAssociation'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'type_'
+                        },
+                        {
+                            'name': 'attributesUnicodeText'
+                        },
+                        {
+                            'name': 'attributesBoolean'
+                        },
+                        {
+                            'name': 'attributesInteger'
+                        },
+                        {
+                            'name': 'attributesFloat'
+                        },
+                        {
+                            'name': 'attributesDate'
+                        },
+                        {
+                            'name': 'attributesDateTime'
+                        },
+                        {
+                            'name': 'attributesTime'
+                        },
+                        {
+                            'name': 'entryTypes'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'Field'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'FieldType'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeUnicodeTextConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeUnicodeTextEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeUnicodeText'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeUnicodeTextSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeBooleanConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeBooleanEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeBoolean'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeBooleanSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeIntegerConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeIntegerEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeInteger'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeIntegerSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeFloatConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeFloatEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeFloat'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Float'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeFloatSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDate'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeDateSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateTimeConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateTimeEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateTime'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeDateTimeSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeTimeConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeTimeEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeTime'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeTimeSortEnum'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'TypeFieldAssociationSortEnum'
                 },
                 {
                     'fields': [
@@ -652,424 +1194,6 @@ snapshots['test_schema[admin] 1'] = {
                     'fields': None,
                     'kind': 'ENUM',
                     'name': 'ProductRelationSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeUnicodeTextConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeUnicodeTextEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeUnicodeText'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeUnicodeTextSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeBooleanConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeBooleanEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeBoolean'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeBooleanSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeIntegerConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeIntegerEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeInteger'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeIntegerSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeFloatConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeFloatEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeFloat'
-                },
-                {
-                    'fields': None,
-                    'kind': 'SCALAR',
-                    'name': 'Float'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeFloatSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDate'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeDateSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateTimeConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateTimeEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateTime'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeDateTimeSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeTimeConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeTimeEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeTime'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeTimeSortEnum'
                 },
                 {
                     'fields': [
@@ -2283,6 +2407,9 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'products'
                         },
                         {
+                            'name': 'fields'
+                        },
+                        {
                             'name': 'id'
                         }
                     ],
@@ -2298,6 +2425,545 @@ snapshots['test_schema[private] 1'] = {
                     'fields': None,
                     'kind': 'ENUM',
                     'name': 'ProductSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'TypeFieldAssociationConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'TypeFieldAssociationEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'typeId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'type_'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'TypeFieldAssociation'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'type_'
+                        },
+                        {
+                            'name': 'attributesUnicodeText'
+                        },
+                        {
+                            'name': 'attributesBoolean'
+                        },
+                        {
+                            'name': 'attributesInteger'
+                        },
+                        {
+                            'name': 'attributesFloat'
+                        },
+                        {
+                            'name': 'attributesDate'
+                        },
+                        {
+                            'name': 'attributesDateTime'
+                        },
+                        {
+                            'name': 'attributesTime'
+                        },
+                        {
+                            'name': 'entryTypes'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'Field'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'FieldType'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeUnicodeTextConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeUnicodeTextEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeUnicodeText'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeUnicodeTextSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeBooleanConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeBooleanEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeBoolean'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeBooleanSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeIntegerConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeIntegerEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeInteger'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeIntegerSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeFloatConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeFloatEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeFloat'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Float'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeFloatSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDate'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeDateSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateTimeConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateTimeEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeDateTime'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeDateTimeSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeTimeConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeTimeEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'attributeId'
+                        },
+                        {
+                            'name': 'name'
+                        },
+                        {
+                            'name': 'value'
+                        },
+                        {
+                            'name': 'productId'
+                        },
+                        {
+                            'name': 'fieldId'
+                        },
+                        {
+                            'name': 'product'
+                        },
+                        {
+                            'name': 'field'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'AttributeTime'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'AttributeTimeSortEnum'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'TypeFieldAssociationSortEnum'
                 },
                 {
                     'fields': [
@@ -2455,424 +3121,6 @@ snapshots['test_schema[private] 1'] = {
                     'fields': None,
                     'kind': 'ENUM',
                     'name': 'ProductRelationSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeUnicodeTextConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeUnicodeTextEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeUnicodeText'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeUnicodeTextSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeBooleanConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeBooleanEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeBoolean'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeBooleanSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeIntegerConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeIntegerEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeInteger'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeIntegerSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeFloatConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeFloatEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeFloat'
-                },
-                {
-                    'fields': None,
-                    'kind': 'SCALAR',
-                    'name': 'Float'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeFloatSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDate'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeDateSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateTimeConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateTimeEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeDateTime'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeDateTimeSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeTimeConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeTimeEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'attributeId'
-                        },
-                        {
-                            'name': 'name'
-                        },
-                        {
-                            'name': 'value'
-                        },
-                        {
-                            'name': 'productId'
-                        },
-                        {
-                            'name': 'fieldId'
-                        },
-                        {
-                            'name': 'product'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'AttributeTime'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'AttributeTimeSortEnum'
                 },
                 {
                     'fields': [
