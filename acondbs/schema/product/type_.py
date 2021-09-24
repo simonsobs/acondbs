@@ -10,8 +10,12 @@ from ...models import (
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
     AttributeUnicodeText as AttributeUnicodeTextModel,
+    AttributeBoolean as AttributeBooleanModel,
+    AttributeInteger as AttributeIntegerModel,
+    AttributeFloat as AttributeFloatModel,
     AttributeDate as AttributeDateModel,
     AttributeDateTime as AttributeDateTimeModel,
+    AttributeTime as AttributeTimeModel,
 )
 from ..filter_ import PFilterableConnectionField
 
@@ -69,10 +73,40 @@ class ProductFilePath(SQLAlchemyObjectType):
 
 ##__________________________________________________________________||
 class AttributeUnicodeText(SQLAlchemyObjectType):
-    """A text attribute of a product"""
+    """A unicode text attribute of a product"""
 
     class Meta:
         model = AttributeUnicodeTextModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
+class AttributeBoolean(SQLAlchemyObjectType):
+    """A boolean attribute of a product"""
+
+    class Meta:
+        model = AttributeBooleanModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
+class AttributeInteger(SQLAlchemyObjectType):
+    """An integer attribute of a product"""
+
+    class Meta:
+        model = AttributeIntegerModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
+class AttributeFloat(SQLAlchemyObjectType):
+    """A float attribute of a product"""
+
+    class Meta:
+        model = AttributeFloatModel
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
@@ -93,6 +127,16 @@ class AttributeDateTime(SQLAlchemyObjectType):
 
     class Meta:
         model = AttributeDateTimeModel
+        interfaces = (relay.Node,)
+        connection_class = CountedConnection
+        connection_field_factory = PFilterableConnectionField.factory
+
+
+class AttributeTime(SQLAlchemyObjectType):
+    """A time attribute of a product"""
+
+    class Meta:
+        model = AttributeTimeModel
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
