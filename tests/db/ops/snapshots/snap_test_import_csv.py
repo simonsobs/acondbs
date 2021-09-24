@@ -15,63 +15,63 @@ snapshots['test_non_empty 1'] = {
     'attribute_date': [
         {
             'attribute_id': 1,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1001,
             'value': GenericRepr('datetime.date(2019, 2, 13)')
         },
         {
             'attribute_id': 2,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1002,
             'value': GenericRepr('datetime.date(2019, 3, 15)')
         },
         {
             'attribute_id': 3,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1010,
             'value': GenericRepr('datetime.date(2018, 1, 1)')
         },
         {
             'attribute_id': 4,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1012,
             'value': GenericRepr('datetime.date(2020, 1, 20)')
         },
         {
             'attribute_id': 5,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1013,
             'value': GenericRepr('datetime.date(2020, 2, 1)')
         },
         {
             'attribute_id': 6,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1070,
             'value': GenericRepr('datetime.date(2019, 3, 4)')
         },
         {
             'attribute_id': 7,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1120,
             'value': GenericRepr('datetime.date(2019, 6, 7)')
         },
         {
             'attribute_id': 8,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1130,
             'value': GenericRepr('datetime.date(2020, 1, 23)')
         },
         {
             'attribute_id': 9,
-            'field_id': '',
+            'field_id': 3,
             'name': 'date_produced',
             'product_id': 1150,
             'value': GenericRepr('datetime.date(2020, 2, 7)')
@@ -88,126 +88,126 @@ snapshots['test_non_empty 1'] = {
     'attribute_unicode_text': [
         {
             'attribute_id': 2,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1001,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 3,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1001,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 8,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1002,
             'value': 'abc-def'
         },
         {
             'attribute_id': 9,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1002,
             'value': 'abc-def'
         },
         {
             'attribute_id': 14,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1010,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 15,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1010,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 20,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1012,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 21,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1012,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 26,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1013,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 27,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1013,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 32,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1070,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 33,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1070,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 38,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1120,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 39,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1120,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 44,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1130,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 45,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1130,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 50,
-            'field_id': '',
+            'field_id': 1,
             'name': 'contact',
             'product_id': 1150,
             'value': 'pwg-pmn'
         },
         {
             'attribute_id': 51,
-            'field_id': '',
+            'field_id': 2,
             'name': 'produced_by',
             'product_id': 1150,
             'value': 'pwg-pmn'
