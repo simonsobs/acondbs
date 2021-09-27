@@ -50,7 +50,7 @@ atexit.register(end_backup_thread)
 
 ##__________________________________________________________________||
 def run_flask_backup_db():
-    proc = subprocess.run(['flask', 'backup-db', '-e', 'github_tokens', '-e', 'account_admins'])
+    proc = subprocess.run(['flask', 'backup-db'])
 
 ##__________________________________________________________________||
 def backup_db(exclude_csv=None):
