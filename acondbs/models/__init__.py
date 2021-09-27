@@ -1,6 +1,6 @@
-"""declare ORM models
+"""Declare SQLAlchemy ORM models
 
-In this packages, ORM (Object-relational mapping) models are declared.
+In this package, ORM (Object-relational mapping) models are declared.
 One model is mapped to one table in the DB. Models are declared as
 Python classes inheriting the Model class in Flask-SQLAlchemy.
 
