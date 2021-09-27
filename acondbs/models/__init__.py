@@ -45,6 +45,16 @@ from .web import WebConfig  # noqa: F401
 
 ##__________________________________________________________________||
 def init_app(app):
+    """Initialize the Flask application object
+
+    This function is called by `create_app()` of Flask
+
+    Parameters
+    ----------
+    app : Flask
+        The Flask application object, an instance of `Flask`
+    """
+
     _add_owners_to_db_as_admins(app)
     # remove_git_hub_tokens_with_invalid_decryption_key(app)
 
