@@ -134,12 +134,12 @@ def mock_request_backup_db(monkeypatch):
     """mock request_backup_db() so that backups won't be actually taken in tests"""
 
     targets = [
-        "acondbs.schema.product.mutation.product.request_backup_db",
         "acondbs.schema.product.mutation.product_file_path.request_backup_db",
         "acondbs.schema.product.mutation.product_type.request_backup_db",
         "acondbs.schema.product.mutation.product_relation_type.request_backup_db",
         "acondbs.schema.product.mutation.product_relation.request_backup_db",
         "acondbs.schema.github.mutation.request_backup_db",
+        "acondbs.ops.product.request_backup_db",
     ]
 
     y = mock.Mock()
@@ -157,9 +157,9 @@ def mock_datetime(monkeypatch):
     """
 
     targets = [
-        "acondbs.schema.product.mutation.product.datetime",
         "acondbs.models.github.github_token.datetime",
         "acondbs.models.product.product.datetime",
+        "acondbs.ops.product.datetime",
     ]
 
     y = mock.Mock(wraps=datetime)
