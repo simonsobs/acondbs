@@ -5,6 +5,8 @@ from .. import type_
 
 from ....ops.product import create_product, update_product, delete_product
 
+from ....db.backup import request_backup_db
+
 
 ##__________________________________________________________________||
 class RelationInputFields(graphene.InputObjectType):
@@ -88,6 +90,7 @@ class CreateProduct(graphene.Mutation):
     def mutate(root, info, input):
         user = get_git_hub_viewer_from_info(info)
         model = create_product(user, input)
+        request_backup_db()
         ok = True
         return CreateProduct(product=model, ok=ok)
 
@@ -116,6 +119,7 @@ class UpdateProduct(graphene.Mutation):
     def mutate(root, info, product_id, input):
         user = get_git_hub_viewer_from_info(info)
         model = update_product(user, product_id, input)
+        request_backup_db()
         ok = True
         return UpdateProduct(product=model, ok=ok)
 
@@ -133,6 +137,7 @@ class DeleteProduct(graphene.Mutation):
 
     def mutate(root, info, product_id):
         delete_product(product_id)
+        request_backup_db()
         ok = True
         return DeleteProduct(ok=ok)
 

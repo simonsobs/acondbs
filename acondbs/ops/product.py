@@ -11,7 +11,6 @@ from ..models import (
 )
 
 from ..db.sa import sa
-from ..db.backup import request_backup_db
 
 
 ##__________________________________________________________________||
@@ -53,7 +52,6 @@ def create_product(user, input):
         )
     sa.session.add(model)
     sa.session.commit()
-    request_backup_db()
     return model
 
 
@@ -132,7 +130,6 @@ def update_product(user, product_id, input):
     model.updating_git_hub_user = user
 
     sa.session.commit()
-    request_backup_db()
     return model
 
 
@@ -142,7 +139,6 @@ def delete_product(product_id):
     model = ProductModel.query.filter_by(product_id=product_id).one()
     sa.session.delete(model)
     sa.session.commit()
-    request_backup_db()
     return
 
 
