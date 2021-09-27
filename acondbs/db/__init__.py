@@ -1,3 +1,11 @@
+"""SQLAlchemy and DB related
+
+This package contains functions, classes, and other objects that are
+related to SQLAlchemy and the DB except ORM model declarations.
+
+"""
+
+
 from pathlib import Path
 from flask_migrate import Migrate
 
@@ -11,11 +19,12 @@ from .cmds import backup_db_command
 
 migrate = Migrate()
 
-_MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.joinpath('migrations')
+_MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.joinpath("migrations")
+
 
 ##__________________________________________________________________||
 def init_app(app):
-    """initializes the Flask application object
+    """Initialize the Flask application object
 
     This function is called by `create_app()` of Flask
 
@@ -32,5 +41,6 @@ def init_app(app):
     app.cli.add_command(export_csv_command)
     app.cli.add_command(backup_db_command)
     app.teardown_appcontext(close_db_connection)
+
 
 ##__________________________________________________________________||
