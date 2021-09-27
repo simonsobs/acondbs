@@ -11,9 +11,13 @@ class RelationInputFields(graphene.InputObjectType):
     """A relation to another product"""
 
     product_id = graphene.Int(
-        required=True, description="The product ID of the other product"
+        required=True,
+        description="The product ID of the other product",
     )
-    type_id = graphene.Int(required=True, description="The relation type ID")
+    type_id = graphene.Int(
+        required=True,
+        description="The relation type ID",
+    )
 
 
 class CommonInputFields:
@@ -25,7 +29,9 @@ class CommonInputFields:
             "issues about the product."
         )
     )
-    note = graphene.String(description="Note about the product in MarkDown.")
+    note = graphene.String(
+        description="Note about the product in MarkDown.",
+    )
     paths = graphene.List(
         graphene.String,
         description="Paths to the products. e.g., nersc:/go/to/my/product_v3",
@@ -39,9 +45,13 @@ class CommonInputFields:
 class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     """Input to createProduct()"""
 
-    type_id = graphene.Int(required=True, description="The product type ID")
+    type_id = graphene.Int(
+        required=True,
+        description="The product type ID",
+    )
     name = graphene.String(
-        required=True, description="The name of the product"
+        required=True,
+        description="The name of the product",
     )
     date_produced = graphene.Date(
         description="The date on which the product was produced"
@@ -68,7 +78,8 @@ class CreateProduct(graphene.Mutation):
 
     class Arguments:
         input = CreateProductInput(
-            required=True, description=("the input to createProduct()")
+            required=True,
+            description="the input to createProduct()",
         )
 
     ok = graphene.Boolean()
@@ -95,7 +106,8 @@ class UpdateProduct(graphene.Mutation):
             description="The productId of a product to be updated.",
         )
         input = UpdateProductInput(
-            required=True, description="an input to updateProduct()"
+            required=True,
+            description="an input to updateProduct()",
         )
 
     ok = graphene.Boolean()
