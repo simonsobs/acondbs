@@ -52,14 +52,23 @@ def export_csv_command(csvdir):
     """
     export_db_to_csv_files(csvdir)
 
+
 ##__________________________________________________________________||
+DEFAULT_EXCLUDES = ('github_tokens', 'account_admins')
+
+
 @click.command("backup-db")
-@click.option("--exclude-csv", "-e", multiple=True, help='table to exclude from CSV backup')
+@click.option("--exclude-csv", "-e", multiple=True, help=f'A table to exclude from CSV backup. Use multiple times to exclude multiple tables. The tables {", ".join([f"{t!r}" for t in DEFAULT_EXCLUDES])} are excluded by default.')
+@click.option("--include-default-excludes", is_flag=True,  help=f'Include to CSV backup the tables that are excluded by default, i.e., {", ".join([f"{t!r}" for t in DEFAULT_EXCLUDES])}.' )
 @with_appcontext
-def backup_db_command(exclude_csv):
+def backup_db_command(exclude_csv, include_default_excludes):
     """Back up the DB and its content as CSV to GitHub
 
     """
+
+    exclude_csv = set(exclude_csv)
+    if not include_default_excludes:
+        exclude_csv |= set(DEFAULT_EXCLUDES)
     backup_db(exclude_csv)
 
 
