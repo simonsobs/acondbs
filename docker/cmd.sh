@@ -55,6 +55,10 @@ command="flask db current"
 echo + $command;
 eval $command;
 
+command="flask backup-db"
+echo + $command;
+eval $command;
+
 ##__________________________________________________________________||
 # command="flask run -h 0.0.0.0 -p 5000"
 command="gunicorn -w 4 -b 0.0.0.0:5000 \"$FLASK_APP\" --log-level debug"
