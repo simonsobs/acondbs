@@ -1,4 +1,4 @@
-# Alembic Migration Environment.
+# Alembic Migration Environment
 
 This folder is the [Alembic Migration Environment](https://alembic.sqlalchemy.org/en/latest/tutorial.html#the-migration-environment).
 
