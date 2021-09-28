@@ -5,4 +5,5 @@ instantiation.
 
 """
 
+from .misc import commit  # noqa: F401
 from .product import create_product, update_product, delete_product  # noqa: F401
