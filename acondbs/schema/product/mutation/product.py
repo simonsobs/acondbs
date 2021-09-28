@@ -90,6 +90,7 @@ class CreateProduct(graphene.Mutation):
     def mutate(root, info, input):
         user = get_git_hub_viewer_from_info(info)
         model = ops.create_product(user, input)
+        ops.commit()
         request_backup_db()
         ok = True
         return CreateProduct(product=model, ok=ok)
@@ -119,6 +120,7 @@ class UpdateProduct(graphene.Mutation):
     def mutate(root, info, product_id, input):
         user = get_git_hub_viewer_from_info(info)
         model = ops.update_product(user, product_id, input)
+        ops.commit()
         request_backup_db()
         ok = True
         return UpdateProduct(product=model, ok=ok)
@@ -137,6 +139,7 @@ class DeleteProduct(graphene.Mutation):
 
     def mutate(root, info, product_id):
         ops.delete_product(product_id)
+        ops.commit()
         request_backup_db()
         ok = True
         return DeleteProduct(ok=ok)

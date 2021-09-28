@@ -51,7 +51,6 @@ def create_product(user, input):
             name=c, field=field_dict[c], product=model, value=input.get(c)
         )
     sa.session.add(model)
-    sa.session.commit()
     return model
 
 
@@ -129,7 +128,6 @@ def update_product(user, product_id, input):
     model.time_updated = datetime.datetime.now()
     model.updating_git_hub_user = user
 
-    sa.session.commit()
     return model
 
 
@@ -138,7 +136,6 @@ def delete_product(product_id):
 
     model = ProductModel.query.filter_by(product_id=product_id).one()
     sa.session.delete(model)
-    sa.session.commit()
     return
 
 
