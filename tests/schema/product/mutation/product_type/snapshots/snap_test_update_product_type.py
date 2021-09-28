@@ -15,6 +15,39 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
                     'node': {
                         'fields': {
                             'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                }
                             ]
                         },
                         'icon': 'mdi-spotlight-beam',
@@ -34,6 +67,39 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
                     'node': {
                         'fields': {
                             'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                }
                             ]
                         },
                         'icon': 'mdi-map',
@@ -76,6 +142,39 @@ snapshots['test_schema_success[update] 1'] = {
             'productType': {
                 'fields': {
                     'edges': [
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        }
                     ]
                 },
                 'icon': 'mdi-compass',
@@ -117,6 +216,39 @@ snapshots['test_schema_success[update] 2'] = {
                     'node': {
                         'fields': {
                             'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                }
                             ]
                         },
                         'icon': 'mdi-spotlight-beam',
@@ -136,6 +268,39 @@ snapshots['test_schema_success[update] 2'] = {
                     'node': {
                         'fields': {
                             'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                }
                             ]
                         },
                         'icon': 'mdi-compass',

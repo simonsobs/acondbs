@@ -3,7 +3,13 @@ import pytest
 import datetime
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product
+from acondbs.models import (
+    ProductType,
+    Product,
+    FieldType,
+    Field,
+    TypeFieldAssociation,
+)
 
 
 ##__________________________________________________________________||
@@ -11,6 +17,12 @@ from acondbs.models import ProductType, Product
 def app(app_users):
 
     y = app_users
+
+    # create fields
+    field_contact = Field(name="contact", type_=FieldType.UnicodeText)
+    field_produced_by = Field(name="produced_by", type_=FieldType.UnicodeText)
+    field_date_produced = Field(name="date_produced", type_=FieldType.Date)
+    fields = [field_contact, field_produced_by, field_date_produced]
 
     # create product types
     Map = ProductType(
@@ -21,6 +33,7 @@ def app(app_users):
         singular="map",
         plural="maps",
         icon="mdi-map",
+        fields=[TypeFieldAssociation(field=f) for f in fields],
     )
     Beam = ProductType(
         type_id=2,
@@ -30,6 +43,7 @@ def app(app_users):
         singular="beam",
         plural="beams",
         icon="mdi-spotlight-beam",
+        fields=[TypeFieldAssociation(field=f) for f in fields],
     )
 
     # create products
