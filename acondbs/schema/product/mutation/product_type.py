@@ -1,11 +1,10 @@
 import graphene
 
-from ....models import ProductType as ProductTypeModel
-
-from ....db.sa import sa
 from ....db.backup import request_backup_db
 
 from .. import type_
+
+from .... import ops
 
 
 ##__________________________________________________________________||
@@ -58,9 +57,8 @@ class CreateProductType(graphene.Mutation):
     product_type = graphene.Field(lambda: type_.ProductType)
 
     def mutate(root, info, input):
-        model = ProductTypeModel(**input)
-        sa.session.add(model)
-        sa.session.commit()
+        model = ops.create_product_type(input)
+        ops.commit()
         ok = True
         request_backup_db()
         return CreateProductType(product_type=model, ok=ok)
@@ -77,10 +75,8 @@ class UpdateProductType(graphene.Mutation):
     product_type = graphene.Field(lambda: type_.ProductType)
 
     def mutate(root, info, type_id, input):
-        model = ProductTypeModel.query.filter_by(type_id=type_id).one()
-        for k, v in input.items():
-            setattr(model, k, v)
-        sa.session.commit()
+        model = ops.update_product_type(type_id, input)
+        ops.commit()
         ok = True
         request_backup_db()
         return UpdateProductType(product_type=model, ok=ok)
@@ -95,9 +91,8 @@ class DeleteProductType(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, type_id):
-        model = ProductTypeModel.query.filter_by(type_id=type_id).one()
-        sa.session.delete(model)
-        sa.session.commit()
+        ops.delete_product_type(type_id)
+        ops.commit()
         ok = True
         request_backup_db()
         return DeleteProductType(ok=ok)

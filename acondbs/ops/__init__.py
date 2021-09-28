@@ -6,4 +6,13 @@ instantiation.
 """
 
 from .misc import commit  # noqa: F401
-from .product import create_product, update_product, delete_product  # noqa: F401
+from .product import (  # noqa: F401
+    create_product,
+    update_product,
+    delete_product,
+)
+from .product_type import (  # noqa: F401
+    create_product_type,
+    update_product_type,
+    delete_product_type,
+)
