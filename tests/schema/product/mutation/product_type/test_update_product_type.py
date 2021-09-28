@@ -2,19 +2,11 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import MUTATION_UPDATE_PRODUCT_TYPE
+from ...gql import (
+    MUTATION_UPDATE_PRODUCT_TYPE,
+    QUERY_ALL_PRODUCT_TYPES,
+)
 
-QEURY = """
-{
-  allProductTypes {
-    edges {
-      node {
-        name
-      }
-    }
-  }
-}
-"""
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
@@ -37,7 +29,7 @@ params = [
                 },
             },
         },
-        {"query": QEURY},
+        {"query": QUERY_ALL_PRODUCT_TYPES},
         id="update",
     ),
 ]
@@ -78,7 +70,7 @@ params = [
                 },
             },
         },
-        {"query": QEURY},
+        {"query": QUERY_ALL_PRODUCT_TYPES},
         id="error-nonexistent",
     ),
 ]
