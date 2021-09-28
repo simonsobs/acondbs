@@ -132,7 +132,7 @@ def update_product(user, product_id, input):
 
 
 def delete_product(product_id):
-    """Update a product"""
+    """Delete a product"""
 
     model = ProductModel.query.filter_by(product_id=product_id).one()
     sa.session.delete(model)
