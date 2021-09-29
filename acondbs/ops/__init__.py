@@ -16,3 +16,8 @@ from .product_type import (  # noqa: F401
     update_product_type,
     delete_product_type,
 )
+from .field import (  # noqa: F401
+    create_field,
+    update_field,
+    delete_field,
+)
