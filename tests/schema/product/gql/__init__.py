@@ -3,6 +3,8 @@
 """
 
 from .fragments import (  # noqa: F401
+    FRAGMENT_FIELD,
+    FRAGMENT_FIELD_CONNECTION,
     FRAGMENT_PRODUCT,
     FRAGMENT_PRODUCT_SHALLOW,
     FRAGMENT_PRODUCT_CONNECTION,
@@ -16,6 +18,7 @@ from .fragments import (  # noqa: F401
 )
 
 from .queries import (  # noqa: F401
+    QUERY_ALL_FIELDS,
     QUERY_ALL_PRODUCTS,
     QUERY_ALL_PRODUCTS_SHALLOW,
     QUERY_ALL_PRODUCTS_TOTAL_COUNT,

@@ -1,4 +1,5 @@
 # fmt: off
+from .query_all_fields import QUERY_ALL_FIELDS  # noqa: F401
 from .query_all_products import QUERY_ALL_PRODUCTS  # noqa: F401
 from .query_all_products_shallow import QUERY_ALL_PRODUCTS_SHALLOW  # noqa: F401
 from .query_all_products_total_count import QUERY_ALL_PRODUCTS_TOTAL_COUNT  # noqa: F401
