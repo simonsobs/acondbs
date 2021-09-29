@@ -32,7 +32,8 @@ snapshots['test_schema[one] 1'] = {
                         'type_': 'UNICODE_TEXT'
                     }
                 }
-            ]
+            ],
+            'totalCount': 3
         }
     }
 }
