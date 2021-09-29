@@ -5,7 +5,6 @@ from ...models import (
     ProductType as ProductTypeModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
-
 )
 
 from ..filter_ import PFilterableConnectionField
@@ -13,18 +12,10 @@ from . import type_
 
 ##__________________________________________________________________||
 all_products_field = PFilterableConnectionField(type_.Product.connection)
-all_product_types_field = PFilterableConnectionField(
-    type_.ProductType.connection
-)
-all_product_relations_field = PFilterableConnectionField(
-    type_.ProductRelation.connection
-)
-all_product_relation_types_field = PFilterableConnectionField(
-    type_.ProductRelationType.connection
-)
-all_product_file_paths_field = PFilterableConnectionField(
-    type_.ProductFilePath.connection
-)
+all_product_types_field = PFilterableConnectionField(type_.ProductType.connection)  # fmt: skip
+all_product_relations_field = PFilterableConnectionField(type_.ProductRelation.connection)  # fmt: skip
+all_product_relation_types_field = PFilterableConnectionField(type_.ProductRelationType.connection)  # fmt: skip
+all_product_file_paths_field = PFilterableConnectionField(type_.ProductFilePath.connection)  # fmt: skip
 
 
 ##__________________________________________________________________||
