@@ -22,8 +22,16 @@ class Field(sa.Model):
     type_ = sa.Column(sa.Enum(FieldType), nullable=False)
 
     def __repr__(self):
-        type_name = self.type_.name if self.type_ else self.type_
-        return f"<{self.__class__.__name__} {self.name!r} {type_name!r}>"
+        return f"<{self.__class__.__name__} {self.name!r} {self.type_name!r}>"
+
+    @property
+    def type_name(self):
+        # used in __repr__()
+        try:
+            # converting in case type_ is int
+            return FieldType(self.type_).name
+        except BaseException:
+            return self.type_
 
 
 class TypeFieldAssociation(sa.Model):
