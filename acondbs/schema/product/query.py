@@ -5,6 +5,7 @@ from ...models import (
     ProductType as ProductTypeModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
+    Field as FieldModel,
 )
 
 from ..filter_ import PFilterableConnectionField
@@ -16,6 +17,7 @@ all_product_types_field = PFilterableConnectionField(type_.ProductType.connectio
 all_product_relations_field = PFilterableConnectionField(type_.ProductRelation.connection)  # fmt: skip
 all_product_relation_types_field = PFilterableConnectionField(type_.ProductRelationType.connection)  # fmt: skip
 all_product_file_paths_field = PFilterableConnectionField(type_.ProductFilePath.connection)  # fmt: skip
+all_fields_field = PFilterableConnectionField(type_.Field.connection)
 
 
 ##__________________________________________________________________||

@@ -36,6 +36,7 @@ class QueryPrivate(QueryPublic):
     all_product_relations = p.query.all_product_relations_field
     all_product_relation_types = p.query.all_product_relation_types_field
     all_product_types = p.query.all_product_types_field
+    all_fields = p.query.all_fields_field
 
     product = p.query.product_field
     product_relation = p.query.product_relation_field
