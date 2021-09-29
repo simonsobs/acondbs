@@ -42,6 +42,7 @@ class QueryPrivate(QueryPublic):
     product_relation = p.query.product_relation_field
     product_relation_type = p.query.product_relation_type_field
     product_type = p.query.product_type_field
+    field = p.query.field_field
 
 
 class MutationPrivate(MutationPublic):

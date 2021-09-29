@@ -85,3 +85,20 @@ product_relation_type_field = graphene.Field(
 )
 
 ##__________________________________________________________________||
+def resolve_field(parent, info, **kwargs):
+
+    filter = [getattr(FieldModel, k) == v for k, v in kwargs.items()]
+    # e.g., [FieldModel.field_id == 1, FieldModel.name == 'contact']
+
+    return type_.Field.get_query(info).filter(*filter).one_or_none()
+
+
+field_field = graphene.Field(
+    type_.Field,
+    field_id=graphene.Int(),
+    name=graphene.String(),
+    resolver=resolve_field,
+)
+
+
+##__________________________________________________________________||
