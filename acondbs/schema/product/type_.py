@@ -9,7 +9,8 @@ from ...models import (
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
-    FieldType as FieldTypeModel,  # enum
+    # FieldType as FieldTypeModel,  # enum
+    saEnumFieldType,  # SQLAlchemy Enum
     Field as FieldModel,
     TypeFieldAssociation as TypeFieldAssociationModel,
     AttributeUnicodeText as AttributeUnicodeTextModel,
@@ -22,8 +23,24 @@ from ...models import (
 )
 from ..filter_ import PFilterableConnectionField
 
+
+from graphene_sqlalchemy.enums import _convert_sa_to_graphene_enum
+
+
 ##__________________________________________________________________||
-FieldType = graphene.Enum.from_enum(FieldTypeModel)
+# FieldType is an enum. It is manually converted to a graphene enum
+# here. An enum will be usually automatically converted. However, the
+# automatic conversion causes an error if the automatic conversion
+# of the same enum happens multiple times as described in
+# https://github.com/graphql-python/graphene-sqlalchemy/issues/211.
+
+# It is possible to use graphene.Enum.from_enum() as
+# FieldType = graphene.Enum.from_enum(FieldTypeModel)
+
+# However, instead, a private function _convert_sa_to_graphene_enum()
+# is used here because this function desirably converts field names to
+# the upper case, e.g., "UnicodeText" to "UNICODE_TEXT"
+FieldType = _convert_sa_to_graphene_enum(saEnumFieldType)
 
 
 ##__________________________________________________________________||
