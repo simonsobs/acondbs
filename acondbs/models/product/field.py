@@ -28,8 +28,7 @@ class Field(sa.Model):
     def type_name(self):
         # used in __repr__()
         try:
-            # converting in case type_ is int
-            return FieldType(self.type_).name
+            return self.type_.name
         except BaseException:
             return self.type_
 
