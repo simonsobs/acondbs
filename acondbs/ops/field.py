@@ -1,11 +1,12 @@
-from ..models import Field
+from ..models import Field, FieldType
 from ..db.sa import sa
 
 
 ##__________________________________________________________________||
-def create_field(**kwargs):
+def create_field(name, type_):
     """Create a field"""
-    model = Field(**kwargs)
+    type_ = FieldType(type_)  # in case given by int
+    model = Field(name=name, type_=type_)
     sa.session.add(model)
     return model
 
