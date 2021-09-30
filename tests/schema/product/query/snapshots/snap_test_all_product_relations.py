@@ -59,11 +59,11 @@ snapshots['test_schema[query] 1'] = {
                         },
                         'relationId': '3',
                         'reverse': {
-                            'relationId': '5'
+                            'relationId': '4'
                         },
                         'self_': {
-                            'name': 'beam1',
-                            'productId': '4'
+                            'name': 'map1',
+                            'productId': '1'
                         },
                         'type_': {
                             'name': 'child',
@@ -78,26 +78,6 @@ snapshots['test_schema[query] 1'] = {
                             'productId': '1'
                         },
                         'relationId': '4',
-                        'reverse': {
-                            'relationId': '6'
-                        },
-                        'self_': {
-                            'name': 'beam2',
-                            'productId': '5'
-                        },
-                        'type_': {
-                            'name': 'parent',
-                            'typeId': '1'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam1',
-                            'productId': '4'
-                        },
-                        'relationId': '5',
                         'reverse': {
                             'relationId': '3'
                         },
@@ -117,17 +97,37 @@ snapshots['test_schema[query] 1'] = {
                             'name': 'beam2',
                             'productId': '5'
                         },
-                        'relationId': '6',
+                        'relationId': '5',
                         'reverse': {
-                            'relationId': '4'
+                            'relationId': '6'
                         },
                         'self_': {
-                            'name': 'map1',
-                            'productId': '1'
+                            'name': 'beam1',
+                            'productId': '4'
                         },
                         'type_': {
                             'name': 'child',
                             'typeId': '2'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'beam1',
+                            'productId': '4'
+                        },
+                        'relationId': '6',
+                        'reverse': {
+                            'relationId': '5'
+                        },
+                        'self_': {
+                            'name': 'beam2',
+                            'productId': '5'
+                        },
+                        'type_': {
+                            'name': 'parent',
+                            'typeId': '1'
                         }
                     }
                 }

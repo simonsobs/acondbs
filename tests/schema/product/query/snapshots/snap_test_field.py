@@ -11,8 +11,8 @@ snapshots['test_schema[by-field-id] 1'] = {
     'data': {
         'field': {
             'fieldId': '1',
-            'name': 'date_produced',
-            'type_': 'DATE'
+            'name': 'contact',
+            'type_': 'UNICODE_TEXT'
         }
     }
 }
@@ -20,7 +20,7 @@ snapshots['test_schema[by-field-id] 1'] = {
 snapshots['test_schema[by-name] 1'] = {
     'data': {
         'field': {
-            'fieldId': '2',
+            'fieldId': '1',
             'name': 'contact',
             'type_': 'UNICODE_TEXT'
         }

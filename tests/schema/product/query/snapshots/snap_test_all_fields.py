@@ -14,22 +14,22 @@ snapshots['test_schema[one] 1'] = {
                 {
                     'node': {
                         'fieldId': '1',
-                        'name': 'date_produced',
-                        'type_': 'DATE'
-                    }
-                },
-                {
-                    'node': {
-                        'fieldId': '2',
                         'name': 'contact',
                         'type_': 'UNICODE_TEXT'
                     }
                 },
                 {
                     'node': {
-                        'fieldId': '3',
+                        'fieldId': '2',
                         'name': 'produced_by',
                         'type_': 'UNICODE_TEXT'
+                    }
+                },
+                {
+                    'node': {
+                        'fieldId': '3',
+                        'name': 'date_produced',
+                        'type_': 'DATE'
                     }
                 }
             ],

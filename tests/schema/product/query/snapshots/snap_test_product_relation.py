@@ -7,6 +7,12 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
+snapshots['test_schema[type_id-nonexistent] 1'] = {
+    'data': {
+        'productRelation': None
+    }
+}
+
 snapshots['test_schema[type_id] 1'] = {
     'data': {
         'productRelation': {
@@ -27,11 +33,5 @@ snapshots['test_schema[type_id] 1'] = {
                 'typeId': '2'
             }
         }
-    }
-}
-
-snapshots['test_schema[type_id-nonexistent] 1'] = {
-    'data': {
-        'productRelation': None
     }
 }

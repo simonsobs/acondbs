@@ -120,7 +120,7 @@ snapshots['test_schema[deep] 1'] = {
                                             }
                                         },
                                         'otherProductId': 5,
-                                        'relationId': '6',
+                                        'relationId': '3',
                                         'reverse': {
                                             'relationId': '4',
                                             'typeId': 1,
@@ -200,7 +200,7 @@ snapshots['test_schema[deep] 1'] = {
                                     'node': {
                                         'note': None,
                                         'path': 'site1:/path/to/map2',
-                                        'pathId': '6'
+                                        'pathId': '3'
                                     }
                                 }
                             ]
@@ -274,14 +274,14 @@ snapshots['test_schema[deep] 1'] = {
                                     'node': {
                                         'note': None,
                                         'path': 'site1:/path/to/map3',
-                                        'pathId': '7'
+                                        'pathId': '4'
                                     }
                                 },
                                 {
                                     'node': {
                                         'note': None,
                                         'path': 'site2:/another/way/map3',
-                                        'pathId': '8'
+                                        'pathId': '5'
                                     }
                                 }
                             ]
@@ -355,14 +355,14 @@ snapshots['test_schema[deep] 1'] = {
                                     'node': {
                                         'note': None,
                                         'path': 'site1:/path/to/beam1',
-                                        'pathId': '4'
+                                        'pathId': '6'
                                     }
                                 },
                                 {
                                     'node': {
                                         'note': None,
                                         'path': 'site2:/another/way/beam1',
-                                        'pathId': '5'
+                                        'pathId': '7'
                                     }
                                 }
                             ]
@@ -414,16 +414,16 @@ snapshots['test_schema[deep] 1'] = {
                                             }
                                         },
                                         'otherProductId': 5,
-                                        'relationId': '3',
+                                        'relationId': '5',
                                         'reverse': {
-                                            'relationId': '5',
+                                            'relationId': '6',
                                             'typeId': 1,
                                             'type_': {
                                                 'name': 'parent',
                                                 'typeId': '1'
                                             }
                                         },
-                                        'reverseRelationId': 5,
+                                        'reverseRelationId': 6,
                                         'typeId': 2,
                                         'type_': {
                                             'name': 'child',
@@ -494,7 +494,7 @@ snapshots['test_schema[deep] 1'] = {
                                     'node': {
                                         'note': None,
                                         'path': 'site1:/path/to/beam2',
-                                        'pathId': '3'
+                                        'pathId': '8'
                                     }
                                 }
                             ]
@@ -519,14 +519,14 @@ snapshots['test_schema[deep] 1'] = {
                                         'otherProductId': 1,
                                         'relationId': '4',
                                         'reverse': {
-                                            'relationId': '6',
+                                            'relationId': '3',
                                             'typeId': 2,
                                             'type_': {
                                                 'name': 'child',
                                                 'typeId': '2'
                                             }
                                         },
-                                        'reverseRelationId': 6,
+                                        'reverseRelationId': 3,
                                         'typeId': 1,
                                         'type_': {
                                             'name': 'parent',
@@ -546,16 +546,16 @@ snapshots['test_schema[deep] 1'] = {
                                             }
                                         },
                                         'otherProductId': 4,
-                                        'relationId': '5',
+                                        'relationId': '6',
                                         'reverse': {
-                                            'relationId': '3',
+                                            'relationId': '5',
                                             'typeId': 2,
                                             'type_': {
                                                 'name': 'child',
                                                 'typeId': '2'
                                             }
                                         },
-                                        'reverseRelationId': 3,
+                                        'reverseRelationId': 5,
                                         'typeId': 1,
                                         'type_': {
                                             'name': 'parent',

@@ -117,7 +117,7 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             },
                             'otherProductId': 5,
-                            'relationId': '6',
+                            'relationId': '3',
                             'reverse': {
                                 'relationId': '4',
                                 'typeId': 1,

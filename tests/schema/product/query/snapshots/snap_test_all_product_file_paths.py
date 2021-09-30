@@ -34,38 +34,8 @@ snapshots['test_schema[all] 1'] = {
                 {
                     'node': {
                         'note': None,
-                        'path': 'site1:/path/to/beam2',
-                        'pathId': '3',
-                        'product': {
-                            'name': 'beam2'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'note': None,
-                        'path': 'site1:/path/to/beam1',
-                        'pathId': '4',
-                        'product': {
-                            'name': 'beam1'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'note': None,
-                        'path': 'site2:/another/way/beam1',
-                        'pathId': '5',
-                        'product': {
-                            'name': 'beam1'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'note': None,
                         'path': 'site1:/path/to/map2',
-                        'pathId': '6',
+                        'pathId': '3',
                         'product': {
                             'name': 'map2'
                         }
@@ -75,7 +45,7 @@ snapshots['test_schema[all] 1'] = {
                     'node': {
                         'note': None,
                         'path': 'site1:/path/to/map3',
-                        'pathId': '7',
+                        'pathId': '4',
                         'product': {
                             'name': 'map3'
                         }
@@ -85,9 +55,39 @@ snapshots['test_schema[all] 1'] = {
                     'node': {
                         'note': None,
                         'path': 'site2:/another/way/map3',
-                        'pathId': '8',
+                        'pathId': '5',
                         'product': {
                             'name': 'map3'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'note': None,
+                        'path': 'site1:/path/to/beam1',
+                        'pathId': '6',
+                        'product': {
+                            'name': 'beam1'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'note': None,
+                        'path': 'site2:/another/way/beam1',
+                        'pathId': '7',
+                        'product': {
+                            'name': 'beam1'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'note': None,
+                        'path': 'site1:/path/to/beam2',
+                        'pathId': '8',
+                        'product': {
+                            'name': 'beam2'
                         }
                     }
                 }

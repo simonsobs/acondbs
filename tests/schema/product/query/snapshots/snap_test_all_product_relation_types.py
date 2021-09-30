@@ -90,8 +90,8 @@ snapshots['test_schema[query] 1'] = {
                                             'productId': '5'
                                         },
                                         'self_': {
-                                            'name': 'beam1',
-                                            'productId': '4'
+                                            'name': 'map1',
+                                            'productId': '1'
                                         }
                                     }
                                 },
@@ -102,8 +102,8 @@ snapshots['test_schema[query] 1'] = {
                                             'productId': '5'
                                         },
                                         'self_': {
-                                            'name': 'map1',
-                                            'productId': '1'
+                                            'name': 'beam1',
+                                            'productId': '4'
                                         }
                                     }
                                 }
@@ -116,6 +116,40 @@ snapshots['test_schema[query] 1'] = {
                         'singular': 'child',
                         'typeId': '2'
                     }
+                },
+                {
+                    'node': {
+                        'indefArticle': 'a',
+                        'name': 'plaintiff',
+                        'plural': 'plaintiffs',
+                        'relations': {
+                            'edges': [
+                            ]
+                        },
+                        'reverse': {
+                            'name': 'defendant',
+                            'typeId': '4'
+                        },
+                        'singular': 'plaintiff',
+                        'typeId': '3'
+                    }
+                },
+                {
+                    'node': {
+                        'indefArticle': 'a',
+                        'name': 'defendant',
+                        'plural': 'defendants',
+                        'relations': {
+                            'edges': [
+                            ]
+                        },
+                        'reverse': {
+                            'name': 'plaintiff',
+                            'typeId': '3'
+                        },
+                        'singular': 'defendant',
+                        'typeId': '4'
+                    }
                 }
             ]
         }
@@ -125,7 +159,7 @@ snapshots['test_schema[query] 1'] = {
 snapshots['test_schema[total-count] 1'] = {
     'data': {
         'allProductRelationTypes': {
-            'totalCount': 2
+            'totalCount': 4
         }
     }
 }

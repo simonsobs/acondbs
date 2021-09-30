@@ -18,17 +18,6 @@ snapshots['test_schema[sort-order] 1'] = {
                                 {
                                     'node': {
                                         'field': {
-                                            'name': 'date_produced',
-                                            'type_': 'DATE'
-                                        },
-                                        'type_': {
-                                            'name': 'beam'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'field': {
                                             'name': 'contact',
                                             'type_': 'UNICODE_TEXT'
                                         },
@@ -42,6 +31,17 @@ snapshots['test_schema[sort-order] 1'] = {
                                         'field': {
                                             'name': 'produced_by',
                                             'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
                                         },
                                         'type_': {
                                             'name': 'beam'
@@ -80,17 +80,6 @@ snapshots['test_schema[sort-order] 1'] = {
                                 {
                                     'node': {
                                         'field': {
-                                            'name': 'date_produced',
-                                            'type_': 'DATE'
-                                        },
-                                        'type_': {
-                                            'name': 'map'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'field': {
                                             'name': 'contact',
                                             'type_': 'UNICODE_TEXT'
                                         },
@@ -104,6 +93,17 @@ snapshots['test_schema[sort-order] 1'] = {
                                         'field': {
                                             'name': 'produced_by',
                                             'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
                                         },
                                         'type_': {
                                             'name': 'map'

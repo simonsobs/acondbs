@@ -10,11 +10,11 @@ from acondbs.models import (
     ProductRelationType,
     ProductRelation,
     FieldType,
-    Field,
     TypeFieldAssociation,
-    AttributeUnicodeText,
     AttributeDate,
 )
+
+from acondbs import ops
 
 
 ##__________________________________________________________________||
@@ -35,129 +35,147 @@ def app(app_users):
     #   map2
     #   map3
 
-    # create relation types
-    # fmt: off
-    Parent = ProductRelationType(type_id=1, name="parent", indef_article="a", singular="parent", plural="parents")
-    Parent.reverse = ProductRelationType(type_id=2, name="child", indef_article="a", singular="child", plural="children")
-    Plaintiff = ProductRelationType(type_id=3, name="plaintiff", indef_article="a", singular="plaintiff", plural="plaintiffs")
-    Plaintiff.reverse = ProductRelationType(type_id=4, name="defendant", indef_article="a", singular="defendant", plural="defendants")
-    # fmt: on
-
-    # create fields
-    field_contact = Field(name="contact", type_=FieldType.UnicodeText)
-    field_produced_by = Field(name="produced_by", type_=FieldType.UnicodeText)
-    field_date_produced = Field(name="date_produced", type_=FieldType.Date)
-    fields = [field_contact, field_produced_by, field_date_produced]
-
-    # create product types
-    # fmt: off
-    Map = ProductType(type_id=1, name="map", order=2, indef_article="a", singular="map", plural="maps", icon="mdi-map")
-    Map.fields = [TypeFieldAssociation(field=f) for f in fields]
-    Beam = ProductType(type_id=2, name="beam", order=1, indef_article="a", singular="beam", plural="beams", icon="mdi-spotlight-beam")
-    Beam.fields = [TypeFieldAssociation(field=f) for f in fields]
-    # fmt: on
-
-    # create products
-    map1 = Product(
-        product_id=1,
-        name="map1",
-        date_produced=datetime.date(2020, 2, 1),
-        type_=Map,
-        attributes_date=[
-            AttributeDate(
-                name="date_produced",
-                field=field_date_produced,
-                value=datetime.date(2020, 2, 1),
-            )
-        ],
-    )
-    map2 = Product(
-        product_id=2,
-        name="map2",
-        date_produced=datetime.date(2020, 2, 10),
-        type_=Map,
-        attributes_date=[
-            AttributeDate(
-                name="date_produced",
-                field=field_date_produced,
-                value=datetime.date(2020, 2, 10),
-            )
-        ],
-    )
-    map3 = Product(
-        product_id=3,
-        name="map3",
-        date_produced=datetime.date(2020, 3, 19),
-        type_=Map,
-        attributes_date=[
-            AttributeDate(
-                name="date_produced",
-                field=field_date_produced,
-                value=datetime.date(2020, 3, 19),
-            )
-        ],
-    )
-    beam1 = Product(
-        product_id=4,
-        name="beam1",
-        date_produced=datetime.date(2020, 2, 5),
-        type_=Beam,
-        attributes_date=[
-            AttributeDate(
-                name="date_produced",
-                field=field_date_produced,
-                value=datetime.date(2020, 2, 5),
-            )
-        ],
-    )
-    beam2 = Product(
-        product_id=5,
-        name="beam2",
-        date_produced=datetime.date(2020, 3, 4),
-        type_=Beam,
-        attributes_date=[
-            AttributeDate(
-                name="date_produced",
-                field=field_date_produced,
-                value=datetime.date(2020, 3, 4),
-            )
-        ],
-    )
-
-    # add paths
-    map1.paths = [
-        ProductFilePath(path="site1:/path/to/map1", note="sample comment"),
-        ProductFilePath(path="site2:/another/way/map1"),
-    ]
-
-    map2.paths = [
-        ProductFilePath(path="site1:/path/to/map2"),
-    ]
-
-    map3.paths = [
-        ProductFilePath(path="site1:/path/to/map3"),
-        ProductFilePath(path="site2:/another/way/map3"),
-    ]
-
-    beam1.paths = [
-        ProductFilePath(path="site1:/path/to/beam1"),
-        ProductFilePath(path="site2:/another/way/beam1"),
-    ]
-
-    beam2.paths = [
-        ProductFilePath(path="site1:/path/to/beam2"),
-    ]
-
-    # create relations
-    # fmt: off
-    relation1 = ProductRelation(relation_id=2, type_=Parent, self_=beam1, other=map1)
-    relation2 = ProductRelation(relation_id=4, type_=Parent, self_=beam2, other=map1)
-    relation3 = ProductRelation(relation_id=5, type_=Parent, self_=beam2, other=beam1)
-    # fmt: on
-
     with y.app_context():
+
+        # create fields
+        # fmt: off
+        field_contact = ops.create_field(name="contact", type_=FieldType.UnicodeText)
+        field_produced_by = ops.create_field(name="produced_by", type_=FieldType.UnicodeText)
+        field_date_produced = ops.create_field(name="date_produced", type_=FieldType.Date)
+        fields = [field_contact, field_produced_by, field_date_produced]
+        # fmt: on
+
+        # create product types
+        # fmt: off
+        Map = ProductType(type_id=1, name="map", order=2, indef_article="a", singular="map", plural="maps", icon="mdi-map")
+        Map.fields = [TypeFieldAssociation(field=f) for f in fields]
+        Beam = ProductType(type_id=2, name="beam", order=1, indef_article="a", singular="beam", plural="beams", icon="mdi-spotlight-beam")
+        Beam.fields = [TypeFieldAssociation(field=f) for f in fields]
+        # fmt: on
+
+        # create relation types
+        # fmt: off
+        Parent = ProductRelationType(type_id=1, name="parent", indef_article="a", singular="parent", plural="parents")
+        Parent.reverse = ProductRelationType(type_id=2, name="child", indef_article="a", singular="child", plural="children")
+        Plaintiff = ProductRelationType(type_id=3, name="plaintiff", indef_article="a", singular="plaintiff", plural="plaintiffs")
+        Plaintiff.reverse = ProductRelationType(type_id=4, name="defendant", indef_article="a", singular="defendant", plural="defendants")
+        # fmt: on
+
         sa.session.add(Map)
         sa.session.add(Beam)
+        sa.session.add(Parent)
+        sa.session.add(Plaintiff)
+        sa.session.commit()
+
+    with y.app_context():
+
+        Map = ProductType.query.filter_by(name="map").one()
+        Beam = ProductType.query.filter_by(name="beam").one()
+
+        map_fields_dict = {f.field.name: f.field for f in Map.fields}
+        beam_fields_dict = {f.field.name: f.field for f in Beam.fields}
+
+        # create products
+        map1 = Product(
+            product_id=1,
+            name="map1",
+            date_produced=datetime.date(2020, 2, 1),
+            type_=Map,
+            attributes_date=[
+                AttributeDate(
+                    name="date_produced",
+                    field=map_fields_dict["date_produced"],
+                    value=datetime.date(2020, 2, 1),
+                )
+            ],
+        )
+        map2 = Product(
+            product_id=2,
+            name="map2",
+            date_produced=datetime.date(2020, 2, 10),
+            type_=Map,
+            attributes_date=[
+                AttributeDate(
+                    name="date_produced",
+                    field=map_fields_dict["date_produced"],
+                    value=datetime.date(2020, 2, 10),
+                )
+            ],
+        )
+        map3 = Product(
+            product_id=3,
+            name="map3",
+            date_produced=datetime.date(2020, 3, 19),
+            type_=Map,
+            attributes_date=[
+                AttributeDate(
+                    name="date_produced",
+                    field=map_fields_dict["date_produced"],
+                    value=datetime.date(2020, 3, 19),
+                )
+            ],
+        )
+        beam1 = Product(
+            product_id=4,
+            name="beam1",
+            date_produced=datetime.date(2020, 2, 5),
+            type_=Beam,
+            attributes_date=[
+                AttributeDate(
+                    name="date_produced",
+                    field=beam_fields_dict["date_produced"],
+                    value=datetime.date(2020, 2, 5),
+                )
+            ],
+        )
+        beam2 = Product(
+            product_id=5,
+            name="beam2",
+            date_produced=datetime.date(2020, 3, 4),
+            type_=Beam,
+            attributes_date=[
+                AttributeDate(
+                    name="date_produced",
+                    field=beam_fields_dict["date_produced"],
+                    value=datetime.date(2020, 3, 4),
+                )
+            ],
+        )
+
+        # add paths
+        map1.paths = [
+            ProductFilePath(path="site1:/path/to/map1", note="sample comment"),
+            ProductFilePath(path="site2:/another/way/map1"),
+        ]
+
+        map2.paths = [
+            ProductFilePath(path="site1:/path/to/map2"),
+        ]
+
+        map3.paths = [
+            ProductFilePath(path="site1:/path/to/map3"),
+            ProductFilePath(path="site2:/another/way/map3"),
+        ]
+
+        beam1.paths = [
+            ProductFilePath(path="site1:/path/to/beam1"),
+            ProductFilePath(path="site2:/another/way/beam1"),
+        ]
+
+        beam2.paths = [
+            ProductFilePath(path="site1:/path/to/beam2"),
+        ]
+
+        #
+        Parent = ProductRelationType.query.filter_by(name="parent").one()
+
+        # create relations
+        # fmt: off
+        relation1 = ProductRelation(type_=Parent, self_=beam1, other=map1)
+        relation2 = ProductRelation(type_=Parent, self_=beam2, other=map1)
+        relation3 = ProductRelation(type_=Parent, self_=beam2, other=beam1)
+        # fmt: on
+
         sa.session.add(relation1)
         sa.session.add(relation2)
         sa.session.add(relation3)
