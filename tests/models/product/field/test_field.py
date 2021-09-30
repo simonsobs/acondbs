@@ -16,7 +16,7 @@ def test_repr(app_empty):
     field1 = Field(name="field1")
     repr(field1)
 
-    field1.type_=FieldType.UnicodeText
+    field1.type_ = FieldType.UnicodeText
     repr(field1)
 
     type1 = ProductType(name="type1")
@@ -32,6 +32,8 @@ def test_enum_by_int(app_empty):
     """Test if an enum can be given by a number
 
     No. It raises an exception at a commit
+
+    TODO: move this test to tests.models.example
     """
     app = app_empty
 
@@ -40,6 +42,7 @@ def test_enum_by_int(app_empty):
         sa.session.add(field1)
         with pytest.raises(exc.StatementError):
             sa.session.commit()
+
 
 ##__________________________________________________________________||
 def test_one(app):
