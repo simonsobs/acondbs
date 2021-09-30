@@ -15,11 +15,14 @@ class FieldType(enum.Enum):
     Time = 7
 
 
+saEnumFieldType = sa.Enum(FieldType)  # to be imported in another module
+
+
 class Field(sa.Model):
     __tablename__ = "field"
     field_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.UnicodeText(), nullable=False)
-    type_ = sa.Column(sa.Enum(FieldType), nullable=False)
+    type_ = sa.Column(saEnumFieldType, nullable=False)
 
     def __repr__(self):
         return f"<{self.__class__.__name__} {self.name!r} {self.type_name!r}>"
