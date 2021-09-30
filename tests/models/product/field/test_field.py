@@ -1,5 +1,8 @@
-from acondbs.db.sa import sa
+from sqlalchemy import exc
 
+import pytest
+
+from acondbs.db.sa import sa
 from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
 
 
@@ -23,6 +26,20 @@ def test_repr(app_empty):
     assoc.field = field1
     repr(assoc)
 
+
+##__________________________________________________________________||
+def test_enum_by_int(app_empty):
+    """Test if an enum can be given by a number
+
+    No. It raises an exception at a commit
+    """
+    app = app_empty
+
+    with app.app_context():
+        field1 = Field(name="field1", type_=1)
+        sa.session.add(field1)
+        with pytest.raises(exc.StatementError):
+            sa.session.commit()
 
 ##__________________________________________________________________||
 def test_one(app):
