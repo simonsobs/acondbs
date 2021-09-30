@@ -9,6 +9,7 @@ from ...models import (
     ProductFilePath as ProductFilePathModel,
     ProductRelation as ProductRelationModel,
     ProductRelationType as ProductRelationTypeModel,
+    FieldType as FieldTypeModel,  # enum
     Field as FieldModel,
     TypeFieldAssociation as TypeFieldAssociationModel,
     AttributeUnicodeText as AttributeUnicodeTextModel,
@@ -20,6 +21,9 @@ from ...models import (
     AttributeTime as AttributeTimeModel,
 )
 from ..filter_ import PFilterableConnectionField
+
+##__________________________________________________________________||
+FieldType = graphene.Enum.from_enum(FieldTypeModel)
 
 
 ##__________________________________________________________________||
@@ -80,6 +84,13 @@ class Field(SQLAlchemyObjectType):
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
+        exclude_fields = ('type_',)
+
+    # Set "type_" manually to avoid an issue on enum as suggested in
+    # https://github.com/graphql-python/graphene-sqlalchemy/pull/98#issuecomment-481497115
+    # see also https://github.com/graphql-python/graphene-sqlalchemy/issues/211
+
+    type_ = FieldType()
 
 
 class TypeFieldAssociation(SQLAlchemyObjectType):
