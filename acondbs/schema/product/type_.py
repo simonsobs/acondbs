@@ -101,7 +101,7 @@ class Field(SQLAlchemyObjectType):
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
-        exclude_fields = ('type_',)
+        exclude_fields = ("type_",)
 
     # Set "type_" manually to avoid an issue on enum as suggested in
     # https://github.com/graphql-python/graphene-sqlalchemy/pull/98#issuecomment-481497115
@@ -186,5 +186,6 @@ class AttributeTime(SQLAlchemyObjectType):
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
+
 
 ##__________________________________________________________________||
