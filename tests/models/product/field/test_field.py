@@ -8,7 +8,7 @@ from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
 
 ##__________________________________________________________________||
 def test_repr(app_empty):
-    app = app_empty
+    app = app_empty  # noqa: F841
 
     assoc = TypeFieldAssociation()
     repr(assoc)

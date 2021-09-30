@@ -84,6 +84,7 @@ product_relation_type_field = graphene.Field(
     resolver=resolve_product_relation_type,
 )
 
+
 ##__________________________________________________________________||
 def resolve_field(parent, info, **kwargs):
 
