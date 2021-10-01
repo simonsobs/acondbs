@@ -7,7 +7,6 @@ from acondbs.models import (
     ProductType,
     Product,
     FieldType,
-    Field,
     TypeFieldAssociation,
 )
 from acondbs import ops
@@ -41,15 +40,13 @@ def app(app_users):
         #     fields=[TypeFieldAssociation(field=f) for f in fields],
         # )
         Map = ops.create_product_type(
-            dict(
-                type_id=1,
-                name="map",
-                order=2,
-                indef_article="a",
-                singular="map",
-                plural="maps",
-                icon="mdi-map",
-            )
+            type_id=1,
+            name="map",
+            order=2,
+            indef_article="a",
+            singular="map",
+            plural="maps",
+            icon="mdi-map",
         )
         Map.fields = [TypeFieldAssociation(field=f) for f in fields]
         Beam = ProductType(

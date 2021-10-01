@@ -40,6 +40,24 @@ params = [
                     "singular": "compass",
                     "plural": "compasses",
                     "icon": "mdi-compass",
+                    "fieldIds": [2, 3, 3, 1, 2, 3, 1, 1],
+                }
+            },
+        },
+        {"query": QUERY_ALL_PRODUCT_TYPES},
+        id="field-ids-unsorted-duplicate",
+    ),
+    pytest.param(
+        {
+            "query": MUTATION_CREATE_PRODUCT_TYPE,
+            "variables": {
+                "input": {
+                    "name": "compass",
+                    "order": 5,
+                    "indefArticle": "a",
+                    "singular": "compass",
+                    "plural": "compasses",
+                    "icon": "mdi-compass",
                 }
             },
         },
