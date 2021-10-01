@@ -139,9 +139,9 @@ def mock_request_backup_db(monkeypatch):
         "acondbs.schema.product.mutation.product_type.request_backup_db",
         "acondbs.schema.product.mutation.product_relation_type.request_backup_db",
         "acondbs.schema.product.mutation.product_relation.request_backup_db",
+        "acondbs.schema.product.mutation.field.request_backup_db",
         "acondbs.schema.github.mutation.request_backup_db",
     ]
-
     y = mock.Mock()
     for t in targets:
         monkeypatch.setattr(t, y)
