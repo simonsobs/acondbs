@@ -16,7 +16,7 @@ from .attribute import (  # noqa: F401
     AttributeFloat,
     AttributeDate,
     AttributeDateTime,
-    AttributeTime
+    AttributeTime,
 )
 
 from .field import (  # noqa: F401
