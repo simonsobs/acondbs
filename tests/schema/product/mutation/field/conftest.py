@@ -9,9 +9,11 @@ from acondbs import ops
 def app(app_users):
     y = app_users
     with y.app_context():
-        ops.create_field(name="contact", type_=FieldType.UnicodeText)
-        ops.create_field(name="produced_by", type_=FieldType.UnicodeText)
-        ops.create_field(name="date_produced", type_=FieldType.Date)
+        # fmt: off
+        ops.create_field(field_id=1, name="contact", type_=FieldType.UnicodeText)
+        ops.create_field(field_id=2, name="produced_by", type_=FieldType.UnicodeText)
+        ops.create_field(field_id=3, name="date_produced", type_=FieldType.Date)
+        # fmt: on
         ops.commit()
     yield y
 
