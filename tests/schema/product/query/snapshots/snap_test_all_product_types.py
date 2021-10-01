@@ -145,11 +145,3 @@ snapshots['test_schema[sort-order] 1'] = {
         }
     }
 }
-
-snapshots['test_schema[total-count] 1'] = {
-    'data': {
-        'allProductTypes': {
-            'totalCount': 2
-        }
-    }
-}

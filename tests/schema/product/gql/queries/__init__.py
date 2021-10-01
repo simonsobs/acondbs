@@ -9,7 +9,6 @@ from .query_all_product_relations_total_count import QUERY_ALL_PRODUCT_RELATIONS
 from .query_all_product_relation_types import QUERY_ALL_PRODUCT_RELATION_TYPES  # noqa: F401
 from .query_all_product_relation_types_total_count import QUERY_ALL_PRODUCT_RELATION_TYPES_TOTAL_COUNT  # noqa: F401
 from .query_all_product_types import  QUERY_ALL_PRODUCT_TYPES  # noqa: F401
-from .query_all_product_types_total_count import  QUERY_ALL_PRODUCT_TYPES_TOTAL_COUNT  # noqa: F401
 from .query_field import QUERY_FIELD  # noqa: F401
 from .query_product import QUERY_PRODUCT  # noqa: F401
 from .query_product_shallow import QUERY_PRODUCT_SHALLOW  # noqa: F401
