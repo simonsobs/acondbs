@@ -123,6 +123,24 @@ params = [
         {"query": QUERY_ALL_PRODUCT_TYPES},
         id="error-already-exist",
     ),
+    pytest.param(
+        {
+            "query": MUTATION_CREATE_PRODUCT_TYPE,
+            "variables": {
+                "input": {
+                    "name": "compass",
+                    "order": 5,
+                    "indefArticle": "a",
+                    "singular": "compass",
+                    "plural": "compasses",
+                    "icon": "mdi-compass",
+                    "fieldIds": [1, 2, 3, 88],
+                }
+            },
+        },
+        {"query": QUERY_ALL_PRODUCT_TYPES},
+        id="non-existent-field",
+    ),
 ]
 
 
