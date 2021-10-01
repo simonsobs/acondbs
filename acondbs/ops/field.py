@@ -3,10 +3,10 @@ from ..db.sa import sa
 
 
 ##__________________________________________________________________||
-def create_field(name, type_):
+def create_field(name, type_, field_id=None):
     """Create a field"""
     type_ = FieldType(type_)  # in case given by int
-    model = Field(name=name, type_=type_)
+    model = Field(name=name, type_=type_, field_id=field_id)
     sa.session.add(model)
     return model
 
