@@ -34,8 +34,8 @@ from .queries import (  # noqa: F401
     QUERY_PRODUCT_SHALLOW,
     QUERY_PRODUCT_RELATION,
     QUERY_PRODUCT_RELATION_TYPE,
-    QUERY_PRODUCT_TYPE
-    )
+    QUERY_PRODUCT_TYPE,
+)
 
 from .mutations import (  # noqa: F401
     MUTATION_CREATE_PRODUCT,
