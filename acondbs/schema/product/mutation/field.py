@@ -53,7 +53,8 @@ class UpdateField(graphene.Mutation):
     field = graphene.Field(lambda: type_.Field)
 
     def mutate(root, info, field_id, input):
-        model = ops.update_field(field_id, input)
+        name = input.pop('name')
+        model = ops.update_field(field_id, name)
         ops.commit()
         ok = True
         request_backup_db()
