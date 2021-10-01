@@ -18,3 +18,8 @@ from .product_relation import (  # noqa: F401
     CreateProductRelation,
     DeleteProductRelation,
 )
+from .field import (  # noqa: F401
+    CreateField,
+    UpdateField,
+    DeleteField,
+)

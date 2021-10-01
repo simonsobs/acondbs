@@ -3,7 +3,6 @@ from graphene import relay
 
 from . import version as version_, web, auth, github, product as p
 
-
 ##__________________________________________________________________||
 class QueryPublic(graphene.ObjectType):
     web_config = web.web_config_field
@@ -70,6 +69,10 @@ class MutationPrivate(MutationPublic):
     create_product_type = p.mutation.CreateProductType.Field()
     delete_product_type = p.mutation.DeleteProductType.Field()
     update_product_type = p.mutation.UpdateProductType.Field()
+
+    create_field = p.mutation.CreateField.Field()
+    delete_field = p.mutation.DeleteField.Field()
+    update_field = p.mutation.UpdateField.Field()
 
 
 ##__________________________________________________________________||
