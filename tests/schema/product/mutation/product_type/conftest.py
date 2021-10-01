@@ -19,26 +19,15 @@ def app(app_users):
     y = app_users
 
     with y.app_context():
-
         # fmt: off
-        field_contact = ops.create_field(field_id=1, name="contact", type_=FieldType.UnicodeText)
-        field_produced_by = ops.create_field(field_id=2, name="produced_by", type_=FieldType.UnicodeText)
-        field_date_produced = ops.create_field(field_id=3, name="date_produced", type_=FieldType.Date)
+        ops.create_field(field_id=1, name="contact", type_=FieldType.UnicodeText)
+        ops.create_field(field_id=2, name="produced_by", type_=FieldType.UnicodeText)
+        ops.create_field(field_id=3, name="date_produced", type_=FieldType.Date)
         # fmt: on
+        ops.commit()
 
-        fields = [field_contact, field_produced_by, field_date_produced]
+    with y.app_context():
 
-        # create product types
-        # Map = ProductType(
-        #     type_id=1,
-        #     name="map",
-        #     order=2,
-        #     indef_article="a",
-        #     singular="map",
-        #     plural="maps",
-        #     icon="mdi-map",
-        #     fields=[TypeFieldAssociation(field=f) for f in fields],
-        # )
         Map = ops.create_product_type(
             type_id=1,
             name="map",
@@ -47,9 +36,9 @@ def app(app_users):
             singular="map",
             plural="maps",
             icon="mdi-map",
+            field_ids=[1, 2, 3],
         )
-        Map.fields = [TypeFieldAssociation(field=f) for f in fields]
-        Beam = ProductType(
+        Beam = ops.create_product_type(
             type_id=2,
             name="beam",
             order=1,
@@ -57,7 +46,7 @@ def app(app_users):
             singular="beam",
             plural="beams",
             icon="mdi-spotlight-beam",
-            fields=[TypeFieldAssociation(field=f) for f in fields],
+            field_ids=[1, 2, 3],
         )
 
         # create products
