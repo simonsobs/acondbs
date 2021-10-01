@@ -10,3 +10,4 @@ from .mutation_delete_product_relation import MUTATION_DELETE_PRODUCT_RELATION  
 from .mutation_create_product_type import MUTATION_CREATE_PRODUCT_TYPE  # noqa: F401
 from .mutation_update_product_type import MUTATION_UPDATE_PRODUCT_TYPE  # noqa: F401
 from .mutation_delete_product_type import MUTATION_DELETE_PRODUCT_TYPE  # noqa: F401
+from .mutation_create_field import MUTATION_CREATE_FIELD  # noqa: F401
