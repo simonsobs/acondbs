@@ -11,7 +11,7 @@ from .... import ops
 class CommonInputFields:
     name = graphene.String(
         required=True,
-        description="The name of the product type",
+        description="The name of the field",
     )
 
 
