@@ -12,3 +12,4 @@ from .mutation_update_product_type import MUTATION_UPDATE_PRODUCT_TYPE  # noqa: 
 from .mutation_delete_product_type import MUTATION_DELETE_PRODUCT_TYPE  # noqa: F401
 from .mutation_create_field import MUTATION_CREATE_FIELD  # noqa: F401
 from .mutation_update_field import MUTATION_UPDATE_FIELD  # noqa: F401
+from .mutation_delete_field import MUTATION_DELETE_FIELD  # noqa: F401
