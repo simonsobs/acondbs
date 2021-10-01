@@ -32,6 +32,10 @@ class CommonInputFields:
             "A name of the icon from https://materialdesignicons.com/"
         )
     )
+    field_ids = graphene.List(
+        graphene.Int,
+        description=("The field IDs")
+    )
 
 
 class CreateProductTypeInput(graphene.InputObjectType, CommonInputFields):
@@ -57,7 +61,7 @@ class CreateProductType(graphene.Mutation):
     product_type = graphene.Field(lambda: type_.ProductType)
 
     def mutate(root, info, input):
-        model = ops.create_product_type(input)
+        model = ops.create_product_type(**input)
         ops.commit()
         ok = True
         request_backup_db()
