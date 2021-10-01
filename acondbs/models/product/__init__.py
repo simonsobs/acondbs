@@ -19,6 +19,11 @@ from .attribute import (  # noqa: F401
     AttributeTime
 )
 
-from .field import FieldType, Field, TypeFieldAssociation  # noqa: F401
+from .field import (  # noqa: F401
+    FieldType,  # enum
+    saEnumFieldType,  # SQLAlchemy Enum
+    Field,
+    TypeFieldAssociation,
+)
 
 ##__________________________________________________________________||
