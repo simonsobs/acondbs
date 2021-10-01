@@ -84,6 +84,15 @@ snapshots['test_schema_selection[False-True] 1'] = {
                     },
                     {
                         'name': 'updateProductType'
+                    },
+                    {
+                        'name': 'createField'
+                    },
+                    {
+                        'name': 'deleteField'
+                    },
+                    {
+                        'name': 'updateField'
                     }
                 ]
             },
@@ -126,6 +135,9 @@ snapshots['test_schema_selection[False-True] 1'] = {
                         'name': 'allProductFilePaths'
                     },
                     {
+                        'name': 'allFields'
+                    },
+                    {
                         'name': 'product'
                     },
                     {
@@ -136,6 +148,9 @@ snapshots['test_schema_selection[False-True] 1'] = {
                     },
                     {
                         'name': 'productRelationType'
+                    },
+                    {
+                        'name': 'field'
                     },
                     {
                         'name': 'node'
@@ -198,6 +213,15 @@ snapshots['test_schema_selection[True-False] 1'] = {
                         'name': 'updateProductType'
                     },
                     {
+                        'name': 'createField'
+                    },
+                    {
+                        'name': 'deleteField'
+                    },
+                    {
+                        'name': 'updateField'
+                    },
+                    {
                         'name': 'addGitHubOrg'
                     },
                     {
@@ -253,6 +277,9 @@ snapshots['test_schema_selection[True-False] 1'] = {
                         'name': 'allProductFilePaths'
                     },
                     {
+                        'name': 'allFields'
+                    },
+                    {
                         'name': 'product'
                     },
                     {
@@ -263,6 +290,9 @@ snapshots['test_schema_selection[True-False] 1'] = {
                     },
                     {
                         'name': 'productRelationType'
+                    },
+                    {
+                        'name': 'field'
                     },
                     {
                         'name': 'node'
@@ -334,6 +364,15 @@ snapshots['test_schema_selection[True-True] 1'] = {
                         'name': 'updateProductType'
                     },
                     {
+                        'name': 'createField'
+                    },
+                    {
+                        'name': 'deleteField'
+                    },
+                    {
+                        'name': 'updateField'
+                    },
+                    {
                         'name': 'addGitHubOrg'
                     },
                     {
@@ -389,6 +428,9 @@ snapshots['test_schema_selection[True-True] 1'] = {
                         'name': 'allProductFilePaths'
                     },
                     {
+                        'name': 'allFields'
+                    },
+                    {
                         'name': 'product'
                     },
                     {
@@ -399,6 +441,9 @@ snapshots['test_schema_selection[True-True] 1'] = {
                     },
                     {
                         'name': 'productRelationType'
+                    },
+                    {
+                        'name': 'field'
                     },
                     {
                         'name': 'node'

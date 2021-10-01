@@ -58,6 +58,15 @@ snapshots['test_schema[admin] 1'] = {
                         'name': 'updateProductType'
                     },
                     {
+                        'name': 'createField'
+                    },
+                    {
+                        'name': 'deleteField'
+                    },
+                    {
+                        'name': 'updateField'
+                    },
+                    {
                         'name': 'addGitHubOrg'
                     },
                     {
@@ -113,6 +122,9 @@ snapshots['test_schema[admin] 1'] = {
                         'name': 'allProductFilePaths'
                     },
                     {
+                        'name': 'allFields'
+                    },
+                    {
                         'name': 'product'
                     },
                     {
@@ -123,6 +135,9 @@ snapshots['test_schema[admin] 1'] = {
                     },
                     {
                         'name': 'productRelationType'
+                    },
+                    {
+                        'name': 'field'
                     },
                     {
                         'name': 'node'
@@ -179,6 +194,9 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'allProductFilePaths'
                         },
                         {
+                            'name': 'allFields'
+                        },
+                        {
                             'name': 'product'
                         },
                         {
@@ -189,6 +207,9 @@ snapshots['test_schema[admin] 1'] = {
                         },
                         {
                             'name': 'productRelationType'
+                        },
+                        {
+                            'name': 'field'
                         },
                         {
                             'name': 'node'
@@ -556,9 +577,6 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'name'
                         },
                         {
-                            'name': 'type_'
-                        },
-                        {
                             'name': 'attributesUnicodeText'
                         },
                         {
@@ -584,15 +602,13 @@ snapshots['test_schema[admin] 1'] = {
                         },
                         {
                             'name': 'id'
+                        },
+                        {
+                            'name': 'type_'
                         }
                     ],
                     'kind': 'OBJECT',
                     'name': 'Field'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'FieldType'
                 },
                 {
                     'fields': [
@@ -1039,6 +1055,11 @@ snapshots['test_schema[admin] 1'] = {
                     'name': 'TypeFieldAssociationSortEnum'
                 },
                 {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'FieldType'
+                },
+                {
                     'fields': [
                         {
                             'name': 'pageInfo'
@@ -1424,6 +1445,38 @@ snapshots['test_schema[admin] 1'] = {
                         }
                     ],
                     'kind': 'OBJECT',
+                    'name': 'FieldConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'FieldEdge'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'FieldSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
                     'name': 'GitHubOrgConnection'
                 },
                 {
@@ -1526,6 +1579,15 @@ snapshots['test_schema[admin] 1'] = {
                         },
                         {
                             'name': 'updateProductType'
+                        },
+                        {
+                            'name': 'createField'
+                        },
+                        {
+                            'name': 'deleteField'
+                        },
+                        {
+                            'name': 'updateField'
                         },
                         {
                             'name': 'addGitHubOrg'
@@ -1778,6 +1840,49 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'ok'
                         },
                         {
+                            'name': 'field'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'CreateField'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'CreateFieldInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'DeleteField'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'field'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'UpdateField'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'UpdateFieldInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
                             'name': 'gitHubOrg'
                         }
                     ],
@@ -2016,6 +2121,15 @@ snapshots['test_schema[private] 1'] = {
                     },
                     {
                         'name': 'updateProductType'
+                    },
+                    {
+                        'name': 'createField'
+                    },
+                    {
+                        'name': 'deleteField'
+                    },
+                    {
+                        'name': 'updateField'
                     }
                 ]
             },
@@ -2058,6 +2172,9 @@ snapshots['test_schema[private] 1'] = {
                         'name': 'allProductFilePaths'
                     },
                     {
+                        'name': 'allFields'
+                    },
+                    {
                         'name': 'product'
                     },
                     {
@@ -2068,6 +2185,9 @@ snapshots['test_schema[private] 1'] = {
                     },
                     {
                         'name': 'productRelationType'
+                    },
+                    {
+                        'name': 'field'
                     },
                     {
                         'name': 'node'
@@ -2115,6 +2235,9 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'allProductFilePaths'
                         },
                         {
+                            'name': 'allFields'
+                        },
+                        {
                             'name': 'product'
                         },
                         {
@@ -2125,6 +2248,9 @@ snapshots['test_schema[private] 1'] = {
                         },
                         {
                             'name': 'productRelationType'
+                        },
+                        {
+                            'name': 'field'
                         },
                         {
                             'name': 'node'
@@ -2483,9 +2609,6 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'name'
                         },
                         {
-                            'name': 'type_'
-                        },
-                        {
                             'name': 'attributesUnicodeText'
                         },
                         {
@@ -2511,15 +2634,13 @@ snapshots['test_schema[private] 1'] = {
                         },
                         {
                             'name': 'id'
+                        },
+                        {
+                            'name': 'type_'
                         }
                     ],
                     'kind': 'OBJECT',
                     'name': 'Field'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'FieldType'
                 },
                 {
                     'fields': [
@@ -2966,6 +3087,11 @@ snapshots['test_schema[private] 1'] = {
                     'name': 'TypeFieldAssociationSortEnum'
                 },
                 {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'FieldType'
+                },
+                {
                     'fields': [
                         {
                             'name': 'pageInfo'
@@ -3341,6 +3467,38 @@ snapshots['test_schema[private] 1'] = {
                 {
                     'fields': [
                         {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'FieldConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'FieldEdge'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'FieldSortEnum'
+                },
+                {
+                    'fields': [
+                        {
                             'name': 'authenticateWithGitHub'
                         },
                         {
@@ -3384,6 +3542,15 @@ snapshots['test_schema[private] 1'] = {
                         },
                         {
                             'name': 'updateProductType'
+                        },
+                        {
+                            'name': 'createField'
+                        },
+                        {
+                            'name': 'deleteField'
+                        },
+                        {
+                            'name': 'updateField'
                         }
                     ],
                     'kind': 'OBJECT',
@@ -3614,6 +3781,49 @@ snapshots['test_schema[private] 1'] = {
                     'fields': None,
                     'kind': 'INPUT_OBJECT',
                     'name': 'UpdateProductTypeInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'field'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'CreateField'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'CreateFieldInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'DeleteField'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'field'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'UpdateField'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'UpdateFieldInput'
                 },
                 {
                     'fields': [

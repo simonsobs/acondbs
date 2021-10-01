@@ -130,7 +130,8 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
                         'typeId': '1'
                     }
                 }
-            ]
+            ],
+            'totalCount': 2
         }
     }
 }
@@ -331,7 +332,8 @@ snapshots['test_schema_success[update] 2'] = {
                         'typeId': '1'
                     }
                 }
-            ]
+            ],
+            'totalCount': 2
         }
     }
 }
