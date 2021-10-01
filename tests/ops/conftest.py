@@ -18,9 +18,9 @@ def app_empty():
 
 @pytest.fixture
 def app(app_empty):
-    app = app_empty
+    y = app_empty
 
-    with app.app_context():
+    with y.app_context():
 
         # fmt: off
         ops.create_field(field_id=1, name="contact", type_=FieldType.UnicodeText)
@@ -30,7 +30,30 @@ def app(app_empty):
 
         ops.commit()
 
-    yield app
+    with y.app_context():
+        ops.create_product_type(
+            type_id=1,
+            name="map",
+            order=2,
+            indef_article="a",
+            singular="map",
+            plural="maps",
+            icon="mdi-map",
+            field_ids=[1, 2, 3],
+        )
+        ops.create_product_type(
+            type_id=2,
+            name="beam",
+            order=1,
+            indef_article="a",
+            singular="beam",
+            plural="beams",
+            icon="mdi-spotlight-beam",
+            field_ids=[1, 2, 3],
+        )
+        ops.commit()
+
+    yield y
 
 
 ##__________________________________________________________________||
