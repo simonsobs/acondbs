@@ -140,7 +140,8 @@ snapshots['test_schema[sort-order] 1'] = {
                         'typeId': '1'
                     }
                 }
-            ]
+            ],
+            'totalCount': 2
         }
     }
 }
