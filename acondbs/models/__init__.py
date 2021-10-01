@@ -27,6 +27,7 @@ from .product import (  # noqa: F401
     AttributeDateTime,
     AttributeTime,
     FieldType,  # enum
+    saEnumFieldType,  # SQLAlchemy Enum
     Field,
     TypeFieldAssociation,
 )
