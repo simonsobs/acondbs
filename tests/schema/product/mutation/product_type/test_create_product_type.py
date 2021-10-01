@@ -2,19 +2,7 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import MUTATION_CREATE_PRODUCT_TYPE
-
-QEURY = """
-{
-  allProductTypes {
-    edges {
-      node {
-        name
-      }
-    }
-  }
-}
-"""
+from ...gql import MUTATION_CREATE_PRODUCT_TYPE, QUERY_ALL_PRODUCT_TYPES
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
@@ -34,11 +22,47 @@ params = [
                     "singular": "compass",
                     "plural": "compasses",
                     "icon": "mdi-compass",
+                    "fieldIds": [1, 2, 3],
                 }
             },
         },
-        {"query": QEURY},
+        {"query": QUERY_ALL_PRODUCT_TYPES},
         id="create",
+    ),
+    pytest.param(
+        {
+            "query": MUTATION_CREATE_PRODUCT_TYPE,
+            "variables": {
+                "input": {
+                    "name": "compass",
+                    "order": 5,
+                    "indefArticle": "a",
+                    "singular": "compass",
+                    "plural": "compasses",
+                    "icon": "mdi-compass",
+                }
+            },
+        },
+        {"query": QUERY_ALL_PRODUCT_TYPES},
+        id="no-fields",
+    ),
+    pytest.param(
+        {
+            "query": MUTATION_CREATE_PRODUCT_TYPE,
+            "variables": {
+                "input": {
+                    "name": "compass",
+                    "order": 5,
+                    "indefArticle": "a",
+                    "singular": "compass",
+                    "plural": "compasses",
+                    "icon": "mdi-compass",
+                    "fieldIds": [],
+                }
+            },
+        },
+        {"query": QUERY_ALL_PRODUCT_TYPES},
+        id="empty-fields",
     ),
 ]
 
@@ -78,7 +102,7 @@ params = [
                 }
             },
         },
-        {"query": QEURY},
+        {"query": QUERY_ALL_PRODUCT_TYPES},
         id="error-already-exist",
     ),
 ]
