@@ -54,14 +54,14 @@ def test_constraint_type_required_delete(app_empty):
 
     # fail to delete a type with a product
     with app.app_context():
-        type_map = ProductType.query.filter_by(name="map").one_or_none()
+        type_map = ProductType.query.filter_by(name="map").one()
         sa.session.delete(type_map)
         with pytest.raises(exc.IntegrityError):
             sa.session.commit()
 
     # assert the type and the product are still there
     with app.app_context():
-        map1 = Product.query.filter_by(name="map1").one_or_none()
+        map1 = Product.query.filter_by(name="map1").one()
         assert map1 is not None
         type_map = map1.type_
         assert "map" == type_map.name
@@ -69,19 +69,19 @@ def test_constraint_type_required_delete(app_empty):
 
     # delete the product
     with app.app_context():
-        map1 = Product.query.filter_by(name="map1").one_or_none()
+        map1 = Product.query.filter_by(name="map1").one()
         sa.session.delete(map1)
         sa.session.commit()
 
     # assert the type still exists
     with app.app_context():
-        type_map = ProductType.query.filter_by(name="map").one_or_none()
+        type_map = ProductType.query.filter_by(name="map").one()
         assert type_map is not None
         assert [] == type_map.products
 
     # delete the type
     with app.app_context():
-        type_map = ProductType.query.filter_by(name="map").one_or_none()
+        type_map = ProductType.query.filter_by(name="map").one()
         sa.session.delete(type_map)
         sa.session.commit()
 
