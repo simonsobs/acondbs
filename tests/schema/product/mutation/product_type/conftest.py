@@ -4,10 +4,8 @@ import datetime
 
 from acondbs.db.sa import sa
 from acondbs.models import (
-    ProductType,
     Product,
     FieldType,
-    TypeFieldAssociation,
 )
 from acondbs import ops
 
