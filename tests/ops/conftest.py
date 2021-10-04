@@ -26,6 +26,8 @@ def app(app_empty):
         ops.create_field(field_id=1, name="contact", type_=FieldType.UnicodeText)
         ops.create_field(field_id=2, name="produced_by", type_=FieldType.UnicodeText)
         ops.create_field(field_id=3, name="date_produced", type_=FieldType.Date)
+        ops.create_field(field_id=4, name="field_four", type_=FieldType.UnicodeText)
+        ops.create_field(field_id=5, name="field_five", type_=FieldType.UnicodeText)
         # fmt: on
 
         ops.commit()
