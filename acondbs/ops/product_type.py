@@ -8,14 +8,18 @@ def create_product_type(**kwargs):
     field_ids = kwargs.pop("field_ids", None)
     model = ProductType(**kwargs)
     if field_ids:
-        field_ids = sorted(set(field_ids))
-        fields = [Field.query.filter_by(field_id=i).one() for i in field_ids]
-        fields = [TypeFieldAssociation(field=f) for f in fields]
-        model.fields = fields
+        model.fields = _create_fields(field_ids)
     sa.session.add(model)
     return model
 
 
+def _create_fields(field_ids):
+    ids = sorted(set(field_ids))
+    fields_ = [Field.query.filter_by(field_id=i).one() for i in ids]
+    return [TypeFieldAssociation(field=f) for f in fields_]
+
+
+##__________________________________________________________________||
 def update_product_type(type_id, **kwargs):
     """Update a product type"""
 
@@ -57,6 +61,7 @@ def _update_fields(old_fields: list, new_field_ids: list) -> list:
     return [field_dict[i] for i in sorted(new_ids)]
 
 
+##__________________________________________________________________||
 def delete_product_type(type_id):
     """Delete a product type"""
     model = ProductType.query.filter_by(type_id=type_id).one()
