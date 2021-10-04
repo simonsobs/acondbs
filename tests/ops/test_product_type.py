@@ -26,6 +26,9 @@ params = [
 def test_create_product_type(app, field_ids, expected_field_names):
 
     with app.app_context():
+        count = ProductType.query.count()
+
+    with app.app_context():
         model = ops.create_product_type(
             name="derived_map",
             order=3,
@@ -38,6 +41,7 @@ def test_create_product_type(app, field_ids, expected_field_names):
         ops.commit()
 
     with app.app_context():
+        assert ProductType.query.count() == (count + 1)
         model = ProductType.query.filter_by(name="derived_map").one()
         actual_field_names = [f.field.name for f in model.fields]
         assert actual_field_names == expected_field_names
@@ -50,6 +54,9 @@ params = [
 
 @pytest.mark.parametrize("field_ids", params)
 def test_create_product_type_error(app, field_ids):
+
+    with app.app_context():
+        count = ProductType.query.count()
 
     with app.app_context():
         with pytest.raises(exc.NoResultFound):
@@ -65,6 +72,7 @@ def test_create_product_type_error(app, field_ids):
         ops.commit()
 
     with app.app_context():
+        assert ProductType.query.count() == count
         model = ProductType.query.filter_by(name="derived_map").one_or_none()
         assert model is None
 
@@ -74,6 +82,7 @@ def test_delete_product_type(app):
     name = "map"
 
     with app.app_context():
+        count = ProductType.query.count()
         model = ProductType.query.filter_by(name=name).one()
         type_id = model.type_id
 
@@ -84,5 +93,7 @@ def test_delete_product_type(app):
     with app.app_context():
         model = ProductType.query.filter_by(name=name).one_or_none()
         assert model is None
+        assert ProductType.query.count() == (count - 1)
+
 
 ##__________________________________________________________________||
