@@ -26,11 +26,47 @@ params = [
                     "singular": "compass",
                     "plural": "compasses",
                     "icon": "mdi-compass",
+                    "fieldIds": [1, 4, 5],
                 },
             },
         },
         {"query": QUERY_ALL_PRODUCT_TYPES},
         id="update",
+    ),
+    pytest.param(
+        {
+            "query": MUTATION_UPDATE_PRODUCT_TYPE,
+            "variables": {
+                "typeId": 1,
+                "input": {
+                    "order": 5,
+                    "indefArticle": "a",
+                    "singular": "compass",
+                    "plural": "compasses",
+                    "icon": "mdi-compass",
+                    "fieldIds": [],
+                },
+            },
+        },
+        {"query": QUERY_ALL_PRODUCT_TYPES},
+        id="empty-fields",
+    ),
+    pytest.param(
+        {
+            "query": MUTATION_UPDATE_PRODUCT_TYPE,
+            "variables": {
+                "typeId": 1,
+                "input": {
+                    "order": 5,
+                    "indefArticle": "a",
+                    "singular": "compass",
+                    "plural": "compasses",
+                    "icon": "mdi-compass",
+                },
+            },
+        },
+        {"query": QUERY_ALL_PRODUCT_TYPES},
+        id="fields-unchanged",
     ),
 ]
 

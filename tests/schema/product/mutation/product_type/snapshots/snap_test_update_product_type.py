@@ -136,7 +136,7 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
     }
 }
 
-snapshots['test_schema_success[update] 1'] = {
+snapshots['test_schema_success[empty-fields] 1'] = {
     'data': {
         'updateProductType': {
             'ok': True,
@@ -170,6 +170,410 @@ snapshots['test_schema_success[update] 1'] = {
                                 'field': {
                                     'name': 'date_produced',
                                     'type_': 'DATE'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        }
+                    ]
+                },
+                'icon': 'mdi-compass',
+                'indefArticle': 'a',
+                'name': 'map',
+                'order': 5,
+                'plural': 'compasses',
+                'products': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'map1'
+                            }
+                        },
+                        {
+                            'node': {
+                                'name': 'map2'
+                            }
+                        },
+                        {
+                            'node': {
+                                'name': 'map3'
+                            }
+                        }
+                    ]
+                },
+                'singular': 'compass',
+                'typeId': '1'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[empty-fields] 2'] = {
+    'data': {
+        'allProductTypes': {
+            'edges': [
+                {
+                    'node': {
+                        'fields': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        'icon': 'mdi-spotlight-beam',
+                        'indefArticle': 'a',
+                        'name': 'beam',
+                        'order': 1,
+                        'plural': 'beams',
+                        'products': {
+                            'edges': [
+                            ]
+                        },
+                        'singular': 'beam',
+                        'typeId': '2'
+                    }
+                },
+                {
+                    'node': {
+                        'fields': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        'icon': 'mdi-compass',
+                        'indefArticle': 'a',
+                        'name': 'map',
+                        'order': 5,
+                        'plural': 'compasses',
+                        'products': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'map1'
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'name': 'map2'
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'name': 'map3'
+                                    }
+                                }
+                            ]
+                        },
+                        'singular': 'compass',
+                        'typeId': '1'
+                    }
+                }
+            ],
+            'totalCount': 2
+        }
+    }
+}
+
+snapshots['test_schema_success[fields-unchanged] 1'] = {
+    'data': {
+        'updateProductType': {
+            'ok': True,
+            'productType': {
+                'fields': {
+                    'edges': [
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'date_produced',
+                                    'type_': 'DATE'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        }
+                    ]
+                },
+                'icon': 'mdi-compass',
+                'indefArticle': 'a',
+                'name': 'map',
+                'order': 5,
+                'plural': 'compasses',
+                'products': {
+                    'edges': [
+                        {
+                            'node': {
+                                'name': 'map1'
+                            }
+                        },
+                        {
+                            'node': {
+                                'name': 'map2'
+                            }
+                        },
+                        {
+                            'node': {
+                                'name': 'map3'
+                            }
+                        }
+                    ]
+                },
+                'singular': 'compass',
+                'typeId': '1'
+            }
+        }
+    }
+}
+
+snapshots['test_schema_success[fields-unchanged] 2'] = {
+    'data': {
+        'allProductTypes': {
+            'edges': [
+                {
+                    'node': {
+                        'fields': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'beam'
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        'icon': 'mdi-spotlight-beam',
+                        'indefArticle': 'a',
+                        'name': 'beam',
+                        'order': 1,
+                        'plural': 'beams',
+                        'products': {
+                            'edges': [
+                            ]
+                        },
+                        'singular': 'beam',
+                        'typeId': '2'
+                    }
+                },
+                {
+                    'node': {
+                        'fields': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'contact',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'produced_by',
+                                            'type_': 'UNICODE_TEXT'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'field': {
+                                            'name': 'date_produced',
+                                            'type_': 'DATE'
+                                        },
+                                        'type_': {
+                                            'name': 'map'
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        'icon': 'mdi-compass',
+                        'indefArticle': 'a',
+                        'name': 'map',
+                        'order': 5,
+                        'plural': 'compasses',
+                        'products': {
+                            'edges': [
+                                {
+                                    'node': {
+                                        'name': 'map1'
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'name': 'map2'
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'name': 'map3'
+                                    }
+                                }
+                            ]
+                        },
+                        'singular': 'compass',
+                        'typeId': '1'
+                    }
+                }
+            ],
+            'totalCount': 2
+        }
+    }
+}
+
+snapshots['test_schema_success[update] 1'] = {
+    'data': {
+        'updateProductType': {
+            'ok': True,
+            'productType': {
+                'fields': {
+                    'edges': [
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'field_four',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'type_': {
+                                    'name': 'map'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'field_five',
+                                    'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
                                     'name': 'map'
@@ -283,7 +687,7 @@ snapshots['test_schema_success[update] 2'] = {
                                 {
                                     'node': {
                                         'field': {
-                                            'name': 'produced_by',
+                                            'name': 'field_four',
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
@@ -294,8 +698,8 @@ snapshots['test_schema_success[update] 2'] = {
                                 {
                                     'node': {
                                         'field': {
-                                            'name': 'date_produced',
-                                            'type_': 'DATE'
+                                            'name': 'field_five',
+                                            'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
                                             'name': 'map'
