@@ -19,8 +19,24 @@ def create_product_type(**kwargs):
 def update_product_type(type_id, **kwargs):
     """Update a product type"""
     model = ProductType.query.filter_by(type_id=type_id).one()
+    field_ids = kwargs.pop("field_ids", None)
     for k, v in kwargs.items():
         setattr(model, k, v)
+    if field_ids:
+        with sa.session.no_autoflush:
+            old_field_dict = {f.field_id: f for f in model.fields}
+            new_fields = []
+            field_ids = sorted(set(field_ids))
+            for field_id in field_ids:
+                field = old_field_dict.pop(field_id, None)
+                if not field:
+                    field = Field.query.filter_by(field_id=field_id).one()
+                    field = TypeFieldAssociation(field=field)
+                new_fields.append(field)
+            for field in old_field_dict.values():
+                print(field)
+                sa.session.delete(field)
+            model.fields = new_fields
     return model
 
 
