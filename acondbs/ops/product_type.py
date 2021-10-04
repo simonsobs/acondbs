@@ -52,6 +52,8 @@ def _update_fields(old_fields: list, new_field_ids: list) -> list:
     for id_ in removed_ids:
         field = field_dict.pop(id_)
         sa.session.delete(field)
+        # NOTE: Probably unnecesary. TypeFieldAssociation is likely to
+        # be automatically deleted.
 
     for id_ in added_ids:
         field_ = Field.query.filter_by(field_id=id_).one()
