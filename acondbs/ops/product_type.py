@@ -26,30 +26,35 @@ def update_product_type(type_id, **kwargs):
         setattr(model, k, v)
 
     if field_ids:
-        new_field_ids = set(field_ids)
-        old_field_ids = {f.field_id for f in model.fields}
-
-        unchanged_field_ids = new_field_ids & old_field_ids
-        added_field_ids = new_field_ids - unchanged_field_ids
-        removed_field_ids = old_field_ids - unchanged_field_ids
-
-        field_dict = {f.field_id: f for f in model.fields}
-        #  {field_id: TypeFieldAssociation}
-
-        with sa.session.no_autoflush:
-
-            for field_id in removed_field_ids:
-                field = field_dict.pop(field_id)
-                sa.session.delete(field)
-
-            for field_id in added_field_ids:
-                field_ = Field.query.filter_by(field_id=field_id).one()
-                field = TypeFieldAssociation(field=field_)
-                field_dict[field_id] = field
-
-        model.fields = [field_dict[i] for i in sorted(new_field_ids)]
+        model.fields = _update_fields(model.fields, field_ids)
 
     return model
+
+
+def _update_fields(old_fields: list, new_field_ids: list) -> list:
+
+    new_ids = set(new_field_ids)
+    old_ids = {f.field_id for f in old_fields}
+
+    unchanged_ids = new_ids & old_ids
+    added_ids = new_ids - unchanged_ids
+    removed_ids = old_ids - unchanged_ids
+
+    field_dict = {f.field_id: f for f in old_fields}
+    #  {field_id: TypeFieldAssociation}
+
+    with sa.session.no_autoflush:
+
+        for id_ in removed_ids:
+            field = field_dict.pop(id_)
+            sa.session.delete(field)
+
+        for id_ in added_ids:
+            field_ = Field.query.filter_by(field_id=id_).one()
+            field = TypeFieldAssociation(field=field_)
+            field_dict[id_] = field
+
+    return [field_dict[i] for i in sorted(new_ids)]
 
 
 def delete_product_type(type_id):
