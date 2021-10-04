@@ -150,7 +150,7 @@ snapshots['test_schema_success[empty-fields] 1'] = {
                                     'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         },
@@ -161,7 +161,7 @@ snapshots['test_schema_success[empty-fields] 1'] = {
                                     'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         },
@@ -172,7 +172,7 @@ snapshots['test_schema_success[empty-fields] 1'] = {
                                     'type_': 'DATE'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         }
@@ -180,7 +180,7 @@ snapshots['test_schema_success[empty-fields] 1'] = {
                 },
                 'icon': 'mdi-compass',
                 'indefArticle': 'a',
-                'name': 'map',
+                'name': 'compass',
                 'order': 5,
                 'plural': 'compasses',
                 'products': {
@@ -276,7 +276,7 @@ snapshots['test_schema_success[empty-fields] 2'] = {
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 },
@@ -287,7 +287,7 @@ snapshots['test_schema_success[empty-fields] 2'] = {
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 },
@@ -298,7 +298,7 @@ snapshots['test_schema_success[empty-fields] 2'] = {
                                             'type_': 'DATE'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 }
@@ -306,7 +306,7 @@ snapshots['test_schema_success[empty-fields] 2'] = {
                         },
                         'icon': 'mdi-compass',
                         'indefArticle': 'a',
-                        'name': 'map',
+                        'name': 'compass',
                         'order': 5,
                         'plural': 'compasses',
                         'products': {
@@ -352,7 +352,7 @@ snapshots['test_schema_success[fields-unchanged] 1'] = {
                                     'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         },
@@ -363,7 +363,7 @@ snapshots['test_schema_success[fields-unchanged] 1'] = {
                                     'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         },
@@ -374,7 +374,7 @@ snapshots['test_schema_success[fields-unchanged] 1'] = {
                                     'type_': 'DATE'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         }
@@ -382,7 +382,7 @@ snapshots['test_schema_success[fields-unchanged] 1'] = {
                 },
                 'icon': 'mdi-compass',
                 'indefArticle': 'a',
-                'name': 'map',
+                'name': 'compass',
                 'order': 5,
                 'plural': 'compasses',
                 'products': {
@@ -478,7 +478,7 @@ snapshots['test_schema_success[fields-unchanged] 2'] = {
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 },
@@ -489,7 +489,7 @@ snapshots['test_schema_success[fields-unchanged] 2'] = {
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 },
@@ -500,7 +500,7 @@ snapshots['test_schema_success[fields-unchanged] 2'] = {
                                             'type_': 'DATE'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 }
@@ -508,7 +508,7 @@ snapshots['test_schema_success[fields-unchanged] 2'] = {
                         },
                         'icon': 'mdi-compass',
                         'indefArticle': 'a',
-                        'name': 'map',
+                        'name': 'compass',
                         'order': 5,
                         'plural': 'compasses',
                         'products': {
@@ -554,7 +554,7 @@ snapshots['test_schema_success[update] 1'] = {
                                     'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         },
@@ -565,7 +565,7 @@ snapshots['test_schema_success[update] 1'] = {
                                     'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         },
@@ -576,7 +576,7 @@ snapshots['test_schema_success[update] 1'] = {
                                     'type_': 'UNICODE_TEXT'
                                 },
                                 'type_': {
-                                    'name': 'map'
+                                    'name': 'compass'
                                 }
                             }
                         }
@@ -584,7 +584,7 @@ snapshots['test_schema_success[update] 1'] = {
                 },
                 'icon': 'mdi-compass',
                 'indefArticle': 'a',
-                'name': 'map',
+                'name': 'compass',
                 'order': 5,
                 'plural': 'compasses',
                 'products': {
@@ -680,7 +680,7 @@ snapshots['test_schema_success[update] 2'] = {
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 },
@@ -691,7 +691,7 @@ snapshots['test_schema_success[update] 2'] = {
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 },
@@ -702,7 +702,7 @@ snapshots['test_schema_success[update] 2'] = {
                                             'type_': 'UNICODE_TEXT'
                                         },
                                         'type_': {
-                                            'name': 'map'
+                                            'name': 'compass'
                                         }
                                     }
                                 }
@@ -710,7 +710,7 @@ snapshots['test_schema_success[update] 2'] = {
                         },
                         'icon': 'mdi-compass',
                         'indefArticle': 'a',
-                        'name': 'map',
+                        'name': 'compass',
                         'order': 5,
                         'plural': 'compasses',
                         'products': {

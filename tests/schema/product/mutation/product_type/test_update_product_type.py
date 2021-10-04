@@ -21,6 +21,7 @@ params = [
             "variables": {
                 "typeId": 1,
                 "input": {
+                    "name": "compass",
                     "order": 5,
                     "indefArticle": "a",
                     "singular": "compass",
@@ -39,6 +40,7 @@ params = [
             "variables": {
                 "typeId": 1,
                 "input": {
+                    "name": "compass",
                     "order": 5,
                     "indefArticle": "a",
                     "singular": "compass",
@@ -57,6 +59,7 @@ params = [
             "variables": {
                 "typeId": 1,
                 "input": {
+                    "name": "compass",
                     "order": 5,
                     "indefArticle": "a",
                     "singular": "compass",
@@ -98,6 +101,7 @@ params = [
             "variables": {
                 "typeId": 5,
                 "input": {
+                    "name": "compass",
                     "order": 5,
                     "indefArticle": "a",
                     "singular": "compass",
