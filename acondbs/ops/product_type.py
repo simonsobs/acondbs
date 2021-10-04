@@ -16,10 +16,10 @@ def create_product_type(**kwargs):
     return model
 
 
-def update_product_type(type_id, input):
+def update_product_type(type_id, **kwargs):
     """Update a product type"""
     model = ProductType.query.filter_by(type_id=type_id).one()
-    for k, v in input.items():
+    for k, v in kwargs.items():
         setattr(model, k, v)
     return model
 

@@ -79,7 +79,7 @@ class UpdateProductType(graphene.Mutation):
     product_type = graphene.Field(lambda: type_.ProductType)
 
     def mutate(root, info, type_id, input):
-        model = ops.update_product_type(type_id, input)
+        model = ops.update_product_type(type_id, **input)
         ops.commit()
         ok = True
         request_backup_db()
