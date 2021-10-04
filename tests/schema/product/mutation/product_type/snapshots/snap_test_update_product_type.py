@@ -143,39 +143,6 @@ snapshots['test_schema_success[empty-fields] 1'] = {
             'productType': {
                 'fields': {
                     'edges': [
-                        {
-                            'node': {
-                                'field': {
-                                    'name': 'contact',
-                                    'type_': 'UNICODE_TEXT'
-                                },
-                                'type_': {
-                                    'name': 'compass'
-                                }
-                            }
-                        },
-                        {
-                            'node': {
-                                'field': {
-                                    'name': 'produced_by',
-                                    'type_': 'UNICODE_TEXT'
-                                },
-                                'type_': {
-                                    'name': 'compass'
-                                }
-                            }
-                        },
-                        {
-                            'node': {
-                                'field': {
-                                    'name': 'date_produced',
-                                    'type_': 'DATE'
-                                },
-                                'type_': {
-                                    'name': 'compass'
-                                }
-                            }
-                        }
                     ]
                 },
                 'icon': 'mdi-compass',
@@ -269,39 +236,6 @@ snapshots['test_schema_success[empty-fields] 2'] = {
                     'node': {
                         'fields': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'field': {
-                                            'name': 'contact',
-                                            'type_': 'UNICODE_TEXT'
-                                        },
-                                        'type_': {
-                                            'name': 'compass'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'field': {
-                                            'name': 'produced_by',
-                                            'type_': 'UNICODE_TEXT'
-                                        },
-                                        'type_': {
-                                            'name': 'compass'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'field': {
-                                            'name': 'date_produced',
-                                            'type_': 'DATE'
-                                        },
-                                        'type_': {
-                                            'name': 'compass'
-                                        }
-                                    }
-                                }
                             ]
                         },
                         'icon': 'mdi-compass',
