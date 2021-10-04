@@ -25,7 +25,7 @@ def update_product_type(type_id, input):
 
 
 def delete_product_type(type_id):
-    """Delete a product"""
+    """Delete a product type"""
     model = ProductType.query.filter_by(type_id=type_id).one()
     sa.session.delete(model)
 
