@@ -70,3 +70,19 @@ def test_create_product_type_error(app, field_ids):
 
 
 ##__________________________________________________________________||
+def test_delete_product_type(app):
+    name = "map"
+
+    with app.app_context():
+        model = ProductType.query.filter_by(name=name).one()
+        type_id = model.type_id
+
+    with app.app_context():
+        model = ops.delete_product_type(type_id=type_id)
+        ops.commit()
+
+    with app.app_context():
+        model = ProductType.query.filter_by(name=name).one_or_none()
+        assert model is None
+
+##__________________________________________________________________||
