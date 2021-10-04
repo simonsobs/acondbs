@@ -34,7 +34,6 @@ def update_product_type(type_id, **kwargs):
                     field = TypeFieldAssociation(field=field)
                 new_fields.append(field)
             for field in old_field_dict.values():
-                print(field)
                 sa.session.delete(field)
             model.fields = new_fields
     return model
