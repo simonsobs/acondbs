@@ -124,19 +124,20 @@ def _update_paths(old, input):
 
 def _update_relations(old, input):
 
-    old_relations_dict = {(r.type_id, r.other_product_id): r for r in old}
-    relations = []
-    for r in input:
-        rmodel = old_relations_dict.pop((r["type_id"], r["product_id"]), None)
-        if not rmodel:
-            type_ = ProductRelationType.query.filter_by(
-                type_id=r["type_id"]
-            ).one()
-            other = Product.query.filter_by(product_id=r["product_id"]).one()
-            rmodel = ProductRelation(type_=type_, other=other)
-            sa.session.add(rmodel)
-        relations.append(rmodel)
-    return relations
+    # sets of tuples (type_id, other_product_id) of ProductRelation
+    new_ids = {(i["type_id"], i["product_id"]) for i in input}
+    old_ids = {(r.type_id, r.other_product_id) for r in old}
+
+    added_ids = new_ids - old_ids
+
+    model_dict = {(r.type_id, r.other_product_id): r for r in old}
+    for id_ in added_ids:
+        type_id, product_id = id_
+        type_ = ProductRelationType.query.filter_by(type_id=type_id).one()
+        other = Product.query.filter_by(product_id=product_id).one()
+        model_dict[id_] = ProductRelation(type_=type_, other=other)
+
+    return [model_dict[i] for i in sorted(new_ids)]
 
 
 ##__________________________________________________________________||
