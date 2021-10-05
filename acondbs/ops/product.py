@@ -92,9 +92,7 @@ def update_product(user, product_id, **kwargs):
                     other = Product.query.filter_by(
                         product_id=r["product_id"]
                     ).one()
-                    m = ProductRelation(
-                        self_=model, type_=type_, other=other
-                    )
+                    m = ProductRelation(self_=model, type_=type_, other=other)
                     sa.session.add(m)
             for m in old_relations_dict.values():
                 sa.session.delete(m)
