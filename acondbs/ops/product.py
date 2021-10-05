@@ -67,11 +67,7 @@ def update_product(user, product_id, **kwargs):
     # update paths
     input_paths = kwargs.pop("paths", None)
     if input_paths is not None:
-        pdict = {p.path: p for p in model.paths}
-        model.paths = [
-            pdict[p] if p in pdict else ProductFilePath(path=p)
-            for p in input_paths
-        ]
+        model.paths = _update_paths(model.paths, input_paths)
 
     # update relations
     input_relations = kwargs.pop("relations", None)
@@ -134,6 +130,15 @@ def update_product(user, product_id, **kwargs):
     return model
 
 
+def _update_paths(old, input):
+    path_dict = {p.path: p for p in old}
+    return [
+        path_dict[p] if p in path_dict else ProductFilePath(path=p)
+        for p in input
+    ]
+
+
+##__________________________________________________________________||
 def delete_product(product_id):
     """Delete a product"""
 
