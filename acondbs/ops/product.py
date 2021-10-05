@@ -18,10 +18,21 @@ def create_product(user, **kwargs):
     """Create a product"""
 
     type_id = kwargs.pop("type_id")
+    paths = kwargs.pop("paths", [])
+    relations = kwargs.pop("relations", [])
+
     product_type = ProductTypeModel.query.filter_by(type_id=type_id).one()
-    paths = [ProductFilePathModel(path=p) for p in kwargs.pop("paths", [])]
+
+    model = ProductModel(
+        type_=product_type,
+        posting_git_hub_user=user,
+        **kwargs,
+    )
+
+    model.paths = [ProductFilePathModel(path=p) for p in paths]
+
     with sa.session.no_autoflush:
-        relations = [
+        model.relations = [
             ProductRelationModel(
                 type_=ProductRelationTypeModel.query.filter_by(
                     type_id=r["type_id"]
@@ -30,15 +41,9 @@ def create_product(user, **kwargs):
                     product_id=r["product_id"]
                 ).one(),
             )
-            for r in kwargs.pop("relations", [])
+            for r in relations
         ]
-    model = ProductModel(
-        type_=product_type,
-        posting_git_hub_user=user,
-        paths=paths,
-        relations=relations,
-        **kwargs
-    )
+
     field_dict = {f.field.name: f.field for f in product_type.fields}
     columns_text = ["contact", "produced_by"]
     columns_date = ["date_produced"]
