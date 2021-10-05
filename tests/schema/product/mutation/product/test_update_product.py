@@ -38,7 +38,9 @@ QEURY = """
 }
 """
 
-HEADERS = {"Authorization": "Bearer 39d86487d76a84087f1da599c872dac4473e5f07"}  # user1
+HEADERS = {
+    "Authorization": "Bearer 39d86487d76a84087f1da599c872dac4473e5f07",  # user1
+}
 
 
 ##__________________________________________________________________||
@@ -112,7 +114,10 @@ params = [
             "query": MUTATION_UPDATE_PRODUCT,
             "variables": {
                 "productId": 5,
-                "input": {"updatedBy": "updater", "relations": []},
+                "input": {
+                    "updatedBy": "updater",
+                    "relations": [],
+                },
             },
         },
         {"query": QEURY},
