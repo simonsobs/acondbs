@@ -26,9 +26,23 @@ class TypeFieldAssociation(sa.Model):
     )
 
     def __repr__(self):
-        type_name = self.type_.name if self.type_ else self.type_
-        field_name = self.field.name if self.field else self.field
-        return f"<{self.__class__.__name__} {type_name!r} {field_name!r}>"
+        return f"<{self.__class__.__name__} {self.type_name!r} {self.field_name!r}>"
+
+    @property
+    def type_name(self):
+        # used in __repr__()
+        try:
+            return self.type_.name
+        except BaseException:
+            return self.type_
+
+    @property
+    def field_name(self):
+        # used in __repr__()
+        try:
+            return self.field.name
+        except BaseException:
+            return self.field
 
 
 ##__________________________________________________________________||
