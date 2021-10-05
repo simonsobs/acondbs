@@ -12,5 +12,19 @@ class ProductFilePath(sa.Model):
         "Product", backref=sa.backref("paths", cascade="all, delete-orphan")
     )
 
+    def __repr__(self):
+        return f"<{self.__class__.__name__} {self.path_shorten!r}>"
+
+    @property
+    def path_shorten(self):
+        try:
+            placeholder = "..."
+            width = max(20, len(placeholder))
+            if len(self.path) <= width:
+                return self.path
+            return placeholder + self.path[-(width - len(placeholder)) :]
+        except BaseException:
+            return self.path
+
 
 ##__________________________________________________________________||

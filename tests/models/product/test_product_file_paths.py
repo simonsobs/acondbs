@@ -76,3 +76,13 @@ def test_delete_path(app):
 
 
 ##__________________________________________________________________||
+def test_repr(app_empty):
+    app = app_empty
+    path = ProductFilePath(path="/abcdef/abcdef/abcdef/abcdef/abcdef/abcdef/path.txt")
+    repr(path)
+    path = ProductFilePath(path="path.txt")
+    repr(path)
+    path = ProductFilePath()
+    repr(path)
+
+##__________________________________________________________________||
