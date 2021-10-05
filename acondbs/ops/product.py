@@ -77,6 +77,7 @@ def update_product(user, product_id, **kwargs):
                 (r.type_id, r.self_product_id, r.other_product_id): r
                 for r in model.relations
             }
+            relations = []
             for r in input_relations:
                 rmodel = old_relations_dict.pop(
                     (r["type_id"], model.product_id, r["product_id"]), None
@@ -88,8 +89,10 @@ def update_product(user, product_id, **kwargs):
                     other = Product.query.filter_by(
                         product_id=r["product_id"]
                     ).one()
-                    m = ProductRelation(self_=model, type_=type_, other=other)
-                    sa.session.add(m)
+                    rmodel = ProductRelation(type_=type_, other=other)
+                    sa.session.add(rmodel)
+                relations.append(rmodel)
+            model.relations = relations
             for m in old_relations_dict.values():
                 sa.session.delete(m)
 
