@@ -52,7 +52,7 @@ def test_update_field(app):
 ##__________________________________________________________________||
 def test_delete_field(app):
 
-    field_id = 1
+    field_id = 4
 
     with app.app_context():
         ret = ops.delete_field(field_id=field_id)

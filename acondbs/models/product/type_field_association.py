@@ -22,7 +22,7 @@ class TypeFieldAssociation(sa.Model):
     )
     field = sa.relationship(
         "Field",
-        backref=sa.backref("entry_types", cascade="all, delete-orphan"),
+        backref=sa.backref("entry_types"),
     )
 
     def __repr__(self):

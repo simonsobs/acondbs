@@ -1,3 +1,5 @@
+import pytest
+
 from acondbs.db.sa import sa
 from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
 
@@ -81,25 +83,21 @@ def test_cascade_updating_type(app):
 
 
 ##__________________________________________________________________||
-def test_cascade_deleting_field(app):
+def test_nullable_deleting_field(app):
     """test delete a field
 
-    When a field is deleted, its associations should be automatically
-    deleted.
+    A field cannot be deleted if it is associated
 
     """
 
     with app.app_context():
         field1 = Field.query.filter_by(name="field1").one()
         sa.session.delete(field1)
-        sa.session.commit()
+        with pytest.raises(AssertionError):
+            sa.session.commit()
 
     with app.app_context():
-        assert ProductType.query.filter_by(name="type1").one()
-        assert Field.query.filter_by(name="field1").one_or_none() is None
-        assert Field.query.filter_by(name="field2").one()
-        associations = TypeFieldAssociation.query.all()
-        assert len(associations) == 1
-
+        field1 = Field.query.filter_by(name="field1").one()
+        assert field1.entry_types
 
 ##__________________________________________________________________||
