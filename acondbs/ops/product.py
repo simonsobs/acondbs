@@ -1,13 +1,13 @@
 import datetime
 
 from ..models import (
-    ProductType as ProductTypeModel,
-    Product as ProductModel,
-    ProductFilePath as ProductFilePathModel,
-    ProductRelation as ProductRelationModel,
-    ProductRelationType as ProductRelationTypeModel,
-    AttributeUnicodeText as AttributeUnicodeTextModel,
-    AttributeDate as AttributeDateModel,
+    ProductType,
+    Product,
+    ProductFilePath,
+    ProductRelation,
+    ProductRelationType,
+    AttributeUnicodeText,
+    AttributeDate,
 )
 
 from ..db.sa import sa
@@ -21,23 +21,23 @@ def create_product(user, **kwargs):
     paths = kwargs.pop("paths", [])
     relations = kwargs.pop("relations", [])
 
-    product_type = ProductTypeModel.query.filter_by(type_id=type_id).one()
+    product_type = ProductType.query.filter_by(type_id=type_id).one()
 
-    model = ProductModel(
+    model = Product(
         type_=product_type,
         posting_git_hub_user=user,
         **kwargs,
     )
 
-    model.paths = [ProductFilePathModel(path=p) for p in paths]
+    model.paths = [ProductFilePath(path=p) for p in paths]
 
     with sa.session.no_autoflush:
         model.relations = [
-            ProductRelationModel(
-                type_=ProductRelationTypeModel.query.filter_by(
+            ProductRelation(
+                type_=ProductRelationType.query.filter_by(
                     type_id=r["type_id"]
                 ).one(),
-                other=ProductModel.query.filter_by(
+                other=Product.query.filter_by(
                     product_id=r["product_id"]
                 ).one(),
             )
@@ -48,11 +48,11 @@ def create_product(user, **kwargs):
     columns_text = ["contact", "produced_by"]
     columns_date = ["date_produced"]
     for c in columns_text:
-        AttributeUnicodeTextModel(
+        AttributeUnicodeText(
             name=c, field=field_dict[c], product=model, value=kwargs.get(c)
         )
     for c in columns_date:
-        AttributeDateModel(
+        AttributeDate(
             name=c, field=field_dict[c], product=model, value=kwargs.get(c)
         )
     sa.session.add(model)
@@ -62,14 +62,14 @@ def create_product(user, **kwargs):
 def update_product(user, product_id, **kwargs):
     """Update a product"""
 
-    model = ProductModel.query.filter_by(product_id=product_id).one()
+    model = Product.query.filter_by(product_id=product_id).one()
 
     # update paths
     input_paths = kwargs.pop("paths", None)
     if input_paths is not None:
         pdict = {p.path: p for p in model.paths}
         model.paths = [
-            pdict[p] if p in pdict else ProductFilePathModel(path=p)
+            pdict[p] if p in pdict else ProductFilePath(path=p)
             for p in input_paths
         ]
 
@@ -86,13 +86,13 @@ def update_product(user, product_id, **kwargs):
                     (r["type_id"], model.product_id, r["product_id"]), None
                 )
                 if not rmodel:
-                    type_ = ProductRelationTypeModel.query.filter_by(
+                    type_ = ProductRelationType.query.filter_by(
                         type_id=r["type_id"]
                     ).one()
-                    other = ProductModel.query.filter_by(
+                    other = Product.query.filter_by(
                         product_id=r["product_id"]
                     ).one()
-                    m = ProductRelationModel(
+                    m = ProductRelation(
                         self_=model, type_=type_, other=other
                     )
                     sa.session.add(m)
@@ -115,7 +115,7 @@ def update_product(user, product_id, **kwargs):
         if attr:
             attr.value = kwargs[c]
         else:
-            AttributeUnicodeTextModel(
+            AttributeUnicodeText(
                 name=c, field=field_dict[c], product=model, value=kwargs[c]
             )
     attr_dict = {a.name: a for a in model.attributes_date}
@@ -126,7 +126,7 @@ def update_product(user, product_id, **kwargs):
         if attr:
             attr.value = kwargs[c]
         else:
-            AttributeDateModel(
+            AttributeDate(
                 name=c, field=field_dict[c], product=model, value=kwargs[c]
             )
 
@@ -139,7 +139,7 @@ def update_product(user, product_id, **kwargs):
 def delete_product(product_id):
     """Delete a product"""
 
-    model = ProductModel.query.filter_by(product_id=product_id).one()
+    model = Product.query.filter_by(product_id=product_id).one()
     sa.session.delete(model)
     return
 
