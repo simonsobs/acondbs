@@ -93,8 +93,6 @@ def update_product(user, product_id, **kwargs):
                     sa.session.add(rmodel)
                 relations.append(rmodel)
             model.relations = relations
-            for m in old_relations_dict.values():
-                sa.session.delete(m)
 
     # update scalar fields
     for k, v in kwargs.items():
