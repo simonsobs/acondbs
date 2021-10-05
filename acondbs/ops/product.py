@@ -14,12 +14,12 @@ from ..db.sa import sa
 
 
 ##__________________________________________________________________||
-def create_product(user, input):
+def create_product(user, **kwargs):
     """Create a product"""
 
-    type_id = input.pop("type_id")
+    type_id = kwargs.pop("type_id")
     product_type = ProductTypeModel.query.filter_by(type_id=type_id).one()
-    paths = [ProductFilePathModel(path=p) for p in input.pop("paths", [])]
+    paths = [ProductFilePathModel(path=p) for p in kwargs.pop("paths", [])]
     with sa.session.no_autoflush:
         relations = [
             ProductRelationModel(
@@ -30,25 +30,25 @@ def create_product(user, input):
                     product_id=r["product_id"]
                 ).one(),
             )
-            for r in input.pop("relations", [])
+            for r in kwargs.pop("relations", [])
         ]
     model = ProductModel(
         type_=product_type,
         posting_git_hub_user=user,
         paths=paths,
         relations=relations,
-        **input
+        **kwargs
     )
     field_dict = {f.field.name: f.field for f in product_type.fields}
     columns_text = ["contact", "produced_by"]
     columns_date = ["date_produced"]
     for c in columns_text:
         AttributeUnicodeTextModel(
-            name=c, field=field_dict[c], product=model, value=input.get(c)
+            name=c, field=field_dict[c], product=model, value=kwargs.get(c)
         )
     for c in columns_date:
         AttributeDateModel(
-            name=c, field=field_dict[c], product=model, value=input.get(c)
+            name=c, field=field_dict[c], product=model, value=kwargs.get(c)
         )
     sa.session.add(model)
     return model
