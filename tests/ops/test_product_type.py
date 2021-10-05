@@ -69,7 +69,10 @@ def test_create_product_type_error(app, field_ids):
                 icon="mdi-map-clock",
                 field_ids=field_ids,
             )
-        ops.commit()
+
+            ops.commit()
+            # commit() has no effect because no new model is added
+            # to the session.
 
     with app.app_context():
         assert ProductType.query.count() == count
@@ -140,8 +143,46 @@ def test_update_product_type(app, field_ids, expected_field_names):
 
 
 params = [
-    pytest.param([1, 2, 3, 88], id="non-existent"),
+    pytest.param([2, 4, 88], id="non-existent"),
 ]
+
+
+@pytest.mark.parametrize("field_ids", params)
+def test_update_product_type_error(app, field_ids):
+
+    with app.app_context():
+        count = TypeFieldAssociation.query.count()
+
+    with app.app_context():
+        with pytest.raises(exc.NoResultFound):
+            model = ops.update_product_type(
+                type_id=1,
+                name="compass",
+                order=5,
+                indef_article="a",
+                singular="compass",
+                plural="compasses",
+                icon="mdi-compass",
+                field_ids=field_ids,
+            )
+
+            ops.commit()
+            # commit() shouldn't be called if an exception occurs
+            # unlike create_product_type()
+
+    with app.app_context():
+        model = ProductType.query.filter_by(type_id=1).one()
+        assert model.name == "map"
+        assert model.order == 2
+        assert model.indef_article == "a"
+        assert model.singular == "map"
+        assert model.plural == "maps"
+        assert model.icon == "mdi-map"
+        actual_field_names = [f.field.name for f in model.fields]
+        expected_field_names = ["contact", "produced_by", "date_produced"]
+        assert actual_field_names == expected_field_names
+
+        assert TypeFieldAssociation.query.count() == count
 
 
 ##__________________________________________________________________||
