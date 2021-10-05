@@ -18,6 +18,13 @@ def test_repr(app_empty):
 
 
 ##__________________________________________________________________||
+def test_attribute_class(app_empty):
+    app = app_empty  # noqa: F841
+    for k, v in FieldType.__members__.items():
+        assert v.attribute_class.__name__ == f"Attribute{k}"
+
+
+##__________________________________________________________________||
 def test_one(app):
     with app.app_context():
         field = Field.query.filter_by(name="field1").one()

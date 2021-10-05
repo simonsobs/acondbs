@@ -2,6 +2,8 @@ import enum
 
 from ...db.sa import sa
 
+from . import attribute
+
 
 ##__________________________________________________________________||
 class FieldType(enum.Enum):
@@ -13,6 +15,21 @@ class FieldType(enum.Enum):
     Date = 5
     DateTime = 6
     Time = 7
+
+    @property
+    def attribute_class(self):
+        return FIELDTYPE_ATTRIBUTECLASS_MAP[self]
+
+
+FIELDTYPE_ATTRIBUTECLASS_MAP = {
+    FieldType.UnicodeText: attribute.AttributeUnicodeText,
+    FieldType.Boolean: attribute.AttributeBoolean,
+    FieldType.Integer: attribute.AttributeInteger,
+    FieldType.Float: attribute.AttributeFloat,
+    FieldType.Date: attribute.AttributeDate,
+    FieldType.DateTime: attribute.AttributeDateTime,
+    FieldType.Time: attribute.AttributeTime,
+}
 
 
 saEnumFieldType = sa.Enum(FieldType)  # to be imported in another module
@@ -34,5 +51,6 @@ class Field(sa.Model):
             return self.type_.name
         except BaseException:
             return self.type_
+
 
 ##__________________________________________________________________||
