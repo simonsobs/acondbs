@@ -42,23 +42,20 @@ def _update_fields(old_fields: list, new_field_ids: list) -> list:
     new_ids = set(new_field_ids)
     old_ids = {f.field_id for f in old_fields}
 
-    unchanged_ids = new_ids & old_ids
-    added_ids = new_ids - unchanged_ids
-    removed_ids = old_ids - unchanged_ids
+    added_ids = new_ids - old_ids
 
     field_dict = {f.field_id: f for f in old_fields}
     #  {field_id: TypeFieldAssociation}
-
-    for id_ in removed_ids:
-        field = field_dict.pop(id_)
-        sa.session.delete(field)
-        # NOTE: Probably unnecesary. TypeFieldAssociation is likely to
-        # be automatically deleted.
 
     for id_ in added_ids:
         field_ = Field.query.filter_by(field_id=id_).one()
         field = TypeFieldAssociation(field=field_)
         field_dict[id_] = field
+
+    # It is unnecessary to explicitly delete removed instances of
+    # TypeFieldAssociation from the session by calling
+    # sa.session.delete(). They will be automatically deleted because
+    # of the cascade option of the relationship.
 
     return [field_dict[i] for i in sorted(new_ids)]
 
