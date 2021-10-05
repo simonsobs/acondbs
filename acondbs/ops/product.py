@@ -59,13 +59,13 @@ def create_product(user, **kwargs):
     return model
 
 
-def update_product(user, product_id, input):
+def update_product(user, product_id, **kwargs):
     """Update a product"""
 
     model = ProductModel.query.filter_by(product_id=product_id).one()
 
     # update paths
-    input_paths = input.pop("paths", None)
+    input_paths = kwargs.pop("paths", None)
     if input_paths is not None:
         pdict = {p.path: p for p in model.paths}
         model.paths = [
@@ -74,7 +74,7 @@ def update_product(user, product_id, input):
         ]
 
     # update relations
-    input_relations = input.pop("relations", None)
+    input_relations = kwargs.pop("relations", None)
     if input_relations is not None:
         with sa.session.no_autoflush:
             old_relations_dict = {
@@ -100,7 +100,7 @@ def update_product(user, product_id, input):
                 sa.session.delete(m)
 
     # update scalar fields
-    for k, v in input.items():
+    for k, v in kwargs.items():
         setattr(model, k, v)
 
     # update attributes
@@ -109,25 +109,25 @@ def update_product(user, product_id, input):
     columns_date = ["date_produced"]
     attr_dict = {a.name: a for a in model.attributes_unicode_text}
     for c in columns_text:
-        if c not in input:
+        if c not in kwargs:
             continue
         attr = attr_dict.get(c)
         if attr:
-            attr.value = input[c]
+            attr.value = kwargs[c]
         else:
             AttributeUnicodeTextModel(
-                name=c, field=field_dict[c], product=model, value=input[c]
+                name=c, field=field_dict[c], product=model, value=kwargs[c]
             )
     attr_dict = {a.name: a for a in model.attributes_date}
     for c in columns_date:
-        if c not in input:
+        if c not in kwargs:
             continue
         attr = attr_dict.get(c)
         if attr:
-            attr.value = input[c]
+            attr.value = kwargs[c]
         else:
             AttributeDateModel(
-                name=c, field=field_dict[c], product=model, value=input[c]
+                name=c, field=field_dict[c], product=model, value=kwargs[c]
             )
 
     model.time_updated = datetime.datetime.now()
