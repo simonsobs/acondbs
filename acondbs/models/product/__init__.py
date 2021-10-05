@@ -23,7 +23,9 @@ from .field import (  # noqa: F401
     FieldType,  # enum
     saEnumFieldType,  # SQLAlchemy Enum
     Field,
-    TypeFieldAssociation,
 )
+
+
+from .type_field_association import TypeFieldAssociation  # noqa: F401
 
 ##__________________________________________________________________||
