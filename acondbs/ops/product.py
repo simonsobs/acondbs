@@ -73,26 +73,9 @@ def update_product(user, product_id, **kwargs):
     input_relations = kwargs.pop("relations", None)
     if input_relations is not None:
         with sa.session.no_autoflush:
-            old_relations_dict = {
-                (r.type_id, r.self_product_id, r.other_product_id): r
-                for r in model.relations
-            }
-            relations = []
-            for r in input_relations:
-                rmodel = old_relations_dict.pop(
-                    (r["type_id"], model.product_id, r["product_id"]), None
-                )
-                if not rmodel:
-                    type_ = ProductRelationType.query.filter_by(
-                        type_id=r["type_id"]
-                    ).one()
-                    other = Product.query.filter_by(
-                        product_id=r["product_id"]
-                    ).one()
-                    rmodel = ProductRelation(type_=type_, other=other)
-                    sa.session.add(rmodel)
-                relations.append(rmodel)
-            model.relations = relations
+            model.relations = _update_relations(
+                model.relations, input_relations
+            )
 
     # update scalar fields
     for k, v in kwargs.items():
@@ -137,6 +120,23 @@ def _update_paths(old, input):
         path_dict[p] if p in path_dict else ProductFilePath(path=p)
         for p in input
     ]
+
+
+def _update_relations(old, input):
+
+    old_relations_dict = {(r.type_id, r.other_product_id): r for r in old}
+    relations = []
+    for r in input:
+        rmodel = old_relations_dict.pop((r["type_id"], r["product_id"]), None)
+        if not rmodel:
+            type_ = ProductRelationType.query.filter_by(
+                type_id=r["type_id"]
+            ).one()
+            other = Product.query.filter_by(product_id=r["product_id"]).one()
+            rmodel = ProductRelation(type_=type_, other=other)
+            sa.session.add(rmodel)
+        relations.append(rmodel)
+    return relations
 
 
 ##__________________________________________________________________||
