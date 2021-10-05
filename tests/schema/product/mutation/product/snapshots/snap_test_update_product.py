@@ -1064,16 +1064,16 @@ snapshots['test_schema_success[update-relations] 1'] = {
                                     }
                                 },
                                 'otherProductId': 2,
-                                'relationId': '7',
+                                'relationId': '8',
                                 'reverse': {
-                                    'relationId': '8',
+                                    'relationId': '7',
                                     'typeId': 2,
                                     'type_': {
                                         'name': 'child',
                                         'typeId': '2'
                                     }
                                 },
-                                'reverseRelationId': 8,
+                                'reverseRelationId': 7,
                                 'typeId': 1,
                                 'type_': {
                                     'name': 'parent',
@@ -1202,19 +1202,6 @@ snapshots['test_schema_success[update-relations] 2'] = {
                 {
                     'node': {
                         'other': {
-                            'name': 'map2'
-                        },
-                        'self_': {
-                            'name': 'beam2'
-                        },
-                        'type_': {
-                            'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
                             'name': 'beam2'
                         },
                         'self_': {
@@ -1222,6 +1209,19 @@ snapshots['test_schema_success[update-relations] 2'] = {
                         },
                         'type_': {
                             'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
+                            'name': 'map2'
+                        },
+                        'self_': {
+                            'name': 'beam2'
+                        },
+                        'type_': {
+                            'name': 'parent'
                         }
                     }
                 }
