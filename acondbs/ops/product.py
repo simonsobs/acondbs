@@ -6,8 +6,6 @@ from ..models import (
     ProductFilePath,
     ProductRelation,
     ProductRelationType,
-    AttributeUnicodeText,
-    AttributeDate,
 )
 
 from ..db.sa import sa
@@ -44,17 +42,15 @@ def create_product(user, **kwargs):
             for r in relations
         ]
 
-    field_dict = {f.field.name: f.field for f in product_type.fields}
-    columns_text = ["contact", "produced_by"]
-    columns_date = ["date_produced"]
-    for c in columns_text:
-        AttributeUnicodeText(
-            name=c, field=field_dict[c], product=model, value=kwargs.get(c)
+    for association in product_type.fields:
+        field = association.field
+        field.type_.attribute_class(
+            name=field.name,
+            field=field,
+            product=model,
+            value=kwargs.get(field.name),
         )
-    for c in columns_date:
-        AttributeDate(
-            name=c, field=field_dict[c], product=model, value=kwargs.get(c)
-        )
+
     sa.session.add(model)
     return model
 
@@ -82,30 +78,20 @@ def update_product(user, product_id, **kwargs):
         setattr(model, k, v)
 
     # update attributes
-    field_dict = {f.field.name: f.field for f in model.type_.fields}
-    columns_text = ["contact", "produced_by"]
-    columns_date = ["date_produced"]
-    attr_dict = {a.name: a for a in model.attributes_unicode_text}
-    for c in columns_text:
-        if c not in kwargs:
+    for association in model.type_.fields:
+        field = association.field
+        try:
+            value = kwargs[field.name]
+        except KeyError:
             continue
-        attr = attr_dict.get(c)
+        attribute_class = field.type_.attribute_class
+        query = attribute_class.query.filter_by(product=model, field=field)
+        attr = query.one_or_none()
         if attr:
-            attr.value = kwargs[c]
+            attr.value = value
         else:
-            AttributeUnicodeText(
-                name=c, field=field_dict[c], product=model, value=kwargs[c]
-            )
-    attr_dict = {a.name: a for a in model.attributes_date}
-    for c in columns_date:
-        if c not in kwargs:
-            continue
-        attr = attr_dict.get(c)
-        if attr:
-            attr.value = kwargs[c]
-        else:
-            AttributeDate(
-                name=c, field=field_dict[c], product=model, value=kwargs[c]
+            attribute_class(
+                name=field.name, field=field, product=model, value=value
             )
 
     model.time_updated = datetime.datetime.now()
