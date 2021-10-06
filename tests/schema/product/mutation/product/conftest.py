@@ -46,9 +46,9 @@ def app(app_empty):
     Parent.reverse = ProductRelationType(type_id=2, name="child")
 
     # create fields
-    field_contact = Field(name="contact", type_=FieldType.UnicodeText)
-    field_produced_by = Field(name="produced_by", type_=FieldType.UnicodeText)
-    field_date_produced = Field(name="date_produced", type_=FieldType.Date)
+    field_contact = Field(field_id=1, name="contact", type_=FieldType.UnicodeText)
+    field_produced_by = Field(field_id=2, name="produced_by", type_=FieldType.UnicodeText)
+    field_date_produced = Field(field_id=3, name="date_produced", type_=FieldType.Date)
     fields = [field_contact, field_produced_by, field_date_produced]
 
     # create product types
