@@ -54,6 +54,11 @@ params = [
                     "contact": "new-contact",
                     "updatedBy": "updater",
                     "note": "- updated note 123",
+                    "attributes": {
+                        "unicodeText": [
+                            {"fieldId": 1, "value": "new-contact"},
+                        ],
+                    },
                 },
             },
         },

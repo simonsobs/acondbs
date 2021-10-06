@@ -23,6 +23,13 @@ def snake_to_camel(name):
     return "".join(w.title() for w in name.split("_"))
 
 
+def _reshape_arg_attributes(attributes):
+    return {
+        snake_to_camel(t): {e["field_id"]: e["value"] for e in v}
+        for t, v in attributes.items()
+    }
+
+
 ##__________________________________________________________________||
 def create_product(user, **kwargs):
     """Create a product"""
@@ -55,10 +62,7 @@ def create_product(user, **kwargs):
             for r in relations
         ]
 
-    attr_dict = {
-        snake_to_camel(t): {e["field_id"]: e["value"] for e in v}
-        for t, v in attributes.items()
-    }
+    attr_dict = _reshape_arg_attributes(attributes)
 
     for association in product_type.fields:
         field = association.field
@@ -79,28 +83,29 @@ def update_product(user, product_id, **kwargs):
 
     model = Product.query.filter_by(product_id=product_id).one()
 
+    paths = kwargs.pop("paths", None)
+    relations = kwargs.pop("relations", None)
+    attributes = kwargs.pop("attributes", {})
+
     # update paths
-    input_paths = kwargs.pop("paths", None)
-    if input_paths is not None:
-        model.paths = _update_paths(model.paths, input_paths)
+    if paths is not None:
+        model.paths = _update_paths(model.paths, paths)
 
     # update relations
-    input_relations = kwargs.pop("relations", None)
-    if input_relations is not None:
+    if relations is not None:
         with sa.session.no_autoflush:
-            model.relations = _update_relations(
-                model.relations, input_relations
-            )
+            model.relations = _update_relations(model.relations, relations)
 
     # update scalar fields
     for k, v in kwargs.items():
         setattr(model, k, v)
 
     # update attributes
+    attr_dict = _reshape_arg_attributes(attributes)
     for association in model.type_.fields:
         field = association.field
         try:
-            value = kwargs[field.name]
+            value = attr_dict[field.type_.name][field.field_id]
         except KeyError:
             continue
         attribute_class = field.type_.attribute_class
