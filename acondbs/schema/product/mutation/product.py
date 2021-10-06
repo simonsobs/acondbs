@@ -22,6 +22,107 @@ class RelationInputFields(graphene.InputObjectType):
     )
 
 
+class AttributeUnicodeTextInputFields(graphene.InputObjectType):
+    field_id = graphene.Int(
+        required=True,
+        description="The field ID of the attribute",
+    )
+    value = graphene.String(
+        description="The value of the attribute",
+    )
+
+
+class AttributeBooleanInputFields(graphene.InputObjectType):
+    field_id = graphene.Int(
+        required=True,
+        description="The field ID of the attribute",
+    )
+    value = graphene.Boolean(
+        description="The value of the attribute",
+    )
+
+
+class AttributeIntegerInputFields(graphene.InputObjectType):
+    field_id = graphene.Int(
+        required=True,
+        description="The field ID of the attribute",
+    )
+    value = graphene.Int(
+        description="The value of the attribute",
+    )
+
+
+class AttributeFloatInputFields(graphene.InputObjectType):
+    field_id = graphene.Int(
+        required=True,
+        description="The field ID of the attribute",
+    )
+    value = graphene.Float(
+        description="The value of the attribute",
+    )
+
+
+class AttributeDateInputFields(graphene.InputObjectType):
+    field_id = graphene.Int(
+        required=True,
+        description="The field ID of the attribute",
+    )
+    value = graphene.Date(
+        description="The value of the attribute",
+    )
+
+
+class AttributeDateTimeInputFields(graphene.InputObjectType):
+    field_id = graphene.Int(
+        required=True,
+        description="The field ID of the attribute",
+    )
+    value = graphene.DateTime(
+        description="The value of the attribute",
+    )
+
+
+class AttributeTimeInputFields(graphene.InputObjectType):
+    field_id = graphene.Int(
+        required=True,
+        description="The field ID of the attribute",
+    )
+    value = graphene.Time(
+        description="The value of the attribute",
+    )
+
+
+class AttributesInputFields(graphene.InputObjectType):
+    unicode_text = graphene.InputField(
+        graphene.List(AttributeUnicodeTextInputFields),
+        description=("Attributes of type unicode text"),
+    )
+    boolean = graphene.InputField(
+        graphene.List(AttributeBooleanInputFields),
+        description=("Attributes of type boolean"),
+    )
+    integer = graphene.InputField(
+        graphene.List(AttributeIntegerInputFields),
+        description=("Attributes of type integer"),
+    )
+    float = graphene.InputField(
+        graphene.List(AttributeFloatInputFields),
+        description=("Attributes of type float"),
+    )
+    date = graphene.InputField(
+        graphene.List(AttributeDateInputFields),
+        description=("Attributes of type date"),
+    )
+    date_time = graphene.InputField(
+        graphene.List(AttributeDateTimeInputFields),
+        description=("Attributes of type date time"),
+    )
+    time = graphene.InputField(
+        graphene.List(AttributeTimeInputFields),
+        description=("Attributes of type time"),
+    )
+
+
 class CommonInputFields:
     """Common input fields of mutations for creating and updating products"""
 
@@ -41,6 +142,10 @@ class CommonInputFields:
     relations = graphene.InputField(
         graphene.List(RelationInputFields),
         description=("Relations to other products"),
+    )
+    attributes = graphene.InputField(
+        AttributesInputFields,
+        description="Attributes",
     )
 
 

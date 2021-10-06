@@ -63,6 +63,15 @@ params = [
                         {"typeId": 1, "productId": 1},
                         {"typeId": 1, "productId": 5},
                     ],
+                    "attributes": {
+                        "unicodeText": [
+                            {"fieldId": 1, "value": "contact-person"},
+                            {"fieldId": 2, "value": "producer"},
+                        ],
+                        "date": [
+                            {"fieldId": 3, "value": "2020-02-20"},
+                        ],
+                    },
                 }
             },
         },
@@ -95,6 +104,13 @@ params = [
                         "/path/to/new/product1",
                         "/another/location/of/product1",
                     ],
+                    "attributes": {
+                        "unicodeText": [
+                            {"fieldId": 1, "value": "contact-person"},
+                            {"fieldId": 2, "value": "pwg-pmn"},
+                        ],
+                        "date": [],
+                    },
                 }
             },
         },

@@ -1,3 +1,4 @@
+import re
 import datetime
 
 from ..models import (
@@ -12,12 +13,24 @@ from ..db.sa import sa
 
 
 ##__________________________________________________________________||
+def camel_to_snake(name):
+    # copied from https://stackoverflow.com/a/1176023/7309855
+    return re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
+
+
+def snake_to_camel(name):
+    # copied from https://stackoverflow.com/a/1176023/7309855
+    return "".join(w.title() for w in name.split("_"))
+
+
+##__________________________________________________________________||
 def create_product(user, **kwargs):
     """Create a product"""
 
     type_id = kwargs.pop("type_id")
     paths = kwargs.pop("paths", [])
     relations = kwargs.pop("relations", [])
+    attributes = kwargs.pop("attributes", {})
 
     product_type = ProductType.query.filter_by(type_id=type_id).one()
 
@@ -42,13 +55,19 @@ def create_product(user, **kwargs):
             for r in relations
         ]
 
+    attr_dict = {
+        snake_to_camel(t): {e["field_id"]: e["value"] for e in v}
+        for t, v in attributes.items()
+    }
+
     for association in product_type.fields:
         field = association.field
+        value = attr_dict.get(field.type_.name, {}).get(field.field_id)
         field.type_.attribute_class(
             name=field.name,
             field=field,
             product=model,
-            value=kwargs.get(field.name),
+            value=value,
         )
 
     sa.session.add(model)
