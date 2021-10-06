@@ -18,43 +18,48 @@ def test_repr(app_empty):
 
 
 ##__________________________________________________________________||
-def test_attribute_class(app_empty):
-    app = app_empty  # noqa: F841
-    for k, v in FieldType.__members__.items():
-        assert v.attribute_class.__name__ == f"Attribute{k}"
+def test_commit(app_empty):
+    app = app_empty
+
+    with app.app_context():
+        field1 = Field(name="field1", type_=FieldType.Date)
+        sa.session.add(field1)
+        sa.session.commit()
+
+    with app.app_context():
+        field1 = Field.query.filter_by(name="field1").one()
+        assert field1.field_id
+        assert field1.name == "field1"
+        assert field1.type_ is FieldType.Date
 
 
 ##__________________________________________________________________||
-def test_one(app):
+def test_commit_with_field_id(app_empty):
+    app = app_empty
+
     with app.app_context():
-        field = Field.query.filter_by(name="field1").one()
-        assert field.name == "field1"
-        assert field.type_ is FieldType.UnicodeText
-        assert field.type_.name == "UnicodeText"
+        field1 = Field(field_id=259, name="field1", type_=FieldType.Date)
+        sa.session.add(field1)
+        sa.session.commit()
 
-
-def test_entries(app):
     with app.app_context():
-        fields = Field.query.all()
-        assert len(fields) == 8
-
-
-def test_unicode_name(app):
-    with app.app_context():
-        field = Field.query.filter_by(name="フィールド").one()
-        assert field.name == "フィールド"
+        field1 = Field.query.filter_by(field_id=259).one()
+        assert field1.name == "field1"
+        assert field1.type_ is FieldType.Date
 
 
 ##__________________________________________________________________||
 def test_nullable(app_empty):
     app = app_empty  # noqa: F841
 
+    # without type_
     with app.app_context():
         field = Field(name="field")
         sa.session.add(field)
         with pytest.raises(exc.IntegrityError):
             sa.session.commit()
 
+    # without name
     with app.app_context():
         field = Field(type_=FieldType.UnicodeText)
         sa.session.add(field)
