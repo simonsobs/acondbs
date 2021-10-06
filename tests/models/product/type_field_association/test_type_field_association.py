@@ -1,3 +1,5 @@
+from sqlalchemy import exc
+
 import pytest
 
 from acondbs.db.sa import sa
@@ -99,5 +101,24 @@ def test_nullable_deleting_field(app):
     with app.app_context():
         field1 = Field.query.filter_by(name="field1").one()
         assert field1.entry_types
+
+
+##__________________________________________________________________||
+def test_unique_constraint(app):
+    # type_id and field_id are the primary keys.
+    # A type cannot have multiple same field.
+    with app.app_context():
+        field1 = Field.query.filter_by(name="field1").one()
+        type2 = ProductType(
+            name="type2",
+            fields=[
+                TypeFieldAssociation(field=field1),
+                TypeFieldAssociation(field=field1),
+            ],
+        )
+        sa.session.add(type2)
+        with pytest.raises(exc.IntegrityError):
+            sa.session.commit()
+
 
 ##__________________________________________________________________||
