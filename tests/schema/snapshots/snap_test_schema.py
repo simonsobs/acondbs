@@ -1650,8 +1650,53 @@ snapshots['test_schema[admin] 1'] = {
                 },
                 {
                     'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributesInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeUnicodeTextInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeBooleanInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeIntegerInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeFloatInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeDateInputFields'
+                },
+                {
+                    'fields': None,
                     'kind': 'SCALAR',
                     'name': 'Date'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeDateTimeInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeTimeInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Time'
                 },
                 {
                     'fields': [
@@ -3598,8 +3643,53 @@ snapshots['test_schema[private] 1'] = {
                 },
                 {
                     'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributesInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeUnicodeTextInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeBooleanInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeIntegerInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeFloatInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeDateInputFields'
+                },
+                {
+                    'fields': None,
                     'kind': 'SCALAR',
                     'name': 'Date'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeDateTimeInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'AttributeTimeInputFields'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Time'
                 },
                 {
                     'fields': [
