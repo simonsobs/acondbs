@@ -33,10 +33,10 @@ def define_tables():
         tbl_names = metadata.tables.keys()
         # ['maps', 'beams']
 
-        tbl_names = ", ".join(['"{}"'.format(t) for t in tbl_names])
+        tbl_names = ", ".join([f'"{t}"' for t in tbl_names])
         # '"beams", "maps"'
 
-        msg = "Dropped all tables: {}".format(tbl_names)
+        msg = f"Dropped all tables: {tbl_names}"
 
         metadata.drop_all(bind=engine)
         print(msg)
@@ -49,10 +49,10 @@ def define_tables():
     tbl_names = sa.Model.metadata.tables.keys()
     # ['maps', 'beams']
 
-    tbl_names = ", ".join(['"{}"'.format(t) for t in tbl_names])
+    tbl_names = ", ".join([f'"{t}"' for t in tbl_names])
     # '"beams", "maps"'
 
-    msg = "Created tables: {}".format(tbl_names)
+    msg = f"Created tables: {tbl_names}"
 
     sa.Model.metadata.create_all(engine)
 
@@ -170,11 +170,10 @@ def import_tables_from_csv_files(csvdir):
         csv_path = Path(csvdir, csv_filename)
         if csv_path.exists():
             import_table_from_csv_file(tbl_name, csv_path)
-            message = 'imported to "{}" from {}'.format(tbl_name, csv_path)
+            message = f'imported to "{tbl_name}" from {csv_path}'
         else:
-            message = 'skipped "{}". file not found: {}'.format(
-                tbl_name, csv_path
-            )
+            message = f'skipped "{tbl_name}". file not found: {csv_path}'
+
         print(message)
 
 
@@ -291,7 +290,7 @@ def export_db_to_csv_files(outdir, exclude=None):
     print(tbl_names)
 
     for tbl_name in tbl_names:
-        csv_filename = "{}.csv".format(tbl_name)
+        csv_filename = f"{tbl_name}.csv"
         csv_path = Path(outdir, csv_filename)
         result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
         with open(csv_path, "w", newline="") as f:
