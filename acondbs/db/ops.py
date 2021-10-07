@@ -256,6 +256,7 @@ def convert_data_type_for_insert(str_, type_):
             return ast.literal_eval(str_)
         return None
     if isinstance(type_, sqlalchemy.sql.sqltypes.BLOB):
+        # used by sqlalchemy_utils.EncryptedType
         if str_:
             return ast.literal_eval(str_)
         return None
