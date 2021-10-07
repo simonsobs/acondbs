@@ -35,7 +35,7 @@ def test_non_empty(app, snapshot):
 
 
 ##__________________________________________________________________||
-def testt_empty(app, tmpdir_factory):
+def test_empty(app, tmpdir_factory):
     csvdir = str(tmpdir_factory.mktemp("csv"))
 
     with app.app_context():
