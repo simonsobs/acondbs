@@ -69,7 +69,7 @@ def app(app_with_empty_tables):
             date=datetime.datetime(2021, 10, 7),
             date_time=datetime.datetime(2021, 10, 7, 15, 4, 20),
             time=datetime.time(15, 4, 20),
-            encrypted="secret string"
+            encrypted="secret string",
         )
         sa.session.add(row)
         sa.session.commit()
