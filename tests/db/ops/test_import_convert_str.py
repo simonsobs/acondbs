@@ -9,10 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 import pytest
 
 from acondbs import create_app
-from acondbs.db.ops import (
-    convert_data_type_for_insert,
-    get_resultproxy_of_select_all_rows,
-)
+from acondbs.db.ops import convert_data_type_for_insert
 
 
 ##__________________________________________________________________||
@@ -130,7 +127,11 @@ def test_convert(app):
 
 
 def _export_tbl_to_csv(tbl_name):
-    result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
+    engine = sa.engine
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+    tbl = metadata.tables[tbl_name]
+    result_proxy = engine.execute(tbl.select())
     b = StringIO()
     csv_writer = csv.writer(b, lineterminator="\n")
     csv_writer.writerow(result_proxy.keys())
