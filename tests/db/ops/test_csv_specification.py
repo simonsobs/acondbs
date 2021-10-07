@@ -10,43 +10,39 @@ xyz",def,ghi\
 
 params = [
     pytest.param(
-        ('abc,def,ghi', ),
-        [['abc', 'def', 'ghi']],
-        id='simple'
+        ("abc,def,ghi",),
+        [["abc", "def", "ghi"]],
+        id="simple",
     ),
-
     pytest.param(
-        ('"abc",def,ghi', ),
-        [['abc', 'def', 'ghi']],
-        id='double-quotes-removed'
+        ('"abc",def,ghi',),
+        [["abc", "def", "ghi"]],
+        id="double-quotes-removed",
     ),
-
     pytest.param(
-        ("'abc',def,ghi", ),
-        [["'abc'", 'def', 'ghi']],
-        id='single-quotes-not-removed'
+        ("'abc',def,ghi",),
+        [["'abc'", "def", "ghi"]],
+        id="single-quotes-not-removed",
     ),
-
     pytest.param(
-        ('"""abc",def,ghi', ),
-        [['"abc', 'def', 'ghi']],
-        id='to-include-double-quote'),
-
-    pytest.param(
-        ('"ab,c",def,ghi', ),
-        [['ab,c', 'def', 'ghi']],
-        id='to-include-comma'
+        ('"""abc",def,ghi',),
+        [['"abc', "def", "ghi"]],
+        id="to-include-double-quote",
     ),
-
     pytest.param(
-        (multiline_entry, ),
-        [['abc\nxyz', 'def', 'ghi']],
-        id='to-include-linebreak'
+        ('"ab,c",def,ghi',),
+        [["ab,c", "def", "ghi"]],
+        id="to-include-comma",
+    ),
+    pytest.param(
+        (multiline_entry,),
+        [["abc\nxyz", "def", "ghi"]],
+        id="to-include-linebreak",
     ),
 ]
 
 
-@pytest.mark.parametrize('input, expected', params)
+@pytest.mark.parametrize("input, expected", params)
 def test_csv_specification(input, expected):
     """test CSV specification
 
@@ -57,5 +53,6 @@ def test_csv_specification(input, expected):
     """
     rows = list(csv.reader(input))
     assert expected == rows
+
 
 ##__________________________________________________________________||
