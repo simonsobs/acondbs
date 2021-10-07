@@ -2,8 +2,8 @@ from pathlib import Path
 import pytest
 
 from acondbs import create_app
-from acondbs.db.ops import define_tables
-from acondbs.db.ops import import_tables_from_csv_files
+from acondbs.db.ops import define_tables, import_tables_from_csv_files
+
 
 from acondbs.models import GitHubToken
 

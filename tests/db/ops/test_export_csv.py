@@ -2,9 +2,12 @@ from pathlib import Path
 import pytest
 
 from acondbs import create_app
-from acondbs.db.ops import define_tables, import_tables_from_csv_files
-from acondbs.db.ops import export_db_to_dict_of_dict_list
-from acondbs.db.ops import export_db_to_csv_files
+from acondbs.db.ops import (
+    define_tables,
+    import_tables_from_csv_files,
+    export_db_to_dict_of_dict_list,
+    export_db_to_csv_files,
+)
 
 from ...constants import SAMPLE_DIR
 
