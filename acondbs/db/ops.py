@@ -15,6 +15,7 @@ import sqlalchemy
 from .sa import sa
 from .conn import get_db_connection
 
+
 ##__________________________________________________________________||
 def define_tables():
     """defines tables in the DB
@@ -32,7 +33,7 @@ def define_tables():
         tbl_names = metadata.tables.keys()
         # ['maps', 'beams']
 
-        tbl_names = ', '.join(['"{}"'.format(t) for t in tbl_names])
+        tbl_names = ", ".join(['"{}"'.format(t) for t in tbl_names])
         # '"beams", "maps"'
 
         msg = "Dropped all tables: {}".format(tbl_names)
@@ -48,7 +49,7 @@ def define_tables():
     tbl_names = sa.Model.metadata.tables.keys()
     # ['maps', 'beams']
 
-    tbl_names = ', '.join(['"{}"'.format(t) for t in tbl_names])
+    tbl_names = ", ".join(['"{}"'.format(t) for t in tbl_names])
     # '"beams", "maps"'
 
     msg = "Created tables: {}".format(tbl_names)
@@ -56,6 +57,7 @@ def define_tables():
     sa.Model.metadata.create_all(engine)
 
     print(msg)
+
 
 ##__________________________________________________________________||
 def get_all_table_names():
@@ -71,6 +73,7 @@ def get_all_table_names():
     metadata = MetaData()
     metadata.reflect(bind=engine)
     return [tbl.name for tbl in metadata.sorted_tables]
+
 
 def export_db_to_dict_of_dict_list():
     """exports the DB to a dict of table names and lists of dicts for each row
@@ -91,6 +94,7 @@ def export_db_to_dict_of_dict_list():
     tbl_names = get_all_table_names()
     ret = {n: export_table_to_dict_list(n) for n in tbl_names}
     return ret
+
 
 def export_table_to_dict_list(tbl_name):
     """exports the table to a list of dicts
@@ -115,6 +119,7 @@ def export_table_to_dict_list(tbl_name):
     result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
     return [dict(r) for r in result_proxy]
 
+
 def get_resultproxy_of_select_all_rows(tbl_name):
     """returns ResultProxy with all rows of the table
 
@@ -137,6 +142,7 @@ def get_resultproxy_of_select_all_rows(tbl_name):
     tbl = metadata.tables[tbl_name]
     return engine.execute(tbl.select())
 
+
 ##__________________________________________________________________||
 def import_tables_from_csv_files(csvdir):
     """imports tables from CSV files into the DB
@@ -154,20 +160,23 @@ def import_tables_from_csv_files(csvdir):
 
     """
 
-    ignore = ['alembic_version']
+    ignore = ["alembic_version"]
 
     tbl_names = get_all_table_names()
     tbl_names = [t for t in tbl_names if t not in ignore]
 
     for tbl_name in tbl_names:
-        csv_filename = '{}.csv'.format(tbl_name)
+        csv_filename = "{}.csv".format(tbl_name)
         csv_path = Path(csvdir, csv_filename)
         if csv_path.exists():
             import_table_from_csv_file(tbl_name, csv_path)
             message = 'imported to "{}" from {}'.format(tbl_name, csv_path)
         else:
-            message = 'skipped "{}". file not found: {}'.format(tbl_name, csv_path)
+            message = 'skipped "{}". file not found: {}'.format(
+                tbl_name, csv_path
+            )
         print(message)
+
 
 def import_table_from_csv_file(tbl_name, path):
     """import a table from a CSV file
@@ -187,7 +196,7 @@ def import_table_from_csv_file(tbl_name, path):
     metadata.reflect(bind=engine)
     tbl = metadata.tables[tbl_name]
 
-    with open(path, 'r') as f:
+    with open(path, "r") as f:
         rows = list(csv.reader(f))
 
     if not rows:
@@ -199,12 +208,18 @@ def import_table_from_csv_file(tbl_name, path):
     if not rows:
         return
 
-    data = [{f: convert_data_type_for_insert(e, tbl.columns[f].type)
-             for f, e in zip(fields, r)} for r in rows]
+    data = [
+        {
+            f: convert_data_type_for_insert(e, tbl.columns[f].type)
+            for f, e in zip(fields, r)
+        }
+        for r in rows
+    ]
 
     ins = tbl.insert()
     connection = get_db_connection()
     connection.execute(ins, data)
+
 
 def convert_data_type_for_insert(str_, type_):
     """converts data type for insert
@@ -243,6 +258,7 @@ def convert_data_type_for_insert(str_, type_):
         return None
     return str_
 
+
 ##__________________________________________________________________||
 def export_db_to_csv_files(outdir, exclude=None):
     """export all tables in the DB to CSV files
@@ -271,12 +287,13 @@ def export_db_to_csv_files(outdir, exclude=None):
     print(tbl_names)
 
     for tbl_name in tbl_names:
-        csv_filename = '{}.csv'.format(tbl_name)
+        csv_filename = "{}.csv".format(tbl_name)
         csv_path = Path(outdir, csv_filename)
         result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
-        with open(csv_path, 'w', newline='') as f:
-            csv_writer = csv.writer(f, lineterminator='\n')
+        with open(csv_path, "w", newline="") as f:
+            csv_writer = csv.writer(f, lineterminator="\n")
             csv_writer.writerow(result_proxy.keys())
             csv_writer.writerows(result_proxy)
+
 
 ##__________________________________________________________________||
