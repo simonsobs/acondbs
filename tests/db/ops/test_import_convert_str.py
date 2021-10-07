@@ -5,6 +5,7 @@ import datetime
 
 from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy_utils import EncryptedType
 
 import pytest
 
@@ -29,6 +30,7 @@ class SampleTable(sa.Model):
     date = sa.Column(sa.Date())
     date_time = sa.Column(sa.DateTime())
     time = sa.Column(sa.Time())
+    encrypted = sa.Column(EncryptedType(sa.Text(), "8b5d3d25b3e5"))
 
 
 ##__________________________________________________________________||
@@ -67,6 +69,7 @@ def app(app_with_empty_tables):
             date=datetime.datetime(2021, 10, 7),
             date_time=datetime.datetime(2021, 10, 7, 15, 4, 20),
             time=datetime.time(15, 4, 20),
+            encrypted="secret string"
         )
         sa.session.add(row)
         sa.session.commit()
@@ -124,6 +127,7 @@ def test_convert(app):
         assert row.date == datetime.date(2021, 10, 7)
         assert row.date_time == datetime.datetime(2021, 10, 7, 15, 4, 20)
         assert row.time == datetime.time(15, 4, 20)
+        assert row.encrypted == "secret string"
 
 
 def _export_tbl_to_csv(tbl_name):
