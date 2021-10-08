@@ -10,7 +10,7 @@ import ast
 from pathlib import Path
 
 from sqlalchemy import MetaData
-import sqlalchemy
+from sqlalchemy.sql import sqltypes
 
 from .sa import sa
 from .conn import get_db_connection
@@ -204,7 +204,7 @@ def import_table_from_csv_file(tbl_name, path):
             return
 
         field_types = [tbl.columns[f].type for f in fields]
-        # e.g., sqlalchemy.sql.sqltypes.INTEGER
+        # e.g., sqltypes.INTEGER
 
         data = (
             {
@@ -245,28 +245,38 @@ def convert_data_type_for_insert(str_, type_):
     the data in the type relevant for insert
 
     """
-    if isinstance(type_, sqlalchemy.sql.sqltypes.DATE):
+    if isinstance(type_, sqltypes.DATE):
         if str_:
             return datetime.datetime.strptime(str_, "%Y-%m-%d").date()
         return None
-    if isinstance(type_, sqlalchemy.sql.sqltypes.DATETIME):
+
+    if isinstance(type_, sqltypes.DATETIME):
         if str_:
             return datetime.datetime.fromisoformat(str_)
         return None
-    if isinstance(type_, sqlalchemy.sql.sqltypes.TIME):
+
+    if isinstance(type_, sqltypes.TIME):
         if str_:
             return datetime.time.fromisoformat(str_)
         return None
-    if isinstance(type_, sqlalchemy.sql.sqltypes.BOOLEAN):
-        if str_:
-            return ast.literal_eval(str_)
-        return None
-    if isinstance(type_, sqlalchemy.sql.sqltypes.BLOB):
+
+    if isinstance(type_, sqltypes.BLOB):
         # used by sqlalchemy_utils.EncryptedType
         if str_:
             return ast.literal_eval(str_)
         return None
-    return str_
+
+    if type_.python_type is str:
+        # e.g., sqltypes.Text, sqltypes.UnicodeText
+        return str_  # not possible to distinguish None from ""
+
+    # e.g., bool, int, float
+    if str_:
+        try:
+            return type_.python_type(ast.literal_eval(str_))
+        except BaseException:
+            return str_
+    return None
 
 
 ##__________________________________________________________________||
