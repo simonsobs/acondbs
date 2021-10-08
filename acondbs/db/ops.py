@@ -18,10 +18,10 @@ from .conn import get_db_connection
 
 ##__________________________________________________________________||
 def define_tables():
-    """defines tables in the DB
+    """Define DB tables from ORM models
 
-    This function defines tables in the DB after dropping all existing
-    tables.
+    After dropping any existing tables, this function defines tables
+    in the DB based on ORM models.
 
     """
 
