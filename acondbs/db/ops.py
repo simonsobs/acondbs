@@ -203,10 +203,13 @@ def import_table_from_csv_file(tbl_name, path):
         except StopIteration:
             return
 
+        field_types = [tbl.columns[f].type for f in fields]
+        # e.g., sqlalchemy.sql.sqltypes.INTEGER
+
         data = (
             {
-                f: convert_data_type_for_insert(e, tbl.columns[f].type)
-                for f, e in zip(fields, r)
+                f: convert_data_type_for_insert(e, t)
+                for f, t, e in zip(fields, field_types, r)
             }
             for r in rows
         )
