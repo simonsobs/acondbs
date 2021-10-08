@@ -196,28 +196,31 @@ def import_table_from_csv_file(tbl_name, path):
     tbl = metadata.tables[tbl_name]
 
     with open(path, "r") as f:
-        rows = list(csv.reader(f))
+        rows = csv.reader(f)
 
-    if not rows:
-        return
+        try:
+            fields = next(rows)
+        except StopIteration:
+            return
 
-    fields = rows[0]
-    rows = rows[1:]
+        data = (
+            {
+                f: convert_data_type_for_insert(e, tbl.columns[f].type)
+                for f, e in zip(fields, r)
+            }
+            for r in rows
+        )
 
-    if not rows:
-        return
+        ins = tbl.insert()
+        connection = get_db_connection()
 
-    data = [
-        {
-            f: convert_data_type_for_insert(e, tbl.columns[f].type)
-            for f, e in zip(fields, r)
-        }
-        for r in rows
-    ]
+        # Unfortunately, it is not possible to insert from a
+        # generator in the current version (1.4) of SQLAlchemy.
+        data = list(data)
+        if not data:
+            return
 
-    ins = tbl.insert()
-    connection = get_db_connection()
-    connection.execute(ins, data)
+        connection.execute(ins, data)
 
 
 def convert_data_type_for_insert(str_, type_):
