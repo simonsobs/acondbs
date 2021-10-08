@@ -293,11 +293,24 @@ def export_db_to_csv_files(outdir, exclude=None):
     for tbl_name in tbl_names:
         csv_filename = f"{tbl_name}.csv"
         csv_path = Path(outdir, csv_filename)
-        result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
         with open(csv_path, "w", newline="") as f:
-            csv_writer = csv.writer(f, lineterminator="\n")
-            csv_writer.writerow(result_proxy.keys())
-            csv_writer.writerows(result_proxy)
+            export_table_to_csv_file(f, tbl_name)
+
+
+def export_table_to_csv_file(file_, tbl_name):
+    """Export a tablesin the DB to aCSV file
+
+    Parameters
+    ----------
+    file_ : obj
+        a file object, e.g., an object returned by open()
+    tbl_name : str
+        the name of a table to be exported
+    """
+    result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
+    csv_writer = csv.writer(file_, lineterminator="\n")
+    csv_writer.writerow(result_proxy.keys())
+    csv_writer.writerows(result_proxy)
 
 
 ##__________________________________________________________________||
