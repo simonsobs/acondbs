@@ -140,7 +140,7 @@ def test_id(app_empty):
 
     # It might be possible to pass this test with before_flush().
     # Useful links about before_flush():
-    # https://docs.sqlalchemy.org/en/13/orm/session_events.html#persistence-events
+    # https://docs.sqlalchemy.org/en/14/orm/session_events.html#persistence-events
     # https://stackoverflow.com/questions/36731020/sqlalchemy-orm-event-hook-for-attribute-persisted
 
     app = app_empty

@@ -17,7 +17,7 @@ def get_db_connection():
     """returns the DB connection
 
     This function returns the `connection` of SQLAlchemy:
-    https://docs.sqlalchemy.org/en/13/core/connections.html
+    https://docs.sqlalchemy.org/en/14/core/connections.html
 
     This function is similar to `get_db()` in `falskr`.
 

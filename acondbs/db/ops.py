@@ -238,7 +238,7 @@ def convert_data_type_for_insert(str_, type_):
         the data in str
     type_ :
         the data type in SQLAlchemy, i.e., one of the types listed in
-        https://docs.sqlalchemy.org/en/13/core/type_basics.html
+        https://docs.sqlalchemy.org/en/14/core/type_basics.html
 
     Returns
     -------
