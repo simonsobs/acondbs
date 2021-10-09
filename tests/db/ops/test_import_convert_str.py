@@ -50,37 +50,77 @@ def app_with_empty_tables(app_with_empty_db):
         engine = sa.engine
         metadata = MetaData()
         metadata.reflect(bind=engine)
+        metadata.drop_all(bind=engine)
         sa.Model.metadata.create_all(engine)
     yield app
 
 
-@pytest.fixture
-def app(app_with_empty_tables):
-    app = app_with_empty_tables
-
-    # enter data
-    with app.app_context():
-        row = SampleTable(
+##__________________________________________________________________||
+params = [
+    pytest.param(
+        dict(
             text="abcde",
             unicode_text="絵文字😀 😃 😄 😁 😆",
-            boolean=True,
+            boolean=False,
             integer=512,
             float=2.34556234,
-            date=datetime.datetime(2021, 10, 7),
+            date=datetime.date(2021, 10, 7),
             date_time=datetime.datetime(2021, 10, 7, 15, 4, 20),
             time=datetime.time(15, 4, 20),
             encrypted="secret string",
-        )
+        ),
+        id="one",
+    ),
+    pytest.param(
+        dict(
+            boolean=True,
+        ),
+        id="bool-true",
+    ),
+    pytest.param(
+        dict(
+            text="",
+            unicode_text="",
+            boolean=None,
+            integer=None,
+            float=None,
+            date=None,
+            date_time=None,
+            time=None,
+            encrypted=None,
+        ),
+        id="none",
+    ),
+]
+
+
+@pytest.mark.parametrize("data", params)
+def test_convert(app_with_empty_tables, data):
+    """test convert_data_type_for_insert()"""
+    app = app_with_empty_tables
+
+    tbl_name = "sample_table"
+
+    expected = list(data.items())  # e.g., [('text', 'abcde'), ...]
+    fields = list(data.keys())  # .e.,g ['text', 'unicode_text', ...]
+
+    # delete all rows from the table
+    # The table is not empty! Not clear why!
+    with app.app_context():
+        SampleTable.query.delete()
+        sa.session.commit()
+
+    # enter data
+    with app.app_context():
+        row = SampleTable(**data)
         sa.session.add(row)
         sa.session.commit()
 
-    yield app
-
-
-##__________________________________________________________________||
-def test_convert(app):
-    """test convert_data_type_for_insert()"""
-    tbl_name = "sample_table"
+    # assert the data are committed as they entered
+    with app.app_context():
+        row = SampleTable.query.one()
+        actual = [(f, getattr(row, f)) for f in fields]
+        assert actual == expected
 
     # export to csv as string
     with app.app_context():
@@ -96,46 +136,17 @@ def test_convert(app):
         # confirm the table is empty
         assert SampleTable.query.count() == 0
 
-        engine = sa.engine
-        metadata = MetaData()
-        metadata.reflect(bind=engine)
-        tbl = metadata.tables[tbl_name]
-
-        rows = list(csv.reader(StringIO(csv_str)))
-        fields = rows[0]
-        rows = rows[1:]
-
-        data = [
-            {
-                f: convert_data_type_for_insert(e, tbl.columns[f].type)
-                for f, e in zip(fields, r)
-            }
-            for r in rows
-        ]
-
-        ins = tbl.insert()
-        connection = sa.engine.connect()
-        connection.execute(ins, data)
+        _import_tbl_from_csv(tbl_name, csv_str)
 
     # assert
     with app.app_context():
         row = SampleTable.query.one()
-        assert row.text == "abcde"
-        assert row.unicode_text == "絵文字😀 😃 😄 😁 😆"
-        assert row.boolean is True
-        assert row.float == 2.34556234
-        assert row.date == datetime.date(2021, 10, 7)
-        assert row.date_time == datetime.datetime(2021, 10, 7, 15, 4, 20)
-        assert row.time == datetime.time(15, 4, 20)
-        assert row.encrypted == "secret string"
+        actual = [(f, getattr(row, f)) for f in fields]
+        assert actual == expected
 
 
 def _export_tbl_to_csv(tbl_name):
-    engine = sa.engine
-    metadata = MetaData()
-    metadata.reflect(bind=engine)
-    tbl = metadata.tables[tbl_name]
-    result_proxy = engine.execute(tbl.select())
+    result_proxy = sa.session.execute(f"select * from {tbl_name}")
     b = StringIO()
     csv_writer = csv.writer(b, lineterminator="\n")
     csv_writer.writerow(result_proxy.keys())
@@ -143,6 +154,31 @@ def _export_tbl_to_csv(tbl_name):
     ret = b.getvalue()
     b.close()
     return ret
+
+
+def _import_tbl_from_csv(tbl_name, csv_str):
+
+    engine = sa.engine
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+    tbl = metadata.tables[tbl_name]
+
+    rows = list(csv.reader(StringIO(csv_str)))
+    fields = rows[0]
+    rows = rows[1:]
+
+    field_types = [tbl.columns[f].type for f in fields]
+
+    data = [
+        {
+            f: convert_data_type_for_insert(e, t)
+            for f, t, e in zip(fields, field_types, r)
+        }
+        for r in rows
+    ]
+
+    ins = tbl.insert()
+    sa.session.execute(ins, data)
 
 
 ##__________________________________________________________________||
