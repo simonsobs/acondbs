@@ -485,7 +485,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_updated': None,
             'type_id': 3,
             'updated_by': '',
-            'updating_git_hub_user_id': ''
+            'updating_git_hub_user_id': None
         },
         {
             'contact': 'pwg-pmn',
@@ -500,7 +500,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_updated': None,
             'type_id': 2,
             'updated_by': '',
-            'updating_git_hub_user_id': ''
+            'updating_git_hub_user_id': None
         },
         {
             'contact': 'pwg-pmn',
@@ -547,7 +547,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_updated': None,
             'type_id': 2,
             'updated_by': '',
-            'updating_git_hub_user_id': ''
+            'updating_git_hub_user_id': None
         },
         {
             'contact': 'pwg-pmn',
@@ -562,7 +562,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_updated': None,
             'type_id': 2,
             'updated_by': '',
-            'updating_git_hub_user_id': ''
+            'updating_git_hub_user_id': None
         },
         {
             'contact': 'pwg-pmn',
@@ -577,7 +577,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_updated': None,
             'type_id': 2,
             'updated_by': '',
-            'updating_git_hub_user_id': ''
+            'updating_git_hub_user_id': None
         },
         {
             'contact': 'pwg-pmn',
@@ -592,7 +592,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_updated': None,
             'type_id': 2,
             'updated_by': '',
-            'updating_git_hub_user_id': ''
+            'updating_git_hub_user_id': None
         }
     ],
     'type_field_association': [
