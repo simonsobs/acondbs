@@ -60,7 +60,7 @@ def github_repo_url(bare_repo, tmpdir_factory):
         clone = git.Repo.clone_from(bare_repo.git_dir, folder)
         branch_name = clone.active_branch.name
         remote = clone.create_remote('github', url=url)
-        remote.push(refspec='{}:{}'.format(branch_name, branch_name), force=True)
+        remote.push(refspec=f'{branch_name}:{branch_name}', force=True)
         return url
     yield _f
 
@@ -75,7 +75,7 @@ def remote_url(request, bare_repo, github_repo_url):
     elif p == 'github_repo':
         y = github_repo_url()
     else:
-        raise ValueError('unknown param: {}'.format(p))
+        raise ValueError(f'unknown param: {p}')
     yield y
 
 ##__________________________________________________________________||
