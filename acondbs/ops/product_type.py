@@ -3,9 +3,8 @@ from ..models import ProductType, Field, TypeFieldAssociation
 
 
 ##__________________________________________________________________||
-def create_product_type(**kwargs):
+def create_product_type(field_ids=None, **kwargs):
     """Create a product type"""
-    field_ids = kwargs.pop("field_ids", None)
     model = ProductType(**kwargs)
     if field_ids:
         with sa.session.no_autoflush:
@@ -21,11 +20,10 @@ def _create_fields(field_ids):
 
 
 ##__________________________________________________________________||
-def update_product_type(type_id, **kwargs):
+def update_product_type(type_id, field_ids=None, **kwargs):
     """Update a product type"""
 
     model = ProductType.query.filter_by(type_id=type_id).one()
-    field_ids = kwargs.pop("field_ids", None)
 
     for k, v in kwargs.items():
         setattr(model, k, v)
