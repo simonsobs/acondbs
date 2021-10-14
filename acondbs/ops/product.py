@@ -13,6 +13,17 @@ from ..db.sa import sa
 
 
 ##__________________________________________________________________||
+def _normalize_paths(paths):
+    ret = [p.strip() for p in paths]
+    ret = [p for p in ret if p]
+
+    ret = list(dict.fromkeys(ret))
+    # uniq preserving order
+    # https://stackoverflow.com/a/17016257/7309855
+
+    return ret
+
+
 def camel_to_snake(name):
     # copied from https://stackoverflow.com/a/1176023/7309855
     return re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
@@ -47,6 +58,7 @@ def create_product(user=None, **kwargs):
         **kwargs,
     )
 
+    paths = _normalize_paths(paths)
     model.paths = [ProductFilePath(path=p) for p in paths]
 
     with sa.session.no_autoflush:
