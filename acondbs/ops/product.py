@@ -42,10 +42,9 @@ def _reshape_arg_attributes(attributes):
 
 
 ##__________________________________________________________________||
-def create_product(user=None, **kwargs):
+def create_product(type_id, user=None, **kwargs):
     """Create a product"""
 
-    type_id = kwargs.pop("type_id")
     paths = kwargs.pop("paths", [])
     relations = kwargs.pop("relations", [])
     attributes = kwargs.pop("attributes", {})
