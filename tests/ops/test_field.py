@@ -6,53 +6,61 @@ from acondbs.models import FieldType, Field
 
 ##__________________________________________________________________||
 params = [
-    pytest.param(dict(name="contact", type_=FieldType.UnicodeText), id="one"),
-    pytest.param(dict(name="contact", type_=1), id="type-by-int"),
-    pytest.param(dict(field_id=234, name="contact", type_=FieldType.UnicodeText), id="type-by-int"),  # fmt: skip
+    pytest.param(FieldType.Float, id="by-enum"),
+    pytest.param(4, id="by-int"),
 ]
 
 
-@pytest.mark.parametrize("kwargs", params)
-def test_create_field(app_empty, kwargs):
+@pytest.mark.parametrize("type_", params)
+def test_create(app_empty, type_):
     app = app_empty
 
     with app.app_context():
-        model = ops.create_field(**kwargs)
-        assert model.name == "contact"
-        assert model.type_ == FieldType.UnicodeText
+        model = ops.create_field(name="new_field", type_=type_)
+        print(model)
+        assert model.name == "new_field"
+        assert model.type_ == FieldType.Float
         ops.commit()
-        assert model.field_id
-
-    with app.app_context():
-        model = Field.query.filter_by(name="contact").one()
-        assert model.name == "contact"
-        assert model.type_ == FieldType.UnicodeText
-        if field_id := kwargs.get("field_id"):
-            assert model.field_id == field_id
-        else:
-            assert model.field_id == 1
-
-
-##__________________________________________________________________||
-def test_update_field(app):
-
-    field_id = 1
-
-    with app.app_context():
-        model = ops.update_field(field_id=field_id, name="author")
-        ops.commit()
+        field_id = model.field_id
+        assert field_id
 
     with app.app_context():
         model = Field.query.filter_by(field_id=field_id).one()
-        assert model.name == "author"
-        assert model.type_ == FieldType.UnicodeText
+        assert model.name == "new_field"
+        assert model.type_ == FieldType.Float
         assert model.field_id == field_id
 
 
 ##__________________________________________________________________||
-def test_delete_field(app):
+def test_fixture(app):
+    with app.app_context():
+        assert Field.query.count() == 10
 
-    field_id = 4
+
+##__________________________________________________________________||
+def test_update(app):
+
+    with app.app_context():
+        model = Field.query.filter_by(name="number").one()
+        field_id = model.field_id
+
+    with app.app_context():
+        model = ops.update_field(field_id=field_id, name="number_renamed")
+        ops.commit()
+
+    with app.app_context():
+        model = Field.query.filter_by(field_id=field_id).one()
+        assert model.name == "number_renamed"
+        assert model.field_id == field_id
+
+
+##__________________________________________________________________||
+def test_delete(app):
+
+    with app.app_context():
+        model = Field.query.filter_by(name="not_used").one()
+        field_id = model.field_id
+        count = Field.query.count()
 
     with app.app_context():
         ret = ops.delete_field(field_id=field_id)
@@ -62,6 +70,7 @@ def test_delete_field(app):
     with app.app_context():
         model = Field.query.filter_by(field_id=field_id).one_or_none()
         assert model is None
+        assert Field.query.count() == count - 1
 
 
 ##__________________________________________________________________||

@@ -21,14 +21,16 @@ def app(app_empty):
     y = app_empty
 
     with y.app_context():
-
-        # fmt: off
-        ops.create_field(field_id=1, name="contact", type_=FieldType.UnicodeText)
-        ops.create_field(field_id=2, name="produced_by", type_=FieldType.UnicodeText)
-        ops.create_field(field_id=3, name="date_produced", type_=FieldType.Date)
-        ops.create_field(field_id=4, name="field_four", type_=FieldType.UnicodeText)
-        ops.create_field(field_id=5, name="field_five", type_=FieldType.UnicodeText)
-        # fmt: on
+        ops.create_field(field_id=1, name="text_one", type_=FieldType.UnicodeText)  # fmt: skip
+        ops.create_field(field_id=2, name="text_two", type_=FieldType.UnicodeText)  # fmt: skip
+        ops.create_field(field_id=3, name="check1", type_=FieldType.Boolean)
+        ops.create_field(field_id=4, name="check2", type_=FieldType.Boolean)
+        ops.create_field(field_id=5, name="number", type_=FieldType.Integer)
+        ops.create_field(field_id=6, name="value", type_=FieldType.Float)
+        ops.create_field(field_id=7, name="date", type_=FieldType.Date)
+        ops.create_field(field_id=8, name="date_time", type_=FieldType.DateTime)  # fmt: skip
+        ops.create_field(field_id=9, name="time", type_=FieldType.Time)
+        ops.create_field(field_id=10, name="not_used", type_=FieldType.Time)
 
         ops.commit()
 
@@ -41,7 +43,7 @@ def app(app_empty):
             singular="map",
             plural="maps",
             icon="mdi-map",
-            field_ids=[1, 2, 3],
+            field_ids=[1, 3, 5, 6, 7, 8, 9],
         )
         ops.create_product_type(
             type_id=2,

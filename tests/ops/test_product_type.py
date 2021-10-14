@@ -8,22 +8,18 @@ from acondbs.models import ProductType, TypeFieldAssociation
 
 ##__________________________________________________________________||
 params = [
-    pytest.param(None, [], id="none"),
-    pytest.param([], [], id="empty"),
-    pytest.param([2], ["produced_by"], id="one"),
-    pytest.param(
-        [1, 2, 3], ["contact", "produced_by", "date_produced"], id="three"
-    ),
-    pytest.param(
-        [2, 3, 3, 1, 2, 3, 1, 1],
-        ["contact", "produced_by", "date_produced"],
-        id="unsorted-duplicate",
-    ),
+    pytest.param(None, id="none"),
+    pytest.param([], id="empty"),
+    pytest.param([2], id="one"),
+    pytest.param([1, 3, 4], id="multiple"),
+    pytest.param([4, 1, 3], id="unsorted"),
+    pytest.param([1, 3, 3, 4, 4, 4], id="duplicate"),
+    pytest.param([4, 4, 3, 1, 3], id="unsorted-duplicate"),
 ]
 
 
-@pytest.mark.parametrize("field_ids, expected_field_names", params)
-def test_create_product_type(app, field_ids, expected_field_names):
+@pytest.mark.parametrize("field_ids", params)
+def test_create(app, field_ids):
 
     with app.app_context():
         count = ProductType.query.count()
@@ -31,29 +27,30 @@ def test_create_product_type(app, field_ids, expected_field_names):
     with app.app_context():
         model = ops.create_product_type(
             name="derived_map",
-            order=3,
-            indef_article="a",
-            singular="derived map",
-            plural="derived maps",
-            icon="mdi-map-clock",
             field_ids=field_ids,
         )
+        assert model.name == "derived_map"
         ops.commit()
+        type_id = model.type_id
 
     with app.app_context():
         assert ProductType.query.count() == (count + 1)
-        model = ProductType.query.filter_by(name="derived_map").one()
-        actual_field_names = [f.field.name for f in model.fields]
-        assert actual_field_names == expected_field_names
+
+    with app.app_context():
+        model = ProductType.query.filter_by(type_id=type_id).one()
+        assert model.name == "derived_map"
+        expected_field_ids = sorted(set(field_ids)) if field_ids else []
+        actual_field_ids = [f.field.field_id for f in model.fields]
+        assert actual_field_ids == expected_field_ids
 
 
 params = [
-    pytest.param([1, 2, 3, 88], id="non-existent"),
+    pytest.param([1, 3, 4, 88], id="non-existent"),
 ]
 
 
 @pytest.mark.parametrize("field_ids", params)
-def test_create_product_type_error(app, field_ids):
+def test_create_error(app, field_ids):
 
     with app.app_context():
         count = ProductType.query.count()
@@ -62,80 +59,55 @@ def test_create_product_type_error(app, field_ids):
         with pytest.raises(exc.NoResultFound):
             model = ops.create_product_type(
                 name="derived_map",
-                order=3,
-                indef_article="a",
-                singular="derived map",
-                plural="derived maps",
-                icon="mdi-map-clock",
                 field_ids=field_ids,
             )
-
             ops.commit()
-            # commit() has no effect because no new model is added
-            # to the session.
 
     with app.app_context():
         assert ProductType.query.count() == count
+
+    with app.app_context():
         model = ProductType.query.filter_by(name="derived_map").one_or_none()
         assert model is None
 
 
 ##__________________________________________________________________||
-# fmt: off
 params = [
-    pytest.param(None, ["contact", "produced_by", "date_produced"], id="none"),
+    pytest.param(None, [1, 2, 3], id="none"),
     pytest.param([], [], id="empty"),
-    pytest.param([2], ["produced_by"], id="removed"),
-    pytest.param(
-        [1, 2, 3, 4, 5],
-        ["contact", "produced_by", "date_produced", "field_four", "field_five"],
-        id="added",
-    ),
-    pytest.param(
-        [1, 4, 5],
-        ["contact", "field_four", "field_five"],
-        id="removed-added",
-    ),
+    pytest.param([2], [2], id="removed"),
+    pytest.param([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], id="added"),
+    pytest.param([1, 4, 5], [1, 4, 5], id="removed-added"),
     pytest.param(
         [4, 5, 5, 5, 1, 4, 5, 1, 1],
-        ["contact", "field_four", "field_five"],
+        [1, 4, 5],
         id="removed-added-unsorted-duplicate",
     ),
 ]
-# fmt: on
 
 
-@pytest.mark.parametrize("field_ids, expected_field_names", params)
-def test_update_product_type(app, field_ids, expected_field_names):
+@pytest.mark.parametrize("field_ids, expected_field_ids", params)
+def test_update(app, field_ids, expected_field_ids):
+
+    type_id = 2
 
     with app.app_context():
         count = TypeFieldAssociation.query.count()
-        model = ProductType.query.filter_by(type_id=1).one()
-        expected_len_change = len(model.fields) - len(expected_field_names)
+        model = ProductType.query.filter_by(type_id=type_id).one()
+        expected_len_change = len(model.fields) - len(expected_field_ids)
 
     with app.app_context():
         model = ops.update_product_type(
-            type_id=1,
-            name="compass",
-            order=5,
-            indef_article="a",
-            singular="compass",
-            plural="compasses",
-            icon="mdi-compass",
-            field_ids=field_ids,
+            type_id=type_id, name="compass", field_ids=field_ids
         )
         ops.commit()
+        assert model.name == "compass"
 
     with app.app_context():
-        model = ProductType.query.filter_by(type_id=1).one()
+        model = ProductType.query.filter_by(type_id=type_id).one()
         assert model.name == "compass"
-        assert model.order == 5
-        assert model.indef_article == "a"
-        assert model.singular == "compass"
-        assert model.plural == "compasses"
-        assert model.icon == "mdi-compass"
-        actual_field_names = [f.field.name for f in model.fields]
-        assert actual_field_names == expected_field_names
+        actual_field_ids = [f.field.field_id for f in model.fields]
+        assert actual_field_ids == expected_field_ids
 
         # assert unused TypeFieldAssociation is deleted
         actual_len_change = count - TypeFieldAssociation.query.count()
@@ -148,7 +120,9 @@ params = [
 
 
 @pytest.mark.parametrize("field_ids", params)
-def test_update_product_type_error(app, field_ids):
+def test_update_error(app, field_ids):
+
+    type_id = 2
 
     with app.app_context():
         count = TypeFieldAssociation.query.count()
@@ -156,37 +130,25 @@ def test_update_product_type_error(app, field_ids):
     with app.app_context():
         with pytest.raises(exc.NoResultFound):
             model = ops.update_product_type(
-                type_id=1,
+                type_id=type_id,
                 name="compass",
-                order=5,
-                indef_article="a",
-                singular="compass",
-                plural="compasses",
-                icon="mdi-compass",
                 field_ids=field_ids,
             )
-
             ops.commit()
-            # commit() shouldn't be called if an exception occurs
-            # unlike create_product_type()
+            # commit() won't be called because of the exception
 
     with app.app_context():
-        model = ProductType.query.filter_by(type_id=1).one()
-        assert model.name == "map"
-        assert model.order == 2
-        assert model.indef_article == "a"
-        assert model.singular == "map"
-        assert model.plural == "maps"
-        assert model.icon == "mdi-map"
-        actual_field_names = [f.field.name for f in model.fields]
-        expected_field_names = ["contact", "produced_by", "date_produced"]
-        assert actual_field_names == expected_field_names
+        model = ProductType.query.filter_by(type_id=type_id).one()
+        assert model.name == "beam"
+        actual_field_ids = [f.field.field_id for f in model.fields]
+        expected_field_ids = [1, 2, 3]
+        assert actual_field_ids == expected_field_ids
 
         assert TypeFieldAssociation.query.count() == count
 
 
 ##__________________________________________________________________||
-def test_delete_product_type(app):
+def test_delete(app):
     name = "map"
 
     with app.app_context():
