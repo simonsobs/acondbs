@@ -42,10 +42,9 @@ def _reshape_arg_attributes(attributes):
 
 
 ##__________________________________________________________________||
-def create_product(type_id, user=None, **kwargs):
+def create_product(type_id, user=None, paths=None, **kwargs):
     """Create a product"""
 
-    paths = kwargs.pop("paths", [])
     relations = kwargs.pop("relations", [])
     attributes = kwargs.pop("attributes", {})
 
@@ -57,8 +56,9 @@ def create_product(type_id, user=None, **kwargs):
         **kwargs,
     )
 
-    paths = _normalize_paths(paths)
-    model.paths = [ProductFilePath(path=p) for p in paths]
+    if paths is not None:
+        paths = _normalize_paths(paths)
+        model.paths = [ProductFilePath(path=p) for p in paths]
 
     with sa.session.no_autoflush:
         model.relations = [
