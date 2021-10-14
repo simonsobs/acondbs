@@ -5,6 +5,8 @@ from acondbs.db.ops import define_tables
 from acondbs.models import FieldType
 from acondbs import ops
 
+from acondbs.db.sa import sa
+from acondbs.models import GitHubUser
 
 ##__________________________________________________________________||
 @pytest.fixture
@@ -56,6 +58,11 @@ def app(app_empty):
             field_ids=[1, 2, 3],
         )
         ops.commit()
+
+    with y.app_context():
+        user1 = GitHubUser(login="user1", git_hub_id="04:User1")
+        sa.session.add(user1)
+        sa.session.commit()
 
     yield y
 
