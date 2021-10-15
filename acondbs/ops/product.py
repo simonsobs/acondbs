@@ -6,6 +6,7 @@ from ..models import (
     ProductFilePath,
     ProductRelation,
     ProductRelationType,
+    GitHubUser,
 )
 
 from ..db.sa import sa
@@ -34,17 +35,18 @@ def _normalize_paths(paths):
 
 ##__________________________________________________________________||
 def create_product(
-    type_id, user=None, paths=None, relations=None, attributes=None, **kwargs
+    type_id,
+    paths=None,
+    relations=None,
+    attributes=None,
+    posting_git_hub_user_id=None,
+    **kwargs
 ):
     """Create a product"""
 
     product_type = ProductType.query.filter_by(type_id=type_id).one()
 
-    model = Product(
-        type_=product_type,
-        posting_git_hub_user=user,
-        **kwargs,
-    )
+    model = Product(type_=product_type, **kwargs)
 
     if paths is not None:
         paths = _normalize_paths(paths)
@@ -76,6 +78,11 @@ def create_product(
             product=model,
             value=value,
         )
+
+    if posting_git_hub_user_id:
+        model.posting_git_hub_user = GitHubUser.query.filter_by(
+            user_id=posting_git_hub_user_id
+        ).one()
 
     sa.session.add(model)
     return model

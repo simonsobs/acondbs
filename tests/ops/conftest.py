@@ -24,7 +24,7 @@ def app(app_empty):
     y = app_empty
 
     with y.app_context():
-        user1 = GitHubUser(login="user1", git_hub_id="04:User1")
+        user1 = GitHubUser(user_id=1, login="user1", git_hub_id="04:User1")
         sa.session.add(user1)
         sa.session.commit()
 

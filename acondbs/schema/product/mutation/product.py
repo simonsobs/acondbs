@@ -199,10 +199,19 @@ class CreateProduct(graphene.Mutation):
     product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, input):
-        user = get_git_hub_viewer_from_info(info)
+
+        viewer = get_git_hub_viewer_from_info(info)
+        posting_git_hub_user_id = viewer.user_id
+
         attributes = input.pop("attributes", {})
         attributes = _reshape_arg_attributes(attributes)
-        model = ops.create_product(user=user, attributes=attributes, **input)
+
+        model = ops.create_product(
+            attributes=attributes,
+            posting_git_hub_user_id=posting_git_hub_user_id,
+            **input
+        )
+
         ops.commit()
         request_backup_db()
         ok = True

@@ -85,13 +85,17 @@ def test_create_paths(app, paths):
     return _test_create(app, paths=paths)
 
 
-@pytest.mark.parametrize("user_login", [None, "user1"])
-def test_create_user(app, user_login):
-    return _test_create(app, user_login=user_login)
+@pytest.mark.parametrize("posting_git_hub_user_id", [None, 1])
+def test_create_user(app, posting_git_hub_user_id):
+    return _test_create(app, posting_git_hub_user_id=posting_git_hub_user_id)
 
 
 def _test_create(
-    app, user_login=None, paths=None, relations=None, attributes=None
+    app,
+    paths=None,
+    relations=None,
+    attributes=None,
+    posting_git_hub_user_id=None,
 ):
 
     kwargs = {"type_id": 1, "name": "new-product"}
@@ -105,12 +109,11 @@ def _test_create(
     if attributes is not None:
         kwargs["attributes"] = attributes
 
+    if posting_git_hub_user_id:
+        kwargs["posting_git_hub_user_id"] = posting_git_hub_user_id
+
     with app.app_context():
         count = Product.query.count()
-
-        if user_login:
-            user1 = GitHubUser.query.filter_by(login=user_login).one()
-            kwargs["user"] = user1
 
         model = ops.create_product(**kwargs)
         assert model.name == "new-product"
@@ -124,8 +127,11 @@ def _test_create(
         model = Product.query.filter_by(product_id=product_id).one()
         assert model.name == "new-product"
 
-        if user_login:
-            assert model.posting_git_hub_user.login == "user1"
+        if posting_git_hub_user_id:
+            posting_git_hub_user = GitHubUser.query.filter_by(
+                user_id=posting_git_hub_user_id
+            ).one()
+            assert model.posting_git_hub_user == posting_git_hub_user
         else:
             assert model.posting_git_hub_user is None
 
