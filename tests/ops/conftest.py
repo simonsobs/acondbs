@@ -45,12 +45,12 @@ def app(app_empty):
         ops.create_product_type(
             type_id=1,
             name="map",
-            field_ids=[1, 3, 5, 6, 7, 8, 9],
+            field_ids=[1, 3, 4, 5, 6, 8],
         )
         ops.create_product_type(
             type_id=2,
             name="beam",
-            field_ids=[1, 2, 3],
+            field_ids=[1, 2, 3, 7, 9],
         )
         ops.commit()
 

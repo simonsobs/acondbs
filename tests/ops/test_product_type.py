@@ -72,7 +72,7 @@ def test_create_error(app, field_ids):
 
 ##__________________________________________________________________||
 params = [
-    pytest.param(None, [1, 2, 3], id="none"),
+    pytest.param(None, [1, 2, 3, 7, 9], id="none"),
     pytest.param([], [], id="empty"),
     pytest.param([2], [2], id="removed"),
     pytest.param([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], id="added"),
@@ -140,7 +140,7 @@ def test_update_error(app, field_ids):
         model = ProductType.query.filter_by(type_id=type_id).one()
         assert model.name == "beam"
         actual_field_ids = [f.field.field_id for f in model.fields]
-        expected_field_ids = [1, 2, 3]
+        expected_field_ids = [1, 2, 3, 7, 9]
         assert actual_field_ids == expected_field_ids
 
         assert TypeFieldAssociation.query.count() == count
