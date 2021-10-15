@@ -8,6 +8,7 @@ from acondbs import ops
 from acondbs.db.sa import sa
 from acondbs.models import GitHubUser
 
+
 ##__________________________________________________________________||
 @pytest.fixture
 def app_empty():
@@ -62,6 +63,13 @@ def app(app_empty):
     with y.app_context():
         user1 = GitHubUser(login="user1", git_hub_id="04:User1")
         sa.session.add(user1)
+        sa.session.commit()
+
+    with y.app_context():
+        ops.create_product_relation_type(
+            type_={"type_id": 1, "name": "parent"},
+            reverse={"type_id": 2, "name": "child"},
+        )
         sa.session.commit()
 
     yield y
