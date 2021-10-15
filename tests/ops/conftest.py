@@ -24,6 +24,11 @@ def app(app_empty):
     y = app_empty
 
     with y.app_context():
+        user1 = GitHubUser(login="user1", git_hub_id="04:User1")
+        sa.session.add(user1)
+        sa.session.commit()
+
+    with y.app_context():
         ops.create_field(field_id=1, name="text_one", type_=FieldType.UnicodeText)  # fmt: skip
         ops.create_field(field_id=2, name="text_two", type_=FieldType.UnicodeText)  # fmt: skip
         ops.create_field(field_id=3, name="check1", type_=FieldType.Boolean)
@@ -41,29 +46,14 @@ def app(app_empty):
         ops.create_product_type(
             type_id=1,
             name="map",
-            order=2,
-            indef_article="a",
-            singular="map",
-            plural="maps",
-            icon="mdi-map",
             field_ids=[1, 3, 5, 6, 7, 8, 9],
         )
         ops.create_product_type(
             type_id=2,
             name="beam",
-            order=1,
-            indef_article="a",
-            singular="beam",
-            plural="beams",
-            icon="mdi-spotlight-beam",
             field_ids=[1, 2, 3],
         )
         ops.commit()
-
-    with y.app_context():
-        user1 = GitHubUser(login="user1", git_hub_id="04:User1")
-        sa.session.add(user1)
-        sa.session.commit()
 
     with y.app_context():
         ops.create_product_relation_type(
