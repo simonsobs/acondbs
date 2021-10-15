@@ -28,6 +28,11 @@ def test_normalize_paths(paths, ret):
 
 
 ##__________________________________________________________________||
+params_attributes = [
+    pytest.param(None, id="none"),
+    pytest.param({}, id="empty"),
+]
+
 params_relations = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
@@ -49,10 +54,11 @@ params_paths = [
 ]
 
 
+@pytest.mark.parametrize("attributes", params_attributes)
 @pytest.mark.parametrize("relations", params_relations)
 @pytest.mark.parametrize("paths", params_paths)
 @pytest.mark.parametrize("user_login", [None, "user1"])
-def test_create(app, user_login, paths, relations):
+def test_create(app, user_login, paths, relations, attributes):
 
     kwargs = {"type_id": 1, "name": "new-product"}
 
@@ -61,6 +67,9 @@ def test_create(app, user_login, paths, relations):
 
     if relations is not None:
         kwargs["relations"] = relations
+
+    if attributes is not None:
+        kwargs["attributes"] = attributes
 
     with app.app_context():
         count = Product.query.count()
