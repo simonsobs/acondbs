@@ -47,6 +47,17 @@ class ProductRelation(sa.Model):
         ),
     )
 
+    def __repr__(self):
+        return f"<{self.__class__.__name__} {self.type_name!r}>"
+
+    @property
+    def type_name(self):
+        # used in __repr__()
+        try:
+            return self.type_.name
+        except BaseException:
+            return self.type_
+
 
 ##__________________________________________________________________||
 @listens_for(ProductRelation.type_, "set")
