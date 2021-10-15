@@ -28,12 +28,18 @@ def test_normalize_paths(paths, ret):
 
 
 ##__________________________________________________________________||
-params_attributes = [
+params = [
     pytest.param(None, id="none"),
     pytest.param({}, id="empty"),
 ]
 
-params_relations = [
+
+@pytest.mark.parametrize("attributes", params)
+def test_create_attributes(app, attributes):
+    return _test_create(app, attributes=attributes)
+
+
+params = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
     pytest.param([{"type_id": 1, "product_id": 2}], id="one"),
@@ -43,7 +49,13 @@ params_relations = [
     ),
 ]
 
-params_paths = [
+
+@pytest.mark.parametrize("relations", params)
+def test_create_relations(app, relations):
+    return _test_create(app, relations=relations)
+
+
+params = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
     pytest.param(["/a/b/c"], id="one"),
@@ -54,11 +66,19 @@ params_paths = [
 ]
 
 
-@pytest.mark.parametrize("attributes", params_attributes)
-@pytest.mark.parametrize("relations", params_relations)
-@pytest.mark.parametrize("paths", params_paths)
+@pytest.mark.parametrize("paths", params)
+def test_create_paths(app, paths):
+    return _test_create(app, paths=paths)
+
+
 @pytest.mark.parametrize("user_login", [None, "user1"])
-def test_create(app, user_login, paths, relations, attributes):
+def test_create_user(app, user_login):
+    return _test_create(app, user_login=user_login)
+
+
+def _test_create(
+    app, user_login=None, paths=None, relations=None, attributes=None
+):
 
     kwargs = {"type_id": 1, "name": "new-product"}
 
