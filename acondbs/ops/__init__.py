@@ -16,6 +16,11 @@ from .product_type import (  # noqa: F401
     update_product_type,
     delete_product_type,
 )
+from .product_relation_type import (  # noqa: F401
+    create_product_relation_type,
+    update_product_relation_type,
+    delete_product_relation_type,
+)
 from .field import (  # noqa: F401
     create_field,
     update_field,
