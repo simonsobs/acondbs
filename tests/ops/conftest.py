@@ -38,7 +38,6 @@ def app(app_empty):
         ops.create_field(field_id=7, name="date", type_=FieldType.Date)
         ops.create_field(field_id=8, name="date_time", type_=FieldType.DateTime)  # fmt: skip
         ops.create_field(field_id=9, name="time", type_=FieldType.Time)
-        ops.create_field(field_id=10, name="not_used", type_=FieldType.Time)
 
         ops.commit()
 

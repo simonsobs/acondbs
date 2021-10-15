@@ -33,7 +33,7 @@ def test_create(app_empty, type_):
 ##__________________________________________________________________||
 def test_fixture(app):
     with app.app_context():
-        assert Field.query.count() == 10
+        assert Field.query.count() == 9
 
 
 ##__________________________________________________________________||
@@ -57,11 +57,12 @@ def test_update(app):
 def test_delete(app):
 
     with app.app_context():
-        model = Field.query.filter_by(name="not_used").one()
+        model = ops.create_field(name="to_be_deleted", type_=FieldType.Float)
+        ops.commit()
         field_id = model.field_id
-        count = Field.query.count()
 
     with app.app_context():
+        count = Field.query.count()
         ret = ops.delete_field(field_id=field_id)
         ops.commit()
         assert ret is None
