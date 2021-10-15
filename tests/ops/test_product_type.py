@@ -29,8 +29,6 @@ def test_create(app, field_ids):
 
     with app.app_context():
         count = ProductType.query.count()
-
-    with app.app_context():
         model = ops.create_product_type(
             name="derived_map",
             field_ids=field_ids,
@@ -42,8 +40,6 @@ def test_create(app, field_ids):
 
     with app.app_context():
         assert ProductType.query.count() == (count + 1)
-
-    with app.app_context():
         model = ProductType.query.filter_by(type_id=type_id).one()
         assert model.name == "derived_map"
         expected_field_ids = sorted(set(field_ids)) if field_ids else []
@@ -61,8 +57,6 @@ def test_create_error(app, field_ids):
 
     with app.app_context():
         count = ProductType.query.count()
-
-    with app.app_context():
         with pytest.raises(exc.NoResultFound):
             model = ops.create_product_type(
                 name="derived_map",
@@ -72,8 +66,6 @@ def test_create_error(app, field_ids):
 
     with app.app_context():
         assert ProductType.query.count() == count
-
-    with app.app_context():
         model = ProductType.query.filter_by(name="derived_map").one_or_none()
         assert model is None
 
@@ -156,19 +148,22 @@ def test_update_error(app, field_ids):
 
 ##__________________________________________________________________||
 def test_delete(app):
-    name = "map"
 
     with app.app_context():
-        count = ProductType.query.count()
-        model = ProductType.query.filter_by(name=name).one()
+        model = ops.create_product_type(
+            name="to_be_deleted",
+            field_ids=[1, 4, 5],
+        )
+        ops.commit()
         type_id = model.type_id
 
     with app.app_context():
+        count = ProductType.query.count()
         model = ops.delete_product_type(type_id=type_id)
         ops.commit()
 
     with app.app_context():
-        model = ProductType.query.filter_by(name=name).one_or_none()
+        model = ProductType.query.filter_by(type_id=type_id).one_or_none()
         assert model is None
         assert ProductType.query.count() == (count - 1)
 
