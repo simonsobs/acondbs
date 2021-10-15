@@ -7,6 +7,12 @@ from acondbs.models import ProductType, TypeFieldAssociation
 
 
 ##__________________________________________________________________||
+def test_fixture(app):
+    with app.app_context():
+        assert ProductType.query.count() == 2
+
+
+##__________________________________________________________________||
 params = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
