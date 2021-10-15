@@ -60,7 +60,7 @@ def app(app_empty):
             type_={"type_id": 1, "name": "parent"},
             reverse={"type_id": 2, "name": "child"},
         )
-        sa.session.commit()
+        ops.commit()
 
     yield y
 
