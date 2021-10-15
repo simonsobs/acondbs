@@ -52,10 +52,9 @@ def _reshape_arg_attributes(attributes):
 
 
 ##__________________________________________________________________||
-def create_product(type_id, user=None, paths=None, **kwargs):
+def create_product(type_id, user=None, paths=None, relations=None, **kwargs):
     """Create a product"""
 
-    relations = kwargs.pop("relations", [])
     attributes = kwargs.pop("attributes", {})
 
     product_type = ProductType.query.filter_by(type_id=type_id).one()
@@ -70,18 +69,19 @@ def create_product(type_id, user=None, paths=None, **kwargs):
         paths = _normalize_paths(paths)
         model.paths = [ProductFilePath(path=p) for p in paths]
 
-    with sa.session.no_autoflush:
-        model.relations = [
-            ProductRelation(
-                type_=ProductRelationType.query.filter_by(
-                    type_id=r["type_id"]
-                ).one(),
-                other=Product.query.filter_by(
-                    product_id=r["product_id"]
-                ).one(),
-            )
-            for r in relations
-        ]
+    if relations is not None:
+        with sa.session.no_autoflush:
+            model.relations = [
+                ProductRelation(
+                    type_=ProductRelationType.query.filter_by(
+                        type_id=r["type_id"]
+                    ).one(),
+                    other=Product.query.filter_by(
+                        product_id=r["product_id"]
+                    ).one(),
+                )
+                for r in relations
+            ]
 
     attr_dict = _reshape_arg_attributes(attributes)
 
