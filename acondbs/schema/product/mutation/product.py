@@ -194,7 +194,7 @@ class CreateProduct(graphene.Mutation):
 
     def mutate(root, info, input):
         user = get_git_hub_viewer_from_info(info)
-        model = ops.create_product(user, **input)
+        model = ops.create_product(user=user, **input)
         ops.commit()
         request_backup_db()
         ok = True
