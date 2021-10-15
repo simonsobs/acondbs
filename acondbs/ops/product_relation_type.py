@@ -9,6 +9,9 @@ def create_product_relation_type(type_, reverse=None, self_reverse=False):
     if self_reverse and reverse:
         raise ValueError('"reverse" is given when "self_reverse" is True')
 
+    if not (self_reverse or reverse):
+        raise ValueError('"reverse" is not given when "self_reverse" is False')
+
     model = ProductRelationType(**type_)
     if self_reverse:
         model.reverse = model
