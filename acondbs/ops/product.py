@@ -1,4 +1,3 @@
-import re
 import datetime
 
 from ..models import (
@@ -18,17 +17,6 @@ def uniq_preserving_order(list_):
     return list(dict.fromkeys(list_))
 
 
-def camel_to_snake(name):
-    # copied from https://stackoverflow.com/a/1176023/7309855
-    return re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
-
-
-def snake_to_camel(name):
-    # copied from https://stackoverflow.com/a/1176023/7309855
-    return "".join(w.title() for w in name.split("_"))
-
-
-##__________________________________________________________________||
 def _normalize_paths(paths):
     # e.g., paths = ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"]
 
