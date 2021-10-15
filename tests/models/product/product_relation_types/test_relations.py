@@ -43,7 +43,7 @@ def app(app_empty):
 
 
 ##__________________________________________________________________||
-def test_relations_parent_child(app):
+def test_reverse(app):
 
     with app.app_context():
         parent = ProductRelationType.query.filter_by(
@@ -58,7 +58,7 @@ def test_relations_parent_child(app):
         assert parent is child.reverse
 
 
-def test_relations_sibling(app):
+def test_self_reverse(app):
 
     with app.app_context():
         sibling = ProductRelationType.query.filter_by(
@@ -68,7 +68,7 @@ def test_relations_sibling(app):
         assert sibling is sibling.reverse
 
 
-def test_cascade_delete(app):
+def test_cascade(app):
 
     # delete parent
     with app.app_context():
