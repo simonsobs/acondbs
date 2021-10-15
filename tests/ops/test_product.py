@@ -43,11 +43,10 @@ params_paths = [
 @pytest.mark.parametrize("user_login", [None, "user1"])
 def test_create(app, user_login, paths):
 
-    with app.app_context():
-        count = Product.query.count()
+    kwargs = {"type_id": 1, "name": "new-product"}
 
     with app.app_context():
-        kwargs = {"type_id": 1, "name": "new-product"}
+        count = Product.query.count()
 
         if user_login:
             user1 = GitHubUser.query.filter_by(login=user_login).one()
@@ -65,7 +64,6 @@ def test_create(app, user_login, paths):
     with app.app_context():
         assert Product.query.count() == (count + 1)
 
-    with app.app_context():
         model = Product.query.filter_by(product_id=product_id).one()
         assert model.name == "new-product"
 
@@ -80,3 +78,6 @@ def test_create(app, user_login, paths):
             assert actual == expected
         else:
             assert model.paths == []
+
+
+##__________________________________________________________________||
