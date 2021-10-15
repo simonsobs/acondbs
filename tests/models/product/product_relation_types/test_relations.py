@@ -46,13 +46,8 @@ def app(app_empty):
 def test_reverse(app):
 
     with app.app_context():
-        parent = ProductRelationType.query.filter_by(
-            name="parent"
-        ).one_or_none()
-        child = ProductRelationType.query.filter_by(name="child").one_or_none()
-
-        assert parent is not None
-        assert child is not None
+        parent = ProductRelationType.query.filter_by(name="parent").one()
+        child = ProductRelationType.query.filter_by(name="child").one()
 
         assert child is parent.reverse
         assert parent is child.reverse
@@ -61,10 +56,7 @@ def test_reverse(app):
 def test_self_reverse(app):
 
     with app.app_context():
-        sibling = ProductRelationType.query.filter_by(
-            name="sibling"
-        ).one_or_none()
-        assert sibling is not None
+        sibling = ProductRelationType.query.filter_by(name="sibling").one()
         assert sibling is sibling.reverse
 
 
@@ -72,9 +64,7 @@ def test_cascade(app):
 
     # delete parent
     with app.app_context():
-        parent = ProductRelationType.query.filter_by(
-            name="parent"
-        ).one_or_none()
+        parent = ProductRelationType.query.filter_by(name="parent").one()
         sa.session.delete(parent)
         sa.session.commit()
 
