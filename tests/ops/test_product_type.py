@@ -32,6 +32,7 @@ def test_create(app, field_ids):
         assert model.name == "derived_map"
         ops.commit()
         type_id = model.type_id
+        assert type_id
 
     with app.app_context():
         assert ProductType.query.count() == (count + 1)
