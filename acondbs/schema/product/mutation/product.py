@@ -9,6 +9,12 @@ from ....db.backup import request_backup_db
 
 
 ##__________________________________________________________________||
+def _reshape_arg_attributes(attributes):
+    ret = {e["field_id"]: e["value"] for t, v in attributes.items() for e in v}
+    return ret
+
+
+##__________________________________________________________________||
 class RelationInputFields(graphene.InputObjectType):
     """A relation to another product"""
 
@@ -194,7 +200,9 @@ class CreateProduct(graphene.Mutation):
 
     def mutate(root, info, input):
         user = get_git_hub_viewer_from_info(info)
-        model = ops.create_product(user=user, **input)
+        attributes = input.pop("attributes", {})
+        attributes = _reshape_arg_attributes(attributes)
+        model = ops.create_product(user=user, attributes=attributes, **input)
         ops.commit()
         request_backup_db()
         ok = True
@@ -224,7 +232,11 @@ class UpdateProduct(graphene.Mutation):
 
     def mutate(root, info, product_id, input):
         user = get_git_hub_viewer_from_info(info)
-        model = ops.update_product(user, product_id, **input)
+        attributes = input.pop("attributes", {})
+        attributes = _reshape_arg_attributes(attributes)
+        model = ops.update_product(
+            user=user, product_id=product_id, attributes=attributes, **input
+        )
         ops.commit()
         request_backup_db()
         ok = True

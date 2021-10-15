@@ -32,16 +32,11 @@ def _normalize_paths(paths):
     return ret
 
 
-def _reshape_arg_attributes(attributes):
-    ret = {e["field_id"]: e["value"] for t, v in attributes.items() for e in v}
-    return ret
-
-
 ##__________________________________________________________________||
-def create_product(type_id, user=None, paths=None, relations=None, **kwargs):
+def create_product(
+    type_id, user=None, paths=None, relations=None, attributes=None, **kwargs
+):
     """Create a product"""
-
-    attributes = kwargs.pop("attributes", {})
 
     product_type = ProductType.query.filter_by(type_id=type_id).one()
 
@@ -69,11 +64,12 @@ def create_product(type_id, user=None, paths=None, relations=None, **kwargs):
                 for r in relations
             ]
 
-    attr_dict = _reshape_arg_attributes(attributes)
+    if attributes is None:
+        attributes = {}
 
     for association in product_type.fields:
         field = association.field
-        value = attr_dict.get(field.field_id)
+        value = attributes.get(field.field_id)
         field.type_.attribute_class(
             name=field.name,
             field=field,
@@ -108,11 +104,10 @@ def update_product(user, product_id, **kwargs):
         setattr(model, k, v)
 
     # update attributes
-    attr_dict = _reshape_arg_attributes(attributes)
     for association in model.type_.fields:
         field = association.field
         try:
-            value = attr_dict[field.field_id]
+            value = attributes[field.field_id]
         except KeyError:
             continue
         attribute_class = field.type_.attribute_class
