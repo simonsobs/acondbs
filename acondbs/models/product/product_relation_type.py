@@ -7,7 +7,7 @@ from sqlalchemy.event import listens_for
 class ProductRelationType(sa.Model):
     __tablename__ = "product_relation_types"
     type_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)
+    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)  # TODO: set unique False
     reverse_type_id = sa.Column(
         sa.ForeignKey("product_relation_types.type_id")
     )
