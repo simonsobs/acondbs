@@ -44,6 +44,20 @@ def create_product(
 ):
     """Create a product"""
 
+    with sa.session.no_autoflush:
+        return _create_product(
+            type_id,
+            paths,
+            relations,
+            attributes,
+            posting_git_hub_user_id,
+            **kwargs
+        )
+
+
+def _create_product(
+    type_id, paths, relations, attributes, posting_git_hub_user_id, **kwargs
+):
     product_type = ProductType.query.filter_by(type_id=type_id).one()
 
     model = Product(type_=product_type, **kwargs)
@@ -53,18 +67,17 @@ def create_product(
         model.paths = [ProductFilePath(path=p) for p in paths]
 
     if relations is not None:
-        with sa.session.no_autoflush:
-            model.relations = [
-                ProductRelation(
-                    type_=ProductRelationType.query.filter_by(
-                        type_id=r["type_id"]
-                    ).one(),
-                    other=Product.query.filter_by(
-                        product_id=r["product_id"]
-                    ).one(),
-                )
-                for r in relations
-            ]
+        model.relations = [
+            ProductRelation(
+                type_=ProductRelationType.query.filter_by(
+                    type_id=r["type_id"]
+                ).one(),
+                other=Product.query.filter_by(
+                    product_id=r["product_id"]
+                ).one(),
+            )
+            for r in relations
+        ]
 
     if attributes is None:
         attributes = {}
