@@ -61,6 +61,12 @@ def app(app_empty):
         )
         ops.commit()
 
+    with y.app_context():
+        ops.create_product(product_id=1, type_id=1, name="map1")
+        ops.create_product(product_id=2, type_id=2, name="beam1")
+        ops.create_product(product_id=3, type_id=2, name="beam2")
+        ops.commit()
+
     yield y
 
 

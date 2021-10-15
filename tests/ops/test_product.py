@@ -28,22 +28,39 @@ def test_normalize_paths(paths, ret):
 
 
 ##__________________________________________________________________||
-# fmt: off
+params_relations = [
+    pytest.param(None, id="none"),
+    pytest.param([], id="empty"),
+    pytest.param([{"type_id": 1, "product_id": 2}], id="one"),
+    pytest.param(
+        [{"type_id": 2, "product_id": 1}, {"type_id": 1, "product_id": 3}],
+        id="one",
+    ),
+]
+
 params_paths = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
     pytest.param(["/a/b/c"], id="one"),
     pytest.param(["/d/e", "/a/b/c", "/f/g"], id="multiple"),
-    pytest.param(["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"),
+    pytest.param(
+        ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"
+    ),
 ]
-# fmt: on
 
 
+@pytest.mark.parametrize("relations", params_relations)
 @pytest.mark.parametrize("paths", params_paths)
 @pytest.mark.parametrize("user_login", [None, "user1"])
-def test_create(app, user_login, paths):
+def test_create(app, user_login, paths, relations):
 
     kwargs = {"type_id": 1, "name": "new-product"}
+
+    if paths is not None:
+        kwargs["paths"] = paths
+
+    if relations is not None:
+        kwargs["relations"] = relations
 
     with app.app_context():
         count = Product.query.count()
@@ -51,9 +68,6 @@ def test_create(app, user_login, paths):
         if user_login:
             user1 = GitHubUser.query.filter_by(login=user_login).one()
             kwargs["user"] = user1
-
-        if paths is not None:
-            kwargs["paths"] = paths
 
         model = ops.create_product(**kwargs)
         assert model.name == "new-product"
@@ -78,6 +92,13 @@ def test_create(app, user_login, paths):
             assert actual == expected
         else:
             assert model.paths == []
+
+        if relations is not None:
+            expected = [(r["type_id"], r["product_id"]) for r in relations]
+            actual = [(r.type_id, r.other_product_id) for r in model.relations]
+            assert actual == expected
+        else:
+            assert model.relations == []
 
 
 ##__________________________________________________________________||
