@@ -45,10 +45,8 @@ def _normalize_paths(paths):
 
 
 def _reshape_arg_attributes(attributes):
-    return {
-        snake_to_camel(t): {e["field_id"]: e["value"] for e in v}
-        for t, v in attributes.items()
-    }
+    ret = {e["field_id"]: e["value"] for t, v in attributes.items() for e in v}
+    return ret
 
 
 ##__________________________________________________________________||
@@ -87,7 +85,7 @@ def create_product(type_id, user=None, paths=None, relations=None, **kwargs):
 
     for association in product_type.fields:
         field = association.field
-        value = attr_dict.get(field.type_.name, {}).get(field.field_id)
+        value = attr_dict.get(field.field_id)
         field.type_.attribute_class(
             name=field.name,
             field=field,
@@ -126,7 +124,7 @@ def update_product(user, product_id, **kwargs):
     for association in model.type_.fields:
         field = association.field
         try:
-            value = attr_dict[field.type_.name][field.field_id]
+            value = attr_dict[field.field_id]
         except KeyError:
             continue
         attribute_class = field.type_.attribute_class
