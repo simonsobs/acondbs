@@ -17,7 +17,6 @@ def test_create(app_empty, type_):
 
     with app.app_context():
         model = ops.create_field(name="new_field", type_=type_)
-        print(model)
         assert model.name == "new_field"
         assert model.type_ == FieldType.Float
         ops.commit()
