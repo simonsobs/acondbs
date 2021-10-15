@@ -13,15 +13,9 @@ from ..db.sa import sa
 
 
 ##__________________________________________________________________||
-def _normalize_paths(paths):
-    ret = [p.strip() for p in paths]
-    ret = [p for p in ret if p]
-
-    ret = list(dict.fromkeys(ret))
-    # uniq preserving order
+def uniq_preserving_order(list_):
     # https://stackoverflow.com/a/17016257/7309855
-
-    return ret
+    return list(dict.fromkeys(list_))
 
 
 def camel_to_snake(name):
@@ -32,6 +26,22 @@ def camel_to_snake(name):
 def snake_to_camel(name):
     # copied from https://stackoverflow.com/a/1176023/7309855
     return "".join(w.title() for w in name.split("_"))
+
+
+##__________________________________________________________________||
+def _normalize_paths(paths):
+    # e.g., paths = ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"]
+
+    ret = [p.strip() for p in paths]  # strip
+    # e.g., ["/d/e", "", "/a/b/c", "/f/g", "/d/e"]
+
+    ret = [p for p in ret if p]  # remove empty
+    # e.g., ["/d/e", "/a/b/c", "/f/g", "/d/e"]
+
+    ret = uniq_preserving_order(ret)
+    # e.g., ["/d/e", "/a/b/c", "/f/g"]
+
+    return ret
 
 
 def _reshape_arg_attributes(attributes):
