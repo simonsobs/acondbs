@@ -23,6 +23,9 @@ class ProductRelationType(sa.Model):
     singular = sa.Column(sa.Text())
     plural = sa.Column(sa.Text())
 
+    def __repr__(self):
+        return f"<{self.__class__.__name__} {self.name!r}>"
+
 
 ##__________________________________________________________________||
 @listens_for(ProductRelationType.reverse, "set")
