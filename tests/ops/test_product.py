@@ -176,3 +176,29 @@ def _extract_attributes(model):
 
 
 ##__________________________________________________________________||
+def test_update(
+    app,
+    paths=None,
+    relations=None,
+    attributes=None,
+    posting_git_hub_user_id=None,
+):
+
+    product_id = 1
+    kwargs = {"product_id": product_id, "name": "new-name"}
+
+    with app.app_context():
+        count = Product.query.count()
+
+        model = ops.update_product(**kwargs)
+        assert model.name == "new-name"
+        ops.commit()
+
+    with app.app_context():
+        assert Product.query.count() == count
+
+        model = Product.query.filter_by(product_id=product_id).one()
+        assert model.name == "new-name"
+
+
+##__________________________________________________________________||
