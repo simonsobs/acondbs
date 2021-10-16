@@ -25,7 +25,9 @@ def app(app_empty):
 
     with y.app_context():
         user1 = GitHubUser(user_id=1, login="user1", git_hub_id="04:User1")
+        user2 = GitHubUser(user_id=2, login="user2", git_hub_id="04:User2")
         sa.session.add(user1)
+        sa.session.add(user2)
         sa.session.commit()
 
     with y.app_context():

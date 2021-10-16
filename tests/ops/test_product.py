@@ -176,16 +176,24 @@ def _extract_attributes(model):
 
 
 ##__________________________________________________________________||
-def test_update(
+@pytest.mark.parametrize("updating_git_hub_user_id", [None, 2])
+def test_update_user(app, updating_git_hub_user_id):
+    return _test_update(app, updating_git_hub_user_id=updating_git_hub_user_id)
+
+
+def _test_update(
     app,
     paths=None,
     relations=None,
     attributes=None,
-    posting_git_hub_user_id=None,
+    updating_git_hub_user_id=None,
 ):
 
     product_id = 1
     kwargs = {"product_id": product_id, "name": "new-name"}
+
+    if updating_git_hub_user_id:
+        kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
 
     with app.app_context():
         count = Product.query.count()
@@ -199,6 +207,14 @@ def test_update(
 
         model = Product.query.filter_by(product_id=product_id).one()
         assert model.name == "new-name"
+
+        if updating_git_hub_user_id:
+            updating_git_hub_user = GitHubUser.query.filter_by(
+                user_id=updating_git_hub_user_id
+            ).one()
+            assert model.updating_git_hub_user == updating_git_hub_user
+        else:
+            assert model.updating_git_hub_user is None
 
 
 ##__________________________________________________________________||
