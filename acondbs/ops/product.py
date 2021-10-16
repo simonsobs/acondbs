@@ -101,14 +101,20 @@ def _create_product(
     return model
 
 
-def update_product(product_id, updating_git_hub_user_id=None, **kwargs):
+def update_product(
+    product_id,
+    paths=None,
+    relations=None,
+    attributes=None,
+    updating_git_hub_user_id=None,
+    **kwargs
+):
     """Update a product"""
 
     model = Product.query.filter_by(product_id=product_id).one()
 
-    paths = kwargs.pop("paths", None)
-    relations = kwargs.pop("relations", None)
-    attributes = kwargs.pop("attributes", {})
+    if not attributes:
+        attributes = {}
 
     # update paths
     if paths is not None:
