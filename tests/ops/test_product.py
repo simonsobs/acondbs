@@ -176,6 +176,25 @@ def _extract_attributes(model):
 
 
 ##__________________________________________________________________||
+params = [
+    pytest.param(None, id="none"),
+    pytest.param([], id="empty"),
+    pytest.param(["/d/e", "/a/b/c"], id="same"),
+    pytest.param(["/a/b/c", "/d/e"], id="same-perm"),
+    pytest.param(["/a/b/c"], id="remove"),
+    pytest.param(["/d/e", "/a/b/c", "/f/g"], id="add"),
+    pytest.param(["/d/e", "/f/g", "/a/b/c"], id="add-perm"),
+    pytest.param(
+        ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"
+    ),
+]
+
+
+@pytest.mark.parametrize("paths", params)
+def test_update_paths(app, paths):
+    return _test_update(app, paths=paths)
+
+
 @pytest.mark.parametrize("updating_git_hub_user_id", [None, 2])
 def test_update_user(app, updating_git_hub_user_id):
     return _test_update(app, updating_git_hub_user_id=updating_git_hub_user_id)
@@ -192,11 +211,18 @@ def _test_update(
     product_id = 1
     kwargs = {"product_id": product_id, "name": "new-name"}
 
+    if paths is not None:
+        kwargs["paths"] = paths
+
     if updating_git_hub_user_id:
         kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
 
     with app.app_context():
         count = Product.query.count()
+
+        model = Product.query.filter_by(product_id=product_id).one()
+        paths_old = [p.path for p in model.paths]
+        path_ids_old = {p.path: p.path_id for p in model.paths}
 
         model = ops.update_product(**kwargs)
         assert model.name == "new-name"
@@ -215,6 +241,23 @@ def _test_update(
             assert model.updating_git_hub_user == updating_git_hub_user
         else:
             assert model.updating_git_hub_user is None
+
+        # paths
+        if paths is not None:
+            paths_kept = [p for p in paths_old if p in paths]
+            expected = paths_kept + _normalize_paths(paths)
+            expected = list(dict.fromkeys(expected))  # uniq order preserved
+        else:
+            expected = paths_old
+        actual = [p.path for p in model.paths]
+        assert actual == expected
+        expected_path_ids = {
+            k: v for k, v in path_ids_old.items() if k in expected
+        }
+        path_ids = {
+            p.path: p.path_id for p in model.paths if p.path in path_ids_old
+        }
+        assert path_ids == expected_path_ids
 
 
 ##__________________________________________________________________||

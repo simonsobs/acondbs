@@ -174,6 +174,7 @@ def _update_product(
 
 
 def _update_paths(old, input):
+    input = _normalize_paths(input)
     path_dict = {p.path: p for p in old}
     return [
         path_dict[p] if p in path_dict else ProductFilePath(path=p)
