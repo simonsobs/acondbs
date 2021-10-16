@@ -101,7 +101,7 @@ def _create_product(
     return model
 
 
-def update_product(user, product_id, **kwargs):
+def update_product(product_id, updating_git_hub_user_id=None, **kwargs):
     """Update a product"""
 
     model = Product.query.filter_by(product_id=product_id).one()
@@ -141,7 +141,9 @@ def update_product(user, product_id, **kwargs):
             )
 
     model.time_updated = datetime.datetime.now()
-    model.updating_git_hub_user = user
+    if updating_git_hub_user_id:
+        GitHubUser.query.filter_by(user_id=updating_git_hub_user_id).one()
+    model.updating_git_hub_user_id = updating_git_hub_user_id
 
     return model
 

@@ -240,11 +240,18 @@ class UpdateProduct(graphene.Mutation):
     product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, product_id, input):
-        user = get_git_hub_viewer_from_info(info)
+
+        viewer = get_git_hub_viewer_from_info(info)
+        updating_git_hub_user_id = viewer.user_id
+
         attributes = input.pop("attributes", {})
         attributes = _reshape_arg_attributes(attributes)
+
         model = ops.update_product(
-            user=user, product_id=product_id, attributes=attributes, **input
+            product_id=product_id,
+            attributes=attributes,
+            updating_git_hub_user_id=updating_git_hub_user_id,
+            **input
         )
         ops.commit()
         request_backup_db()
