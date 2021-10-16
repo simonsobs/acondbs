@@ -111,6 +111,26 @@ def update_product(
 ):
     """Update a product"""
 
+    with sa.session.no_autoflush:
+        return _update_product(
+            product_id,
+            paths,
+            relations,
+            attributes,
+            updating_git_hub_user_id,
+            **kwargs
+        )
+
+
+def _update_product(
+    product_id,
+    paths,
+    relations,
+    attributes,
+    updating_git_hub_user_id,
+    **kwargs
+):
+
     model = Product.query.filter_by(product_id=product_id).one()
 
     if not attributes:
@@ -122,8 +142,7 @@ def update_product(
 
     # update relations
     if relations is not None:
-        with sa.session.no_autoflush:
-            model.relations = _update_relations(model.relations, relations)
+        model.relations = _update_relations(model.relations, relations)
 
     # update scalar fields
     for k, v in kwargs.items():
