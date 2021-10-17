@@ -5,8 +5,6 @@ from .. import type_
 
 from .... import ops
 
-from ....db.backup import request_backup_db
-
 
 ##__________________________________________________________________||
 def _reshape_arg_attributes(attributes):
@@ -213,7 +211,6 @@ class CreateProduct(graphene.Mutation):
         )
 
         ops.commit()
-        request_backup_db()
         ok = True
         return CreateProduct(product=model, ok=ok)
 
@@ -254,7 +251,6 @@ class UpdateProduct(graphene.Mutation):
             **input
         )
         ops.commit()
-        request_backup_db()
         ok = True
         return UpdateProduct(product=model, ok=ok)
 
@@ -273,7 +269,6 @@ class DeleteProduct(graphene.Mutation):
     def mutate(root, info, product_id):
         ops.delete_product(product_id)
         ops.commit()
-        request_backup_db()
         ok = True
         return DeleteProduct(ok=ok)
 

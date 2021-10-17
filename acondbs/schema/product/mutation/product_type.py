@@ -1,7 +1,5 @@
 import graphene
 
-from ....db.backup import request_backup_db
-
 from .. import type_
 
 from .... import ops
@@ -63,7 +61,6 @@ class CreateProductType(graphene.Mutation):
         model = ops.create_product_type(**input)
         ops.commit()
         ok = True
-        request_backup_db()
         return CreateProductType(product_type=model, ok=ok)
 
 
@@ -81,7 +78,6 @@ class UpdateProductType(graphene.Mutation):
         model = ops.update_product_type(type_id, **input)
         ops.commit()
         ok = True
-        request_backup_db()
         return UpdateProductType(product_type=model, ok=ok)
 
 
@@ -97,7 +93,6 @@ class DeleteProductType(graphene.Mutation):
         ops.delete_product_type(type_id)
         ops.commit()
         ok = True
-        request_backup_db()
         return DeleteProductType(ok=ok)
 
 

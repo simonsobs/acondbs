@@ -4,8 +4,6 @@ from .. import type_
 
 from .... import ops
 
-from ....db.backup import request_backup_db
-
 
 ##__________________________________________________________________||
 class CommonInputFields:
@@ -61,7 +59,6 @@ class CreateProductRelationTypes(graphene.Mutation):
         model = ops.create_product_relation_type(type, reverse, self_reverse)
         ops.commit()
         ok = True
-        request_backup_db()
         return CreateProductRelationTypes(product_relation_type=model, ok=ok)
 
 
@@ -82,7 +79,6 @@ class UpdateProductRelationType(graphene.Mutation):
         model = ops.update_product_relation_type(type_id, **input)
         ops.commit()
         ok = True
-        request_backup_db()
         return UpdateProductRelationType(product_relation_type=model, ok=ok)
 
 
@@ -104,7 +100,6 @@ class DeleteProductRelationTypes(graphene.Mutation):
         ops.delete_product_relation_type(type_id)
         ops.commit()
         ok = True
-        request_backup_db()
         return DeleteProductRelationTypes(ok=ok)
 
 

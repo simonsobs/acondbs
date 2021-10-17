@@ -1,7 +1,5 @@
 import graphene
 
-from ....db.backup import request_backup_db
-
 from .. import type_
 
 from .... import ops
@@ -38,7 +36,6 @@ class CreateField(graphene.Mutation):
         model = ops.create_field(**input)
         ops.commit()
         ok = True
-        request_backup_db()
         return CreateField(field=model, ok=ok)
 
 
@@ -57,7 +54,6 @@ class UpdateField(graphene.Mutation):
         model = ops.update_field(field_id, name)
         ops.commit()
         ok = True
-        request_backup_db()
         return UpdateField(field=model, ok=ok)
 
 
@@ -73,7 +69,6 @@ class DeleteField(graphene.Mutation):
         ops.delete_field(field_id)
         ops.commit()
         ok = True
-        request_backup_db()
         return DeleteField(ok=ok)
 
 
