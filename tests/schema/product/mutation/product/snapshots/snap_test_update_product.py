@@ -23,7 +23,17 @@ snapshots['test_schema_error[error-immutable-fields] 1'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -38,17 +48,7 @@ snapshots['test_schema_error[error-immutable-fields] 1'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -87,7 +87,7 @@ snapshots['test_schema_error[error-immutable-fields] 1'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -110,6 +110,19 @@ snapshots['test_schema_error[error-immutable-fields] 1'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -117,19 +130,6 @@ snapshots['test_schema_error[error-immutable-fields] 1'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }
@@ -208,6 +208,26 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                 },
                 'attributesUnicodeText': {
                     'edges': [
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'contact',
+                                'value': None
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'produced_by',
+                                'value': None
+                            }
+                        }
                     ]
                 },
                 'contact': None,
@@ -265,7 +285,7 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                                     }
                                 },
                                 'otherProductId': 5,
-                                'relationId': '6',
+                                'relationId': '3',
                                 'reverse': {
                                     'relationId': '4',
                                     'typeId': 1,
@@ -306,7 +326,17 @@ snapshots['test_schema_success[delete-paths] 2'] = {
             'edges': [
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -321,17 +351,7 @@ snapshots['test_schema_success[delete-paths] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -370,7 +390,7 @@ snapshots['test_schema_success[delete-paths] 2'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -393,6 +413,19 @@ snapshots['test_schema_success[delete-paths] 2'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -400,19 +433,6 @@ snapshots['test_schema_success[delete-paths] 2'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }
@@ -491,6 +511,26 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                 },
                 'attributesUnicodeText': {
                     'edges': [
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'contact',
+                                'value': None
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'produced_by',
+                                'value': None
+                            }
+                        }
                     ]
                 },
                 'contact': None,
@@ -503,7 +543,7 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                             'node': {
                                 'note': None,
                                 'path': 'site1:/path/to/beam2',
-                                'pathId': '3'
+                                'pathId': '8'
                             }
                         }
                     ]
@@ -548,7 +588,17 @@ snapshots['test_schema_success[delete-relations] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -563,17 +613,7 @@ snapshots['test_schema_success[delete-relations] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -681,6 +721,26 @@ snapshots['test_schema_success[update-paths] 1'] = {
                 },
                 'attributesUnicodeText': {
                     'edges': [
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'contact',
+                                'value': None
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'produced_by',
+                                'value': None
+                            }
+                        }
                     ]
                 },
                 'contact': None,
@@ -759,7 +819,7 @@ snapshots['test_schema_success[update-paths] 1'] = {
                                     }
                                 },
                                 'otherProductId': 5,
-                                'relationId': '6',
+                                'relationId': '3',
                                 'reverse': {
                                     'relationId': '4',
                                     'typeId': 1,
@@ -805,7 +865,17 @@ snapshots['test_schema_success[update-paths] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -820,17 +890,7 @@ snapshots['test_schema_success[update-paths] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
@@ -879,7 +939,7 @@ snapshots['test_schema_success[update-paths] 2'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -902,6 +962,19 @@ snapshots['test_schema_success[update-paths] 2'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -909,19 +982,6 @@ snapshots['test_schema_success[update-paths] 2'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }
@@ -1000,6 +1060,26 @@ snapshots['test_schema_success[update-relations] 1'] = {
                 },
                 'attributesUnicodeText': {
                     'edges': [
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'contact',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'contact',
+                                'value': None
+                            }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'produced_by',
+                                'value': None
+                            }
+                        }
                     ]
                 },
                 'contact': None,
@@ -1012,7 +1092,7 @@ snapshots['test_schema_success[update-relations] 1'] = {
                             'node': {
                                 'note': None,
                                 'path': 'site1:/path/to/beam2',
-                                'pathId': '3'
+                                'pathId': '8'
                             }
                         }
                     ]
@@ -1035,16 +1115,16 @@ snapshots['test_schema_success[update-relations] 1'] = {
                                     }
                                 },
                                 'otherProductId': 4,
-                                'relationId': '5',
+                                'relationId': '6',
                                 'reverse': {
-                                    'relationId': '3',
+                                    'relationId': '5',
                                     'typeId': 2,
                                     'type_': {
                                         'name': 'child',
                                         'typeId': '2'
                                     }
                                 },
-                                'reverseRelationId': 3,
+                                'reverseRelationId': 5,
                                 'typeId': 1,
                                 'type_': {
                                     'name': 'parent',
@@ -1115,7 +1195,17 @@ snapshots['test_schema_success[update-relations] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -1130,17 +1220,7 @@ snapshots['test_schema_success[update-relations] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -1309,6 +1389,16 @@ snapshots['test_schema_success[update] 1'] = {
                                 'name': 'contact',
                                 'value': 'new-contact'
                             }
+                        },
+                        {
+                            'node': {
+                                'field': {
+                                    'name': 'produced_by',
+                                    'type_': 'UNICODE_TEXT'
+                                },
+                                'name': 'produced_by',
+                                'value': None
+                            }
                         }
                     ]
                 },
@@ -1381,7 +1471,7 @@ snapshots['test_schema_success[update] 1'] = {
                                     }
                                 },
                                 'otherProductId': 5,
-                                'relationId': '6',
+                                'relationId': '3',
                                 'reverse': {
                                     'relationId': '4',
                                     'typeId': 1,
@@ -1432,7 +1522,17 @@ snapshots['test_schema_success[update] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -1447,17 +1547,7 @@ snapshots['test_schema_success[update] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -1496,7 +1586,7 @@ snapshots['test_schema_success[update] 2'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -1519,6 +1609,19 @@ snapshots['test_schema_success[update] 2'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -1526,19 +1629,6 @@ snapshots['test_schema_success[update] 2'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }

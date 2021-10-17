@@ -23,7 +23,17 @@ snapshots['test_schema_error[error-no-name] 1'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -38,17 +48,7 @@ snapshots['test_schema_error[error-no-name] 1'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -87,7 +87,7 @@ snapshots['test_schema_error[error-no-name] 1'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -110,6 +110,19 @@ snapshots['test_schema_error[error-no-name] 1'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -117,19 +130,6 @@ snapshots['test_schema_error[error-no-name] 1'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }
@@ -183,7 +183,17 @@ snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -198,17 +208,7 @@ snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -247,7 +247,7 @@ snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -270,6 +270,19 @@ snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -277,19 +290,6 @@ snapshots['test_schema_error[error-the-same-type-and-name] 1'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }
@@ -510,7 +510,17 @@ snapshots['test_schema_success[create] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -525,17 +535,7 @@ snapshots['test_schema_success[create] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
@@ -584,7 +584,7 @@ snapshots['test_schema_success[create] 2'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -607,6 +607,19 @@ snapshots['test_schema_success[create] 2'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -614,19 +627,6 @@ snapshots['test_schema_success[create] 2'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 },
@@ -832,7 +832,17 @@ snapshots['test_schema_success[minimum] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -847,17 +857,7 @@ snapshots['test_schema_success[minimum] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 }
             ]
@@ -896,7 +896,7 @@ snapshots['test_schema_success[minimum] 2'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -919,6 +919,19 @@ snapshots['test_schema_success[minimum] 2'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -926,19 +939,6 @@ snapshots['test_schema_success[minimum] 2'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }
@@ -1106,7 +1106,17 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/beam2'
+                        'path': 'site1:/path/to/map2'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site1:/path/to/map3'
+                    }
+                },
+                {
+                    'node': {
+                        'path': 'site2:/another/way/map3'
                     }
                 },
                 {
@@ -1121,17 +1131,7 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
                 },
                 {
                     'node': {
-                        'path': 'site1:/path/to/map2'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site1:/path/to/map3'
-                    }
-                },
-                {
-                    'node': {
-                        'path': 'site2:/another/way/map3'
+                        'path': 'site1:/path/to/beam2'
                     }
                 },
                 {
@@ -1180,7 +1180,7 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
                             'name': 'beam2'
                         },
                         'self_': {
-                            'name': 'beam1'
+                            'name': 'map1'
                         },
                         'type_': {
                             'name': 'child'
@@ -1203,6 +1203,19 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
                 {
                     'node': {
                         'other': {
+                            'name': 'beam2'
+                        },
+                        'self_': {
+                            'name': 'beam1'
+                        },
+                        'type_': {
+                            'name': 'child'
+                        }
+                    }
+                },
+                {
+                    'node': {
+                        'other': {
                             'name': 'beam1'
                         },
                         'self_': {
@@ -1210,19 +1223,6 @@ snapshots['test_schema_success[the-same-name-different-type] 2'] = {
                         },
                         'type_': {
                             'name': 'parent'
-                        }
-                    }
-                },
-                {
-                    'node': {
-                        'other': {
-                            'name': 'beam2'
-                        },
-                        'self_': {
-                            'name': 'map1'
-                        },
-                        'type_': {
-                            'name': 'child'
                         }
                     }
                 }
