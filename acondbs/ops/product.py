@@ -13,27 +13,6 @@ from ..db.sa import sa
 
 
 ##__________________________________________________________________||
-def uniq_preserving_order(list_):
-    # https://stackoverflow.com/a/17016257/7309855
-    return list(dict.fromkeys(list_))
-
-
-def _normalize_paths(paths):
-    # e.g., paths = ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"]
-
-    ret = [p.strip() for p in paths]  # strip
-    # e.g., ["/d/e", "", "/a/b/c", "/f/g", "/d/e"]
-
-    ret = [p for p in ret if p]  # remove empty
-    # e.g., ["/d/e", "/a/b/c", "/f/g", "/d/e"]
-
-    ret = uniq_preserving_order(ret)
-    # e.g., ["/d/e", "/a/b/c", "/f/g"]
-
-    return ret
-
-
-##__________________________________________________________________||
 def create_product(
     type_id,
     paths=None,
@@ -55,6 +34,57 @@ def create_product(
         )
 
 
+def update_product(
+    product_id,
+    paths=None,
+    relations=None,
+    attributes=None,
+    updating_git_hub_user_id=None,
+    **kwargs
+):
+    """Update a product"""
+
+    with sa.session.no_autoflush:
+        return _update_product(
+            product_id,
+            paths,
+            relations,
+            attributes,
+            updating_git_hub_user_id,
+            **kwargs
+        )
+
+
+def delete_product(product_id):
+    """Delete a product"""
+
+    model = Product.query.filter_by(product_id=product_id).one()
+    sa.session.delete(model)
+    return
+
+
+##__________________________________________________________________||
+def uniq_preserving_order(list_):
+    # https://stackoverflow.com/a/17016257/7309855
+    return list(dict.fromkeys(list_))
+
+
+def _normalize_paths(paths):
+    # e.g., paths = ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"]
+
+    ret = [p.strip() for p in paths]  # strip
+    # e.g., ["/d/e", "", "/a/b/c", "/f/g", "/d/e"]
+
+    ret = [p for p in ret if p]  # remove empty
+    # e.g., ["/d/e", "/a/b/c", "/f/g", "/d/e"]
+
+    ret = uniq_preserving_order(ret)
+    # e.g., ["/d/e", "/a/b/c", "/f/g"]
+
+    return ret
+
+
+##__________________________________________________________________||
 def _create_product(
     type_id, paths, relations, attributes, posting_git_hub_user_id, **kwargs
 ):
@@ -99,27 +129,6 @@ def _create_product(
 
     sa.session.add(model)
     return model
-
-
-def update_product(
-    product_id,
-    paths=None,
-    relations=None,
-    attributes=None,
-    updating_git_hub_user_id=None,
-    **kwargs
-):
-    """Update a product"""
-
-    with sa.session.no_autoflush:
-        return _update_product(
-            product_id,
-            paths,
-            relations,
-            attributes,
-            updating_git_hub_user_id,
-            **kwargs
-        )
 
 
 def _update_product(
@@ -198,15 +207,6 @@ def _update_relations(old, input):
         model_dict[id_] = ProductRelation(type_=type_, other=other)
 
     return [model_dict[i] for i in new_ids]
-
-
-##__________________________________________________________________||
-def delete_product(product_id):
-    """Delete a product"""
-
-    model = Product.query.filter_by(product_id=product_id).one()
-    sa.session.delete(model)
-    return
 
 
 ##__________________________________________________________________||
