@@ -1,9 +1,6 @@
-import pytest
-
 import datetime
 
-from acondbs.db.sa import sa
-from acondbs.models import ProductFilePath
+import pytest
 
 from acondbs import ops
 
@@ -109,7 +106,7 @@ def app(app_users):
             name="map1",
             date_produced=datetime.date(2020, 2, 1),
             attributes={3: datetime.date(2020, 2, 1)},
-            paths=["site1:/path/to/map1", "site2:/another/way/map1"],
+            paths=["site2:/another/way/map1"],
         )
         ops.create_product(
             type_id=1,
@@ -146,6 +143,14 @@ def app(app_users):
         ops.commit()
 
     with y.app_context():
+        ops.create_product_file_path(
+            product_id=1,
+            path="site1:/path/to/map1",
+            note="sample comment",
+        )
+        ops.commit()
+
+    with y.app_context():
         ops.create_product_relation(
             type_id=1,
             self_product_id=4,
@@ -162,13 +167,6 @@ def app(app_users):
             other_product_id=4,
         )
         ops.commit()
-
-    with y.app_context():
-        path = ProductFilePath.query.filter_by(
-            path="site1:/path/to/map1"
-        ).one()
-        path.note = "sample comment"
-        sa.session.commit()
 
     yield y
 
