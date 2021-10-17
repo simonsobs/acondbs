@@ -1,3 +1,4 @@
+import datetime
 import pytest
 
 from acondbs import create_app
@@ -80,6 +81,12 @@ def app(app_empty):
                 {"type_id": 2, "product_id": 3},
                 {"type_id": 1, "product_id": 5},
             ],
+            attributes={
+                1: "text attribute",
+                4: False,
+                5: 1056,
+                8: datetime.datetime(2021, 10, 17, 11, 1, 30),
+            },
         )
         ops.commit()
 

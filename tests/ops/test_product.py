@@ -178,6 +178,30 @@ def _extract_attributes(model):
 ##__________________________________________________________________||
 params = [
     pytest.param(None, id="none"),
+    pytest.param({}, id="empty"),
+    pytest.param({1: "An attribute"}, id="one"),
+    pytest.param({1: "An attribute", 3: False}, id="two"),
+    pytest.param(
+        {
+            1: "An attribute",
+            3: False,
+            4: True,
+            5: 512,
+            6: 2.34,
+            8: datetime.datetime(2021, 10, 15, 16, 55, 21),
+        },
+        id="all",
+    ),
+]
+
+
+@pytest.mark.parametrize("attributes", params)
+def test_update_attributes(app, attributes):
+    return _test_update(app, attributes=attributes)
+
+
+params = [
+    pytest.param(None, id="none"),
     pytest.param([], id="empty"),
     pytest.param(
         [
@@ -263,6 +287,9 @@ def _test_update(
     if relations is not None:
         kwargs["relations"] = relations
 
+    if attributes is not None:
+        kwargs["attributes"] = attributes
+
     if updating_git_hub_user_id:
         kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
 
@@ -280,6 +307,8 @@ def _test_update(
             (r.type_id, r.other_product_id): r.relation_id
             for r in model.relations
         }
+
+        attributes_old = _extract_attributes(model)
 
         model = ops.update_product(**kwargs)
         assert model.name == "new-name"
@@ -333,6 +362,32 @@ def _test_update(
             if (r.type_id, r.other_product_id) in relation_ids_old
         }
         assert relation_ids == expected_relation_ids
+
+        if attributes is None:
+            attributes = {}
+        expected = attributes_old.copy()
+        expected.update(attributes)
+        actual = _extract_attributes(model)
+        assert actual == expected
+
+
+##__________________________________________________________________||
+def test_delete(app):
+
+    with app.app_context():
+        model = ops.create_product(type_id=1, name="to_be_deleted")
+        ops.commit()
+        product_id = model.product_id
+
+    with app.app_context():
+        count = Product.query.count()
+        model = ops.delete_product(product_id=product_id)
+        ops.commit()
+
+    with app.app_context():
+        model = Product.query.filter_by(product_id=product_id).one_or_none()
+        assert model is None
+        assert Product.query.count() == (count - 1)
 
 
 ##__________________________________________________________________||
