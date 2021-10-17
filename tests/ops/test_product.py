@@ -179,6 +179,52 @@ def _extract_attributes(model):
 params = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
+    pytest.param(
+        [
+            {"type_id": 2, "product_id": 3},
+            {"type_id": 1, "product_id": 5},
+        ],
+        id="same",
+    ),
+    pytest.param(
+        [
+            {"type_id": 1, "product_id": 5},
+        ],
+        id="remove",
+    ),
+    pytest.param(
+        [
+            {"type_id": 2, "product_id": 3},
+            {"type_id": 1, "product_id": 5},
+            {"type_id": 1, "product_id": 4},
+        ],
+        id="add",
+    ),
+    pytest.param(
+        [
+            {"type_id": 1, "product_id": 4},
+            {"type_id": 2, "product_id": 3},
+        ],
+        id="add-remove",
+    ),
+    pytest.param(
+        [
+            {"type_id": 1, "product_id": 4},
+            {"type_id": 2, "product_id": 6},
+        ],
+        id="replace",
+    ),
+]
+
+
+@pytest.mark.parametrize("relations", params)
+def test_update_relations(app, relations):
+    return _test_update(app, relations=relations)
+
+
+params = [
+    pytest.param(None, id="none"),
+    pytest.param([], id="empty"),
     pytest.param(["/d/e", "/a/b/c"], id="same"),
     pytest.param(["/a/b/c", "/d/e"], id="same-perm"),
     pytest.param(["/a/b/c"], id="remove"),
@@ -214,6 +260,9 @@ def _test_update(
     if paths is not None:
         kwargs["paths"] = paths
 
+    if relations is not None:
+        kwargs["relations"] = relations
+
     if updating_git_hub_user_id:
         kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
 
@@ -223,6 +272,14 @@ def _test_update(
         model = Product.query.filter_by(product_id=product_id).one()
         paths_old = [p.path for p in model.paths]
         path_ids_old = {p.path: p.path_id for p in model.paths}
+
+        relations_old = {
+            (r.type_id, r.other_product_id) for r in model.relations
+        }
+        relation_ids_old = {
+            (r.type_id, r.other_product_id): r.relation_id
+            for r in model.relations
+        }
 
         model = ops.update_product(**kwargs)
         assert model.name == "new-name"
@@ -242,10 +299,12 @@ def _test_update(
         else:
             assert model.updating_git_hub_user is None
 
-        # paths
+        # NOTE: The order of the paths is being tested. However, it is
+        # probably not possible to control the order. The order in a
+        # Python list is not preserved once committed in the DB.
         if paths is not None:
-            paths_kept = [p for p in paths_old if p in paths]
-            expected = paths_kept + _normalize_paths(paths)
+            kept = [p for p in paths_old if p in paths]
+            expected = kept + _normalize_paths(paths)
             expected = list(dict.fromkeys(expected))  # uniq order preserved
         else:
             expected = paths_old
@@ -258,6 +317,22 @@ def _test_update(
             p.path: p.path_id for p in model.paths if p.path in path_ids_old
         }
         assert path_ids == expected_path_ids
+
+        if relations is not None:
+            expected = {(r["type_id"], r["product_id"]) for r in relations}
+        else:
+            expected = relations_old
+        actual = {(r.type_id, r.other_product_id) for r in model.relations}
+        assert actual == expected
+        expected_relation_ids = {
+            k: v for k, v in relation_ids_old.items() if k in expected
+        }
+        relation_ids = {
+            (r.type_id, r.other_product_id): r.relation_id
+            for r in model.relations
+            if (r.type_id, r.other_product_id) in relation_ids_old
+        }
+        assert relation_ids == expected_relation_ids
 
 
 ##__________________________________________________________________||

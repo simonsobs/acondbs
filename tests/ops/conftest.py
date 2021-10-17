@@ -64,11 +64,23 @@ def app(app_empty):
         ops.commit()
 
     with y.app_context():
-        ops.create_product(
-            product_id=1, type_id=1, paths=["/d/e", "/a/b/c"], name="map1"
-        )
         ops.create_product(product_id=2, type_id=2, name="beam1")
         ops.create_product(product_id=3, type_id=2, name="beam2")
+        ops.create_product(product_id=4, type_id=2, name="beam3")
+        ops.create_product(product_id=5, type_id=2, name="beam4")
+        ops.create_product(product_id=6, type_id=2, name="beam5")
+        ops.commit()
+
+        ops.create_product(
+            product_id=1,
+            type_id=1,
+            name="map1",
+            paths=["/d/e", "/a/b/c"],
+            relations=[
+                {"type_id": 2, "product_id": 3},
+                {"type_id": 1, "product_id": 5},
+            ],
+        )
         ops.commit()
 
     yield y

@@ -95,7 +95,13 @@ def test_update(app):
 ##__________________________________________________________________||
 def test_delete(app):
 
-    type_id = 1
+    with app.app_context():
+        model = ops.create_product_relation_type(
+            type_={"name": "to_be_deleted"},
+            reverse={"name": "reverse"},
+        )
+        ops.commit()
+        type_id = model.type_id
 
     with app.app_context():
         count = ProductRelationType.query.count()
