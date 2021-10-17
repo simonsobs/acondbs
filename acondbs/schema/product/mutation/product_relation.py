@@ -7,10 +7,10 @@ from ....models import (
 )
 
 from ....db.sa import sa
-from ....db.backup import request_backup_db
 
 from .. import type_
 
+from .... import ops
 
 ##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
@@ -58,9 +58,8 @@ class CreateProductRelation(graphene.Mutation):
         model = ProductRelationModel(type_=type_, self_=self_, other=other)
 
         sa.session.add(model)
-        sa.session.commit()
+        ops.commit()
         ok = True
-        request_backup_db()
         return CreateProductRelation(product_relation=model, ok=ok)
 
 
@@ -83,9 +82,8 @@ class DeleteProductRelation(graphene.Mutation):
             relation_id=relation_id
         ).one()
         sa.session.delete(model)
-        sa.session.commit()
+        ops.commit()
         ok = True
-        request_backup_db()
         return DeleteProductRelation(ok=ok)
 
 

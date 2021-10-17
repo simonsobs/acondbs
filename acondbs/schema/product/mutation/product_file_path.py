@@ -3,9 +3,10 @@ import graphene
 from ....models import ProductFilePath as ProductFilePathModel
 
 from ....db.sa import sa
-from ....db.backup import request_backup_db
 
 from .. import type_
+
+from .... import ops
 
 
 ##__________________________________________________________________||
@@ -35,9 +36,8 @@ class CreateProductFilePath(graphene.Mutation):
     def mutate(root, info, input):
         path = ProductFilePathModel(**input)
         sa.session.add(path)
-        sa.session.commit()
+        ops.commit()
         ok = True
-        request_backup_db()
         return CreateProductFilePath(productFilePath=path, ok=ok)
 
 
@@ -53,9 +53,8 @@ class UpdateProductFilePath(graphene.Mutation):
         path = ProductFilePathModel.query.filter_by(path_id=path_id).first()
         for k, v in input.items():
             setattr(path, k, v)
-        sa.session.commit()
+        ops.commit()
         ok = True
-        request_backup_db()
         return UpdateProductFilePath(productFilePath=path, ok=ok)
 
 
@@ -68,9 +67,8 @@ class DeleteProductFilePath(graphene.Mutation):
     def mutate(root, info, path_id):
         path = ProductFilePathModel.query.filter_by(path_id=path_id).first()
         sa.session.delete(path)
-        sa.session.commit()
+        ops.commit()
         ok = True
-        request_backup_db()
         return DeleteProductFilePath(ok=ok)
 
 

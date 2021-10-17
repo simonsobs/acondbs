@@ -134,9 +134,6 @@ def mock_request_backup_db(monkeypatch):
     """mock request_backup_db() so that backups won't be actually taken in tests"""
 
     targets = [
-        "acondbs.schema.product.mutation.product_file_path.request_backup_db",
-        "acondbs.schema.product.mutation.product_relation.request_backup_db",
-        "acondbs.schema.github.mutation.request_backup_db",
         "acondbs.schema.github.mutation.request_backup_db",
         "acondbs.ops.misc.request_backup_db",
     ]
