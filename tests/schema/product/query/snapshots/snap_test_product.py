@@ -46,6 +46,26 @@ snapshots['test_schema[deep] 1'] = {
             },
             'attributesUnicodeText': {
                 'edges': [
+                    {
+                        'node': {
+                            'field': {
+                                'name': 'contact',
+                                'type_': 'UNICODE_TEXT'
+                            },
+                            'name': 'contact',
+                            'value': None
+                        }
+                    },
+                    {
+                        'node': {
+                            'field': {
+                                'name': 'produced_by',
+                                'type_': 'UNICODE_TEXT'
+                            },
+                            'name': 'produced_by',
+                            'value': None
+                        }
+                    }
                 ]
             },
             'contact': None,
