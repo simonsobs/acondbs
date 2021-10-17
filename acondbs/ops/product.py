@@ -197,7 +197,7 @@ def _update_relations(old, input):
         other = Product.query.filter_by(product_id=product_id).one()
         model_dict[id_] = ProductRelation(type_=type_, other=other)
 
-    return [model_dict[i] for i in sorted(new_ids)]
+    return [model_dict[i] for i in new_ids]
 
 
 ##__________________________________________________________________||
