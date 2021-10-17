@@ -43,12 +43,17 @@ async def assert_mutation(
     mock_request_backup_db,
     success=True,
 ):
+    if success:
+        mock_request_backup_db.reset_mock()
+
     await assert_query(
         app, snapshot, data_mutation, headers_mutation, error=not success
     )
-    await assert_query(app, snapshot, data_query, headers_query)
+
     if success:
         mock_request_backup_db.assert_called_once()
+
+    await assert_query(app, snapshot, data_query, headers_query)
 
 
 ##__________________________________________________________________||
