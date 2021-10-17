@@ -25,20 +25,8 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
-                                        },
-                                        'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
                                         }
                                     }
                                 },
@@ -49,8 +37,20 @@ snapshots['test_schema_error[error-nonexistent] 1'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
+                                        },
+                                        'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
                                         }
                                     }
                                 }
@@ -174,20 +174,8 @@ snapshots['test_schema_error[error-unempty] 1'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
-                                        },
-                                        'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
                                         }
                                     }
                                 },
@@ -198,8 +186,20 @@ snapshots['test_schema_error[error-unempty] 1'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
+                                        },
+                                        'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
                                         }
                                     }
                                 }
@@ -331,20 +331,8 @@ snapshots['test_schema_success[delete] 2'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
-                                        },
-                                        'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
                                         }
                                     }
                                 },
@@ -355,8 +343,20 @@ snapshots['test_schema_success[delete] 2'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
+                                        },
+                                        'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
                                         }
                                     }
                                 }

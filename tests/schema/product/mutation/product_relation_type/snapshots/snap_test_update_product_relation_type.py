@@ -25,20 +25,8 @@ snapshots['test_schema_error[error-immutable-field] 1'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
-                                        },
-                                        'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
                                         }
                                     }
                                 },
@@ -49,8 +37,20 @@ snapshots['test_schema_error[error-immutable-field] 1'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
+                                        },
+                                        'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
                                         }
                                     }
                                 }
@@ -173,20 +173,8 @@ snapshots['test_schema_success[update] 1'] = {
                                     'productId': '1'
                                 },
                                 'self_': {
-                                    'name': 'beam2',
-                                    'productId': '5'
-                                }
-                            }
-                        },
-                        {
-                            'node': {
-                                'other': {
                                     'name': 'beam1',
                                     'productId': '4'
-                                },
-                                'self_': {
-                                    'name': 'beam2',
-                                    'productId': '5'
                                 }
                             }
                         },
@@ -197,8 +185,20 @@ snapshots['test_schema_success[update] 1'] = {
                                     'productId': '1'
                                 },
                                 'self_': {
+                                    'name': 'beam2',
+                                    'productId': '5'
+                                }
+                            }
+                        },
+                        {
+                            'node': {
+                                'other': {
                                     'name': 'beam1',
                                     'productId': '4'
+                                },
+                                'self_': {
+                                    'name': 'beam2',
+                                    'productId': '5'
                                 }
                             }
                         }
@@ -233,20 +233,8 @@ snapshots['test_schema_success[update] 2'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
-                                        },
-                                        'self_': {
-                                            'name': 'beam2',
-                                            'productId': '5'
                                         }
                                     }
                                 },
@@ -257,8 +245,20 @@ snapshots['test_schema_success[update] 2'] = {
                                             'productId': '1'
                                         },
                                         'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
+                                        }
+                                    }
+                                },
+                                {
+                                    'node': {
+                                        'other': {
                                             'name': 'beam1',
                                             'productId': '4'
+                                        },
+                                        'self_': {
+                                            'name': 'beam2',
+                                            'productId': '5'
                                         }
                                     }
                                 }
