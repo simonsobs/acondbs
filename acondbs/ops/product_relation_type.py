@@ -16,8 +16,7 @@ def create_product_relation_type(type_, reverse=None, self_reverse=False):
     if self_reverse:
         model.reverse = model
     else:
-        reverse_ = ProductRelationType(**reverse)
-        model.reverse = reverse_
+        model.reverse = ProductRelationType(**reverse)
 
     sa.session.add(model)
     return model
