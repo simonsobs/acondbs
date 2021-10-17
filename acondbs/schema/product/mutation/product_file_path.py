@@ -1,11 +1,6 @@
 import graphene
 
-from ....models import ProductFilePath as ProductFilePathModel
-
-from ....db.sa import sa
-
 from .. import type_
-
 from .... import ops
 
 
@@ -34,11 +29,10 @@ class CreateProductFilePath(graphene.Mutation):
     productFilePath = graphene.Field(lambda: type_.ProductFilePath)
 
     def mutate(root, info, input):
-        path = ProductFilePathModel(**input)
-        sa.session.add(path)
+        model = ops.create_product_file_path(**input)
         ops.commit()
         ok = True
-        return CreateProductFilePath(productFilePath=path, ok=ok)
+        return CreateProductFilePath(productFilePath=model, ok=ok)
 
 
 class UpdateProductFilePath(graphene.Mutation):
@@ -50,12 +44,10 @@ class UpdateProductFilePath(graphene.Mutation):
     productFilePath = graphene.Field(lambda: type_.ProductFilePath)
 
     def mutate(root, info, path_id, input):
-        path = ProductFilePathModel.query.filter_by(path_id=path_id).first()
-        for k, v in input.items():
-            setattr(path, k, v)
+        model = ops.update_product_file_path(path_id, **input)
         ops.commit()
         ok = True
-        return UpdateProductFilePath(productFilePath=path, ok=ok)
+        return UpdateProductFilePath(productFilePath=model, ok=ok)
 
 
 class DeleteProductFilePath(graphene.Mutation):
@@ -65,8 +57,7 @@ class DeleteProductFilePath(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, path_id):
-        path = ProductFilePathModel.query.filter_by(path_id=path_id).first()
-        sa.session.delete(path)
+        ops.delete_product_file_path(path_id)
         ops.commit()
         ok = True
         return DeleteProductFilePath(ok=ok)

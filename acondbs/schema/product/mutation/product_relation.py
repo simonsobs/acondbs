@@ -1,16 +1,8 @@
 import graphene
 
-from ....models import (
-    Product as ProductModel,
-    ProductRelation as ProductRelationModel,
-    ProductRelationType as ProductRelationTypeModel,
-)
-
-from ....db.sa import sa
-
 from .. import type_
-
 from .... import ops
+
 
 ##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
@@ -45,19 +37,7 @@ class CreateProductRelation(graphene.Mutation):
     product_relation = graphene.Field(lambda: type_.ProductRelation)
 
     def mutate(root, info, input):
-        type_ = ProductRelationTypeModel.query.filter_by(
-            type_id=input["type_id"]
-        ).one()
-        self_ = ProductModel.query.filter_by(
-            product_id=input["self_product_id"]
-        ).one()
-        other = ProductModel.query.filter_by(
-            product_id=input["other_product_id"]
-        ).one()
-
-        model = ProductRelationModel(type_=type_, self_=self_, other=other)
-
-        sa.session.add(model)
+        model = ops.create_product_relation(**input)
         ops.commit()
         ok = True
         return CreateProductRelation(product_relation=model, ok=ok)
@@ -78,10 +58,7 @@ class DeleteProductRelation(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(root, info, relation_id):
-        model = ProductRelationModel.query.filter_by(
-            relation_id=relation_id
-        ).one()
-        sa.session.delete(model)
+        ops.delete_product_relation(relation_id)
         ops.commit()
         ok = True
         return DeleteProductRelation(ok=ok)
