@@ -76,16 +76,16 @@ snapshots['test_schema[deep] 1'] = {
                 'edges': [
                     {
                         'node': {
-                            'note': 'sample comment',
-                            'path': 'site1:/path/to/map1',
+                            'note': None,
+                            'path': 'site2:/another/way/map1',
                             'pathId': '1'
                         }
                     },
                     {
                         'node': {
-                            'note': None,
-                            'path': 'site2:/another/way/map1',
-                            'pathId': '2'
+                            'note': 'sample comment',
+                            'path': 'site1:/path/to/map1',
+                            'pathId': '8'
                         }
                     }
                 ]
