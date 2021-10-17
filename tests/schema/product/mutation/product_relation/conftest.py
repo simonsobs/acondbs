@@ -2,13 +2,7 @@ import pytest
 
 import datetime
 
-from acondbs.db.sa import sa
-from acondbs.models import (
-    ProductType,
-    Product,
-    ProductRelationType,
-    ProductRelation,
-)
+from acondbs import ops
 
 
 ##__________________________________________________________________||
@@ -24,43 +18,65 @@ def app(app_users):
     # map2
     # map3
 
-    # create relation types
-    Parent = ProductRelationType(type_id=1, name="parent")
-    Parent.reverse = ProductRelationType(type_id=2, name="child")
+    with y.app_context():
+        ops.create_product_relation_type(
+            type_={"type_id": 1, "name": "parent"},
+            reverse={"type_id": 2, "name": "child"},
+        )
 
-    # create product types
-    Map = ProductType(type_id=1, name="map")
-    Beam = ProductType(type_id=2, name="beam")
+        ops.create_product_type(type_id=1, name="map")
+        ops.create_product_type(type_id=2, name="beam")
 
-    # create products
-    map1 = Product(
-        product_id=1, name="map1", date_produced=datetime.date(2020, 2, 1), type_=Map
-    )
-    map2 = Product(  # noqa: F841
-        product_id=2, name="map2", date_produced=datetime.date(2020, 2, 10), type_=Map
-    )
-    map3 = Product(  # noqa: F841
-        product_id=3, name="map3", date_produced=datetime.date(2020, 3, 19), type_=Map
-    )
-    beam1 = Product(
-        product_id=4, name="beam1", date_produced=datetime.date(2020, 2, 5), type_=Beam
-    )
-    beam2 = Product(
-        product_id=5, name="beam2", date_produced=datetime.date(2020, 3, 4), type_=Beam
-    )
-
-    # create relations
-    relation1 = ProductRelation(  # noqa: F841
-        relation_id=2, type_=Parent, self_=beam1, other=map1
-    )
-    relation2 = ProductRelation(  # noqa: F841
-        relation_id=4, type_=Parent, self_=beam2, other=beam1
-    )
+        ops.commit()
 
     with y.app_context():
-        sa.session.add(Map)
-        sa.session.add(Beam)
-        sa.session.commit()
+        ops.create_product(
+            product_id=1,
+            type_id=1,
+            name="map1",
+            date_produced=datetime.date(2020, 2, 1),
+        )
+        ops.create_product(
+            product_id=2,
+            type_id=1,
+            name="map2",
+            date_produced=datetime.date(2020, 2, 10),
+        )
+        ops.create_product(
+            product_id=3,
+            type_id=1,
+            name="map3",
+            date_produced=datetime.date(2020, 3, 19),
+        )
+        ops.create_product(
+            product_id=4,
+            type_id=2,
+            name="beam1",
+            date_produced=datetime.date(2020, 2, 5),
+        )
+        ops.create_product(
+            product_id=5,
+            type_id=2,
+            name="beam2",
+            date_produced=datetime.date(2020, 3, 4),
+        )
+        ops.commit()
+
+    with y.app_context():
+        ops.create_product_relation(
+            relation_id=2,
+            type_id=1,
+            self_product_id=4,
+            other_product_id=1,
+        )
+        ops.create_product_relation(
+            relation_id=4,
+            type_id=1,
+            self_product_id=5,
+            other_product_id=4,
+        )
+        ops.commit()
+
     yield y
 
 
