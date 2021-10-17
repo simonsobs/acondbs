@@ -1,8 +1,8 @@
 import graphene
 
-from sqlalchemy import MetaData
+from alembic.migration import MigrationContext
 
-from ..db.sa import sa
+from ..db.conn import get_db_connection
 
 
 ##__________________________________________________________________||
@@ -21,20 +21,11 @@ version_field = graphene.Field(
 
 ##__________________________________________________________________||
 def resolve_alembic_version(parent, info):
-    tbl_name = "alembic_version"
-    engine = sa.engine
-    metadata = MetaData()
-    metadata.reflect(bind=engine)
-    if tbl_name not in metadata.tables:
-        return None
-    tbl = metadata.tables[tbl_name]
-    result_proxy = engine.execute(tbl.select())
-    result_dict = [
-        dict(r) for r in result_proxy
-    ]  # e.g., [{'version_num': '63033c01def0'}]
-    if result_dict:
-        return result_dict[0].get("version_num")
-    return None
+    conn = get_db_connection()
+    context = MigrationContext.configure(conn)
+    ret = context.get_current_revision()
+    # e.g., "35e6ddccd22a"
+    return ret
 
 
 alembic_version_field = graphene.Field(
