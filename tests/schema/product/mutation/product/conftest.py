@@ -6,7 +6,6 @@ from acondbs.db.sa import sa
 from acondbs.models import (
     GitHubUser,
     GitHubToken,
-    FieldType,
 )
 
 from acondbs import ops
@@ -52,17 +51,17 @@ def app(app_empty):
         ops.create_field(
             field_id=1,
             name="contact",
-            type_=FieldType.UnicodeText,
+            type_=ops.FieldType.UnicodeText,
         )
         ops.create_field(
             field_id=2,
             name="produced_by",
-            type_=FieldType.UnicodeText,
+            type_=ops.FieldType.UnicodeText,
         )
         ops.create_field(
             field_id=3,
             name="date_produced",
-            type_=FieldType.Date,
+            type_=ops.FieldType.Date,
         )
         ops.commit()
 

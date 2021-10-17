@@ -2,7 +2,6 @@ import pytest
 
 import datetime
 
-from acondbs.models import FieldType
 from acondbs import ops
 
 
@@ -17,27 +16,27 @@ def app(app_users):
         ops.create_field(
             field_id=1,
             name="contact",
-            type_=FieldType.UnicodeText,
+            type_=ops.FieldType.UnicodeText,
         )
         ops.create_field(
             field_id=2,
             name="produced_by",
-            type_=FieldType.UnicodeText,
+            type_=ops.FieldType.UnicodeText,
         )
         ops.create_field(
             field_id=3,
             name="date_produced",
-            type_=FieldType.Date,
+            type_=ops.FieldType.Date,
         )
         ops.create_field(
             field_id=4,
             name="field_four",
-            type_=FieldType.UnicodeText,
+            type_=ops.FieldType.UnicodeText,
         )
         ops.create_field(
             field_id=5,
             name="field_five",
-            type_=FieldType.UnicodeText,
+            type_=ops.FieldType.UnicodeText,
         )
 
         ops.commit()

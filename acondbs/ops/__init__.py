@@ -34,4 +34,5 @@ from .field import (  # noqa: F401
     create_field,
     update_field,
     delete_field,
+    FieldType,
 )
