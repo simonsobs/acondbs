@@ -1,5 +1,4 @@
 from flask import json
-from pathlib import Path
 
 import pytest
 import unittest.mock as mock
@@ -7,7 +6,6 @@ import unittest.mock as mock
 from acondbs import create_app
 from acondbs.db.ops import define_tables
 
-from ..constants import SAMPLE_DIR
 
 ##__________________________________________________________________||
 QUERY = '''
@@ -32,6 +30,17 @@ QUERY = '''
 }
 '''
 
+
+##__________________________________________________________________||
+@pytest.fixture
+def app_empty():
+    database_uri = "sqlite:///:memory:"
+    y = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
+    with y.app_context():
+        define_tables()
+    yield y
+
+
 ##__________________________________________________________________||
 @pytest.fixture()
 def mock_auth(monkeypatch):
@@ -39,24 +48,19 @@ def mock_auth(monkeypatch):
     monkeypatch.setattr("acondbs.blueprint.auth", y)
     yield y
 
+
 ##__________________________________________________________________||
 @pytest.mark.parametrize('is_signed_in', [True, False])
 @pytest.mark.parametrize('is_admin', [True, False])
-def test_schema_selection(is_signed_in, is_admin, mock_auth, snapshot):
+def test_schema_selection(app_empty, is_signed_in, is_admin, mock_auth, snapshot):
+    app = app_empty
 
     mock_auth.is_signed_in.return_value = is_signed_in
     mock_auth.is_admin.return_value = is_admin
 
-    config_path = Path(SAMPLE_DIR, 'config.py')
-    kwargs = {"SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:"}
-    app = create_app(config_path, **kwargs)
-    with app.app_context():
-        define_tables()
     client = app.test_client()
 
-    response = client.get(
-        '/graphql',
-        query_string=dict(query=QUERY))
+    response = client.get('/graphql', query_string=dict(query=QUERY))
 
     assert 200 == response.status_code
 
