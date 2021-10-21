@@ -15,10 +15,7 @@ class GraphQLView(GraphQLView):
 
         h = request.headers
         h = str(h)
-        if request.data:
-            data_dict = json.loads(request.data)
-        else:
-            data_dict = {}
+        data_dict = self.parse_body()
         m = "\n".join(
             [
                 textwrap.dedent(
