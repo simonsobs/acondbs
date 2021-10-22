@@ -268,7 +268,7 @@ snapshots['test_non_empty 1'] = {
             'user_id': 2
         }
     ],
-    'logging': [
+    'log': [
     ],
     'product_file_paths': [
         {
