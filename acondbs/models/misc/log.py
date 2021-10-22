@@ -4,8 +4,8 @@ from ...db.sa import sa
 
 
 ##__________________________________________________________________||
-class Logging(sa.Model):
-    __tablename__ = "logging"
+class Log(sa.Model):
+    __tablename__ = "log"
     id_ = sa.Column(sa.Integer(), primary_key=True)
     level = sa.Column(sa.Text())
     message = sa.Column(sa.Text())

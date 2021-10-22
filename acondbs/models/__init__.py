@@ -43,7 +43,7 @@ from .account import AccountAdmin  # noqa: F401
 
 from .web import WebConfig  # noqa: F401
 
-from .misc import Logging  # noqa: F401
+from .misc import Log  # noqa: F401
 
 
 ##__________________________________________________________________||

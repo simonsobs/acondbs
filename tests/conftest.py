@@ -154,7 +154,7 @@ def mock_datetime(monkeypatch):
     targets = [
         "acondbs.models.github.github_token.datetime",
         "acondbs.models.product.product.datetime",
-        "acondbs.models.misc.logging.datetime",
+        "acondbs.models.misc.log.datetime",
         "acondbs.ops.product.datetime",
     ]
 
