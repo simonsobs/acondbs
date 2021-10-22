@@ -36,3 +36,7 @@ from .field import (  # noqa: F401
     delete_field,
     FieldType,
 )
+from .log import (  # noqa: F401
+    create_log,
+    delete_log,
+)
