@@ -3,6 +3,7 @@ from graphene import relay
 
 from . import version as version_, web, auth, github, product as p
 
+
 ##__________________________________________________________________||
 class QueryPublic(graphene.ObjectType):
     web_config = web.web_config_field
