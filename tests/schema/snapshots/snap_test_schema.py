@@ -150,6 +150,12 @@ snapshots['test_schema[admin] 1'] = {
                     },
                     {
                         'name': 'allGitHubTokens'
+                    },
+                    {
+                        'name': 'allLogsField'
+                    },
+                    {
+                        'name': 'log'
                     }
                 ]
             },
@@ -222,6 +228,12 @@ snapshots['test_schema[admin] 1'] = {
                         },
                         {
                             'name': 'allGitHubTokens'
+                        },
+                        {
+                            'name': 'allLogsField'
+                        },
+                        {
+                            'name': 'log'
                         }
                     ],
                     'kind': 'OBJECT',
@@ -1532,6 +1544,59 @@ snapshots['test_schema[admin] 1'] = {
                     'fields': None,
                     'kind': 'ENUM',
                     'name': 'GitHubUserSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'LogConnection'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'LogEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'id_'
+                        },
+                        {
+                            'name': 'level'
+                        },
+                        {
+                            'name': 'message'
+                        },
+                        {
+                            'name': 'time'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'Log'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'LogSortEnum'
                 },
                 {
                     'fields': [
