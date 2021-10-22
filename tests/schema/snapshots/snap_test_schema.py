@@ -152,7 +152,7 @@ snapshots['test_schema[admin] 1'] = {
                         'name': 'allGitHubTokens'
                     },
                     {
-                        'name': 'allLogsField'
+                        'name': 'allLogs'
                     },
                     {
                         'name': 'log'
@@ -230,7 +230,7 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'allGitHubTokens'
                         },
                         {
-                            'name': 'allLogsField'
+                            'name': 'allLogs'
                         },
                         {
                             'name': 'log'
