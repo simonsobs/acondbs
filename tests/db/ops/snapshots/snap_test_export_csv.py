@@ -268,6 +268,8 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'user_id': 2
         }
     ],
+    'logging': [
+    ],
     'product_file_paths': [
         {
             'note': '',
