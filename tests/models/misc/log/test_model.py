@@ -7,7 +7,7 @@ def test_column(app_empty):
     app = app_empty
 
     with app.app_context():
-        model = Log(level="ERROR", message="an exception occured")
+        model = Log(level="ERROR", message="an exception occurred")
         sa.session.add(model)
         sa.session.commit()
         id_ = model.id_
@@ -21,7 +21,7 @@ def test_column(app_empty):
 def test_repr(app_empty):
     app = app_empty
 
-    model = Log(level="ERROR", message="an exception occured")
+    model = Log(level="ERROR", message="an exception occurred")
     repr(model)
 
     with app.app_context():
