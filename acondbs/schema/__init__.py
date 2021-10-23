@@ -20,6 +20,7 @@ class QueryPublic(graphene.ObjectType):
 
 class MutationPublic(graphene.ObjectType):
     authenticate_with_git_hub = github.mutation.AuthenticateWithGitHub.Field()
+    create_log = misc.mutation.CreateLog.Field()
 
 
 ##__________________________________________________________________||
@@ -97,6 +98,7 @@ class QueryAdmin(QueryPrivate):
     #
     log = misc.query.log_field
 
+
 class MutationAdmin(MutationPrivate):
 
     #
@@ -113,6 +115,8 @@ class MutationAdmin(MutationPrivate):
     update_git_hub_org_member_lists = (
         github.mutation.UpdateGitHubOrgMemberLists.Field()
     )
+
+    delete_log = misc.mutation.DeleteLog.Field()
 
 
 ##__________________________________________________________________||
