@@ -5,7 +5,7 @@ import traceback
 from flask import Blueprint, current_app
 from flask_graphql import GraphQLView
 
-from .. import auth, schema
+from .. import auth, schema, ops
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 
 ##__________________________________________________________________||
@@ -52,13 +52,18 @@ class GraphQLView(GraphQLView):
         if res.status_code == 200:
             return
 
+        level = "ERROR"
+
         try:
             msg = self._compose_message(res)
         except BaseException:
             msg = traceback.format_exc()
 
-        print(msg)
-        print()
+        # print(msg)
+        # print()
+
+        ops.create_log(level=level, message=msg)
+        ops.commit()
 
     def _compose_message(self, res):
         content = {
