@@ -24,7 +24,7 @@ class UpdateFieldInput(graphene.InputObjectType, CommonInputFields):
 
 ##__________________________________________________________________||
 class CreateField(graphene.Mutation):
-    """Create a product type"""
+    """Create a field"""
 
     class Arguments:
         input = CreateFieldInput(required=True)
@@ -40,7 +40,7 @@ class CreateField(graphene.Mutation):
 
 
 class UpdateField(graphene.Mutation):
-    """Update a product type"""
+    """Update a field"""
 
     class Arguments:
         field_id = graphene.Int(required=True)
@@ -58,7 +58,7 @@ class UpdateField(graphene.Mutation):
 
 
 class DeleteField(graphene.Mutation):
-    """Delete a product type"""
+    """Delete a field"""
 
     class Arguments:
         field_id = graphene.Int(description="The fieldId of the field")

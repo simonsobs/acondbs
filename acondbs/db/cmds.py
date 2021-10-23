@@ -52,7 +52,7 @@ def export_csv_command(csvdir):
 
 
 ##__________________________________________________________________||
-DEFAULT_EXCLUDES = ("github_tokens", "account_admins")
+DEFAULT_EXCLUDES = ("github_tokens", "account_admins", "log")
 
 
 @click.command("backup-db")

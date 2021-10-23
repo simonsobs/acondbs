@@ -1,7 +1,15 @@
 import graphene
 from graphene import relay
 
-from . import version as version_, web, auth, github, product as p
+from . import (
+    version as version_,
+    web,
+    auth,
+    github,
+    misc,
+    product as p,
+)
+
 
 ##__________________________________________________________________||
 class QueryPublic(graphene.ObjectType):
@@ -12,6 +20,7 @@ class QueryPublic(graphene.ObjectType):
 
 class MutationPublic(graphene.ObjectType):
     authenticate_with_git_hub = github.mutation.AuthenticateWithGitHub.Field()
+    create_log = misc.mutation.CreateLog.Field()
 
 
 ##__________________________________________________________________||
@@ -83,6 +92,12 @@ class QueryAdmin(QueryPrivate):
     all_git_hub_tokens = github.query.all_git_hub_tokens_field
     all_git_hub_users = github.query.all_git_hub_users_field
 
+    #
+    all_logs = misc.query.all_logs_field
+
+    #
+    log = misc.query.log_field
+
 
 class MutationAdmin(MutationPrivate):
 
@@ -100,6 +115,8 @@ class MutationAdmin(MutationPrivate):
     update_git_hub_org_member_lists = (
         github.mutation.UpdateGitHubOrgMemberLists.Field()
     )
+
+    delete_log = misc.mutation.DeleteLog.Field()
 
 
 ##__________________________________________________________________||

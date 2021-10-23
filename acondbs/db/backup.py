@@ -57,12 +57,12 @@ def backup_db(exclude_csv=None):
     try:
         backup_db_to_github()
     except Exception as e:
-        warnings.warn('An exception occured in backup_db_to_github(): {}'.format(e))
+        warnings.warn('An exception occurred in backup_db_to_github(): {}'.format(e))
 
     try:
         backup_db_as_csv_to_github(exclude=exclude_csv)
     except Exception as e:
-        warnings.warn('An exception occured in backup_db_as_csv_to_github(): {}'.format(e))
+        warnings.warn('An exception occurred in backup_db_as_csv_to_github(): {}'.format(e))
 
 ##__________________________________________________________________||
 def backup_db_to_github():

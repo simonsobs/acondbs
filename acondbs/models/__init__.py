@@ -43,6 +43,8 @@ from .account import AccountAdmin  # noqa: F401
 
 from .web import WebConfig  # noqa: F401
 
+from .misc import Log  # noqa: F401
+
 
 ##__________________________________________________________________||
 def init_app(app):
