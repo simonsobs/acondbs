@@ -16,6 +16,9 @@ snapshots['test_schema[admin] 1'] = {
                         'name': 'authenticateWithGitHub'
                     },
                     {
+                        'name': 'createLog'
+                    },
+                    {
                         'name': 'createProduct'
                     },
                     {
@@ -80,6 +83,9 @@ snapshots['test_schema[admin] 1'] = {
                     },
                     {
                         'name': 'updateGitHubOrgMemberLists'
+                    },
+                    {
+                        'name': 'deleteLog'
                     }
                 ]
             },
@@ -1604,6 +1610,9 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'authenticateWithGitHub'
                         },
                         {
+                            'name': 'createLog'
+                        },
+                        {
                             'name': 'createProduct'
                         },
                         {
@@ -1668,6 +1677,9 @@ snapshots['test_schema[admin] 1'] = {
                         },
                         {
                             'name': 'updateGitHubOrgMemberLists'
+                        },
+                        {
+                            'name': 'deleteLog'
                         }
                     ],
                     'kind': 'OBJECT',
@@ -1690,6 +1702,23 @@ snapshots['test_schema[admin] 1'] = {
                     ],
                     'kind': 'OBJECT',
                     'name': 'AuthPayload'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'log'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'CreateLog'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'CreateLogInput'
                 },
                 {
                     'fields': [
@@ -2038,6 +2067,15 @@ snapshots['test_schema[admin] 1'] = {
                 {
                     'fields': [
                         {
+                            'name': 'ok'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'DeleteLog'
+                },
+                {
+                    'fields': [
+                        {
                             'name': 'types'
                         },
                         {
@@ -2189,6 +2227,9 @@ snapshots['test_schema[private] 1'] = {
                 'fields': [
                     {
                         'name': 'authenticateWithGitHub'
+                    },
+                    {
+                        'name': 'createLog'
                     },
                     {
                         'name': 'createProduct'
@@ -3612,6 +3653,9 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'authenticateWithGitHub'
                         },
                         {
+                            'name': 'createLog'
+                        },
+                        {
                             'name': 'createProduct'
                         },
                         {
@@ -3683,6 +3727,44 @@ snapshots['test_schema[private] 1'] = {
                     ],
                     'kind': 'OBJECT',
                     'name': 'AuthPayload'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'log'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'CreateLog'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'id_'
+                        },
+                        {
+                            'name': 'level'
+                        },
+                        {
+                            'name': 'message'
+                        },
+                        {
+                            'name': 'time'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'Log'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'CreateLogInput'
                 },
                 {
                     'fields': [
@@ -4134,6 +4216,9 @@ snapshots['test_schema[public-no-token] 1'] = {
                 'fields': [
                     {
                         'name': 'authenticateWithGitHub'
+                    },
+                    {
+                        'name': 'createLog'
                     }
                 ]
             },
@@ -4240,6 +4325,9 @@ snapshots['test_schema[public-no-token] 1'] = {
                     'fields': [
                         {
                             'name': 'authenticateWithGitHub'
+                        },
+                        {
+                            'name': 'createLog'
                         }
                     ],
                     'kind': 'OBJECT',
@@ -4262,6 +4350,54 @@ snapshots['test_schema[public-no-token] 1'] = {
                     ],
                     'kind': 'OBJECT',
                     'name': 'AuthPayload'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'log'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'CreateLog'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'id_'
+                        },
+                        {
+                            'name': 'level'
+                        },
+                        {
+                            'name': 'message'
+                        },
+                        {
+                            'name': 'time'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'Log'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'DateTime'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'CreateLogInput'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Int'
                 },
                 {
                     'fields': [
@@ -4417,6 +4553,9 @@ snapshots['test_schema[public-wrong-token] 1'] = {
                 'fields': [
                     {
                         'name': 'authenticateWithGitHub'
+                    },
+                    {
+                        'name': 'createLog'
                     }
                 ]
             },
@@ -4523,6 +4662,9 @@ snapshots['test_schema[public-wrong-token] 1'] = {
                     'fields': [
                         {
                             'name': 'authenticateWithGitHub'
+                        },
+                        {
+                            'name': 'createLog'
                         }
                     ],
                     'kind': 'OBJECT',
@@ -4545,6 +4687,54 @@ snapshots['test_schema[public-wrong-token] 1'] = {
                     ],
                     'kind': 'OBJECT',
                     'name': 'AuthPayload'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'log'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'CreateLog'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'id_'
+                        },
+                        {
+                            'name': 'level'
+                        },
+                        {
+                            'name': 'message'
+                        },
+                        {
+                            'name': 'time'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'Log'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'DateTime'
+                },
+                {
+                    'fields': None,
+                    'kind': 'INPUT_OBJECT',
+                    'name': 'CreateLogInput'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Int'
                 },
                 {
                     'fields': [

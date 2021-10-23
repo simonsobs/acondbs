@@ -14,6 +14,9 @@ snapshots['test_schema_selection[False-False] 1'] = {
                 'fields': [
                     {
                         'name': 'authenticateWithGitHub'
+                    },
+                    {
+                        'name': 'createLog'
                     }
                 ]
             },
@@ -42,6 +45,9 @@ snapshots['test_schema_selection[False-True] 1'] = {
                 'fields': [
                     {
                         'name': 'authenticateWithGitHub'
+                    },
+                    {
+                        'name': 'createLog'
                     },
                     {
                         'name': 'createProduct'
@@ -171,6 +177,9 @@ snapshots['test_schema_selection[True-False] 1'] = {
                         'name': 'authenticateWithGitHub'
                     },
                     {
+                        'name': 'createLog'
+                    },
+                    {
                         'name': 'createProduct'
                     },
                     {
@@ -235,6 +244,9 @@ snapshots['test_schema_selection[True-False] 1'] = {
                     },
                     {
                         'name': 'updateGitHubOrgMemberLists'
+                    },
+                    {
+                        'name': 'deleteLog'
                     }
                 ]
             },
@@ -305,6 +317,12 @@ snapshots['test_schema_selection[True-False] 1'] = {
                     },
                     {
                         'name': 'allGitHubTokens'
+                    },
+                    {
+                        'name': 'allLogs'
+                    },
+                    {
+                        'name': 'log'
                     }
                 ]
             },
@@ -322,6 +340,9 @@ snapshots['test_schema_selection[True-True] 1'] = {
                         'name': 'authenticateWithGitHub'
                     },
                     {
+                        'name': 'createLog'
+                    },
+                    {
                         'name': 'createProduct'
                     },
                     {
@@ -386,6 +407,9 @@ snapshots['test_schema_selection[True-True] 1'] = {
                     },
                     {
                         'name': 'updateGitHubOrgMemberLists'
+                    },
+                    {
+                        'name': 'deleteLog'
                     }
                 ]
             },
@@ -456,6 +480,12 @@ snapshots['test_schema_selection[True-True] 1'] = {
                     },
                     {
                         'name': 'allGitHubTokens'
+                    },
+                    {
+                        'name': 'allLogs'
+                    },
+                    {
+                        'name': 'log'
                     }
                 ]
             },
