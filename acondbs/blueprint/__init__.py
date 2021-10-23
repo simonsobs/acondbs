@@ -1,3 +1,7 @@
+import textwrap
+import json
+import traceback
+
 from flask import Blueprint, current_app
 from flask_graphql import GraphQLView
 
@@ -8,59 +12,81 @@ from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 from flask import request
 
 
-class GraphQLView(GraphQLView):
-    def _format_request_to_str(self):
-        import json
-        import textwrap
+def format_to_str(data_dict):
 
-        h = request.headers
-        h = str(h)
-        data_dict = self.parse_body()
-        m = "\n".join(
-            [
-                textwrap.dedent(
-                    """
-            {}:
-            {}
-            """
-                )
-                .lstrip()
-                .format(k, textwrap.indent(str(v), " " * 4).rstrip())
-                for k, v in data_dict.items()
-            ]
-        )
-        msg = textwrap.dedent(
-            """
-        - received header
-        {h}
-        - received query
-        {q}
-        --- end ---
+    format_item = textwrap.dedent(
         """
-        ).format(h=textwrap.indent(h, " " * 4), q=textwrap.indent(m, " " * 4))
-        # print(msg)
-        return msg
+        - {key}:
+        {value}
+        """
+    ).lstrip()
 
+    return "\n".join(
+        [
+            format_item.format(
+                key=k,
+                value=textwrap.indent(str(v), " " * 4).rstrip(),
+            )
+            for k, v in data_dict.items()
+        ]
+    )
+
+
+class GraphQLView(GraphQLView):
     def dispatch_request(self):
-
         res = super().dispatch_request()
+        # return res
 
         if isinstance(res, str):
             # e.g, GraphiQL
             return res
 
         try:
-            if not res.status_code == 200:
-                msg = self._format_request_to_str()
-                print(msg)
-                print(res.status)
-                print(res.response)
-        except BaseException as error:  # noqa: F841
-            import traceback
-
+            self._log_response(res)
+        except BaseException:
             traceback.print_exc()
+        finally:
+            return res
 
-        return res
+    def _log_response(self, res):
+        if res.status_code == 200:
+            return
+
+        try:
+            msg = self._compose_message(res)
+        except BaseException:
+            msg = traceback.format_exc()
+
+        print(msg)
+        print()
+
+    def _compose_message(self, res):
+        content = {
+            "Request": self._format_request_to_str(),
+            "Response": self._format_response_to_str(res),
+        }
+        msg = format_to_str(content)
+        return msg
+
+    def _format_request_to_str(self):
+        content = {
+            "Header": str(request.headers),
+            "Data": format_to_str(self.parse_body()),
+        }
+        msg = format_to_str(content)
+        # print(msg)
+        return msg
+
+    def _format_response_to_str(self, response):
+        content = {
+            "Status": str(response.status),
+            "Data": textwrap.indent(
+                json.dumps(response.get_json(), indent=2),
+                " " * 4,
+            ),
+        }
+        msg = format_to_str(content)
+        return msg
 
 
 class GraphQLViewW(GraphQLView):
