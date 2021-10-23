@@ -12,7 +12,7 @@ from .queries import (  # noqa: F401
     QUERY_LOG,
 )
 
-# from .mutations import (  # noqa: F401
-#     MUTATION_CREATE_LOG,
-#     MUTATION_DELETE_LOG,
-# )
+from .mutations import (  # noqa: F401
+    MUTATION_CREATE_LOG,
+    MUTATION_DELETE_LOG,
+)
