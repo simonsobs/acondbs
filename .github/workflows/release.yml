@@ -1,8 +1,6 @@
 name: Make a GitHub release
 
 on:
-  # release:
-  #   types: [created]
   push:
     tags:
       - 'v*.*.*'
