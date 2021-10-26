@@ -639,7 +639,7 @@ snapshots['test_export_db_to_csv_files 1'] = {
             'type_id': 4
         }
     ],
-    'web_config': [
+    'web_config_old': [
         {
             'config_id': 1,
             'devtool_loadingstate': True,

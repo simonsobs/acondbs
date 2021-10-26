@@ -3,7 +3,7 @@ from ...db.sa import sa
 
 ##__________________________________________________________________||
 class WebConfig(sa.Model):
-    __tablename__ = "web_config"
+    __tablename__ = "web_config_old"
     config_id = sa.Column(sa.Integer(), primary_key=True)
     head_title = sa.Column(sa.Text())
     toolbar_title = sa.Column(sa.Text())

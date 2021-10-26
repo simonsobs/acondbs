@@ -647,7 +647,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'type_id': 4
         }
     ],
-    'web_config': [
+    'web_config_old': [
         {
             'config_id': 1,
             'devtool_loadingstate': True,
