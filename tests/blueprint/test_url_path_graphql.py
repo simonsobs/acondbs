@@ -2,8 +2,8 @@ from flask import json
 
 QUERY = """{
   webConfig {
-    headTitle
-    toolbarTitle
+    id_
+    json
   }
 }"""
 

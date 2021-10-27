@@ -4,13 +4,8 @@ from ..funcs import assert_query
 
 QUERY = """
 { webConfig {
-    configId
-    headTitle
-    toolbarTitle
-    devtoolLoadingstate
-    productCreationDialog
-    productUpdateDialog
-    productDeletionDialog
+    id_
+    json
   }
 }
 """

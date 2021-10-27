@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from acondbs.db.sa import sa
@@ -10,14 +12,21 @@ def app(app_empty):
 
     y = app_empty
 
+    config_json = json.dumps(
+        {
+            "headTitle": "Head Title",
+            "toolbarTitle": "Toolbar Title",
+            "devtoolLoadingstate": True,
+            "productCreationDialog": False,
+            "productUpdateDialog": True,
+            "productDeletionDialog": True,
+        },
+        indent=2,
+    )
+
     c = WebConfig(
-        config_id=1,
-        head_title="Head Title",
-        toolbar_title="Toolbar Title",
-        devtool_loadingstate=True,
-        product_creation_dialog=False,
-        product_update_dialog=True,
-        product_deletion_dialog=True,
+        id_=1,
+        json=config_json,
     )
 
     with y.app_context():
