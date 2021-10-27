@@ -2,6 +2,19 @@ from ...db.sa import sa
 
 
 ##__________________________________________________________________||
+def shorten(text, width, placeholder="..."):
+    """Truncate text
+
+    used in repr() of models
+    """
+
+    width = max(width, len(placeholder))
+    if len(text) <= width:
+        return text
+    return placeholder + text[-(width - len(placeholder)) :]
+
+
+##__________________________________________________________________||
 class ProductFilePath(sa.Model):
     __tablename__ = "product_file_paths"
     path_id = sa.Column(sa.Integer(), primary_key=True)
@@ -18,11 +31,7 @@ class ProductFilePath(sa.Model):
     @property
     def path_shorten(self):
         try:
-            placeholder = "..."
-            width = max(20, len(placeholder))
-            if len(self.path) <= width:
-                return self.path
-            return placeholder + self.path[-(width - len(placeholder)) :]
+            return shorten(self.path, width=20)
         except BaseException:
             return self.path
 
