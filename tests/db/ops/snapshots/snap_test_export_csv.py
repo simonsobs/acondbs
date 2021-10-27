@@ -641,6 +641,12 @@ snapshots['test_export_db_to_csv_files 1'] = {
     ],
     'web_config': [
         {
+            'id_': 1,
+            'json': '{"headTitle": "Product DB (test)", "toolbarTitle": "Product DB (test)", "devtoolLoadingstate": true, "productCreationDialog": false, "productUpdateDialog": true, "productDeletionDialog": false}'
+        }
+    ],
+    'web_config_old': [
+        {
             'config_id': 1,
             'devtool_loadingstate': True,
             'head_title': 'Product DB (test)',

@@ -1,5 +1,7 @@
 from ...db.sa import sa
 
+from ..funcs import shorten
+
 
 ##__________________________________________________________________||
 class ProductFilePath(sa.Model):
@@ -18,11 +20,7 @@ class ProductFilePath(sa.Model):
     @property
     def path_shorten(self):
         try:
-            placeholder = "..."
-            width = max(20, len(placeholder))
-            if len(self.path) <= width:
-                return self.path
-            return placeholder + self.path[-(width - len(placeholder)) :]
+            return shorten(self.path, width=20, end=True)
         except BaseException:
             return self.path
 

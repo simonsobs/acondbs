@@ -10,8 +10,8 @@ snapshots = Snapshot()
 snapshots['test_graphql 1'] = {
     'data': {
         'webConfig': {
-            'headTitle': 'Product DB (test)',
-            'toolbarTitle': 'Product DB (test)'
+            'id_': '1',
+            'json': '{"headTitle": "Product DB (test)", "toolbarTitle": "Product DB (test)", "devtoolLoadingstate": true, "productCreationDialog": false, "productUpdateDialog": true, "productDeletionDialog": false}'
         }
     }
 }

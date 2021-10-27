@@ -1,2 +1,2 @@
-config_id,head_title,toolbar_title,devtool_loadingstate,product_creation_dialog,product_update_dialog,product_deletion_dialog
-1,Product DB (test),Product DB (test),True,True,True,False
+id_,json
+1,"{""headTitle"": ""Product DB (test)"", ""toolbarTitle"": ""Product DB (test)"", ""devtoolLoadingstate"": true, ""productCreationDialog"": false, ""productUpdateDialog"": true, ""productDeletionDialog"": false}"
