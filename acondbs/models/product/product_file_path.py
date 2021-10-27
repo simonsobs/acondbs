@@ -20,7 +20,7 @@ class ProductFilePath(sa.Model):
     @property
     def path_shorten(self):
         try:
-            return shorten(self.path, width=20)
+            return shorten(self.path, width=20, end=True)
         except BaseException:
             return self.path
 
