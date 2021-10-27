@@ -248,25 +248,10 @@ snapshots['test_schema[admin] 1'] = {
                 {
                     'fields': [
                         {
-                            'name': 'configId'
+                            'name': 'id_'
                         },
                         {
-                            'name': 'headTitle'
-                        },
-                        {
-                            'name': 'toolbarTitle'
-                        },
-                        {
-                            'name': 'devtoolLoadingstate'
-                        },
-                        {
-                            'name': 'productCreationDialog'
-                        },
-                        {
-                            'name': 'productUpdateDialog'
-                        },
-                        {
-                            'name': 'productDeletionDialog'
+                            'name': 'json'
                         },
                         {
                             'name': 'id'
@@ -2413,25 +2398,10 @@ snapshots['test_schema[private] 1'] = {
                 {
                     'fields': [
                         {
-                            'name': 'configId'
+                            'name': 'id_'
                         },
                         {
-                            'name': 'headTitle'
-                        },
-                        {
-                            'name': 'toolbarTitle'
-                        },
-                        {
-                            'name': 'devtoolLoadingstate'
-                        },
-                        {
-                            'name': 'productCreationDialog'
-                        },
-                        {
-                            'name': 'productUpdateDialog'
-                        },
-                        {
-                            'name': 'productDeletionDialog'
+                            'name': 'json'
                         },
                         {
                             'name': 'id'
@@ -4255,25 +4225,10 @@ snapshots['test_schema[public-no-token] 1'] = {
                 {
                     'fields': [
                         {
-                            'name': 'configId'
+                            'name': 'id_'
                         },
                         {
-                            'name': 'headTitle'
-                        },
-                        {
-                            'name': 'toolbarTitle'
-                        },
-                        {
-                            'name': 'devtoolLoadingstate'
-                        },
-                        {
-                            'name': 'productCreationDialog'
-                        },
-                        {
-                            'name': 'productUpdateDialog'
-                        },
-                        {
-                            'name': 'productDeletionDialog'
+                            'name': 'json'
                         },
                         {
                             'name': 'id'
@@ -4592,25 +4547,10 @@ snapshots['test_schema[public-wrong-token] 1'] = {
                 {
                     'fields': [
                         {
-                            'name': 'configId'
+                            'name': 'id_'
                         },
                         {
-                            'name': 'headTitle'
-                        },
-                        {
-                            'name': 'toolbarTitle'
-                        },
-                        {
-                            'name': 'devtoolLoadingstate'
-                        },
-                        {
-                            'name': 'productCreationDialog'
-                        },
-                        {
-                            'name': 'productUpdateDialog'
-                        },
-                        {
-                            'name': 'productDeletionDialog'
+                            'name': 'json'
                         },
                         {
                             'name': 'id'

@@ -10,13 +10,15 @@ snapshots = Snapshot()
 snapshots['test_schema[query] 1'] = {
     'data': {
         'webConfig': {
-            'configId': '1',
-            'devtoolLoadingstate': True,
-            'headTitle': 'Head Title',
-            'productCreationDialog': False,
-            'productDeletionDialog': True,
-            'productUpdateDialog': True,
-            'toolbarTitle': 'Toolbar Title'
+            'id_': '1',
+            'json': '''{
+  "headTitle": "Head Title",
+  "toolbarTitle": "Toolbar Title",
+  "devtoolLoadingstate": true,
+  "productCreationDialog": false,
+  "productUpdateDialog": true,
+  "productDeletionDialog": true
+}'''
         }
     }
 }
