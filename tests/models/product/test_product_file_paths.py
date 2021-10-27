@@ -79,10 +79,10 @@ def test_delete_path(app):
 def test_repr(app_empty):
     app = app_empty
     path = ProductFilePath(path="/abcdef/abcdef/abcdef/abcdef/abcdef/abcdef/path.txt")
-    repr(path)
+    assert repr(path) == "<ProductFilePath '...f/abcdef/path.txt'>"
     path = ProductFilePath(path="path.txt")
-    repr(path)
+    assert repr(path) == "<ProductFilePath 'path.txt'>"
     path = ProductFilePath()
-    repr(path)
+    assert repr(path) == "<ProductFilePath None>"
 
 ##__________________________________________________________________||
