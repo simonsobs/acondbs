@@ -247,6 +247,9 @@ snapshots['test_schema_selection[True-False] 1'] = {
                     },
                     {
                         'name': 'deleteLog'
+                    },
+                    {
+                        'name': 'saveWebConfig'
                     }
                 ]
             },
@@ -410,6 +413,9 @@ snapshots['test_schema_selection[True-True] 1'] = {
                     },
                     {
                         'name': 'deleteLog'
+                    },
+                    {
+                        'name': 'saveWebConfig'
                     }
                 ]
             },

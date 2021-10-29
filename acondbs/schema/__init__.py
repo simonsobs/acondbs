@@ -118,6 +118,8 @@ class MutationAdmin(MutationPrivate):
 
     delete_log = misc.mutation.DeleteLog.Field()
 
+    save_web_config = web.mutation.SaveWebconfig.Field()
+
 
 ##__________________________________________________________________||
 class Query(QueryAdmin):

@@ -86,6 +86,9 @@ snapshots['test_schema[admin] 1'] = {
                     },
                     {
                         'name': 'deleteLog'
+                    },
+                    {
+                        'name': 'saveWebConfig'
                     }
                 ]
             },
@@ -1665,6 +1668,9 @@ snapshots['test_schema[admin] 1'] = {
                         },
                         {
                             'name': 'deleteLog'
+                        },
+                        {
+                            'name': 'saveWebConfig'
                         }
                     ],
                     'kind': 'OBJECT',
@@ -2057,6 +2063,18 @@ snapshots['test_schema[admin] 1'] = {
                     ],
                     'kind': 'OBJECT',
                     'name': 'DeleteLog'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'webConfig'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'SaveWebconfig'
                 },
                 {
                     'fields': [
