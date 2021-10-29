@@ -15,11 +15,4 @@ class WebConfig(SQLAlchemyObjectType):
         interfaces = (graphene.relay.Node,)
         connection_class = CountedConnection
 
-
-def resolve_web_config(parent, info, **kwargs):
-    return WebConfig.get_query(info).one_or_none()
-
-
-web_config_field = graphene.Field(WebConfig, resolver=resolve_web_config)
-
 ##__________________________________________________________________||

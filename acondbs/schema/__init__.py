@@ -13,7 +13,7 @@ from . import (
 
 ##__________________________________________________________________||
 class QueryPublic(graphene.ObjectType):
-    web_config = web.web_config_field
+    web_config = web.query.web_config_field
     is_signed_in = auth.query.is_signed_in_field
     git_hub_o_auth_app_info = github.query.git_hub_o_auth_app_info_field
 
