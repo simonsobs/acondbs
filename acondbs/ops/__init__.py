@@ -40,3 +40,6 @@ from .log import (  # noqa: F401
     create_log,
     delete_log,
 )
+from .web_config import (  # noqa: F401
+    save_web_config,
+)
