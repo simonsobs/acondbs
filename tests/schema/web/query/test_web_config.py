@@ -1,20 +1,16 @@
 import pytest
 
-from ..funcs import assert_query
+from ...funcs import assert_query
 
-QUERY = """
-{ webConfig {
-    id_
-    json
-  }
-}
-"""
+from ..gql import (
+    QUERY_WEB_CONFIG,
+)
 
 
 ##__________________________________________________________________||
 params = [
     pytest.param(
-        {"query": QUERY},
+        {"query": QUERY_WEB_CONFIG},
         id="query",
     ),
 ]
@@ -25,5 +21,6 @@ params = [
 @pytest.mark.asyncio
 async def test_schema(app, snapshot, data):
     await assert_query(app, snapshot, data)
+
 
 ##__________________________________________________________________||
