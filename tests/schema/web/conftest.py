@@ -2,8 +2,7 @@ import json
 
 import pytest
 
-from acondbs.db.sa import sa
-from acondbs.models import WebConfig
+from acondbs import ops
 
 
 ##__________________________________________________________________||
@@ -24,14 +23,10 @@ def app(app_empty):
         indent=2,
     )
 
-    c = WebConfig(
-        id_=1,
-        json=config_json,
-    )
-
     with y.app_context():
-        sa.session.add(c)
-        sa.session.commit()
+        ops.save_web_config(json=config_json)
+        ops.commit()
+
     yield y
 
 
