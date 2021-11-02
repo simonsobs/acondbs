@@ -652,16 +652,5 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'id_': 1,
             'json': '{"headTitle": "Product DB (test)", "toolbarTitle": "Product DB (test)", "devtoolLoadingstate": true, "productCreationDialog": false, "productUpdateDialog": true, "productDeletionDialog": false}'
         }
-    ],
-    'web_config_old': [
-        {
-            'config_id': 1,
-            'devtool_loadingstate': True,
-            'head_title': 'Product DB (test)',
-            'product_creation_dialog': True,
-            'product_deletion_dialog': False,
-            'product_update_dialog': True,
-            'toolbar_title': 'Product DB (test)'
-        }
     ]
 }
