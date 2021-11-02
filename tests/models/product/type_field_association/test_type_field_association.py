@@ -95,7 +95,7 @@ def test_nullable_deleting_field(app):
     with app.app_context():
         field1 = Field.query.filter_by(name="field1").one()
         sa.session.delete(field1)
-        with pytest.raises(AssertionError):
+        with pytest.raises(exc.IntegrityError):
             sa.session.commit()
 
     with app.app_context():
@@ -105,7 +105,6 @@ def test_nullable_deleting_field(app):
 
 ##__________________________________________________________________||
 def test_unique_constraint(app):
-    # type_id and field_id are the primary keys.
     # A type cannot have multiple same field.
     with app.app_context():
         field1 = Field.query.filter_by(name="field1").one()
