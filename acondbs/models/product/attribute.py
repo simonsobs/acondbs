@@ -8,7 +8,6 @@ from ...db.sa import sa
 @declarative_mixin
 class AttributeBase:
     attribute_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text())  # TODO: Remove
 
     @declared_attr
     def product_id(self):

@@ -9,7 +9,6 @@ fragment fragmentProduct on Product {
   attributesUnicodeText {
     edges {
       node {
-        name
         field {
           name
           type_
@@ -21,7 +20,6 @@ fragment fragmentProduct on Product {
   attributesBoolean {
     edges {
       node {
-        name
         field {
           name
           type_
@@ -33,7 +31,6 @@ fragment fragmentProduct on Product {
   attributesInteger {
     edges {
       node {
-        name
         field {
           name
           type_
@@ -45,7 +42,6 @@ fragment fragmentProduct on Product {
   attributesFloat {
     edges {
       node {
-        name
         field {
           name
           type_
@@ -57,7 +53,6 @@ fragment fragmentProduct on Product {
   attributesDate {
     edges {
       node {
-        name
         field {
           name
           type_
@@ -69,7 +64,6 @@ fragment fragmentProduct on Product {
   attributesDateTime {
     edges {
       node {
-        name
         field {
           name
           type_
@@ -81,7 +75,6 @@ fragment fragmentProduct on Product {
   attributesTime {
     edges {
       node {
-        name
         field {
           name
           type_

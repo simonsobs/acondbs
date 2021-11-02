@@ -22,7 +22,6 @@ snapshots['test_schema[deep] 1'] = {
                                 'name': 'date_produced',
                                 'type_': 'DATE'
                             },
-                            'name': 'date_produced',
                             'value': '2020-02-01'
                         }
                     }
@@ -52,7 +51,6 @@ snapshots['test_schema[deep] 1'] = {
                                 'name': 'contact',
                                 'type_': 'UNICODE_TEXT'
                             },
-                            'name': 'contact',
                             'value': None
                         }
                     },
@@ -62,7 +60,6 @@ snapshots['test_schema[deep] 1'] = {
                                 'name': 'produced_by',
                                 'type_': 'UNICODE_TEXT'
                             },
-                            'name': 'produced_by',
                             'value': None
                         }
                     }

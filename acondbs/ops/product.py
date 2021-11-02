@@ -116,7 +116,6 @@ def _create_product(
         field = association.field
         value = attributes.get(field.field_id)
         field.type_.attribute_class(
-            name=field.name,
             field=field,
             product=model,
             value=value,
