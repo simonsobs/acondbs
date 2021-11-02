@@ -4,17 +4,15 @@ from ...db.sa import sa
 ##__________________________________________________________________||
 class TypeFieldAssociation(sa.Model):
     __tablename__ = "type_field_association"
+    iid = sa.Column(sa.Integer(), primary_key=True)
     type_id = sa.Column(
-        #
         sa.Integer(),
         sa.ForeignKey("product_types.type_id"),
-        primary_key=True,
     )
     field_id = sa.Column(
-        #
         sa.Integer(),
         sa.ForeignKey("field.field_id"),
-        primary_key=True,
+        nullable=False,
     )
     type_ = sa.relationship(
         "ProductType",
@@ -23,6 +21,10 @@ class TypeFieldAssociation(sa.Model):
     field = sa.relationship(
         "Field",
         backref=sa.backref("entry_types"),
+    )
+
+    __table_args__ = (
+        sa.UniqueConstraint("type_id", "field_id", name="_type_field"),
     )
 
     def __repr__(self):
