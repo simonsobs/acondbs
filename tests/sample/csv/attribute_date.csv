@@ -1,4 +1,4 @@
-attribute_id,product_id,value,field_id
+iid,product_id,value,field_id
 1,1001,2019-02-13,3
 2,1002,2019-03-15,3
 3,1010,2018-01-01,3

@@ -208,7 +208,7 @@ def test_delte_orphan(app):
         attr = AttributeUnicodeText.query.filter_by(
             product=map1, value="value1"
         ).one()
-        attribute_id = attr.attribute_id
+        iid = attr.iid
         sa.session.delete(map1)
         sa.session.commit()
 
@@ -216,7 +216,7 @@ def test_delte_orphan(app):
         map1 = Product.query.filter_by(product_id=1).one_or_none()
         assert map1 is None
         attr = AttributeUnicodeText.query.filter_by(
-            attribute_id=attribute_id
+            iid=iid
         ).one_or_none()
         assert attr is None
 

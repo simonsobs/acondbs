@@ -7,7 +7,7 @@ from ...db.sa import sa
 ##__________________________________________________________________||
 @declarative_mixin
 class AttributeBase:
-    attribute_id = sa.Column(sa.Integer(), primary_key=True)
+    iid = sa.Column(sa.Integer(), primary_key=True)
 
     @declared_attr
     def product_id(self):
