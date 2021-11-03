@@ -32,9 +32,8 @@ class AttributeBase:
         return sa.Column(
             sa.Integer(),
             sa.ForeignKey("type_field_association.iid"),
-            nullable=True,
+            nullable=False,
         )
-        # TODO: Make nullable False
 
     @declared_attr
     def type_field_association(self):
@@ -51,7 +50,7 @@ class AttributeBase:
         return sa.Column(
             sa.Integer(),
             sa.ForeignKey("field.field_id"),
-            nullable=True,
+            nullable=False,
         )
         # TODO: remove, replace with type_field_association_iid
 

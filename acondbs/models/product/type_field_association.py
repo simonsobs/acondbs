@@ -23,6 +23,7 @@ class TypeFieldAssociation(sa.Model):
     type_id = sa.Column(
         sa.Integer(),
         sa.ForeignKey("product_types.type_id"),
+        nullable=False,
     )
     field_id = sa.Column(
         sa.Integer(),

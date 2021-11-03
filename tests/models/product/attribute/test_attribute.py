@@ -68,7 +68,9 @@ def test_obj(app_empty, field_type, AttributeClass, value):
     app = app_empty  # noqa: F841
     field = Field(name="field1", type_=field_type)
     assoc = TypeFieldAssociation(field=field)
-    attr = AttributeClass(type_field_association=assoc, field=field, value=value)  # noqa: F841
+    attr = AttributeClass(
+        type_field_association=assoc, field=field, value=value
+    )  # noqa: F841
 
 
 @pytest.mark.parametrize("field_type, AttributeClass, value", params)
@@ -87,7 +89,12 @@ def test_commit(app_empty, field_type, AttributeClass, value):
         assoc = product_type.fields[0]
         field = assoc.field
         product = Product(name="product1", type_=product_type)
-        attr = AttributeClass(product=product, type_field_association=assoc, field=field, value=value)
+        attr = AttributeClass(
+            product=product,
+            type_field_association=assoc,
+            field=field,
+            value=value,
+        )
         sa.session.add(attr)
         sa.session.commit()
 
@@ -177,17 +184,67 @@ def test_order_nested(app_empty):
     map4 = Product(product_id=4, name="map4", type_=Map)
     map5 = Product(product_id=5, name="map5", type_=Map)
 
-    AttributeUnicodeText(product=map1, type_field_association=assoc1, field=field_attr1, value="1")
-    AttributeUnicodeText(product=map2, type_field_association=assoc1, field=field_attr1, value="2")
-    AttributeUnicodeText(product=map3, type_field_association=assoc1, field=field_attr1, value="1")
-    AttributeUnicodeText(product=map4, type_field_association=assoc1, field=field_attr1, value="2")
-    AttributeUnicodeText(product=map5, type_field_association=assoc1, field=field_attr1, value="1")
+    AttributeUnicodeText(
+        product=map1,
+        type_field_association=assoc1,
+        field=field_attr1,
+        value="1",
+    )
+    AttributeUnicodeText(
+        product=map2,
+        type_field_association=assoc1,
+        field=field_attr1,
+        value="2",
+    )
+    AttributeUnicodeText(
+        product=map3,
+        type_field_association=assoc1,
+        field=field_attr1,
+        value="1",
+    )
+    AttributeUnicodeText(
+        product=map4,
+        type_field_association=assoc1,
+        field=field_attr1,
+        value="2",
+    )
+    AttributeUnicodeText(
+        product=map5,
+        type_field_association=assoc1,
+        field=field_attr1,
+        value="1",
+    )
 
-    AttributeUnicodeText(product=map1, type_field_association=assoc2, field=field_attr2, value="b")
-    AttributeUnicodeText(product=map2, type_field_association=assoc2, field=field_attr2, value="a")
-    AttributeUnicodeText(product=map3, type_field_association=assoc2, field=field_attr2, value="c")
-    AttributeUnicodeText(product=map4, type_field_association=assoc2, field=field_attr2, value="b")
-    AttributeUnicodeText(product=map5, type_field_association=assoc2, field=field_attr2, value="a")
+    AttributeUnicodeText(
+        product=map1,
+        type_field_association=assoc2,
+        field=field_attr2,
+        value="b",
+    )
+    AttributeUnicodeText(
+        product=map2,
+        type_field_association=assoc2,
+        field=field_attr2,
+        value="a",
+    )
+    AttributeUnicodeText(
+        product=map3,
+        type_field_association=assoc2,
+        field=field_attr2,
+        value="c",
+    )
+    AttributeUnicodeText(
+        product=map4,
+        type_field_association=assoc2,
+        field=field_attr2,
+        value="b",
+    )
+    AttributeUnicodeText(
+        product=map5,
+        type_field_association=assoc2,
+        field=field_attr2,
+        value="a",
+    )
 
     with app.app_context():
         sa.session.add(Map)
@@ -251,7 +308,10 @@ def test_delte_orphan_product(app_empty):
         product1 = Product(name="product1", type_=type1)
         field1_attribute_class = field1.type_.attribute_class
         attr1 = field1_attribute_class(
-            product=product1, field=field1, value="value1"
+            product=product1,
+            type_field_association=assoc1,
+            field=field1,
+            value="value1",
         )
 
         sa.session.add(product1)
@@ -287,7 +347,10 @@ def test_delte_orphan_type_field_association_and_field(app_empty):
         product1 = Product(name="product1", type_=type1)
         field1_attribute_class = field1.type_.attribute_class
         attr1 = field1_attribute_class(
-            product=product1, field=field1, value="value1"
+            product=product1,
+            type_field_association=assoc1,
+            field=field1,
+            value="value1",
         )
 
         sa.session.add(product1)
