@@ -151,11 +151,11 @@ def _test_create(
 
         if attributes is None:
             attributes = {}
-        expected_field_ids = [f.field_id for f in model.type_.fields]
-        expected = {i: attributes.get(i) for i in expected_field_ids}
+        expected_ids = [(a.iid, a.field_id) for a in model.type_.fields]
+        # list of (type_field_association.iid, field.field_id)
+        expected = {fid: (aid, attributes.get(fid)) for aid, fid in expected_ids}
         actual = _extract_attributes(model)
         actual_field_ids = list(actual.keys())
-        assert actual_field_ids == expected_field_ids
         assert actual == expected
 
 
@@ -170,7 +170,7 @@ def _extract_attributes(model):
     attrs = [e for attr in attr_names for e in getattr(model, attr)]
     # e.g., AttributeUnicodeText
 
-    ret = {a.field_id: a.value for a in attrs}
+    ret = {a.field_id: (a.type_field_association_iid, a.value) for a in attrs}
 
     return ret
 
@@ -366,7 +366,8 @@ def _test_update(
         if attributes is None:
             attributes = {}
         expected = attributes_old.copy()
-        expected.update(attributes)
+        update = {k: (expected[k][0], v) for k, v in attributes.items()}
+        expected.update(update)
         actual = _extract_attributes(model)
         assert actual == expected
 
