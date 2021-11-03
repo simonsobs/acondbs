@@ -11,25 +11,39 @@ class AttributeBase:
 
     @declared_attr
     def product_id(self):
-        return sa.Column(sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False)  # fmt: skip
+        return sa.Column(
+            sa.Integer(),
+            sa.ForeignKey("products.product_id"),
+            nullable=False,
+        )
 
     @declared_attr
     def product(self):
         return sa.relationship(
             "Product",
-            backref=sa.backref(self.backref_column, cascade="all, delete-orphan"),  # fmt: skip
+            backref=sa.backref(
+                self.backref_column,
+                cascade="all, delete-orphan",
+            ),
         )
 
     @declared_attr
     def field_id(self):
-        return sa.Column(sa.Integer(), sa.ForeignKey("field.field_id"), nullable=True)  # fmt: skip
+        return sa.Column(
+            sa.Integer(),
+            sa.ForeignKey("field.field_id"),
+            nullable=True,
+        )
         # TODO: Make nullable False
 
     @declared_attr
     def field(self):
         return sa.relationship(
             "Field",
-            backref=sa.backref(self.backref_column, cascade="all, delete-orphan"),  # fmt: skip
+            backref=sa.backref(
+                self.backref_column,
+                cascade="all, delete-orphan",
+            ),
         )
 
     def __repr__(self):
