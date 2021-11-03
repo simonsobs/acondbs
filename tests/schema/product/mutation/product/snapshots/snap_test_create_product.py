@@ -344,6 +344,12 @@ snapshots['test_schema_success[create] 1'] = {
                                     'name': 'date_produced',
                                     'type_': 'DATE'
                                 },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'date_produced',
+                                        'type_': 'DATE'
+                                    }
+                                },
                                 'value': '2020-02-20'
                             }
                         }
@@ -373,6 +379,12 @@ snapshots['test_schema_success[create] 1'] = {
                                     'name': 'contact',
                                     'type_': 'UNICODE_TEXT'
                                 },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'contact',
+                                        'type_': 'UNICODE_TEXT'
+                                    }
+                                },
                                 'value': 'contact-person'
                             }
                         },
@@ -381,6 +393,12 @@ snapshots['test_schema_success[create] 1'] = {
                                 'field': {
                                     'name': 'produced_by',
                                     'type_': 'UNICODE_TEXT'
+                                },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'produced_by',
+                                        'type_': 'UNICODE_TEXT'
+                                    }
                                 },
                                 'value': 'producer'
                             }
@@ -735,6 +753,12 @@ snapshots['test_schema_success[minimum] 1'] = {
                                     'name': 'date_produced',
                                     'type_': 'DATE'
                                 },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'date_produced',
+                                        'type_': 'DATE'
+                                    }
+                                },
                                 'value': None
                             }
                         }
@@ -764,6 +788,12 @@ snapshots['test_schema_success[minimum] 1'] = {
                                     'name': 'contact',
                                     'type_': 'UNICODE_TEXT'
                                 },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'contact',
+                                        'type_': 'UNICODE_TEXT'
+                                    }
+                                },
                                 'value': None
                             }
                         },
@@ -772,6 +802,12 @@ snapshots['test_schema_success[minimum] 1'] = {
                                 'field': {
                                     'name': 'produced_by',
                                     'type_': 'UNICODE_TEXT'
+                                },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'produced_by',
+                                        'type_': 'UNICODE_TEXT'
+                                    }
                                 },
                                 'value': None
                             }
@@ -992,6 +1028,12 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                                     'name': 'date_produced',
                                     'type_': 'DATE'
                                 },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'date_produced',
+                                        'type_': 'DATE'
+                                    }
+                                },
                                 'value': None
                             }
                         }
@@ -1021,6 +1063,12 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                                     'name': 'contact',
                                     'type_': 'UNICODE_TEXT'
                                 },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'contact',
+                                        'type_': 'UNICODE_TEXT'
+                                    }
+                                },
                                 'value': 'contact-person'
                             }
                         },
@@ -1029,6 +1077,12 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                                 'field': {
                                     'name': 'produced_by',
                                     'type_': 'UNICODE_TEXT'
+                                },
+                                'typeFieldAssociation': {
+                                    'field': {
+                                        'name': 'produced_by',
+                                        'type_': 'UNICODE_TEXT'
+                                    }
                                 },
                                 'value': 'pwg-pmn'
                             }

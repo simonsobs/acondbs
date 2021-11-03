@@ -9,6 +9,12 @@ fragment fragmentProduct on Product {
   attributesUnicodeText {
     edges {
       node {
+        typeFieldAssociation {
+          field {
+            name
+            type_
+          }
+        }
         field {
           name
           type_
@@ -20,6 +26,12 @@ fragment fragmentProduct on Product {
   attributesBoolean {
     edges {
       node {
+        typeFieldAssociation {
+          field {
+            name
+            type_
+          }
+        }
         field {
           name
           type_
@@ -31,6 +43,12 @@ fragment fragmentProduct on Product {
   attributesInteger {
     edges {
       node {
+        typeFieldAssociation {
+          field {
+            name
+            type_
+          }
+        }
         field {
           name
           type_
@@ -42,6 +60,12 @@ fragment fragmentProduct on Product {
   attributesFloat {
     edges {
       node {
+        typeFieldAssociation {
+          field {
+            name
+            type_
+          }
+        }
         field {
           name
           type_
@@ -53,6 +77,12 @@ fragment fragmentProduct on Product {
   attributesDate {
     edges {
       node {
+        typeFieldAssociation {
+          field {
+            name
+            type_
+          }
+        }
         field {
           name
           type_
@@ -64,6 +94,12 @@ fragment fragmentProduct on Product {
   attributesDateTime {
     edges {
       node {
+        typeFieldAssociation {
+          field {
+            name
+            type_
+          }
+        }
         field {
           name
           type_
@@ -75,6 +111,12 @@ fragment fragmentProduct on Product {
   attributesTime {
     edges {
       node {
+        typeFieldAssociation {
+          field {
+            name
+            type_
+          }
+        }
         field {
           name
           type_
