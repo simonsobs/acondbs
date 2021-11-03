@@ -47,9 +47,15 @@ class AttributeBase:
         )
 
     def __repr__(self):
-        field_name = self.field.name if self.field else self.field
-        return f"<{self.__class__.__name__} {field_name!r}: {self.value!r}>"
+        return f"<{self.__class__.__name__} {self.field_name!r}: {self.value!r}>"
 
+
+    @property
+    def field_name(self):
+        try:
+            return self.field.name
+        except BaseException:
+            return self.field
 
 ##__________________________________________________________________||
 class AttributeUnicodeText(AttributeBase, sa.Model):
