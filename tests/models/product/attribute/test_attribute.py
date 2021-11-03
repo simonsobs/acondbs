@@ -17,23 +17,37 @@ from acondbs.models import (
     AttributeFloat,
     AttributeDate,
     AttributeDateTime,
-    AttributeTime
+    AttributeTime,
 )
 
 
 ##__________________________________________________________________||
 params = [
-    pytest.param(FieldType.UnicodeText, AttributeUnicodeText, "value1 値１", id='UnicodeText'),  # fmt: skip
-    pytest.param(FieldType.Boolean, AttributeBoolean, True, id='Boolean'),  # fmt: skip
-    pytest.param(FieldType.Integer, AttributeInteger, -512442, id='Integer'),  # fmt: skip
-    pytest.param(FieldType.Float, AttributeFloat, 3.14592613, id='Float'),  # fmt: skip
-    pytest.param(FieldType.Date, AttributeDate, datetime.date(2020, 2, 1), id='Date'),  # fmt: skip
-    pytest.param(FieldType.DateTime, AttributeDateTime, datetime.datetime(2020, 2, 1, 9, 10, 25), id='DateTime'),  # fmt: skip
-    pytest.param(FieldType.Time, AttributeTime, datetime.time(9, 10, 25), id='Time'),  # fmt: skip
+    pytest.param(
+        FieldType.UnicodeText,
+        AttributeUnicodeText,
+        "value1 値１",
+        id="UnicodeText",
+    ),
+    pytest.param(FieldType.Boolean, AttributeBoolean, True, id="Boolean"),
+    pytest.param(FieldType.Integer, AttributeInteger, -512442, id="Integer"),
+    pytest.param(FieldType.Float, AttributeFloat, 3.14592613, id="Float"),
+    pytest.param(
+        FieldType.Date, AttributeDate, datetime.date(2020, 2, 1), id="Date"
+    ),
+    pytest.param(
+        FieldType.DateTime,
+        AttributeDateTime,
+        datetime.datetime(2020, 2, 1, 9, 10, 25),
+        id="DateTime",
+    ),
+    pytest.param(
+        FieldType.Time, AttributeTime, datetime.time(9, 10, 25), id="Time"
+    ),
 ]
 
 
-@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+@pytest.mark.parametrize("field_type, AttributeClass, value", params)
 def test_repr(app_empty, field_type, AttributeClass, value):
     app = app_empty  # noqa: F841
 
@@ -44,14 +58,14 @@ def test_repr(app_empty, field_type, AttributeClass, value):
     repr(attr1)
 
 
-@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+@pytest.mark.parametrize("field_type, AttributeClass, value", params)
 def test_obj(app_empty, field_type, AttributeClass, value):
     app = app_empty  # noqa: F841
     field = Field(name="field1", type_=field_type)
     attr = AttributeClass(field=field, value=value)  # noqa: F841
 
 
-@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+@pytest.mark.parametrize("field_type, AttributeClass, value", params)
 def test_commit(app_empty, field_type, AttributeClass, value):
     app = app_empty
     with app.app_context():
@@ -72,7 +86,7 @@ def test_commit(app_empty, field_type, AttributeClass, value):
     with app.app_context():
         attr = AttributeClass.query.one()
         assert attr.__class__ is AttributeClass
-        assert attr.field.name == 'field1'
+        assert attr.field.name == "field1"
         assert attr.field.type_ is field_type
         assert attr.value == value
         assert getattr(attr.product, AttributeClass.backref_column) == [attr]
@@ -85,16 +99,18 @@ def test_filter(app):
     with app.app_context():
         expected = Product.query.filter_by(product_id=1).one()
         query = (
-            Product.query.join(AttributeUnicodeText).join(Field)
-            .filter(Field.name == "attr1", AttributeUnicodeText.value == "value1")
+            Product.query.join(AttributeUnicodeText)
+            .join(Field)
+            .filter(
+                Field.name == "attr1", AttributeUnicodeText.value == "value1"
+            )
         )
         actual = query.one()
         assert actual is expected
 
         # another way
         query = (
-            Product.query
-            .join(AttributeUnicodeText)
+            Product.query.join(AttributeUnicodeText)
             .filter_by(value="value1")
             .join(Field)
             .filter_by(name="attr1")
@@ -115,7 +131,8 @@ def test_order(app):
         query = (
             Product.query.join(ProductType)
             .filter_by(name="map")
-            .join(AttributeDate).join(Field)
+            .join(AttributeDate)
+            .join(Field)
             .filter_by(name="date_produced")
             .order_by(AttributeDate.value.desc())
         )
@@ -187,13 +204,15 @@ def test_order_nested(app_empty):
             .join(AliasedField1)
             .filter_by(name="attr1")
             .order_by(AliasedAttributeUnicodeText1.value.desc())
-            .join(AliasedAttributeUnicodeText2, Product.attributes_unicode_text)
+            .join(
+                AliasedAttributeUnicodeText2, Product.attributes_unicode_text
+            )
             .join(AliasedField2)
             .filter_by(name="attr2")
             .order_by(AliasedAttributeUnicodeText2.value)
         )
 
-        print(query)
+        # print(query)
 
         actual = query.all()
 
@@ -201,24 +220,77 @@ def test_order_nested(app_empty):
 
 
 ##__________________________________________________________________||
-def test_delte_orphan(app):
+def test_delte_orphan_product(app_empty):
+    app = app_empty
 
     with app.app_context():
-        map1 = Product.query.filter_by(product_id=1).one()
-        attr = AttributeUnicodeText.query.filter_by(
-            product=map1, value="value1"
-        ).one()
-        iid = attr.iid
-        sa.session.delete(map1)
+        field1 = Field(name="field1", type_=FieldType.UnicodeText)
+        assoc1 = TypeFieldAssociation(field=field1)
+        type1 = ProductType(type_id=1, name="type1", fields=[assoc1])
+
+        product1 = Product(name="product1", type_=type1)
+        field1_attribute_class = field1.type_.attribute_class
+        attr1 = field1_attribute_class(
+            product=product1, field=field1, value="value1"
+        )
+
+        sa.session.add(product1)
+        sa.session.commit()
+
+        product1_id = product1.product_id
+        attr1_id = attr1.iid
+
+    with app.app_context():
+        product1 = Product.query.filter_by(product_id=product1_id).one()
+        sa.session.delete(product1)
         sa.session.commit()
 
     with app.app_context():
-        map1 = Product.query.filter_by(product_id=1).one_or_none()
-        assert map1 is None
-        attr = AttributeUnicodeText.query.filter_by(
-            iid=iid
+        product1 = Product.query.filter_by(
+            product_id=product1_id
         ).one_or_none()
-        assert attr is None
+        attr1 = field1_attribute_class.query.filter_by(
+            iid=attr1_id
+        ).one_or_none()
+        assert product1 is None
+        assert attr1 is None
+
+
+def test_delte_orphan_type_field_association_and_field(app_empty):
+    app = app_empty
+
+    with app.app_context():
+        field1 = Field(name="field1", type_=FieldType.UnicodeText)
+        assoc1 = TypeFieldAssociation(field=field1)
+        type1 = ProductType(type_id=1, name="type1", fields=[assoc1])
+
+        product1 = Product(name="product1", type_=type1)
+        field1_attribute_class = field1.type_.attribute_class
+        attr1 = field1_attribute_class(
+            product=product1, field=field1, value="value1"
+        )
+
+        sa.session.add(product1)
+        sa.session.commit()
+
+        field1_id = field1.field_id
+        assoc1_id = assoc1.iid
+        product1_id = product1.product_id
+        attr1_id = attr1.iid
+
+    with app.app_context():
+        assoc1 = TypeFieldAssociation.query.filter_by(iid=assoc1_id).one()
+        field1 = Field.query.filter_by(field_id=field1_id).one()
+        sa.session.delete(assoc1)
+        sa.session.delete(field1)
+        sa.session.commit()
+
+    with app.app_context():
+        product1 = Product.query.filter_by(product_id=product1_id).one()
+        attr1 = field1_attribute_class.query.filter_by(
+            iid=attr1_id
+        ).one_or_none()
+        assert attr1 is None
 
 
 ##__________________________________________________________________||
