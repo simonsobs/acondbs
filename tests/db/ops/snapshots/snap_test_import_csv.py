@@ -17,54 +17,63 @@ snapshots['test_non_empty 1'] = {
             'field_id': 3,
             'iid': 1,
             'product_id': 1001,
+            'type_field_association_iid': 3,
             'value': GenericRepr('datetime.date(2019, 2, 13)')
         },
         {
             'field_id': 3,
             'iid': 2,
             'product_id': 1002,
+            'type_field_association_iid': 9,
             'value': GenericRepr('datetime.date(2019, 3, 15)')
         },
         {
             'field_id': 3,
             'iid': 3,
             'product_id': 1010,
+            'type_field_association_iid': 6,
             'value': GenericRepr('datetime.date(2018, 1, 1)')
         },
         {
             'field_id': 3,
             'iid': 4,
             'product_id': 1012,
+            'type_field_association_iid': 3,
             'value': GenericRepr('datetime.date(2020, 1, 20)')
         },
         {
             'field_id': 3,
             'iid': 5,
             'product_id': 1013,
+            'type_field_association_iid': 3,
             'value': GenericRepr('datetime.date(2020, 2, 1)')
         },
         {
             'field_id': 3,
             'iid': 6,
             'product_id': 1070,
+            'type_field_association_iid': 6,
             'value': GenericRepr('datetime.date(2019, 3, 4)')
         },
         {
             'field_id': 3,
             'iid': 7,
             'product_id': 1120,
+            'type_field_association_iid': 6,
             'value': GenericRepr('datetime.date(2019, 6, 7)')
         },
         {
             'field_id': 3,
             'iid': 8,
             'product_id': 1130,
+            'type_field_association_iid': 6,
             'value': GenericRepr('datetime.date(2020, 1, 23)')
         },
         {
             'field_id': 3,
             'iid': 9,
             'product_id': 1150,
+            'type_field_association_iid': 6,
             'value': GenericRepr('datetime.date(2020, 2, 7)')
         }
     ],
@@ -81,108 +90,126 @@ snapshots['test_non_empty 1'] = {
             'field_id': 1,
             'iid': 2,
             'product_id': 1001,
+            'type_field_association_iid': 1,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 3,
             'product_id': 1001,
+            'type_field_association_iid': 2,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 1,
             'iid': 8,
             'product_id': 1002,
+            'type_field_association_iid': 7,
             'value': 'abc-def'
         },
         {
             'field_id': 2,
             'iid': 9,
             'product_id': 1002,
+            'type_field_association_iid': 8,
             'value': 'abc-def'
         },
         {
             'field_id': 1,
             'iid': 14,
             'product_id': 1010,
+            'type_field_association_iid': 4,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 15,
             'product_id': 1010,
+            'type_field_association_iid': 5,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 1,
             'iid': 20,
             'product_id': 1012,
+            'type_field_association_iid': 1,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 21,
             'product_id': 1012,
+            'type_field_association_iid': 2,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 1,
             'iid': 26,
             'product_id': 1013,
+            'type_field_association_iid': 1,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 27,
             'product_id': 1013,
+            'type_field_association_iid': 2,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 1,
             'iid': 32,
             'product_id': 1070,
+            'type_field_association_iid': 4,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 33,
             'product_id': 1070,
+            'type_field_association_iid': 5,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 1,
             'iid': 38,
             'product_id': 1120,
+            'type_field_association_iid': 4,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 39,
             'product_id': 1120,
+            'type_field_association_iid': 5,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 1,
             'iid': 44,
             'product_id': 1130,
+            'type_field_association_iid': 4,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 45,
             'product_id': 1130,
+            'type_field_association_iid': 5,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 1,
             'iid': 50,
             'product_id': 1150,
+            'type_field_association_iid': 4,
             'value': 'pwg-pmn'
         },
         {
             'field_id': 2,
             'iid': 51,
             'product_id': 1150,
+            'type_field_association_iid': 5,
             'value': 'pwg-pmn'
         }
     ],

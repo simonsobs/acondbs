@@ -3,7 +3,20 @@ from ...db.sa import sa
 
 ##__________________________________________________________________||
 class TypeFieldAssociation(sa.Model):
-    """Many-to-many relation between ProductType and Field"""
+    """Many-to-many relation between ProductType and Field
+
+
+    This class defines which fields each product type has.
+
+    When a product type is deleted, all related instances of this
+    class will be automatically deleted ("delete-orphan").
+
+
+    On the other hand, a field is not allowed to be deleted if it is
+    related to an instances of this class (as field_id is not
+    nullable while "delete-orphan" is not used on field).
+
+    """
 
     __tablename__ = "type_field_association"
     iid = sa.Column(sa.Integer(), primary_key=True)

@@ -571,6 +571,27 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'field'
                         },
                         {
+                            'name': 'attributesUnicodeText'
+                        },
+                        {
+                            'name': 'attributesBoolean'
+                        },
+                        {
+                            'name': 'attributesInteger'
+                        },
+                        {
+                            'name': 'attributesFloat'
+                        },
+                        {
+                            'name': 'attributesDate'
+                        },
+                        {
+                            'name': 'attributesDateTime'
+                        },
+                        {
+                            'name': 'attributesTime'
+                        },
+                        {
                             'name': 'id'
                         }
                     ],
@@ -658,10 +679,16 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -717,10 +744,16 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -776,10 +809,16 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -835,10 +874,16 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -899,10 +944,16 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -958,10 +1009,16 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -1017,10 +1074,16 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -2718,6 +2781,27 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'field'
                         },
                         {
+                            'name': 'attributesUnicodeText'
+                        },
+                        {
+                            'name': 'attributesBoolean'
+                        },
+                        {
+                            'name': 'attributesInteger'
+                        },
+                        {
+                            'name': 'attributesFloat'
+                        },
+                        {
+                            'name': 'attributesDate'
+                        },
+                        {
+                            'name': 'attributesDateTime'
+                        },
+                        {
+                            'name': 'attributesTime'
+                        },
+                        {
                             'name': 'id'
                         }
                     ],
@@ -2805,10 +2889,16 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -2864,10 +2954,16 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -2923,10 +3019,16 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -2982,10 +3084,16 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -3046,10 +3154,16 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -3105,10 +3219,16 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'
@@ -3164,10 +3284,16 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'productId'
                         },
                         {
+                            'name': 'typeFieldAssociationIid'
+                        },
+                        {
                             'name': 'fieldId'
                         },
                         {
                             'name': 'product'
+                        },
+                        {
+                            'name': 'typeFieldAssociation'
                         },
                         {
                             'name': 'field'

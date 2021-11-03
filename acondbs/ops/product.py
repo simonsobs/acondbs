@@ -116,6 +116,7 @@ def _create_product(
         field = association.field
         value = attributes.get(field.field_id)
         field.type_.attribute_class(
+            type_field_association=association,
             field=field,
             product=model,
             value=value,
@@ -170,7 +171,10 @@ def _update_product(
             attr.value = value
         else:
             attribute_class(
-                name=field.name, field=field, product=model, value=value
+                type_field_association=association,
+                field=field,
+                product=model,
+                value=value
             )
 
     model.time_updated = datetime.datetime.now()

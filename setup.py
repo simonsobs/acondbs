@@ -48,6 +48,7 @@ setup(
             'pytest-asyncio>=0.14',
             "snapshottest>=0.6",
             "async-asgi-testclient>=1.4.6",
+            "sqlparse",
         ]
     },
 )

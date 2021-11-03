@@ -11,31 +11,71 @@ class AttributeBase:
 
     @declared_attr
     def product_id(self):
-        return sa.Column(sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False)  # fmt: skip
+        return sa.Column(
+            sa.Integer(),
+            sa.ForeignKey("products.product_id"),
+            nullable=False,
+        )
 
     @declared_attr
     def product(self):
         return sa.relationship(
             "Product",
-            backref=sa.backref(self.backref_column, cascade="all, delete-orphan"),  # fmt: skip
+            backref=sa.backref(
+                self.backref_column,
+                cascade="all, delete-orphan",
+            ),
+        )
+
+    @declared_attr
+    def type_field_association_iid(self):
+        return sa.Column(
+            sa.Integer(),
+            sa.ForeignKey("type_field_association.iid"),
+            nullable=True,
+        )
+        # TODO: Make nullable False
+
+    @declared_attr
+    def type_field_association(self):
+        return sa.relationship(
+            "TypeFieldAssociation",
+            backref=sa.backref(
+                self.backref_column, # TODO: need to change
+                cascade="all, delete-orphan",
+            ),
         )
 
     @declared_attr
     def field_id(self):
-        return sa.Column(sa.Integer(), sa.ForeignKey("field.field_id"), nullable=True)  # fmt: skip
-        # TODO: Make nullable False
+        return sa.Column(
+            sa.Integer(),
+            sa.ForeignKey("field.field_id"),
+            nullable=True,
+        )
+        # TODO: remove, replace with type_field_association_iid
 
     @declared_attr
     def field(self):
         return sa.relationship(
             "Field",
-            backref=sa.backref(self.backref_column, cascade="all, delete-orphan"),  # fmt: skip
+            backref=sa.backref(
+                self.backref_column,
+                cascade="all, delete-orphan",
+            ),
         )
+        # TODO: remove, replace with type_field_association
 
     def __repr__(self):
-        field_name = self.field.name if self.field else self.field
-        return f"<{self.__class__.__name__} {field_name!r}: {self.value!r}>"
+        return f"<{self.__class__.__name__} {self.field_name!r}: {self.value!r}>"
 
+
+    @property
+    def field_name(self):
+        try:
+            return self.field.name
+        except BaseException:
+            return self.field
 
 ##__________________________________________________________________||
 class AttributeUnicodeText(AttributeBase, sa.Model):
