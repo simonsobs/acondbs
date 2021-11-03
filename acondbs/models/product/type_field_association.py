@@ -3,6 +3,8 @@ from ...db.sa import sa
 
 ##__________________________________________________________________||
 class TypeFieldAssociation(sa.Model):
+    """Many-to-many relation between ProductType and Field"""
+
     __tablename__ = "type_field_association"
     iid = sa.Column(sa.Integer(), primary_key=True)
     type_id = sa.Column(
