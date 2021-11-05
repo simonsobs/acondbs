@@ -13,12 +13,12 @@ def app(app_empty):
     field1 = Field(name="field1", type_=FieldType.UnicodeText)
     field2 = Field(name="field2", type_=FieldType.Integer)
 
-    type1 = ProductType(  # noqa: F841
+    assoc1 = TypeFieldAssociation(iid=1, field=field1)
+    assoc2 = TypeFieldAssociation(iid=2, field=field2)
+
+    type1 = ProductType(
         name="type1",
-        fields=[
-            TypeFieldAssociation(field=field1),
-            TypeFieldAssociation(field=field2),
-        ],
+        fields=[assoc1, assoc2],
     )
 
     with y.app_context():
