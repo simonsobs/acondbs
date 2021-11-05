@@ -7,6 +7,27 @@ from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
 
 
 ##__________________________________________________________________||
+def test_column(app_empty):
+    app = app_empty
+
+    with app.app_context():
+        field1 = Field(name="field1", type_=FieldType.UnicodeText)
+        type1 = ProductType(name="type1")
+        model = TypeFieldAssociation(
+            order=123,
+            type_=type1,
+            field=field1,
+        )
+        sa.session.add(model)
+        sa.session.commit()
+        iid = model.iid
+
+    with app.app_context():
+        model = TypeFieldAssociation.query.filter_by(iid=iid).one()
+        assert model.iid == iid
+        assert model.order == 123
+
+
 def test_repr(app_empty):
     app = app_empty  # noqa: F841
 

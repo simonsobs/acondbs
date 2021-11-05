@@ -559,6 +559,9 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'iid'
                         },
                         {
+                            'name': 'order'
+                        },
+                        {
                             'name': 'typeId'
                         },
                         {
@@ -2767,6 +2770,9 @@ snapshots['test_schema[private] 1'] = {
                     'fields': [
                         {
                             'name': 'iid'
+                        },
+                        {
+                            'name': 'order'
                         },
                         {
                             'name': 'typeId'

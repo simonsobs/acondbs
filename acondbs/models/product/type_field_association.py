@@ -20,6 +20,7 @@ class TypeFieldAssociation(sa.Model):
 
     __tablename__ = "type_field_association"
     iid = sa.Column(sa.Integer(), primary_key=True)
+    order = sa.Column(sa.Integer())
     type_id = sa.Column(
         sa.Integer(),
         sa.ForeignKey("product_types.type_id"),

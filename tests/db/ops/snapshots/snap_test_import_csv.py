@@ -593,61 +593,73 @@ snapshots['test_non_empty 1'] = {
         {
             'field_id': 1,
             'iid': 1,
+            'order': None,
             'type_id': 1
         },
         {
             'field_id': 2,
             'iid': 2,
+            'order': None,
             'type_id': 1
         },
         {
             'field_id': 3,
             'iid': 3,
+            'order': None,
             'type_id': 1
         },
         {
             'field_id': 1,
             'iid': 4,
+            'order': None,
             'type_id': 2
         },
         {
             'field_id': 2,
             'iid': 5,
+            'order': None,
             'type_id': 2
         },
         {
             'field_id': 3,
             'iid': 6,
+            'order': None,
             'type_id': 2
         },
         {
             'field_id': 1,
             'iid': 7,
+            'order': None,
             'type_id': 3
         },
         {
             'field_id': 2,
             'iid': 8,
+            'order': None,
             'type_id': 3
         },
         {
             'field_id': 3,
             'iid': 9,
+            'order': None,
             'type_id': 3
         },
         {
             'field_id': 1,
             'iid': 10,
+            'order': None,
             'type_id': 4
         },
         {
             'field_id': 2,
             'iid': 11,
+            'order': None,
             'type_id': 4
         },
         {
             'field_id': 3,
             'iid': 12,
+            'order': None,
             'type_id': 4
         }
     ],
