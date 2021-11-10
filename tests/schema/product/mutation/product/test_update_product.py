@@ -71,6 +71,19 @@ params = [
             "variables": {
                 "productId": 1,
                 "input": {
+                    "name": "new-name",
+                },
+            },
+        },
+        {"query": QEURY},
+        id="update-name",
+    ),
+    pytest.param(
+        {
+            "query": MUTATION_UPDATE_PRODUCT,
+            "variables": {
+                "productId": 1,
+                "input": {
                     "updatedBy": "updater",
                     "paths": [
                         "site1:/path/to/map1",
@@ -157,12 +170,12 @@ params = [
             "variables": {
                 "productId": 1,
                 "input": {
-                    "name": "new-name",
+                    "name": "map2",
                 },
             },
         },
         {"query": QEURY},
-        id="error-immutable-fields",
+        id="error-constraint",
     ),
 ]
 

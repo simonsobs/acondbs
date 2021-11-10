@@ -178,6 +178,9 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     """Input to updateProduct()"""
 
+    name = graphene.String(
+        description="The name of the product",
+    )
     updated_by = graphene.String(
         description="The person who updated the DB entry."
     )
