@@ -170,7 +170,7 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
     produced_by = graphene.String(
         description="The person or group that produced the product"
     )
-    posted_by = graphene.String(
+    posted_by = graphene.String( # TODO: delete
         description="The person who entered the DB entry."
     )
 
@@ -181,7 +181,7 @@ class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     name = graphene.String(
         description="The name of the product",
     )
-    updated_by = graphene.String(
+    updated_by = graphene.String( # TODO: delete
         description="The person who updated the DB entry."
     )
 
