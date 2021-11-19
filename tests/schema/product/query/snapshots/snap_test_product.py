@@ -83,8 +83,6 @@ snapshots['test_schema[deep] 1'] = {
                     }
                 ]
             },
-            'contact': None,
-            'dateProduced': '2020-02-01',
             'name': 'map1',
             'note': None,
             'paths': {
@@ -105,9 +103,7 @@ snapshots['test_schema[deep] 1'] = {
                     }
                 ]
             },
-            'postedBy': None,
             'postingGitHubUser': None,
-            'producedBy': None,
             'productId': '1',
             'relations': {
                 'edges': [
@@ -178,7 +174,6 @@ snapshots['test_schema[deep] 1'] = {
                 'name': 'map',
                 'typeId': '1'
             },
-            'updatedBy': None,
             'updatingGitHubUser': None
         }
     }

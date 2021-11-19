@@ -165,7 +165,7 @@ snapshots['test_schema[type_id-sort-products] 1'] = {
                 'edges': [
                     {
                         'node': {
-                            'name': 'map3'
+                            'name': 'map1'
                         }
                     },
                     {
@@ -175,7 +175,7 @@ snapshots['test_schema[type_id-sort-products] 1'] = {
                     },
                     {
                         'node': {
-                            'name': 'map1'
+                            'name': 'map3'
                         }
                     }
                 ]

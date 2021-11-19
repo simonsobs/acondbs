@@ -245,17 +245,13 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                         }
                     ]
                 },
-                'contact': None,
-                'dateProduced': '2020-02-01',
                 'name': 'map1',
                 'note': None,
                 'paths': {
                     'edges': [
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': None,
-                'producedBy': None,
                 'productId': '1',
                 'relations': {
                     'edges': [
@@ -326,7 +322,6 @@ snapshots['test_schema_success[delete-paths] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': 'updater',
                 'updatingGitHubUser': {
                     'login': 'user1'
                 }
@@ -563,8 +558,6 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                         }
                     ]
                 },
-                'contact': None,
-                'dateProduced': '2020-03-04',
                 'name': 'beam2',
                 'note': None,
                 'paths': {
@@ -578,9 +571,7 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                         }
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': None,
-                'producedBy': None,
                 'productId': '5',
                 'relations': {
                     'edges': [
@@ -593,7 +584,6 @@ snapshots['test_schema_success[delete-relations] 1'] = {
                     'name': 'beam',
                     'typeId': '2'
                 },
-                'updatedBy': 'updater',
                 'updatingGitHubUser': {
                     'login': 'user1'
                 }
@@ -788,8 +778,6 @@ snapshots['test_schema_success[update-name] 1'] = {
                         }
                     ]
                 },
-                'contact': None,
-                'dateProduced': '2020-02-01',
                 'name': 'new-name',
                 'note': None,
                 'paths': {
@@ -810,9 +798,7 @@ snapshots['test_schema_success[update-name] 1'] = {
                         }
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': None,
-                'producedBy': None,
                 'productId': '1',
                 'relations': {
                     'edges': [
@@ -883,7 +869,6 @@ snapshots['test_schema_success[update-name] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': None,
                 'updatingGitHubUser': {
                     'login': 'user1'
                 }
@@ -1130,8 +1115,6 @@ snapshots['test_schema_success[update-paths] 1'] = {
                         }
                     ]
                 },
-                'contact': None,
-                'dateProduced': '2020-02-01',
                 'name': 'map1',
                 'note': None,
                 'paths': {
@@ -1159,9 +1142,7 @@ snapshots['test_schema_success[update-paths] 1'] = {
                         }
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': None,
-                'producedBy': None,
                 'productId': '1',
                 'relations': {
                     'edges': [
@@ -1232,7 +1213,6 @@ snapshots['test_schema_success[update-paths] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': 'updater',
                 'updatingGitHubUser': {
                     'login': 'user1'
                 }
@@ -1484,8 +1464,6 @@ snapshots['test_schema_success[update-relations] 1'] = {
                         }
                     ]
                 },
-                'contact': None,
-                'dateProduced': '2020-03-04',
                 'name': 'beam2',
                 'note': None,
                 'paths': {
@@ -1499,9 +1477,7 @@ snapshots['test_schema_success[update-relations] 1'] = {
                         }
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': None,
-                'producedBy': None,
                 'productId': '5',
                 'relations': {
                     'edges': [
@@ -1572,7 +1548,6 @@ snapshots['test_schema_success[update-relations] 1'] = {
                     'name': 'beam',
                     'typeId': '2'
                 },
-                'updatedBy': 'updater',
                 'updatingGitHubUser': {
                     'login': 'user1'
                 }
@@ -1819,8 +1794,6 @@ snapshots['test_schema_success[update] 1'] = {
                         }
                     ]
                 },
-                'contact': 'new-contact',
-                'dateProduced': '2020-02-01',
                 'name': 'map1',
                 'note': '- updated note 123',
                 'paths': {
@@ -1841,9 +1814,7 @@ snapshots['test_schema_success[update] 1'] = {
                         }
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': None,
-                'producedBy': None,
                 'productId': '1',
                 'relations': {
                     'edges': [
@@ -1914,7 +1885,6 @@ snapshots['test_schema_success[update] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': 'updater',
                 'updatingGitHubUser': {
                     'login': 'user1'
                 }

@@ -69,17 +69,17 @@ def app(app_users):
         ops.create_product(
             type_id=1,
             name="map1",
-            date_produced=datetime.date(2020, 2, 1),
+            attributes={3: datetime.date(2020, 2, 1)},
         )
         ops.create_product(
             type_id=1,
             name="map2",
-            date_produced=datetime.date(2020, 2, 10),
+            attributes={3: datetime.date(2020, 2, 10)},
         )
         ops.create_product(
             type_id=1,
             name="map3",
-            date_produced=datetime.date(2020, 3, 3),
+            attributes={3: datetime.date(2020, 3, 3)},
         )
         ops.commit()
 

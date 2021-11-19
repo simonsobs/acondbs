@@ -51,8 +51,6 @@ params = [
             "variables": {
                 "productId": 1,
                 "input": {
-                    "contact": "new-contact",
-                    "updatedBy": "updater",
                     "note": "- updated note 123",
                     "attributes": {
                         "unicodeText": [
@@ -84,7 +82,6 @@ params = [
             "variables": {
                 "productId": 1,
                 "input": {
-                    "updatedBy": "updater",
                     "paths": [
                         "site1:/path/to/map1",
                         "site2:/updated/way/map1",
@@ -102,7 +99,6 @@ params = [
             "variables": {
                 "productId": 1,
                 "input": {
-                    "updatedBy": "updater",
                     "paths": [],
                 },
             },
@@ -116,7 +112,6 @@ params = [
             "variables": {
                 "productId": 5,
                 "input": {
-                    "updatedBy": "updater",
                     "relations": [
                         {"typeId": 1, "productId": 4},
                         {"typeId": 1, "productId": 2},
@@ -133,7 +128,6 @@ params = [
             "variables": {
                 "productId": 5,
                 "input": {
-                    "updatedBy": "updater",
                     "relations": [],
                 },
             },

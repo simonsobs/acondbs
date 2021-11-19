@@ -398,28 +398,13 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'name'
                         },
                         {
-                            'name': 'contact'
-                        },
-                        {
-                            'name': 'dateProduced'
-                        },
-                        {
-                            'name': 'producedBy'
-                        },
-                        {
                             'name': 'timePosted'
-                        },
-                        {
-                            'name': 'postedBy'
                         },
                         {
                             'name': 'postingGitHubUserId'
                         },
                         {
                             'name': 'timeUpdated'
-                        },
-                        {
-                            'name': 'updatedBy'
                         },
                         {
                             'name': 'updatingGitHubUserId'
@@ -2611,28 +2596,13 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'name'
                         },
                         {
-                            'name': 'contact'
-                        },
-                        {
-                            'name': 'dateProduced'
-                        },
-                        {
-                            'name': 'producedBy'
-                        },
-                        {
                             'name': 'timePosted'
-                        },
-                        {
-                            'name': 'postedBy'
                         },
                         {
                             'name': 'postingGitHubUserId'
                         },
                         {
                             'name': 'timeUpdated'
-                        },
-                        {
-                            'name': 'updatedBy'
                         },
                         {
                             'name': 'updatingGitHubUserId'

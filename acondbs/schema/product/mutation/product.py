@@ -130,12 +130,6 @@ class AttributesInputFields(graphene.InputObjectType):
 class CommonInputFields:
     """Common input fields of mutations for creating and updating products"""
 
-    contact = graphene.String(
-        description=(
-            "A person or group that can be contacted for questions or "
-            "issues about the product."
-        )
-    )
     note = graphene.String(
         description="Note about the product in MarkDown.",
     )
@@ -164,15 +158,6 @@ class CreateProductInput(graphene.InputObjectType, CommonInputFields):
         required=True,
         description="The name of the product",
     )
-    date_produced = graphene.Date(
-        description="The date on which the product was produced"
-    )
-    produced_by = graphene.String(
-        description="The person or group that produced the product"
-    )
-    posted_by = graphene.String( # TODO: delete
-        description="The person who entered the DB entry."
-    )
 
 
 class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
@@ -180,9 +165,6 @@ class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
 
     name = graphene.String(
         description="The name of the product",
-    )
-    updated_by = graphene.String( # TODO: delete
-        description="The person who updated the DB entry."
     )
 
 

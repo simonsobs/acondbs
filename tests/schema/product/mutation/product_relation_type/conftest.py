@@ -1,7 +1,5 @@
 import pytest
 
-import datetime
-
 from acondbs import ops
 
 
@@ -64,19 +62,16 @@ def app(app_users):
             product_id=1,
             type_id=1,
             name="map1",
-            date_produced=datetime.date(2020, 2, 1),
         )
         ops.create_product(
             product_id=4,
             type_id=2,
             name="beam1",
-            date_produced=datetime.date(2020, 2, 5),
         )
         ops.create_product(
             product_id=5,
             type_id=2,
             name="beam2",
-            date_produced=datetime.date(2020, 3, 4),
         )
         ops.commit()
 

@@ -84,7 +84,6 @@ snapshots['test_schema_success[deleteProductFilePath] 2'] = {
                 'edges': [
                 ]
             },
-            'producedBy': 'pwg-pmn',
             'timePosted': '2019-02-13T10:05:23'
         }
     }

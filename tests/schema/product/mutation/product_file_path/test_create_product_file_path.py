@@ -27,7 +27,7 @@ params = [
                 """
                   {
                     product(productId: 1010) {
-                      name timePosted producedBy note
+                      name timePosted note
                       paths { edges { node { path note product { productId } } } }
                     }
                   }

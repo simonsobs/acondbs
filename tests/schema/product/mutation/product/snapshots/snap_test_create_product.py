@@ -405,8 +405,6 @@ snapshots['test_schema_success[create] 1'] = {
                         }
                     ]
                 },
-                'contact': 'contact-person',
-                'dateProduced': '2020-02-20',
                 'name': 'beam111',
                 'note': '- Item 1',
                 'paths': {
@@ -427,11 +425,9 @@ snapshots['test_schema_success[create] 1'] = {
                         }
                     ]
                 },
-                'postedBy': 'poster',
                 'postingGitHubUser': {
                     'login': 'user1'
                 },
-                'producedBy': 'producer',
                 'productId': '6',
                 'relations': {
                     'edges': [
@@ -502,7 +498,6 @@ snapshots['test_schema_success[create] 1'] = {
                     'name': 'beam',
                     'typeId': '2'
                 },
-                'updatedBy': None,
                 'updatingGitHubUser': None
             }
         }
@@ -814,19 +809,15 @@ snapshots['test_schema_success[minimum] 1'] = {
                         }
                     ]
                 },
-                'contact': None,
-                'dateProduced': None,
                 'name': 'product1',
                 'note': None,
                 'paths': {
                     'edges': [
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': {
                     'login': 'user1'
                 },
-                'producedBy': None,
                 'productId': '6',
                 'relations': {
                     'edges': [
@@ -839,7 +830,6 @@ snapshots['test_schema_success[minimum] 1'] = {
                     'name': 'map',
                     'typeId': '1'
                 },
-                'updatedBy': None,
                 'updatingGitHubUser': None
             }
         }
@@ -1089,8 +1079,6 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                         }
                     ]
                 },
-                'contact': 'contact-person',
-                'dateProduced': None,
                 'name': 'map1',
                 'note': None,
                 'paths': {
@@ -1111,11 +1099,9 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                         }
                     ]
                 },
-                'postedBy': None,
                 'postingGitHubUser': {
                     'login': 'user1'
                 },
-                'producedBy': 'pwg-pmn',
                 'productId': '6',
                 'relations': {
                     'edges': [
@@ -1128,7 +1114,6 @@ snapshots['test_schema_success[the-same-name-different-type] 1'] = {
                     'name': 'beam',
                     'typeId': '2'
                 },
-                'updatedBy': None,
                 'updatingGitHubUser': None
             }
         }

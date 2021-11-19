@@ -36,7 +36,7 @@ params = [
             "variables": {
                 #
                 "first": 2,
-                "sort": "DATE_PRODUCED_DESC",
+                "sort": "TIME_POSTED_DESC",
             },
         },
         id="first-two-sort",
@@ -71,7 +71,7 @@ params = [
             "variables": {
                 #
                 "filters": {"typeId": 1},
-                "sort": "DATE_PRODUCED_DESC",
+                "sort": "TIME_POSTED_DESC",
             },
         },
         id="filters-type_id-sort",
@@ -83,7 +83,7 @@ params = [
             "variables": {
                 #
                 "filters": {"typeName": "map"},
-                "sort": "DATE_PRODUCED_DESC",
+                "sort": "TIME_POSTED_DESC",
             },
         },
         id="filters-type_name-sort",

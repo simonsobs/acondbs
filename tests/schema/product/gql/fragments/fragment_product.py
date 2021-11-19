@@ -126,16 +126,11 @@ fragment fragmentProduct on Product {
     }
   }
   name
-  contact
-  dateProduced
-  producedBy
   timePosted
-  postedBy
   postingGitHubUser {
     login
   }
   timeUpdated
-  updatedBy
   updatingGitHubUser {
     login
   }

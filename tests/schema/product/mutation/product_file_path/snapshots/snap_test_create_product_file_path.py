@@ -94,7 +94,6 @@ snapshots['test_schema_success[createProductFilePath] 2'] = {
                     }
                 ]
             },
-            'producedBy': 'pwg-pmn',
             'timePosted': '2018-01-01T15:32:10'
         }
     }

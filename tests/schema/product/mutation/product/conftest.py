@@ -83,7 +83,6 @@ def app(app_empty):
             type_id=1,
             product_id=1,
             name="map1",
-            date_produced=datetime.date(2020, 2, 1),
             attributes={3: datetime.date(2020, 2, 1)},
             paths=["site1:/path/to/map1", "site2:/another/way/map1"],
         )
@@ -91,7 +90,6 @@ def app(app_empty):
             type_id=1,
             product_id=2,
             name="map2",
-            date_produced=datetime.date(2020, 2, 10),
             attributes={3: datetime.date(2020, 2, 10)},
             paths=["site1:/path/to/map2"],
         )
@@ -99,7 +97,6 @@ def app(app_empty):
             type_id=1,
             product_id=3,
             name="map3",
-            date_produced=datetime.date(2020, 3, 19),
             attributes={3: datetime.date(2020, 3, 19)},
             paths=["site1:/path/to/map3", "site2:/another/way/map3"],
         )
@@ -107,7 +104,6 @@ def app(app_empty):
             type_id=2,
             product_id=4,
             name="beam1",
-            date_produced=datetime.date(2020, 2, 5),
             attributes={3: datetime.date(2020, 2, 5)},
             paths=["site1:/path/to/beam1", "site2:/another/way/beam1"],
         )
@@ -115,7 +111,6 @@ def app(app_empty):
             type_id=2,
             product_id=5,
             name="beam2",
-            date_produced=datetime.date(2020, 3, 4),
             attributes={3: datetime.date(2020, 3, 4)},
             paths=["site1:/path/to/beam2"],
         )

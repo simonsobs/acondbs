@@ -86,8 +86,6 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'contact': None,
-                        'dateProduced': '2020-02-01',
                         'name': 'map1',
                         'note': None,
                         'paths': {
@@ -108,9 +106,7 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'postedBy': None,
                         'postingGitHubUser': None,
-                        'producedBy': None,
                         'productId': '1',
                         'relations': {
                             'edges': [
@@ -181,7 +177,6 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'map',
                             'typeId': '1'
                         },
-                        'updatedBy': None,
                         'updatingGitHubUser': None
                     }
                 },
@@ -260,8 +255,6 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'contact': None,
-                        'dateProduced': '2020-02-10',
                         'name': 'map2',
                         'note': None,
                         'paths': {
@@ -275,9 +268,7 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'postedBy': None,
                         'postingGitHubUser': None,
-                        'producedBy': None,
                         'productId': '2',
                         'relations': {
                             'edges': [
@@ -290,7 +281,6 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'map',
                             'typeId': '1'
                         },
-                        'updatedBy': None,
                         'updatingGitHubUser': None
                     }
                 },
@@ -369,8 +359,6 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'contact': None,
-                        'dateProduced': '2020-03-19',
                         'name': 'map3',
                         'note': None,
                         'paths': {
@@ -391,9 +379,7 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'postedBy': None,
                         'postingGitHubUser': None,
-                        'producedBy': None,
                         'productId': '3',
                         'relations': {
                             'edges': [
@@ -406,7 +392,6 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'map',
                             'typeId': '1'
                         },
-                        'updatedBy': None,
                         'updatingGitHubUser': None
                     }
                 },
@@ -485,8 +470,6 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'contact': None,
-                        'dateProduced': '2020-02-05',
                         'name': 'beam1',
                         'note': None,
                         'paths': {
@@ -507,9 +490,7 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'postedBy': None,
                         'postingGitHubUser': None,
-                        'producedBy': None,
                         'productId': '4',
                         'relations': {
                             'edges': [
@@ -580,7 +561,6 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'beam',
                             'typeId': '2'
                         },
-                        'updatedBy': None,
                         'updatingGitHubUser': None
                     }
                 },
@@ -659,8 +639,6 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'contact': None,
-                        'dateProduced': '2020-03-04',
                         'name': 'beam2',
                         'note': None,
                         'paths': {
@@ -674,9 +652,7 @@ snapshots['test_schema[deep] 1'] = {
                                 }
                             ]
                         },
-                        'postedBy': None,
                         'postingGitHubUser': None,
-                        'producedBy': None,
                         'productId': '5',
                         'relations': {
                             'edges': [
@@ -747,7 +723,6 @@ snapshots['test_schema[deep] 1'] = {
                             'name': 'beam',
                             'typeId': '2'
                         },
-                        'updatedBy': None,
                         'updatingGitHubUser': None
                     }
                 }
@@ -785,8 +760,8 @@ snapshots['test_schema[filters-type_id-sort] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'name': 'map3',
-                        'productId': '3',
+                        'name': 'map1',
+                        'productId': '1',
                         'typeId': 1
                     }
                 },
@@ -799,8 +774,8 @@ snapshots['test_schema[filters-type_id-sort] 1'] = {
                 },
                 {
                     'node': {
-                        'name': 'map1',
-                        'productId': '1',
+                        'name': 'map3',
+                        'productId': '3',
                         'typeId': 1
                     }
                 }
@@ -838,8 +813,8 @@ snapshots['test_schema[filters-type_name-sort] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'name': 'map3',
-                        'productId': '3',
+                        'name': 'map1',
+                        'productId': '1',
                         'typeId': 1
                     }
                 },
@@ -852,8 +827,8 @@ snapshots['test_schema[filters-type_name-sort] 1'] = {
                 },
                 {
                     'node': {
-                        'name': 'map1',
-                        'productId': '1',
+                        'name': 'map3',
+                        'productId': '3',
                         'typeId': 1
                     }
                 }
@@ -868,16 +843,16 @@ snapshots['test_schema[first-two-sort] 1'] = {
             'edges': [
                 {
                     'node': {
-                        'name': 'map3',
-                        'productId': '3',
+                        'name': 'map1',
+                        'productId': '1',
                         'typeId': 1
                     }
                 },
                 {
                     'node': {
-                        'name': 'beam2',
-                        'productId': '5',
-                        'typeId': 2
+                        'name': 'map2',
+                        'productId': '2',
+                        'typeId': 1
                     }
                 }
             ]

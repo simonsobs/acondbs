@@ -50,10 +50,6 @@ params = [
                 "input": {
                     "typeId": 2,
                     "name": "beam111",
-                    "contact": "contact-person",
-                    "dateProduced": "2020-02-20",
-                    "producedBy": "producer",
-                    "postedBy": "poster",
                     "note": "- Item 1",
                     "paths": [
                         "/path/to/new/product1",
@@ -98,8 +94,6 @@ params = [
                 "input": {
                     "typeId": 2,
                     "name": "map1",
-                    "contact": "contact-person",
-                    "producedBy": "pwg-pmn",
                     "paths": [
                         "/path/to/new/product1",
                         "/another/location/of/product1",

@@ -19,7 +19,7 @@ QUERY_PRODUCT_TYPE_SORT_PRODUCTS = """
     singular
     plural
     icon
-    products(sort: DATE_PRODUCED_DESC) {
+    products(sort: TIME_POSTED_DESC) {
       edges {
         node {
           name
