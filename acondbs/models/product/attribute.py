@@ -40,7 +40,7 @@ class AttributeBase:
         return sa.relationship(
             "TypeFieldAssociation",
             backref=sa.backref(
-                self.backref_column, # TODO: need to change
+                self.backref_column,  # TODO: need to change
                 cascade="all, delete-orphan",
             ),
         )
@@ -66,8 +66,9 @@ class AttributeBase:
         # TODO: remove, replace with type_field_association
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} {self.field_name!r}: {self.value!r}>"
-
+        return (
+            f"<{self.__class__.__name__} {self.field_name!r}: {self.value!r}>"
+        )
 
     @property
     def field_name(self):
@@ -75,6 +76,7 @@ class AttributeBase:
             return self.field.name
         except BaseException:
             return self.field
+
 
 ##__________________________________________________________________||
 class AttributeUnicodeText(AttributeBase, sa.Model):
