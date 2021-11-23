@@ -59,6 +59,9 @@ snapshots['test_schema_selection[False-True] 1'] = {
                         'name': 'updateProduct'
                     },
                     {
+                        'name': 'convertProductType'
+                    },
+                    {
                         'name': 'createProductFilePath'
                     },
                     {
@@ -187,6 +190,9 @@ snapshots['test_schema_selection[True-False] 1'] = {
                     },
                     {
                         'name': 'updateProduct'
+                    },
+                    {
+                        'name': 'convertProductType'
                     },
                     {
                         'name': 'createProductFilePath'
@@ -353,6 +359,9 @@ snapshots['test_schema_selection[True-True] 1'] = {
                     },
                     {
                         'name': 'updateProduct'
+                    },
+                    {
+                        'name': 'convertProductType'
                     },
                     {
                         'name': 'createProductFilePath'

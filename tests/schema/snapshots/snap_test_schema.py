@@ -28,6 +28,9 @@ snapshots['test_schema[admin] 1'] = {
                         'name': 'updateProduct'
                     },
                     {
+                        'name': 'convertProductType'
+                    },
+                    {
                         'name': 'createProductFilePath'
                     },
                     {
@@ -1643,6 +1646,9 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'updateProduct'
                         },
                         {
+                            'name': 'convertProductType'
+                        },
+                        {
                             'name': 'createProductFilePath'
                         },
                         {
@@ -1841,6 +1847,18 @@ snapshots['test_schema[admin] 1'] = {
                     'fields': None,
                     'kind': 'INPUT_OBJECT',
                     'name': 'UpdateProductInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'product'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'ConvertProductType'
                 },
                 {
                     'fields': [
@@ -2275,6 +2293,9 @@ snapshots['test_schema[private] 1'] = {
                     },
                     {
                         'name': 'updateProduct'
+                    },
+                    {
+                        'name': 'convertProductType'
                     },
                     {
                         'name': 'createProductFilePath'
@@ -3719,6 +3740,9 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'updateProduct'
                         },
                         {
+                            'name': 'convertProductType'
+                        },
+                        {
                             'name': 'createProductFilePath'
                         },
                         {
@@ -3917,6 +3941,18 @@ snapshots['test_schema[private] 1'] = {
                     'fields': None,
                     'kind': 'INPUT_OBJECT',
                     'name': 'UpdateProductInput'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'ok'
+                        },
+                        {
+                            'name': 'product'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'ConvertProductType'
                 },
                 {
                     'fields': [

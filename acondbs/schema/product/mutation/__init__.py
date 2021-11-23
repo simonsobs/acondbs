@@ -1,4 +1,9 @@
-from .product import CreateProduct, UpdateProduct, DeleteProduct  # noqa: F401
+from .product import (  # noqa: F401
+    CreateProduct,
+    UpdateProduct,
+    DeleteProduct,
+    ConvertProductType,
+)
 from .product_file_path import (  # noqa: F401
     CreateProductFilePath,
     UpdateProductFilePath,

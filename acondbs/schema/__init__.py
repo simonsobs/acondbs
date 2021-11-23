@@ -59,6 +59,7 @@ class MutationPrivate(MutationPublic):
     create_product = p.mutation.CreateProduct.Field()
     delete_product = p.mutation.DeleteProduct.Field()
     update_product = p.mutation.UpdateProduct.Field()
+    convert_product_type = p.mutation.ConvertProductType.Field()
 
     create_product_file_path = p.mutation.CreateProductFilePath.Field()
     delete_product_file_path = p.mutation.DeleteProductFilePath.Field()

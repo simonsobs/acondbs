@@ -259,3 +259,27 @@ class DeleteProduct(graphene.Mutation):
 
 
 ##__________________________________________________________________||
+class ConvertProductType(graphene.Mutation):
+    """Convert the product type of a product"""
+
+    class Arguments:
+        product_id = graphene.Int(
+            required=True,
+            description="The productId of a product to be converted.",
+        )
+        type_id = graphene.Int(
+            required=True,
+            description="The typeId of new product type.",
+        )
+
+    ok = graphene.Boolean()
+    product = graphene.Field(lambda: type_.Product)
+
+    def mutate(root, info, product_id, type_id):
+        model = ops.convert_product_type(product_id, type_id)
+        ops.commit()
+        ok = True
+        return ConvertProductType(ok=ok, product=model)
+
+
+##__________________________________________________________________||
