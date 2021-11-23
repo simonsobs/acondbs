@@ -3,7 +3,7 @@ import pytest
 
 from acondbs import ops
 from acondbs.ops.product import _normalize_paths
-from acondbs.models import Product, FieldType, GitHubUser
+from acondbs.models import Product, ProductType, FieldType, GitHubUser
 
 
 ##__________________________________________________________________||
@@ -385,6 +385,54 @@ def test_delete(app):
         model = Product.query.filter_by(product_id=product_id).one_or_none()
         assert model is None
         assert Product.query.count() == (count - 1)
+
+
+##__________________________________________________________________||
+def test_convert(app):
+
+    product_id = 1
+    type_id = 2
+    kwargs = {"product_id": product_id, "type_id": type_id}
+
+    attr_names = [
+        a.attribute_class.backref_column
+        for a in FieldType.__members__.values()
+    ]
+    # e.g., 'attributes_unicode_text', 'attributes_boolean'
+
+    with app.app_context():
+        model = Product.query.filter_by(product_id=product_id).one()
+        assert not model.type_.type_id == type_id
+        value_dict = {
+            e.field_id: e.value
+            for attr in attr_names
+            for e in getattr(model, attr)
+        }
+
+        product_type = ProductType.query.filter_by(type_id=type_id).one()
+        expected_field_values = [
+            (assoc.field_id, value_dict.get(assoc.field_id))
+            for assoc in product_type.fields
+        ]
+
+    with app.app_context():
+        model = ops.convert_product_type(**kwargs)
+        assert model
+        ops.commit()
+
+    with app.app_context():
+        model = Product.query.filter_by(product_id=product_id).one()
+        assert model.type_.type_id == type_id
+        expected_ids = [(a.iid, a.field_id) for a in model.type_.fields]
+        attrs = [e for attr in attr_names for e in getattr(model, attr)]
+        for attr in attrs:
+            assert attr.type_field_association.type_ == model.type_
+        actual_ids = [
+            (e.type_field_association.iid, e.field_id) for e in attrs
+        ]
+        assert set(expected_ids) == set(actual_ids)
+        actual_field_values = [(a.field_id, a.value) for a in attrs]
+        assert set(expected_field_values) == set(actual_field_values)
 
 
 ##__________________________________________________________________||

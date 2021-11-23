@@ -10,6 +10,7 @@ from .product import (  # noqa: F401
     create_product,
     update_product,
     delete_product,
+    convert_product_type,
 )
 from .product_type import (  # noqa: F401
     create_product_type,

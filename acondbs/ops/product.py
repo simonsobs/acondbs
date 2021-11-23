@@ -6,6 +6,7 @@ from ..models import (
     ProductFilePath,
     ProductRelation,
     ProductRelationType,
+    FieldType,
     GitHubUser,
 )
 
@@ -61,6 +62,11 @@ def delete_product(product_id):
     model = Product.query.filter_by(product_id=product_id).one()
     sa.session.delete(model)
     return
+
+
+def convert_product_type(product_id, type_id):
+    with sa.session.no_autoflush:
+        return _convert_product_type(product_id, type_id)
 
 
 ##__________________________________________________________________||
@@ -174,7 +180,7 @@ def _update_product(
                 type_field_association=association,
                 field=field,
                 product=model,
-                value=value
+                value=value,
             )
 
     model.time_updated = datetime.datetime.now()
@@ -210,6 +216,43 @@ def _update_relations(old, input):
         model_dict[id_] = ProductRelation(type_=type_, other=other)
 
     return [model_dict[i] for i in new_ids]
+
+
+##__________________________________________________________________||
+def _convert_product_type(product_id, type_id):
+    model = Product.query.filter_by(product_id=product_id).one()
+    product_type = ProductType.query.filter_by(type_id=type_id).one()
+    model.type_ = product_type
+
+    attr_names = [
+        a.attribute_class.backref_column
+        for a in FieldType.__members__.values()
+    ]
+    # e.g., 'attributes_unicode_text', 'attributes_boolean'
+
+    attrs = [e for attr in attr_names for e in getattr(model, attr)]
+    # e.g., AttributeUnicodeText
+
+    attr_dict = {a.field_id: a for a in attrs}
+
+    for association in model.type_.fields:
+        field = association.field
+        attr = attr_dict.pop(field.field_id, None)
+        if attr:
+            attr.type_field_association = association
+        else:
+            attribute_class = field.type_.attribute_class
+            attribute_class(
+                type_field_association=association,
+                field=field,
+                product=model,
+                value=None,
+            )
+
+    for attr in attr_dict.values():
+        attr.product = None
+
+    return model
 
 
 ##__________________________________________________________________||
