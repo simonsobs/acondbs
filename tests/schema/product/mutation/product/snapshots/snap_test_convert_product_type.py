@@ -170,13 +170,15 @@ snapshots['test_schema_success[convert] 1'] = {
                     ]
                 },
                 'timePosted': '2021-01-04T14:32:20',
-                'timeUpdated': None,
+                'timeUpdated': '2021-01-04T14:32:20',
                 'typeId': 2,
                 'type_': {
                     'name': 'beam',
                     'typeId': '2'
                 },
-                'updatingGitHubUser': None
+                'updatingGitHubUser': {
+                    'login': 'user1'
+                }
             }
         }
     }
@@ -346,13 +348,15 @@ snapshots['test_schema_success[convert] 2'] = {
                             ]
                         },
                         'timePosted': '2021-01-04T14:32:20',
-                        'timeUpdated': None,
+                        'timeUpdated': '2021-01-04T14:32:20',
                         'typeId': 2,
                         'type_': {
                             'name': 'beam',
                             'typeId': '2'
                         },
-                        'updatingGitHubUser': None
+                        'updatingGitHubUser': {
+                            'login': 'user1'
+                        }
                     }
                 },
                 {

@@ -388,11 +388,24 @@ def test_delete(app):
 
 
 ##__________________________________________________________________||
-def test_convert(app):
+@pytest.mark.parametrize("updating_git_hub_user_id", [None, 2])
+def test_convert_user(app, updating_git_hub_user_id):
+    return _test_convert(
+        app, updating_git_hub_user_id=updating_git_hub_user_id
+    )
+
+
+def _test_convert(
+    app,
+    updating_git_hub_user_id=None,
+):
 
     product_id = 1
     type_id = 2
     kwargs = {"product_id": product_id, "type_id": type_id}
+
+    if updating_git_hub_user_id:
+        kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
 
     attr_names = [
         a.attribute_class.backref_column
@@ -423,6 +436,15 @@ def test_convert(app):
     with app.app_context():
         model = Product.query.filter_by(product_id=product_id).one()
         assert model.type_.type_id == type_id
+
+        if updating_git_hub_user_id:
+            updating_git_hub_user = GitHubUser.query.filter_by(
+                user_id=updating_git_hub_user_id
+            ).one()
+            assert model.updating_git_hub_user == updating_git_hub_user
+        else:
+            assert model.updating_git_hub_user is None
+
         expected_ids = [(a.iid, a.field_id) for a in model.type_.fields]
         attrs = [e for attr in attr_names for e in getattr(model, attr)]
         for attr in attrs:

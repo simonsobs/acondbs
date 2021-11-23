@@ -276,7 +276,13 @@ class ConvertProductType(graphene.Mutation):
     product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, product_id, type_id):
-        model = ops.convert_product_type(product_id, type_id)
+        viewer = get_git_hub_viewer_from_info(info)
+        updating_git_hub_user_id = viewer.user_id
+        model = ops.convert_product_type(
+            product_id,
+            type_id,
+            updating_git_hub_user_id=updating_git_hub_user_id,
+        )
         ops.commit()
         ok = True
         return ConvertProductType(ok=ok, product=model)

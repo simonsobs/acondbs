@@ -64,9 +64,9 @@ def delete_product(product_id):
     return
 
 
-def convert_product_type(product_id, type_id):
+def convert_product_type(product_id, type_id, updating_git_hub_user_id=None):
     with sa.session.no_autoflush:
-        return _convert_product_type(product_id, type_id)
+        return _convert_product_type(product_id, type_id, updating_git_hub_user_id)
 
 
 ##__________________________________________________________________||
@@ -219,7 +219,7 @@ def _update_relations(old, input):
 
 
 ##__________________________________________________________________||
-def _convert_product_type(product_id, type_id):
+def _convert_product_type(product_id, type_id, updating_git_hub_user_id):
     model = Product.query.filter_by(product_id=product_id).one()
     product_type = ProductType.query.filter_by(type_id=type_id).one()
     model.type_ = product_type
@@ -251,6 +251,11 @@ def _convert_product_type(product_id, type_id):
 
     for attr in attr_dict.values():
         attr.product = None
+
+    model.time_updated = datetime.datetime.now()
+    if updating_git_hub_user_id:
+        GitHubUser.query.filter_by(user_id=updating_git_hub_user_id).one()
+    model.updating_git_hub_user_id = updating_git_hub_user_id
 
     return model
 
