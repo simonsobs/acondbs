@@ -1,26 +1,36 @@
 import datetime
 import pytest
 
-# from sqlalchemy import exc
-
 from acondbs import ops
 from acondbs.ops.product import _normalize_paths
 from acondbs.models import Product, FieldType, GitHubUser
 
 
 ##__________________________________________________________________||
-# fmt: off
 params = [
     pytest.param([], [], id="empty"),
     pytest.param(["/a/b/c"], ["/a/b/c"], id="one"),
     pytest.param([" /a/b/c  "], ["/a/b/c"], id="unstripped"),
-    pytest.param(["/d/e", "/a/b/c", "/f/g"], ["/d/e", "/a/b/c", "/f/g"], id="multiple"),
-    pytest.param(["/a/b/c", "", "/f/g"], ["/a/b/c", "/f/g"], id="empty-member"),
-    pytest.param(["/a/b/c", "  ", "/f/g"], ["/a/b/c", "/f/g"], id="empty-unstripped-member"),
-    pytest.param(["/d/e", "/a/b/c", "/d/e"], ["/d/e", "/a/b/c"], id="duplicate"),
-    pytest.param(["  /d/e ", "/a/b/c", "/d/e"], ["/d/e", "/a/b/c"], id="duplicate-unstripped"),
+    pytest.param(
+        ["/d/e", "/a/b/c", "/f/g"], ["/d/e", "/a/b/c", "/f/g"], id="multiple"
+    ),
+    pytest.param(
+        ["/a/b/c", "", "/f/g"], ["/a/b/c", "/f/g"], id="empty-member"
+    ),
+    pytest.param(
+        ["/a/b/c", "  ", "/f/g"],
+        ["/a/b/c", "/f/g"],
+        id="empty-unstripped-member",
+    ),
+    pytest.param(
+        ["/d/e", "/a/b/c", "/d/e"], ["/d/e", "/a/b/c"], id="duplicate"
+    ),
+    pytest.param(
+        ["  /d/e ", "/a/b/c", "/d/e"],
+        ["/d/e", "/a/b/c"],
+        id="duplicate-unstripped",
+    ),
 ]
-# fmt: on
 
 
 @pytest.mark.parametrize("paths, ret", params)
@@ -153,26 +163,12 @@ def _test_create(
             attributes = {}
         expected_ids = [(a.iid, a.field_id) for a in model.type_.fields]
         # list of (type_field_association.iid, field.field_id)
-        expected = {fid: (aid, attributes.get(fid)) for aid, fid in expected_ids}
+        expected = {
+            fid: (aid, attributes.get(fid)) for aid, fid in expected_ids
+        }
         actual = _extract_attributes(model)
-        actual_field_ids = list(actual.keys())
+        # actual_field_ids = list(actual.keys())
         assert actual == expected
-
-
-##__________________________________________________________________||
-def _extract_attributes(model):
-    attr_names = [
-        a.attribute_class.backref_column
-        for a in FieldType.__members__.values()
-    ]
-    # e.g., 'attributes_unicode_text', 'attributes_boolean'
-
-    attrs = [e for attr in attr_names for e in getattr(model, attr)]
-    # e.g., AttributeUnicodeText
-
-    ret = {a.field_id: (a.type_field_association_iid, a.value) for a in attrs}
-
-    return ret
 
 
 ##__________________________________________________________________||
@@ -389,6 +385,22 @@ def test_delete(app):
         model = Product.query.filter_by(product_id=product_id).one_or_none()
         assert model is None
         assert Product.query.count() == (count - 1)
+
+
+##__________________________________________________________________||
+def _extract_attributes(model):
+    attr_names = [
+        a.attribute_class.backref_column
+        for a in FieldType.__members__.values()
+    ]
+    # e.g., 'attributes_unicode_text', 'attributes_boolean'
+
+    attrs = [e for attr in attr_names for e in getattr(model, attr)]
+    # e.g., AttributeUnicodeText
+
+    ret = {a.field_id: (a.type_field_association_iid, a.value) for a in attrs}
+
+    return ret
 
 
 ##__________________________________________________________________||
