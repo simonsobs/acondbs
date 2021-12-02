@@ -7,9 +7,6 @@ from .... import ops
 
 ##__________________________________________________________________||
 class CommonInputFields:
-    name = graphene.String(
-        required=True, description="The name of the product type"
-    )
     order = graphene.Int(
         description=(
             "The order in which the type is displayed, for example, "
@@ -42,9 +39,15 @@ class CommonInputFields:
 class CreateProductTypeInput(graphene.InputObjectType, CommonInputFields):
     """Input to createProductType()"""
 
+    name = graphene.String(
+        required=True, description="The name of the product type"
+    )
+
 
 class UpdateProductTypeInput(graphene.InputObjectType, CommonInputFields):
     """Input to updateProductType()"""
+
+    name = graphene.String(description="The name of the product type")
 
 
 ##__________________________________________________________________||
