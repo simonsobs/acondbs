@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": "/Users/sakuma/work/so/201910_01_DB/202102_01_dev/acondb/venv/bin/python",
     "python.linting.pylintEnabled": false,
     "python.formatting.provider": "black",
     "python.linting.flake8Enabled": true,
