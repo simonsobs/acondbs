@@ -11,5 +11,7 @@
     "python.formatting.blackArgs": [
         "--line-length",
         "79"
-    ]
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
