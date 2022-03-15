@@ -128,7 +128,8 @@ def update_org_member_lists():
             for edge in edges:
                 node = edge['node']
                 if (member := GitHubUser.query.filter_by(git_hub_id=node['id']).one_or_none()) is None:
-                    member = GitHubUser(git_hub_id=node['id'])
+                    if (member := GitHubUser.query.filter_by(login=node['login']).one_or_none()) is None:
+                        member = GitHubUser(git_hub_id=node['id'])
                 member.login = node['login']
                 member.name = node['name']
                 member.avatar_url = node['avatarUrl']
