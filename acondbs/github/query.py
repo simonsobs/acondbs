@@ -173,7 +173,10 @@ def _decode_id(id_):
         The decoded ID, e.g., "04:User583231", "012:Organization75631844"
 
     """
-    return base64.b64decode(id_).decode()
+    try:
+        return base64.b64decode(id_).decode()
+    except BaseException:
+        return f"raw:{id_}"
 
 ##__________________________________________________________________||
 
