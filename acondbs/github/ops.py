@@ -115,8 +115,12 @@ def update_org_member_lists():
             for token in tokens:
                 try:
                     edges = query.org_members(org.login, token.token)
-                except Exception as e:
-                    print(e)
+                except Exception as exc:
+                    import traceback
+                    print(
+                        "".join(
+                            traceback.format_exception(
+                                type(exc), exc, exc.__traceback__)),)
                     continue
                 break
             if edges is None:
