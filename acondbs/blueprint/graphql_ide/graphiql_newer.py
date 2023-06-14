@@ -1,5 +1,5 @@
 
-##__________________________________________________________________||
+
 # Based on https://github.com/graphql/graphiql/blob/codemirror-graphql@1.0.0/examples/graphiql-cdn/index.html
 # To obtain fetchURL, inserted the lines https://github.com/graphql-python/flask-graphql/blob/v2.0.1/flask_graphql/render_graphiql.py#L33-L64
 GRAPHIQL_NEWER = '''<!--
@@ -121,4 +121,4 @@ GRAPHIQL_NEWER = '''<!--
   </body>
 </html>'''
 
-##__________________________________________________________________||
+

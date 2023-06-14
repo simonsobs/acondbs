@@ -7,7 +7,7 @@ import unittest.mock as mock
 from acondbs.misc.lock import lock
 from acondbs.misc.lock import TimeOutAcquiringLock
 
-##__________________________________________________________________||
+
 def test_acquire_release(tmpdir_factory):
     folder = Path(tmpdir_factory.mktemp('lock'))
     lock_file = folder.joinpath('.lock')
@@ -21,7 +21,7 @@ def test_acquire_release(tmpdir_factory):
     assert not l.locked
     assert not lock_file.exists()
 
-##__________________________________________________________________||
+
 def test_release_when_not_lockded(tmpdir_factory):
     folder = Path(tmpdir_factory.mktemp('lock'))
     lock_file = folder.joinpath('.lock')
@@ -32,7 +32,7 @@ def test_release_when_not_lockded(tmpdir_factory):
     assert not l.locked
     assert not lock_file.exists()
 
-##__________________________________________________________________||
+
 def test_release_not_delete_when_not_lockded(tmpdir_factory):
     folder = Path(tmpdir_factory.mktemp('lock'))
     lock_file = folder.joinpath('.lock')
@@ -45,7 +45,7 @@ def test_release_not_delete_when_not_lockded(tmpdir_factory):
     assert not l.locked
     assert lock_file.exists()
 
-##__________________________________________________________________||
+
 def test_acquire_timeout(tmpdir_factory):
     timeout = 0.1 # sec
 
@@ -59,7 +59,7 @@ def test_acquire_timeout(tmpdir_factory):
     with pytest.raises(TimeOutAcquiringLock):
         l.acquire()
 
-##__________________________________________________________________||
+
 def test_with_success(tmpdir_factory):
     folder = Path(tmpdir_factory.mktemp('lock'))
     lock_file = folder.joinpath('.lock')
@@ -70,4 +70,4 @@ def test_with_success(tmpdir_factory):
     assert not l.locked
     assert not lock_file.exists()
 
-##__________________________________________________________________||
+

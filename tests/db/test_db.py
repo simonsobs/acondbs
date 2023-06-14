@@ -1,4 +1,4 @@
-##__________________________________________________________________||
+
 def test_init_app(app):
     """test if the Flask app is initialized for the DB"""
 
@@ -7,4 +7,4 @@ def test_init_app(app):
     assert "sqlalchemy" in app.extensions
 
 
-##__________________________________________________________________||
+

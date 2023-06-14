@@ -10,7 +10,7 @@ from acondbs.models import (
     AccountAdmin
     )
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app_empty():
     database_uri ="sqlite:///:memory:"
@@ -19,7 +19,7 @@ def app_empty():
         define_tables()
     yield y
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app_empty):
     y = app_empty
@@ -40,4 +40,4 @@ def app(app_empty):
         sa.session.commit()
     yield y
 
-##__________________________________________________________________||
+

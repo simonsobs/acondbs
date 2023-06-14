@@ -22,7 +22,7 @@ migrate = Migrate()
 _MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.joinpath("migrations")
 
 
-##__________________________________________________________________||
+
 def init_app(app):
     """Initialize the Flask application object
 
@@ -43,4 +43,4 @@ def init_app(app):
     app.teardown_appcontext(close_db_connection)
 
 
-##__________________________________________________________________||
+

@@ -3,7 +3,7 @@ import datetime
 from ...db.sa import sa
 
 
-##__________________________________________________________________||
+
 class Product(sa.Model):
     # TODO: rename the class name to be more generic, e.g., "Entry"
     # TODO: use singular for the table name
@@ -37,4 +37,4 @@ class Product(sa.Model):
         return f"<{self.__class__.__name__} {self.name!r}>"
 
 
-##__________________________________________________________________||
+

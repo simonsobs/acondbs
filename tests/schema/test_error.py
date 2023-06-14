@@ -4,7 +4,7 @@ from .funcs import assert_mutation
 
 from .misc.gql import QUERY_ALL_LOGS
 
-##__________________________________________________________________||
+
 QUERY = """
 {
   noSuchField
@@ -20,14 +20,14 @@ HEADERS_QUERY = {
 }
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app_users):
     y = app_users
     yield y
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {
@@ -59,4 +59,4 @@ async def test_schema(
     )
 
 
-##__________________________________________________________________||
+

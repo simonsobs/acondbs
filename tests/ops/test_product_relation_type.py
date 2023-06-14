@@ -4,13 +4,13 @@ from acondbs import ops
 from acondbs.models import ProductRelationType
 
 
-##__________________________________________________________________||
+
 def test_fixture(app):
     with app.app_context():
         assert ProductRelationType.query.count() == 2
 
 
-##__________________________________________________________________||
+
 def test_create(app):
     type_ = {"name": "doctor"}
     reverse = {"name": "patient"}
@@ -73,7 +73,7 @@ def test_create_error_neither(app):
         assert ProductRelationType.query.count() == count
 
 
-##__________________________________________________________________||
+
 def test_update(app):
 
     type_id = 1
@@ -92,7 +92,7 @@ def test_update(app):
         assert model.name == "renamed"
 
 
-##__________________________________________________________________||
+
 def test_delete(app):
 
     with app.app_context():
@@ -112,4 +112,4 @@ def test_delete(app):
         assert ProductRelationType.query.count() == count - 2
 
 
-##__________________________________________________________________||
+

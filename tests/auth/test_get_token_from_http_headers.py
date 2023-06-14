@@ -2,7 +2,7 @@ import pytest
 
 from acondbs import auth
 
-##__________________________________________________________________||
+
 params = [
     pytest.param('Bearer {token}', id='no-quote'),
     pytest.param('Bearer "{token}"', id='double-quote'),
@@ -16,4 +16,4 @@ def test_format(format_, app):
     with app.test_request_context(environ_base=environ_base):
         assert token == auth._get_token_from_http_headers()
 
-##__________________________________________________________________||
+

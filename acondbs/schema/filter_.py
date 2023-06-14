@@ -21,7 +21,7 @@ from ..models import (
 )
 
 
-##__________________________________________________________________||
+
 class ProductFilter(FilterSet):
     type_name = graphene.String()
 
@@ -48,7 +48,7 @@ class ProductTypeFilter(FilterSet):
         fields = {}
 
 
-##__________________________________________________________________||
+
 class GitHubTokenFilter(FilterSet):
     class Meta:
         model = GitHubTokenModel
@@ -59,7 +59,7 @@ class GitHubTokenFilter(FilterSet):
         }
 
 
-##__________________________________________________________________||
+
 class GitHubUserFilter(FilterSet):
     org_member = graphene.Boolean()
 
@@ -73,7 +73,7 @@ class GitHubUserFilter(FilterSet):
         return query, filter_
 
 
-##__________________________________________________________________||
+
 class PFilterableConnectionField(FilterableConnectionField):
     filters = {
         ProductModel: ProductFilter(),
@@ -83,4 +83,4 @@ class PFilterableConnectionField(FilterableConnectionField):
     }
 
 
-##__________________________________________________________________||
+

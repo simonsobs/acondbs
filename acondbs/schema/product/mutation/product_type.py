@@ -5,7 +5,7 @@ from .. import type_
 from .... import ops
 
 
-##__________________________________________________________________||
+
 class CommonInputFields:
     order = graphene.Int(
         description=(
@@ -50,7 +50,7 @@ class UpdateProductTypeInput(graphene.InputObjectType, CommonInputFields):
     name = graphene.String(description="The name of the product type")
 
 
-##__________________________________________________________________||
+
 class CreateProductType(graphene.Mutation):
     """Create a product type"""
 
@@ -99,4 +99,4 @@ class DeleteProductType(graphene.Mutation):
         return DeleteProductType(ok=ok)
 
 
-##__________________________________________________________________||
+

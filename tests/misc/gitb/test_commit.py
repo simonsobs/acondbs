@@ -7,7 +7,7 @@ import pytest
 
 from acondbs.misc import gitb
 
-##__________________________________________________________________||
+
 def test_empty_folder(tmpdir_factory):
     """assert empty folder won't be initialized as a repo
     """
@@ -17,7 +17,7 @@ def test_empty_folder(tmpdir_factory):
     assert len(w) == 1
     assert not gitb.is_git_repo(folder)
 
-##__________________________________________________________________||
+
 @pytest.fixture()
 def nonexistent_path(tmpdir_factory):
     """path to a nonexistent file
@@ -32,7 +32,7 @@ def test_nonexistent_path(nonexistent_path):
     with pytest.raises(ValueError):
         gitb.commit(nonexistent_path)
 
-##__________________________________________________________________||
+
 def test_non_empty_folder(folder):
     """assert a repo initialized and files committed
     """
@@ -42,7 +42,7 @@ def test_non_empty_folder(folder):
     ncommits = len(list(repo.iter_commits()))
     assert 1 == ncommits
 
-##__________________________________________________________________||
+
 def test_clean_repo(repo):
     """assert no empty commit is made
     """
@@ -95,4 +95,4 @@ def test_custom_message(repo_dirty):
     gitb.commit(folder, 'custom message')
     assert 'custom message' == repo.head.commit.message
 
-##__________________________________________________________________||
+

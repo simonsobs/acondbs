@@ -1,7 +1,7 @@
 from acondbs.models import FieldType, saEnumFieldType
 
 
-##__________________________________________________________________||
+
 def test_attribute_class():
     for name, type_ in FieldType.__members__.items():
         # e.g., name = "UnicodeText", type_ = FieldType.UnicodeText
@@ -12,7 +12,7 @@ def test_import_sa_enum():
     assert saEnumFieldType
 
 
-##__________________________________________________________________||
+
 def test_example():
 
     # can be instantiated with an int
@@ -27,4 +27,4 @@ def test_example():
     assert type_.value == 1
 
 
-##__________________________________________________________________||
+

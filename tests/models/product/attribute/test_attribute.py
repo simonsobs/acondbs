@@ -23,7 +23,7 @@ from acondbs.models import (
 )
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         FieldType.UnicodeText,
@@ -110,7 +110,7 @@ def test_commit(app_empty, field_type, AttributeClass, value):
         assert getattr(attr.field, AttributeClass.backref_column) == [attr]
 
 
-##__________________________________________________________________||
+
 def test_filter(app):
 
     with app.app_context():
@@ -167,7 +167,7 @@ def test_order(app):
         assert actual == expected
 
 
-##__________________________________________________________________||
+
 def test_order_nested(app_empty):
     app = app_empty
 
@@ -296,7 +296,7 @@ def test_order_nested(app_empty):
         assert actual == expected
 
 
-##__________________________________________________________________||
+
 def test_delte_orphan_product(app_empty):
     app = app_empty
 
@@ -376,4 +376,4 @@ def test_delte_orphan_type_field_association_and_field(app_empty):
         assert attr1 is None
 
 
-##__________________________________________________________________||
+

@@ -7,7 +7,7 @@ import pytest
 import unittest.mock as mock
 
 
-##__________________________________________________________________||
+
 @pytest.fixture(autouse=True)
 def mock_authenticate(monkeypatch):
     y = mock.Mock()
@@ -15,7 +15,7 @@ def mock_authenticate(monkeypatch):
     yield y
 
 
-##__________________________________________________________________||
+
 @pytest.mark.asyncio
 async def test_auth(app, mock_authenticate):
 
@@ -53,4 +53,4 @@ async def test_auth(app, mock_authenticate):
     assert [mock.call("h443xg9c")] == mock_authenticate.call_args_list
 
 
-##__________________________________________________________________||
+

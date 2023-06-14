@@ -1,7 +1,7 @@
 from acondbs.models import Product, ProductRelation, ProductRelationType
 
 
-##__________________________________________________________________||
+
 def test_example_how_to_query(app):
 
     #                              +--------+
@@ -55,4 +55,4 @@ def test_example_how_to_query(app):
         assert [parent1] == products
 
 
-##__________________________________________________________________||
+

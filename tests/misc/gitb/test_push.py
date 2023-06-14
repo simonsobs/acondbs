@@ -5,7 +5,7 @@ import pytest
 
 from acondbs.misc import gitb
 
-##__________________________________________________________________||
+
 def test_push(remote_url, tmpdir_factory):
     """test push()
 
@@ -42,7 +42,7 @@ def test_push(remote_url, tmpdir_factory):
     assert head_sha_new == repo2.head.commit.hexsha
 
 
-##__________________________________________________________________||
+
 def test_nonexistent_path(tmpdir_factory):
     """assert exception is raised for nonexistent path
     """
@@ -66,4 +66,4 @@ def test_repo_no_remote(repo):
     with pytest.raises(ValueError):
         gitb.push(repo.working_tree_dir)
 
-##__________________________________________________________________||
+

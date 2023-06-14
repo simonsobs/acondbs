@@ -3,7 +3,7 @@ from ...db.sa import sa
 from sqlalchemy.event import listens_for
 
 
-##__________________________________________________________________||
+
 class ProductRelation(sa.Model):
     __tablename__ = "product_relations"
     relation_id = sa.Column(sa.Integer(), primary_key=True)
@@ -59,7 +59,7 @@ class ProductRelation(sa.Model):
             return self.type_
 
 
-##__________________________________________________________________||
+
 @listens_for(ProductRelation.type_, "set")
 def set_reverse_type(target, value, oldvalue, initiator):
     relation = target
@@ -127,4 +127,4 @@ def set_reverse_self(target, value, oldvalue, initiator):
         del relation.reverse.__avoid_recursive
 
 
-##__________________________________________________________________||
+

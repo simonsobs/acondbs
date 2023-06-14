@@ -6,7 +6,7 @@ import unittest.mock as mock
 
 from acondbs.db.backup import backup_db_to_github
 
-##__________________________________________________________________||
+
 @pytest.fixture()
 def mock_backup_db_to_github_(monkeypatch):
     y = mock.Mock()
@@ -21,14 +21,14 @@ def mock_lock_path(app, monkeypatch, tmpdir_factory):
     monkeypatch.setitem(app.config, 'ACONDBS_DB_BACKUP_LOCK_TIMEOUT', 0.01)
     yield y
 
-##__________________________________________________________________||
+
 def test_backup_db_to_github(app, mock_lock_path, mock_backup_db_to_github_):
     with app.app_context():
         repo_path = app.config['ACONDBS_DB_FOLDER']
         backup_db_to_github()
     assert [mock.call(repo_path)] == mock_backup_db_to_github_.call_args_list
 
-##__________________________________________________________________||
+
 def test_backup_db_locked(app, mock_lock_path, mock_backup_db_to_github_):
     mock_lock_path.touch()
     with app.app_context():
@@ -37,4 +37,4 @@ def test_backup_db_locked(app, mock_lock_path, mock_backup_db_to_github_):
     assert [] == mock_backup_db_to_github_.call_args_list
     assert len(w) == 1
 
-##__________________________________________________________________||
+

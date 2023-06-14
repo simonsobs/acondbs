@@ -7,7 +7,7 @@ from acondbs.db.sa import sa
 from acondbs.models import GitHubToken, GitHubUser, AccountAdmin
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -42,4 +42,4 @@ def app_users(app_empty):
     yield y
 
 
-##__________________________________________________________________||
+

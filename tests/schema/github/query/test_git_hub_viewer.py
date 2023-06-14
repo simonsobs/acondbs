@@ -4,7 +4,7 @@ from ...funcs import assert_query
 
 QUERY = "{ gitHubViewer { login name avatarUrl } }"
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": QUERY},
@@ -20,7 +20,7 @@ async def test_success(app, snapshot, data, headers):
     await assert_query(app, snapshot, data, headers)
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": QUERY},
@@ -41,4 +41,4 @@ async def test_error(app, snapshot, data, headers):
     await assert_query(app, snapshot, data, headers, error=True)
 
 
-##__________________________________________________________________||
+

@@ -3,7 +3,7 @@ from pathlib import Path
 import time
 import contextlib
 
-##__________________________________________________________________||
+
 class lock:
 
     def __init__(self, path, timeout=None):
@@ -39,11 +39,11 @@ class lock:
             pass
         self.locked = False
 
-##__________________________________________________________________||
+
 class TimeOutAcquiringLock(Exception):
     pass
 
-##__________________________________________________________________||
+
 def try_make_file(path):
     """try to create a file atomically
 
@@ -55,4 +55,4 @@ def try_make_file(path):
     except FileExistsError:
         return False
 
-##__________________________________________________________________||
+

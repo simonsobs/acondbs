@@ -10,7 +10,7 @@ import requests
 
 API_URL = 'https://api.github.com/graphql'
 
-##__________________________________________________________________||
+
 def call_graphql_api(query, variables=None, token=None):
     """Call a GitHub GraphQL API
 
@@ -89,7 +89,7 @@ def call_graphql_api(query, variables=None, token=None):
 
     return response['data']
 
-##__________________________________________________________________||
+
 def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri):
     """exchange a OAuth2 authorization code for an access token
 
@@ -151,4 +151,4 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
 
     return response
 
-##__________________________________________________________________||
+

@@ -11,7 +11,7 @@ from . import (
 )
 
 
-##__________________________________________________________________||
+
 class QueryPublic(graphene.ObjectType):
     web_config = web.query.web_config_field
     is_signed_in = auth.query.is_signed_in_field
@@ -23,7 +23,7 @@ class MutationPublic(graphene.ObjectType):
     create_log = misc.mutation.CreateLog.Field()
 
 
-##__________________________________________________________________||
+
 class QueryPrivate(QueryPublic):
 
     #
@@ -85,7 +85,7 @@ class MutationPrivate(MutationPublic):
     update_field = p.mutation.UpdateField.Field()
 
 
-##__________________________________________________________________||
+
 class QueryAdmin(QueryPrivate):
 
     #
@@ -122,7 +122,7 @@ class MutationAdmin(MutationPrivate):
     save_web_config = web.mutation.SaveWebconfig.Field()
 
 
-##__________________________________________________________________||
+
 class Query(QueryAdmin):
     pass
 
@@ -131,11 +131,11 @@ class Mutation(MutationAdmin):
     pass
 
 
-##__________________________________________________________________||
+
 schema_public = graphene.Schema(query=QueryPublic, mutation=MutationPublic)
 schema_private = graphene.Schema(query=QueryPrivate, mutation=MutationPrivate)
 schema_admin = graphene.Schema(query=QueryAdmin, mutation=MutationAdmin)
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
 
-##__________________________________________________________________||
+

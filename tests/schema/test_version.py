@@ -8,7 +8,7 @@ import acondbs
 QUERY = "{ version }"
 
 
-##__________________________________________________________________||
+
 @pytest.mark.asyncio
 async def test_schema(app):
 
@@ -29,4 +29,4 @@ async def test_schema(app):
     assert resp.json() == expected
 
 
-##__________________________________________________________________||
+

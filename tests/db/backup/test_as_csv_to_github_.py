@@ -10,7 +10,7 @@ from acondbs.schema import schema_admin
 
 from acondbs.db.backup import backup_db_as_csv_to_github_
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def local_repo(app, tmpdir_factory):
     """
@@ -45,7 +45,7 @@ def remote_repo(local_repo, tmpdir_factory):
 
     yield remote_repo
 
-##__________________________________________________________________||
+
 def test_backup_db_as_csv_to_github_(app, local_repo, remote_repo):
 
     repo_path = local_repo.working_tree_dir
@@ -75,4 +75,4 @@ def test_backup_db_as_csv_to_github_(app, local_repo, remote_repo):
     assert not head_sha_old == head_sha_new
     assert head_sha_new == remote_repo.head.commit.hexsha
 
-##__________________________________________________________________||
+

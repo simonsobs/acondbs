@@ -5,7 +5,7 @@ from acondbs.models import ProductType, Product
 # how models in flask_sqlalchemy work.
 
 
-##__________________________________________________________________||
+
 def test_simple(app):
     """A simple test of adding an object"""
 
@@ -31,7 +31,7 @@ def test_simple(app):
         assert isinstance(type1_, ProductType)
 
 
-##__________________________________________________________________||
+
 def test_python_object(app):
     """A simple test about Python object"""
 
@@ -53,7 +53,7 @@ def test_python_object(app):
         assert type1 is not type1_
 
 
-##__________________________________________________________________||
+
 def test_primary_key(app):
     """A simple test about the primary key"""
 
@@ -77,7 +77,7 @@ def test_primary_key(app):
         assert "type1" == type1.name
 
 
-##__________________________________________________________________||
+
 def test_relation(app):
     """A simple test of adding an object with relation"""
 
@@ -114,4 +114,4 @@ def test_relation(app):
         assert product1.type_id == type1.type_id
 
 
-##__________________________________________________________________||
+

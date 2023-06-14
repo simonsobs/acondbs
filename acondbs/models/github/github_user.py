@@ -1,7 +1,7 @@
 from ...db.sa import sa
 
 
-##__________________________________________________________________||
+
 class GitHubUser(sa.Model):
     __tablename__ = "github_users"
     user_id = sa.Column(sa.Integer(), primary_key=True)
@@ -15,4 +15,4 @@ class GitHubUser(sa.Model):
         return f"<{self.__class__.__name__} {self.login!r}>"
 
 
-##__________________________________________________________________||
+

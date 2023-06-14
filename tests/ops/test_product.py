@@ -6,7 +6,7 @@ from acondbs.ops.product import _normalize_paths
 from acondbs.models import Product, ProductType, FieldType, GitHubUser
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param([], [], id="empty"),
     pytest.param(["/a/b/c"], ["/a/b/c"], id="one"),
@@ -38,7 +38,7 @@ def test_normalize_paths(paths, ret):
     assert _normalize_paths(paths) == ret
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(None, id="none"),
     pytest.param({}, id="empty"),
@@ -171,7 +171,7 @@ def _test_create(
         assert actual == expected
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(None, id="none"),
     pytest.param({}, id="empty"),
@@ -368,7 +368,7 @@ def _test_update(
         assert actual == expected
 
 
-##__________________________________________________________________||
+
 def test_delete(app):
 
     with app.app_context():
@@ -387,7 +387,7 @@ def test_delete(app):
         assert Product.query.count() == (count - 1)
 
 
-##__________________________________________________________________||
+
 @pytest.mark.parametrize("updating_git_hub_user_id", [None, 2])
 def test_convert_user(app, updating_git_hub_user_id):
     return _test_convert(
@@ -457,7 +457,7 @@ def _test_convert(
         assert set(expected_field_values) == set(actual_field_values)
 
 
-##__________________________________________________________________||
+
 def _extract_attributes(model):
     attr_names = [
         a.attribute_class.backref_column
@@ -473,4 +473,4 @@ def _extract_attributes(model):
     return ret
 
 
-##__________________________________________________________________||
+

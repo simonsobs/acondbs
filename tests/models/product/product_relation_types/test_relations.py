@@ -4,7 +4,7 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductRelationType
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app_empty):
 
@@ -42,7 +42,7 @@ def app(app_empty):
     yield y
 
 
-##__________________________________________________________________||
+
 def test_reverse(app):
 
     with app.app_context():
@@ -79,4 +79,4 @@ def test_cascade(app):
         assert child is None
 
 
-##__________________________________________________________________||
+

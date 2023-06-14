@@ -6,7 +6,7 @@ from ...models import Log as LogModel
 from ..connection import CountedConnection
 
 
-##__________________________________________________________________||
+
 class Log(SQLAlchemyObjectType):
     """Record of errors, etc."""
 
@@ -16,4 +16,4 @@ class Log(SQLAlchemyObjectType):
         connection_class = CountedConnection
 
 
-##__________________________________________________________________||
+

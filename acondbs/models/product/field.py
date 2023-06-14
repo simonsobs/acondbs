@@ -5,7 +5,7 @@ from ...db.sa import sa
 from . import attribute
 
 
-##__________________________________________________________________||
+
 class FieldType(enum.Enum):
     # SQLAlchemy generic types: https://docs.sqlalchemy.org/en/14/core/type_basics.html#generic-types
     UnicodeText = 1
@@ -53,4 +53,4 @@ class Field(sa.Model):
             return self.type_
 
 
-##__________________________________________________________________||
+

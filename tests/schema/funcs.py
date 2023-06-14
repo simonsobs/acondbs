@@ -5,7 +5,7 @@ from a2wsgi import WSGIMiddleware
 HEADERS_DEFAULT = {"Content-Type:": "application/json"}
 
 
-##__________________________________________________________________||
+
 async def assert_query(app, snapshot, data, headers=None, error=False):
     if not headers:
         headers = {}
@@ -56,4 +56,4 @@ async def assert_mutation(
     await assert_query(app, snapshot, data_query, headers_query)
 
 
-##__________________________________________________________________||
+

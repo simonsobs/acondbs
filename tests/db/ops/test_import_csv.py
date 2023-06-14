@@ -12,7 +12,7 @@ from acondbs.db.ops import (
 from ...constants import SAMPLE_DIR
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app():
     config_path = Path(SAMPLE_DIR, "config.py")
@@ -25,7 +25,7 @@ def app():
     yield app
 
 
-##__________________________________________________________________||
+
 def test_non_empty(app, snapshot):
     csvdir = Path(SAMPLE_DIR, "csv")
     with app.app_context():
@@ -34,7 +34,7 @@ def test_non_empty(app, snapshot):
         snapshot.assert_match(export_db_to_dict_of_dict_list())
 
 
-##__________________________________________________________________||
+
 def test_empty(app, tmpdir_factory):
     csvdir = str(tmpdir_factory.mktemp("csv"))
 
@@ -45,4 +45,4 @@ def test_empty(app, tmpdir_factory):
         import_tables_from_csv_files(csvdir)
 
 
-##__________________________________________________________________||
+

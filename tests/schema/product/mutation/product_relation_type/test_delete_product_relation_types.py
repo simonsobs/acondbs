@@ -7,7 +7,7 @@ from ...gql import (
     MUTATION_DELETE_PRODUCT_RELATION_TYPES,
 )
 
-##__________________________________________________________________||
+
 QEURY = (
     """
 {
@@ -24,7 +24,7 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 3}},
@@ -53,7 +53,7 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_RELATION_TYPES, "variables": {"typeId": 512}},
@@ -86,4 +86,4 @@ async def test_schema_error(
     )
 
 
-##__________________________________________________________________||
+

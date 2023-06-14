@@ -22,7 +22,7 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_TYPE, "variables": {"typeId": 2}},
@@ -51,7 +51,7 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_TYPE, "variables": {"typeId": 12}},
@@ -84,4 +84,4 @@ async def test_schema_error(
     )
 
 
-##__________________________________________________________________||
+

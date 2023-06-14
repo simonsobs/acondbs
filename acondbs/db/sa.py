@@ -4,7 +4,7 @@
 from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy
 
-##__________________________________________________________________||
+
 # https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#using-custom-metadata-and-naming-conventions
 # https://stackoverflow.com/a/56000475/7309855
 convention = {
@@ -17,7 +17,7 @@ convention = {
 }
 metadata = MetaData(naming_convention=convention)
 
-##__________________________________________________________________||
+
 sa = SQLAlchemy(metadata=metadata)
 """the instance of SQLAlchemy from Flask-SQLAlchemy
 
@@ -29,4 +29,4 @@ in example code found online.
   https://flask-sqlalchemy.palletsprojects.com/en/2.x/api/#flask_sqlalchemy.SQLAlchemy
 
 """
-##__________________________________________________________________||
+

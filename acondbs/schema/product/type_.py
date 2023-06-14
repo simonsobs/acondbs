@@ -27,7 +27,7 @@ from ..filter_ import PFilterableConnectionField
 from graphene_sqlalchemy.enums import _convert_sa_to_graphene_enum
 
 
-##__________________________________________________________________||
+
 # FieldType is an enum. It is manually converted to a graphene enum
 # here. An enum will be usually automatically converted. However, the
 # automatic conversion causes an error if the automatic conversion
@@ -43,7 +43,7 @@ from graphene_sqlalchemy.enums import _convert_sa_to_graphene_enum
 FieldType = _convert_sa_to_graphene_enum(saEnumFieldType)
 
 
-##__________________________________________________________________||
+
 class Product(SQLAlchemyObjectType):
     class Meta:
         model = ProductModel
@@ -52,7 +52,7 @@ class Product(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-##__________________________________________________________________||
+
 class ProductType(SQLAlchemyObjectType):
     """A product type"""
 
@@ -63,7 +63,7 @@ class ProductType(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-##__________________________________________________________________||
+
 class ProductRelation(SQLAlchemyObjectType):
     """A relation from one product to another"""
 
@@ -74,7 +74,7 @@ class ProductRelation(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-##__________________________________________________________________||
+
 class ProductRelationType(SQLAlchemyObjectType):
     """A type of relations between products"""
 
@@ -85,7 +85,7 @@ class ProductRelationType(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-##__________________________________________________________________||
+
 class ProductFilePath(SQLAlchemyObjectType):
     class Meta:
         model = ProductFilePathModel
@@ -94,7 +94,7 @@ class ProductFilePath(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-##__________________________________________________________________||
+
 class Field(SQLAlchemyObjectType):
     class Meta:
         model = FieldModel
@@ -188,4 +188,4 @@ class AttributeTime(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-##__________________________________________________________________||
+

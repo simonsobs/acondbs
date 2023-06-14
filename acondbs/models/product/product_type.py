@@ -1,7 +1,7 @@
 from ...db.sa import sa
 
 
-##__________________________________________________________________||
+
 class ProductType(sa.Model):
     __tablename__ = "product_types"
     type_id = sa.Column(sa.Integer(), primary_key=True)
@@ -16,4 +16,4 @@ class ProductType(sa.Model):
         return f"<{self.__class__.__name__} {self.name!r}>"
 
 
-##__________________________________________________________________||
+

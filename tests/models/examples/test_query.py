@@ -9,7 +9,7 @@ from acondbs.models import ProductType, Product
 # how models in flask_sqlalchemy work.
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app):
     y = app
@@ -26,7 +26,7 @@ def app(app):
     yield y
 
 
-##__________________________________________________________________||
+
 def test_context(app):
 
     # query cannot be accessed outside of the app context
@@ -87,4 +87,4 @@ def test_query_filter_nonexistent(app):
         assert product is None
 
 
-##__________________________________________________________________||
+

@@ -6,13 +6,13 @@ from .. import type_
 from .... import ops
 
 
-##__________________________________________________________________||
+
 def _reshape_arg_attributes(attributes):
     ret = {e["field_id"]: e["value"] for t, v in attributes.items() for e in v}
     return ret
 
 
-##__________________________________________________________________||
+
 class RelationInputFields(graphene.InputObjectType):
     """A relation to another product"""
 
@@ -168,7 +168,7 @@ class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     )
 
 
-##__________________________________________________________________||
+
 class CreateProduct(graphene.Mutation):
     """Create a product"""
 
@@ -258,7 +258,7 @@ class DeleteProduct(graphene.Mutation):
         return DeleteProduct(ok=ok)
 
 
-##__________________________________________________________________||
+
 class ConvertProductType(graphene.Mutation):
     """Convert the product type of a product"""
 
@@ -288,4 +288,4 @@ class ConvertProductType(graphene.Mutation):
         return ConvertProductType(ok=ok, product=model)
 
 
-##__________________________________________________________________||
+

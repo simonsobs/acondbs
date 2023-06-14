@@ -6,7 +6,7 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product
 
 
-##__________________________________________________________________||
+
 def test_add(app):
     """A simple test of adding an object with a date field"""
 
@@ -31,7 +31,7 @@ def test_add(app):
         )
 
 
-##__________________________________________________________________||
+
 def test_add_raise(app):
     """A simple test of adding an object with a wrong type"""
 
@@ -53,4 +53,4 @@ def test_add_raise(app):
             sa.session.commit()
 
 
-##__________________________________________________________________||
+

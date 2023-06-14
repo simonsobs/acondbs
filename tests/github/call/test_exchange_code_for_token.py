@@ -3,14 +3,14 @@ import unittest.mock as mock
 
 from acondbs.github.call import exchange_code_for_token
 
-##__________________________________________________________________||
+
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
     monkeypatch.setattr("acondbs.github.call.requests", y)
     yield y
 
-##__________________________________________________________________||
+
 def test_success(mock_requests, snapshot):
 
     code = 'code-xyz'
@@ -28,7 +28,7 @@ def test_success(mock_requests, snapshot):
     assert return_value == response
     snapshot.assert_match(mock_requests.post.call_args_list)
 
-##__________________________________________________________________||
+
 def test_error(mock_requests, snapshot):
 
     code = 'code-xyz'
@@ -52,4 +52,4 @@ def test_error(mock_requests, snapshot):
 
     snapshot.assert_match(mock_requests.post.call_args_list)
 
-##__________________________________________________________________||
+

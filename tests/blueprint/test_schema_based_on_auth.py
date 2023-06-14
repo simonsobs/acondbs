@@ -7,7 +7,7 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 
-##__________________________________________________________________||
+
 QUERY = '''
 {
   __schema {
@@ -31,7 +31,7 @@ QUERY = '''
 '''
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -41,7 +41,7 @@ def app_empty():
     yield y
 
 
-##__________________________________________________________________||
+
 @pytest.fixture()
 def mock_auth(monkeypatch):
     y = mock.Mock()
@@ -49,7 +49,7 @@ def mock_auth(monkeypatch):
     yield y
 
 
-##__________________________________________________________________||
+
 @pytest.mark.parametrize('is_signed_in', [True, False])
 @pytest.mark.parametrize('is_admin', [True, False])
 def test_schema_selection(app_empty, is_signed_in, is_admin, mock_auth, snapshot):
@@ -70,4 +70,4 @@ def test_schema_selection(app_empty, is_signed_in, is_admin, mock_auth, snapshot
     snapshot.assert_match(un_jsonified)
     # print(json.dumps(un_jsonified, indent=2))
 
-##__________________________________________________________________||
+

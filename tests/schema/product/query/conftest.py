@@ -5,7 +5,7 @@ import pytest
 from acondbs import ops
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app_users):
 
@@ -165,4 +165,4 @@ def app(app_users):
 
     yield y
 
-##__________________________________________________________________||
+

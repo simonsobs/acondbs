@@ -51,7 +51,7 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": ALL_GITHUB_TOKENS},
@@ -64,10 +64,10 @@ params = [
 ]
 
 
-##__________________________________________________________________||
+
 @pytest.mark.parametrize("data", params)
 @pytest.mark.asyncio
 async def test_schema(app, snapshot, data):
     await assert_query(app, snapshot, data, HEADERS)
 
-##__________________________________________________________________||
+

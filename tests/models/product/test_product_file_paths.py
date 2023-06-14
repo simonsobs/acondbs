@@ -4,7 +4,7 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product, ProductFilePath
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app_empty):
 
@@ -26,7 +26,7 @@ def app(app_empty):
     yield y
 
 
-##__________________________________________________________________||
+
 def test_relations(app):
 
     with app.app_context():
@@ -75,7 +75,7 @@ def test_delete_path(app):
         assert [] == ProductFilePath.query.all()
 
 
-##__________________________________________________________________||
+
 def test_repr(app_empty):
     app = app_empty
     path = ProductFilePath(path="/abcdef/abcdef/abcdef/abcdef/abcdef/abcdef/path.txt")
@@ -85,4 +85,4 @@ def test_repr(app_empty):
     path = ProductFilePath()
     assert repr(path) == "<ProductFilePath None>"
 
-##__________________________________________________________________||
+

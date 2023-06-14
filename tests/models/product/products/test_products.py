@@ -6,7 +6,7 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product, GitHubUser
 
 
-##__________________________________________________________________||
+
 def test_product(app_empty):
     app = app_empty
 
@@ -25,7 +25,7 @@ def test_product(app_empty):
         assert [map1] == type_map.products
 
 
-##__________________________________________________________________||
+
 def test_constraint_type_required_add(app_empty):
     app = app_empty
 
@@ -41,7 +41,7 @@ def test_constraint_type_required_add(app_empty):
         assert map1 is None
 
 
-##__________________________________________________________________||
+
 def test_constraint_type_required_delete(app_empty):
     app = app_empty
 
@@ -86,7 +86,7 @@ def test_constraint_type_required_delete(app_empty):
         sa.session.commit()
 
 
-##__________________________________________________________________||
+
 def test_git_hub_user(app_empty):
     app = app_empty
 
@@ -121,4 +121,4 @@ def test_git_hub_user(app_empty):
         assert [map1] == user2.updated_products
 
 
-##__________________________________________________________________||
+

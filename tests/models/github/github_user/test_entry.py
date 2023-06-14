@@ -2,7 +2,7 @@ from acondbs.db.sa import sa
 from acondbs.models import GitHubUser
 
 
-##__________________________________________________________________||
+
 def test_entry(app_empty):
     app = app_empty
 
@@ -22,4 +22,4 @@ def test_entry(app_empty):
         assert "octocat" == user1.login
 
 
-##__________________________________________________________________||
+

@@ -3,7 +3,7 @@ import pytest
 
 from acondbs import create_app
 
-##__________________________________________________________________||
+
 TEST_CONFIG_DICT_DEFAULT = dict(
     TEST_CONFIG_A="abc",
     TEST_CONFIG_B=123,
@@ -74,4 +74,4 @@ def test_create_app_dict():
     assert expected.items() <= app.config.items()
 
 
-##__________________________________________________________________||
+

@@ -1,7 +1,7 @@
 from ..github.ops import get_user_for_token
 
 
-##__________________________________________________________________||
+
 def get_git_hub_viewer_from_info(info):
 
     auth = info.context.headers.get("Authorization")
@@ -16,4 +16,4 @@ def get_git_hub_viewer_from_info(info):
     return get_user_for_token(token)
 
 
-##__________________________________________________________________||
+

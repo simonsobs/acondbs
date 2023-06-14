@@ -5,7 +5,7 @@ from .. import type_
 from .... import ops
 
 
-##__________________________________________________________________||
+
 class CommonInputFields:
     name = graphene.String(
         required=True,
@@ -22,7 +22,7 @@ class UpdateFieldInput(graphene.InputObjectType, CommonInputFields):
     """Input to updateField()"""
 
 
-##__________________________________________________________________||
+
 class CreateField(graphene.Mutation):
     """Create a field"""
 
@@ -72,4 +72,4 @@ class DeleteField(graphene.Mutation):
         return DeleteField(ok=ok)
 
 
-##__________________________________________________________________||
+

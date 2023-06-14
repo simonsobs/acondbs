@@ -12,7 +12,7 @@ https://docs.sqlalchemy.org/en/14/orm/tutorial.html#declare-a-mapping
 
 """
 
-##__________________________________________________________________||
+
 from .product import (  # noqa: F401
     ProductType,
     Product,
@@ -46,7 +46,7 @@ from .web import WebConfig  # noqa: F401
 from .misc import Log  # noqa: F401
 
 
-##__________________________________________________________________||
+
 def init_app(app):
     """Initialize the Flask application object
 
@@ -62,7 +62,7 @@ def init_app(app):
     # remove_git_hub_tokens_with_invalid_decryption_key(app)
 
 
-##__________________________________________________________________||
+
 def _add_owners_to_db_as_admins(app):
     import sqlalchemy
     from ..db.sa import sa
@@ -100,7 +100,7 @@ def _add_owners_to_db_as_admins(app):
         sa.session.commit()
 
 
-##__________________________________________________________________||
+
 def remove_git_hub_tokens_with_invalid_decryption_key(app):
     from ..db.sa import sa
 
@@ -118,4 +118,4 @@ def remove_git_hub_tokens_with_invalid_decryption_key(app):
                 sa.engine.execute(sql)
 
 
-##__________________________________________________________________||
+

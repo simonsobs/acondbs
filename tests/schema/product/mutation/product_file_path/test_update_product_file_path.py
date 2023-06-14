@@ -6,7 +6,7 @@ from ....funcs import assert_mutation
 HEADERS = {"Authorization": "Bearer token123"}  # octocat
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {
@@ -57,7 +57,7 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {
@@ -105,4 +105,4 @@ async def test_schema_error(
     )
 
 
-##__________________________________________________________________||
+

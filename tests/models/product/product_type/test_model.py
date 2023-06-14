@@ -2,7 +2,7 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType
 
 
-##__________________________________________________________________||
+
 def test_column(app_empty):
     app = app_empty
 
@@ -47,4 +47,4 @@ def test_repr(app_empty):
         repr(model)
 
 
-##__________________________________________________________________||
+

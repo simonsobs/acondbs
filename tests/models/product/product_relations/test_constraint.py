@@ -7,7 +7,7 @@ from acondbs.models import Product, ProductRelation, ProductRelationType
 from acondbs.db.sa import sa
 
 
-##__________________________________________________________________||
+
 def test_constraint(app):
 
     #                              +--------+
@@ -37,4 +37,4 @@ def test_constraint(app):
             sa.session.commit()
 
 
-##__________________________________________________________________||
+

@@ -1,7 +1,7 @@
 from ...db.sa import sa
 
 
-##__________________________________________________________________||
+
 class GitHubOrgMembership(sa.Model):
     __tablename__ = "github_org_memberships"
     entry_id = sa.Column(sa.Integer(), primary_key=True)
@@ -18,4 +18,4 @@ class GitHubOrgMembership(sa.Model):
     )
 
 
-##__________________________________________________________________||
+

@@ -2,7 +2,7 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductRelationType
 
 
-##__________________________________________________________________||
+
 def test_column(app_empty):
     app = app_empty
 
@@ -27,4 +27,4 @@ def test_column(app_empty):
         assert model.plural == "parents"
 
 
-##__________________________________________________________________||
+

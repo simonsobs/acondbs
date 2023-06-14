@@ -4,7 +4,7 @@ from acondbs.db.sa import sa
 from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app_empty):
     y = app_empty
@@ -19,4 +19,4 @@ def app(app_empty):
     yield y
 
 
-##__________________________________________________________________||
+

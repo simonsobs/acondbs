@@ -8,7 +8,7 @@ from flask_graphql import GraphQLView
 from .. import auth, schema, ops
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 
-##__________________________________________________________________||
+
 from flask import request
 
 
@@ -128,7 +128,7 @@ class GraphQLViewW(GraphQLView):
         super().__init__(**kwargs)
 
 
-##__________________________________________________________________||
+
 bp = Blueprint("graphql", __name__)
 bp.add_url_rule("/graphql", view_func=GraphQLViewW.as_view("graphql"))
 
@@ -137,7 +137,7 @@ def init_app(app):
     app.register_blueprint(bp)
 
 
-##__________________________________________________________________||
+
 def _select_schema():
     if auth.is_admin():
         return schema.schema_admin
@@ -157,4 +157,4 @@ def _select_graphiql_template():
         return None
 
 
-##__________________________________________________________________||
+

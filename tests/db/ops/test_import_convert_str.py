@@ -13,7 +13,7 @@ from acondbs import create_app
 from acondbs.db.ops import convert_data_type_for_insert
 
 
-##__________________________________________________________________||
+
 sa = SQLAlchemy()
 
 
@@ -33,7 +33,7 @@ class SampleTable(sa.Model):
     encrypted = sa.Column(EncryptedType(sa.Text(), "8b5d3d25b3e5"))
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app_with_empty_db():
     database_uri = "sqlite:///:memory:"
@@ -55,7 +55,7 @@ def app_with_empty_tables(app_with_empty_db):
     yield app
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         dict(
@@ -181,4 +181,4 @@ def _import_tbl_from_csv(tbl_name, csv_str):
     sa.session.execute(ins, data)
 
 
-##__________________________________________________________________||
+

@@ -2,7 +2,7 @@ from graphene import Int, NonNull
 from graphene.relay import Connection
 
 
-##__________________________________________________________________||
+
 class CountedConnection(Connection):
     """
 
@@ -26,4 +26,4 @@ class CountedConnection(Connection):
         return self.length
 
 
-##__________________________________________________________________||
+

@@ -7,7 +7,7 @@ from acondbs.models import ProductType, Product
 # how models in flask_sqlalchemy work.
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app):
     y = app
@@ -24,7 +24,7 @@ def app(app):
     yield y
 
 
-##__________________________________________________________________||
+
 def test_simple(app):
     """A simple test of deleting an object"""
 
@@ -46,4 +46,4 @@ def test_simple(app):
         assert product1 is None
 
 
-##__________________________________________________________________||
+

@@ -29,7 +29,7 @@ ALL_GITHUB_ADMIN_APP_TOKENS = """
 HEADERS = {"Authorization": "Bearer token1"}  # user1
 
 
-##__________________________________________________________________||
+
 @pytest.fixture(autouse=True)
 def mock_store_token_for_code(monkeypatch):
     y = mock.Mock()
@@ -37,7 +37,7 @@ def mock_store_token_for_code(monkeypatch):
     yield y
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": ADD_GIT_HUB_ADMIN_APP_TOKEN, "variables": {"code": "code_01234"}},
@@ -70,7 +70,7 @@ async def test_schema_success(
     snapshot.assert_match(mock_store_token_for_code.call_args_list)
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": ADD_GIT_HUB_ADMIN_APP_TOKEN, "variables": {"code": "code_01234"}},
@@ -104,4 +104,4 @@ async def test_schema_error(
     snapshot.assert_match(mock_store_token_for_code.call_args_list)
 
 
-##__________________________________________________________________||
+

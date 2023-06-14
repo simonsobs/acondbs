@@ -1,7 +1,7 @@
 from ...db.sa import sa
 
 
-##__________________________________________________________________||
+
 class AccountAdmin(sa.Model):
     __tablename__ = "account_admins"
     admin_id = sa.Column(sa.Integer(), primary_key=True)
@@ -11,4 +11,4 @@ class AccountAdmin(sa.Model):
         return f"<{self.__class__.__name__} {self.git_hub_login!r}>"
 
 
-##__________________________________________________________________||
+

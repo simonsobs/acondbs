@@ -15,7 +15,7 @@ from ..models import (
 
 from . import call, query
 
-##__________________________________________________________________||
+
 def get_github_oauth_app_info():
     """Return GitHub OAuth App information
 
@@ -40,7 +40,7 @@ def get_github_oauth_app_info():
     )
     return ret
 
-##__________________________________________________________________||
+
 def exchange_code_for_token(code):
     """Exchange an OAuth authentication code for a access token
 
@@ -69,7 +69,7 @@ def exchange_code_for_token(code):
         redirect_uri=current_app.config['GITHUB_AUTH_REDIRECT_URI']
         )
 
-##__________________________________________________________________||
+
 def add_org(login):
     if GitHubOrg.query.filter_by(login=login).one_or_none() is not None:
         raise Exception(f'already exists: {login}')
@@ -100,7 +100,7 @@ def delete_org(login):
     sa.session.delete(model)
     sa.session.commit()
 
-##__________________________________________________________________||
+
 def update_org_member_lists():
     if not (tokens := GitHubToken.query.filter(GitHubToken.scope.like('%read:org%')).all()):
         raise Exception('No tokens with relevant scopes available.')
@@ -138,7 +138,7 @@ def update_org_member_lists():
                 sa.session.add(membership)
     sa.session.commit()
 
-##__________________________________________________________________||
+
 def store_token_for_code(code):
     token_dict = exchange_code_for_token(code)
     viewer = query.viewer(token_dict['access_token'])
@@ -155,7 +155,7 @@ def store_token_for_code(code):
     sa.session.add(token_model)
     sa.session.commit()
 
-##__________________________________________________________________||
+
 def authenticate(code):
     """Authenticate a GitHub user with an OAuth authentication code
 
@@ -209,7 +209,7 @@ def authenticate(code):
     sa.session.commit()
     return token_dict
 
-##__________________________________________________________________||
+
 def get_user_for_token(token):
     """
     """
@@ -218,4 +218,4 @@ def get_user_for_token(token):
         one()
     return user
 
-##__________________________________________________________________||
+

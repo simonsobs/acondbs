@@ -5,7 +5,7 @@ import pytest
 
 from acondbs.misc import gitb
 
-##__________________________________________________________________||
+
 def test_pull(remote_url, tmpdir_factory):
     """test pull()
 
@@ -39,7 +39,7 @@ def test_pull(remote_url, tmpdir_factory):
     assert not head_sha_old == head_sha_new
     assert head_sha_repo1 == head_sha_new
 
-##__________________________________________________________________||
+
 def test_nonexistent_path(tmpdir_factory):
     """assert exception is raised for nonexistent path
     """
@@ -63,4 +63,4 @@ def test_repo_no_remote(repo):
     with pytest.raises(ValueError):
         gitb.pull(repo.working_tree_dir)
 
-##__________________________________________________________________||
+

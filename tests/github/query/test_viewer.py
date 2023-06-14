@@ -4,7 +4,7 @@ import unittest.mock as mock
 
 from acondbs.github import query
 
-##__________________________________________________________________||
+
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
@@ -12,7 +12,7 @@ def mock_requests(monkeypatch):
     yield y
 
 
-##__________________________________________________________________||
+
 def test_success(mock_requests):
 
     token = '4d5dc8b74eccdf65859d6ac64358a3a98300c351'
@@ -43,7 +43,7 @@ def test_success(mock_requests):
 
     assert expected == actual
 
-##__________________________________________________________________||
+
 def test_bad_credentials(mock_requests):
 
     token = '4d5dc8b74eccdf65859d6ac64358a3a98300c351'
@@ -65,4 +65,4 @@ def test_bad_credentials(mock_requests):
 
     assert expected == e.value.args[0]
 
-##__________________________________________________________________||
+

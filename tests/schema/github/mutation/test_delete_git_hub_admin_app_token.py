@@ -25,7 +25,7 @@ ALL_GITHUB_ADMIN_APP_TOKENS = """
 }
 """
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": DELETE_GIT_HUB_ADMIN_APP_TOKEN, "variables": {"tokenId": 1}},
@@ -63,7 +63,7 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": DELETE_GIT_HUB_ADMIN_APP_TOKEN, "variables": {"tokenId": 999}},
@@ -101,4 +101,4 @@ async def test_schema_error(
     )
 
 
-##__________________________________________________________________||
+

@@ -5,7 +5,7 @@ from acondbs.misc.cap import State
 import pytest
 import unittest.mock as mock
 
-##__________________________________________________________________||
+
 class Task:
     def __init__(self):
         self.counter = 0
@@ -74,7 +74,7 @@ def test_call_4():
     cap.end()
     assert 2 == task.counter
 
-##__________________________________________________________________||
+
 def test_state_raise():
     config = mock.Mock()
     config.queue.get().return_value = 'unknown message'
@@ -82,4 +82,4 @@ def test_state_raise():
     with pytest.raises(ValueError):
         state()
 
-##__________________________________________________________________||
+

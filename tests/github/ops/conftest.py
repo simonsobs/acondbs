@@ -14,7 +14,7 @@ from acondbs.models import (
 
 from ...constants import SAMPLE_DIR
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app_empty():
     config_path = Path(SAMPLE_DIR, 'config.py')
@@ -79,4 +79,4 @@ def app(app_empty):
         sa.session.commit()
     yield y
 
-##__________________________________________________________________||
+

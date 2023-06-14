@@ -6,7 +6,7 @@ import queue
 import time
 from enum import Enum
 
-##__________________________________________________________________||
+
 class cap_exec_rate:
     """cap the execution rate of a function
 
@@ -90,7 +90,7 @@ class Config:
         self.queue = queue
         self.pause_time = pause_time
 
-##__________________________________________________________________||
+
 class State:
     """The base class of the states
     """
@@ -173,4 +173,4 @@ class Exit(State):
     def __init__(self, config):
         super().__init__(config)
 
-##__________________________________________________________________||
+

@@ -6,7 +6,7 @@ import unittest.mock as mock
 from ..constants import SAMPLE_DIR
 
 
-##__________________________________________________________________||
+
 @pytest.fixture()
 def mock_define_tables(monkeypatch):
     ret = mock.Mock()
@@ -21,7 +21,7 @@ def test_init_db_command(runner, mock_define_tables):
     assert "Initialized" in result.output
 
 
-##__________________________________________________________________||
+
 def test_dump_db_command(runner):
     """test command dump-db"""
     result = runner.invoke(args=["dump-db"])
@@ -29,7 +29,7 @@ def test_dump_db_command(runner):
     assert 1800 < len(result.output)
 
 
-##__________________________________________________________________||
+
 @pytest.fixture()
 def mock_import_tables_from_csv_files(monkeypatch):
     ret = mock.Mock()
@@ -51,7 +51,7 @@ def test_import_csv_command(runner, mock_import_tables_from_csv_files):
     ] == mock_import_tables_from_csv_files.call_args_list
 
 
-##__________________________________________________________________||
+
 @pytest.fixture()
 def mock_export_db_to_csv_files(monkeypatch):
     ret = mock.Mock()
@@ -72,4 +72,4 @@ def test_export_csv_command(
     assert [mock.call(csvdir)] == mock_export_db_to_csv_files.call_args_list
 
 
-##__________________________________________________________________||
+

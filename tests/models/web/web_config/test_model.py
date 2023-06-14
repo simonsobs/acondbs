@@ -13,7 +13,7 @@ SAMPLE_CONFIG_JSON = json.dumps(
 )
 
 
-##__________________________________________________________________||
+
 def test_column(app_empty):
     app = app_empty
 
@@ -45,4 +45,4 @@ def test_repr(app_empty):
         repr(model)
 
 
-##__________________________________________________________________||
+

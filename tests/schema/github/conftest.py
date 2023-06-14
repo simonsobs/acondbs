@@ -12,7 +12,7 @@ from acondbs.models import (
 )
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -108,4 +108,4 @@ def app(app_empty):
     yield y
 
 
-##__________________________________________________________________||
+

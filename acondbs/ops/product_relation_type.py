@@ -2,7 +2,7 @@ from ..db.sa import sa
 from ..models import ProductRelationType
 
 
-##__________________________________________________________________||
+
 def create_product_relation_type(type_, reverse=None, self_reverse=False):
     """Create a product relation type"""
 
@@ -36,4 +36,4 @@ def delete_product_relation_type(type_id):
     sa.session.delete(model)
 
 
-##__________________________________________________________________||
+

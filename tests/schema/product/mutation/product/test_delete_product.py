@@ -42,7 +42,7 @@ QEURY = """
 HEADERS = {"Authorization": "Bearer 39d86487d76a84087f1da599c872dac4473e5f07"}  # user1
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT, "variables": {"productId": 1}},
@@ -70,7 +70,7 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT, "variables": {"productId": 512}},
@@ -98,4 +98,4 @@ async def test_schema_error(
     )
 
 
-##__________________________________________________________________||
+

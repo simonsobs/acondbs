@@ -5,7 +5,7 @@ from .. import type_
 from .... import ops
 
 
-##__________________________________________________________________||
+
 class CommonInputFields:
     indef_article = graphene.String(
         description=(
@@ -37,7 +37,7 @@ class UpdateProductRelationTypeInput(
     """An input to updateProductRelationType()"""
 
 
-##__________________________________________________________________||
+
 class CreateProductRelationTypes(graphene.Mutation):
     """Create a pair of product relation types"""
 
@@ -103,4 +103,4 @@ class DeleteProductRelationTypes(graphene.Mutation):
         return DeleteProductRelationTypes(ok=ok)
 
 
-##__________________________________________________________________||
+

@@ -5,7 +5,7 @@ import base64
 
 from .call import call_graphql_api
 
-##__________________________________________________________________||
+
 def org(login, token):
     query = """
       query Organization($login: String!) {
@@ -34,7 +34,7 @@ def org(login, token):
 
     return r['organization']
 
-##__________________________________________________________________||
+
 def org_members(org_login, token):
 
     first = 100
@@ -115,7 +115,7 @@ def org_members(org_login, token):
 
     return edges
 
-##__________________________________________________________________||
+
 def viewer(token):
     """Return info about the GitHub user for a token
 
@@ -157,7 +157,7 @@ def viewer(token):
 
     return viewer
 
-##__________________________________________________________________||
+
 def _decode_id(id_):
     """Decode a GitHub user or organization ID returned from GitHub GraphQL API
 
@@ -178,5 +178,5 @@ def _decode_id(id_):
     except BaseException:
         return f"raw:{id_}"
 
-##__________________________________________________________________||
+
 

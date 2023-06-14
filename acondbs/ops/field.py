@@ -2,7 +2,7 @@ from ..models import Field, FieldType
 from ..db.sa import sa
 
 
-##__________________________________________________________________||
+
 def create_field(name, type_, field_id=None):
     """Instantiate SQLAlchemy ORM model "Field"
 
@@ -67,4 +67,4 @@ def delete_field(field_id):
     sa.session.delete(model)
 
 
-##__________________________________________________________________||
+

@@ -12,7 +12,7 @@ from acondbs.models import AccountAdmin
 from ..constants import SAMPLE_DIR
 
 
-##__________________________________________________________________||
+
 def test_no_error_in_create_app():
     """Assert an error does not occur in create_app() when tables are not defined"""
     config_path = Path(SAMPLE_DIR, "config.py")
@@ -23,7 +23,7 @@ def test_no_error_in_create_app():
     app = create_app(config_path, **kwargs)  # noqa: F841
 
 
-##__________________________________________________________________||
+
 params = [
     [{"ACONDBS_OWNERS_GITHUB_LOGINS": ""}, {"octocat"}],
     [{"ACONDBS_OWNERS_GITHUB_LOGINS": ","}, {"octocat"}],
@@ -71,4 +71,4 @@ def test_add_owners_to_db_as_admins(kwargs, expected, tmpdir_factory):
         assert expected == {e.git_hub_login for e in AccountAdmin.query.all()}
 
 
-##__________________________________________________________________||
+

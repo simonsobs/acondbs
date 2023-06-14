@@ -2,7 +2,7 @@ from acondbs.db.sa import sa
 from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
 
 
-##__________________________________________________________________||
+
 def test_relation(app):
 
     with app.app_context():
@@ -15,7 +15,7 @@ def test_relation(app):
         assert [membership] == user1.memberships
 
 
-##__________________________________________________________________||
+
 def test_cascade_delete_org(app):
 
     with app.app_context():
@@ -64,4 +64,4 @@ def test_cascade_delete_membership(app):
         assert len(users) == 1
 
 
-##__________________________________________________________________||
+

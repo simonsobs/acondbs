@@ -4,7 +4,7 @@ import unittest.mock as mock
 
 from acondbs.github.call import call_graphql_api
 
-##__________________________________________________________________||
+
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     y = mock.Mock()
@@ -12,7 +12,7 @@ def mock_requests(monkeypatch):
     yield y
 
 
-##__________________________________________________________________||
+
 def test_simple(mock_requests, snapshot):
 
     query = '{ viewer { login name avatarUrl } }'
@@ -35,7 +35,7 @@ def test_simple(mock_requests, snapshot):
 
     snapshot.assert_match(mock_requests.post.call_args_list)
 
-##__________________________________________________________________||
+
 def test_variables(mock_requests, snapshot):
 
     query = '''
@@ -68,7 +68,7 @@ def test_variables(mock_requests, snapshot):
 
     snapshot.assert_match(mock_requests.post.call_args_list)
 
-##__________________________________________________________________||
+
 def test_error(mock_requests, snapshot):
 
     query = '''
@@ -113,7 +113,7 @@ def test_error(mock_requests, snapshot):
 
     assert response['errors'] == e.value.args[0]
 
-##__________________________________________________________________||
+
 def test_bad_credentials(mock_requests):
 
     query = '{ viewer { login name avatarUrl } }'
@@ -130,4 +130,4 @@ def test_bad_credentials(mock_requests):
 
     assert response == e.value.args[0]
 
-##__________________________________________________________________||
+

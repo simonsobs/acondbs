@@ -6,13 +6,13 @@ from acondbs import ops
 from acondbs.models import ProductType, TypeFieldAssociation
 
 
-##__________________________________________________________________||
+
 def test_fixture(app):
     with app.app_context():
         assert ProductType.query.count() == 2
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
@@ -70,7 +70,7 @@ def test_create_error(app, field_ids):
         assert model is None
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(None, [1, 2, 3, 7, 9], id="none"),
     pytest.param([], [], id="empty"),
@@ -146,7 +146,7 @@ def test_update_error(app, field_ids):
         assert TypeFieldAssociation.query.count() == count
 
 
-##__________________________________________________________________||
+
 def test_delete(app):
 
     with app.app_context():
@@ -168,4 +168,4 @@ def test_delete(app):
         assert ProductType.query.count() == (count - 1)
 
 
-##__________________________________________________________________||
+

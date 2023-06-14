@@ -4,7 +4,7 @@ from .. import type_
 from .... import ops
 
 
-##__________________________________________________________________||
+
 class CommonInputFields:
     """Common input fields of mutations for creating and updating file paths"""
 
@@ -20,7 +20,7 @@ class UpdateProductFilePathInput(graphene.InputObjectType, CommonInputFields):
     pass
 
 
-##__________________________________________________________________||
+
 class CreateProductFilePath(graphene.Mutation):
     class Arguments:
         input = CreateProductFilePathInput(required=True)
@@ -63,4 +63,4 @@ class DeleteProductFilePath(graphene.Mutation):
         return DeleteProductFilePath(ok=ok)
 
 
-##__________________________________________________________________||
+

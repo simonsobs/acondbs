@@ -10,7 +10,7 @@ def encription_key():
     return current_app.config["SECRET_KEY"]
 
 
-##__________________________________________________________________||
+
 class GitHubToken(sa.Model):
     __tablename__ = "github_tokens"
     token_id = sa.Column(sa.Integer(), primary_key=True)
@@ -26,4 +26,4 @@ class GitHubToken(sa.Model):
     )
 
 
-##__________________________________________________________________||
+

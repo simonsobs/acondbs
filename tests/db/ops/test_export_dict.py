@@ -1,7 +1,7 @@
 from acondbs.db.ops import export_db_to_dict_of_dict_list
 
 
-##__________________________________________________________________||
+
 def test_export_db_to_dict_of_dict_list(app, snapshot):
     """test export_db_to_dict_of_dict_list()"""
 
@@ -9,4 +9,4 @@ def test_export_db_to_dict_of_dict_list(app, snapshot):
         snapshot.assert_match(export_db_to_dict_of_dict_list())
 
 
-##__________________________________________________________________||
+

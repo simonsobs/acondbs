@@ -13,7 +13,7 @@ from ..models import (
 from ..db.sa import sa
 
 
-##__________________________________________________________________||
+
 def create_product(
     type_id,
     paths=None,
@@ -69,7 +69,7 @@ def convert_product_type(product_id, type_id, updating_git_hub_user_id=None):
         return _convert_product_type(product_id, type_id, updating_git_hub_user_id)
 
 
-##__________________________________________________________________||
+
 def uniq_preserving_order(list_):
     # https://stackoverflow.com/a/17016257/7309855
     return list(dict.fromkeys(list_))
@@ -90,7 +90,7 @@ def _normalize_paths(paths):
     return ret
 
 
-##__________________________________________________________________||
+
 def _create_product(
     type_id, paths, relations, attributes, posting_git_hub_user_id, **kwargs
 ):
@@ -218,7 +218,7 @@ def _update_relations(old, input):
     return [model_dict[i] for i in new_ids]
 
 
-##__________________________________________________________________||
+
 def _convert_product_type(product_id, type_id, updating_git_hub_user_id):
     model = Product.query.filter_by(product_id=product_id).one()
     product_type = ProductType.query.filter_by(type_id=type_id).one()
@@ -260,4 +260,4 @@ def _convert_product_type(product_id, type_id, updating_git_hub_user_id):
     return model
 
 
-##__________________________________________________________________||
+

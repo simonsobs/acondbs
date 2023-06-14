@@ -12,7 +12,7 @@ from flask import g
 
 from .sa import sa
 
-##__________________________________________________________________||
+
 def get_db_connection():
     """returns the DB connection
 
@@ -26,7 +26,7 @@ def get_db_connection():
         g.db_connection = sa.engine.connect()
     return g.db_connection
 
-##__________________________________________________________________||
+
 def close_db_connection(e=None):
     """closes the DB connection
 
@@ -38,4 +38,4 @@ def close_db_connection(e=None):
     if conn is not None:
         conn.close()
 
-##__________________________________________________________________||
+

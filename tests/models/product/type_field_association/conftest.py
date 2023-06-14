@@ -4,7 +4,7 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app(app_empty):
 
@@ -30,4 +30,4 @@ def app(app_empty):
     yield y
 
 
-##__________________________________________________________________||
+

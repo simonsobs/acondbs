@@ -13,7 +13,7 @@ from acondbs.db.ops import export_db_to_csv_files
 from acondbs.misc import gitb
 from acondbs.misc import lock
 
-##__________________________________________________________________||
+
 def request_backup_db():
     """reqeust to take a backup of the DB.
     """
@@ -34,7 +34,7 @@ def request_backup_db():
 _lock = threading.Lock()
 _capped_backup_func = None
 
-##__________________________________________________________________||
+
 def end_backup_thread():
     global _lock
     global _capped_backup_func
@@ -48,11 +48,11 @@ import multiprocessing.queues # This import prevents the error described in
 
 atexit.register(end_backup_thread)
 
-##__________________________________________________________________||
+
 def run_flask_backup_db():
     proc = subprocess.run(['flask', 'backup-db'])
 
-##__________________________________________________________________||
+
 def backup_db(exclude_csv=None):
     try:
         backup_db_to_github()
@@ -64,7 +64,7 @@ def backup_db(exclude_csv=None):
     except Exception as e:
         warnings.warn('An exception occurred in backup_db_as_csv_to_github(): {}'.format(e))
 
-##__________________________________________________________________||
+
 def backup_db_to_github():
     repo_path = current_app.config['ACONDBS_DB_FOLDER']
     lock_path = current_app.config['ACONDBS_DB_BACKUP_LOCK']
@@ -79,7 +79,7 @@ def backup_db_to_github_(repo_path):
     gitb.commit(repo_path)
     gitb.push(repo_path)
 
-##__________________________________________________________________||
+
 def backup_db_as_csv_to_github(exclude=None):
     repo_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_FOLDER']
     lock_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_LOCK']
@@ -98,4 +98,4 @@ def backup_db_as_csv_to_github_(repo_path, exclude=None):
     gitb.commit(repo_path)
     gitb.push(repo_path)
 
-##__________________________________________________________________||
+

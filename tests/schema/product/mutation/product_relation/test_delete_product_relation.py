@@ -20,7 +20,7 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_RELATION, "variables": {"relationId": 2}},
@@ -49,7 +49,7 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_RELATION, "variables": {"relationId": 120}},
@@ -77,4 +77,4 @@ async def test_schema_error(
     )
 
 
-##__________________________________________________________________||
+

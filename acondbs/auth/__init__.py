@@ -6,7 +6,7 @@ from ..models import (
     AccountAdmin
 )
 
-##__________________________________________________________________||
+
 def is_signed_in():
     """
     """
@@ -20,7 +20,7 @@ def is_signed_in():
 
     return True
 
-##__________________________________________________________________||
+
 def is_admin():
     """
     """
@@ -48,7 +48,7 @@ def is_admin():
 
     return True
 
-##__________________________________________________________________||
+
 def _get_token_from_http_headers():
     auth_header = request.headers.get('Authorization')
     # e.g., 'Bearer "xxxx"', "Bearer 'xxxx'",  or 'Bearer xxxx'
@@ -61,4 +61,4 @@ def _get_token_from_http_headers():
 
     return token
 
-##__________________________________________________________________||
+

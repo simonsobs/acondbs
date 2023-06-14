@@ -10,7 +10,7 @@ from acondbs.models import GitHubToken
 from ...constants import SAMPLE_DIR
 
 
-##__________________________________________________________________||
+
 @pytest.fixture
 def app():
     config_path = Path(SAMPLE_DIR, "config.py")
@@ -23,7 +23,7 @@ def app():
     yield app
 
 
-##__________________________________________________________________||
+
 def test_encrypted_field(app):
     csvdir = Path(SAMPLE_DIR, "csv")
     with app.app_context():
@@ -48,4 +48,4 @@ def test_how_to_encrypt_and_decrypt(app):
     assert engine.decrypt(encrypted) == unencrypted
 
 
-##__________________________________________________________________||
+
