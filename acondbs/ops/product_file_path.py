@@ -1,6 +1,5 @@
-from ..models import ProductFilePath
-
 from ..db.sa import sa
+from ..models import ProductFilePath
 
 
 def create_product_file_path(**kwargs):

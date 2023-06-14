@@ -2,13 +2,11 @@ import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
+from ...models import GitHubOrg as GitHubOrgModel
+from ...models import GitHubOrgMembership as GitHubOrgMembershipModel
+from ...models import GitHubToken as GitHubTokenModel
+from ...models import GitHubUser as GitHubUserModel
 from ..connection import CountedConnection
-from ...models import (
-    GitHubUser as GitHubUserModel,
-    GitHubOrg as GitHubOrgModel,
-    GitHubOrgMembership as GitHubOrgMembershipModel,
-    GitHubToken as GitHubTokenModel,
-)
 from ..filter_ import PFilterableConnectionField
 
 

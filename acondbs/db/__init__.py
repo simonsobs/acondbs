@@ -7,15 +7,18 @@ related to SQLAlchemy and the DB except ORM model declarations.
 
 
 from pathlib import Path
+
 from flask_migrate import Migrate
 
-from .sa import sa
+from .cmds import (
+    backup_db_command,
+    dump_db_command,
+    export_csv_command,
+    import_csv_command,
+    init_db_command,
+)
 from .conn import close_db_connection
-from .cmds import init_db_command
-from .cmds import dump_db_command
-from .cmds import import_csv_command
-from .cmds import export_csv_command
-from .cmds import backup_db_command
+from .sa import sa
 
 migrate = Migrate()
 

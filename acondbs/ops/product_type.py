@@ -1,5 +1,5 @@
 from ..db.sa import sa
-from ..models import ProductType, Field, TypeFieldAssociation
+from ..models import Field, ProductType, TypeFieldAssociation
 
 
 def create_product_type(field_ids=None, **kwargs):

@@ -1,16 +1,12 @@
 import graphene
 
-from ...models import (
-    Product as ProductModel,
-    ProductType as ProductTypeModel,
-    ProductRelation as ProductRelationModel,
-    ProductRelationType as ProductRelationTypeModel,
-    Field as FieldModel,
-)
-
+from ...models import Field as FieldModel
+from ...models import Product as ProductModel
+from ...models import ProductRelation as ProductRelationModel
+from ...models import ProductRelationType as ProductRelationTypeModel
+from ...models import ProductType as ProductTypeModel
 from ..filter_ import PFilterableConnectionField
 from . import type_
-
 
 all_products_field = PFilterableConnectionField(type_.Product.connection)
 all_product_types_field = PFilterableConnectionField(type_.ProductType.connection)  # fmt: skip

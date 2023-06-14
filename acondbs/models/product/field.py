@@ -1,7 +1,6 @@
 import enum
 
 from ...db.sa import sa
-
 from . import attribute
 
 

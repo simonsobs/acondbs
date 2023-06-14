@@ -1,7 +1,7 @@
-import os
-from pathlib import Path
-import time
 import contextlib
+import os
+import time
+from pathlib import Path
 
 
 class lock:

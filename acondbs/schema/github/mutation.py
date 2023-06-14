@@ -1,20 +1,16 @@
 import graphene
 from graphql import GraphQLError
 
-from ...db.sa import sa
 from ...db.backup import request_backup_db
-
-from ...models import (
-    GitHubToken as GitHubTokenModel,
-)
+from ...db.sa import sa
 from ...github.ops import (
-    update_org_member_lists,
     add_org,
+    authenticate,
     delete_org,
     store_token_for_code,
-    authenticate,
+    update_org_member_lists,
 )
-
+from ...models import GitHubToken as GitHubTokenModel
 from . import type_
 
 

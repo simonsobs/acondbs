@@ -1,6 +1,6 @@
-from ...db.sa import sa
-
 from sqlalchemy.event import listens_for
+
+from ...db.sa import sa
 
 
 class ProductRelation(sa.Model):

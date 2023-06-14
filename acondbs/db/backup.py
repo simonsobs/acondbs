@@ -1,17 +1,16 @@
 """Backup DB
 """
-from pathlib import Path
 import atexit
-import threading
 import subprocess
+import threading
 import warnings
+from pathlib import Path
 
 from flask import current_app
 
-from acondbs.misc.cap import cap_exec_rate
 from acondbs.db.ops import export_db_to_csv_files
-from acondbs.misc import gitb
-from acondbs.misc import lock
+from acondbs.misc import gitb, lock
+from acondbs.misc.cap import cap_exec_rate
 
 
 def request_backup_db():

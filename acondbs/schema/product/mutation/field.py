@@ -1,8 +1,7 @@
 import graphene
 
-from .. import type_
-
 from .... import ops
+from .. import type_
 
 
 class CommonInputFields:

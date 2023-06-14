@@ -4,16 +4,16 @@ The functions in this module need to be called within the application
 context of Flask unless stated otherwise.
 
 """
-import datetime
-import csv
 import ast
+import csv
+import datetime
 from pathlib import Path
 
 from sqlalchemy import MetaData
 from sqlalchemy.sql import sqltypes
 
-from .sa import sa
 from .conn import get_db_connection
+from .sa import sa
 
 
 def define_tables():

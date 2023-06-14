@@ -1,15 +1,12 @@
-import textwrap
 import json
+import textwrap
 import traceback
 
-from flask import Blueprint, current_app
+from flask import Blueprint, current_app, request
 from flask_graphql import GraphQLView
 
-from .. import auth, schema, ops
+from .. import auth, ops, schema
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
-
-
-from flask import request
 
 
 def format_to_str(data_dict):

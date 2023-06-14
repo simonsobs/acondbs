@@ -1,16 +1,18 @@
 """Commands (click)
 
 """
-from flask.cli import with_appcontext
-import click
-
 import json
 
-from .ops import define_tables
-from .ops import export_db_to_dict_of_dict_list
-from .ops import import_tables_from_csv_files
-from .ops import export_db_to_csv_files
+import click
+from flask.cli import with_appcontext
+
 from .backup import backup_db
+from .ops import (
+    define_tables,
+    export_db_to_csv_files,
+    export_db_to_dict_of_dict_list,
+    import_tables_from_csv_files,
+)
 
 
 @click.command("init-db")

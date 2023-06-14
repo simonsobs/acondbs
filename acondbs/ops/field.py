@@ -1,5 +1,5 @@
-from ..models import Field, FieldType
 from ..db.sa import sa
+from ..models import Field, FieldType
 
 
 def create_field(name, type_, field_id=None):

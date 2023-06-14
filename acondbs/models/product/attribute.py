@@ -1,5 +1,4 @@
-from sqlalchemy.orm import declared_attr
-from sqlalchemy.orm import declarative_mixin
+from sqlalchemy.orm import declarative_mixin, declared_attr
 
 from ...db.sa import sa
 

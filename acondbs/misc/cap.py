@@ -1,8 +1,8 @@
 """Throttle function executions
 """
-import threading
 import functools
 import queue
+import threading
 import time
 from enum import Enum
 

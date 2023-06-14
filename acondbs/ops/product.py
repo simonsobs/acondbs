@@ -1,16 +1,15 @@
 import datetime
 
+from ..db.sa import sa
 from ..models import (
-    ProductType,
+    FieldType,
+    GitHubUser,
     Product,
     ProductFilePath,
     ProductRelation,
     ProductRelationType,
-    FieldType,
-    GitHubUser,
+    ProductType,
 )
-
-from ..db.sa import sa
 
 
 def create_product(

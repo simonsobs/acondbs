@@ -1,9 +1,8 @@
 import graphene
 
+from .... import ops
 from ...funcs import get_git_hub_viewer_from_info
 from .. import type_
-
-from .... import ops
 
 
 def _reshape_arg_attributes(attributes):

@@ -1,10 +1,8 @@
 import graphene
 
 from ...models import Log as LogModel
-
 from ..filter_ import PFilterableConnectionField
 from . import type_
-
 
 all_logs_field = PFilterableConnectionField(type_.Log.connection)
 

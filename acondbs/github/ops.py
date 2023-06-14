@@ -4,15 +4,13 @@
 from flask import current_app
 
 from ..db.sa import sa
-
 from ..models import (
-    GitHubOrg,
-    GitHubUser,
-    GitHubToken,
-    GitHubOrgMembership,
     AccountAdmin,
+    GitHubOrg,
+    GitHubOrgMembership,
+    GitHubToken,
+    GitHubUser,
 )
-
 from . import call, query
 
 

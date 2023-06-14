@@ -1,8 +1,9 @@
 """Git operations
 """
-from pathlib import Path
-import git
 import warnings
+from pathlib import Path
+
+import git
 
 
 def commit(path, message=None):

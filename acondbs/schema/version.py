@@ -1,5 +1,4 @@
 import graphene
-
 from alembic.migration import MigrationContext
 
 from ..db.conn import get_db_connection

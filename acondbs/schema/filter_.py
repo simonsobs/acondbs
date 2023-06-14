@@ -8,17 +8,12 @@ https://github.com/art1415926535/graphene-sqlalchemy-filter/blob/1.10.2/examples
 
 """
 import graphene
-from graphene_sqlalchemy_filter import (
-    FilterableConnectionField,
-    FilterSet,
-)
+from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
 
-from ..models import (
-    Product as ProductModel,
-    ProductType as ProductTypeModel,
-    GitHubToken as GitHubTokenModel,
-    GitHubUser as GitHubUserModel,
-)
+from ..models import GitHubToken as GitHubTokenModel
+from ..models import GitHubUser as GitHubUserModel
+from ..models import Product as ProductModel
+from ..models import ProductType as ProductTypeModel
 
 
 class ProductFilter(FilterSet):

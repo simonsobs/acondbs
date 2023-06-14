@@ -1,9 +1,8 @@
 """the instance of SQLAlchemy from Flask-SQLAlchemy
 
 """
-from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy
-
+from sqlalchemy import MetaData
 
 # https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#using-custom-metadata-and-naming-conventions
 # https://stackoverflow.com/a/56000475/7309855

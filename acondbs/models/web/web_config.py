@@ -1,7 +1,6 @@
 import json
 
 from ...db.sa import sa
-
 from ..funcs import shorten
 
 
