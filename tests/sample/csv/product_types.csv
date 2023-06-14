@@ -1,5 +1,5 @@
-type_id,name,icon,indef_article,plural,singular,order
-1,map,mdi-map,a,maps,map,2
-2,beam,mdi-spotlight-beam,a,beams,beam,3
-3,simulation,mdi-creation,a,simulations,simulation,1
-4,anchor,,,,,4
+type_id,name,order,indef_article,singular,plural,icon
+1,map,2,a,map,maps,mdi-map
+2,beam,3,a,beam,beams,mdi-spotlight-beam
+3,simulation,1,a,simulation,simulations,mdi-creation
+4,anchor,4,,,,

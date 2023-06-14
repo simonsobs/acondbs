@@ -1,14 +1,14 @@
-product_id,type_id,name,note,time_posted,time_updated,posting_git_hub_user_id,updating_git_hub_user_id
-1001,1,lat20190213,"- This is a dummy test with a lat map
-- This should not depend on any beam",2019-02-13 10:05:23,,1,2
-1002,3,xyz-s1234-20200101,"- note 1
-- note 2",2019-03-15 09:11:25,,1,
-1010,2,20180101,- test entry,2018-01-01 15:32:10,,1,
-1012,1,lat20200120,"- This is a dummy test with a lat map
-- A beam depends on this map",2020-01-20 18:10:05,,1,2
-1013,1,lat20200201,"- This is a dummy test with a lat map
-- A beam depends on this map",2020-02-01 11:05:02,,1,2
-1070,2,20190304,- test entry,2019-03-04 08:12:41,,1,
-1120,2,20190607,- test entry,2019-06-07 18:21:21,,1,
-1130,2,20200123,- test entry,2020-01-23 12:11:45,,1,
-1150,2,20200207,- test entry,2020-02-07 09:42:11,,1,
+product_id,type_id,name,time_posted,posting_git_hub_user_id,time_updated,updating_git_hub_user_id,note
+1001,1,lat20190213,2019-02-13 10:05:23,1,,2,"- This is a dummy test with a lat map
+- This should not depend on any beam"
+1002,3,xyz-s1234-20200101,2019-03-15 09:11:25,1,,,"- note 1
+- note 2"
+1010,2,20180101,2018-01-01 15:32:10,1,,,- test entry
+1012,1,lat20200120,2020-01-20 18:10:05,1,,2,"- This is a dummy test with a lat map
+- A beam depends on this map"
+1013,1,lat20200201,2020-02-01 11:05:02,1,,2,"- This is a dummy test with a lat map
+- A beam depends on this map"
+1070,2,20190304,2019-03-04 08:12:41,1,,,- test entry
+1120,2,20190607,2019-06-07 18:21:21,1,,,- test entry
+1130,2,20200123,2020-01-23 12:11:45,1,,,- test entry
+1150,2,20200207,2020-02-07 09:42:11,1,,,- test entry
