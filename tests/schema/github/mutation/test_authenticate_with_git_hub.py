@@ -1,10 +1,9 @@
 import textwrap
-from async_asgi_testclient import TestClient
-
-from a2wsgi import WSGIMiddleware
+import unittest.mock as mock
 
 import pytest
-import unittest.mock as mock
+from a2wsgi import WSGIMiddleware
+from async_asgi_testclient import TestClient
 
 
 @pytest.fixture(autouse=True)

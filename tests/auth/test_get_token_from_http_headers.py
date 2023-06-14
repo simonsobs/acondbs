@@ -2,7 +2,6 @@ import pytest
 
 from acondbs import auth
 
-
 params = [
     pytest.param('Bearer {token}', id='no-quote'),
     pytest.param('Bearer "{token}"', id='double-quote'),

@@ -1,7 +1,6 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import (
     FRAGMENT_PRODUCT_RELATION_CONNECTION,
     MUTATION_CREATE_PRODUCT_RELATION,

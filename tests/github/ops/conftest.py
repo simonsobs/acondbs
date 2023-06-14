@@ -1,11 +1,11 @@
 from pathlib import Path
+
 import pytest
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
-
 from acondbs.db.sa import sa
-from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership, GitHubToken
+from acondbs.models import GitHubOrg, GitHubOrgMembership, GitHubToken, GitHubUser
 
 from ...constants import SAMPLE_DIR
 

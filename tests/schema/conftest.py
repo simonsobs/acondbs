@@ -2,9 +2,8 @@ import pytest
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
-
 from acondbs.db.sa import sa
-from acondbs.models import GitHubToken, GitHubUser, AccountAdmin
+from acondbs.models import AccountAdmin, GitHubToken, GitHubUser
 
 
 @pytest.fixture

@@ -1,5 +1,6 @@
-import pytest
 import unittest.mock as mock
+
+import pytest
 
 from acondbs.db.backup import request_backup_db, run_flask_backup_db
 

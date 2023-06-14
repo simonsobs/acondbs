@@ -1,15 +1,9 @@
-import pytest
-
 import datetime
 
+import pytest
+
 from acondbs.db.sa import sa
-from acondbs.models import (
-    ProductType,
-    FieldType,
-    Field,
-    TypeFieldAssociation,
-    Product,
-)
+from acondbs.models import Field, FieldType, Product, ProductType, TypeFieldAssociation
 
 
 @pytest.fixture

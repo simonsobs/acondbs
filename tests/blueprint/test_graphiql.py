@@ -3,7 +3,6 @@ import pytest
 from acondbs import create_app
 from acondbs.db.ops import define_tables
 
-
 params = [
     [True, 200, "<!DOCTYPE html>"],
     [False, 400, "errors"],

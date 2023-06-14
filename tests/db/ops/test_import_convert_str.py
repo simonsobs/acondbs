@@ -1,17 +1,14 @@
 import csv
+import datetime
 from io import StringIO
 
-import datetime
-
-from sqlalchemy import MetaData
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy_utils import EncryptedType
-
 import pytest
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
+from sqlalchemy_utils import EncryptedType
 
 from acondbs import create_app
 from acondbs.db.ops import convert_data_type_for_insert
-
 
 sa = SQLAlchemy()
 

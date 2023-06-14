@@ -1,6 +1,6 @@
 from pathlib import Path
-import git
 
+import git
 import pytest
 
 

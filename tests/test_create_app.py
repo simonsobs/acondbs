@@ -1,8 +1,8 @@
 from pathlib import Path
+
 import pytest
 
 from acondbs import create_app
-
 
 TEST_CONFIG_DICT_DEFAULT = dict(
     TEST_CONFIG_A="abc",

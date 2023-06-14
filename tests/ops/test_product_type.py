@@ -1,5 +1,4 @@
 import pytest
-
 from sqlalchemy import exc
 
 from acondbs import ops

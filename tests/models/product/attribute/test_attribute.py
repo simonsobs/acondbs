@@ -1,27 +1,24 @@
 import datetime
-from sqlalchemy.orm import aliased
-
-import sqlparse
 
 import pytest
+import sqlparse
+from sqlalchemy.orm import aliased
 
 from acondbs.db.sa import sa
-
 from acondbs.models import (
-    Product,
-    ProductType,
-    FieldType,
-    Field,
-    TypeFieldAssociation,
-    AttributeUnicodeText,
     AttributeBoolean,
-    AttributeInteger,
-    AttributeFloat,
     AttributeDate,
     AttributeDateTime,
+    AttributeFloat,
+    AttributeInteger,
     AttributeTime,
+    AttributeUnicodeText,
+    Field,
+    FieldType,
+    Product,
+    ProductType,
+    TypeFieldAssociation,
 )
-
 
 params = [
     pytest.param(

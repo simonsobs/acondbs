@@ -1,12 +1,10 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import (
     FRAGMENT_PRODUCT_RELATION_TYPE_CONNECTION,
     MUTATION_DELETE_PRODUCT_RELATION_TYPES,
 )
-
 
 QEURY = (
     """

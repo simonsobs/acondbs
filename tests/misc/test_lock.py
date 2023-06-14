@@ -1,11 +1,9 @@
+import unittest.mock as mock
 from pathlib import Path
 
-
 import pytest
-import unittest.mock as mock
 
-from acondbs.misc.lock import lock
-from acondbs.misc.lock import TimeOutAcquiringLock
+from acondbs.misc.lock import TimeOutAcquiringLock, lock
 
 
 def test_acquire_release(tmpdir_factory):

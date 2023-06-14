@@ -3,7 +3,6 @@ import json
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_SAVE_WEB_CONFIG, QUERY_WEB_CONFIG
 
 HEADERS_MUTATION = {

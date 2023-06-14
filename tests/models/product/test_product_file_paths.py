@@ -1,7 +1,7 @@
 import pytest
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product, ProductFilePath
+from acondbs.models import Product, ProductFilePath, ProductType
 
 
 @pytest.fixture

@@ -2,7 +2,6 @@ import pytest
 
 from .funcs import assert_query
 
-
 ALEMBIC_VERSION = """
 {
   alembicVersion

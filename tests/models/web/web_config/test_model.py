@@ -3,7 +3,6 @@ import json
 from acondbs.db.sa import sa
 from acondbs.models import WebConfig
 
-
 SAMPLE_CONFIG_JSON = json.dumps(
     {
         "head_title": "Head Title",

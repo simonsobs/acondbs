@@ -1,9 +1,7 @@
 import pytest
 
 from .funcs import assert_mutation
-
 from .misc.gql import QUERY_ALL_LOGS
-
 
 QUERY = """
 {

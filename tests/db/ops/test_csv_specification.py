@@ -2,7 +2,6 @@ import csv
 
 import pytest
 
-
 multiline_entry = """\
 "abc
 xyz",def,ghi\

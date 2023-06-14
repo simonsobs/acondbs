@@ -1,7 +1,6 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_DELETE_LOG, QUERY_ALL_LOGS
 
 HEADERS = {

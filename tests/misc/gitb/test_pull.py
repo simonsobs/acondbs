@@ -1,6 +1,6 @@
-import git
 from pathlib import Path
 
+import git
 import pytest
 
 from acondbs.misc import gitb

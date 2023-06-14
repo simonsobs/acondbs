@@ -1,7 +1,6 @@
 import pytest
-
-from async_asgi_testclient import TestClient
 from a2wsgi import WSGIMiddleware
+from async_asgi_testclient import TestClient
 
 import acondbs
 

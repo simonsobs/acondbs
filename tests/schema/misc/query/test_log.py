@@ -1,7 +1,6 @@
 import pytest
 
 from ...funcs import assert_query
-
 from ..gql import QUERY_LOG
 
 HEADERS = {

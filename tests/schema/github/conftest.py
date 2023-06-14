@@ -4,11 +4,11 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 from acondbs.models import (
+    AccountAdmin,
     GitHubOrg,
-    GitHubUser,
     GitHubOrgMembership,
     GitHubToken,
-    AccountAdmin,
+    GitHubUser,
 )
 
 

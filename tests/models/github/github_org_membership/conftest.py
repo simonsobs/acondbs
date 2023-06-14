@@ -1,7 +1,7 @@
 import pytest
 
 from acondbs.db.sa import sa
-from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
+from acondbs.models import GitHubOrg, GitHubOrgMembership, GitHubUser
 
 
 @pytest.fixture

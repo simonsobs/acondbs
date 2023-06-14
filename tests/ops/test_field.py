@@ -1,8 +1,7 @@
 import pytest
 
 from acondbs import ops
-from acondbs.models import FieldType, Field
-
+from acondbs.models import Field, FieldType
 
 params = [
     pytest.param(FieldType.Float, id="by-enum"),

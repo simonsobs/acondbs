@@ -1,8 +1,8 @@
-from pathlib import Path
+import unittest.mock as mock
 import warnings
+from pathlib import Path
 
 import pytest
-import unittest.mock as mock
 
 from acondbs.db.backup import backup_db_as_csv_to_github
 

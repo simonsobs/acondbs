@@ -1,5 +1,6 @@
-import pytest
 import unittest.mock as mock
+
+import pytest
 
 from ...funcs import assert_mutation
 

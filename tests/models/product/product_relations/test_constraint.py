@@ -1,10 +1,8 @@
 import pytest
-
 from sqlalchemy import exc
 
-from acondbs.models import Product, ProductRelation, ProductRelationType
-
 from acondbs.db.sa import sa
+from acondbs.models import Product, ProductRelation, ProductRelationType
 
 
 def test_constraint(app):

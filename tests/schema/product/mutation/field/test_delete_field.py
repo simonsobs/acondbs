@@ -1,7 +1,6 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_DELETE_FIELD, QUERY_ALL_FIELDS
 
 HEADERS = {

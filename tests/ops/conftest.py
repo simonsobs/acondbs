@@ -1,13 +1,11 @@
 import datetime
+
 import pytest
 
-from acondbs import create_app
+from acondbs import create_app, ops
 from acondbs.db.ops import define_tables
-from acondbs.models import FieldType
-from acondbs import ops
-
 from acondbs.db.sa import sa
-from acondbs.models import GitHubUser
+from acondbs.models import FieldType, GitHubUser
 
 
 @pytest.fixture

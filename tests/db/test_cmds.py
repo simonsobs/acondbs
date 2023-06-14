@@ -1,7 +1,7 @@
+import unittest.mock as mock
 from pathlib import Path
 
 import pytest
-import unittest.mock as mock
 
 from ..constants import SAMPLE_DIR
 

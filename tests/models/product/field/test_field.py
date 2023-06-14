@@ -1,9 +1,8 @@
+import pytest
 from sqlalchemy import exc
 
-import pytest
-
 from acondbs.db.sa import sa
-from acondbs.models import FieldType, Field
+from acondbs.models import Field, FieldType
 
 
 def test_repr(app_empty):

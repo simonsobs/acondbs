@@ -1,9 +1,8 @@
+import pytest
 from sqlalchemy import exc
 
-import pytest
-
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
+from acondbs.models import Field, FieldType, ProductType, TypeFieldAssociation
 
 
 def test_column(app_empty):

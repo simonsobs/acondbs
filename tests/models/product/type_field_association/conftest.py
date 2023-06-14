@@ -1,7 +1,7 @@
 import pytest
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
+from acondbs.models import Field, FieldType, ProductType, TypeFieldAssociation
 
 
 @pytest.fixture

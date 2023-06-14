@@ -1,9 +1,9 @@
 import time
-from acondbs.misc.cap import cap_exec_rate
-from acondbs.misc.cap import State
+import unittest.mock as mock
 
 import pytest
-import unittest.mock as mock
+
+from acondbs.misc.cap import State, cap_exec_rate
 
 
 class Task:

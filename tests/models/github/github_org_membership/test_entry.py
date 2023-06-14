@@ -1,5 +1,5 @@
 from acondbs.db.sa import sa
-from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
+from acondbs.models import GitHubOrg, GitHubOrgMembership, GitHubUser
 
 
 def test_relation(app):

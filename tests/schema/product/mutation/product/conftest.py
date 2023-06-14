@@ -1,14 +1,10 @@
-import pytest
-
 import datetime
 
-from acondbs.db.sa import sa
-from acondbs.models import (
-    GitHubUser,
-    GitHubToken,
-)
+import pytest
 
 from acondbs import ops
+from acondbs.db.sa import sa
+from acondbs.models import GitHubToken, GitHubUser
 
 
 @pytest.fixture

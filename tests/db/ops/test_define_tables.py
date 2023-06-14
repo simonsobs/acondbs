@@ -1,6 +1,5 @@
-from sqlalchemy import MetaData
-
 import pytest
+from sqlalchemy import MetaData
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables

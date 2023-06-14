@@ -1,10 +1,10 @@
 import datetime
+
 import pytest
 
 from acondbs import ops
+from acondbs.models import FieldType, GitHubUser, Product, ProductType
 from acondbs.ops.product import _normalize_paths
-from acondbs.models import Product, ProductType, FieldType, GitHubUser
-
 
 params = [
     pytest.param([], [], id="empty"),

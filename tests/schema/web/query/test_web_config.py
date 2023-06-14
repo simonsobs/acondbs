@@ -1,11 +1,7 @@
 import pytest
 
 from ...funcs import assert_query
-
-from ..gql import (
-    QUERY_WEB_CONFIG,
-)
-
+from ..gql import QUERY_WEB_CONFIG
 
 params = [
     pytest.param(

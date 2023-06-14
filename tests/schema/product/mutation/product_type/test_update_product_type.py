@@ -1,12 +1,7 @@
 import pytest
 
 from ....funcs import assert_mutation
-
-from ...gql import (
-    MUTATION_UPDATE_PRODUCT_TYPE,
-    QUERY_ALL_PRODUCT_TYPES,
-)
-
+from ...gql import MUTATION_UPDATE_PRODUCT_TYPE, QUERY_ALL_PRODUCT_TYPES
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat

@@ -1,7 +1,6 @@
 import pytest
 
 from ...funcs import assert_query
-
 from ..gql import (
     QUERY_ALL_PRODUCT_RELATION_TYPES,
     QUERY_ALL_PRODUCT_RELATION_TYPES_TOTAL_COUNT,

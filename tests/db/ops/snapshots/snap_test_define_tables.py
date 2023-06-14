@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 from snapshottest import GenericRepr, Snapshot
 
-
 snapshots = Snapshot()
 
 snapshots['test_define_tables_start_with_empty_db 1'] = {

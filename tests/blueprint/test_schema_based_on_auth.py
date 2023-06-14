@@ -1,11 +1,10 @@
-from flask import json
+import unittest.mock as mock
 
 import pytest
-import unittest.mock as mock
+from flask import json
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
-
 
 QUERY = '''
 {

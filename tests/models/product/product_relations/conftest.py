@@ -1,12 +1,7 @@
 import pytest
 
 from acondbs.db.sa import sa
-from acondbs.models import (
-    ProductType,
-    Product,
-    ProductRelation,
-    ProductRelationType,
-)
+from acondbs.models import Product, ProductRelation, ProductRelationType, ProductType
 
 
 @pytest.fixture

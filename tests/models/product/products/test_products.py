@@ -1,9 +1,8 @@
 import pytest
-
 from sqlalchemy import exc
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product, GitHubUser
+from acondbs.models import GitHubUser, Product, ProductType
 
 
 def test_product(app_empty):

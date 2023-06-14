@@ -1,14 +1,12 @@
 from pathlib import Path
-import git
 
+import git
 import pytest
 from graphene.test import Client
 
-
+from acondbs.db.backup import backup_db_as_csv_to_github_
 from acondbs.db.ops import export_db_to_csv_files
 from acondbs.schema import schema_admin
-
-from acondbs.db.backup import backup_db_as_csv_to_github_
 
 
 @pytest.fixture

@@ -1,7 +1,7 @@
 import pytest
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product
+from acondbs.models import Product, ProductType
 
 # These tests are written primarily for the developer to understand
 # how models in flask_sqlalchemy work.

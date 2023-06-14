@@ -1,15 +1,9 @@
-import pytest
-
 from itertools import permutations
 
-from acondbs.db.sa import sa
-from acondbs.models import (
-    ProductType,
-    Product,
-    ProductRelation,
-    ProductRelationType,
-)
+import pytest
 
+from acondbs.db.sa import sa
+from acondbs.models import Product, ProductRelation, ProductRelationType, ProductType
 
 params = list(permutations([1, 2, 3]))
 # i.e., [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]

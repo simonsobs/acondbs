@@ -1,7 +1,7 @@
+import unittest.mock as mock
 import warnings
 
 import pytest
-import unittest.mock as mock
 
 from acondbs.db.backup import backup_db
 

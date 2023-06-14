@@ -1,5 +1,4 @@
 from acondbs import ops
-
 from acondbs.models import ProductFilePath
 
 

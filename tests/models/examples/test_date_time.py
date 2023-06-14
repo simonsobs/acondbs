@@ -1,9 +1,10 @@
 import datetime
-import sqlalchemy
+
 import pytest
+import sqlalchemy
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product
+from acondbs.models import Product, ProductType
 
 
 def test_add(app):

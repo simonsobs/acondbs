@@ -1,7 +1,6 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_CONVERT_PRODUCT_TYPE, QUERY_ALL_PRODUCTS
 
 HEADERS = {

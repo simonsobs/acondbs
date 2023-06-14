@@ -1,9 +1,7 @@
 import pytest
 
 from ...funcs import assert_query
-
 from ..gql import QUERY_ALL_PRODUCT_FILE_PATHS
-
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat

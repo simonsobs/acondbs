@@ -1,5 +1,6 @@
-import pytest
 import unittest.mock as mock
+
+import pytest
 
 from acondbs.github.call import exchange_code_for_token
 

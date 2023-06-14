@@ -1,15 +1,13 @@
-from pathlib import Path
-import threading
-import shutil
 import datetime
+import shutil
+import threading
+import unittest.mock as mock
+from pathlib import Path
 
 import pytest
-import unittest.mock as mock
 
 from acondbs import create_app
-
 from acondbs.db.ops import define_tables, import_tables_from_csv_files
-
 
 from .constants import SAMPLE_DIR
 

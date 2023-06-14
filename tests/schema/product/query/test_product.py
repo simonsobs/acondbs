@@ -1,7 +1,6 @@
 import pytest
 
 from ...funcs import assert_query
-
 from ..gql import QUERY_PRODUCT, QUERY_PRODUCT_SHALLOW
 
 HEADERS = {
