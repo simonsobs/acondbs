@@ -2,7 +2,6 @@ from ..db.sa import sa
 from ..models import ProductType, Field, TypeFieldAssociation
 
 
-
 def create_product_type(field_ids=None, **kwargs):
     """Create a product type"""
     model = ProductType(**kwargs)
@@ -17,7 +16,6 @@ def _create_fields(field_ids):
     ids = sorted(set(field_ids))
     fields_ = [Field.query.filter_by(field_id=i).one() for i in ids]
     return [TypeFieldAssociation(field=f) for f in fields_]
-
 
 
 def update_product_type(type_id, field_ids=None, **kwargs):
@@ -36,7 +34,6 @@ def update_product_type(type_id, field_ids=None, **kwargs):
 
 
 def _update_fields(old_fields: list, new_field_ids: list) -> list:
-
     new_ids = set(new_field_ids)
     old_ids = {f.field_id for f in old_fields}
 
@@ -58,11 +55,7 @@ def _update_fields(old_fields: list, new_field_ids: list) -> list:
     return [field_dict[i] for i in sorted(new_ids)]
 
 
-
 def delete_product_type(type_id):
     """Delete a product type"""
     model = ProductType.query.filter_by(type_id=type_id).one()
     sa.session.delete(model)
-
-
-

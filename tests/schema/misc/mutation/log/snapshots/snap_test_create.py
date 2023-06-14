@@ -14,9 +14,9 @@ snapshots['test_schema_success[one] 1'] = {
                 'id_': '3',
                 'level': 'ERROR',
                 'message': 'An exception is raised',
-                'time': '2021-01-04T14:32:20'
+                'time': '2021-01-04T14:32:20',
             },
-            'ok': True
+            'ok': True,
         }
     }
 }
@@ -30,7 +30,7 @@ snapshots['test_schema_success[one] 2'] = {
                         'id_': '1',
                         'level': 'DEBUG',
                         'message': 'A debug message!',
-                        'time': '2021-01-04T14:32:20'
+                        'time': '2021-01-04T14:32:20',
                     }
                 },
                 {
@@ -38,7 +38,7 @@ snapshots['test_schema_success[one] 2'] = {
                         'id_': '2',
                         'level': 'ERROR',
                         'message': 'An error message!',
-                        'time': '2021-01-04T14:32:20'
+                        'time': '2021-01-04T14:32:20',
                     }
                 },
                 {
@@ -46,11 +46,11 @@ snapshots['test_schema_success[one] 2'] = {
                         'id_': '3',
                         'level': 'ERROR',
                         'message': 'An exception is raised',
-                        'time': '2021-01-04T14:32:20'
+                        'time': '2021-01-04T14:32:20',
                     }
-                }
+                },
             ],
-            'totalCount': 3
+            'totalCount': 3,
         }
     }
 }

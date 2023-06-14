@@ -27,5 +27,3 @@ from .field import (  # noqa: F401
 
 
 from .type_field_association import TypeFieldAssociation  # noqa: F401
-
-

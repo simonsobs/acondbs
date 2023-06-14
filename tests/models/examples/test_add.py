@@ -5,12 +5,10 @@ from acondbs.models import ProductType, Product
 # how models in flask_sqlalchemy work.
 
 
-
 def test_simple(app):
     """A simple test of adding an object"""
 
     with app.app_context():
-
         # the number of the product types is zero initially
         assert 0 == len(ProductType.query.all())
 
@@ -22,14 +20,12 @@ def test_simple(app):
         sa.session.commit()
 
     with app.app_context():
-
         # the number of the product types is increased by one
         assert 1 == len(ProductType.query.all())
 
         # the new product type can be retrieved in a different app context
         type1_ = ProductType.query.filter_by(name="type1").one_or_none()
         assert isinstance(type1_, ProductType)
-
 
 
 def test_python_object(app):
@@ -53,7 +49,6 @@ def test_python_object(app):
         assert type1 is not type1_
 
 
-
 def test_primary_key(app):
     """A simple test about the primary key"""
 
@@ -71,11 +66,9 @@ def test_primary_key(app):
         assert type_id is not None
 
     with app.app_context():
-
         # The object can be retrived by the product_id in another context
         type1 = ProductType.query.filter_by(type_id=type_id).first()
         assert "type1" == type1.name
-
 
 
 def test_relation(app):
@@ -112,6 +105,3 @@ def test_relation(app):
         assert "type1" == type1.name
         assert product1 is type1.products[0]
         assert product1.type_id == type1.type_id
-
-
-

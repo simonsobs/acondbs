@@ -47,7 +47,7 @@ def test_release_not_delete_when_not_lockded(tmpdir_factory):
 
 
 def test_acquire_timeout(tmpdir_factory):
-    timeout = 0.1 # sec
+    timeout = 0.1  # sec
 
     folder = Path(tmpdir_factory.mktemp('lock'))
     lock_file = folder.joinpath('.lock')
@@ -69,5 +69,3 @@ def test_with_success(tmpdir_factory):
         assert lock_file.exists()
     assert not l.locked
     assert not lock_file.exists()
-
-

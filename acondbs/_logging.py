@@ -28,16 +28,13 @@ def record_factory(*args, **kwargs):
 
     record = _old_factory(*args, **kwargs)
     try:
-        record.pathname = (
-            Path(record.pathname).resolve().relative_to(_module_path)
-        )
+        record.pathname = Path(record.pathname).resolve().relative_to(_module_path)
     except Exception:
         pass
     return record
 
 
 logging.setLogRecordFactory(record_factory)
-
 
 
 def configure_logging():
@@ -72,11 +69,6 @@ def configure_logging():
                     "formatter": "default",
                 }
             },
-            "loggers": {
-                logger_name: {"level": logger_level, "handlers": ["wsgi"]}
-            },
+            "loggers": {logger_name: {"level": logger_level, "handlers": ["wsgi"]}},
         }
     )
-
-
-

@@ -1,7 +1,6 @@
 from ...db.sa import sa
 
 
-
 class TypeFieldAssociation(sa.Model):
     """Many-to-many relation between ProductType and Field
 
@@ -40,9 +39,7 @@ class TypeFieldAssociation(sa.Model):
         backref=sa.backref("entry_types"),
     )
 
-    __table_args__ = (
-        sa.UniqueConstraint("type_id", "field_id", name="_type_field"),
-    )
+    __table_args__ = (sa.UniqueConstraint("type_id", "field_id", name="_type_field"),)
 
     def __repr__(self):
         return f"<{self.__class__.__name__} {self.type_name!r} {self.field_name!r}>"
@@ -62,6 +59,3 @@ class TypeFieldAssociation(sa.Model):
             return self.field.name
         except BaseException:
             return self.field
-
-
-

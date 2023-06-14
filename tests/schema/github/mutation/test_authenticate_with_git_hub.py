@@ -7,7 +7,6 @@ import pytest
 import unittest.mock as mock
 
 
-
 @pytest.fixture(autouse=True)
 def mock_authenticate(monkeypatch):
     y = mock.Mock()
@@ -15,10 +14,8 @@ def mock_authenticate(monkeypatch):
     yield y
 
 
-
 @pytest.mark.asyncio
 async def test_auth(app, mock_authenticate):
-
     query = textwrap.dedent(
         """
         mutation AuthenticateWithGitHub($code: String!) {
@@ -51,6 +48,3 @@ async def test_auth(app, mock_authenticate):
 
     assert {"data": expected} == resp.json()
     assert [mock.call("h443xg9c")] == mock_authenticate.call_args_list
-
-
-

@@ -19,7 +19,8 @@ fragment GitHubUserFragment on GitHubUser {
 }
 '''
 
-ALL_GITHUB_USERS = '''
+ALL_GITHUB_USERS = (
+    '''
 {
   allGitHubUsers {
     totalCount
@@ -30,9 +31,12 @@ ALL_GITHUB_USERS = '''
     }
   }
 }
-''' + GITHUB_USER_FRAGMENT
+'''
+    + GITHUB_USER_FRAGMENT
+)
 
-ALL_GITHUB_USERS_WITH_FILTER = '''
+ALL_GITHUB_USERS_WITH_FILTER = (
+    '''
 query AllGitHubUsers($orgMember: Boolean){
   allGitHubUsers(filters: { orgMember: $orgMember }) {
     totalCount
@@ -43,33 +47,27 @@ query AllGitHubUsers($orgMember: Boolean){
     }
   }
 }
-''' + GITHUB_USER_FRAGMENT
+'''
+    + GITHUB_USER_FRAGMENT
+)
 
-HEADERS = {
-    "Authorization": "Bearer token1"  # user1
-}
+HEADERS = {"Authorization": "Bearer token1"}  # user1
 
 
 params = [
-    pytest.param(
-        {"query": ALL_GITHUB_USERS},
-        id='one'
-    ),
+    pytest.param({"query": ALL_GITHUB_USERS}, id='one'),
     pytest.param(
         {"query": ALL_GITHUB_USERS_WITH_FILTER, 'variables': {'orgMember': True}},
-        id='filter-on'
+        id='filter-on',
     ),
     pytest.param(
         {"query": ALL_GITHUB_USERS_WITH_FILTER, 'variables': {'orgMember': False}},
-        id='filter-off'
+        id='filter-off',
     ),
 ]
-
 
 
 @pytest.mark.parametrize("data", params)
 @pytest.mark.asyncio
 async def test_schema(app, snapshot, data):
     await assert_query(app, snapshot, data, HEADERS)
-
-

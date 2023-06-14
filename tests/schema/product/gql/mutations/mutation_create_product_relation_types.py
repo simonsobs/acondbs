@@ -1,6 +1,7 @@
 from ..fragments import FRAGMENT_PRODUCT_RELATION_TYPE
 
-MUTATION_CREATE_PRODUCT_RELATION_TYPES = '''
+MUTATION_CREATE_PRODUCT_RELATION_TYPES = (
+    '''
 mutation CreateProductRelationTypes(
   $type: CreateProductRelationTypeInput!
   $reverse: CreateProductRelationTypeInput
@@ -17,4 +18,6 @@ mutation CreateProductRelationTypes(
     }
   }
 }
-''' + FRAGMENT_PRODUCT_RELATION_TYPE
+'''
+    + FRAGMENT_PRODUCT_RELATION_TYPE
+)

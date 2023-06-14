@@ -53,11 +53,11 @@ snapshots['test_schema[one] 1'] = {
               ]
             }
 ''',
-                        'time': '2021-01-04T14:32:20'
+                        'time': '2021-01-04T14:32:20',
                     }
                 }
             ],
-            'totalCount': 1
+            'totalCount': 1,
         }
     }
 }

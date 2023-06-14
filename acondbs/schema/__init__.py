@@ -11,7 +11,6 @@ from . import (
 )
 
 
-
 class QueryPublic(graphene.ObjectType):
     web_config = web.query.web_config_field
     is_signed_in = auth.query.is_signed_in_field
@@ -23,9 +22,7 @@ class MutationPublic(graphene.ObjectType):
     create_log = misc.mutation.CreateLog.Field()
 
 
-
 class QueryPrivate(QueryPublic):
-
     #
     version = version_.version_field
     alembic_version = version_.alembic_version_field
@@ -54,7 +51,6 @@ class QueryPrivate(QueryPublic):
 
 
 class MutationPrivate(MutationPublic):
-
     #
     create_product = p.mutation.CreateProduct.Field()
     delete_product = p.mutation.DeleteProduct.Field()
@@ -68,12 +64,8 @@ class MutationPrivate(MutationPublic):
     create_product_relation = p.mutation.CreateProductRelation.Field()
     delete_product_relation = p.mutation.DeleteProductRelation.Field()
 
-    create_product_relation_types = (
-        p.mutation.CreateProductRelationTypes.Field()
-    )
-    delete_product_relation_types = (
-        p.mutation.DeleteProductRelationTypes.Field()
-    )
+    create_product_relation_types = p.mutation.CreateProductRelationTypes.Field()
+    delete_product_relation_types = p.mutation.DeleteProductRelationTypes.Field()
     update_product_relation_type = p.mutation.UpdateProductRelationType.Field()
 
     create_product_type = p.mutation.CreateProductType.Field()
@@ -85,9 +77,7 @@ class MutationPrivate(MutationPublic):
     update_field = p.mutation.UpdateField.Field()
 
 
-
 class QueryAdmin(QueryPrivate):
-
     #
     all_git_hub_orgs = github.query.all_git_hub_orgs_field
     all_git_hub_tokens = github.query.all_git_hub_tokens_field
@@ -101,26 +91,18 @@ class QueryAdmin(QueryPrivate):
 
 
 class MutationAdmin(MutationPrivate):
-
     #
     add_git_hub_org = github.mutation.AddGitHubOrg.Field()
     delete_git_hub_org = github.mutation.DeleteGitHubOrg.Field()
 
-    add_git_hub_admin_app_token = (
-        github.mutation.AddGitHubAdminAppToken.Field()
-    )
-    delete_git_hub_admin_app_token = (
-        github.mutation.DeleteGitHubAdminAppToken.Field()
-    )
+    add_git_hub_admin_app_token = github.mutation.AddGitHubAdminAppToken.Field()
+    delete_git_hub_admin_app_token = github.mutation.DeleteGitHubAdminAppToken.Field()
 
-    update_git_hub_org_member_lists = (
-        github.mutation.UpdateGitHubOrgMemberLists.Field()
-    )
+    update_git_hub_org_member_lists = github.mutation.UpdateGitHubOrgMemberLists.Field()
 
     delete_log = misc.mutation.DeleteLog.Field()
 
     save_web_config = web.mutation.SaveWebconfig.Field()
-
 
 
 class Query(QueryAdmin):
@@ -131,11 +113,8 @@ class Mutation(MutationAdmin):
     pass
 
 
-
 schema_public = graphene.Schema(query=QueryPublic, mutation=MutationPublic)
 schema_private = graphene.Schema(query=QueryPrivate, mutation=MutationPrivate)
 schema_admin = graphene.Schema(query=QueryAdmin, mutation=MutationAdmin)
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
-
-

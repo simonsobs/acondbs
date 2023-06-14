@@ -4,7 +4,6 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 
-
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -12,6 +11,3 @@ def app_empty():
     with y.app_context():
         define_tables()
     yield y
-
-
-

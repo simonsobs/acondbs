@@ -11,29 +11,17 @@ snapshots['test_schema[one] 1'] = {
     'data': {
         'allFields': {
             'edges': [
-                {
-                    'node': {
-                        'fieldId': '1',
-                        'name': 'contact',
-                        'type_': 'UNICODE_TEXT'
-                    }
-                },
+                {'node': {'fieldId': '1', 'name': 'contact', 'type_': 'UNICODE_TEXT'}},
                 {
                     'node': {
                         'fieldId': '2',
                         'name': 'produced_by',
-                        'type_': 'UNICODE_TEXT'
+                        'type_': 'UNICODE_TEXT',
                     }
                 },
-                {
-                    'node': {
-                        'fieldId': '3',
-                        'name': 'date_produced',
-                        'type_': 'DATE'
-                    }
-                }
+                {'node': {'fieldId': '3', 'name': 'date_produced', 'type_': 'DATE'}},
             ],
-            'totalCount': 3
+            'totalCount': 3,
         }
     }
 }

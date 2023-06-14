@@ -1,15 +1,10 @@
 from flask import request
 
-from ..models import (
-    GitHubToken,
-    GitHubUser,
-    AccountAdmin
-)
+from ..models import GitHubToken, GitHubUser, AccountAdmin
 
 
 def is_signed_in():
-    """
-    """
+    """ """
     token = _get_token_from_http_headers()
     if not token:
         return False
@@ -22,8 +17,7 @@ def is_signed_in():
 
 
 def is_admin():
-    """
-    """
+    """ """
 
     if not is_signed_in():
         return False
@@ -32,16 +26,18 @@ def is_admin():
     if not token:
         return False
 
-    user_model = GitHubUser.query.join(GitHubToken). \
-        filter(GitHubToken.token==token). \
-        one_or_none()
+    user_model = (
+        GitHubUser.query.join(GitHubToken)
+        .filter(GitHubToken.token == token)
+        .one_or_none()
+    )
 
     if not user_model:
         return False
 
-    admin_model = AccountAdmin.query. \
-        filter_by(git_hub_login=user_model.login). \
-        one_or_none()
+    admin_model = AccountAdmin.query.filter_by(
+        git_hub_login=user_model.login
+    ).one_or_none()
 
     if not admin_model:
         return False
@@ -60,5 +56,3 @@ def _get_token_from_http_headers():
     # e.g., "xxxx"
 
     return token
-
-

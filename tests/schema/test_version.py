@@ -8,10 +8,8 @@ import acondbs
 QUERY = "{ version }"
 
 
-
 @pytest.mark.asyncio
 async def test_schema(app):
-
     app = WSGIMiddleware(app)  # convert a wsgi app to an asgi app
 
     headers = {
@@ -27,6 +25,3 @@ async def test_schema(app):
 
     assert resp.status_code == 200
     assert resp.json() == expected
-
-
-

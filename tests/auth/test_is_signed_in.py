@@ -19,5 +19,3 @@ def test_false_no_token(app):
     environ_base = {}
     with app.test_request_context(environ_base=environ_base):
         assert not auth.is_signed_in()
-
-

@@ -12,17 +12,14 @@ from ...models import (
 from ..filter_ import PFilterableConnectionField
 
 
-
 class GitHubOAuthAppInfo(graphene.ObjectType):
     client_id = graphene.String()
     authorize_url = graphene.String()
     redirect_uri = graphene.String()
 
 
-
 class AuthPayload(graphene.ObjectType):
     token = graphene.String()
-
 
 
 class GitHubToken(SQLAlchemyObjectType):
@@ -41,14 +38,12 @@ class GitHubToken(SQLAlchemyObjectType):
         return "X" * 15
 
 
-
 class GitHubUser(SQLAlchemyObjectType):
     class Meta:
         model = GitHubUserModel
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
-
 
 
 class GitHubOrg(SQLAlchemyObjectType):
@@ -59,13 +54,9 @@ class GitHubOrg(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-
 class GitHubOrgMembership(SQLAlchemyObjectType):
     class Meta:
         model = GitHubOrgMembershipModel
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
-
-
-

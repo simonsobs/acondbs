@@ -20,8 +20,8 @@ snapshots['test_schema_success[one] 1'] = {
   "productCreationDialog": false,
   "productUpdateDialog": false,
   "productDeletionDialog": false
-}'''
-            }
+}''',
+            },
         }
     }
 }
@@ -37,7 +37,7 @@ snapshots['test_schema_success[one] 2'] = {
   "productCreationDialog": false,
   "productUpdateDialog": false,
   "productDeletionDialog": false
-}'''
+}''',
         }
     }
 }

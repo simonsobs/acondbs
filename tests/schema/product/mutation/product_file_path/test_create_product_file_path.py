@@ -6,7 +6,6 @@ from ....funcs import assert_mutation
 HEADERS = {"Authorization": "Bearer token123"}  # octocat
 
 
-
 params = [
     pytest.param(
         {
@@ -44,7 +43,6 @@ params = [
 async def test_schema_success(
     app, snapshot, data_mutation, data_query, mock_request_backup_db
 ):
-
     ## To find the token
     # from acondbs.models import GitHubUser
     # with app.app_context():
@@ -63,7 +61,6 @@ async def test_schema_success(
         mock_request_backup_db,
         success,
     )
-
 
 
 params = [
@@ -118,6 +115,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-

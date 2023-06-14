@@ -21,7 +21,6 @@ from ..models import (
 )
 
 
-
 class ProductFilter(FilterSet):
     type_name = graphene.String()
 
@@ -48,7 +47,6 @@ class ProductTypeFilter(FilterSet):
         fields = {}
 
 
-
 class GitHubTokenFilter(FilterSet):
     class Meta:
         model = GitHubTokenModel
@@ -57,7 +55,6 @@ class GitHubTokenFilter(FilterSet):
                 "ilike",
             ],
         }
-
 
 
 class GitHubUserFilter(FilterSet):
@@ -73,7 +70,6 @@ class GitHubUserFilter(FilterSet):
         return query, filter_
 
 
-
 class PFilterableConnectionField(FilterableConnectionField):
     filters = {
         ProductModel: ProductFilter(),
@@ -81,6 +77,3 @@ class PFilterableConnectionField(FilterableConnectionField):
         GitHubTokenModel: GitHubTokenFilter(),
         GitHubUserModel: GitHubUserFilter(),
     }
-
-
-

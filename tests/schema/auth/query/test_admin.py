@@ -37,6 +37,3 @@ params = [
 @pytest.mark.asyncio
 async def test_schema(app, snapshot, data, headers, error):
     await assert_query(app, snapshot, data, headers, error)
-
-
-

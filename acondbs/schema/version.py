@@ -5,7 +5,6 @@ from alembic.migration import MigrationContext
 from ..db.conn import get_db_connection
 
 
-
 def resolve_version(parent, info):
     from .. import __version__
 
@@ -17,7 +16,6 @@ version_field = graphene.Field(
     description="The version of Acondbs",
     resolver=resolve_version,
 )
-
 
 
 def resolve_alembic_version(parent, info):
@@ -33,5 +31,3 @@ alembic_version_field = graphene.Field(
     description="The version of Alembic migration",
     resolver=resolve_alembic_version,
 )
-
-

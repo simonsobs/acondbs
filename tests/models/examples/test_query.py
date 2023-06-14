@@ -9,7 +9,6 @@ from acondbs.models import ProductType, Product
 # how models in flask_sqlalchemy work.
 
 
-
 @pytest.fixture
 def app(app):
     y = app
@@ -26,9 +25,7 @@ def app(app):
     yield y
 
 
-
 def test_context(app):
-
     # query cannot be accessed outside of the app context
     with pytest.raises(RuntimeError):
         Product.query
@@ -38,9 +35,7 @@ def test_context(app):
 
 
 def test_query_all(app):
-
     with app.app_context():
-
         # query is an instance of BaseQuery
         query = Product.query
         assert isinstance(query, BaseQuery)
@@ -53,9 +48,7 @@ def test_query_all(app):
 
 
 def test_query_filter(app):
-
     with app.app_context():
-
         # filter_by() returns an instance of BaseQuery
         query = Product.query.filter_by(name="map1")
         assert isinstance(query, BaseQuery)
@@ -72,9 +65,7 @@ def test_query_filter(app):
 
 
 def test_query_filter_nonexistent(app):
-
     with app.app_context():
-
         query = Product.query.filter_by(name="no-such-product")
         assert isinstance(query, BaseQuery)
 
@@ -85,6 +76,3 @@ def test_query_filter_nonexistent(app):
         # first() returns None
         product = query.first()
         assert product is None
-
-
-

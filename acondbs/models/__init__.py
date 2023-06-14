@@ -46,7 +46,6 @@ from .web import WebConfig  # noqa: F401
 from .misc import Log  # noqa: F401
 
 
-
 def init_app(app):
     """Initialize the Flask application object
 
@@ -62,7 +61,6 @@ def init_app(app):
     # remove_git_hub_tokens_with_invalid_decryption_key(app)
 
 
-
 def _add_owners_to_db_as_admins(app):
     import sqlalchemy
     from ..db.sa import sa
@@ -76,7 +74,6 @@ def _add_owners_to_db_as_admins(app):
             return
 
     with app.app_context():
-
         owners = app.config.get("ACONDBS_OWNERS_GITHUB_LOGINS", "")
         # e.g., "octocat,dojocat"
 
@@ -91,23 +88,18 @@ def _add_owners_to_db_as_admins(app):
 
         for owner in owners:
             if (
-                admin := AccountAdmin.query.filter_by(
-                    git_hub_login=owner
-                ).one_or_none()
+                admin := AccountAdmin.query.filter_by(git_hub_login=owner).one_or_none()
             ) is None:
                 admin = AccountAdmin(git_hub_login=owner)
                 sa.session.add(admin)
         sa.session.commit()
 
 
-
 def remove_git_hub_tokens_with_invalid_decryption_key(app):
     from ..db.sa import sa
 
     with app.app_context():
-        token_ids = [
-            e[0] for e in sa.session.query(GitHubToken.token_id).all()
-        ]
+        token_ids = [e[0] for e in sa.session.query(GitHubToken.token_id).all()]
         for token_id in token_ids:
             try:
                 token = GitHubToken.query.filter_by(  # noqa: F841
@@ -116,6 +108,3 @@ def remove_git_hub_tokens_with_invalid_decryption_key(app):
             except ValueError:
                 sql = f"delete from {GitHubToken.__tablename__} where token_id={token_id};"
                 sa.engine.execute(sql)
-
-
-

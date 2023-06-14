@@ -6,11 +6,9 @@ from .. import type_
 from .... import ops
 
 
-
 def _reshape_arg_attributes(attributes):
     ret = {e["field_id"]: e["value"] for t, v in attributes.items() for e in v}
     return ret
-
 
 
 class RelationInputFields(graphene.InputObjectType):
@@ -168,7 +166,6 @@ class UpdateProductInput(graphene.InputObjectType, CommonInputFields):
     )
 
 
-
 class CreateProduct(graphene.Mutation):
     """Create a product"""
 
@@ -182,7 +179,6 @@ class CreateProduct(graphene.Mutation):
     product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, input):
-
         viewer = get_git_hub_viewer_from_info(info)
         posting_git_hub_user_id = viewer.user_id
 
@@ -192,7 +188,7 @@ class CreateProduct(graphene.Mutation):
         model = ops.create_product(
             attributes=attributes,
             posting_git_hub_user_id=posting_git_hub_user_id,
-            **input
+            **input,
         )
 
         ops.commit()
@@ -222,7 +218,6 @@ class UpdateProduct(graphene.Mutation):
     product = graphene.Field(lambda: type_.Product)
 
     def mutate(root, info, product_id, input):
-
         viewer = get_git_hub_viewer_from_info(info)
         updating_git_hub_user_id = viewer.user_id
 
@@ -233,7 +228,7 @@ class UpdateProduct(graphene.Mutation):
             product_id=product_id,
             attributes=attributes,
             updating_git_hub_user_id=updating_git_hub_user_id,
-            **input
+            **input,
         )
         ops.commit()
         ok = True
@@ -256,7 +251,6 @@ class DeleteProduct(graphene.Mutation):
         ops.commit()
         ok = True
         return DeleteProduct(ok=ok)
-
 
 
 class ConvertProductType(graphene.Mutation):
@@ -286,6 +280,3 @@ class ConvertProductType(graphene.Mutation):
         ops.commit()
         ok = True
         return ConvertProductType(ok=ok, product=model)
-
-
-

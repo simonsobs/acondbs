@@ -1,7 +1,6 @@
 from ...db.sa import sa
 
 
-
 class GitHubOrgMembership(sa.Model):
     __tablename__ = "github_org_memberships"
     entry_id = sa.Column(sa.Integer(), primary_key=True)
@@ -10,12 +9,7 @@ class GitHubOrgMembership(sa.Model):
         "GitHubOrg",
         backref=sa.backref("memberships", cascade="all"),
     )
-    member_id = sa.Column(
-        sa.ForeignKey("github_users.user_id"), nullable=False
-    )
+    member_id = sa.Column(sa.ForeignKey("github_users.user_id"), nullable=False)
     member = sa.relationship(
         "GitHubUser", backref=sa.backref("memberships", cascade="all")
     )
-
-
-

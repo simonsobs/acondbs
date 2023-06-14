@@ -1,9 +1,7 @@
 from acondbs.models import Product, ProductRelation, ProductRelationType
 
 
-
 def test_example_how_to_query(app):
-
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -17,7 +15,6 @@ def test_example_how_to_query(app):
     #                              +--------+
 
     with app.app_context():
-
         parent1 = Product.query.filter_by(name="parent1").first()
         child1 = Product.query.filter_by(name="child1").first()
         child2 = Product.query.filter_by(name="child2").first()
@@ -53,6 +50,3 @@ def test_example_how_to_query(app):
             .all()
         )
         assert [parent1] == products
-
-
-

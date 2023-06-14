@@ -5,10 +5,8 @@ import pytest
 from acondbs import ops
 
 
-
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     config_json = json.dumps(
@@ -28,6 +26,3 @@ def app(app_empty):
         ops.commit()
 
     yield y
-
-
-

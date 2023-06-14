@@ -16,5 +16,3 @@ def test_error(app, snapshot):
     with app.app_context():
         with pytest.raises(sqlalchemy.orm.exc.NoResultFound):
             _ = ops.get_user_for_token(token)
-
-

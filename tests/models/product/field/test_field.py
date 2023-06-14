@@ -6,7 +6,6 @@ from acondbs.db.sa import sa
 from acondbs.models import FieldType, Field
 
 
-
 def test_repr(app_empty):
     app = app_empty  # noqa: F841
 
@@ -15,7 +14,6 @@ def test_repr(app_empty):
 
     field1.type_ = FieldType.UnicodeText
     repr(field1)
-
 
 
 def test_commit(app_empty):
@@ -33,7 +31,6 @@ def test_commit(app_empty):
         assert field1.type_ is FieldType.Date
 
 
-
 def test_commit_with_field_id(app_empty):
     app = app_empty
 
@@ -46,7 +43,6 @@ def test_commit_with_field_id(app_empty):
         field1 = Field.query.filter_by(field_id=259).one()
         assert field1.name == "field1"
         assert field1.type_ is FieldType.Date
-
 
 
 def test_nullable(app_empty):
@@ -67,7 +63,6 @@ def test_nullable(app_empty):
             sa.session.commit()
 
 
-
 def test_enum_by_int(app_empty):
     """Test if an enum can be given by a number
 
@@ -82,6 +77,3 @@ def test_enum_by_int(app_empty):
         sa.session.add(field1)
         with pytest.raises(exc.StatementError):
             sa.session.commit()
-
-
-

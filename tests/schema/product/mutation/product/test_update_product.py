@@ -43,7 +43,6 @@ HEADERS = {
 }
 
 
-
 params = [
     pytest.param(
         {
@@ -156,7 +155,6 @@ async def test_schema_success(
     )
 
 
-
 params = [
     pytest.param(
         {
@@ -190,6 +188,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-

@@ -8,13 +8,8 @@ from . import type_
 
 
 all_git_hub_orgs_field = PFilterableConnectionField(type_.GitHubOrg.connection)
-all_git_hub_users_field = PFilterableConnectionField(
-    type_.GitHubUser.connection
-)
-all_git_hub_tokens_field = PFilterableConnectionField(
-    type_.GitHubToken.connection
-)
-
+all_git_hub_users_field = PFilterableConnectionField(type_.GitHubUser.connection)
+all_git_hub_tokens_field = PFilterableConnectionField(type_.GitHubToken.connection)
 
 
 def resolve_git_hub_o_auth_app_info(parent, info):
@@ -31,14 +26,9 @@ git_hub_o_auth_app_info_field = graphene.Field(
 )
 
 
-
 def resolve_git_hub_viewer(parent, info):
     user = get_git_hub_viewer_from_info(info)
     return user
 
 
-git_hub_viewer_field = graphene.Field(
-    type_.GitHubUser, resolver=resolve_git_hub_viewer
-)
-
-
+git_hub_viewer_field = graphene.Field(type_.GitHubUser, resolver=resolve_git_hub_viewer)

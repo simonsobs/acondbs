@@ -41,7 +41,6 @@ QEURY = """
 HEADERS = {"Authorization": "Bearer 39d86487d76a84087f1da599c872dac4473e5f07"}  # user1
 
 
-
 params = [
     pytest.param(
         {
@@ -132,7 +131,6 @@ async def test_schema_success(
     )
 
 
-
 params = [
     pytest.param(
         {
@@ -178,6 +176,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-

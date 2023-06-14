@@ -8,5 +8,3 @@ SAMPLE_DIR = TEST_DIR_TOP.joinpath("sample")
 
 
 del Path
-
-

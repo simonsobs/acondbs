@@ -2,7 +2,6 @@ from acondbs.db.sa import sa
 from acondbs.models import Log
 
 
-
 def test_column(app_empty):
     app = app_empty
 
@@ -32,6 +31,3 @@ def test_repr(app_empty):
     with app.app_context():
         model = Log.query.filter_by(id_=id_).one()
         repr(model)
-
-
-

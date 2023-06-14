@@ -20,9 +20,7 @@ all_product_file_paths_field = PFilterableConnectionField(type_.ProductFilePath.
 all_fields_field = PFilterableConnectionField(type_.Field.connection)
 
 
-
 def resolve_product(parent, info, **kwargs):
-
     filter = [getattr(ProductModel, k) == v for k, v in kwargs.items()]
     # e.g., [ProductModel.type_id == 1, ProductModel.name == 'map_001']
 
@@ -36,7 +34,6 @@ product_field = graphene.Field(
     name=graphene.String(),
     resolver=resolve_product,
 )
-
 
 
 def resolve_product_type(parent, info, **kwargs):
@@ -54,7 +51,6 @@ product_type_field = graphene.Field(
 )
 
 
-
 def resolve_product_relation(parent, info, **kwargs):
     filter = [getattr(ProductRelationModel, k) == v for k, v in kwargs.items()]
     return type_.ProductRelation.get_query(info).filter(*filter).one_or_none()
@@ -67,14 +63,9 @@ product_relation_field = graphene.Field(
 )
 
 
-
 def resolve_product_relation_type(parent, info, **kwargs):
-    filter = [
-        getattr(ProductRelationTypeModel, k) == v for k, v in kwargs.items()
-    ]
-    return (
-        type_.ProductRelationType.get_query(info).filter(*filter).one_or_none()
-    )
+    filter = [getattr(ProductRelationTypeModel, k) == v for k, v in kwargs.items()]
+    return type_.ProductRelationType.get_query(info).filter(*filter).one_or_none()
 
 
 product_relation_type_field = graphene.Field(
@@ -85,9 +76,7 @@ product_relation_type_field = graphene.Field(
 )
 
 
-
 def resolve_field(parent, info, **kwargs):
-
     filter = [getattr(FieldModel, k) == v for k, v in kwargs.items()]
     # e.g., [FieldModel.field_id == 1, FieldModel.name == 'contact']
 
@@ -100,6 +89,3 @@ field_field = graphene.Field(
     name=graphene.String(),
     resolver=resolve_field,
 )
-
-
-

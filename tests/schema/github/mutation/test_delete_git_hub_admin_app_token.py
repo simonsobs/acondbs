@@ -50,7 +50,6 @@ async def test_schema_success(
     headers_query,
     mock_request_backup_db,
 ):
-
     await assert_mutation(
         app,
         snapshot,
@@ -61,7 +60,6 @@ async def test_schema_success(
         mock_request_backup_db,
         success=True,
     )
-
 
 
 params = [
@@ -88,7 +86,6 @@ async def test_schema_error(
     headers_query,
     mock_request_backup_db,
 ):
-
     await assert_mutation(
         app,
         snapshot,
@@ -99,6 +96,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success=False,
     )
-
-
-

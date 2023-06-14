@@ -18,7 +18,7 @@ snapshots['test_schema[query] 1'] = {
   "productCreationDialog": false,
   "productUpdateDialog": true,
   "productDeletionDialog": true
-}'''
+}''',
         }
     }
 }

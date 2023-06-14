@@ -10,18 +10,14 @@ from acondbs.models import GitHubToken
 from ...constants import SAMPLE_DIR
 
 
-
 @pytest.fixture
 def app():
     config_path = Path(SAMPLE_DIR, "config.py")
     database_uri = "sqlite:///:memory:"
-    app = create_app(
-        config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri
-    )
+    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     with app.app_context():
         define_tables()
     yield app
-
 
 
 def test_encrypted_field(app):
@@ -46,6 +42,3 @@ def test_how_to_encrypt_and_decrypt(app):
 
     assert engine.encrypt(unencrypted) == encrypted
     assert engine.decrypt(encrypted) == unencrypted
-
-
-

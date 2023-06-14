@@ -2,7 +2,6 @@ from acondbs.db.sa import sa
 from acondbs.models import GitHubUser
 
 
-
 def test_entry(app_empty):
     app = app_empty
 
@@ -20,6 +19,3 @@ def test_entry(app_empty):
     with app.app_context():
         user1 = GitHubUser.query.filter_by(login="octocat").one()
         assert "octocat" == user1.login
-
-
-

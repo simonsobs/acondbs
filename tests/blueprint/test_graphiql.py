@@ -4,7 +4,6 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 
-
 params = [
     [True, 200, "<!DOCTYPE html>"],
     [False, 400, "errors"],
@@ -26,7 +25,6 @@ def test_disable(graphiql, code, data):
     response = client.get("/graphql", headers={"Accept": "text/html"})
     assert code == response.status_code
     assert data in response.data.decode("utf-8")
-
 
 
 params = [
@@ -51,6 +49,3 @@ def test_template(number, data):
     response = client.get("/graphql", headers={"Accept": "text/html"})
     assert 200 == response.status_code
     assert data in response.data.decode("utf-8")
-
-
-

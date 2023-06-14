@@ -1,6 +1,7 @@
 from ..fragments import FRAGMENT_PRODUCT_TYPE
 
-MUTATION_CREATE_PRODUCT_TYPE = '''
+MUTATION_CREATE_PRODUCT_TYPE = (
+    '''
 mutation CreateProductType($input: CreateProductTypeInput!) {
   createProductType(input: $input) {
     ok
@@ -9,4 +10,6 @@ mutation CreateProductType($input: CreateProductTypeInput!) {
     }
   }
 }
-''' + FRAGMENT_PRODUCT_TYPE
+'''
+    + FRAGMENT_PRODUCT_TYPE
+)

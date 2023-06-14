@@ -14,7 +14,6 @@ from acondbs.db.ops import define_tables, import_tables_from_csv_files
 from .constants import SAMPLE_DIR
 
 
-
 @pytest.fixture(scope="session")
 def create_db_with_csv_files():
     """create a test DB, load data from CSV files"""
@@ -27,7 +26,6 @@ def create_db_with_csv_files():
     yield
     database_path = Path(SAMPLE_DIR, "product.sqlite3")
     database_path.unlink()
-
 
 
 @pytest.fixture
@@ -44,7 +42,6 @@ def database_uri(create_db_with_csv_files, tmpdir_factory):
     shutil.copy2(org_database_path, tmp_database_path)
     ret = "sqlite:///{}".format(tmp_database_path)
     yield ret
-
 
 
 @pytest.fixture
@@ -64,11 +61,8 @@ def app(database_uri):
 
     """
     config_path = Path(SAMPLE_DIR, "config.py")
-    app = create_app(
-        config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri
-    )
+    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     yield app
-
 
 
 @pytest.fixture
@@ -96,7 +90,6 @@ def client(app):
     yield app.test_client()
 
 
-
 @pytest.fixture
 def runner(app):
     """a test CLI runner of the Flask application
@@ -117,7 +110,6 @@ def runner(app):
     yield app.test_cli_runner()
 
 
-
 @pytest.fixture(autouse=True)
 def db_backup_global_variables(monkeypatch):
     from acondbs.db import backup
@@ -126,7 +118,6 @@ def db_backup_global_variables(monkeypatch):
     monkeypatch.setattr(backup, "_capped_backup_func", None)
     yield
     backup.end_backup_thread()
-
 
 
 @pytest.fixture(autouse=True)
@@ -141,7 +132,6 @@ def mock_request_backup_db(monkeypatch):
     for t in targets:
         monkeypatch.setattr(t, y)
     yield y
-
 
 
 @pytest.fixture(autouse=True)
@@ -164,6 +154,3 @@ def mock_datetime(monkeypatch):
     for t in targets:
         monkeypatch.setattr(t, y)
     yield y
-
-
-

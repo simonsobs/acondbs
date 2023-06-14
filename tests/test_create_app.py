@@ -72,6 +72,3 @@ def test_create_app_dict():
         TEST_CONFIG_B=789,
     )
     assert expected.items() <= app.config.items()
-
-
-

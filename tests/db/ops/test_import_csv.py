@@ -12,18 +12,14 @@ from acondbs.db.ops import (
 from ...constants import SAMPLE_DIR
 
 
-
 @pytest.fixture
 def app():
     config_path = Path(SAMPLE_DIR, "config.py")
     database_uri = "sqlite:///:memory:"
-    app = create_app(
-        config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri
-    )
+    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     with app.app_context():
         define_tables()
     yield app
-
 
 
 def test_non_empty(app, snapshot):
@@ -34,7 +30,6 @@ def test_non_empty(app, snapshot):
         snapshot.assert_match(export_db_to_dict_of_dict_list())
 
 
-
 def test_empty(app, tmpdir_factory):
     csvdir = str(tmpdir_factory.mktemp("csv"))
 
@@ -43,6 +38,3 @@ def test_empty(app, tmpdir_factory):
 
     with app.app_context():
         import_tables_from_csv_files(csvdir)
-
-
-

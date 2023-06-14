@@ -19,9 +19,7 @@ DEFAULT_CONFIG_DICT = dict(
 )
 
 
-
 def create_app(config_path=None, **kwargs):
-
     _logging.configure_logging()
 
     app = Flask(__name__, instance_relative_config=False)
@@ -65,8 +63,6 @@ def create_app(config_path=None, **kwargs):
     return app
 
 
-
-
 from ._version import get_versions  # noqa: E402
 
 __version__ = get_versions()["version"]
@@ -80,5 +76,3 @@ Versioneer: https://github.com/warner/python-versioneer
 """
 
 del get_versions
-
-

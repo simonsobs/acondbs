@@ -5,7 +5,6 @@ import contextlib
 
 
 class lock:
-
     def __init__(self, path, timeout=None):
         self.path = Path(path)
         self.timeout = timeout
@@ -50,9 +49,7 @@ def try_make_file(path):
     http://stackoverflow.com/questions/33223564/atomically-creating-a-file-if-it-doesnt-exist-in-python
     """
     try:
-        os.open(path,  os.O_CREAT | os.O_EXCL)
+        os.open(path, os.O_CREAT | os.O_EXCL)
         return True
     except FileExistsError:
         return False
-
-

@@ -16,7 +16,6 @@ from .sa import sa
 from .conn import get_db_connection
 
 
-
 def define_tables():
     """Define DB tables from ORM models
 
@@ -57,7 +56,6 @@ def define_tables():
     sa.Model.metadata.create_all(engine)
 
     print(msg)
-
 
 
 def get_all_table_names():
@@ -141,7 +139,6 @@ def get_resultproxy_of_select_all_rows(tbl_name):
     metadata.reflect(bind=engine)
     tbl = metadata.tables[tbl_name]
     return engine.execute(tbl.select())
-
 
 
 def import_tables_from_csv_files(csvdir):
@@ -279,7 +276,6 @@ def convert_data_type_for_insert(str_, type_):
     return None
 
 
-
 def export_db_to_csv_files(outdir, exclude=None):
     """export all tables in the DB to CSV files
 
@@ -327,6 +323,3 @@ def export_table_to_csv_file(file_, tbl_name):
     csv_writer = csv.writer(file_, lineterminator="\n")
     csv_writer.writerow(result_proxy.keys())
     csv_writer.writerows(result_proxy)
-
-
-

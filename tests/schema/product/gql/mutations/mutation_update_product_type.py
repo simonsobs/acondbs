@@ -1,6 +1,7 @@
 from ..fragments import FRAGMENT_PRODUCT_TYPE
 
-MUTATION_UPDATE_PRODUCT_TYPE = '''
+MUTATION_UPDATE_PRODUCT_TYPE = (
+    '''
 mutation UpdateProductType($typeId: Int!, $input: UpdateProductTypeInput!) {
   updateProductType(typeId: $typeId,input: $input) {
     ok
@@ -9,5 +10,6 @@ mutation UpdateProductType($typeId: Int!, $input: UpdateProductTypeInput!) {
     }
   }
 }
-''' + FRAGMENT_PRODUCT_TYPE
-
+'''
+    + FRAGMENT_PRODUCT_TYPE
+)

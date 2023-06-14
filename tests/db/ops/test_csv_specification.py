@@ -53,6 +53,3 @@ def test_csv_specification(input, expected):
     """
     rows = list(csv.reader(input))
     assert expected == rows
-
-
-

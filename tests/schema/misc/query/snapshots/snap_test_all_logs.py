@@ -16,7 +16,7 @@ snapshots['test_schema[one] 1'] = {
                         'id_': '1',
                         'level': 'DEBUG',
                         'message': 'A debug message!',
-                        'time': '2021-01-04T14:32:20'
+                        'time': '2021-01-04T14:32:20',
                     }
                 },
                 {
@@ -24,11 +24,11 @@ snapshots['test_schema[one] 1'] = {
                         'id_': '2',
                         'level': 'ERROR',
                         'message': 'An error message!',
-                        'time': '2021-01-04T14:32:20'
+                        'time': '2021-01-04T14:32:20',
                     }
-                }
+                },
             ],
-            'totalCount': 2
+            'totalCount': 2,
         }
     }
 }

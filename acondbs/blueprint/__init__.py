@@ -13,7 +13,6 @@ from flask import request
 
 
 def format_to_str(data_dict):
-
     format_item = textwrap.dedent(
         """
         - {key}:
@@ -128,14 +127,12 @@ class GraphQLViewW(GraphQLView):
         super().__init__(**kwargs)
 
 
-
 bp = Blueprint("graphql", __name__)
 bp.add_url_rule("/graphql", view_func=GraphQLViewW.as_view("graphql"))
 
 
 def init_app(app):
     app.register_blueprint(bp)
-
 
 
 def _select_schema():
@@ -155,6 +152,3 @@ def _select_graphiql_template():
         return GRAPHQL_PLAYGROUND
     else:
         return None
-
-
-

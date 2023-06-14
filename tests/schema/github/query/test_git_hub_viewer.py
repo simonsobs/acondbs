@@ -20,7 +20,6 @@ async def test_success(app, snapshot, data, headers):
     await assert_query(app, snapshot, data, headers)
 
 
-
 params = [
     pytest.param(
         {"query": QUERY},
@@ -39,6 +38,3 @@ params = [
 @pytest.mark.asyncio
 async def test_error(app, snapshot, data, headers):
     await assert_query(app, snapshot, data, headers, error=True)
-
-
-

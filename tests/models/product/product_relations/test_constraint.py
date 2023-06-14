@@ -7,9 +7,7 @@ from acondbs.models import Product, ProductRelation, ProductRelationType
 from acondbs.db.sa import sa
 
 
-
 def test_constraint(app):
-
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -35,6 +33,3 @@ def test_constraint(app):
 
         with pytest.raises(exc.IntegrityError):
             sa.session.commit()
-
-
-

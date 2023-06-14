@@ -13,6 +13,7 @@ class Task:
     def __call__(self):
         self.counter += 1
 
+
 def test_init():
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1)
@@ -22,12 +23,14 @@ def test_init():
     cap.end()
     assert 0 == task.counter
 
+
 def test_daemon():
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1, daemon=True)
     assert cap.daemon
     # end() doesn't need to be called
     assert 0 == task.counter
+
 
 def test_call():
     task = Task()
@@ -36,6 +39,7 @@ def test_call():
     time.sleep(0.05)
     assert 1 == task.counter
     cap.end()
+
 
 def test_call_2():
     task = Task()
@@ -47,28 +51,30 @@ def test_call_2():
     assert 2 == task.counter
     cap.end()
 
+
 def test_call_3():
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1)
-    cap() # executed immediately
-    cap() # not executed
-    cap() # not executed
-    cap() # not executed
-    cap() # executed after the pause
+    cap()  # executed immediately
+    cap()  # not executed
+    cap()  # not executed
+    cap()  # not executed
+    cap()  # executed after the pause
     time.sleep(0.05)
     assert 1 == task.counter
     time.sleep(0.1)
     assert 2 == task.counter
     cap.end()
 
+
 def test_call_4():
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=10)
-    cap() # executed immediately
-    cap() # not executed
-    cap() # not executed
-    cap() # not executed
-    cap() # executed at the end
+    cap()  # executed immediately
+    cap()  # not executed
+    cap()  # not executed
+    cap()  # not executed
+    cap()  # executed at the end
     time.sleep(0.05)
     assert 1 == task.counter
     cap.end()
@@ -81,5 +87,3 @@ def test_state_raise():
     state = State(config)
     with pytest.raises(ValueError):
         state()
-
-

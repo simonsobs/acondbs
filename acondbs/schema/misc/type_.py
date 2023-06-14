@@ -6,7 +6,6 @@ from ...models import Log as LogModel
 from ..connection import CountedConnection
 
 
-
 class Log(SQLAlchemyObjectType):
     """Record of errors, etc."""
 
@@ -14,6 +13,3 @@ class Log(SQLAlchemyObjectType):
         model = LogModel
         interfaces = (graphene.relay.Node,)
         connection_class = CountedConnection
-
-
-

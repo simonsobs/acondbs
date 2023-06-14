@@ -17,7 +17,7 @@ def org(login, token):
         }
       }
     """
-    variables = { "login": login }
+    variables = {"login": login}
     r = call_graphql_api(query=query, variables=variables, token=token)
     # e.g.,
     #   {
@@ -36,7 +36,6 @@ def org(login, token):
 
 
 def org_members(org_login, token):
-
     first = 100
 
     query = """
@@ -177,6 +176,3 @@ def _decode_id(id_):
         return base64.b64decode(id_).decode()
     except BaseException:
         return f"raw:{id_}"
-
-
-

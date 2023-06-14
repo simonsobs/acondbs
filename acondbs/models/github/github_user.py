@@ -1,7 +1,6 @@
 from ...db.sa import sa
 
 
-
 class GitHubUser(sa.Model):
     __tablename__ = "github_users"
     user_id = sa.Column(sa.Integer(), primary_key=True)
@@ -13,6 +12,3 @@ class GitHubUser(sa.Model):
 
     def __repr__(self):
         return f"<{self.__class__.__name__} {self.login!r}>"
-
-
-

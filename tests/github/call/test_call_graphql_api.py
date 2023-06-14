@@ -1,4 +1,3 @@
-
 import pytest
 import unittest.mock as mock
 
@@ -12,9 +11,7 @@ def mock_requests(monkeypatch):
     yield y
 
 
-
 def test_simple(mock_requests, snapshot):
-
     query = '{ viewer { login name avatarUrl } }'
     token = 'token-xxx'
 
@@ -23,7 +20,7 @@ def test_simple(mock_requests, snapshot):
             "viewer": {
                 "login": "octocat",
                 "name": "The Octocat",
-                "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4"
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/583231?u=a59fef2a493e2b67dd13754231daf220c82ba84d&v=4",
             }
         }
     }
@@ -37,7 +34,6 @@ def test_simple(mock_requests, snapshot):
 
 
 def test_variables(mock_requests, snapshot):
-
     query = '''
       query Organization($org_login: String!) {
         organization(login: $org_login) {
@@ -54,8 +50,8 @@ def test_variables(mock_requests, snapshot):
     response = {
         "data": {
             "organization": {
-            "login": "urban-octo-disco",
-            "avatarUrl": "https://avatars0.githubusercontent.com/u/75631844?v=4"
+                "login": "urban-octo-disco",
+                "avatarUrl": "https://avatars0.githubusercontent.com/u/75631844?v=4",
             }
         }
     }
@@ -70,7 +66,6 @@ def test_variables(mock_requests, snapshot):
 
 
 def test_error(mock_requests, snapshot):
-
     query = '''
       {
         viewer {
@@ -92,17 +87,9 @@ def test_error(mock_requests, snapshot):
         "errors": [
             {
                 "type": "MISSING_PAGINATION_BOUNDARIES",
-                "path": [
-                    "viewer",
-                    "followers"
-                ],
-                "locations": [
-                    {
-                        "line": 9,
-                        "column": 5
-                    }
-                ],
-                "message": "You must provide a `first` or `last` value to properly paginate the `followers` connection."
+                "path": ["viewer", "followers"],
+                "locations": [{"line": 9, "column": 5}],
+                "message": "You must provide a `first` or `last` value to properly paginate the `followers` connection.",
             }
         ]
     }
@@ -115,13 +102,12 @@ def test_error(mock_requests, snapshot):
 
 
 def test_bad_credentials(mock_requests):
-
     query = '{ viewer { login name avatarUrl } }'
     token = 'token-xxx'
 
     response = {
         'message': 'Bad credentials',
-        'documentation_url': 'https://docs.github.com/graphql'
+        'documentation_url': 'https://docs.github.com/graphql',
     }
     mock_requests.post().json.return_value = response
 
@@ -129,5 +115,3 @@ def test_bad_credentials(mock_requests):
         call_graphql_api(query=query, token=token)
 
     assert response == e.value.args[0]
-
-

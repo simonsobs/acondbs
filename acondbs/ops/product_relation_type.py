@@ -2,7 +2,6 @@ from ..db.sa import sa
 from ..models import ProductRelationType
 
 
-
 def create_product_relation_type(type_, reverse=None, self_reverse=False):
     """Create a product relation type"""
 
@@ -34,6 +33,3 @@ def delete_product_relation_type(type_id):
     """Delete a product relation type"""
     model = ProductRelationType.query.filter_by(type_id=type_id).one()
     sa.session.delete(model)
-
-
-

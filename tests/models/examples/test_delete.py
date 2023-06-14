@@ -7,7 +7,6 @@ from acondbs.models import ProductType, Product
 # how models in flask_sqlalchemy work.
 
 
-
 @pytest.fixture
 def app(app):
     y = app
@@ -24,12 +23,10 @@ def app(app):
     yield y
 
 
-
 def test_simple(app):
     """A simple test of deleting an object"""
 
     with app.app_context():
-
         assert 3 == len(Product.query.all())
 
     with app.app_context():
@@ -38,12 +35,8 @@ def test_simple(app):
         sa.session.commit()
 
     with app.app_context():
-
         assert 2 == len(Product.query.all())
 
         # the product is no longer found
         product1 = Product.query.filter_by(name="map1").first()
         assert product1 is None
-
-
-

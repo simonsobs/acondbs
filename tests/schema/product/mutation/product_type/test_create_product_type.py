@@ -9,7 +9,6 @@ HEADERS = {
 }
 
 
-
 params = [
     pytest.param(
         {
@@ -90,7 +89,6 @@ params = [
 async def test_schema_success(
     app, snapshot, data_mutation, data_query, mock_request_backup_db
 ):
-
     success = True
     await assert_mutation(
         app,
@@ -102,7 +100,6 @@ async def test_schema_success(
         mock_request_backup_db,
         success,
     )
-
 
 
 params = [
@@ -160,6 +157,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-

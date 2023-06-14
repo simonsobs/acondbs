@@ -10,7 +10,6 @@ from acondbs.db.sa import sa
 from acondbs.models import GitHubUser
 
 
-
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -91,6 +90,3 @@ def app(app_empty):
         ops.commit()
 
     yield y
-
-
-

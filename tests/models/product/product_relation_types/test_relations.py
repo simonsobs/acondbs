@@ -4,10 +4,8 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductRelationType
 
 
-
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     #
@@ -42,9 +40,7 @@ def app(app_empty):
     yield y
 
 
-
 def test_reverse(app):
-
     with app.app_context():
         parent = ProductRelationType.query.filter_by(name="parent").one()
         child = ProductRelationType.query.filter_by(name="child").one()
@@ -54,14 +50,12 @@ def test_reverse(app):
 
 
 def test_self_reverse(app):
-
     with app.app_context():
         sibling = ProductRelationType.query.filter_by(name="sibling").one()
         assert sibling is sibling.reverse
 
 
 def test_cascade(app):
-
     # delete parent
     with app.app_context():
         parent = ProductRelationType.query.filter_by(name="parent").one()
@@ -70,13 +64,8 @@ def test_cascade(app):
 
     # assert
     with app.app_context():
-        parent = ProductRelationType.query.filter_by(
-            name="parent"
-        ).one_or_none()
+        parent = ProductRelationType.query.filter_by(name="parent").one_or_none()
         child = ProductRelationType.query.filter_by(name="child").one_or_none()
 
         assert parent is None
         assert child is None
-
-
-

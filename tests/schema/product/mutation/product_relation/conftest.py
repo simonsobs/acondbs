@@ -3,10 +3,8 @@ import pytest
 from acondbs import ops
 
 
-
 @pytest.fixture
 def app(app_users):
-
     y = app_users
 
     # map1 -> beam1
@@ -71,6 +69,3 @@ def app(app_users):
         ops.commit()
 
     yield y
-
-
-

@@ -9,10 +9,8 @@ from acondbs.models import (
 )
 
 
-
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     #                              +--------+
@@ -59,6 +57,3 @@ def app(app_empty):
         sa.session.add(parent1)
         sa.session.commit()
     yield y
-
-
-

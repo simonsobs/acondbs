@@ -4,7 +4,6 @@ from acondbs import ops
 from acondbs.models import FieldType, Field
 
 
-
 params = [
     pytest.param(FieldType.Float, id="by-enum"),
     pytest.param(4, id="by-int"),
@@ -30,15 +29,12 @@ def test_create(app_empty, type_):
         assert model.field_id == field_id
 
 
-
 def test_fixture(app):
     with app.app_context():
         assert Field.query.count() == 9
 
 
-
 def test_update(app):
-
     with app.app_context():
         model = Field.query.filter_by(name="number").one()
         field_id = model.field_id
@@ -53,9 +49,7 @@ def test_update(app):
         assert model.field_id == field_id
 
 
-
 def test_delete(app):
-
     with app.app_context():
         model = ops.create_field(name="to_be_deleted", type_=FieldType.Float)
         ops.commit()
@@ -71,6 +65,3 @@ def test_delete(app):
         model = Field.query.filter_by(field_id=field_id).one_or_none()
         assert model is None
         assert Field.query.count() == count - 1
-
-
-

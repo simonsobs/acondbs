@@ -12,10 +12,8 @@ from acondbs.models import (
 )
 
 
-
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     # create fields
@@ -123,6 +121,3 @@ def app(app_empty):
         sa.session.commit()
 
     yield y
-
-
-

@@ -18,7 +18,6 @@ from ...github.ops import (
 from . import type_
 
 
-
 class AddGitHubOrg(graphene.Mutation):
     class Arguments:
         login = graphene.String(required=True)
@@ -46,7 +45,6 @@ class DeleteGitHubOrg(graphene.Mutation):
         return DeleteGitHubOrg(ok=ok)
 
 
-
 class AuthenticateWithGitHub(graphene.Mutation):
     class Arguments:
         code = graphene.String(required=True)
@@ -59,7 +57,6 @@ class AuthenticateWithGitHub(graphene.Mutation):
             raise GraphQLError("Unsuccessful to obtain the token")
         authPayload = type_.AuthPayload(token=token_dict["access_token"])
         return AuthenticateWithGitHub(authPayload=authPayload)
-
 
 
 class AddGitHubAdminAppToken(graphene.Mutation):
@@ -75,7 +72,6 @@ class AddGitHubAdminAppToken(graphene.Mutation):
         ok = True
         request_backup_db()
         return AddGitHubAdminAppToken(ok=ok)
-
 
 
 class DeleteGitHubAdminAppToken(graphene.Mutation):
@@ -95,7 +91,6 @@ class DeleteGitHubAdminAppToken(graphene.Mutation):
         return DeleteGitHubAdminAppToken(ok=ok)
 
 
-
 class UpdateGitHubOrgMemberLists(graphene.Mutation):
     """Update the member lists of GitHub organizations"""
 
@@ -106,6 +101,3 @@ class UpdateGitHubOrgMemberLists(graphene.Mutation):
         ok = True
         # request_backup_db()
         return UpdateGitHubOrgMemberLists(ok=ok)
-
-
-

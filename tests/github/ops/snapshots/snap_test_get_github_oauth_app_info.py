@@ -12,5 +12,5 @@ snapshots['test_call 1'] = {
     'client_id': 'client_id_0123456789',
     'client_secret': 'client_secret_abcdefghijklmnupqrstuvwxyz',
     'redirect_uri': 'http://localhost:8080/signin',
-    'token_url': 'https://github.com/login/oauth/access_token'
+    'token_url': 'https://github.com/login/oauth/access_token',
 }

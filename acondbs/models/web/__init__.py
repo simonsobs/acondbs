@@ -4,5 +4,3 @@
 
 
 from .web_config import WebConfig  # noqa: F401
-
-

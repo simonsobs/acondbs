@@ -2,7 +2,10 @@ import pytest
 
 from ....funcs import assert_mutation
 
-from ...gql import FRAGMENT_PRODUCT_RELATION_CONNECTION, MUTATION_CREATE_PRODUCT_RELATION
+from ...gql import (
+    FRAGMENT_PRODUCT_RELATION_CONNECTION,
+    MUTATION_CREATE_PRODUCT_RELATION,
+)
 
 QEURY = (
     """
@@ -18,7 +21,6 @@ QEURY = (
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
 }
-
 
 
 params = [
@@ -40,7 +42,6 @@ params = [
 async def test_schema_success(
     app, snapshot, data_mutation, data_query, mock_request_backup_db
 ):
-
     success = True
     await assert_mutation(
         app,
@@ -52,7 +53,6 @@ async def test_schema_success(
         mock_request_backup_db,
         success,
     )
-
 
 
 params = [
@@ -115,6 +115,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-

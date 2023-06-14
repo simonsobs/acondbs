@@ -8,7 +8,6 @@ QUERY = """{
 }"""
 
 
-
 def test_graphql(client, snapshot):
     path = "/graphql"
 
@@ -18,6 +17,3 @@ def test_graphql(client, snapshot):
     un_jsonified = json.loads(response.data)
     snapshot.assert_match(un_jsonified)
     # print(json.dumps(un_jsonified, indent=2))
-
-
-

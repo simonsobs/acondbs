@@ -4,10 +4,8 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
 
 
-
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     field1 = Field(name="field1", type_=FieldType.UnicodeText)
@@ -28,6 +26,3 @@ def app(app_empty):
         sa.session.commit()
 
     yield y
-
-
-

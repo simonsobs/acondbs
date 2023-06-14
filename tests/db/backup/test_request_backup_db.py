@@ -1,4 +1,3 @@
-
 import pytest
 import unittest.mock as mock
 
@@ -23,10 +22,7 @@ def test_request_backup_db(app, mock_cap_exec_rate):
 
     assert 1 == mock_cap_exec_rate.call_count
     assert [
-        mock.call(
-            func=run_flask_backup_db, pause_time=pause, daemon=True
-        )] == mock_cap_exec_rate.call_args_list
+        mock.call(func=run_flask_backup_db, pause_time=pause, daemon=True)
+    ] == mock_cap_exec_rate.call_args_list
 
     assert nrequests == mock_cap_exec_rate().call_count
-
-

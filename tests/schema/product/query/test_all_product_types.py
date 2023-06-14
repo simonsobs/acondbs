@@ -9,7 +9,6 @@ HEADERS = {
 }
 
 
-
 params = [
     pytest.param(
         {"query": QUERY_ALL_PRODUCT_TYPES},
@@ -18,11 +17,7 @@ params = [
 ]
 
 
-
 @pytest.mark.parametrize("data", params)
 @pytest.mark.asyncio
 async def test_schema(app, snapshot, data):
     await assert_query(app, snapshot, data, HEADERS)
-
-
-

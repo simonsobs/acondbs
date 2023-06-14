@@ -22,7 +22,6 @@ migrate = Migrate()
 _MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.joinpath("migrations")
 
 
-
 def init_app(app):
     """Initialize the Flask application object
 
@@ -41,6 +40,3 @@ def init_app(app):
     app.cli.add_command(export_csv_command)
     app.cli.add_command(backup_db_command)
     app.teardown_appcontext(close_db_connection)
-
-
-

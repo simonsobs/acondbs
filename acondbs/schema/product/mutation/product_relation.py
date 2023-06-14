@@ -4,7 +4,6 @@ from .. import type_
 from .... import ops
 
 
-
 class CreateProductRelationInput(graphene.InputObjectType):
     """An input to createProductRelation()"""
 
@@ -21,7 +20,6 @@ class CreateProductRelationInput(graphene.InputObjectType):
     other_product_id = graphene.Int(
         required=True, description=("The productId of the other product")
     )
-
 
 
 class CreateProductRelation(graphene.Mutation):
@@ -62,6 +60,3 @@ class DeleteProductRelation(graphene.Mutation):
         ops.commit()
         ok = True
         return DeleteProductRelation(ok=ok)
-
-
-

@@ -145,5 +145,3 @@ def is_git_repo(path):
         return True
     except git.exc.InvalidGitRepositoryError:
         return False
-
-

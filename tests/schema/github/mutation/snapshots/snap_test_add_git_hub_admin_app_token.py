@@ -15,52 +15,40 @@ snapshots['test_schema_error[one] 1'] = {
                     'node': {
                         'scope': 'read:org',
                         'tokenId': '1',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '2',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '3',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '4',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
-                }
+                },
             ],
-            'totalCount': 4
+            'totalCount': 4,
         }
     }
 }
 
-snapshots['test_schema_error[one] 2'] = [
-    (
-        (
-            'code_01234'
-        ,),
-        {
-        }
-    )
-]
+snapshots['test_schema_error[one] 2'] = [(('code_01234',), {})]
 
 snapshots['test_schema_success[one] 1'] = {
-    'data': {
-        'addGitHubAdminAppToken': {
-            'ok': True
-        }
-    }
+    'data': {'addGitHubAdminAppToken': {'ok': True}}
 }
 
 snapshots['test_schema_success[one] 2'] = {
@@ -71,42 +59,34 @@ snapshots['test_schema_success[one] 2'] = {
                     'node': {
                         'scope': 'read:org',
                         'tokenId': '1',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '2',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '3',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '4',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
-                }
+                },
             ],
-            'totalCount': 4
+            'totalCount': 4,
         }
     }
 }
 
-snapshots['test_schema_success[one] 3'] = [
-    (
-        (
-            'code_01234'
-        ,),
-        {
-        }
-    )
-]
+snapshots['test_schema_success[one] 3'] = [(('code_01234',), {})]

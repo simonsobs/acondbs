@@ -13,7 +13,6 @@ from acondbs import create_app
 from acondbs.db.ops import convert_data_type_for_insert
 
 
-
 sa = SQLAlchemy()
 
 
@@ -31,7 +30,6 @@ class SampleTable(sa.Model):
     date_time = sa.Column(sa.DateTime())
     time = sa.Column(sa.Time())
     encrypted = sa.Column(EncryptedType(sa.Text(), "8b5d3d25b3e5"))
-
 
 
 @pytest.fixture
@@ -53,7 +51,6 @@ def app_with_empty_tables(app_with_empty_db):
         metadata.drop_all(bind=engine)
         sa.Model.metadata.create_all(engine)
     yield app
-
 
 
 params = [
@@ -132,7 +129,6 @@ def test_convert(app_with_empty_tables, data):
 
     # import from the csv
     with app.app_context():
-
         # confirm the table is empty
         assert SampleTable.query.count() == 0
 
@@ -157,7 +153,6 @@ def _export_tbl_to_csv(tbl_name):
 
 
 def _import_tbl_from_csv(tbl_name, csv_str):
-
     engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)
@@ -179,6 +174,3 @@ def _import_tbl_from_csv(tbl_name, csv_str):
 
     ins = tbl.insert()
     sa.session.execute(ins, data)
-
-
-

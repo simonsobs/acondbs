@@ -27,7 +27,6 @@ from ..filter_ import PFilterableConnectionField
 from graphene_sqlalchemy.enums import _convert_sa_to_graphene_enum
 
 
-
 # FieldType is an enum. It is manually converted to a graphene enum
 # here. An enum will be usually automatically converted. However, the
 # automatic conversion causes an error if the automatic conversion
@@ -43,14 +42,12 @@ from graphene_sqlalchemy.enums import _convert_sa_to_graphene_enum
 FieldType = _convert_sa_to_graphene_enum(saEnumFieldType)
 
 
-
 class Product(SQLAlchemyObjectType):
     class Meta:
         model = ProductModel
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
-
 
 
 class ProductType(SQLAlchemyObjectType):
@@ -63,7 +60,6 @@ class ProductType(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-
 class ProductRelation(SQLAlchemyObjectType):
     """A relation from one product to another"""
 
@@ -72,7 +68,6 @@ class ProductRelation(SQLAlchemyObjectType):
         interfaces = (graphene.relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
-
 
 
 class ProductRelationType(SQLAlchemyObjectType):
@@ -85,14 +80,12 @@ class ProductRelationType(SQLAlchemyObjectType):
         connection_field_factory = PFilterableConnectionField.factory
 
 
-
 class ProductFilePath(SQLAlchemyObjectType):
     class Meta:
         model = ProductFilePathModel
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
-
 
 
 class Field(SQLAlchemyObjectType):
@@ -186,6 +179,3 @@ class AttributeTime(SQLAlchemyObjectType):
         interfaces = (relay.Node,)
         connection_class = CountedConnection
         connection_field_factory = PFilterableConnectionField.factory
-
-
-

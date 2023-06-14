@@ -12,6 +12,7 @@ def mock_backup_db_to_github(monkeypatch):
     monkeypatch.setattr("acondbs.db.backup.backup_db_to_github", y)
     yield y
 
+
 @pytest.fixture()
 def mock_backup_db_as_csv_to_github(monkeypatch):
     y = mock.Mock()
@@ -24,6 +25,7 @@ def test_backup_db(mock_backup_db_to_github, mock_backup_db_as_csv_to_github):
     mock_backup_db_to_github.assert_called_once()
     mock_backup_db_as_csv_to_github.assert_called_once()
 
+
 def test_exceptions(mock_backup_db_to_github, mock_backup_db_as_csv_to_github):
     mock_backup_db_to_github.side_effect = Exception()
     mock_backup_db_as_csv_to_github.side_effect = Exception()
@@ -32,5 +34,3 @@ def test_exceptions(mock_backup_db_to_github, mock_backup_db_as_csv_to_github):
     assert len(w) == 2
     mock_backup_db_to_github.assert_called_once()
     mock_backup_db_as_csv_to_github.assert_called_once()
-
-

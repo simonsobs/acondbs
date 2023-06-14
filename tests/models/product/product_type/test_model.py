@@ -2,7 +2,6 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType
 
 
-
 def test_column(app_empty):
     app = app_empty
 
@@ -45,6 +44,3 @@ def test_repr(app_empty):
     with app.app_context():
         model = ProductType.query.filter_by(type_id=type_id).one()
         repr(model)
-
-
-

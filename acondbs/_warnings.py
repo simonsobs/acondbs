@@ -22,5 +22,3 @@ def format(message, category, filename, lineno, file=None, line=None):
 
 
 warnings.formatwarning = format
-
-

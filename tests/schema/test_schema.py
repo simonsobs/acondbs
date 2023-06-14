@@ -32,7 +32,6 @@ QUERY = '''
 '''
 
 
-
 params = [
     pytest.param(
         {"query": QUERY},
@@ -61,6 +60,3 @@ params = [
 @pytest.mark.asyncio
 async def test_schema(app_users, snapshot, data, headers):
     await assert_query(app_users, snapshot, data, headers)
-
-
-

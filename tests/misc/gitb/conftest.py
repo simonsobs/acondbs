@@ -4,7 +4,6 @@ import git
 import pytest
 
 
-
 @pytest.fixture()
 def folder(tmpdir_factory):
     """path to an folder (not a git repo) with two text files
@@ -24,7 +23,6 @@ def folder(tmpdir_factory):
     yield folder
 
 
-
 @pytest.fixture()
 def repo(folder):
     """a git repo
@@ -38,7 +36,6 @@ def repo(folder):
     repo.git.add(A=True)
     repo.index.commit("initial commit")
     yield repo
-
 
 
 @pytest.fixture()
@@ -84,6 +81,3 @@ def remote_url(request, bare_repo, github_repo_url):
     else:
         raise ValueError(f"unknown param: {p}")
     yield y
-
-
-

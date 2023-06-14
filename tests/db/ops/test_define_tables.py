@@ -7,13 +7,11 @@ from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 
 
-
 @pytest.fixture
 def app_with_empty_db():
     database_uri = "sqlite:///:memory:"
     app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     yield app
-
 
 
 def test_define_tables_start_with_empty_db(app_with_empty_db, snapshot):
@@ -39,7 +37,6 @@ def test_define_tables_start_with_empty_db(app_with_empty_db, snapshot):
         metadata = MetaData()
         metadata.reflect(bind=sa.engine)
         snapshot.assert_match(metadata.tables)
-
 
 
 def test_define_tables_start_with_nonempty_db(app, snapshot):
@@ -78,6 +75,3 @@ def test_define_tables_start_with_nonempty_db(app, snapshot):
             ]
         )
         assert total_nentries == 0
-
-
-

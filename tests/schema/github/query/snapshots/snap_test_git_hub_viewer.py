@@ -12,7 +12,7 @@ snapshots['test_success[one] 1'] = {
         'gitHubViewer': {
             'avatarUrl': 'avatar.com/user1',
             'login': 'user1',
-            'name': 'User One'
+            'name': 'User One',
         }
     }
 }

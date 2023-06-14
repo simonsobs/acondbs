@@ -15,17 +15,9 @@ snapshots['test_schema[one] 1'] = {
                     'node': {
                         'login': 'org1',
                         'memberships': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'member': {
-                                            'login': 'user1'
-                                        }
-                                    }
-                                }
-                            ],
-                            'totalCount': 1
-                        }
+                            'edges': [{'node': {'member': {'login': 'user1'}}}],
+                            'totalCount': 1,
+                        },
                     }
                 },
                 {
@@ -33,37 +25,21 @@ snapshots['test_schema[one] 1'] = {
                         'login': 'org2',
                         'memberships': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'member': {
-                                            'login': 'user1'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'member': {
-                                            'login': 'user2'
-                                        }
-                                    }
-                                }
+                                {'node': {'member': {'login': 'user1'}}},
+                                {'node': {'member': {'login': 'user2'}}},
                             ],
-                            'totalCount': 2
-                        }
+                            'totalCount': 2,
+                        },
                     }
                 },
                 {
                     'node': {
                         'login': 'org3',
-                        'memberships': {
-                            'edges': [
-                            ],
-                            'totalCount': 0
-                        }
+                        'memberships': {'edges': [], 'totalCount': 0},
                     }
-                }
+                },
             ],
-            'totalCount': 3
+            'totalCount': 3,
         }
     }
 }

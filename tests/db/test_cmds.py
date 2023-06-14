@@ -6,7 +6,6 @@ import unittest.mock as mock
 from ..constants import SAMPLE_DIR
 
 
-
 @pytest.fixture()
 def mock_define_tables(monkeypatch):
     ret = mock.Mock()
@@ -21,13 +20,11 @@ def test_init_db_command(runner, mock_define_tables):
     assert "Initialized" in result.output
 
 
-
 def test_dump_db_command(runner):
     """test command dump-db"""
     result = runner.invoke(args=["dump-db"])
     assert 0 == result.exit_code
     assert 1800 < len(result.output)
-
 
 
 @pytest.fixture()
@@ -46,10 +43,7 @@ def test_import_csv_command(runner, mock_import_tables_from_csv_files):
 
     result = runner.invoke(args=["import-csv", csvdir])
     assert 0 == result.exit_code
-    assert [
-        mock.call(csvdir)
-    ] == mock_import_tables_from_csv_files.call_args_list
-
+    assert [mock.call(csvdir)] == mock_import_tables_from_csv_files.call_args_list
 
 
 @pytest.fixture()
@@ -59,9 +53,7 @@ def mock_export_db_to_csv_files(monkeypatch):
     return ret
 
 
-def test_export_csv_command(
-    runner, tmpdir_factory, mock_export_db_to_csv_files
-):
+def test_export_csv_command(runner, tmpdir_factory, mock_export_db_to_csv_files):
     """test command export-csv"""
 
     tmpdir = str(tmpdir_factory.mktemp("csv_out"))
@@ -70,6 +62,3 @@ def test_export_csv_command(
     result = runner.invoke(args=["export-csv", csvdir])
     assert 0 == result.exit_code
     assert [mock.call(csvdir)] == mock_export_db_to_csv_files.call_args_list
-
-
-

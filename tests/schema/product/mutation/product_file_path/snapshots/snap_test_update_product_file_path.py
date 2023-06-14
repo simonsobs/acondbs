@@ -16,9 +16,7 @@ snapshots['test_schema_error[updateProductFilePath-immutableField] 1'] = {
                         'node': {
                             'note': '',
                             'path': 'nersc:/go/to/my/maps',
-                            'product': {
-                                'productId': '1001'
-                            }
+                            'product': {'productId': '1001'},
                         }
                     }
                 ]
@@ -30,9 +28,7 @@ snapshots['test_schema_error[updateProductFilePath-immutableField] 1'] = {
 snapshots['test_schema_success[updateProductFilePath] 1'] = {
     'data': {
         'updateProductFilePath': {
-            'productFilePath': {
-                'path': 'nersc:/go/to/my/new_product_v2'
-            }
+            'productFilePath': {'path': 'nersc:/go/to/my/new_product_v2'}
         }
     }
 }
@@ -49,14 +45,12 @@ snapshots['test_schema_success[updateProductFilePath] 2'] = {
                         'node': {
                             'note': '- Note 1 updated',
                             'path': 'nersc:/go/to/my/new_product_v2',
-                            'product': {
-                                'productId': '1001'
-                            }
+                            'product': {'productId': '1001'},
                         }
                     }
                 ]
             },
-            'timePosted': '2019-02-13T10:05:23'
+            'timePosted': '2019-02-13T10:05:23',
         }
     }
 }

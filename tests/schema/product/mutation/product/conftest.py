@@ -11,10 +11,8 @@ from acondbs.models import (
 from acondbs import ops
 
 
-
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     user1 = GitHubUser(login="user1", git_hub_id="04:User1")
@@ -135,6 +133,3 @@ def app(app_empty):
         ops.commit()
 
     yield y
-
-
-

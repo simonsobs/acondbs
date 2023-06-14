@@ -3,7 +3,6 @@ from ...db.sa import sa
 from ..funcs import shorten
 
 
-
 class ProductFilePath(sa.Model):
     __tablename__ = "product_file_paths"
     path_id = sa.Column(sa.Integer(), primary_key=True)
@@ -23,6 +22,3 @@ class ProductFilePath(sa.Model):
             return shorten(self.path, width=20, end=True)
         except BaseException:
             return self.path
-
-
-

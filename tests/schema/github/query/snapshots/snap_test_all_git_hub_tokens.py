@@ -17,13 +17,11 @@ snapshots['test_schema[filter] 1'] = {
                         'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '1',
                         'tokenMasked': 'XXXXXXXXXXXXXXX',
-                        'user': {
-                            'login': 'user1'
-                        }
+                        'user': {'login': 'user1'},
                     }
                 }
             ],
-            'totalCount': 1
+            'totalCount': 1,
         }
     }
 }
@@ -38,9 +36,7 @@ snapshots['test_schema[simple] 1'] = {
                         'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '1',
                         'tokenMasked': 'XXXXXXXXXXXXXXX',
-                        'user': {
-                            'login': 'user1'
-                        }
+                        'user': {'login': 'user1'},
                     }
                 },
                 {
@@ -49,9 +45,7 @@ snapshots['test_schema[simple] 1'] = {
                         'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '2',
                         'tokenMasked': 'XXXXXXXXXXXXXXX',
-                        'user': {
-                            'login': 'user1'
-                        }
+                        'user': {'login': 'user1'},
                     }
                 },
                 {
@@ -60,9 +54,7 @@ snapshots['test_schema[simple] 1'] = {
                         'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '3',
                         'tokenMasked': 'XXXXXXXXXXXXXXX',
-                        'user': {
-                            'login': 'user2'
-                        }
+                        'user': {'login': 'user2'},
                     }
                 },
                 {
@@ -71,13 +63,11 @@ snapshots['test_schema[simple] 1'] = {
                         'timeCreated': '2021-01-04T14:32:20',
                         'tokenId': '4',
                         'tokenMasked': 'XXXXXXXXXXXXXXX',
-                        'user': {
-                            'login': 'user3'
-                        }
+                        'user': {'login': 'user3'},
                     }
-                }
+                },
             ],
-            'totalCount': 4
+            'totalCount': 4,
         }
     }
 }

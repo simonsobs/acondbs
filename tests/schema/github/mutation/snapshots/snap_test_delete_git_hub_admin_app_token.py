@@ -15,42 +15,38 @@ snapshots['test_schema_error[delete] 1'] = {
                     'node': {
                         'scope': 'read:org',
                         'tokenId': '1',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '2',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '3',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '4',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
-                }
+                },
             ],
-            'totalCount': 4
+            'totalCount': 4,
         }
     }
 }
 
 snapshots['test_schema_success[delete] 1'] = {
-    'data': {
-        'deleteGitHubAdminAppToken': {
-            'ok': True
-        }
-    }
+    'data': {'deleteGitHubAdminAppToken': {'ok': True}}
 }
 
 snapshots['test_schema_success[delete] 2'] = {
@@ -61,25 +57,25 @@ snapshots['test_schema_success[delete] 2'] = {
                     'node': {
                         'scope': '',
                         'tokenId': '2',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '3',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
                 },
                 {
                     'node': {
                         'scope': '',
                         'tokenId': '4',
-                        'tokenMasked': 'XXXXXXXXXXXXXXX'
+                        'tokenMasked': 'XXXXXXXXXXXXXXX',
                     }
-                }
+                },
             ],
-            'totalCount': 3
+            'totalCount': 3,
         }
     }
 }

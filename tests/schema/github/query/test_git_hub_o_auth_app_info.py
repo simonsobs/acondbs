@@ -13,7 +13,6 @@ GITHUB_OAUTH_APP_INFO = """
 """
 
 
-
 params = [
     pytest.param(
         {"query": GITHUB_OAUTH_APP_INFO},
@@ -22,11 +21,7 @@ params = [
 ]
 
 
-
 @pytest.mark.parametrize("data", params)
 @pytest.mark.asyncio
 async def test_schema(app, snapshot, data):
     await assert_query(app, snapshot, data)
-
-
-

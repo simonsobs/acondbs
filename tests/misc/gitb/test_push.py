@@ -7,9 +7,7 @@ from acondbs.misc import gitb
 
 
 def test_push(remote_url, tmpdir_factory):
-    """test push()
-
-    """
+    """test push()"""
 
     # create two clones
     folder1 = Path(tmpdir_factory.mktemp('git'))
@@ -42,28 +40,24 @@ def test_push(remote_url, tmpdir_factory):
     assert head_sha_new == repo2.head.commit.hexsha
 
 
-
 def test_nonexistent_path(tmpdir_factory):
-    """assert exception is raised for nonexistent path
-    """
+    """assert exception is raised for nonexistent path"""
     folder = Path(tmpdir_factory.mktemp('git'))
     path = folder.joinpath('nonexistent')
 
     with pytest.raises(ValueError):
         gitb.push(path)
 
+
 def test_path_not_repo(folder):
-    """assert exception is raised if not a repo
-    """
+    """assert exception is raised if not a repo"""
 
     with pytest.raises(ValueError):
         gitb.push(folder)
 
+
 def test_repo_no_remote(repo):
-    """assert exception is raised if a repo has no tracking branch
-    """
+    """assert exception is raised if a repo has no tracking branch"""
 
     with pytest.raises(ValueError):
         gitb.push(repo.working_tree_dir)
-
-

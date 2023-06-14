@@ -12,7 +12,6 @@ def mock_requests(monkeypatch):
 
 
 def test_success(mock_requests, snapshot):
-
     code = 'code-xyz'
 
     token_url = 'https://github.com/login/oauth/access_token'
@@ -20,17 +19,22 @@ def test_success(mock_requests, snapshot):
     client_secret = 'client_secret_0123'
     redirect_uri = 'http://localhost/auth'
 
-    return_value = {'access_token': 'token-xxx', 'token_type': 'bearer', 'scope': 'user'}
+    return_value = {
+        'access_token': 'token-xxx',
+        'token_type': 'bearer',
+        'scope': 'user',
+    }
     mock_requests.post().json.return_value = dict(return_value)
 
-    response = exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri)
+    response = exchange_code_for_token(
+        code, token_url, client_id, client_secret, redirect_uri
+    )
 
     assert return_value == response
     snapshot.assert_match(mock_requests.post.call_args_list)
 
 
 def test_error(mock_requests, snapshot):
-
     code = 'code-xyz'
 
     token_url = 'https://github.com/login/oauth/access_token'
@@ -41,7 +45,7 @@ def test_error(mock_requests, snapshot):
     response = {
         'error': 'bad_verification_code',
         'error_description': 'The code passed is incorrect or expired.',
-        'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code'
+        'error_uri': 'https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code',
     }
     mock_requests.post().json.return_value = response
 
@@ -51,5 +55,3 @@ def test_error(mock_requests, snapshot):
     assert response == e.value.args[0]
 
     snapshot.assert_match(mock_requests.post.call_args_list)
-
-

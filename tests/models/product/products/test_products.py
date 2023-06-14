@@ -6,7 +6,6 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductType, Product, GitHubUser
 
 
-
 def test_product(app_empty):
     app = app_empty
 
@@ -25,7 +24,6 @@ def test_product(app_empty):
         assert [map1] == type_map.products
 
 
-
 def test_constraint_type_required_add(app_empty):
     app = app_empty
 
@@ -39,7 +37,6 @@ def test_constraint_type_required_add(app_empty):
     with app.app_context():
         map1 = Product.query.filter_by(name="map1").one_or_none()
         assert map1 is None
-
 
 
 def test_constraint_type_required_delete(app_empty):
@@ -86,7 +83,6 @@ def test_constraint_type_required_delete(app_empty):
         sa.session.commit()
 
 
-
 def test_git_hub_user(app_empty):
     app = app_empty
 
@@ -119,6 +115,3 @@ def test_git_hub_user(app_empty):
         user2 = GitHubUser.query.filter_by(login="user2").one()
         assert user2 == map1.updating_git_hub_user
         assert [map1] == user2.updated_products
-
-
-

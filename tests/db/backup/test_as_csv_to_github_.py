@@ -13,8 +13,7 @@ from acondbs.db.backup import backup_db_as_csv_to_github_
 
 @pytest.fixture
 def local_repo(app, tmpdir_factory):
-    """
-    """
+    """ """
 
     # create a local repo with CSV files
     local_folder = Path(tmpdir_factory.mktemp('backup'))
@@ -26,11 +25,10 @@ def local_repo(app, tmpdir_factory):
 
     yield local_repo
 
+
 @pytest.fixture
 def remote_repo(local_repo, tmpdir_factory):
-    """remote repo
-
-    """
+    """remote repo"""
 
     # create a remote repo (bare repo)
     folder = Path(tmpdir_factory.mktemp('backup'))
@@ -47,7 +45,6 @@ def remote_repo(local_repo, tmpdir_factory):
 
 
 def test_backup_db_as_csv_to_github_(app, local_repo, remote_repo):
-
     repo_path = local_repo.working_tree_dir
     head_sha_old = local_repo.head.commit.hexsha
     assert head_sha_old == remote_repo.head.commit.hexsha
@@ -74,5 +71,3 @@ def test_backup_db_as_csv_to_github_(app, local_repo, remote_repo):
     head_sha_new = local_repo.head.commit.hexsha
     assert not head_sha_old == head_sha_new
     assert head_sha_new == remote_repo.head.commit.hexsha
-
-

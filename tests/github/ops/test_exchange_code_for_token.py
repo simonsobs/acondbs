@@ -19,5 +19,3 @@ def test_call(app, snapshot, mock_call):
         ret = exchange_code_for_token(code)
     assert ret == return_value
     snapshot.assert_match(mock_call.exchange_code_for_token.call_args_list)
-
-

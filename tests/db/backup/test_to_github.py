@@ -13,6 +13,7 @@ def mock_backup_db_to_github_(monkeypatch):
     monkeypatch.setattr("acondbs.db.backup.backup_db_to_github_", y)
     yield y
 
+
 @pytest.fixture()
 def mock_lock_path(app, monkeypatch, tmpdir_factory):
     folder = Path(tmpdir_factory.mktemp('backup'))
@@ -36,5 +37,3 @@ def test_backup_db_locked(app, mock_lock_path, mock_backup_db_to_github_):
             backup_db_to_github()
     assert [] == mock_backup_db_to_github_.call_args_list
     assert len(w) == 1
-
-

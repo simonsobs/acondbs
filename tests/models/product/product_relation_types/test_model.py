@@ -2,7 +2,6 @@ from acondbs.db.sa import sa
 from acondbs.models import ProductRelationType
 
 
-
 def test_column(app_empty):
     app = app_empty
 
@@ -25,6 +24,3 @@ def test_column(app_empty):
         assert model.indef_article == "a"
         assert model.singular == "parent"
         assert model.plural == "parents"
-
-
-
