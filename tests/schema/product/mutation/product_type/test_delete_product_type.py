@@ -1,7 +1,6 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_DELETE_PRODUCT_TYPE
 
 QEURY = """
@@ -22,7 +21,6 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_TYPE, "variables": {"typeId": 2}},
@@ -37,7 +35,6 @@ params = [
 async def test_schema_success(
     app, snapshot, data_mutation, data_query, mock_request_backup_db
 ):
-
     success = True
     await assert_mutation(
         app,
@@ -51,7 +48,6 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_TYPE, "variables": {"typeId": 12}},
@@ -82,6 +78,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-##__________________________________________________________________||

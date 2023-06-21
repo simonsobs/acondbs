@@ -1,7 +1,6 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_UPDATE_PRODUCT
 
 QEURY = """
@@ -43,7 +42,6 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {
@@ -156,7 +154,6 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {
@@ -190,6 +187,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-##__________________________________________________________________||

@@ -2,7 +2,7 @@
 
 """
 
-##__________________________________________________________________||
+
 from .product_type import ProductType  # noqa: F401
 from .product import Product  # noqa: F401
 from .product_file_path import ProductFilePath  # noqa: F401
@@ -27,5 +27,3 @@ from .field import (  # noqa: F401
 
 
 from .type_field_association import TypeFieldAssociation  # noqa: F401
-
-##__________________________________________________________________||

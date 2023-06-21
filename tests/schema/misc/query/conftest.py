@@ -2,6 +2,7 @@ import pytest
 
 from acondbs import ops
 
+
 @pytest.fixture
 def app(app_users):
     y = app_users

@@ -1,8 +1,7 @@
-from ..models import Field, FieldType
 from ..db.sa import sa
+from ..models import Field, FieldType
 
 
-##__________________________________________________________________||
 def create_field(name, type_, field_id=None):
     """Instantiate SQLAlchemy ORM model "Field"
 
@@ -65,6 +64,3 @@ def delete_field(field_id):
     """
     model = Field.query.filter_by(field_id=field_id).one()
     sa.session.delete(model)
-
-
-##__________________________________________________________________||

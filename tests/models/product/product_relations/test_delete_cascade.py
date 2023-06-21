@@ -2,9 +2,7 @@ from acondbs.db.sa import sa
 from acondbs.models import Product, ProductRelation
 
 
-##__________________________________________________________________||
 def test_cascade_delete_children(app):
-
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -37,7 +35,6 @@ def test_cascade_delete_children(app):
 
     # assert
     with app.app_context():
-
         parent1 = Product.query.filter_by(name="parent1").one_or_none()
         child1 = Product.query.filter_by(name="child1").one_or_none()
         child2 = Product.query.filter_by(name="child2").one_or_none()
@@ -70,7 +67,6 @@ def test_cascade_delete_children(app):
 
     # assert
     with app.app_context():
-
         parent1 = Product.query.filter_by(name="parent1").one_or_none()
         child1 = Product.query.filter_by(name="child1").one_or_none()
         child2 = Product.query.filter_by(name="child2").one_or_none()
@@ -85,9 +81,7 @@ def test_cascade_delete_children(app):
         assert 0 == len(parent1.relations)
 
 
-##__________________________________________________________________||
 def test_cascade_delete_parent(app):
-
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -120,7 +114,6 @@ def test_cascade_delete_parent(app):
 
     # assert
     with app.app_context():
-
         parent1 = Product.query.filter_by(name="parent1").one_or_none()
         child1 = Product.query.filter_by(name="child1").one_or_none()
         child2 = Product.query.filter_by(name="child2").one_or_none()
@@ -133,9 +126,7 @@ def test_cascade_delete_parent(app):
         assert 0 == len(relations)
 
 
-##__________________________________________________________________||
 def test_cascade_delete_relations(app):
-
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -168,7 +159,6 @@ def test_cascade_delete_relations(app):
 
     # assert
     with app.app_context():
-
         parent1 = Product.query.filter_by(name="parent1").one_or_none()
         child1 = Product.query.filter_by(name="child1").one_or_none()
         child2 = Product.query.filter_by(name="child2").one_or_none()
@@ -205,7 +195,6 @@ def test_cascade_delete_relations(app):
 
     # assert
     with app.app_context():
-
         parent1 = Product.query.filter_by(name="parent1").one_or_none()
         child1 = Product.query.filter_by(name="child1").one_or_none()
         child2 = Product.query.filter_by(name="child2").one_or_none()
@@ -216,6 +205,3 @@ def test_cascade_delete_relations(app):
 
         relations = ProductRelation.query.all()
         assert 0 == len(relations)
-
-
-##__________________________________________________________________||

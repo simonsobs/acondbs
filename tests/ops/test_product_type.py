@@ -1,18 +1,15 @@
 import pytest
-
 from sqlalchemy import exc
 
 from acondbs import ops
 from acondbs.models import ProductType, TypeFieldAssociation
 
 
-##__________________________________________________________________||
 def test_fixture(app):
     with app.app_context():
         assert ProductType.query.count() == 2
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(None, id="none"),
     pytest.param([], id="empty"),
@@ -26,7 +23,6 @@ params = [
 
 @pytest.mark.parametrize("field_ids", params)
 def test_create(app, field_ids):
-
     with app.app_context():
         count = ProductType.query.count()
         model = ops.create_product_type(
@@ -54,7 +50,6 @@ params = [
 
 @pytest.mark.parametrize("field_ids", params)
 def test_create_error(app, field_ids):
-
     with app.app_context():
         count = ProductType.query.count()
         with pytest.raises(exc.NoResultFound):
@@ -70,7 +65,6 @@ def test_create_error(app, field_ids):
         assert model is None
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(None, [1, 2, 3, 7, 9], id="none"),
     pytest.param([], [], id="empty"),
@@ -87,7 +81,6 @@ params = [
 
 @pytest.mark.parametrize("field_ids, expected_field_ids", params)
 def test_update(app, field_ids, expected_field_ids):
-
     type_id = 2
 
     with app.app_context():
@@ -120,7 +113,6 @@ params = [
 
 @pytest.mark.parametrize("field_ids", params)
 def test_update_error(app, field_ids):
-
     type_id = 2
 
     with app.app_context():
@@ -146,9 +138,7 @@ def test_update_error(app, field_ids):
         assert TypeFieldAssociation.query.count() == count
 
 
-##__________________________________________________________________||
 def test_delete(app):
-
     with app.app_context():
         model = ops.create_product_type(
             name="to_be_deleted",
@@ -166,6 +156,3 @@ def test_delete(app):
         model = ProductType.query.filter_by(type_id=type_id).one_or_none()
         assert model is None
         assert ProductType.query.count() == (count - 1)
-
-
-##__________________________________________________________________||

@@ -4,19 +4,18 @@ The functions in this module need to be called within the application
 context of Flask unless stated otherwise.
 
 """
-import datetime
-import csv
 import ast
+import csv
+import datetime
 from pathlib import Path
 
 from sqlalchemy import MetaData
 from sqlalchemy.sql import sqltypes
 
-from .sa import sa
 from .conn import get_db_connection
+from .sa import sa
 
 
-##__________________________________________________________________||
 def define_tables():
     """Define DB tables from ORM models
 
@@ -59,7 +58,6 @@ def define_tables():
     print(msg)
 
 
-##__________________________________________________________________||
 def get_all_table_names():
     """returns the names of all tables in the DB.
 
@@ -143,7 +141,6 @@ def get_resultproxy_of_select_all_rows(tbl_name):
     return engine.execute(tbl.select())
 
 
-##__________________________________________________________________||
 def import_tables_from_csv_files(csvdir):
     """imports tables from CSV files into the DB
 
@@ -279,7 +276,6 @@ def convert_data_type_for_insert(str_, type_):
     return None
 
 
-##__________________________________________________________________||
 def export_db_to_csv_files(outdir, exclude=None):
     """export all tables in the DB to CSV files
 
@@ -327,6 +323,3 @@ def export_table_to_csv_file(file_, tbl_name):
     csv_writer = csv.writer(file_, lineterminator="\n")
     csv_writer.writerow(result_proxy.keys())
     csv_writer.writerows(result_proxy)
-
-
-##__________________________________________________________________||

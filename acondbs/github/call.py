@@ -10,7 +10,7 @@ import requests
 
 API_URL = 'https://api.github.com/graphql'
 
-##__________________________________________________________________||
+
 def call_graphql_api(query, variables=None, token=None):
     """Call a GitHub GraphQL API
 
@@ -39,9 +39,9 @@ def call_graphql_api(query, variables=None, token=None):
 
     headers = {}
     if token:
-      headers['Authorization'] = 'token {}'.format(token)
+        headers['Authorization'] = 'token {}'.format(token)
 
-    json = {'query': query }
+    json = {'query': query}
     if variables:
         json['variables'] = variables
 
@@ -54,7 +54,6 @@ def call_graphql_api(query, variables=None, token=None):
     #       ),
     #       'variables': {"login": "octocat"}
     #   }
-
 
     response = requests.post(API_URL, json=json, headers=headers)
     response = response.json()
@@ -82,14 +81,14 @@ def call_graphql_api(query, variables=None, token=None):
     #     }
 
     if 'errors' in response:
-      raise Exception(response['errors'])
+        raise Exception(response['errors'])
 
     if 'data' not in response:
-      raise Exception(response)
+        raise Exception(response)
 
     return response['data']
 
-##__________________________________________________________________||
+
 def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri):
     """exchange a OAuth2 authorization code for an access token
 
@@ -126,7 +125,7 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
         'client_id': client_id,
         'client_secret': client_secret,
         'redirect_uri': redirect_uri,
-        'code': code
+        'code': code,
     }
 
     headers = {
@@ -134,7 +133,7 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
     }
 
     response = requests.post(token_url, json=params, headers=headers)
-    response = response.json() # dict
+    response = response.json()  # dict
     # examples:
     #   success:
     #     response = {'access_token': 'XXXXXXXXXXXXXXXXXXXX', 'token_type': 'bearer', 'scope': 'user'}
@@ -150,5 +149,3 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
         raise Exception(response)
 
     return response
-
-##__________________________________________________________________||

@@ -1,13 +1,11 @@
 import textwrap
-from async_asgi_testclient import TestClient
-
-from a2wsgi import WSGIMiddleware
-
-import pytest
 import unittest.mock as mock
 
+import pytest
+from a2wsgi import WSGIMiddleware
+from async_asgi_testclient import TestClient
 
-##__________________________________________________________________||
+
 @pytest.fixture(autouse=True)
 def mock_authenticate(monkeypatch):
     y = mock.Mock()
@@ -15,10 +13,8 @@ def mock_authenticate(monkeypatch):
     yield y
 
 
-##__________________________________________________________________||
 @pytest.mark.asyncio
 async def test_auth(app, mock_authenticate):
-
     query = textwrap.dedent(
         """
         mutation AuthenticateWithGitHub($code: String!) {
@@ -51,6 +47,3 @@ async def test_auth(app, mock_authenticate):
 
     assert {"data": expected} == resp.json()
     assert [mock.call("h443xg9c")] == mock_authenticate.call_args_list
-
-
-##__________________________________________________________________||

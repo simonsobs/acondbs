@@ -3,7 +3,6 @@ import json
 from acondbs.db.sa import sa
 from acondbs.models import WebConfig
 
-
 SAMPLE_CONFIG_JSON = json.dumps(
     {
         "head_title": "Head Title",
@@ -13,7 +12,6 @@ SAMPLE_CONFIG_JSON = json.dumps(
 )
 
 
-##__________________________________________________________________||
 def test_column(app_empty):
     app = app_empty
 
@@ -43,6 +41,3 @@ def test_repr(app_empty):
     with app.app_context():
         model = WebConfig.query.filter_by(id_=id_).one()
         repr(model)
-
-
-##__________________________________________________________________||

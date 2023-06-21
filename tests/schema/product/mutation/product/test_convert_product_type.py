@@ -1,7 +1,6 @@
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_CONVERT_PRODUCT_TYPE, QUERY_ALL_PRODUCTS
 
 HEADERS = {
@@ -9,7 +8,6 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {
@@ -41,6 +39,3 @@ async def test_schema_success(
         mock_request_backup_db,
         success,
     )
-
-
-##__________________________________________________________________||

@@ -1,12 +1,10 @@
+import pytest
 from sqlalchemy import exc
 
-import pytest
-
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, FieldType, Field, TypeFieldAssociation
+from acondbs.models import Field, FieldType, ProductType, TypeFieldAssociation
 
 
-##__________________________________________________________________||
 def test_column(app_empty):
     app = app_empty
 
@@ -42,7 +40,6 @@ def test_repr(app_empty):
     repr(model)
 
 
-##__________________________________________________________________||
 def test_relationship(app):
     with app.app_context():
         field1 = Field.query.filter_by(name="field1").one()
@@ -59,7 +56,6 @@ def test_relationship(app):
         assert assoc2.field is field2
 
 
-##__________________________________________________________________||
 def test_unique_constraint(app_empty):
     # A type cannot have multiple same field.
     app = app_empty
@@ -73,7 +69,6 @@ def test_unique_constraint(app_empty):
             sa.session.commit()
 
 
-##__________________________________________________________________||
 def test_cascade_deleting_type(app):
     """test delete a type
 
@@ -119,7 +114,6 @@ def test_cascade_updating_type(app):
         # association1 is deleted from the DB
 
 
-##__________________________________________________________________||
 def test_nullable_deleting_field(app):
     """test delete a field
 
@@ -136,6 +130,3 @@ def test_nullable_deleting_field(app):
     with app.app_context():
         field1 = Field.query.filter_by(name="field1").one()
         assert field1.entry_types
-
-
-##__________________________________________________________________||

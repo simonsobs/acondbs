@@ -1,5 +1,5 @@
-type_id,name,reverse_type_id,indef_article,plural,singular
-1,parent,2,a,parents,parent
-2,child,1,a,children,child
-3,plaintiff,4,a,plaintiffs,plaintiff
-4,defendant,3,a,defendants,defendant
+type_id,name,reverse_type_id,indef_article,singular,plural
+1,parent,2,a,parent,parents
+2,child,1,a,child,children
+3,plaintiff,4,a,plaintiff,plaintiffs
+4,defendant,3,a,defendant,defendants

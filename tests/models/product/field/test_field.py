@@ -1,12 +1,10 @@
+import pytest
 from sqlalchemy import exc
 
-import pytest
-
 from acondbs.db.sa import sa
-from acondbs.models import FieldType, Field
+from acondbs.models import Field, FieldType
 
 
-##__________________________________________________________________||
 def test_repr(app_empty):
     app = app_empty  # noqa: F841
 
@@ -17,7 +15,6 @@ def test_repr(app_empty):
     repr(field1)
 
 
-##__________________________________________________________________||
 def test_commit(app_empty):
     app = app_empty
 
@@ -33,7 +30,6 @@ def test_commit(app_empty):
         assert field1.type_ is FieldType.Date
 
 
-##__________________________________________________________________||
 def test_commit_with_field_id(app_empty):
     app = app_empty
 
@@ -48,7 +44,6 @@ def test_commit_with_field_id(app_empty):
         assert field1.type_ is FieldType.Date
 
 
-##__________________________________________________________________||
 def test_nullable(app_empty):
     app = app_empty  # noqa: F841
 
@@ -67,7 +62,6 @@ def test_nullable(app_empty):
             sa.session.commit()
 
 
-##__________________________________________________________________||
 def test_enum_by_int(app_empty):
     """Test if an enum can be given by a number
 
@@ -82,6 +76,3 @@ def test_enum_by_int(app_empty):
         sa.session.add(field1)
         with pytest.raises(exc.StatementError):
             sa.session.commit()
-
-
-##__________________________________________________________________||

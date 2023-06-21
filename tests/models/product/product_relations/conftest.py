@@ -1,18 +1,11 @@
 import pytest
 
 from acondbs.db.sa import sa
-from acondbs.models import (
-    ProductType,
-    Product,
-    ProductRelation,
-    ProductRelationType,
-)
+from acondbs.models import Product, ProductRelation, ProductRelationType, ProductType
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     #                              +--------+
@@ -59,6 +52,3 @@ def app(app_empty):
         sa.session.add(parent1)
         sa.session.commit()
     yield y
-
-
-##__________________________________________________________________||

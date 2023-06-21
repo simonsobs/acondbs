@@ -1,7 +1,6 @@
 import pytest
 
 from ...funcs import assert_query
-
 from ..gql import (
     QUERY_ALL_PRODUCT_RELATION_TYPES,
     QUERY_ALL_PRODUCT_RELATION_TYPES_TOTAL_COUNT,
@@ -12,7 +11,6 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {"query": QUERY_ALL_PRODUCT_RELATION_TYPES},
@@ -25,11 +23,7 @@ params = [
 ]
 
 
-##__________________________________________________________________||
 @pytest.mark.parametrize("data", params)
 @pytest.mark.asyncio
 async def test_schema(app, snapshot, data):
     await assert_query(app, snapshot, data, HEADERS)
-
-
-##__________________________________________________________________||

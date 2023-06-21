@@ -1,29 +1,25 @@
 import datetime
-from sqlalchemy.orm import aliased
-
-import sqlparse
 
 import pytest
+import sqlparse
+from sqlalchemy.orm import aliased
 
 from acondbs.db.sa import sa
-
 from acondbs.models import (
-    Product,
-    ProductType,
-    FieldType,
-    Field,
-    TypeFieldAssociation,
-    AttributeUnicodeText,
     AttributeBoolean,
-    AttributeInteger,
-    AttributeFloat,
     AttributeDate,
     AttributeDateTime,
+    AttributeFloat,
+    AttributeInteger,
     AttributeTime,
+    AttributeUnicodeText,
+    Field,
+    FieldType,
+    Product,
+    ProductType,
+    TypeFieldAssociation,
 )
 
-
-##__________________________________________________________________||
 params = [
     pytest.param(
         FieldType.UnicodeText,
@@ -34,18 +30,14 @@ params = [
     pytest.param(FieldType.Boolean, AttributeBoolean, True, id="Boolean"),
     pytest.param(FieldType.Integer, AttributeInteger, -512442, id="Integer"),
     pytest.param(FieldType.Float, AttributeFloat, 3.14592613, id="Float"),
-    pytest.param(
-        FieldType.Date, AttributeDate, datetime.date(2020, 2, 1), id="Date"
-    ),
+    pytest.param(FieldType.Date, AttributeDate, datetime.date(2020, 2, 1), id="Date"),
     pytest.param(
         FieldType.DateTime,
         AttributeDateTime,
         datetime.datetime(2020, 2, 1, 9, 10, 25),
         id="DateTime",
     ),
-    pytest.param(
-        FieldType.Time, AttributeTime, datetime.time(9, 10, 25), id="Time"
-    ),
+    pytest.param(FieldType.Time, AttributeTime, datetime.time(9, 10, 25), id="Time"),
 ]
 
 
@@ -110,9 +102,7 @@ def test_commit(app_empty, field_type, AttributeClass, value):
         assert getattr(attr.field, AttributeClass.backref_column) == [attr]
 
 
-##__________________________________________________________________||
 def test_filter(app):
-
     with app.app_context():
         expected = Product.query.filter_by(product_id=1).one()
         print(expected.attributes_unicode_text[0].type_field_association)
@@ -120,9 +110,7 @@ def test_filter(app):
             Product.query.join(AttributeUnicodeText)
             .join(TypeFieldAssociation)
             .join(Field)
-            .filter(
-                Field.name == "attr1", AttributeUnicodeText.value == "value1"
-            )
+            .filter(Field.name == "attr1", AttributeUnicodeText.value == "value1")
         )
         # print(sqlparse.format(str(query), reindent=True))
         actual = query.one()
@@ -142,7 +130,6 @@ def test_filter(app):
 
 
 def test_order(app):
-
     with app.app_context():
         map1 = Product.query.filter_by(product_id=1).one()
         map2 = Product.query.filter_by(product_id=2).one()
@@ -167,7 +154,6 @@ def test_order(app):
         assert actual == expected
 
 
-##__________________________________________________________________||
 def test_order_nested(app_empty):
     app = app_empty
 
@@ -251,7 +237,6 @@ def test_order_nested(app_empty):
         sa.session.commit()
 
     with app.app_context():
-
         map1 = Product.query.filter_by(product_id=1).one()
         map2 = Product.query.filter_by(product_id=2).one()
         map3 = Product.query.filter_by(product_id=3).one()
@@ -280,9 +265,7 @@ def test_order_nested(app_empty):
             .join(AliasedField1)
             .filter_by(name="attr1")
             .order_by(AliasedAttributeUnicodeText1.value.desc())
-            .join(
-                AliasedAttributeUnicodeText2, Product.attributes_unicode_text
-            )
+            .join(AliasedAttributeUnicodeText2, Product.attributes_unicode_text)
             .join(AliasedTypeFieldAssociation2)
             .join(AliasedField2)
             .filter_by(name="attr2")
@@ -296,7 +279,6 @@ def test_order_nested(app_empty):
         assert actual == expected
 
 
-##__________________________________________________________________||
 def test_delte_orphan_product(app_empty):
     app = app_empty
 
@@ -326,12 +308,8 @@ def test_delte_orphan_product(app_empty):
         sa.session.commit()
 
     with app.app_context():
-        product1 = Product.query.filter_by(
-            product_id=product1_id
-        ).one_or_none()
-        attr1 = field1_attribute_class.query.filter_by(
-            iid=attr1_id
-        ).one_or_none()
+        product1 = Product.query.filter_by(product_id=product1_id).one_or_none()
+        attr1 = field1_attribute_class.query.filter_by(iid=attr1_id).one_or_none()
         assert product1 is None
         assert attr1 is None
 
@@ -370,10 +348,5 @@ def test_delte_orphan_type_field_association_and_field(app_empty):
 
     with app.app_context():
         product1 = Product.query.filter_by(product_id=product1_id).one()
-        attr1 = field1_attribute_class.query.filter_by(
-            iid=attr1_id
-        ).one_or_none()
+        attr1 = field1_attribute_class.query.filter_by(iid=attr1_id).one_or_none()
         assert attr1 is None
-
-
-##__________________________________________________________________||

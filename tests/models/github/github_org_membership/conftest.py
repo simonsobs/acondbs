@@ -1,10 +1,9 @@
 import pytest
 
 from acondbs.db.sa import sa
-from acondbs.models import GitHubOrg, GitHubUser, GitHubOrgMembership
+from acondbs.models import GitHubOrg, GitHubOrgMembership, GitHubUser
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app(app_empty):
     y = app_empty
@@ -17,6 +16,3 @@ def app(app_empty):
         sa.session.add(membership)
         sa.session.commit()
     yield y
-
-
-##__________________________________________________________________||

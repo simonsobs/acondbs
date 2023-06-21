@@ -1,29 +1,24 @@
 from pathlib import Path
+
 import pytest
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables, import_tables_from_csv_files
-
-
 from acondbs.models import GitHubToken
 
 from ...constants import SAMPLE_DIR
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app():
     config_path = Path(SAMPLE_DIR, "config.py")
     database_uri = "sqlite:///:memory:"
-    app = create_app(
-        config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri
-    )
+    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     with app.app_context():
         define_tables()
     yield app
 
 
-##__________________________________________________________________||
 def test_encrypted_field(app):
     csvdir = Path(SAMPLE_DIR, "csv")
     with app.app_context():
@@ -46,6 +41,3 @@ def test_how_to_encrypt_and_decrypt(app):
 
     assert engine.encrypt(unencrypted) == encrypted
     assert engine.decrypt(encrypted) == unencrypted
-
-
-##__________________________________________________________________||

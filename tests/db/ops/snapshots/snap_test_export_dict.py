@@ -4,249 +4,224 @@ from __future__ import unicode_literals
 
 from snapshottest import GenericRepr, Snapshot
 
-
 snapshots = Snapshot()
 
 snapshots['test_export_db_to_dict_of_dict_list 1'] = {
     'account_admins': [
-        {
-            'admin_id': 1,
-            'git_hub_login': 'dojocat'
-        },
-        {
-            'admin_id': 2,
-            'git_hub_login': 'octocat'
-        }
+        {'admin_id': 1, 'git_hub_login': 'dojocat'},
+        {'admin_id': 2, 'git_hub_login': 'octocat'},
     ],
-    'attribute_boolean': [
-    ],
+    'attribute_boolean': [],
     'attribute_date': [
         {
             'field_id': 3,
             'iid': 1,
             'product_id': 1001,
             'type_field_association_iid': 3,
-            'value': GenericRepr('datetime.date(2019, 2, 13)')
+            'value': GenericRepr('datetime.date(2019, 2, 13)'),
         },
         {
             'field_id': 3,
             'iid': 2,
             'product_id': 1002,
             'type_field_association_iid': 9,
-            'value': GenericRepr('datetime.date(2019, 3, 15)')
+            'value': GenericRepr('datetime.date(2019, 3, 15)'),
         },
         {
             'field_id': 3,
             'iid': 3,
             'product_id': 1010,
             'type_field_association_iid': 6,
-            'value': GenericRepr('datetime.date(2018, 1, 1)')
+            'value': GenericRepr('datetime.date(2018, 1, 1)'),
         },
         {
             'field_id': 3,
             'iid': 4,
             'product_id': 1012,
             'type_field_association_iid': 3,
-            'value': GenericRepr('datetime.date(2020, 1, 20)')
+            'value': GenericRepr('datetime.date(2020, 1, 20)'),
         },
         {
             'field_id': 3,
             'iid': 5,
             'product_id': 1013,
             'type_field_association_iid': 3,
-            'value': GenericRepr('datetime.date(2020, 2, 1)')
+            'value': GenericRepr('datetime.date(2020, 2, 1)'),
         },
         {
             'field_id': 3,
             'iid': 6,
             'product_id': 1070,
             'type_field_association_iid': 6,
-            'value': GenericRepr('datetime.date(2019, 3, 4)')
+            'value': GenericRepr('datetime.date(2019, 3, 4)'),
         },
         {
             'field_id': 3,
             'iid': 7,
             'product_id': 1120,
             'type_field_association_iid': 6,
-            'value': GenericRepr('datetime.date(2019, 6, 7)')
+            'value': GenericRepr('datetime.date(2019, 6, 7)'),
         },
         {
             'field_id': 3,
             'iid': 8,
             'product_id': 1130,
             'type_field_association_iid': 6,
-            'value': GenericRepr('datetime.date(2020, 1, 23)')
+            'value': GenericRepr('datetime.date(2020, 1, 23)'),
         },
         {
             'field_id': 3,
             'iid': 9,
             'product_id': 1150,
             'type_field_association_iid': 6,
-            'value': GenericRepr('datetime.date(2020, 2, 7)')
-        }
+            'value': GenericRepr('datetime.date(2020, 2, 7)'),
+        },
     ],
-    'attribute_date_time': [
-    ],
-    'attribute_float': [
-    ],
-    'attribute_integer': [
-    ],
-    'attribute_time': [
-    ],
+    'attribute_date_time': [],
+    'attribute_float': [],
+    'attribute_integer': [],
+    'attribute_time': [],
     'attribute_unicode_text': [
         {
             'field_id': 1,
             'iid': 2,
             'product_id': 1001,
             'type_field_association_iid': 1,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 3,
             'product_id': 1001,
             'type_field_association_iid': 2,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 1,
             'iid': 8,
             'product_id': 1002,
             'type_field_association_iid': 7,
-            'value': 'abc-def'
+            'value': 'abc-def',
         },
         {
             'field_id': 2,
             'iid': 9,
             'product_id': 1002,
             'type_field_association_iid': 8,
-            'value': 'abc-def'
+            'value': 'abc-def',
         },
         {
             'field_id': 1,
             'iid': 14,
             'product_id': 1010,
             'type_field_association_iid': 4,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 15,
             'product_id': 1010,
             'type_field_association_iid': 5,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 1,
             'iid': 20,
             'product_id': 1012,
             'type_field_association_iid': 1,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 21,
             'product_id': 1012,
             'type_field_association_iid': 2,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 1,
             'iid': 26,
             'product_id': 1013,
             'type_field_association_iid': 1,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 27,
             'product_id': 1013,
             'type_field_association_iid': 2,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 1,
             'iid': 32,
             'product_id': 1070,
             'type_field_association_iid': 4,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 33,
             'product_id': 1070,
             'type_field_association_iid': 5,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 1,
             'iid': 38,
             'product_id': 1120,
             'type_field_association_iid': 4,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 39,
             'product_id': 1120,
             'type_field_association_iid': 5,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 1,
             'iid': 44,
             'product_id': 1130,
             'type_field_association_iid': 4,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 45,
             'product_id': 1130,
             'type_field_association_iid': 5,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 1,
             'iid': 50,
             'product_id': 1150,
             'type_field_association_iid': 4,
-            'value': 'pwg-pmn'
+            'value': 'pwg-pmn',
         },
         {
             'field_id': 2,
             'iid': 51,
             'product_id': 1150,
             'type_field_association_iid': 5,
-            'value': 'pwg-pmn'
-        }
+            'value': 'pwg-pmn',
+        },
     ],
     'field': [
-        {
-            'field_id': 1,
-            'name': 'contact',
-            'type_': 'UnicodeText'
-        },
-        {
-            'field_id': 2,
-            'name': 'produced_by',
-            'type_': 'UnicodeText'
-        },
-        {
-            'field_id': 3,
-            'name': 'date_produced',
-            'type_': 'Date'
-        }
+        {'field_id': 1, 'name': 'contact', 'type_': 'UnicodeText'},
+        {'field_id': 2, 'name': 'produced_by', 'type_': 'UnicodeText'},
+        {'field_id': 3, 'name': 'date_produced', 'type_': 'Date'},
     ],
-    'github_org_memberships': [
-    ],
+    'github_org_memberships': [],
     'github_orgs': [
         {
             'avatar_url': 'https://avatars0.githubusercontent.com/u/75631844?v=4',
             'git_hub_id': '012:Organization75631844',
             'login': 'urban-octo-disco',
             'org_id': 1,
-            'url': 'https://github.com/urban-octo-disco'
+            'url': 'https://github.com/urban-octo-disco',
         }
     ],
     'github_tokens': [
@@ -255,7 +230,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_created': GenericRepr('datetime.datetime(2020, 1, 4, 14, 32, 15)'),
             'token': b'aKjGknYDHY39Z2xAaN7+sQ==',
             'token_id': 1,
-            'user_id': 1
+            'user_id': 1,
         }
     ],
     'github_users': [
@@ -265,7 +240,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'login': 'octocat',
             'name': 'The Octocat',
             'url': 'https://github.com/octocat',
-            'user_id': 1
+            'user_id': 1,
         },
         {
             'avatar_url': 'https://avatars0.githubusercontent.com/u/9758946?v=4',
@@ -273,72 +248,66 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'login': 'dojocat',
             'name': 'dojocat',
             'url': 'https://github.com/dojocat',
-            'user_id': 2
-        }
-    ],
-    'log': [
-    ],
-    'product_file_paths': [
-        {
-            'note': '',
-            'path': 'nersc:/go/to/my/maps',
-            'path_id': 1,
-            'product_id': 1001
+            'user_id': 2,
         },
+    ],
+    'log': [],
+    'product_file_paths': [
+        {'note': '', 'path': 'nersc:/go/to/my/maps', 'path_id': 1, 'product_id': 1001},
         {
             'note': 'lat only',
             'path': 'nersc:/go/to/my/maps_v2',
             'path_id': 2,
-            'product_id': 1012
+            'product_id': 1012,
         },
         {
             'note': 'lat only',
             'path': 'abcde:/path/to/the/maps_v2',
             'path_id': 3,
-            'product_id': 1012
+            'product_id': 1012,
         },
         {
             'note': 'lat only',
             'path': 'nersc:/go/to/my/maps_v3',
             'path_id': 4,
-            'product_id': 1013
+            'product_id': 1013,
         },
         {
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20190304',
             'path_id': 5,
-            'product_id': 1070
+            'product_id': 1070,
         },
         {
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20190607',
             'path_id': 6,
-            'product_id': 1120
+            'product_id': 1120,
         },
         {
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20200123',
             'path_id': 7,
-            'product_id': 1130
+            'product_id': 1130,
         },
         {
             'note': '',
             'path': 'BEAM_DEPOT/Beams/20200207',
             'path_id': 8,
-            'product_id': 1150
+            'product_id': 1150,
         },
         {
             'note': '',
             'path': 'nersc:/go/to/my/simulations',
             'path_id': 9,
-            'product_id': 1002
+            'product_id': 1002,
         },
         {
             'note': '',
             'path': 'abcde:/path/to/the/simulations',
             'path_id': 10,
-            'product_id': 1002
-        }
+            'product_id': 1002,
+        },
     ],
     'product_relation_types': [
         {
@@ -347,7 +316,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'plural': 'parents',
             'reverse_type_id': 2,
             'singular': 'parent',
-            'type_id': 1
+            'type_id': 1,
         },
         {
             'indef_article': 'a',
@@ -355,7 +324,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'plural': 'children',
             'reverse_type_id': 1,
             'singular': 'child',
-            'type_id': 2
+            'type_id': 2,
         },
         {
             'indef_article': 'a',
@@ -363,7 +332,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'plural': 'plaintiffs',
             'reverse_type_id': 4,
             'singular': 'plaintiff',
-            'type_id': 3
+            'type_id': 3,
         },
         {
             'indef_article': 'a',
@@ -371,8 +340,8 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'plural': 'defendants',
             'reverse_type_id': 3,
             'singular': 'defendant',
-            'type_id': 4
-        }
+            'type_id': 4,
+        },
     ],
     'product_relations': [
         {
@@ -380,43 +349,43 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'relation_id': 1,
             'reverse_relation_id': 2,
             'self_product_id': 1130,
-            'type_id': 1
+            'type_id': 1,
         },
         {
             'other_product_id': 1130,
             'relation_id': 2,
             'reverse_relation_id': 1,
             'self_product_id': 1012,
-            'type_id': 2
+            'type_id': 2,
         },
         {
             'other_product_id': 1013,
             'relation_id': 3,
             'reverse_relation_id': 4,
             'self_product_id': 1150,
-            'type_id': 1
+            'type_id': 1,
         },
         {
             'other_product_id': 1150,
             'relation_id': 4,
             'reverse_relation_id': 3,
             'self_product_id': 1013,
-            'type_id': 2
+            'type_id': 2,
         },
         {
             'other_product_id': 1130,
             'relation_id': 5,
             'reverse_relation_id': 6,
             'self_product_id': 1150,
-            'type_id': 1
+            'type_id': 1,
         },
         {
             'other_product_id': 1150,
             'relation_id': 6,
             'reverse_relation_id': 5,
             'self_product_id': 1130,
-            'type_id': 2
-        }
+            'type_id': 2,
+        },
     ],
     'product_types': [
         {
@@ -426,7 +395,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'order': 2,
             'plural': 'maps',
             'singular': 'map',
-            'type_id': 1
+            'type_id': 1,
         },
         {
             'icon': 'mdi-spotlight-beam',
@@ -435,7 +404,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'order': 3,
             'plural': 'beams',
             'singular': 'beam',
-            'type_id': 2
+            'type_id': 2,
         },
         {
             'icon': 'mdi-creation',
@@ -444,7 +413,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'order': 1,
             'plural': 'simulations',
             'singular': 'simulation',
-            'type_id': 3
+            'type_id': 3,
         },
         {
             'icon': '',
@@ -453,8 +422,8 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'order': 4,
             'plural': '',
             'singular': '',
-            'type_id': 4
-        }
+            'type_id': 4,
+        },
     ],
     'products': [
         {
@@ -466,7 +435,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2019, 2, 13, 10, 5, 23)'),
             'time_updated': None,
             'type_id': 1,
-            'updating_git_hub_user_id': 2
+            'updating_git_hub_user_id': 2,
         },
         {
             'name': 'xyz-s1234-20200101',
@@ -477,7 +446,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2019, 3, 15, 9, 11, 25)'),
             'time_updated': None,
             'type_id': 3,
-            'updating_git_hub_user_id': None
+            'updating_git_hub_user_id': None,
         },
         {
             'name': '20180101',
@@ -487,7 +456,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2018, 1, 1, 15, 32, 10)'),
             'time_updated': None,
             'type_id': 2,
-            'updating_git_hub_user_id': None
+            'updating_git_hub_user_id': None,
         },
         {
             'name': 'lat20200120',
@@ -498,7 +467,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2020, 1, 20, 18, 10, 5)'),
             'time_updated': None,
             'type_id': 1,
-            'updating_git_hub_user_id': 2
+            'updating_git_hub_user_id': 2,
         },
         {
             'name': 'lat20200201',
@@ -509,7 +478,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2020, 2, 1, 11, 5, 2)'),
             'time_updated': None,
             'type_id': 1,
-            'updating_git_hub_user_id': 2
+            'updating_git_hub_user_id': 2,
         },
         {
             'name': '20190304',
@@ -519,7 +488,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2019, 3, 4, 8, 12, 41)'),
             'time_updated': None,
             'type_id': 2,
-            'updating_git_hub_user_id': None
+            'updating_git_hub_user_id': None,
         },
         {
             'name': '20190607',
@@ -529,7 +498,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2019, 6, 7, 18, 21, 21)'),
             'time_updated': None,
             'type_id': 2,
-            'updating_git_hub_user_id': None
+            'updating_git_hub_user_id': None,
         },
         {
             'name': '20200123',
@@ -539,7 +508,7 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2020, 1, 23, 12, 11, 45)'),
             'time_updated': None,
             'type_id': 2,
-            'updating_git_hub_user_id': None
+            'updating_git_hub_user_id': None,
         },
         {
             'name': '20200207',
@@ -549,87 +518,27 @@ snapshots['test_export_db_to_dict_of_dict_list 1'] = {
             'time_posted': GenericRepr('datetime.datetime(2020, 2, 7, 9, 42, 11)'),
             'time_updated': None,
             'type_id': 2,
-            'updating_git_hub_user_id': None
-        }
+            'updating_git_hub_user_id': None,
+        },
     ],
     'type_field_association': [
-        {
-            'field_id': 1,
-            'iid': 1,
-            'order': None,
-            'type_id': 1
-        },
-        {
-            'field_id': 2,
-            'iid': 2,
-            'order': None,
-            'type_id': 1
-        },
-        {
-            'field_id': 3,
-            'iid': 3,
-            'order': None,
-            'type_id': 1
-        },
-        {
-            'field_id': 1,
-            'iid': 4,
-            'order': None,
-            'type_id': 2
-        },
-        {
-            'field_id': 2,
-            'iid': 5,
-            'order': None,
-            'type_id': 2
-        },
-        {
-            'field_id': 3,
-            'iid': 6,
-            'order': None,
-            'type_id': 2
-        },
-        {
-            'field_id': 1,
-            'iid': 7,
-            'order': None,
-            'type_id': 3
-        },
-        {
-            'field_id': 2,
-            'iid': 8,
-            'order': None,
-            'type_id': 3
-        },
-        {
-            'field_id': 3,
-            'iid': 9,
-            'order': None,
-            'type_id': 3
-        },
-        {
-            'field_id': 1,
-            'iid': 10,
-            'order': None,
-            'type_id': 4
-        },
-        {
-            'field_id': 2,
-            'iid': 11,
-            'order': None,
-            'type_id': 4
-        },
-        {
-            'field_id': 3,
-            'iid': 12,
-            'order': None,
-            'type_id': 4
-        }
+        {'field_id': 1, 'iid': 1, 'order': None, 'type_id': 1},
+        {'field_id': 2, 'iid': 2, 'order': None, 'type_id': 1},
+        {'field_id': 3, 'iid': 3, 'order': None, 'type_id': 1},
+        {'field_id': 1, 'iid': 4, 'order': None, 'type_id': 2},
+        {'field_id': 2, 'iid': 5, 'order': None, 'type_id': 2},
+        {'field_id': 3, 'iid': 6, 'order': None, 'type_id': 2},
+        {'field_id': 1, 'iid': 7, 'order': None, 'type_id': 3},
+        {'field_id': 2, 'iid': 8, 'order': None, 'type_id': 3},
+        {'field_id': 3, 'iid': 9, 'order': None, 'type_id': 3},
+        {'field_id': 1, 'iid': 10, 'order': None, 'type_id': 4},
+        {'field_id': 2, 'iid': 11, 'order': None, 'type_id': 4},
+        {'field_id': 3, 'iid': 12, 'order': None, 'type_id': 4},
     ],
     'web_config': [
         {
             'id_': 1,
-            'json': '{"headTitle": "Product DB (test)", "toolbarTitle": "Product DB (test)", "devtoolLoadingstate": true, "productCreationDialog": false, "productUpdateDialog": true, "productDeletionDialog": false}'
+            'json': '{"headTitle": "Product DB (test)", "toolbarTitle": "Product DB (test)", "devtoolLoadingstate": true, "productCreationDialog": false, "productUpdateDialog": true, "productDeletionDialog": false}',
         }
-    ]
+    ],
 }

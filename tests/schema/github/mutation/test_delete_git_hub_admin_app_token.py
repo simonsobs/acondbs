@@ -25,7 +25,7 @@ ALL_GITHUB_ADMIN_APP_TOKENS = """
 }
 """
 
-##__________________________________________________________________||
+
 params = [
     pytest.param(
         {"query": DELETE_GIT_HUB_ADMIN_APP_TOKEN, "variables": {"tokenId": 1}},
@@ -50,7 +50,6 @@ async def test_schema_success(
     headers_query,
     mock_request_backup_db,
 ):
-
     await assert_mutation(
         app,
         snapshot,
@@ -63,7 +62,6 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {"query": DELETE_GIT_HUB_ADMIN_APP_TOKEN, "variables": {"tokenId": 999}},
@@ -88,7 +86,6 @@ async def test_schema_error(
     headers_query,
     mock_request_backup_db,
 ):
-
     await assert_mutation(
         app,
         snapshot,
@@ -99,6 +96,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success=False,
     )
-
-
-##__________________________________________________________________||

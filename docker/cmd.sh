@@ -1,6 +1,6 @@
 #!/bin/bash
 
-##__________________________________________________________________||
+
 if [ -z $ACONDBS_SECRET_KEY ]
 then
     if [ -z $ACONDBS_SECRET_KEY_FILE ]
@@ -21,7 +21,7 @@ then
     echo 'Warning: $ACONDBS_SECRET_KEY is not set!'
 fi
 
-##__________________________________________________________________||
+
 if [ -z $GITHUB_AUTH_CLIENT_SECRET ]
 then
     if [ -z $GITHUB_AUTH_CLIENT_SECRET_FILE ]
@@ -42,7 +42,7 @@ then
     echo 'Warning: $GITHUB_AUTH_CLIENT_SECRET is not set!'
 fi
 
-##__________________________________________________________________||
+
 command="flask db upgrade"
 echo + $command;
 eval $command;
@@ -59,10 +59,10 @@ command="flask backup-db"
 echo + $command;
 eval $command;
 
-##__________________________________________________________________||
+
 # command="flask run -h 0.0.0.0 -p 5000"
 command="gunicorn -w 4 -b 0.0.0.0:5000 \"$FLASK_APP\" --log-level debug"
 echo + $command;
 eval $command;
 
-##__________________________________________________________________||
+

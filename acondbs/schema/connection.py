@@ -2,7 +2,6 @@ from graphene import Int, NonNull
 from graphene.relay import Connection
 
 
-##__________________________________________________________________||
 class CountedConnection(Connection):
     """
 
@@ -24,6 +23,3 @@ class CountedConnection(Connection):
 
     def resolve_total_count(self, info, **kwargs):
         return self.length
-
-
-##__________________________________________________________________||

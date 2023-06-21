@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
-
 snapshots = Snapshot()
 
 snapshots['test_schema_success[one] 1'] = {
@@ -20,8 +19,8 @@ snapshots['test_schema_success[one] 1'] = {
   "productCreationDialog": false,
   "productUpdateDialog": false,
   "productDeletionDialog": false
-}'''
-            }
+}''',
+            },
         }
     }
 }
@@ -37,7 +36,7 @@ snapshots['test_schema_success[one] 2'] = {
   "productCreationDialog": false,
   "productUpdateDialog": false,
   "productDeletionDialog": false
-}'''
+}''',
         }
     }
 }

@@ -1,6 +1,7 @@
 from ..fragments import FRAGMENT_FIELD
 
-MUTATION_CREATE_FIELD = '''
+MUTATION_CREATE_FIELD = (
+    '''
 mutation CreateField($input: CreateFieldInput!) {
   createField(input: $input) {
     ok
@@ -9,4 +10,6 @@ mutation CreateField($input: CreateFieldInput!) {
     }
   }
 }
-''' + FRAGMENT_FIELD
+'''
+    + FRAGMENT_FIELD
+)

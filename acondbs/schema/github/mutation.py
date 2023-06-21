@@ -1,24 +1,19 @@
 import graphene
 from graphql import GraphQLError
 
-from ...db.sa import sa
 from ...db.backup import request_backup_db
-
-from ...models import (
-    GitHubToken as GitHubTokenModel,
-)
+from ...db.sa import sa
 from ...github.ops import (
-    update_org_member_lists,
     add_org,
+    authenticate,
     delete_org,
     store_token_for_code,
-    authenticate,
+    update_org_member_lists,
 )
-
+from ...models import GitHubToken as GitHubTokenModel
 from . import type_
 
 
-##__________________________________________________________________||
 class AddGitHubOrg(graphene.Mutation):
     class Arguments:
         login = graphene.String(required=True)
@@ -46,7 +41,6 @@ class DeleteGitHubOrg(graphene.Mutation):
         return DeleteGitHubOrg(ok=ok)
 
 
-##__________________________________________________________________||
 class AuthenticateWithGitHub(graphene.Mutation):
     class Arguments:
         code = graphene.String(required=True)
@@ -61,7 +55,6 @@ class AuthenticateWithGitHub(graphene.Mutation):
         return AuthenticateWithGitHub(authPayload=authPayload)
 
 
-##__________________________________________________________________||
 class AddGitHubAdminAppToken(graphene.Mutation):
     """Add a token for a GitHub Admin App"""
 
@@ -77,7 +70,6 @@ class AddGitHubAdminAppToken(graphene.Mutation):
         return AddGitHubAdminAppToken(ok=ok)
 
 
-##__________________________________________________________________||
 class DeleteGitHubAdminAppToken(graphene.Mutation):
     """Delete a token for a GitHub Admin App"""
 
@@ -95,7 +87,6 @@ class DeleteGitHubAdminAppToken(graphene.Mutation):
         return DeleteGitHubAdminAppToken(ok=ok)
 
 
-##__________________________________________________________________||
 class UpdateGitHubOrgMemberLists(graphene.Mutation):
     """Update the member lists of GitHub organizations"""
 
@@ -106,6 +97,3 @@ class UpdateGitHubOrgMemberLists(graphene.Mutation):
         ok = True
         # request_backup_db()
         return UpdateGitHubOrgMemberLists(ok=ok)
-
-
-##__________________________________________________________________||

@@ -2,12 +2,10 @@ import pytest
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
-
 from acondbs.db.sa import sa
-from acondbs.models import GitHubToken, GitHubUser, AccountAdmin
+from acondbs.models import AccountAdmin, GitHubToken, GitHubUser
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -40,6 +38,3 @@ def app_users(app_empty):
         sa.session.add(user2)
         sa.session.commit()
     yield y
-
-
-##__________________________________________________________________||

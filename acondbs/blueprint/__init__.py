@@ -1,19 +1,15 @@
-import textwrap
 import json
+import textwrap
 import traceback
 
-from flask import Blueprint, current_app
+from flask import Blueprint, current_app, request
 from flask_graphql import GraphQLView
 
-from .. import auth, schema, ops
+from .. import auth, ops, schema
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
-
-##__________________________________________________________________||
-from flask import request
 
 
 def format_to_str(data_dict):
-
     format_item = textwrap.dedent(
         """
         - {key}:
@@ -128,7 +124,6 @@ class GraphQLViewW(GraphQLView):
         super().__init__(**kwargs)
 
 
-##__________________________________________________________________||
 bp = Blueprint("graphql", __name__)
 bp.add_url_rule("/graphql", view_func=GraphQLViewW.as_view("graphql"))
 
@@ -137,7 +132,6 @@ def init_app(app):
     app.register_blueprint(bp)
 
 
-##__________________________________________________________________||
 def _select_schema():
     if auth.is_admin():
         return schema.schema_admin
@@ -155,6 +149,3 @@ def _select_graphiql_template():
         return GRAPHQL_PLAYGROUND
     else:
         return None
-
-
-##__________________________________________________________________||

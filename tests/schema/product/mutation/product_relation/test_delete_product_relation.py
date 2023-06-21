@@ -1,8 +1,10 @@
 import pytest
 
 from ....funcs import assert_mutation
-
-from ...gql import FRAGMENT_PRODUCT_RELATION_CONNECTION, MUTATION_DELETE_PRODUCT_RELATION
+from ...gql import (
+    FRAGMENT_PRODUCT_RELATION_CONNECTION,
+    MUTATION_DELETE_PRODUCT_RELATION,
+)
 
 QEURY = (
     """
@@ -20,7 +22,6 @@ HEADERS = {
 }
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_RELATION, "variables": {"relationId": 2}},
@@ -35,7 +36,6 @@ params = [
 async def test_schema_success(
     app, snapshot, data_mutation, data_query, mock_request_backup_db
 ):
-
     success = True
     await assert_mutation(
         app,
@@ -49,7 +49,6 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {"query": MUTATION_DELETE_PRODUCT_RELATION, "variables": {"relationId": 120}},
@@ -75,6 +74,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-##__________________________________________________________________||

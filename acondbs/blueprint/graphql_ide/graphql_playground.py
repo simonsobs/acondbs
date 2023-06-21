@@ -1,4 +1,3 @@
-##__________________________________________________________________||
 # From https://github.com/graphql/graphql-playground/blob/v1.8.10/packages/graphql-playground-html/minimal.html
 GRAPHQL_PLAYGROUND = '''<!DOCTYPE html>
 <html>
@@ -58,5 +57,3 @@ GRAPHQL_PLAYGROUND = '''<!DOCTYPE html>
 </body>
 
 </html>'''
-
-##__________________________________________________________________||

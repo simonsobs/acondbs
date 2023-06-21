@@ -1,18 +1,15 @@
-import pytest
-
 import datetime
+
+import pytest
 
 from acondbs import ops
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app(app_users):
-
     y = app_users
 
     with y.app_context():
-
         ops.create_field(
             field_id=1,
             name="contact",
@@ -42,7 +39,6 @@ def app(app_users):
         ops.commit()
 
     with y.app_context():
-
         ops.create_product_type(
             type_id=1,
             name="map",
@@ -84,6 +80,3 @@ def app(app_users):
         ops.commit()
 
     yield y
-
-
-##__________________________________________________________________||

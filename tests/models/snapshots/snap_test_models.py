@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
-
 snapshots = Snapshot()
 
 snapshots['test_table_names 1'] = [
@@ -28,5 +27,5 @@ snapshots['test_table_names 1'] = [
     'github_org_memberships',
     'account_admins',
     'web_config',
-    'log'
+    'log',
 ]

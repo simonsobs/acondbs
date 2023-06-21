@@ -1,37 +1,30 @@
 import datetime
 
+from ..db.sa import sa
 from ..models import (
-    ProductType,
+    FieldType,
+    GitHubUser,
     Product,
     ProductFilePath,
     ProductRelation,
     ProductRelationType,
-    FieldType,
-    GitHubUser,
+    ProductType,
 )
 
-from ..db.sa import sa
 
-
-##__________________________________________________________________||
 def create_product(
     type_id,
     paths=None,
     relations=None,
     attributes=None,
     posting_git_hub_user_id=None,
-    **kwargs
+    **kwargs,
 ):
     """Create a product"""
 
     with sa.session.no_autoflush:
         return _create_product(
-            type_id,
-            paths,
-            relations,
-            attributes,
-            posting_git_hub_user_id,
-            **kwargs
+            type_id, paths, relations, attributes, posting_git_hub_user_id, **kwargs
         )
 
 
@@ -41,18 +34,13 @@ def update_product(
     relations=None,
     attributes=None,
     updating_git_hub_user_id=None,
-    **kwargs
+    **kwargs,
 ):
     """Update a product"""
 
     with sa.session.no_autoflush:
         return _update_product(
-            product_id,
-            paths,
-            relations,
-            attributes,
-            updating_git_hub_user_id,
-            **kwargs
+            product_id, paths, relations, attributes, updating_git_hub_user_id, **kwargs
         )
 
 
@@ -69,7 +57,6 @@ def convert_product_type(product_id, type_id, updating_git_hub_user_id=None):
         return _convert_product_type(product_id, type_id, updating_git_hub_user_id)
 
 
-##__________________________________________________________________||
 def uniq_preserving_order(list_):
     # https://stackoverflow.com/a/17016257/7309855
     return list(dict.fromkeys(list_))
@@ -90,7 +77,6 @@ def _normalize_paths(paths):
     return ret
 
 
-##__________________________________________________________________||
 def _create_product(
     type_id, paths, relations, attributes, posting_git_hub_user_id, **kwargs
 ):
@@ -105,12 +91,8 @@ def _create_product(
     if relations is not None:
         model.relations = [
             ProductRelation(
-                type_=ProductRelationType.query.filter_by(
-                    type_id=r["type_id"]
-                ).one(),
-                other=Product.query.filter_by(
-                    product_id=r["product_id"]
-                ).one(),
+                type_=ProductRelationType.query.filter_by(type_id=r["type_id"]).one(),
+                other=Product.query.filter_by(product_id=r["product_id"]).one(),
             )
             for r in relations
         ]
@@ -138,14 +120,8 @@ def _create_product(
 
 
 def _update_product(
-    product_id,
-    paths,
-    relations,
-    attributes,
-    updating_git_hub_user_id,
-    **kwargs
+    product_id, paths, relations, attributes, updating_git_hub_user_id, **kwargs
 ):
-
     model = Product.query.filter_by(product_id=product_id).one()
 
     if not attributes:
@@ -194,14 +170,10 @@ def _update_product(
 def _update_paths(old, input):
     input = _normalize_paths(input)
     path_dict = {p.path: p for p in old}
-    return [
-        path_dict[p] if p in path_dict else ProductFilePath(path=p)
-        for p in input
-    ]
+    return [path_dict[p] if p in path_dict else ProductFilePath(path=p) for p in input]
 
 
 def _update_relations(old, input):
-
     # sets of tuples (type_id, other_product_id) of ProductRelation
     new_ids = {(i["type_id"], i["product_id"]) for i in input}
     old_ids = {(r.type_id, r.other_product_id) for r in old}
@@ -218,15 +190,13 @@ def _update_relations(old, input):
     return [model_dict[i] for i in new_ids]
 
 
-##__________________________________________________________________||
 def _convert_product_type(product_id, type_id, updating_git_hub_user_id):
     model = Product.query.filter_by(product_id=product_id).one()
     product_type = ProductType.query.filter_by(type_id=type_id).one()
     model.type_ = product_type
 
     attr_names = [
-        a.attribute_class.backref_column
-        for a in FieldType.__members__.values()
+        a.attribute_class.backref_column for a in FieldType.__members__.values()
     ]
     # e.g., 'attributes_unicode_text', 'attributes_boolean'
 
@@ -258,6 +228,3 @@ def _convert_product_type(product_id, type_id, updating_git_hub_user_id):
     model.updating_git_hub_user_id = updating_git_hub_user_id
 
     return model
-
-
-##__________________________________________________________________||

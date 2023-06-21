@@ -7,22 +7,24 @@ related to SQLAlchemy and the DB except ORM model declarations.
 
 
 from pathlib import Path
+
 from flask_migrate import Migrate
 
-from .sa import sa
+from .cmds import (
+    backup_db_command,
+    dump_db_command,
+    export_csv_command,
+    import_csv_command,
+    init_db_command,
+)
 from .conn import close_db_connection
-from .cmds import init_db_command
-from .cmds import dump_db_command
-from .cmds import import_csv_command
-from .cmds import export_csv_command
-from .cmds import backup_db_command
+from .sa import sa
 
 migrate = Migrate()
 
 _MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.joinpath("migrations")
 
 
-##__________________________________________________________________||
 def init_app(app):
     """Initialize the Flask application object
 
@@ -41,6 +43,3 @@ def init_app(app):
     app.cli.add_command(export_csv_command)
     app.cli.add_command(backup_db_command)
     app.teardown_appcontext(close_db_connection)
-
-
-##__________________________________________________________________||

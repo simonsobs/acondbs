@@ -4,9 +4,7 @@ from acondbs.db.sa import sa
 from acondbs.models import GitHubToken, GitHubUser
 
 
-##__________________________________________________________________||
 def test_query(app):
-
     with app.app_context():
         user1 = GitHubUser.query.filter_by(login="octocat").one()
         token1, token2 = user1.tokens
@@ -20,9 +18,7 @@ def test_query(app):
         assert token2.user == user1
 
 
-##__________________________________________________________________||
 def test_add(app):
-
     with app.app_context():
         user1 = GitHubUser.query.filter_by(login="octocat").one()
         ntokens = len(user1.tokens)  # = 2
@@ -46,9 +42,7 @@ def test_add(app):
         assert ntokens + 1 == len(user1.tokens)
 
 
-##__________________________________________________________________||
 def test_delete(app):
-
     with app.app_context():
         user1 = GitHubUser.query.filter_by(login="octocat").one()
         ntokens = len(user1.tokens)  # = 2
@@ -71,9 +65,7 @@ def test_delete(app):
         assert ntokens - 2 == len(user1.tokens)  # 0
 
 
-##__________________________________________________________________||
 def test_delete_cascade(app):
-
     with app.app_context():
         user1 = GitHubUser.query.filter_by(login="octocat").one()
         sa.session.delete(user1)
@@ -82,6 +74,3 @@ def test_delete_cascade(app):
     with app.app_context():
         tokens = GitHubToken.query.all()
         assert 0 == len(tokens)
-
-
-##__________________________________________________________________||

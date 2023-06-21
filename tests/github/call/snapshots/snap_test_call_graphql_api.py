@@ -4,46 +4,25 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
-
 snapshots = Snapshot()
 
 snapshots['test_simple 1'] = [
+    ((), {}),
     (
-        (
-        ),
+        ('https://api.github.com/graphql',),
         {
-        }
+            'headers': {'Authorization': 'token token-xxx'},
+            'json': {'query': '{ viewer { login name avatarUrl } }'},
+        },
     ),
-    (
-        (
-            'https://api.github.com/graphql'
-        ,),
-        {
-            'headers': {
-                'Authorization': 'token token-xxx'
-            },
-            'json': {
-                'query': '{ viewer { login name avatarUrl } }'
-            }
-        }
-    )
 ]
 
 snapshots['test_variables 1'] = [
+    ((), {}),
     (
-        (
-        ),
+        ('https://api.github.com/graphql',),
         {
-        }
-    ),
-    (
-        (
-            'https://api.github.com/graphql'
-        ,),
-        {
-            'headers': {
-                'Authorization': 'token token-xxx'
-            },
+            'headers': {'Authorization': 'token token-xxx'},
             'json': {
                 'query': '''
       query Organization($org_login: String!) {
@@ -53,10 +32,8 @@ snapshots['test_variables 1'] = [
         }
       }
     ''',
-                'variables': {
-                    'org_login': 'urban-octo-disco'
-                }
-            }
-        }
-    )
+                'variables': {'org_login': 'urban-octo-disco'},
+            },
+        },
+    ),
 ]

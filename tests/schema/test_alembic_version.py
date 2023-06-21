@@ -2,7 +2,6 @@ import pytest
 
 from .funcs import assert_query
 
-##__________________________________________________________________||
 ALEMBIC_VERSION = """
 {
   alembicVersion
@@ -12,7 +11,6 @@ ALEMBIC_VERSION = """
 HEADERS = {"Authorization": "Bearer token123"}  # octocat
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {"query": ALEMBIC_VERSION},
@@ -28,6 +26,3 @@ async def test_schema(app, snapshot, data):
 
     # Note: the result is None, i.e., {'data': {'alembicVersion': None }}
     # because the migration is not applied in the tests.
-
-
-##__________________________________________________________________||

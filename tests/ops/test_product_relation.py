@@ -1,5 +1,4 @@
 from acondbs import ops
-
 from acondbs.models import ProductRelation
 
 
@@ -30,7 +29,5 @@ def test_delete(app):
 
     with app.app_context():
         assert ProductRelation.query.count() == (count - 2)
-        model = ProductRelation.query.filter_by(
-            relation_id=relation_id
-        ).one_or_none()
+        model = ProductRelation.query.filter_by(relation_id=relation_id).one_or_none()
         assert model is None

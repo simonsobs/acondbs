@@ -1,16 +1,13 @@
 import datetime
+
 import pytest
 
-from acondbs import create_app
+from acondbs import create_app, ops
 from acondbs.db.ops import define_tables
-from acondbs.models import FieldType
-from acondbs import ops
-
 from acondbs.db.sa import sa
-from acondbs.models import GitHubUser
+from acondbs.models import FieldType, GitHubUser
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -91,6 +88,3 @@ def app(app_empty):
         ops.commit()
 
     yield y
-
-
-##__________________________________________________________________||

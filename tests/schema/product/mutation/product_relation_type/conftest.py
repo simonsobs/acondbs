@@ -3,10 +3,8 @@ import pytest
 from acondbs import ops
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app(app_users):
-
     y = app_users
 
     # Relation types:
@@ -94,6 +92,3 @@ def app(app_users):
         ops.commit()
 
     yield y
-
-
-##__________________________________________________________________||

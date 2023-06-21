@@ -1,17 +1,14 @@
 import pytest
-
-from async_asgi_testclient import TestClient
 from a2wsgi import WSGIMiddleware
+from async_asgi_testclient import TestClient
 
 import acondbs
 
 QUERY = "{ version }"
 
 
-##__________________________________________________________________||
 @pytest.mark.asyncio
 async def test_schema(app):
-
     app = WSGIMiddleware(app)  # convert a wsgi app to an asgi app
 
     headers = {
@@ -27,6 +24,3 @@ async def test_schema(app):
 
     assert resp.status_code == 200
     assert resp.json() == expected
-
-
-##__________________________________________________________________||

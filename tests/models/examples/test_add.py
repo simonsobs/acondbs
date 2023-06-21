@@ -1,16 +1,14 @@
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product
+from acondbs.models import Product, ProductType
 
 # These tests are written primarily for the developer to understand
 # how models in flask_sqlalchemy work.
 
 
-##__________________________________________________________________||
 def test_simple(app):
     """A simple test of adding an object"""
 
     with app.app_context():
-
         # the number of the product types is zero initially
         assert 0 == len(ProductType.query.all())
 
@@ -22,7 +20,6 @@ def test_simple(app):
         sa.session.commit()
 
     with app.app_context():
-
         # the number of the product types is increased by one
         assert 1 == len(ProductType.query.all())
 
@@ -31,7 +28,6 @@ def test_simple(app):
         assert isinstance(type1_, ProductType)
 
 
-##__________________________________________________________________||
 def test_python_object(app):
     """A simple test about Python object"""
 
@@ -53,7 +49,6 @@ def test_python_object(app):
         assert type1 is not type1_
 
 
-##__________________________________________________________________||
 def test_primary_key(app):
     """A simple test about the primary key"""
 
@@ -71,13 +66,11 @@ def test_primary_key(app):
         assert type_id is not None
 
     with app.app_context():
-
         # The object can be retrived by the product_id in another context
         type1 = ProductType.query.filter_by(type_id=type_id).first()
         assert "type1" == type1.name
 
 
-##__________________________________________________________________||
 def test_relation(app):
     """A simple test of adding an object with relation"""
 
@@ -112,6 +105,3 @@ def test_relation(app):
         assert "type1" == type1.name
         assert product1 is type1.products[0]
         assert product1.type_id == type1.type_id
-
-
-##__________________________________________________________________||

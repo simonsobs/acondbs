@@ -3,8 +3,6 @@ import pytest
 from acondbs import create_app
 from acondbs.db.ops import define_tables
 
-
-##__________________________________________________________________||
 params = [
     [True, 200, "<!DOCTYPE html>"],
     [False, 400, "errors"],
@@ -28,7 +26,6 @@ def test_disable(graphiql, code, data):
     assert data in response.data.decode("utf-8")
 
 
-##__________________________________________________________________||
 params = [
     [None, "//cdn.jsdelivr.net/npm/graphiql@0.11.11/graphiql.min.js"],
     [1, "https://unpkg.com/graphiql/graphiql.min.js"],
@@ -51,6 +48,3 @@ def test_template(number, data):
     response = client.get("/graphql", headers={"Accept": "text/html"})
     assert 200 == response.status_code
     assert data in response.data.decode("utf-8")
-
-
-##__________________________________________________________________||

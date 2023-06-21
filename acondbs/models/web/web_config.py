@@ -1,11 +1,9 @@
 import json
 
 from ...db.sa import sa
-
 from ..funcs import shorten
 
 
-##__________________________________________________________________||
 class WebConfig(sa.Model):
     __tablename__ = "web_config"
     id_ = sa.Column(sa.Integer(), primary_key=True)
@@ -28,6 +26,3 @@ class WebConfig(sa.Model):
             pass
 
         return self.json
-
-
-##__________________________________________________________________||

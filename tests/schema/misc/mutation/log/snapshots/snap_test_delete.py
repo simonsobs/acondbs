@@ -4,16 +4,9 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
-
 snapshots = Snapshot()
 
-snapshots['test_schema_success[one] 1'] = {
-    'data': {
-        'deleteLog': {
-            'ok': True
-        }
-    }
-}
+snapshots['test_schema_success[one] 1'] = {'data': {'deleteLog': {'ok': True}}}
 
 snapshots['test_schema_success[one] 2'] = {
     'data': {
@@ -24,11 +17,11 @@ snapshots['test_schema_success[one] 2'] = {
                         'id_': '1',
                         'level': 'DEBUG',
                         'message': 'A debug message!',
-                        'time': '2021-01-04T14:32:20'
+                        'time': '2021-01-04T14:32:20',
                     }
                 }
             ],
-            'totalCount': 1
+            'totalCount': 1,
         }
     }
 }

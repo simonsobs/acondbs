@@ -1,15 +1,11 @@
 import pytest
-
 from sqlalchemy import exc
 
+from acondbs.db.sa import sa
 from acondbs.models import Product, ProductRelation, ProductRelationType
 
-from acondbs.db.sa import sa
 
-
-##__________________________________________________________________||
 def test_constraint(app):
-
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -35,6 +31,3 @@ def test_constraint(app):
 
         with pytest.raises(exc.IntegrityError):
             sa.session.commit()
-
-
-##__________________________________________________________________||

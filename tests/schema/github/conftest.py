@@ -4,15 +4,14 @@ from acondbs import create_app
 from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 from acondbs.models import (
+    AccountAdmin,
     GitHubOrg,
-    GitHubUser,
     GitHubOrgMembership,
     GitHubToken,
-    AccountAdmin,
+    GitHubUser,
 )
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app_empty():
     database_uri = "sqlite:///:memory:"
@@ -31,7 +30,6 @@ def app_empty():
 
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     #
@@ -106,6 +104,3 @@ def app(app_empty):
         sa.session.add(admin2)
         sa.session.commit()
     yield y
-
-
-##__________________________________________________________________||

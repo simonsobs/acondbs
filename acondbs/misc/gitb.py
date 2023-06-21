@@ -1,10 +1,11 @@
 """Git operations
 """
-from pathlib import Path
-import git
 import warnings
+from pathlib import Path
 
-##__________________________________________________________________||
+import git
+
+
 def commit(path, message=None):
     """commit all changes in a git repository to git
 
@@ -51,7 +52,7 @@ def commit(path, message=None):
         message = 'commit all'
     repo.index.commit(message)
 
-##__________________________________________________________________||
+
 def pull(path):
     """pull from a tracking branch
 
@@ -92,7 +93,7 @@ def pull(path):
     remote = repo.remotes[tracking_branch.remote_name]
     remote.pull()
 
-##__________________________________________________________________||
+
 def push(path):
     """push to a upstream branch
 
@@ -133,7 +134,7 @@ def push(path):
     remote = repo.remotes[tracking_branch.remote_name]
     remote.push()
 
-##__________________________________________________________________||
+
 def is_git_repo(path):
     """test if a folder is a git repository
 
@@ -145,5 +146,3 @@ def is_git_repo(path):
         return True
     except git.exc.InvalidGitRepositoryError:
         return False
-
-##__________________________________________________________________||

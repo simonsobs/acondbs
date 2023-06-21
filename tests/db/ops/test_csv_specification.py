@@ -2,7 +2,6 @@ import csv
 
 import pytest
 
-##__________________________________________________________________||
 multiline_entry = """\
 "abc
 xyz",def,ghi\
@@ -53,6 +52,3 @@ def test_csv_specification(input, expected):
     """
     rows = list(csv.reader(input))
     assert expected == rows
-
-
-##__________________________________________________________________||

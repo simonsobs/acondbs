@@ -1,20 +1,14 @@
-import pytest
-
 import datetime
 
-from acondbs.db.sa import sa
-from acondbs.models import (
-    GitHubUser,
-    GitHubToken,
-)
+import pytest
 
 from acondbs import ops
+from acondbs.db.sa import sa
+from acondbs.models import GitHubToken, GitHubUser
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app(app_empty):
-
     y = app_empty
 
     user1 = GitHubUser(login="user1", git_hub_id="04:User1")
@@ -135,6 +129,3 @@ def app(app_empty):
         ops.commit()
 
     yield y
-
-
-##__________________________________________________________________||

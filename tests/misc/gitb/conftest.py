@@ -1,10 +1,9 @@
 from pathlib import Path
-import git
 
+import git
 import pytest
 
 
-##__________________________________________________________________||
 @pytest.fixture()
 def folder(tmpdir_factory):
     """path to an folder (not a git repo) with two text files
@@ -24,7 +23,6 @@ def folder(tmpdir_factory):
     yield folder
 
 
-##__________________________________________________________________||
 @pytest.fixture()
 def repo(folder):
     """a git repo
@@ -40,7 +38,6 @@ def repo(folder):
     yield repo
 
 
-##__________________________________________________________________||
 @pytest.fixture()
 def bare_repo(repo, tmpdir_factory):
     """a bare repo, a clone of the repo"""
@@ -84,6 +81,3 @@ def remote_url(request, bare_repo, github_repo_url):
     else:
         raise ValueError(f"unknown param: {p}")
     yield y
-
-
-##__________________________________________________________________||

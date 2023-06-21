@@ -11,7 +11,7 @@ from flask import debughelpers  # noqa: F401
 from . import _warnings  # noqa: F401
 from . import _logging
 
-##__________________________________________________________________||
+
 DEFAULT_CONFIG_DICT = dict(
     SECRET_KEY="dev",
     SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
@@ -19,9 +19,7 @@ DEFAULT_CONFIG_DICT = dict(
 )
 
 
-##__________________________________________________________________||
 def create_app(config_path=None, **kwargs):
-
     _logging.configure_logging()
 
     app = Flask(__name__, instance_relative_config=False)
@@ -65,8 +63,6 @@ def create_app(config_path=None, **kwargs):
     return app
 
 
-##__________________________________________________________________||
-
 from ._version import get_versions  # noqa: E402
 
 __version__ = get_versions()["version"]
@@ -80,5 +76,3 @@ Versioneer: https://github.com/warner/python-versioneer
 """
 
 del get_versions
-
-##__________________________________________________________________||

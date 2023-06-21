@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
-
 snapshots = Snapshot()
 
 snapshots['test_schema[filter-off] 1'] = {
@@ -17,23 +16,11 @@ snapshots['test_schema[filter-off] 1'] = {
                         'login': 'user1',
                         'memberships': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org1'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org2'
-                                        }
-                                    }
-                                }
+                                {'node': {'org': {'login': 'org1'}}},
+                                {'node': {'org': {'login': 'org2'}}},
                             ]
                         },
-                        'name': 'User One'
+                        'name': 'User One',
                     }
                 },
                 {
@@ -41,32 +28,21 @@ snapshots['test_schema[filter-off] 1'] = {
                         'avatarUrl': 'avatar.com/user2',
                         'login': 'user2',
                         'memberships': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org2'
-                                        }
-                                    }
-                                }
-                            ]
+                            'edges': [{'node': {'org': {'login': 'org2'}}}]
                         },
-                        'name': 'User Two'
+                        'name': 'User Two',
                     }
                 },
                 {
                     'node': {
                         'avatarUrl': 'avatar.com/user3',
                         'login': 'user3',
-                        'memberships': {
-                            'edges': [
-                            ]
-                        },
-                        'name': 'User Three'
+                        'memberships': {'edges': []},
+                        'name': 'User Three',
                     }
-                }
+                },
             ],
-            'totalCount': 3
+            'totalCount': 3,
         }
     }
 }
@@ -81,23 +57,11 @@ snapshots['test_schema[filter-on] 1'] = {
                         'login': 'user1',
                         'memberships': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org1'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org2'
-                                        }
-                                    }
-                                }
+                                {'node': {'org': {'login': 'org1'}}},
+                                {'node': {'org': {'login': 'org2'}}},
                             ]
                         },
-                        'name': 'User One'
+                        'name': 'User One',
                     }
                 },
                 {
@@ -105,21 +69,13 @@ snapshots['test_schema[filter-on] 1'] = {
                         'avatarUrl': 'avatar.com/user2',
                         'login': 'user2',
                         'memberships': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org2'
-                                        }
-                                    }
-                                }
-                            ]
+                            'edges': [{'node': {'org': {'login': 'org2'}}}]
                         },
-                        'name': 'User Two'
+                        'name': 'User Two',
                     }
-                }
+                },
             ],
-            'totalCount': 2
+            'totalCount': 2,
         }
     }
 }
@@ -134,23 +90,11 @@ snapshots['test_schema[one] 1'] = {
                         'login': 'user1',
                         'memberships': {
                             'edges': [
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org1'
-                                        }
-                                    }
-                                },
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org2'
-                                        }
-                                    }
-                                }
+                                {'node': {'org': {'login': 'org1'}}},
+                                {'node': {'org': {'login': 'org2'}}},
                             ]
                         },
-                        'name': 'User One'
+                        'name': 'User One',
                     }
                 },
                 {
@@ -158,32 +102,21 @@ snapshots['test_schema[one] 1'] = {
                         'avatarUrl': 'avatar.com/user2',
                         'login': 'user2',
                         'memberships': {
-                            'edges': [
-                                {
-                                    'node': {
-                                        'org': {
-                                            'login': 'org2'
-                                        }
-                                    }
-                                }
-                            ]
+                            'edges': [{'node': {'org': {'login': 'org2'}}}]
                         },
-                        'name': 'User Two'
+                        'name': 'User Two',
                     }
                 },
                 {
                     'node': {
                         'avatarUrl': 'avatar.com/user3',
                         'login': 'user3',
-                        'memberships': {
-                            'edges': [
-                            ]
-                        },
-                        'name': 'User Three'
+                        'memberships': {'edges': []},
+                        'name': 'User Three',
                     }
-                }
+                },
             ],
-            'totalCount': 3
+            'totalCount': 3,
         }
     }
 }

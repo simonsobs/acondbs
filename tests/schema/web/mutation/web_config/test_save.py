@@ -3,7 +3,6 @@ import json
 import pytest
 
 from ....funcs import assert_mutation
-
 from ...gql import MUTATION_SAVE_WEB_CONFIG, QUERY_WEB_CONFIG
 
 HEADERS_MUTATION = {
@@ -25,7 +24,6 @@ CONFIG_JSON = json.dumps(
 )
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {
@@ -45,7 +43,6 @@ params = [
 async def test_schema_success(
     app, snapshot, data_mutation, data_query, mock_request_backup_db
 ):
-
     success = True
     await assert_mutation(
         app,
@@ -57,6 +54,3 @@ async def test_schema_success(
         mock_request_backup_db,
         success,
     )
-
-
-##__________________________________________________________________||

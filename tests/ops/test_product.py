@@ -1,30 +1,23 @@
 import datetime
+
 import pytest
 
 from acondbs import ops
+from acondbs.models import FieldType, GitHubUser, Product, ProductType
 from acondbs.ops.product import _normalize_paths
-from acondbs.models import Product, ProductType, FieldType, GitHubUser
 
-
-##__________________________________________________________________||
 params = [
     pytest.param([], [], id="empty"),
     pytest.param(["/a/b/c"], ["/a/b/c"], id="one"),
     pytest.param([" /a/b/c  "], ["/a/b/c"], id="unstripped"),
-    pytest.param(
-        ["/d/e", "/a/b/c", "/f/g"], ["/d/e", "/a/b/c", "/f/g"], id="multiple"
-    ),
-    pytest.param(
-        ["/a/b/c", "", "/f/g"], ["/a/b/c", "/f/g"], id="empty-member"
-    ),
+    pytest.param(["/d/e", "/a/b/c", "/f/g"], ["/d/e", "/a/b/c", "/f/g"], id="multiple"),
+    pytest.param(["/a/b/c", "", "/f/g"], ["/a/b/c", "/f/g"], id="empty-member"),
     pytest.param(
         ["/a/b/c", "  ", "/f/g"],
         ["/a/b/c", "/f/g"],
         id="empty-unstripped-member",
     ),
-    pytest.param(
-        ["/d/e", "/a/b/c", "/d/e"], ["/d/e", "/a/b/c"], id="duplicate"
-    ),
+    pytest.param(["/d/e", "/a/b/c", "/d/e"], ["/d/e", "/a/b/c"], id="duplicate"),
     pytest.param(
         ["  /d/e ", "/a/b/c", "/d/e"],
         ["/d/e", "/a/b/c"],
@@ -38,7 +31,6 @@ def test_normalize_paths(paths, ret):
     assert _normalize_paths(paths) == ret
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(None, id="none"),
     pytest.param({}, id="empty"),
@@ -84,9 +76,7 @@ params = [
     pytest.param([], id="empty"),
     pytest.param(["/a/b/c"], id="one"),
     pytest.param(["/d/e", "/a/b/c", "/f/g"], id="multiple"),
-    pytest.param(
-        ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"
-    ),
+    pytest.param(["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"),
 ]
 
 
@@ -107,7 +97,6 @@ def _test_create(
     attributes=None,
     posting_git_hub_user_id=None,
 ):
-
     kwargs = {"type_id": 1, "name": "new-product"}
 
     if paths is not None:
@@ -163,15 +152,12 @@ def _test_create(
             attributes = {}
         expected_ids = [(a.iid, a.field_id) for a in model.type_.fields]
         # list of (type_field_association.iid, field.field_id)
-        expected = {
-            fid: (aid, attributes.get(fid)) for aid, fid in expected_ids
-        }
+        expected = {fid: (aid, attributes.get(fid)) for aid, fid in expected_ids}
         actual = _extract_attributes(model)
         # actual_field_ids = list(actual.keys())
         assert actual == expected
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(None, id="none"),
     pytest.param({}, id="empty"),
@@ -250,9 +236,7 @@ params = [
     pytest.param(["/a/b/c"], id="remove"),
     pytest.param(["/d/e", "/a/b/c", "/f/g"], id="add"),
     pytest.param(["/d/e", "/f/g", "/a/b/c"], id="add-perm"),
-    pytest.param(
-        ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"
-    ),
+    pytest.param(["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"),
 ]
 
 
@@ -273,7 +257,6 @@ def _test_update(
     attributes=None,
     updating_git_hub_user_id=None,
 ):
-
     product_id = 1
     kwargs = {"product_id": product_id, "name": "new-name"}
 
@@ -296,12 +279,9 @@ def _test_update(
         paths_old = [p.path for p in model.paths]
         path_ids_old = {p.path: p.path_id for p in model.paths}
 
-        relations_old = {
-            (r.type_id, r.other_product_id) for r in model.relations
-        }
+        relations_old = {(r.type_id, r.other_product_id) for r in model.relations}
         relation_ids_old = {
-            (r.type_id, r.other_product_id): r.relation_id
-            for r in model.relations
+            (r.type_id, r.other_product_id): r.relation_id for r in model.relations
         }
 
         attributes_old = _extract_attributes(model)
@@ -335,12 +315,8 @@ def _test_update(
             expected = paths_old
         actual = [p.path for p in model.paths]
         assert actual == expected
-        expected_path_ids = {
-            k: v for k, v in path_ids_old.items() if k in expected
-        }
-        path_ids = {
-            p.path: p.path_id for p in model.paths if p.path in path_ids_old
-        }
+        expected_path_ids = {k: v for k, v in path_ids_old.items() if k in expected}
+        path_ids = {p.path: p.path_id for p in model.paths if p.path in path_ids_old}
         assert path_ids == expected_path_ids
 
         if relations is not None:
@@ -368,9 +344,7 @@ def _test_update(
         assert actual == expected
 
 
-##__________________________________________________________________||
 def test_delete(app):
-
     with app.app_context():
         model = ops.create_product(type_id=1, name="to_be_deleted")
         ops.commit()
@@ -387,19 +361,15 @@ def test_delete(app):
         assert Product.query.count() == (count - 1)
 
 
-##__________________________________________________________________||
 @pytest.mark.parametrize("updating_git_hub_user_id", [None, 2])
 def test_convert_user(app, updating_git_hub_user_id):
-    return _test_convert(
-        app, updating_git_hub_user_id=updating_git_hub_user_id
-    )
+    return _test_convert(app, updating_git_hub_user_id=updating_git_hub_user_id)
 
 
 def _test_convert(
     app,
     updating_git_hub_user_id=None,
 ):
-
     product_id = 1
     type_id = 2
     kwargs = {"product_id": product_id, "type_id": type_id}
@@ -408,8 +378,7 @@ def _test_convert(
         kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
 
     attr_names = [
-        a.attribute_class.backref_column
-        for a in FieldType.__members__.values()
+        a.attribute_class.backref_column for a in FieldType.__members__.values()
     ]
     # e.g., 'attributes_unicode_text', 'attributes_boolean'
 
@@ -417,9 +386,7 @@ def _test_convert(
         model = Product.query.filter_by(product_id=product_id).one()
         assert not model.type_.type_id == type_id
         value_dict = {
-            e.field_id: e.value
-            for attr in attr_names
-            for e in getattr(model, attr)
+            e.field_id: e.value for attr in attr_names for e in getattr(model, attr)
         }
 
         product_type = ProductType.query.filter_by(type_id=type_id).one()
@@ -449,19 +416,15 @@ def _test_convert(
         attrs = [e for attr in attr_names for e in getattr(model, attr)]
         for attr in attrs:
             assert attr.type_field_association.type_ == model.type_
-        actual_ids = [
-            (e.type_field_association.iid, e.field_id) for e in attrs
-        ]
+        actual_ids = [(e.type_field_association.iid, e.field_id) for e in attrs]
         assert set(expected_ids) == set(actual_ids)
         actual_field_values = [(a.field_id, a.value) for a in attrs]
         assert set(expected_field_values) == set(actual_field_values)
 
 
-##__________________________________________________________________||
 def _extract_attributes(model):
     attr_names = [
-        a.attribute_class.backref_column
-        for a in FieldType.__members__.values()
+        a.attribute_class.backref_column for a in FieldType.__members__.values()
     ]
     # e.g., 'attributes_unicode_text', 'attributes_boolean'
 
@@ -471,6 +434,3 @@ def _extract_attributes(model):
     ret = {a.field_id: (a.type_field_association_iid, a.value) for a in attrs}
 
     return ret
-
-
-##__________________________________________________________________||

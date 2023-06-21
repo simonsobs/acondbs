@@ -1,13 +1,11 @@
-from sqlalchemy import MetaData
-
 import pytest
+from sqlalchemy import MetaData
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
 from acondbs.db.sa import sa
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app_with_empty_db():
     database_uri = "sqlite:///:memory:"
@@ -15,7 +13,6 @@ def app_with_empty_db():
     yield app
 
 
-##__________________________________________________________________||
 def test_define_tables_start_with_empty_db(app_with_empty_db, snapshot):
     """test define_tables()
 
@@ -41,7 +38,6 @@ def test_define_tables_start_with_empty_db(app_with_empty_db, snapshot):
         snapshot.assert_match(metadata.tables)
 
 
-##__________________________________________________________________||
 def test_define_tables_start_with_nonempty_db(app, snapshot):
     """test define_tables()
 
@@ -78,6 +74,3 @@ def test_define_tables_start_with_nonempty_db(app, snapshot):
             ]
         )
         assert total_nentries == 0
-
-
-##__________________________________________________________________||

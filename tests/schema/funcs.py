@@ -1,11 +1,9 @@
-from async_asgi_testclient import TestClient
 from a2wsgi import WSGIMiddleware
-
+from async_asgi_testclient import TestClient
 
 HEADERS_DEFAULT = {"Content-Type:": "application/json"}
 
 
-##__________________________________________________________________||
 async def assert_query(app, snapshot, data, headers=None, error=False):
     if not headers:
         headers = {}
@@ -54,6 +52,3 @@ async def assert_mutation(
         mock_request_backup_db.assert_called_once()
 
     await assert_query(app, snapshot, data_query, headers_query)
-
-
-##__________________________________________________________________||

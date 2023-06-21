@@ -1,10 +1,9 @@
 import graphene
 
-from .. import type_
 from .... import ops
+from .. import type_
 
 
-##__________________________________________________________________||
 class CreateProductRelationInput(graphene.InputObjectType):
     """An input to createProductRelation()"""
 
@@ -23,7 +22,6 @@ class CreateProductRelationInput(graphene.InputObjectType):
     )
 
 
-##__________________________________________________________________||
 class CreateProductRelation(graphene.Mutation):
     """Add relations between two products. The arguments only specify the relation
     from one product to the other. The reverse relation will be also added.
@@ -62,6 +60,3 @@ class DeleteProductRelation(graphene.Mutation):
         ops.commit()
         ok = True
         return DeleteProductRelation(ok=ok)
-
-
-##__________________________________________________________________||

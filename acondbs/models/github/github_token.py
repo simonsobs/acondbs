@@ -10,7 +10,6 @@ def encription_key():
     return current_app.config["SECRET_KEY"]
 
 
-##__________________________________________________________________||
 class GitHubToken(sa.Model):
     __tablename__ = "github_tokens"
     token_id = sa.Column(sa.Integer(), primary_key=True)
@@ -21,9 +20,4 @@ class GitHubToken(sa.Model):
         "GitHubUser",
         backref=sa.backref("tokens", cascade="all, delete-orphan"),
     )
-    time_created = sa.Column(
-        sa.DateTime(), default=lambda: datetime.datetime.now()
-    )
-
-
-##__________________________________________________________________||
+    time_created = sa.Column(sa.DateTime(), default=lambda: datetime.datetime.now())

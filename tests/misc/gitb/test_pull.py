@@ -1,15 +1,13 @@
-import git
 from pathlib import Path
 
+import git
 import pytest
 
 from acondbs.misc import gitb
 
-##__________________________________________________________________||
-def test_pull(remote_url, tmpdir_factory):
-    """test pull()
 
-    """
+def test_pull(remote_url, tmpdir_factory):
+    """test pull()"""
 
     # create two clones
     folder1 = Path(tmpdir_factory.mktemp('git'))
@@ -39,28 +37,25 @@ def test_pull(remote_url, tmpdir_factory):
     assert not head_sha_old == head_sha_new
     assert head_sha_repo1 == head_sha_new
 
-##__________________________________________________________________||
+
 def test_nonexistent_path(tmpdir_factory):
-    """assert exception is raised for nonexistent path
-    """
+    """assert exception is raised for nonexistent path"""
     folder = Path(tmpdir_factory.mktemp('git'))
     path = folder.joinpath('nonexistent')
 
     with pytest.raises(ValueError):
         gitb.pull(path)
 
+
 def test_path_not_repo(folder):
-    """assert exception is raised if not a repo
-    """
+    """assert exception is raised if not a repo"""
 
     with pytest.raises(ValueError):
         gitb.pull(folder)
 
+
 def test_repo_no_remote(repo):
-    """assert exception is raised if a repo has no tracking branch
-    """
+    """assert exception is raised if a repo has no tracking branch"""
 
     with pytest.raises(ValueError):
         gitb.pull(repo.working_tree_dir)
-
-##__________________________________________________________________||

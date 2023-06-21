@@ -1,6 +1,7 @@
 from .fragment_log import FRAGMENT_LOG
 
-FRAGMENT_LOG_CONNECTION = '''
+FRAGMENT_LOG_CONNECTION = (
+    '''
 fragment fragmentLogConnection on LogConnection {
   totalCount
   edges {
@@ -9,4 +10,6 @@ fragment fragmentLogConnection on LogConnection {
     }
   }
 }
-''' + FRAGMENT_LOG
+'''
+    + FRAGMENT_LOG
+)

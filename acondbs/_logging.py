@@ -5,7 +5,6 @@ import logging
 from logging.config import dictConfig
 from pathlib import Path
 
-##__________________________________________________________________||
 _module_path = Path(__file__).resolve().parent.parent
 # the path to the dir in which the module is installed,
 # i.e., the one dir above the module path.
@@ -28,9 +27,7 @@ def record_factory(*args, **kwargs):
 
     record = _old_factory(*args, **kwargs)
     try:
-        record.pathname = (
-            Path(record.pathname).resolve().relative_to(_module_path)
-        )
+        record.pathname = Path(record.pathname).resolve().relative_to(_module_path)
     except Exception:
         pass
     return record
@@ -39,7 +36,6 @@ def record_factory(*args, **kwargs):
 logging.setLogRecordFactory(record_factory)
 
 
-##__________________________________________________________________||
 def configure_logging():
     """configure logging
 
@@ -72,11 +68,6 @@ def configure_logging():
                     "formatter": "default",
                 }
             },
-            "loggers": {
-                logger_name: {"level": logger_level, "handlers": ["wsgi"]}
-            },
+            "loggers": {logger_name: {"level": logger_level, "handlers": ["wsgi"]}},
         }
     )
-
-
-##__________________________________________________________________||

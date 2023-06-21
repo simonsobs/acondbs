@@ -1,19 +1,13 @@
 import pytest
 
 from ....funcs import assert_mutation
-
-from ...gql import (
-    MUTATION_UPDATE_PRODUCT_TYPE,
-    QUERY_ALL_PRODUCT_TYPES,
-)
-
+from ...gql import MUTATION_UPDATE_PRODUCT_TYPE, QUERY_ALL_PRODUCT_TYPES
 
 HEADERS = {
     "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
 }
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {
@@ -79,7 +73,6 @@ params = [
 async def test_schema_success(
     app, snapshot, data_mutation, data_query, mock_request_backup_db
 ):
-
     success = True
     await assert_mutation(
         app,
@@ -93,7 +86,6 @@ async def test_schema_success(
     )
 
 
-##__________________________________________________________________||
 params = [
     pytest.param(
         {
@@ -132,6 +124,3 @@ async def test_schema_error(
         mock_request_backup_db,
         success,
     )
-
-
-##__________________________________________________________________||

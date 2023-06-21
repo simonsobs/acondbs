@@ -1,10 +1,8 @@
-from sqlalchemy.orm import declared_attr
-from sqlalchemy.orm import declarative_mixin
+from sqlalchemy.orm import declarative_mixin, declared_attr
 
 from ...db.sa import sa
 
 
-##__________________________________________________________________||
 @declarative_mixin
 class AttributeBase:
     iid = sa.Column(sa.Integer(), primary_key=True)
@@ -66,9 +64,7 @@ class AttributeBase:
         # TODO: remove, replace with type_field_association
 
     def __repr__(self):
-        return (
-            f"<{self.__class__.__name__} {self.field_name!r}: {self.value!r}>"
-        )
+        return f"<{self.__class__.__name__} {self.field_name!r}: {self.value!r}>"
 
     @property
     def field_name(self):
@@ -78,7 +74,6 @@ class AttributeBase:
             return self.field
 
 
-##__________________________________________________________________||
 class AttributeUnicodeText(AttributeBase, sa.Model):
     __tablename__ = "attribute_unicode_text"
     backref_column = "attributes_unicode_text"
@@ -119,6 +114,3 @@ class AttributeTime(AttributeBase, sa.Model):
     __tablename__ = "attribute_time"
     backref_column = "attributes_time"
     value = sa.Column(sa.Time())
-
-
-##__________________________________________________________________||

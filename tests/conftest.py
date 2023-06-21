@@ -1,20 +1,17 @@
-from pathlib import Path
-import threading
-import shutil
 import datetime
+import shutil
+import threading
+import unittest.mock as mock
+from pathlib import Path
 
 import pytest
-import unittest.mock as mock
 
 from acondbs import create_app
-
 from acondbs.db.ops import define_tables, import_tables_from_csv_files
 
-##__________________________________________________________________||
 from .constants import SAMPLE_DIR
 
 
-##__________________________________________________________________||
 @pytest.fixture(scope="session")
 def create_db_with_csv_files():
     """create a test DB, load data from CSV files"""
@@ -29,7 +26,6 @@ def create_db_with_csv_files():
     database_path.unlink()
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def database_uri(create_db_with_csv_files, tmpdir_factory):
     """the database URI for a temporarily copy of the test data
@@ -46,7 +42,6 @@ def database_uri(create_db_with_csv_files, tmpdir_factory):
     yield ret
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def app(database_uri):
     """a test Flask application
@@ -64,13 +59,10 @@ def app(database_uri):
 
     """
     config_path = Path(SAMPLE_DIR, "config.py")
-    app = create_app(
-        config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri
-    )
+    app = create_app(config_path=config_path, SQLALCHEMY_DATABASE_URI=database_uri)
     yield app
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def client(app):
     """a test client of the Flask application
@@ -96,7 +88,6 @@ def client(app):
     yield app.test_client()
 
 
-##__________________________________________________________________||
 @pytest.fixture
 def runner(app):
     """a test CLI runner of the Flask application
@@ -117,7 +108,6 @@ def runner(app):
     yield app.test_cli_runner()
 
 
-##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def db_backup_global_variables(monkeypatch):
     from acondbs.db import backup
@@ -128,7 +118,6 @@ def db_backup_global_variables(monkeypatch):
     backup.end_backup_thread()
 
 
-##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_request_backup_db(monkeypatch):
     """mock request_backup_db() so that backups won't be actually taken in tests"""
@@ -143,7 +132,6 @@ def mock_request_backup_db(monkeypatch):
     yield y
 
 
-##__________________________________________________________________||
 @pytest.fixture(autouse=True)
 def mock_datetime(monkeypatch):
     """mock datetime so that datetime.date.today() and datetime.datetime.now()
@@ -164,6 +152,3 @@ def mock_datetime(monkeypatch):
     for t in targets:
         monkeypatch.setattr(t, y)
     yield y
-
-
-##__________________________________________________________________||

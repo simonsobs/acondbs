@@ -1,11 +1,10 @@
-import os
-from pathlib import Path
-import time
 import contextlib
+import os
+import time
+from pathlib import Path
 
-##__________________________________________________________________||
+
 class lock:
-
     def __init__(self, path, timeout=None):
         self.path = Path(path)
         self.timeout = timeout
@@ -39,20 +38,18 @@ class lock:
             pass
         self.locked = False
 
-##__________________________________________________________________||
+
 class TimeOutAcquiringLock(Exception):
     pass
 
-##__________________________________________________________________||
+
 def try_make_file(path):
     """try to create a file atomically
 
     http://stackoverflow.com/questions/33223564/atomically-creating-a-file-if-it-doesnt-exist-in-python
     """
     try:
-        os.open(path,  os.O_CREAT | os.O_EXCL)
+        os.open(path, os.O_CREAT | os.O_EXCL)
         return True
     except FileExistsError:
         return False
-
-##__________________________________________________________________||

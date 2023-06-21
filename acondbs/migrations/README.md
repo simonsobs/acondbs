@@ -8,7 +8,7 @@ This folder is the [Alembic Migration Environment](https://alembic.sqlalchemy.or
 # cd to one dicrectory above this package, i.e., three directories above from here
 
 export FLASK_APP="acondbs:create_app('$PWD/acondbs/tests/sample/config.py')"
-export FLASK_ENV=development
+export FLASK_DEBUG=1
 
 cd acondbs/
 

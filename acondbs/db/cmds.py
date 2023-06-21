@@ -1,19 +1,20 @@
 """Commands (click)
 
 """
-from flask.cli import with_appcontext
-import click
-
 import json
 
-from .ops import define_tables
-from .ops import export_db_to_dict_of_dict_list
-from .ops import import_tables_from_csv_files
-from .ops import export_db_to_csv_files
+import click
+from flask.cli import with_appcontext
+
 from .backup import backup_db
+from .ops import (
+    define_tables,
+    export_db_to_csv_files,
+    export_db_to_dict_of_dict_list,
+    import_tables_from_csv_files,
+)
 
 
-##__________________________________________________________________||
 @click.command("init-db")
 @with_appcontext
 def init_db_command():
@@ -22,7 +23,6 @@ def init_db_command():
     click.echo("Initialized the database.")
 
 
-##__________________________________________________________________||
 @click.command("dump-db")
 @with_appcontext
 def dump_db_command():
@@ -33,7 +33,6 @@ def dump_db_command():
     # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
 
 
-##__________________________________________________________________||
 @click.command("import-csv")
 @click.argument("csvdir", type=click.Path(exists=True))
 @with_appcontext
@@ -42,7 +41,6 @@ def import_csv_command(csvdir):
     import_tables_from_csv_files(csvdir)
 
 
-##__________________________________________________________________||
 @click.command("export-csv")
 @click.argument("csvdir", type=click.Path())
 @with_appcontext
@@ -51,7 +49,6 @@ def export_csv_command(csvdir):
     export_db_to_csv_files(csvdir)
 
 
-##__________________________________________________________________||
 DEFAULT_EXCLUDES = ("github_tokens", "account_admins", "log")
 
 
@@ -82,6 +79,3 @@ def backup_db_command(exclude_csv, include_default_excludes):
     if not include_default_excludes:
         exclude_csv |= set(DEFAULT_EXCLUDES)
     backup_db(exclude_csv)
-
-
-##__________________________________________________________________||

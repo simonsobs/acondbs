@@ -1,16 +1,15 @@
-from ...db.sa import sa
-
 from sqlalchemy.event import listens_for
 
+from ...db.sa import sa
 
-##__________________________________________________________________||
+
 class ProductRelationType(sa.Model):
     __tablename__ = "product_relation_types"
     type_id = sa.Column(sa.Integer(), primary_key=True)
-    name = sa.Column(sa.Text(), nullable=False, unique=True, index=True)  # TODO: set unique False
-    reverse_type_id = sa.Column(
-        sa.ForeignKey("product_relation_types.type_id")
-    )
+    name = sa.Column(
+        sa.Text(), nullable=False, unique=True, index=True
+    )  # TODO: set unique False
+    reverse_type_id = sa.Column(sa.ForeignKey("product_relation_types.type_id"))
     reverse = sa.relationship(
         lambda: ProductRelationType,
         uselist=False,
@@ -27,7 +26,6 @@ class ProductRelationType(sa.Model):
         return f"<{self.__class__.__name__} {self.name!r}>"
 
 
-##__________________________________________________________________||
 @listens_for(ProductRelationType.reverse, "set")
 def set_reverse(target, value, oldvalue, initiator):
     """set the reciprocating reverse
@@ -55,6 +53,3 @@ def set_reverse(target, value, oldvalue, initiator):
         type2.__avoid_recursive = True
         type2.reverse = type1
         del type2.__avoid_recursive
-
-
-##__________________________________________________________________||

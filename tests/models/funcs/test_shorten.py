@@ -2,7 +2,6 @@ import pytest
 
 from acondbs.models.funcs import shorten
 
-
 params = [
     ("0123456789", dict(width=0), "..."),
     ("0123456789", dict(width=1), "..."),

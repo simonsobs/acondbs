@@ -1,9 +1,8 @@
-from ...db.sa import sa
-
 from sqlalchemy.event import listens_for
 
+from ...db.sa import sa
 
-##__________________________________________________________________||
+
 class ProductRelation(sa.Model):
     __tablename__ = "product_relations"
     relation_id = sa.Column(sa.Integer(), primary_key=True)
@@ -12,9 +11,7 @@ class ProductRelation(sa.Model):
         sa.ForeignKey("product_relation_types.type_id"),
         nullable=False,
     )
-    type_ = sa.relationship(
-        "ProductRelationType", backref=sa.backref("relations")
-    )
+    type_ = sa.relationship("ProductRelationType", backref=sa.backref("relations"))
     self_product_id = sa.Column(
         sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
     )
@@ -27,9 +24,7 @@ class ProductRelation(sa.Model):
         sa.Integer(), sa.ForeignKey("products.product_id"), nullable=False
     )
     other = sa.relationship("Product", foreign_keys=[other_product_id])
-    reverse_relation_id = sa.Column(
-        sa.ForeignKey("product_relations.relation_id")
-    )
+    reverse_relation_id = sa.Column(sa.ForeignKey("product_relations.relation_id"))
     reverse = sa.relationship(
         lambda: ProductRelation,
         uselist=False,
@@ -59,7 +54,6 @@ class ProductRelation(sa.Model):
             return self.type_
 
 
-##__________________________________________________________________||
 @listens_for(ProductRelation.type_, "set")
 def set_reverse_type(target, value, oldvalue, initiator):
     relation = target
@@ -125,6 +119,3 @@ def set_reverse_self(target, value, oldvalue, initiator):
         relation.reverse.__avoid_recursive = True
         relation.reverse.self_ = value
         del relation.reverse.__avoid_recursive
-
-
-##__________________________________________________________________||

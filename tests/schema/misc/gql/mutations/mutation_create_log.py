@@ -1,6 +1,7 @@
 from ..fragments import FRAGMENT_LOG
 
-MUTATION_CREATE_LOG = '''
+MUTATION_CREATE_LOG = (
+    '''
 mutation CreateLog($input: CreateLogInput!) {
   createLog(input: $input) {
     ok
@@ -9,4 +10,6 @@ mutation CreateLog($input: CreateLogInput!) {
     }
   }
 }
-''' + FRAGMENT_LOG
+'''
+    + FRAGMENT_LOG
+)

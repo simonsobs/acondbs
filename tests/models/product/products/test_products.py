@@ -1,12 +1,10 @@
 import pytest
-
 from sqlalchemy import exc
 
 from acondbs.db.sa import sa
-from acondbs.models import ProductType, Product, GitHubUser
+from acondbs.models import GitHubUser, Product, ProductType
 
 
-##__________________________________________________________________||
 def test_product(app_empty):
     app = app_empty
 
@@ -25,7 +23,6 @@ def test_product(app_empty):
         assert [map1] == type_map.products
 
 
-##__________________________________________________________________||
 def test_constraint_type_required_add(app_empty):
     app = app_empty
 
@@ -41,7 +38,6 @@ def test_constraint_type_required_add(app_empty):
         assert map1 is None
 
 
-##__________________________________________________________________||
 def test_constraint_type_required_delete(app_empty):
     app = app_empty
 
@@ -86,7 +82,6 @@ def test_constraint_type_required_delete(app_empty):
         sa.session.commit()
 
 
-##__________________________________________________________________||
 def test_git_hub_user(app_empty):
     app = app_empty
 
@@ -119,6 +114,3 @@ def test_git_hub_user(app_empty):
         user2 = GitHubUser.query.filter_by(login="user2").one()
         assert user2 == map1.updating_git_hub_user
         assert [map1] == user2.updated_products
-
-
-##__________________________________________________________________||
