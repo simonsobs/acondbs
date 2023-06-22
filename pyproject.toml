@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "acondbs"
 dynamic = ["version"]
-description = "A GraphQL server for product DB"
+description = "ProductDB back-end API"
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
