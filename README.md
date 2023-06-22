@@ -1,8 +1,11 @@
-[![PyPI version](https://badge.fury.io/py/acondbs.svg)](https://badge.fury.io/py/acondbs) [![Test Status](https://github.com/simonsobs/acondbs/workflows/Test/badge.svg)](https://github.com/simonsobs/acondbs/actions?query=workflow%3ATest) [![codecov](https://codecov.io/gh/simonsobs/acondbs/branch/master/graph/badge.svg)](https://codecov.io/gh/simonsobs/acondbs)
+[![PyPI - Version](https://img.shields.io/pypi/v/acondbs.svg)](https://pypi.org/project/acondbs)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/acondbs.svg)](https://pypi.org/project/acondbs)
+[![Test Status](https://github.com/simonsobs/acondbs/actions/workflows/unit-test.yml/badge.svg)](https://github.com/simonsobs/acondbs/actions/workflows/unit-test.yml)
+[![codecov](https://codecov.io/gh/simonsobs/acondbs/branch/main/graph/badge.svg)](https://codecov.io/gh/simonsobs/acondbs)
 
 # Acondbs
 
-A GraphQL server for product DB
+ProductDB back-end API
 
 ## How to check out and run (for developers)
 
