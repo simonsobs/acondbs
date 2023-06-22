@@ -1,3 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "acondbs"
+dynamic = ["version"]
+description = "A GraphQL server for product DB"
+readme = "README.md"
+license = ""
+authors = [
+    { name = "Simons Observatory", email = "so_software@simonsobservatory.org" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "a2wsgi>=1.4",
+    "cryptography>=3.2",
+    "Flask-Cors>=3.0",
+    "Flask-GraphQL>=2.0",
+    "Flask-Migrate>=3.1,<4",
+    "Flask-SQLAlchemy>=2.5,<3",
+    "Flask>=2.3",
+    "gitpython>=3.1",
+    "graphene-sqlalchemy-filter>=1.10",
+    "graphene-sqlalchemy>=2.3",
+    "requests>=2.24",
+    "SQLAlchemy-Utils>=0.41",
+    "SQLAlchemy>=1.4,<3",
+]
+
+[project.optional-dependencies]
+tests = [
+    "async-asgi-testclient>=1.4.6",
+    "pytest-asyncio>=0.14",
+    "pytest-cov>=2.12",
+    "pytest>=6.2",
+    "snapshottest>=0.6",
+    "sqlparse",
+]
+
+[project.urls]
+Homepage = "https://github.com/simonsobs/acondbs"
+
+[tool.hatch.version]
+path = "acondbs/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/acondbs",
+]
+
 [tool.black]
 skip-string-normalization = true
 target_version = ['py38', 'py39', 'py310', 'py311']
