@@ -1,5 +1,0 @@
-include versioneer.py
-include acondbs/_version.py
-graft acondbs/migrations
-global-exclude *.py[co]
-global-exclude __pycache__

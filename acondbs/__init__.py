@@ -1,3 +1,8 @@
+__all__ = [
+    '__version__',
+    'create_app',
+]
+
 from pathlib import Path
 
 from flask import Flask
@@ -63,16 +68,4 @@ def create_app(config_path=None, **kwargs):
     return app
 
 
-from ._version import get_versions  # noqa: E402
-
-__version__ = get_versions()["version"]
-"""str: version
-
-The version string, e.g., "0.1.2", "0.1.2+83.ga093a20.dirty".
-generated from git tags by versioneer.
-
-Versioneer: https://github.com/warner/python-versioneer
-
-"""
-
-del get_versions
+from acondbs.__about__ import __version__
