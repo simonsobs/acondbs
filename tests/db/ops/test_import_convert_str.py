@@ -13,7 +13,7 @@ from acondbs.db.ops import convert_data_type_for_insert
 sa = SQLAlchemy()
 
 
-class SampleTable(sa.Model):
+class SampleTable(sa.Model):  # type: ignore
     __tablename__ = "sample_table"
     id_ = sa.Column(sa.Integer(), primary_key=True)
 

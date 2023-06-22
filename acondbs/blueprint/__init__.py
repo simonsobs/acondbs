@@ -28,7 +28,7 @@ def format_to_str(data_dict):
     )
 
 
-class GraphQLView(GraphQLView):
+class GraphQLView(GraphQLView):  # type: ignore
     def dispatch_request(self):
         res = super().dispatch_request()
         # return res

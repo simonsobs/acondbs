@@ -7,7 +7,7 @@ from ...db.sa import sa
 class AttributeBase:
     iid = sa.Column(sa.Integer(), primary_key=True)
 
-    @declared_attr
+    @declared_attr  # type: ignore
     def product_id(self):
         return sa.Column(
             sa.Integer(),
@@ -15,7 +15,7 @@ class AttributeBase:
             nullable=False,
         )
 
-    @declared_attr
+    @declared_attr  # type: ignore
     def product(self):
         return sa.relationship(
             "Product",
@@ -25,7 +25,7 @@ class AttributeBase:
             ),
         )
 
-    @declared_attr
+    @declared_attr  # type: ignore
     def type_field_association_iid(self):
         return sa.Column(
             sa.Integer(),
@@ -33,7 +33,7 @@ class AttributeBase:
             nullable=False,
         )
 
-    @declared_attr
+    @declared_attr  # type: ignore
     def type_field_association(self):
         return sa.relationship(
             "TypeFieldAssociation",
@@ -43,7 +43,7 @@ class AttributeBase:
             ),
         )
 
-    @declared_attr
+    @declared_attr  # type: ignore
     def field_id(self):
         return sa.Column(
             sa.Integer(),
@@ -52,7 +52,7 @@ class AttributeBase:
         )
         # TODO: remove, replace with type_field_association_iid
 
-    @declared_attr
+    @declared_attr  # type: ignore
     def field(self):
         return sa.relationship(
             "Field",
@@ -74,43 +74,43 @@ class AttributeBase:
             return self.field
 
 
-class AttributeUnicodeText(AttributeBase, sa.Model):
+class AttributeUnicodeText(AttributeBase, sa.Model):  # type: ignore
     __tablename__ = "attribute_unicode_text"
     backref_column = "attributes_unicode_text"
     value = sa.Column(sa.UnicodeText())
 
 
-class AttributeBoolean(AttributeBase, sa.Model):
+class AttributeBoolean(AttributeBase, sa.Model):  # type: ignore
     __tablename__ = "attribute_boolean"
     backref_column = "attributes_boolean"
     value = sa.Column(sa.Boolean())
 
 
-class AttributeInteger(AttributeBase, sa.Model):
+class AttributeInteger(AttributeBase, sa.Model):  # type: ignore
     __tablename__ = "attribute_integer"
     backref_column = "attributes_integer"
     value = sa.Column(sa.Integer())
 
 
-class AttributeFloat(AttributeBase, sa.Model):
+class AttributeFloat(AttributeBase, sa.Model):  # type: ignore
     __tablename__ = "attribute_float"
     backref_column = "attributes_float"
     value = sa.Column(sa.Float())
 
 
-class AttributeDate(AttributeBase, sa.Model):
+class AttributeDate(AttributeBase, sa.Model):  # type: ignore
     __tablename__ = "attribute_date"
     backref_column = "attributes_date"
     value = sa.Column(sa.Date())
 
 
-class AttributeDateTime(AttributeBase, sa.Model):
+class AttributeDateTime(AttributeBase, sa.Model):  # type: ignore
     __tablename__ = "attribute_date_time"
     backref_column = "attributes_date_time"
     value = sa.Column(sa.DateTime())
 
 
-class AttributeTime(AttributeBase, sa.Model):
+class AttributeTime(AttributeBase, sa.Model):  # type: ignore
     __tablename__ = "attribute_time"
     backref_column = "attributes_time"
     value = sa.Column(sa.Time())
