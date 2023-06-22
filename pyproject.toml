@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-regex-commit"]
 build-backend = "hatchling.build"
 
 [project]
@@ -7,7 +7,8 @@ name = "acondbs"
 dynamic = ["version"]
 description = "A GraphQL server for product DB"
 readme = "README.md"
-license = ""
+requires-python = ">=3.8"
+license = "MIT"
 authors = [
     { name = "Simons Observatory", email = "so_software@simonsobservatory.org" },
 ]
@@ -36,6 +37,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+dev = ["black", "isort", "flake8", "mypy", "tox", "twine"]
 tests = [
     "async-asgi-testclient>=1.4.6",
     "pytest-asyncio>=0.14",
@@ -47,14 +49,33 @@ tests = [
 
 [project.urls]
 Homepage = "https://github.com/simonsobs/acondbs"
+Issues = "https://github.com/simonsobs/acondbs/issues"
+Source = "https://github.com/simonsobs/acondbs"
 
 [tool.hatch.version]
-path = "acondbs/__init__.py"
+source = "regex_commit"
+path = "acondbs/__about__.py"
+tag_sign = false
+
 
 [tool.hatch.build.targets.sdist]
-include = [
-    "/acondbs",
+include = ["/acondbs"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+timeout = 60
+addopts = "--doctest-modules"
+# doctest_optionflags = ["ELLIPSIS", "NORMALIZE_WHITESPACE",]
+doctest_optionflags = ["ELLIPSIS"]
+filterwarnings = [
+    "ignore::DeprecationWarning:graphene.*",
+    "ignore::DeprecationWarning:graphql.*",
+    "ignore::DeprecationWarning:singledispatch_helpers.*",
 ]
+norecursedirs = "acondbs/migrations docker build tests/sample"
+log_cli = false
+log_cli_level = "INFO"
+
 
 [tool.black]
 skip-string-normalization = true
