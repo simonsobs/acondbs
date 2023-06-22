@@ -34,7 +34,7 @@ dependencies = [
     "graphene-sqlalchemy>=2.3",
     "requests>=2.24",
     "SQLAlchemy-Utils>=0.41",
-    "SQLAlchemy>=1.4,<2",
+    "SQLAlchemy[mypy]>=1.4,<2",
 ]
 
 [project.optional-dependencies]
@@ -87,3 +87,19 @@ exclude = '''(?x)(
 
 [tool.isort]
 profile = "black"
+
+[tool.mypy]
+plugins = "sqlalchemy.ext.mypy.plugin"
+
+[[tool.mypy.overrides]]
+module = [
+    "graphene.*",
+    "sqlalchemy_utils.*",
+    "snapshottest",
+    "graphene_sqlalchemy.*",
+    "async_asgi_testclient",
+    "flask_graphql",
+    "graphene_sqlalchemy_filter",
+    "sqlparse",
+]
+ignore_missing_imports = true
