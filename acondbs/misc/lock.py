@@ -1,11 +1,11 @@
-import contextlib
 import os
 import time
 from pathlib import Path
+from typing import Union
 
 
 class lock:
-    def __init__(self, path, timeout=None):
+    def __init__(self, path: Union[Path, str], timeout=None):
         self.path = Path(path)
         self.timeout = timeout
         self.locked = False

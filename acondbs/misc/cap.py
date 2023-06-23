@@ -3,8 +3,8 @@
 import functools
 import queue
 import threading
-import time
 from enum import Enum
+from typing import Callable
 
 
 class cap_exec_rate:
@@ -42,12 +42,12 @@ class cap_exec_rate:
 
     """
 
-    def __init__(self, func, pause_time=1.0, daemon=False):
+    def __init__(self, func: Callable, pause_time=1.0, daemon=False):
         self.func = func
         self.pause_time = pause_time
         self.daemon = daemon
 
-        self.queue = queue.Queue()
+        self.queue = queue.Queue[Message]()
         config = Config(func, self.queue, pause_time)
         self.machine = threading.Thread(
             target=state_machine, args=(config,), daemon=daemon
@@ -61,7 +61,7 @@ class cap_exec_rate:
         """
         self.queue.put(Message.FUNC_CALLED)
 
-    def end(self):
+    def end(self) -> None:
         """end using this class
 
         The function will be executed immediately if it is waiting for

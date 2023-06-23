@@ -5,6 +5,7 @@ import subprocess
 import threading
 import warnings
 from pathlib import Path
+from typing import Collection, Optional, Union
 
 from flask import current_app
 
@@ -13,7 +14,7 @@ from acondbs.misc import gitb, lock
 from acondbs.misc.cap import cap_exec_rate
 
 
-def request_backup_db():
+def request_backup_db() -> None:
     """reqeust to take a backup of the DB."""
     global _lock
     global _capped_backup_func
@@ -31,10 +32,10 @@ def request_backup_db():
 
 
 _lock = threading.Lock()
-_capped_backup_func = None
+_capped_backup_func: Optional[cap_exec_rate] = None
 
 
-def end_backup_thread():
+def end_backup_thread() -> None:
     global _lock
     global _capped_backup_func
     with _lock:
@@ -43,15 +44,17 @@ def end_backup_thread():
         _capped_backup_func = None
 
 
-import multiprocessing.queues  # This import prevents the error described in
-
+# This import prevents the error described in
 # https://github.com/alphatwirl/atpbar/issues/4#issuecomment-473426630
+import multiprocessing.queues  # noqa: F401, E402
+
 
 atexit.register(end_backup_thread)
 
 
-def run_flask_backup_db():
+def run_flask_backup_db() -> None:
     proc = subprocess.run(['flask', 'backup-db'])
+    del proc
 
 
 def backup_db(exclude_csv=None):
@@ -68,7 +71,7 @@ def backup_db(exclude_csv=None):
         )
 
 
-def backup_db_to_github():
+def backup_db_to_github() -> None:
     repo_path = current_app.config['ACONDBS_DB_FOLDER']
     lock_path = current_app.config['ACONDBS_DB_BACKUP_LOCK']
     timeout = current_app.config['ACONDBS_DB_BACKUP_LOCK_TIMEOUT']
@@ -83,12 +86,12 @@ def backup_db_to_github():
         )
 
 
-def backup_db_to_github_(repo_path):
+def backup_db_to_github_(repo_path: Union[str, Path]) -> None:
     gitb.commit(repo_path)
     gitb.push(repo_path)
 
 
-def backup_db_as_csv_to_github(exclude=None):
+def backup_db_as_csv_to_github(exclude: Optional[Collection[str]] = None) -> None:
     repo_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_FOLDER']
     lock_path = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_LOCK']
     timeout = current_app.config['ACONDBS_DB_BACKUP_CSV_GIT_LOCK_TIMEOUT']
@@ -103,7 +106,9 @@ def backup_db_as_csv_to_github(exclude=None):
         )
 
 
-def backup_db_as_csv_to_github_(repo_path, exclude=None):
+def backup_db_as_csv_to_github_(
+    repo_path: Union[str, Path], exclude: Optional[Collection[str]] = None
+) -> None:
     repo_path = Path(repo_path)
     for csv_file in repo_path.glob('*.csv'):
         csv_file.unlink()

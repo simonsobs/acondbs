@@ -2,11 +2,12 @@
 """
 import warnings
 from pathlib import Path
+from typing import Union
 
 import git
 
 
-def commit(path, message=None):
+def commit(path: Union[str, Path], message=None) -> None:
     """commit all changes in a git repository to git
 
     If the path is not a git repository, unless it is empty, it will
@@ -53,7 +54,7 @@ def commit(path, message=None):
     repo.index.commit(message)
 
 
-def pull(path):
+def pull(path: Union[str, Path]):
     """pull from a tracking branch
 
     Equivalent to execute "git pull" in the path.
@@ -94,7 +95,7 @@ def pull(path):
     remote.pull()
 
 
-def push(path):
+def push(path: Union[str, Path]):
     """push to a upstream branch
 
     Equivalent to execute "git push" in the path.
@@ -135,7 +136,7 @@ def push(path):
     remote.push()
 
 
-def is_git_repo(path):
+def is_git_repo(path: Union[str, Path]):
     """test if a folder is a git repository
 
     copied from https://stackoverflow.com/a/39956572/7309855
@@ -144,5 +145,5 @@ def is_git_repo(path):
     try:
         _ = git.Repo(path).git_dir
         return True
-    except git.exc.InvalidGitRepositoryError:
+    except git.exc.InvalidGitRepositoryError:  # type: ignore
         return False

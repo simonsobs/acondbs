@@ -8,6 +8,7 @@ import ast
 import csv
 import datetime
 from pathlib import Path
+from typing import Any, Collection, Optional, TextIO, Union
 
 from sqlalchemy import MetaData
 from sqlalchemy.sql import sqltypes
@@ -16,7 +17,7 @@ from .conn import get_db_connection
 from .sa import sa
 
 
-def define_tables():
+def define_tables() -> None:
     """Define DB tables from ORM models
 
     After dropping any existing tables, this function defines tables
@@ -40,12 +41,12 @@ def define_tables():
         metadata.drop_all(bind=engine)
         print(msg)
 
-    if not sa.Model.metadata.tables:
+    if not sa.Model.metadata.tables:  # type: ignore
         msg = "No tables to be created are found!"
         print(msg)
         return
 
-    tbl_names = sa.Model.metadata.tables.keys()
+    tbl_names = sa.Model.metadata.tables.keys()  # type: ignore
     # ['maps', 'beams']
 
     tbl_names = ", ".join([f'"{t}"' for t in tbl_names])
@@ -53,12 +54,12 @@ def define_tables():
 
     msg = f"Created tables: {tbl_names}"
 
-    sa.Model.metadata.create_all(engine)
+    sa.Model.metadata.create_all(engine)  # type: ignore
 
     print(msg)
 
 
-def get_all_table_names():
+def get_all_table_names() -> list[str]:
     """returns the names of all tables in the DB.
 
     Returns
@@ -73,7 +74,7 @@ def get_all_table_names():
     return [tbl.name for tbl in metadata.sorted_tables]
 
 
-def export_db_to_dict_of_dict_list():
+def export_db_to_dict_of_dict_list() -> dict[str, list[dict[str, Any]]]:
     """exports the DB to a dict of table names and lists of dicts for each row
 
     Returns
@@ -94,7 +95,7 @@ def export_db_to_dict_of_dict_list():
     return ret
 
 
-def export_table_to_dict_list(tbl_name):
+def export_table_to_dict_list(tbl_name: str) -> list[dict[str, Any]]:
     """exports the table to a list of dicts
 
     Parameters
@@ -118,7 +119,7 @@ def export_table_to_dict_list(tbl_name):
     return [dict(r) for r in result_proxy]
 
 
-def get_resultproxy_of_select_all_rows(tbl_name):
+def get_resultproxy_of_select_all_rows(tbl_name: str):
     """returns ResultProxy with all rows of the table
 
     Parameters
@@ -141,7 +142,7 @@ def get_resultproxy_of_select_all_rows(tbl_name):
     return engine.execute(tbl.select())
 
 
-def import_tables_from_csv_files(csvdir):
+def import_tables_from_csv_files(csvdir: Union[str, Path]) -> None:
     """imports tables from CSV files into the DB
 
     The tables need to be already defined in the DB.
@@ -174,7 +175,7 @@ def import_tables_from_csv_files(csvdir):
         print(message)
 
 
-def import_table_from_csv_file(tbl_name, path):
+def import_table_from_csv_file(tbl_name: str, path: Union[str, Path]) -> None:
     """import a table from a CSV file
 
     The table needs to be already defined in the DB.
@@ -216,14 +217,14 @@ def import_table_from_csv_file(tbl_name, path):
 
         # Unfortunately, it is not possible to insert from a
         # generator in the current version (1.4) of SQLAlchemy.
-        data = list(data)
+        data = list(data)  # type: ignore
         if not data:
             return
 
         connection.execute(ins, data)
 
 
-def convert_data_type_for_insert(str_, type_):
+def convert_data_type_for_insert(str_: str, type_):
     """converts data type for insert
 
     This function converts the data type from str to a type relevant
@@ -276,7 +277,9 @@ def convert_data_type_for_insert(str_, type_):
     return None
 
 
-def export_db_to_csv_files(outdir, exclude=None):
+def export_db_to_csv_files(
+    outdir: Union[str, Path], exclude: Optional[Collection[str]] = None
+) -> None:
     """export all tables in the DB to CSV files
 
     The CSV files will be stored in the folder `csvdir`: one CSV file
@@ -309,7 +312,7 @@ def export_db_to_csv_files(outdir, exclude=None):
             export_table_to_csv_file(f, tbl_name)
 
 
-def export_table_to_csv_file(file_, tbl_name):
+def export_table_to_csv_file(file_: TextIO, tbl_name: str) -> None:
     """Export a tablesin the DB to aCSV file
 
     Parameters
