@@ -4,7 +4,7 @@ import functools
 import queue
 import threading
 from enum import Enum
-from typing import Callable
+from typing import Any, Callable
 
 
 class cap_exec_rate:
@@ -42,7 +42,9 @@ class cap_exec_rate:
 
     """
 
-    def __init__(self, func: Callable, pause_time=1.0, daemon=False):
+    def __init__(
+        self, func: Callable[[], Any], pause_time: float = 1.0, daemon: bool = False
+    ):
         self.func = func
         self.pause_time = pause_time
         self.daemon = daemon
@@ -54,7 +56,7 @@ class cap_exec_rate:
         )
         self.machine.start()
 
-    def __call__(self):
+    def __call__(self) -> None:
         """call the function
 
         The number of executions of the function is capped
@@ -73,13 +75,6 @@ class cap_exec_rate:
         self.machine.join()
 
 
-def state_machine(config):
-    """the entry function to be executed in a thread"""
-    state = Active(config)
-    while not state.end:
-        state = state()
-
-
 class Message(Enum):
     FUNC_CALLED = 1
     TIMER_GOES_OFF = 2
@@ -89,19 +84,30 @@ class Message(Enum):
 class Config:
     """Configuration of the state"""
 
-    def __init__(self, func, queue, pause_time):
+    def __init__(
+        self, func: Callable[[], Any], queue: queue.Queue[Message], pause_time: float
+    ):
         self.func = func
         self.queue = queue
         self.pause_time = pause_time
 
 
+def state_machine(config: Config) -> None:
+    """the entry function to be executed in a thread"""
+    state: State = Active(config)
+    while not state.end:
+        state = state()
+
+
 class State:
     """The base class of the states"""
 
-    def __init__(self, config):
+    end: bool = False
+
+    def __init__(self, config: Config):
         self.config = config
 
-    def __call__(self):
+    def __call__(self) -> 'State':
         message = self.config.queue.get()
         if message == Message.FUNC_CALLED:
             return self.func_called()
@@ -111,6 +117,15 @@ class State:
             return self.exit_()
         else:
             raise ValueError('unknown message: {!r}'.format(message))
+
+    def func_called(self) -> 'State':
+        raise NotImplementedError
+
+    def timer_goes_off(self) -> 'State':
+        raise NotImplementedError
+
+    def exit_(self) -> 'State':
+        raise NotImplementedError
 
 
 class Active(State):
@@ -122,18 +137,18 @@ class Active(State):
 
     end = False
 
-    def __init__(self, config):
+    def __init__(self, config: Config):
         super().__init__(config)
 
-    def func_called(self):
+    def func_called(self) -> State:
         self.config.func()
         return Pause(self.config)
 
-    def exit_(self):
+    def exit_(self) -> State:
         return Exit(self.config)
 
 
-def timer_end(queue):
+def timer_end(queue: queue.Queue[Message]) -> None:
     queue.put(Message.TIMER_GOES_OFF)
 
 
@@ -146,20 +161,20 @@ class Pause(State):
 
     end = False
 
-    def __init__(self, config):
+    def __init__(self, config: Config):
         super().__init__(config)
         self.timer = threading.Timer(
             self.config.pause_time, functools.partial(timer_end, self.config.queue)
         )
         self.timer.start()
 
-    def func_called(self):
+    def func_called(self) -> State:
         return PauseCalled(self.config, self.timer)
 
-    def timer_goes_off(self):
+    def timer_goes_off(self) -> State:
         return Active(self.config)
 
-    def exit_(self):
+    def exit_(self) -> State:
         self.timer.cancel()
         return Exit(self.config)
 
@@ -173,18 +188,18 @@ class PauseCalled(State):
 
     end = False
 
-    def __init__(self, config, timer):
+    def __init__(self, config: Config, timer: threading.Timer):
         super().__init__(config)
         self.timer = timer
 
-    def func_called(self):
+    def func_called(self) -> State:
         return self
 
-    def timer_goes_off(self):
+    def timer_goes_off(self) -> State:
         self.config.func()
         return Pause(self.config)
 
-    def exit_(self):
+    def exit_(self) -> State:
         self.timer.cancel()
         self.config.func()
         return Exit(self.config)
@@ -195,5 +210,5 @@ class Exit(State):
 
     end = True
 
-    def __init__(self, config):
+    def __init__(self, config: Config):
         super().__init__(config)
