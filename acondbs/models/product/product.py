@@ -3,7 +3,7 @@ import datetime
 from ...db.sa import sa
 
 
-class Product(sa.Model):
+class Product(sa.Model):  # type: ignore
     # TODO: rename the class name to be more generic, e.g., "Entry"
     # TODO: use singular for the table name
     __tablename__ = "products"

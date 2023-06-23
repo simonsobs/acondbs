@@ -1,7 +1,7 @@
 from ...db.sa import sa
 
 
-class GitHubOrgMembership(sa.Model):
+class GitHubOrgMembership(sa.Model):  # type: ignore
     __tablename__ = "github_org_memberships"
     entry_id = sa.Column(sa.Integer(), primary_key=True)
     org_id = sa.Column(sa.ForeignKey("github_orgs.org_id"), nullable=False)

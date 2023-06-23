@@ -33,7 +33,7 @@ FIELDTYPE_ATTRIBUTECLASS_MAP = {
 saEnumFieldType = sa.Enum(FieldType)  # to be imported in another module
 
 
-class Field(sa.Model):
+class Field(sa.Model):  # type: ignore
     __tablename__ = "field"
     field_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(sa.UnicodeText(), nullable=False)

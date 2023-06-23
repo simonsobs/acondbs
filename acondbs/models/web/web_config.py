@@ -4,7 +4,7 @@ from ...db.sa import sa
 from ..funcs import shorten
 
 
-class WebConfig(sa.Model):
+class WebConfig(sa.Model):  # type: ignore
     __tablename__ = "web_config"
     id_ = sa.Column(sa.Integer(), primary_key=True)
     json = sa.Column(sa.Text())

@@ -3,7 +3,7 @@ from sqlalchemy.event import listens_for
 from ...db.sa import sa
 
 
-class ProductRelationType(sa.Model):
+class ProductRelationType(sa.Model):  # type: ignore
     __tablename__ = "product_relation_types"
     type_id = sa.Column(sa.Integer(), primary_key=True)
     name = sa.Column(

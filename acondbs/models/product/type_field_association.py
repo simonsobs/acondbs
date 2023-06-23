@@ -1,7 +1,7 @@
 from ...db.sa import sa
 
 
-class TypeFieldAssociation(sa.Model):
+class TypeFieldAssociation(sa.Model):  # type: ignore
     """Many-to-many relation between ProductType and Field
 
 

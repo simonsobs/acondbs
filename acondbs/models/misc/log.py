@@ -3,7 +3,7 @@ import datetime
 from ...db.sa import sa
 
 
-class Log(sa.Model):
+class Log(sa.Model):  # type: ignore
     __tablename__ = "log"
     id_ = sa.Column(sa.Integer(), primary_key=True)
     level = sa.Column(sa.Text())

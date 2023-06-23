@@ -1,7 +1,7 @@
 from ...db.sa import sa
 
 
-class GitHubUser(sa.Model):
+class GitHubUser(sa.Model):  # type: ignore
     __tablename__ = "github_users"
     user_id = sa.Column(sa.Integer(), primary_key=True)
     git_hub_id = sa.Column(sa.Text(), unique=True, nullable=False)

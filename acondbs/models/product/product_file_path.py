@@ -2,7 +2,7 @@ from ...db.sa import sa
 from ..funcs import shorten
 
 
-class ProductFilePath(sa.Model):
+class ProductFilePath(sa.Model):  # type: ignore
     __tablename__ = "product_file_paths"
     path_id = sa.Column(sa.Integer(), primary_key=True)
     path = sa.Column(sa.Text())
