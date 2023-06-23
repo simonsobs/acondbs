@@ -1,8 +1,9 @@
 import json
 import textwrap
 import traceback
+from typing import Mapping, Union
 
-from flask import Blueprint, Flask, current_app, request
+from flask import Blueprint, Flask, Response, current_app, request
 from flask_graphql import GraphQLView
 
 from acondbs import auth, ops, schema
@@ -10,7 +11,7 @@ from acondbs import auth, ops, schema
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 
 
-def format_to_str(data_dict):
+def format_to_str(data_dict: Mapping[str, str]) -> str:
     format_item = textwrap.dedent(
         """
         - {key}:
@@ -30,7 +31,7 @@ def format_to_str(data_dict):
 
 
 class GraphQLView(GraphQLView):  # type: ignore
-    def dispatch_request(self):
+    def dispatch_request(self) -> Union[str, Response]:
         res = super().dispatch_request()
         # return res
 
@@ -45,7 +46,7 @@ class GraphQLView(GraphQLView):  # type: ignore
         finally:
             return res
 
-    def _log_response(self, res):
+    def _log_response(self, res: Response) -> None:
         if res.status_code == 200:
             return
 
@@ -62,7 +63,7 @@ class GraphQLView(GraphQLView):  # type: ignore
         ops.create_log(level=level, message=msg)
         ops.commit()
 
-    def _compose_message(self, res):
+    def _compose_message(self, res: Response) -> str:
         content = {
             "Request": self._format_request_to_str(),
             "Response": self._format_response_to_str(res),

@@ -1,10 +1,11 @@
+from typing import Optional
+
 from flask import request
 
 from acondbs.models import AccountAdmin, GitHubToken, GitHubUser
 
 
-def is_signed_in():
-    """ """
+def is_signed_in() -> bool:
     token = _get_token_from_http_headers()
     if not token:
         return False
@@ -16,9 +17,7 @@ def is_signed_in():
     return True
 
 
-def is_admin():
-    """ """
-
+def is_admin() -> bool:
     if not is_signed_in():
         return False
 
@@ -45,7 +44,7 @@ def is_admin():
     return True
 
 
-def _get_token_from_http_headers():
+def _get_token_from_http_headers() -> Optional[str]:
     auth_header = request.headers.get('Authorization')
     # e.g., 'Bearer "xxxx"', "Bearer 'xxxx'",  or 'Bearer xxxx'
 
