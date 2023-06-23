@@ -1,10 +1,11 @@
 import json
 import textwrap
 import traceback
-from typing import Mapping, Union
+from typing import Mapping, Optional, Union
 
 from flask import Blueprint, Flask, Response, current_app, request
 from flask_graphql import GraphQLView
+import graphene
 
 from acondbs import auth, ops, schema
 
@@ -71,7 +72,7 @@ class GraphQLView(GraphQLView):  # type: ignore
         msg = format_to_str(content)
         return msg
 
-    def _format_request_to_str(self):
+    def _format_request_to_str(self) -> str:
         content = {
             "Header": str(request.headers),
             "Data": format_to_str(self.parse_body()),
@@ -80,7 +81,7 @@ class GraphQLView(GraphQLView):  # type: ignore
         # print(msg)
         return msg
 
-    def _format_response_to_str(self, response):
+    def _format_response_to_str(self, response: Response) -> str:
         content = {
             "Status": str(response.status),
             "Data": textwrap.indent(
@@ -134,7 +135,7 @@ def init_app(app: Flask) -> None:
     app.register_blueprint(bp)
 
 
-def _select_schema():
+def _select_schema() -> graphene.Schema:
     if auth.is_admin():
         return schema.schema_admin
     elif auth.is_signed_in():
@@ -143,7 +144,7 @@ def _select_schema():
         return schema.schema_public
 
 
-def _select_graphiql_template():
+def _select_graphiql_template() -> Optional[str]:
     template_no = current_app.config.get("ACONDBS_GRAPHIQL_TEMPLATE_NO", None)
     if template_no == 1:
         return GRAPHIQL_NEWER
