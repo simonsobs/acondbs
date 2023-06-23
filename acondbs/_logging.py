@@ -14,7 +14,7 @@ _module_path = Path(__file__).resolve().parent.parent
 _old_factory = logging.getLogRecordFactory()
 
 
-def record_factory(*args, **kwargs):
+def record_factory(*args, **kwargs) -> logging.LogRecord:
     """replace the pathname (the full pathname of the source file) with
     the relative path of the source file in the package
 
@@ -27,7 +27,7 @@ def record_factory(*args, **kwargs):
 
     record = _old_factory(*args, **kwargs)
     try:
-        record.pathname = Path(record.pathname).resolve().relative_to(_module_path)
+        record.pathname = str(Path(record.pathname).resolve().relative_to(_module_path))
     except Exception:
         pass
     return record
@@ -36,7 +36,7 @@ def record_factory(*args, **kwargs):
 logging.setLogRecordFactory(record_factory)
 
 
-def configure_logging():
+def configure_logging() -> None:
     """configure logging
 
     This function needs to be called early in the program, i.e., in

@@ -4,6 +4,7 @@ __all__ = [
 ]
 
 from pathlib import Path
+from typing import Optional, Union
 
 from flask import Flask
 from flask_cors import CORS
@@ -16,6 +17,7 @@ from flask import debughelpers  # noqa: F401
 from . import _warnings  # noqa: F401
 from . import _logging
 
+from acondbs.__about__ import __version__
 
 DEFAULT_CONFIG_DICT = dict(
     SECRET_KEY="dev",
@@ -24,7 +26,7 @@ DEFAULT_CONFIG_DICT = dict(
 )
 
 
-def create_app(config_path=None, **kwargs):
+def create_app(config_path: Optional[Union[Path, str]] = None, **kwargs) -> Flask:
     _logging.configure_logging()
 
     app = Flask(__name__, instance_relative_config=False)
@@ -66,6 +68,3 @@ def create_app(config_path=None, **kwargs):
 
     app.logger.info('"app" initialized')
     return app
-
-
-from acondbs.__about__ import __version__
