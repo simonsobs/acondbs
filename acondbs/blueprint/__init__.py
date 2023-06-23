@@ -2,7 +2,7 @@ import json
 import textwrap
 import traceback
 
-from flask import Blueprint, current_app, request
+from flask import Blueprint, Flask, current_app, request
 from flask_graphql import GraphQLView
 
 from .. import auth, ops, schema
@@ -128,7 +128,7 @@ bp = Blueprint("graphql", __name__)
 bp.add_url_rule("/graphql", view_func=GraphQLViewW.as_view("graphql"))
 
 
-def init_app(app):
+def init_app(app: Flask) -> None:
     app.register_blueprint(bp)
 
 

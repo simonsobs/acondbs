@@ -13,6 +13,7 @@ https://docs.sqlalchemy.org/en/14/orm/tutorial.html#declare-a-mapping
 """
 
 
+from flask import Flask
 from .product import (  # noqa: F401
     ProductType,
     Product,
@@ -46,7 +47,7 @@ from .web import WebConfig  # noqa: F401
 from .misc import Log  # noqa: F401
 
 
-def init_app(app):
+def init_app(app: Flask) -> None:
     """Initialize the Flask application object
 
     This function is called by `create_app()` of Flask

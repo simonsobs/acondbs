@@ -8,6 +8,7 @@ related to SQLAlchemy and the DB except ORM model declarations.
 
 from pathlib import Path
 
+from flask import Flask
 from flask_migrate import Migrate
 
 from .cmds import (
@@ -22,10 +23,10 @@ from .sa import sa
 
 migrate = Migrate()
 
-_MIGRATIONS_DIR = Path(__file__).resolve().parent.parent.joinpath("migrations")
+_MIGRATIONS_DIR = str(Path(__file__).resolve().parent.parent / 'migrations')
 
 
-def init_app(app):
+def init_app(app: Flask) -> None:
     """Initialize the Flask application object
 
     This function is called by `create_app()` of Flask
