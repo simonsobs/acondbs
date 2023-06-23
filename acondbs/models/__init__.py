@@ -11,40 +11,58 @@ https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
 https://docs.sqlalchemy.org/en/14/orm/tutorial.html#declare-a-mapping
 
 """
+__all__ = [
+    'AccountAdmin',
+    'GitHubOrg',
+    'GitHubOrgMembership',
+    'GitHubToken',
+    'GitHubUser',
+    'Log',
+    'FieldType',
+    'saEnumFieldType',
+    'AttributeBoolean',
+    'AttributeDate',
+    'AttributeDateTime',
+    'AttributeFloat',
+    'AttributeInteger',
+    'AttributeTime',
+    'AttributeUnicodeText',
+    'Field',
+    'Product',
+    'ProductFilePath',
+    'ProductRelation',
+    'ProductRelationType',
+    'ProductType',
+    'TypeFieldAssociation',
+    'WebConfig',
+    'init_app',
+]
 
 
 from flask import Flask
-from .product import (  # noqa: F401
-    ProductType,
-    Product,
-    ProductFilePath,
-    ProductRelationType,
-    ProductRelation,
-    AttributeUnicodeText,
+
+from .account import AccountAdmin
+from .github import GitHubOrg, GitHubOrgMembership, GitHubToken, GitHubUser
+from .misc import Log
+from .product import FieldType  # enum
+from .product import saEnumFieldType  # SQLAlchemy Enum
+from .product import (
     AttributeBoolean,
-    AttributeInteger,
-    AttributeFloat,
     AttributeDate,
     AttributeDateTime,
+    AttributeFloat,
+    AttributeInteger,
     AttributeTime,
-    FieldType,  # enum
-    saEnumFieldType,  # SQLAlchemy Enum
+    AttributeUnicodeText,
     Field,
+    Product,
+    ProductFilePath,
+    ProductRelation,
+    ProductRelationType,
+    ProductType,
     TypeFieldAssociation,
 )
-
-from .github import (  # noqa: F401
-    GitHubToken,
-    GitHubOrg,
-    GitHubUser,
-    GitHubOrgMembership,
-)
-
-from .account import AccountAdmin  # noqa: F401
-
-from .web import WebConfig  # noqa: F401
-
-from .misc import Log  # noqa: F401
+from .web import WebConfig
 
 
 def init_app(app: Flask) -> None:
@@ -64,6 +82,7 @@ def init_app(app: Flask) -> None:
 
 def _add_owners_to_db_as_admins(app):
     import sqlalchemy
+
     from acondbs.db.sa import sa
 
     # Test if tables are defined. For example, tables are not defined

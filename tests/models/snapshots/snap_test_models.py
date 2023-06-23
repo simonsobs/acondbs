@@ -4,9 +4,16 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
+
 snapshots = Snapshot()
 
 snapshots['test_table_names 1'] = [
+    'account_admins',
+    'github_tokens',
+    'github_orgs',
+    'github_users',
+    'github_org_memberships',
+    'log',
     'product_types',
     'products',
     'product_file_paths',
@@ -21,11 +28,5 @@ snapshots['test_table_names 1'] = [
     'attribute_time',
     'field',
     'type_field_association',
-    'github_tokens',
-    'github_orgs',
-    'github_users',
-    'github_org_memberships',
-    'account_admins',
-    'web_config',
-    'log',
+    'web_config'
 ]
