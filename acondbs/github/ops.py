@@ -1,6 +1,8 @@
 """Operations on DB
 """
 
+from typing import TypedDict
+
 from flask import current_app
 
 from acondbs.db.sa import sa
@@ -15,7 +17,15 @@ from acondbs.models import (
 from . import call, query
 
 
-def get_github_oauth_app_info():
+class GitHubOAuthAppInfo(TypedDict):
+    authorize_url: str
+    token_url: str
+    client_id: str
+    client_secret: str
+    redirect_uri: str
+
+
+def get_github_oauth_app_info() -> GitHubOAuthAppInfo:
     """Return GitHub OAuth App information
 
     Returns
@@ -30,7 +40,7 @@ def get_github_oauth_app_info():
                 'redirect_uri': 'https://example.org/redirect'
             }
     """
-    ret = dict(
+    ret = GitHubOAuthAppInfo(
         authorize_url=current_app.config['GITHUB_AUTH_AUTHORIZE_URL'],
         token_url=current_app.config['GITHUB_AUTH_TOKEN_URL'],
         client_id=current_app.config['GITHUB_AUTH_CLIENT_ID'],
@@ -40,7 +50,7 @@ def get_github_oauth_app_info():
     return ret
 
 
-def exchange_code_for_token(code):
+def exchange_code_for_token(code: str):
     """Exchange an OAuth authentication code for a access token
 
     Parameters
@@ -69,7 +79,7 @@ def exchange_code_for_token(code):
     )
 
 
-def add_org(login):
+def add_org(login: str) -> GitHubOrg:
     if GitHubOrg.query.filter_by(login=login).one_or_none() is not None:
         raise Exception(f'already exists: {login}')
     if not (tokens := GitHubToken.query.all()):
@@ -78,7 +88,7 @@ def add_org(login):
     for token in tokens:
         try:
             r = query.org(login, token.token)
-        except:
+        except Exception:
             continue
         break
     if r is None:
@@ -91,21 +101,21 @@ def add_org(login):
     return model
 
 
-def delete_org(login):
+def delete_org(login: str) -> None:
     if (model := GitHubOrg.query.filter_by(login=login).one_or_none()) is None:
         raise Exception(f'does not exist: {login}')
     sa.session.delete(model)
     sa.session.commit()
 
 
-def update_org_member_lists():
+def update_org_member_lists() -> None:
     if not (
         tokens := GitHubToken.query.filter(GitHubToken.scope.like('%read:org%')).all()
     ):
         raise Exception('No tokens with relevant scopes available.')
     if not (orgs := GitHubOrg.query.all()):
         raise Exception('No orgs found.')
-    with sa.session.no_autoflush:
+    with sa.session.no_autoflush:  # type: ignore
         memberships = GitHubOrgMembership.query.all()
         for membership in memberships:
             sa.session.delete(membership)
@@ -150,7 +160,7 @@ def update_org_member_lists():
     sa.session.commit()
 
 
-def store_token_for_code(code):
+def store_token_for_code(code: str) -> None:
     token_dict = exchange_code_for_token(code)
     viewer = query.viewer(token_dict['access_token'])
     if (
@@ -168,7 +178,7 @@ def store_token_for_code(code):
     sa.session.commit()
 
 
-def authenticate(code):
+def authenticate(code: str) -> call.Token:
     """Authenticate a GitHub user with an OAuth authentication code
 
     This function authenticates a GitHub user with an OAuth
@@ -223,7 +233,7 @@ def authenticate(code):
     return token_dict
 
 
-def get_user_for_token(token):
+def get_user_for_token(token: str):
     """ """
     user = GitHubUser.query.join(GitHubToken).filter(GitHubToken.token == token).one()
     return user

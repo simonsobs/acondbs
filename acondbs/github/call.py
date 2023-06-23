@@ -6,12 +6,18 @@ in this module.
 
 """
 
+from typing import Any, Mapping, Optional, TypedDict
+
 import requests
 
 API_URL = 'https://api.github.com/graphql'
 
 
-def call_graphql_api(query, variables=None, token=None):
+def call_graphql_api(
+    query: str,
+    variables: Optional[Mapping[str, Any]] = None,
+    token: Optional[str] = None,
+) -> dict:
     """Call a GitHub GraphQL API
 
     Parameters
@@ -41,7 +47,7 @@ def call_graphql_api(query, variables=None, token=None):
     if token:
         headers['Authorization'] = 'token {}'.format(token)
 
-    json = {'query': query}
+    json: dict[str, Any] = {'query': query}
     if variables:
         json['variables'] = variables
 
@@ -55,8 +61,8 @@ def call_graphql_api(query, variables=None, token=None):
     #       'variables': {"login": "octocat"}
     #   }
 
-    response = requests.post(API_URL, json=json, headers=headers)
-    response = response.json()
+    response_ = requests.post(API_URL, json=json, headers=headers)
+    response = response_.json()
     # examples:
     #   success:
     #     response = {"data": {"user": {"name": "The Octocat"} } }
@@ -89,7 +95,15 @@ def call_graphql_api(query, variables=None, token=None):
     return response['data']
 
 
-def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_uri):
+class Token(TypedDict):
+    access_token: str
+    token_type: str
+    scope: str
+
+
+def exchange_code_for_token(
+    code: str, token_url: str, client_id: str, client_secret: str, redirect_uri: str
+) -> Token:
     """exchange a OAuth2 authorization code for an access token
 
     https://docs.github.com/en/free-pro-team@latest/developers/apps/authorizing-oauth-apps#2-users-are-redirected-back-to-your-site-by-github
@@ -132,8 +146,8 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
         'Accept': "application/vnd.github.v3+json, application/json",
     }
 
-    response = requests.post(token_url, json=params, headers=headers)
-    response = response.json()  # dict
+    response_ = requests.post(token_url, json=params, headers=headers)
+    response = response_.json()  # dict
     # examples:
     #   success:
     #     response = {'access_token': 'XXXXXXXXXXXXXXXXXXXX', 'token_type': 'bearer', 'scope': 'user'}
@@ -147,5 +161,7 @@ def exchange_code_for_token(code, token_url, client_id, client_secret, redirect_
 
     if 'access_token' not in response:
         raise Exception(response)
+
+    # TODO: verify if the response conforms Token
 
     return response

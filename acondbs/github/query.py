@@ -2,11 +2,12 @@
 """
 
 import base64
+from typing import TypedDict
 
 from .call import call_graphql_api
 
 
-def org(login, token):
+def org(login: str, token):
     query = """
       query Organization($login: String!) {
         organization(login: $login) {
@@ -35,7 +36,7 @@ def org(login, token):
     return r['organization']
 
 
-def org_members(org_login, token):
+def org_members(org_login: str, token: str):
     first = 100
 
     query = """
@@ -115,7 +116,15 @@ def org_members(org_login, token):
     return edges
 
 
-def viewer(token):
+class Viewer(TypedDict):
+    id: str
+    login: str
+    name: str
+    avatarUrl: str
+    url: str
+
+
+def viewer(token: str) -> Viewer:
     """Return info about the GitHub user for a token
 
     Parameters
@@ -153,6 +162,8 @@ def viewer(token):
 
     viewer['id'] = _decode_id(viewer['id'])
     # e.g., '04:User583231'
+
+    # TODO: verify TypedDict
 
     return viewer
 

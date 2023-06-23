@@ -22,7 +22,7 @@ class AddGitHubOrg(graphene.Mutation):
     ok = graphene.Boolean()
     git_hub_org = graphene.Field(lambda: type_.GitHubOrg)
 
-    def mutate(root, info, login):
+    def mutate(root, info, login: str):
         model = add_org(login)
         ok = True
         # request_backup_db()
@@ -35,7 +35,7 @@ class DeleteGitHubOrg(graphene.Mutation):
 
     ok = graphene.Boolean()
 
-    def mutate(root, info, login):
+    def mutate(root, info, login: str):
         delete_org(login)
         ok = True
         # request_backup_db()
