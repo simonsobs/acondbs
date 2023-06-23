@@ -5,7 +5,7 @@ from pathlib import Path
 try:
     SECRET_KEY = os.environ.get('ACONDBS_SECRET_KEY')
 
-    ACONDBS_DB_FOLDER = Path(os.environ.get('ACONDBS_DB_FOLDER'))
+    ACONDBS_DB_FOLDER = Path(os.environ.get('ACONDBS_DB_FOLDER', ''))
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
