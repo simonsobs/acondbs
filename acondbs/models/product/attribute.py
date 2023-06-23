@@ -1,7 +1,7 @@
 # type: ignore
 from sqlalchemy.orm import declarative_mixin, declared_attr
 
-from ...db.sa import sa
+from acondbs.db.sa import sa
 
 
 @declarative_mixin

@@ -1,8 +1,8 @@
 import graphene
 
-from .... import ops
-from ...funcs import get_git_hub_viewer_from_info
-from .. import type_
+from acondbs import ops
+from acondbs.schema.funcs import get_git_hub_viewer_from_info
+from acondbs.schema.product import type_
 
 
 def _reshape_arg_attributes(attributes):

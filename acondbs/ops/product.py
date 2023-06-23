@@ -1,7 +1,7 @@
 import datetime
 
-from ..db.sa import sa
-from ..models import (
+from acondbs.db.sa import sa
+from acondbs.models import (
     FieldType,
     GitHubUser,
     Product,

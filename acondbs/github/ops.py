@@ -3,14 +3,15 @@
 
 from flask import current_app
 
-from ..db.sa import sa
-from ..models import (
+from acondbs.db.sa import sa
+from acondbs.models import (
     AccountAdmin,
     GitHubOrg,
     GitHubOrgMembership,
     GitHubToken,
     GitHubUser,
 )
+
 from . import call, query
 
 

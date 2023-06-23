@@ -1,5 +1,5 @@
-from ..db.backup import request_backup_db
-from ..db.sa import sa
+from acondbs.db.backup import request_backup_db
+from acondbs.db.sa import sa
 
 
 def commit():

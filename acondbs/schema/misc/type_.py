@@ -1,8 +1,8 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
-from ...models import Log as LogModel
-from ..connection import CountedConnection
+from acondbs.models import Log as LogModel
+from acondbs.schema.connection import CountedConnection
 
 
 class Log(SQLAlchemyObjectType):

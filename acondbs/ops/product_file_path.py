@@ -1,5 +1,5 @@
-from ..db.sa import sa
-from ..models import ProductFilePath
+from acondbs.db.sa import sa
+from acondbs.models import ProductFilePath
 
 
 def create_product_file_path(**kwargs):

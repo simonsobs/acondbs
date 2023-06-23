@@ -1,4 +1,4 @@
-from ..github.ops import get_user_for_token
+from acondbs.github.ops import get_user_for_token
 
 
 def get_git_hub_viewer_from_info(info):

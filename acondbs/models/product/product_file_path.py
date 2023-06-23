@@ -1,5 +1,5 @@
-from ...db.sa import sa
-from ..funcs import shorten
+from acondbs.db.sa import sa
+from acondbs.models.funcs import shorten
 
 
 class ProductFilePath(sa.Model):  # type: ignore

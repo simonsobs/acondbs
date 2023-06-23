@@ -1,7 +1,7 @@
 import graphene
 
-from .... import ops
-from .. import type_
+from acondbs import ops
+from acondbs.schema.product import type_
 
 
 class CommonInputFields:

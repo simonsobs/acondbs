@@ -1,6 +1,7 @@
 import graphene
 
-from ... import ops
+from acondbs import ops
+
 from . import type_
 
 

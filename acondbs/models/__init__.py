@@ -64,7 +64,7 @@ def init_app(app: Flask) -> None:
 
 def _add_owners_to_db_as_admins(app):
     import sqlalchemy
-    from ..db.sa import sa
+    from acondbs.db.sa import sa
 
     # Test if tables are defined. For example, tables are not defined
     # when a migration version is being created.
@@ -97,7 +97,7 @@ def _add_owners_to_db_as_admins(app):
 
 
 def remove_git_hub_tokens_with_invalid_decryption_key(app):
-    from ..db.sa import sa
+    from acondbs.db.sa import sa
 
     with app.app_context():
         token_ids = [e[0] for e in sa.session.query(GitHubToken.token_id).all()]

@@ -3,7 +3,7 @@ import datetime
 from flask import current_app
 from sqlalchemy_utils import EncryptedType
 
-from ...db.sa import sa
+from acondbs.db.sa import sa
 
 
 def encription_key():

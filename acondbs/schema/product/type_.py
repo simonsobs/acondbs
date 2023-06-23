@@ -1,31 +1,26 @@
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
-
-from ..connection import CountedConnection
-from ...models import (
-    Product as ProductModel,
-    ProductType as ProductTypeModel,
-    ProductFilePath as ProductFilePathModel,
-    ProductRelation as ProductRelationModel,
-    ProductRelationType as ProductRelationTypeModel,
-    # FieldType as FieldTypeModel,  # enum
-    saEnumFieldType,  # SQLAlchemy Enum
-    Field as FieldModel,
-    TypeFieldAssociation as TypeFieldAssociationModel,
-    AttributeUnicodeText as AttributeUnicodeTextModel,
-    AttributeBoolean as AttributeBooleanModel,
-    AttributeInteger as AttributeIntegerModel,
-    AttributeFloat as AttributeFloatModel,
-    AttributeDate as AttributeDateModel,
-    AttributeDateTime as AttributeDateTimeModel,
-    AttributeTime as AttributeTimeModel,
-)
-from ..filter_ import PFilterableConnectionField
-
-
 from graphene_sqlalchemy.enums import _convert_sa_to_graphene_enum
 
+# from acondbs.models import FieldType as FieldTypeModel  # enum
+from acondbs.models import AttributeBoolean as AttributeBooleanModel
+from acondbs.models import AttributeDate as AttributeDateModel
+from acondbs.models import AttributeDateTime as AttributeDateTimeModel
+from acondbs.models import AttributeFloat as AttributeFloatModel
+from acondbs.models import AttributeInteger as AttributeIntegerModel
+from acondbs.models import AttributeTime as AttributeTimeModel
+from acondbs.models import AttributeUnicodeText as AttributeUnicodeTextModel
+from acondbs.models import Field as FieldModel
+from acondbs.models import Product as ProductModel
+from acondbs.models import ProductFilePath as ProductFilePathModel
+from acondbs.models import ProductRelation as ProductRelationModel
+from acondbs.models import ProductRelationType as ProductRelationTypeModel
+from acondbs.models import ProductType as ProductTypeModel
+from acondbs.models import TypeFieldAssociation as TypeFieldAssociationModel
+from acondbs.models import saEnumFieldType  # SQLAlchemy Enum
+from acondbs.schema.connection import CountedConnection
+from acondbs.schema.filter_ import PFilterableConnectionField
 
 # FieldType is an enum. It is manually converted to a graphene enum
 # here. An enum will be usually automatically converted. However, the

@@ -1,5 +1,5 @@
-from ..db.sa import sa
-from ..models import WebConfig
+from acondbs.db.sa import sa
+from acondbs.models import WebConfig
 
 
 def save_web_config(**kwargs):

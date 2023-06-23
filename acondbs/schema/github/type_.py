@@ -2,12 +2,12 @@ import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
-from ...models import GitHubOrg as GitHubOrgModel
-from ...models import GitHubOrgMembership as GitHubOrgMembershipModel
-from ...models import GitHubToken as GitHubTokenModel
-from ...models import GitHubUser as GitHubUserModel
-from ..connection import CountedConnection
-from ..filter_ import PFilterableConnectionField
+from acondbs.models import GitHubOrg as GitHubOrgModel
+from acondbs.models import GitHubOrgMembership as GitHubOrgMembershipModel
+from acondbs.models import GitHubToken as GitHubTokenModel
+from acondbs.models import GitHubUser as GitHubUserModel
+from acondbs.schema.connection import CountedConnection
+from acondbs.schema.filter_ import PFilterableConnectionField
 
 
 class GitHubOAuthAppInfo(graphene.ObjectType):

@@ -1,6 +1,6 @@
 from flask import request
 
-from ..models import AccountAdmin, GitHubToken, GitHubUser
+from acondbs.models import AccountAdmin, GitHubToken, GitHubUser
 
 
 def is_signed_in():

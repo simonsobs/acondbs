@@ -1,8 +1,8 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
-from ...models import WebConfig as WebConfigModel
-from ..connection import CountedConnection
+from acondbs.models import WebConfig as WebConfigModel
+from acondbs.schema.connection import CountedConnection
 
 
 class WebConfig(SQLAlchemyObjectType):

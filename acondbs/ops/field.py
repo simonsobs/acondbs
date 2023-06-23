@@ -1,5 +1,5 @@
-from ..db.sa import sa
-from ..models import Field, FieldType
+from acondbs.db.sa import sa
+from acondbs.models import Field, FieldType
 
 
 def create_field(name, type_, field_id=None):

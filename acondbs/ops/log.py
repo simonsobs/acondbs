@@ -1,5 +1,5 @@
-from ..db.sa import sa
-from ..models import Log
+from acondbs.db.sa import sa
+from acondbs.models import Log
 
 
 def create_log(**kwargs):

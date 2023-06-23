@@ -1,4 +1,4 @@
-from ...db.sa import sa
+from acondbs.db.sa import sa
 
 
 class GitHubOrg(sa.Model):  # type: ignore

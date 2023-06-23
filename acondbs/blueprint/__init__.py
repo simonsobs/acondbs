@@ -5,7 +5,8 @@ import traceback
 from flask import Blueprint, Flask, current_app, request
 from flask_graphql import GraphQLView
 
-from .. import auth, ops, schema
+from acondbs import auth, ops, schema
+
 from .graphql_ide import GRAPHIQL_NEWER, GRAPHQL_PLAYGROUND
 
 

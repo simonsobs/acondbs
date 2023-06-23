@@ -1,11 +1,11 @@
 import graphene
 from alembic.migration import MigrationContext
 
-from ..db.conn import get_db_connection
+from acondbs.db.conn import get_db_connection
 
 
 def resolve_version(parent, info):
-    from .. import __version__
+    from acondbs.__about__ import __version__
 
     return __version__
 

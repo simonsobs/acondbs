@@ -1,11 +1,12 @@
 import graphene
 
-from ...models import Field as FieldModel
-from ...models import Product as ProductModel
-from ...models import ProductRelation as ProductRelationModel
-from ...models import ProductRelationType as ProductRelationTypeModel
-from ...models import ProductType as ProductTypeModel
-from ..filter_ import PFilterableConnectionField
+from acondbs.models import Field as FieldModel
+from acondbs.models import Product as ProductModel
+from acondbs.models import ProductRelation as ProductRelationModel
+from acondbs.models import ProductRelationType as ProductRelationTypeModel
+from acondbs.models import ProductType as ProductTypeModel
+from acondbs.schema.filter_ import PFilterableConnectionField
+
 from . import type_
 
 all_products_field = PFilterableConnectionField(type_.Product.connection)

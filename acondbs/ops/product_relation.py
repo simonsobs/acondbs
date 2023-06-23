@@ -1,5 +1,5 @@
-from ..db.sa import sa
-from ..models import Product, ProductRelation, ProductRelationType
+from acondbs.db.sa import sa
+from acondbs.models import Product, ProductRelation, ProductRelationType
 
 
 def create_product_relation(type_id, self_product_id, other_product_id, **kwargs):

@@ -10,10 +10,10 @@ https://github.com/art1415926535/graphene-sqlalchemy-filter/blob/1.10.2/examples
 import graphene
 from graphene_sqlalchemy_filter import FilterableConnectionField, FilterSet
 
-from ..models import GitHubToken as GitHubTokenModel
-from ..models import GitHubUser as GitHubUserModel
-from ..models import Product as ProductModel
-from ..models import ProductType as ProductTypeModel
+from acondbs.models import GitHubToken as GitHubTokenModel
+from acondbs.models import GitHubUser as GitHubUserModel
+from acondbs.models import Product as ProductModel
+from acondbs.models import ProductType as ProductTypeModel
 
 
 class ProductFilter(FilterSet):

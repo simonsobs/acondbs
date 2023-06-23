@@ -1,8 +1,9 @@
 import graphene
 
-from ...github.ops import get_github_oauth_app_info
-from ..filter_ import PFilterableConnectionField
-from ..funcs import get_git_hub_viewer_from_info
+from acondbs.github.ops import get_github_oauth_app_info
+from acondbs.schema.filter_ import PFilterableConnectionField
+from acondbs.schema.funcs import get_git_hub_viewer_from_info
+
 from . import type_
 
 all_git_hub_orgs_field = PFilterableConnectionField(type_.GitHubOrg.connection)

@@ -1,5 +1,5 @@
-from ..db.sa import sa
-from ..models import ProductRelationType
+from acondbs.db.sa import sa
+from acondbs.models import ProductRelationType
 
 
 def create_product_relation_type(type_, reverse=None, self_reverse=False):
