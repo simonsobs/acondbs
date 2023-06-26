@@ -4,7 +4,7 @@ __all__ = [
 ]
 
 from pathlib import Path
-from typing import Any, Dict, Mapping, Optional, Union
+from typing import Any, Dict, Optional, Union
 
 from flask import Flask
 from flask_cors import CORS
@@ -26,9 +26,7 @@ DEFAULT_CONFIG_DICT: Dict[str, Any] = dict(
 )
 
 
-def create_app(
-    config_path: Optional[Union[Path, str]] = None, **kwargs: Mapping[str, Any]
-) -> Flask:
+def create_app(config_path: Optional[Union[Path, str]] = None, **kwargs: Any) -> Flask:
     _logging.configure_logging()
 
     app = Flask(__name__, instance_relative_config=False)
