@@ -1,13 +1,14 @@
 import csv
 import datetime
 from io import StringIO
+from flask import Flask
 
 import pytest
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy_utils import EncryptedType
 
-from acondbs import create_app
+# from acondbs import create_app
 from acondbs.db.ops import convert_data_type_for_insert
 
 sa = SQLAlchemy()
@@ -30,10 +31,13 @@ class SampleTable(sa.Model):  # type: ignore
 
 
 @pytest.fixture
-def app_with_empty_db():
+def app_with_empty_db() -> Flask:
     database_uri = "sqlite:///:memory:"
-    app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
-    yield app
+    # app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
+    app = Flask(__name__, instance_relative_config=False)
+    app.config.from_mapping(**{"SQLALCHEMY_DATABASE_URI": database_uri})  # type: ignore
+    sa.init_app(app)
+    return app
 
 
 @pytest.fixture
@@ -130,6 +134,7 @@ def test_convert(app_with_empty_tables, data):
         assert SampleTable.query.count() == 0
 
         _import_tbl_from_csv(tbl_name, csv_str)
+        sa.session.commit()
 
     # assert
     with app.app_context():
@@ -138,7 +143,7 @@ def test_convert(app_with_empty_tables, data):
         assert actual == expected
 
 
-def _export_tbl_to_csv(tbl_name):
+def _export_tbl_to_csv(tbl_name: str):
     result_proxy = sa.session.execute(f"select * from {tbl_name}")
     b = StringIO()
     csv_writer = csv.writer(b, lineterminator="\n")
@@ -149,7 +154,7 @@ def _export_tbl_to_csv(tbl_name):
     return ret
 
 
-def _import_tbl_from_csv(tbl_name, csv_str):
+def _import_tbl_from_csv(tbl_name: str, csv_str: str) -> None:
     engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)
