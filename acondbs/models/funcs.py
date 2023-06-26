@@ -1,4 +1,4 @@
-def shorten(text, width, placeholder="...", end=False):
+def shorten(text: str, width: int, placeholder: str = "...", end: bool = False) -> str:
     """Truncate text
 
     used for repr() of models

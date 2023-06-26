@@ -9,5 +9,5 @@ class GitHubOrg(sa.Model):  # type: ignore
     avatar_url = sa.Column(sa.Text())
     url = sa.Column(sa.Text())
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<{self.__class__.__name__} {self.login!r}>"

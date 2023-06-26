@@ -10,5 +10,5 @@ class Log(sa.Model):  # type: ignore
     message = sa.Column(sa.Text())
     time = sa.Column(sa.DateTime(), default=lambda: datetime.datetime.now())
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<{self.__class__.__name__} {self.time}>"
