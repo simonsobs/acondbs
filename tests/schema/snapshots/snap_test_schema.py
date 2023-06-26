@@ -582,12 +582,6 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'updatingGitHubUser'
                         },
                         {
-                            'name': 'paths'
-                        },
-                        {
-                            'name': 'relations'
-                        },
-                        {
                             'name': 'attributesUnicodeText'
                         },
                         {
@@ -607,6 +601,12 @@ snapshots['test_schema[admin] 1'] = {
                         },
                         {
                             'name': 'attributesTime'
+                        },
+                        {
+                            'name': 'paths'
+                        },
+                        {
+                            'name': 'relations'
                         },
                         {
                             'name': 'id'
@@ -2798,12 +2798,6 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'updatingGitHubUser'
                         },
                         {
-                            'name': 'paths'
-                        },
-                        {
-                            'name': 'relations'
-                        },
-                        {
                             'name': 'attributesUnicodeText'
                         },
                         {
@@ -2823,6 +2817,12 @@ snapshots['test_schema[private] 1'] = {
                         },
                         {
                             'name': 'attributesTime'
+                        },
+                        {
+                            'name': 'paths'
+                        },
+                        {
+                            'name': 'relations'
                         },
                         {
                             'name': 'id'

@@ -1,29 +1,41 @@
 """declare ORM models for tables for products
 
 """
+__all__ = [
+    'AttributeBoolean',
+    'AttributeDate',
+    'AttributeDateTime',
+    'AttributeFloat',
+    'AttributeInteger',
+    'AttributeTime',
+    'AttributeUnicodeText',
+    'FieldType',
+    'saEnumFieldType',
+    'Field',
+    'Product',
+    'ProductFilePath',
+    'ProductRelation',
+    'ProductRelationType',
+    'ProductType',
+    'TypeFieldAssociation',
+]
 
 
-from .product_type import ProductType  # noqa: F401
-from .product import Product  # noqa: F401
-from .product_file_path import ProductFilePath  # noqa: F401
-from .product_relation_type import ProductRelationType  # noqa: F401
-from .product_relation import ProductRelation  # noqa: F401
-
-from .attribute import (  # noqa: F401
-    AttributeUnicodeText,
+from .attribute import (  # type: ignore
     AttributeBoolean,
-    AttributeInteger,
-    AttributeFloat,
     AttributeDate,
     AttributeDateTime,
+    AttributeFloat,
+    AttributeInteger,
     AttributeTime,
+    AttributeUnicodeText,
 )
-
-from .field import (  # noqa: F401
-    FieldType,  # enum
-    saEnumFieldType,  # SQLAlchemy Enum
-    Field,
-)
-
-
-from .type_field_association import TypeFieldAssociation  # noqa: F401
+from .field import FieldType  # enum
+from .field import saEnumFieldType  # SQLAlchemy Enum
+from .field import Field
+from .product import Product
+from .product_file_path import ProductFilePath
+from .product_relation import ProductRelation
+from .product_relation_type import ProductRelationType
+from .product_type import ProductType
+from .type_field_association import TypeFieldAssociation

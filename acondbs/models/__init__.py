@@ -80,7 +80,7 @@ def init_app(app: Flask) -> None:
     # remove_git_hub_tokens_with_invalid_decryption_key(app)
 
 
-def _add_owners_to_db_as_admins(app):
+def _add_owners_to_db_as_admins(app: Flask) -> None:
     import sqlalchemy
 
     from acondbs.db.sa import sa
@@ -115,7 +115,7 @@ def _add_owners_to_db_as_admins(app):
         sa.session.commit()
 
 
-def remove_git_hub_tokens_with_invalid_decryption_key(app):
+def remove_git_hub_tokens_with_invalid_decryption_key(app: Flask) -> None:
     from acondbs.db.sa import sa
 
     with app.app_context():

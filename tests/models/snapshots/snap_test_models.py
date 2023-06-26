@@ -14,11 +14,6 @@ snapshots['test_table_names 1'] = [
     'github_tokens',
     'github_users',
     'log',
-    'product_types',
-    'products',
-    'product_file_paths',
-    'product_relation_types',
-    'product_relations',
     'attribute_unicode_text',
     'attribute_boolean',
     'attribute_integer',
@@ -27,6 +22,11 @@ snapshots['test_table_names 1'] = [
     'attribute_date_time',
     'attribute_time',
     'field',
+    'products',
+    'product_file_paths',
+    'product_relations',
+    'product_relation_types',
+    'product_types',
     'type_field_association',
     'web_config'
 ]
