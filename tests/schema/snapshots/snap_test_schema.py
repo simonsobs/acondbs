@@ -326,10 +326,10 @@ snapshots['test_schema[admin] 1'] = {
                             'name': 'url'
                         },
                         {
-                            'name': 'tokens'
+                            'name': 'memberships'
                         },
                         {
-                            'name': 'memberships'
+                            'name': 'tokens'
                         },
                         {
                             'name': 'postedProducts'
@@ -357,7 +357,7 @@ snapshots['test_schema[admin] 1'] = {
                         }
                     ],
                     'kind': 'OBJECT',
-                    'name': 'GitHubTokenConnection'
+                    'name': 'GitHubOrgMembershipConnection'
                 },
                 {
                     'fields': [
@@ -376,6 +376,94 @@ snapshots['test_schema[admin] 1'] = {
                     ],
                     'kind': 'OBJECT',
                     'name': 'PageInfo'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubOrgMembershipEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'entryId'
+                        },
+                        {
+                            'name': 'orgId'
+                        },
+                        {
+                            'name': 'memberId'
+                        },
+                        {
+                            'name': 'org'
+                        },
+                        {
+                            'name': 'member'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubOrgMembership'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Int'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'orgId'
+                        },
+                        {
+                            'name': 'gitHubId'
+                        },
+                        {
+                            'name': 'login'
+                        },
+                        {
+                            'name': 'avatarUrl'
+                        },
+                        {
+                            'name': 'url'
+                        },
+                        {
+                            'name': 'memberships'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubOrg'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'GitHubOrgMembershipSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubTokenConnection'
                 },
                 {
                     'fields': [
@@ -419,11 +507,6 @@ snapshots['test_schema[admin] 1'] = {
                 {
                     'fields': None,
                     'kind': 'SCALAR',
-                    'name': 'Int'
-                },
-                {
-                    'fields': None,
-                    'kind': 'SCALAR',
                     'name': 'DateTime'
                 },
                 {
@@ -435,89 +518,6 @@ snapshots['test_schema[admin] 1'] = {
                     'fields': None,
                     'kind': 'ENUM',
                     'name': 'GitHubTokenSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrgMembershipConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrgMembershipEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'entryId'
-                        },
-                        {
-                            'name': 'orgId'
-                        },
-                        {
-                            'name': 'memberId'
-                        },
-                        {
-                            'name': 'org'
-                        },
-                        {
-                            'name': 'member'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrgMembership'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'orgId'
-                        },
-                        {
-                            'name': 'gitHubId'
-                        },
-                        {
-                            'name': 'login'
-                        },
-                        {
-                            'name': 'avatarUrl'
-                        },
-                        {
-                            'name': 'url'
-                        },
-                        {
-                            'name': 'memberships'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrg'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'GitHubOrgMembershipSortEnum'
                 },
                 {
                     'fields': [
@@ -2542,10 +2542,10 @@ snapshots['test_schema[private] 1'] = {
                             'name': 'url'
                         },
                         {
-                            'name': 'tokens'
+                            'name': 'memberships'
                         },
                         {
-                            'name': 'memberships'
+                            'name': 'tokens'
                         },
                         {
                             'name': 'postedProducts'
@@ -2573,7 +2573,7 @@ snapshots['test_schema[private] 1'] = {
                         }
                     ],
                     'kind': 'OBJECT',
-                    'name': 'GitHubTokenConnection'
+                    'name': 'GitHubOrgMembershipConnection'
                 },
                 {
                     'fields': [
@@ -2592,6 +2592,94 @@ snapshots['test_schema[private] 1'] = {
                     ],
                     'kind': 'OBJECT',
                     'name': 'PageInfo'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'node'
+                        },
+                        {
+                            'name': 'cursor'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubOrgMembershipEdge'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'entryId'
+                        },
+                        {
+                            'name': 'orgId'
+                        },
+                        {
+                            'name': 'memberId'
+                        },
+                        {
+                            'name': 'org'
+                        },
+                        {
+                            'name': 'member'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubOrgMembership'
+                },
+                {
+                    'fields': None,
+                    'kind': 'SCALAR',
+                    'name': 'Int'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'orgId'
+                        },
+                        {
+                            'name': 'gitHubId'
+                        },
+                        {
+                            'name': 'login'
+                        },
+                        {
+                            'name': 'avatarUrl'
+                        },
+                        {
+                            'name': 'url'
+                        },
+                        {
+                            'name': 'memberships'
+                        },
+                        {
+                            'name': 'id'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubOrg'
+                },
+                {
+                    'fields': None,
+                    'kind': 'ENUM',
+                    'name': 'GitHubOrgMembershipSortEnum'
+                },
+                {
+                    'fields': [
+                        {
+                            'name': 'pageInfo'
+                        },
+                        {
+                            'name': 'edges'
+                        },
+                        {
+                            'name': 'totalCount'
+                        }
+                    ],
+                    'kind': 'OBJECT',
+                    'name': 'GitHubTokenConnection'
                 },
                 {
                     'fields': [
@@ -2635,11 +2723,6 @@ snapshots['test_schema[private] 1'] = {
                 {
                     'fields': None,
                     'kind': 'SCALAR',
-                    'name': 'Int'
-                },
-                {
-                    'fields': None,
-                    'kind': 'SCALAR',
                     'name': 'DateTime'
                 },
                 {
@@ -2651,89 +2734,6 @@ snapshots['test_schema[private] 1'] = {
                     'fields': None,
                     'kind': 'ENUM',
                     'name': 'GitHubTokenSortEnum'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'pageInfo'
-                        },
-                        {
-                            'name': 'edges'
-                        },
-                        {
-                            'name': 'totalCount'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrgMembershipConnection'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'node'
-                        },
-                        {
-                            'name': 'cursor'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrgMembershipEdge'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'entryId'
-                        },
-                        {
-                            'name': 'orgId'
-                        },
-                        {
-                            'name': 'memberId'
-                        },
-                        {
-                            'name': 'org'
-                        },
-                        {
-                            'name': 'member'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrgMembership'
-                },
-                {
-                    'fields': [
-                        {
-                            'name': 'orgId'
-                        },
-                        {
-                            'name': 'gitHubId'
-                        },
-                        {
-                            'name': 'login'
-                        },
-                        {
-                            'name': 'avatarUrl'
-                        },
-                        {
-                            'name': 'url'
-                        },
-                        {
-                            'name': 'memberships'
-                        },
-                        {
-                            'name': 'id'
-                        }
-                    ],
-                    'kind': 'OBJECT',
-                    'name': 'GitHubOrg'
-                },
-                {
-                    'fields': None,
-                    'kind': 'ENUM',
-                    'name': 'GitHubOrgMembershipSortEnum'
                 },
                 {
                     'fields': [

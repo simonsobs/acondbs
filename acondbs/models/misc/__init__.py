@@ -1,6 +1,9 @@
 """declare miscellaneous ORM models
 
 """
+__all__ = [
+    'Log',
+]
 
 
-from .log import Log  # noqa: F401
+from .log import Log

@@ -9,10 +9,10 @@ snapshots = Snapshot()
 
 snapshots['test_table_names 1'] = [
     'account_admins',
-    'github_tokens',
     'github_orgs',
-    'github_users',
     'github_org_memberships',
+    'github_tokens',
+    'github_users',
     'log',
     'product_types',
     'products',
