@@ -30,8 +30,9 @@ __all__ = [
     'save_web_config',
 ]
 
+from acondbs.models import FieldType
 
-from .field import FieldType, create_field, delete_field, update_field
+from .field import create_field, delete_field, update_field
 from .log import create_log, delete_log
 from .misc import commit
 from .product import (
