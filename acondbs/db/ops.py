@@ -13,7 +13,6 @@ from typing import Any, Collection, Optional, TextIO, Union
 from sqlalchemy import MetaData
 from sqlalchemy.sql import sqltypes
 
-from .conn import get_db_connection
 from .sa import sa
 
 
@@ -116,7 +115,7 @@ def export_table_to_dict_list(tbl_name: str) -> list[dict[str, Any]]:
 
     """
     result_proxy = get_resultproxy_of_select_all_rows(tbl_name)
-    return [dict(r) for r in result_proxy]
+    return [dict(r._mapping) for r in result_proxy]
 
 
 def get_resultproxy_of_select_all_rows(tbl_name: str):
@@ -139,7 +138,7 @@ def get_resultproxy_of_select_all_rows(tbl_name: str):
     metadata = MetaData()
     metadata.reflect(bind=engine)
     tbl = metadata.tables[tbl_name]
-    return engine.execute(tbl.select())
+    return sa.session.execute(tbl.select())
 
 
 def import_tables_from_csv_files(csvdir: Union[str, Path]) -> None:
@@ -213,7 +212,7 @@ def import_table_from_csv_file(tbl_name: str, path: Union[str, Path]) -> None:
         )
 
         ins = tbl.insert()
-        connection = get_db_connection()
+        # connection = get_db_connection()
 
         # Unfortunately, it is not possible to insert from a
         # generator in the current version (1.4) of SQLAlchemy.
@@ -221,7 +220,8 @@ def import_table_from_csv_file(tbl_name: str, path: Union[str, Path]) -> None:
         if not data:
             return
 
-        connection.execute(ins, data)
+        sa.session.execute(ins, data)
+        sa.session.commit()
 
 
 def convert_data_type_for_insert(str_: str, type_):
