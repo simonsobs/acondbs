@@ -53,7 +53,7 @@ def test_define_tables_start_with_nonempty_db(app, snapshot):
         assert metadata.tables
         total_nentries = sum(
             [
-                len([r for r in sa.engine.execute(tbl.select())])
+                len([r for r in sa.session.execute(tbl.select())])
                 for tbl in metadata.sorted_tables
             ]
         )
@@ -69,7 +69,7 @@ def test_define_tables_start_with_nonempty_db(app, snapshot):
         snapshot.assert_match(metadata.tables)
         total_nentries = sum(
             [
-                len([r for r in sa.engine.execute(tbl.select())])
+                len([r for r in sa.session.execute(tbl.select())])
                 for tbl in metadata.sorted_tables
             ]
         )
