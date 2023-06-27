@@ -1,18 +1,20 @@
+from typing import Optional
+
 import pytest
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
 
 params = [
-    [True, 200, "<!DOCTYPE html>"],
-    [False, 400, "errors"],
+    [True, 200, '<!DOCTYPE html>'],
+    [False, 400, 'errors'],
 ]
 
 
-@pytest.mark.parametrize("graphiql, code, data", params)
-def test_disable(graphiql, code, data):
+@pytest.mark.parametrize('graphiql, code, data', params)
+def test_disable(graphiql: bool, code: int, data: str) -> None:
     app = create_app(
-        SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
+        SQLALCHEMY_DATABASE_URI='sqlite:///:memory:',
         ACONDBS_GRAPHIQL=graphiql,
         ACONDBS_GRAPHIQL_TEMPLATE_NO=2,
     )
@@ -21,22 +23,22 @@ def test_disable(graphiql, code, data):
 
     client = app.test_client()
 
-    response = client.get("/graphql", headers={"Accept": "text/html"})
+    response = client.get('/graphql', headers={'Accept': 'text/html'})
     assert code == response.status_code
-    assert data in response.data.decode("utf-8")
+    assert data in response.data.decode('utf-8')
 
 
 params = [
-    [None, "//cdn.jsdelivr.net/npm/graphiql@0.11.11/graphiql.min.js"],
-    [1, "https://unpkg.com/graphiql/graphiql.min.js"],
-    [2, "graphql-playground"],
+    [None, '//cdn.jsdelivr.net/npm/graphiql@0.11.11/graphiql.min.js'],
+    [1, 'https://unpkg.com/graphiql/graphiql.min.js'],
+    [2, 'graphql-playground'],
 ]
 
 
-@pytest.mark.parametrize("number, data", params)
-def test_template(number, data):
+@pytest.mark.parametrize('number, data', params)
+def test_template(number: Optional[int], data: str) -> None:
     app = create_app(
-        SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
+        SQLALCHEMY_DATABASE_URI='sqlite:///:memory:',
         ACONDBS_GRAPHIQL=True,
         ACONDBS_GRAPHIQL_TEMPLATE_NO=number,
     )
@@ -45,6 +47,6 @@ def test_template(number, data):
 
     client = app.test_client()
 
-    response = client.get("/graphql", headers={"Accept": "text/html"})
+    response = client.get('/graphql', headers={'Accept': 'text/html'})
     assert 200 == response.status_code
-    assert data in response.data.decode("utf-8")
+    assert data in response.data.decode('utf-8')

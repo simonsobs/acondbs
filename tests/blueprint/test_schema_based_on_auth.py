@@ -1,7 +1,8 @@
 import unittest.mock as mock
 
+from snapshottest.pytest import PyTestSnapshotTest
 import pytest
-from flask import json
+from flask import Flask, json
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables
@@ -30,24 +31,30 @@ QUERY = '''
 
 
 @pytest.fixture
-def app_empty():
-    database_uri = "sqlite:///:memory:"
+def app_empty() -> Flask:
+    database_uri = 'sqlite:///:memory:'
     y = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     with y.app_context():
         define_tables()
-    yield y
+    return y
 
 
 @pytest.fixture()
-def mock_auth(monkeypatch):
+def mock_auth(monkeypatch: pytest.MonkeyPatch) -> mock.Mock:
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.blueprint.auth", y)
-    yield y
+    monkeypatch.setattr('acondbs.blueprint.auth', y)
+    return y
 
 
 @pytest.mark.parametrize('is_signed_in', [True, False])
 @pytest.mark.parametrize('is_admin', [True, False])
-def test_schema_selection(app_empty, is_signed_in, is_admin, mock_auth, snapshot):
+def test_schema_selection(
+    app_empty: Flask,
+    is_signed_in: bool,
+    is_admin: bool,
+    mock_auth: mock.Mock,
+    snapshot: PyTestSnapshotTest,
+) -> None:
     app = app_empty
 
     mock_auth.is_signed_in.return_value = is_signed_in
