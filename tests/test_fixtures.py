@@ -1,23 +1,24 @@
-"""test global fixtures
+'''test global fixtures
 
 The global fixtures are defined in `conftest.py`
-"""
+'''
 
 
-def test_app(app):
-    """test the fixture app"""
-    from flask import Flask
+from flask import Flask
+from flask.testing import FlaskClient, FlaskCliRunner
 
-    assert isinstance(app, Flask)
+
+def test_app(app: Flask) -> None:
+    '''test the fixture app'''
     assert app.testing
 
 
-def test_client(client):
-    """test the fixture client"""
-    response = client.get("/")
+def test_client(client: FlaskClient) -> None:
+    '''test the fixture client'''
+    response = client.get('/')
     assert response
 
 
-def test_runner(runner):
-    """test the fixture runner"""
+def test_runner(runner: FlaskCliRunner) -> None:
+    '''test the fixture runner'''
     assert runner
