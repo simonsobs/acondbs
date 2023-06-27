@@ -18,7 +18,6 @@ from .cmds import (
     import_csv_command,
     init_db_command,
 )
-from .conn import close_db_connection
 from .sa import sa
 
 migrate = Migrate()
@@ -43,4 +42,3 @@ def init_app(app: Flask) -> None:
     app.cli.add_command(import_csv_command)
     app.cli.add_command(export_csv_command)
     app.cli.add_command(backup_db_command)
-    app.teardown_appcontext(close_db_connection)
