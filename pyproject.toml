@@ -95,7 +95,7 @@ plugins = "sqlalchemy.ext.mypy.plugin"
 module = [
     "graphene.*",
     "sqlalchemy_utils.*",
-    "snapshottest",
+    "snapshottest.*",
     "graphene_sqlalchemy.*",
     "async_asgi_testclient",
     "flask_graphql",
