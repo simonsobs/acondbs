@@ -1,11 +1,12 @@
 import csv
+from typing import Collection
 
 import pytest
 
-multiline_entry = """\
+multiline_entry = '''\
 "abc
 xyz",def,ghi\
-"""
+'''
 
 params = [
     pytest.param(
@@ -41,14 +42,14 @@ params = [
 ]
 
 
-@pytest.mark.parametrize("input, expected", params)
-def test_csv_specification(input, expected):
-    """test CSV specification
+@pytest.mark.parametrize('input, expected', params)
+def test_csv_specification(input: Collection[str], expected: list[list[str]]) -> None:
+    '''test CSV specification
 
     This test is used to check the CSV specification as implemented in
     csv.reader(), in particular, to understand how quotes are treated
     and how to include double quotes, commas, and line breaks in data
 
-    """
+    '''
     rows = list(csv.reader(input))
     assert expected == rows

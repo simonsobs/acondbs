@@ -1,4 +1,6 @@
 import pytest
+from flask import Flask
+from snapshottest.pytest import PyTestSnapshotTest
 from sqlalchemy import MetaData
 
 from acondbs import create_app
@@ -7,19 +9,21 @@ from acondbs.db.sa import sa
 
 
 @pytest.fixture
-def app_with_empty_db():
-    database_uri = "sqlite:///:memory:"
+def app_with_empty_db() -> Flask:
+    database_uri = 'sqlite:///:memory:'
     app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
-    yield app
+    return app
 
 
-def test_define_tables_start_with_empty_db(app_with_empty_db, snapshot):
-    """test define_tables()
+def test_define_tables_start_with_empty_db(
+    app_with_empty_db: Flask, snapshot: PyTestSnapshotTest
+) -> None:
+    '''test define_tables()
 
     This function tests if tables will be defined starting from new db without
     any tables.
 
-    """
+    '''
 
     app = app_with_empty_db
 
@@ -38,13 +42,15 @@ def test_define_tables_start_with_empty_db(app_with_empty_db, snapshot):
         snapshot.assert_match(metadata.tables)
 
 
-def test_define_tables_start_with_nonempty_db(app, snapshot):
-    """test define_tables()
+def test_define_tables_start_with_nonempty_db(
+    app: Flask, snapshot: PyTestSnapshotTest
+) -> None:
+    '''test define_tables()
 
     This function tests if tables will be redefined starting from db
     with tables with entries.
 
-    """
+    '''
 
     # confirm tables are defined initially and not empty
     with app.app_context():

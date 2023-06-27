@@ -1,9 +1,10 @@
 import csv
 import datetime
 from io import StringIO
-from flask import Flask
+from typing import Any
 
 import pytest
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy_utils import EncryptedType
@@ -36,12 +37,12 @@ def app_with_empty_db() -> Flask:
     # app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_mapping(**{'SQLALCHEMY_DATABASE_URI': database_uri})  # type: ignore
-    sa.init_app(app)
+    sa.init_app(app)  # type: ignore
     return app
 
 
 @pytest.fixture
-def app_with_empty_tables(app_with_empty_db):
+def app_with_empty_tables(app_with_empty_db: Flask) -> Flask:
     app = app_with_empty_db
 
     # define tables
@@ -50,8 +51,8 @@ def app_with_empty_tables(app_with_empty_db):
         metadata = MetaData()
         metadata.reflect(bind=engine)
         metadata.drop_all(bind=engine)
-        sa.Model.metadata.create_all(engine)
-    yield app
+        sa.Model.metadata.create_all(engine)  # type: ignore
+    return app
 
 
 params = [
@@ -93,7 +94,7 @@ params = [
 
 
 @pytest.mark.parametrize('data', params)
-def test_convert(app_with_empty_tables, data):
+def test_convert(app_with_empty_tables: Flask, data: dict[str, Any]) -> None:
     '''test convert_data_type_for_insert()'''
     app = app_with_empty_tables
 
@@ -143,7 +144,7 @@ def test_convert(app_with_empty_tables, data):
         assert actual == expected
 
 
-def _export_tbl_to_csv(tbl_name: str):
+def _export_tbl_to_csv(tbl_name: str) -> str:
     engine = sa.engine
     metadata = MetaData()
     metadata.reflect(bind=engine)

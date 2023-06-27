@@ -1,8 +1,8 @@
 import unittest.mock as mock
 
-from snapshottest.pytest import PyTestSnapshotTest
 import pytest
 from flask import Flask, json
+from snapshottest.pytest import PyTestSnapshotTest
 
 from acondbs import create_app
 from acondbs.db.ops import define_tables

@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pytest
 from flask import Flask
+from snapshottest.pytest import PyTestSnapshotTest
 
 from acondbs import create_app
 from acondbs.db.ops import (
@@ -26,8 +27,10 @@ def app() -> Flask:
     return app
 
 
-def test_export_db_to_csv_files(app: Flask, tmpdir_factory, snapshot):
-    outdir = str(tmpdir_factory.mktemp('csv'))
+def test_export_db_to_csv_files(
+    app: Flask, tmp_path_factory: pytest.TempPathFactory, snapshot: PyTestSnapshotTest
+) -> None:
+    outdir = tmp_path_factory.mktemp('csv')
 
     with app.app_context():
         export_db_to_csv_files(outdir)
