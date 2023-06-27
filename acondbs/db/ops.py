@@ -212,7 +212,6 @@ def import_table_from_csv_file(tbl_name: str, path: Union[str, Path]) -> None:
         )
 
         ins = tbl.insert()
-        # connection = get_db_connection()
 
         # Unfortunately, it is not possible to insert from a
         # generator in the current version (1.4) of SQLAlchemy.
