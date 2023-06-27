@@ -1,7 +1,7 @@
 import graphene
 from alembic.migration import MigrationContext
 
-from acondbs.db.conn import get_db_connection
+from acondbs.db.sa import sa
 
 
 def resolve_version(parent, info):
@@ -18,9 +18,9 @@ version_field = graphene.Field(
 
 
 def resolve_alembic_version(parent, info):
-    conn = get_db_connection()
-    context = MigrationContext.configure(conn)
-    ret = context.get_current_revision()
+    with sa.engine.connect() as conn:
+        context = MigrationContext.configure(conn)
+        ret = context.get_current_revision()
     # e.g., "35e6ddccd22a"
     return ret
 
