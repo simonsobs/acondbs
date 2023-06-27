@@ -144,7 +144,11 @@ def test_convert(app_with_empty_tables, data):
 
 
 def _export_tbl_to_csv(tbl_name: str):
-    result_proxy = sa.session.execute(f'select * from {tbl_name}')
+    engine = sa.engine
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+    tbl = metadata.tables[tbl_name]
+    result_proxy = sa.session.execute(tbl.select())
     b = StringIO()
     csv_writer = csv.writer(b, lineterminator='\n')
     csv_writer.writerow(result_proxy.keys())
