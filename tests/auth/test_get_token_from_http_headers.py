@@ -1,4 +1,5 @@
 import pytest
+from flask import Flask
 
 from acondbs import auth
 
@@ -10,7 +11,7 @@ params = [
 
 
 @pytest.mark.parametrize('format_', params)
-def test_format(format_, app):
+def test_format(format_: str, app: Flask) -> None:
     token = '90b2ee5fed25506df04fd37343bb68d1803dd97f'
     environ_base = {'HTTP_AUTHORIZATION': format_.format(token=token)}
     with app.test_request_context(environ_base=environ_base):
