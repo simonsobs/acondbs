@@ -4,6 +4,7 @@ import atexit
 import subprocess
 import threading
 import warnings
+from os import PathLike
 from pathlib import Path
 from typing import Collection, Optional, Union
 
@@ -48,7 +49,6 @@ def end_backup_thread() -> None:
 # https://github.com/alphatwirl/atpbar/issues/4#issuecomment-473426630
 import multiprocessing.queues  # noqa: F401, E402
 
-
 atexit.register(end_backup_thread)
 
 
@@ -57,7 +57,7 @@ def run_flask_backup_db() -> None:
     del proc
 
 
-def backup_db(exclude_csv=None):
+def backup_db(exclude_csv: Optional[Collection[str]] = None):
     try:
         backup_db_to_github()
     except Exception as e:
@@ -107,7 +107,7 @@ def backup_db_as_csv_to_github(exclude: Optional[Collection[str]] = None) -> Non
 
 
 def backup_db_as_csv_to_github_(
-    repo_path: Union[str, Path], exclude: Optional[Collection[str]] = None
+    repo_path: Union[str, PathLike], exclude: Optional[Collection[str]] = None
 ) -> None:
     repo_path = Path(repo_path)
     for csv_file in repo_path.glob('*.csv'):
