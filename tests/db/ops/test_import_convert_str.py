@@ -15,7 +15,7 @@ sa = SQLAlchemy()
 
 
 class SampleTable(sa.Model):  # type: ignore
-    __tablename__ = "sample_table"
+    __tablename__ = 'sample_table'
     id_ = sa.Column(sa.Integer(), primary_key=True)
 
     # https://docs.sqlalchemy.org/en/14/core/type_basics.html#generic-types
@@ -27,15 +27,15 @@ class SampleTable(sa.Model):  # type: ignore
     date = sa.Column(sa.Date())
     date_time = sa.Column(sa.DateTime())
     time = sa.Column(sa.Time())
-    encrypted = sa.Column(EncryptedType(sa.Text(), "8b5d3d25b3e5"))
+    encrypted = sa.Column(EncryptedType(sa.Text(), '8b5d3d25b3e5'))
 
 
 @pytest.fixture
 def app_with_empty_db() -> Flask:
-    database_uri = "sqlite:///:memory:"
+    database_uri = 'sqlite:///:memory:'
     # app = create_app(SQLALCHEMY_DATABASE_URI=database_uri)
     app = Flask(__name__, instance_relative_config=False)
-    app.config.from_mapping(**{"SQLALCHEMY_DATABASE_URI": database_uri})  # type: ignore
+    app.config.from_mapping(**{'SQLALCHEMY_DATABASE_URI': database_uri})  # type: ignore
     sa.init_app(app)
     return app
 
@@ -57,28 +57,28 @@ def app_with_empty_tables(app_with_empty_db):
 params = [
     pytest.param(
         dict(
-            text="abcde",
-            unicode_text="絵文字😀 😃 😄 😁 😆",
+            text='abcde',
+            unicode_text='絵文字😀 😃 😄 😁 😆',
             boolean=False,
             integer=512,
             float=2.34556234,
             date=datetime.date(2021, 10, 7),
             date_time=datetime.datetime(2021, 10, 7, 15, 4, 20),
             time=datetime.time(15, 4, 20),
-            encrypted="secret string",
+            encrypted='secret string',
         ),
-        id="one",
+        id='one',
     ),
     pytest.param(
         dict(
             boolean=True,
         ),
-        id="bool-true",
+        id='bool-true',
     ),
     pytest.param(
         dict(
-            text="",
-            unicode_text="",
+            text='',
+            unicode_text='',
             boolean=None,
             integer=None,
             float=None,
@@ -87,17 +87,17 @@ params = [
             time=None,
             encrypted=None,
         ),
-        id="none",
+        id='none',
     ),
 ]
 
 
-@pytest.mark.parametrize("data", params)
+@pytest.mark.parametrize('data', params)
 def test_convert(app_with_empty_tables, data):
-    """test convert_data_type_for_insert()"""
+    '''test convert_data_type_for_insert()'''
     app = app_with_empty_tables
 
-    tbl_name = "sample_table"
+    tbl_name = 'sample_table'
 
     expected = list(data.items())  # e.g., [('text', 'abcde'), ...]
     fields = list(data.keys())  # .e.,g ['text', 'unicode_text', ...]
@@ -144,9 +144,9 @@ def test_convert(app_with_empty_tables, data):
 
 
 def _export_tbl_to_csv(tbl_name: str):
-    result_proxy = sa.session.execute(f"select * from {tbl_name}")
+    result_proxy = sa.session.execute(f'select * from {tbl_name}')
     b = StringIO()
-    csv_writer = csv.writer(b, lineterminator="\n")
+    csv_writer = csv.writer(b, lineterminator='\n')
     csv_writer.writerow(result_proxy.keys())
     csv_writer.writerows(result_proxy)
     ret = b.getvalue()
