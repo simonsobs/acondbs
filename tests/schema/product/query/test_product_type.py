@@ -1,14 +1,18 @@
+from typing import Mapping
+
 import pytest
+from flask import Flask
+from snapshottest.pytest import PyTestSnapshotTest
 
 from ...funcs import assert_query
 from ..gql import QUERY_PRODUCT_TYPE
 
 HEADERS = {
-    "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
+    'Authorization': 'Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080'  # dojocat
 }
 
 
-QUERY_PRODUCT_TYPE_SORT_PRODUCTS = """
+QUERY_PRODUCT_TYPE_SORT_PRODUCTS = '''
 {
   productType(typeId: 1) {
     typeId
@@ -27,53 +31,55 @@ QUERY_PRODUCT_TYPE_SORT_PRODUCTS = """
     }
   }
 }
-"""
+'''
 
 
 params = [
     pytest.param(
         {
             #
-            "query": QUERY_PRODUCT_TYPE,
-            "variables": {"typeId": 1},
+            'query': QUERY_PRODUCT_TYPE,
+            'variables': {'typeId': 1},
         },
-        id="type_id",
+        id='type_id',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_PRODUCT_TYPE,
-            "variables": {"name": "map"},
+            'query': QUERY_PRODUCT_TYPE,
+            'variables': {'name': 'map'},
         },
-        id="name",
+        id='name',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_PRODUCT_TYPE,
-            "variables": {"typeId": 1, "name": "map"},
+            'query': QUERY_PRODUCT_TYPE,
+            'variables': {'typeId': 1, 'name': 'map'},
         },
-        id="type_id-and-name",
+        id='type_id-and-name',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_PRODUCT_TYPE,
-            "variables": {"typeId": 2, "name": "map"},
+            'query': QUERY_PRODUCT_TYPE,
+            'variables': {'typeId': 2, 'name': 'map'},
         },
-        id="type_id-and-name-nonexistent",
+        id='type_id-and-name-nonexistent',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_PRODUCT_TYPE_SORT_PRODUCTS,
+            'query': QUERY_PRODUCT_TYPE_SORT_PRODUCTS,
         },
-        id="type_id-sort-products",
+        id='type_id-sort-products',
     ),
 ]
 
 
-@pytest.mark.parametrize("data", params)
+@pytest.mark.parametrize('data', params)
 @pytest.mark.asyncio
-async def test_schema(app, snapshot, data):
+async def test_schema(
+    app: Flask, snapshot: PyTestSnapshotTest, data: Mapping[str, str]
+) -> None:
     await assert_query(app, snapshot, data, HEADERS)

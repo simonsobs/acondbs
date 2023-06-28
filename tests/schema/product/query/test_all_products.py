@@ -1,4 +1,8 @@
+from typing import Mapping
+
 import pytest
+from flask import Flask
+from snapshottest.pytest import PyTestSnapshotTest
 
 from ...funcs import assert_query
 from ..gql import (
@@ -8,7 +12,7 @@ from ..gql import (
 )
 
 HEADERS = {
-    "Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"  # dojocat
+    'Authorization': 'Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080'  # dojocat
 }
 
 
@@ -16,92 +20,94 @@ params = [
     pytest.param(
         {
             #
-            "query": QUERY_ALL_PRODUCTS
+            'query': QUERY_ALL_PRODUCTS
         },
-        id="deep",
+        id='deep',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_ALL_PRODUCTS_SHALLOW,
-            "variables": {"first": 2},
+            'query': QUERY_ALL_PRODUCTS_SHALLOW,
+            'variables': {'first': 2},
         },
-        id="first-two",
+        id='first-two',
     ),
     pytest.param(
         {
-            "query": QUERY_ALL_PRODUCTS_SHALLOW,
-            "variables": {
+            'query': QUERY_ALL_PRODUCTS_SHALLOW,
+            'variables': {
                 #
-                "first": 2,
-                "sort": "TIME_POSTED_DESC",
+                'first': 2,
+                'sort': 'TIME_POSTED_DESC',
             },
         },
-        id="first-two-sort",
-    ),
-    pytest.param(
-        {
-            #
-            "query": QUERY_ALL_PRODUCTS_SHALLOW,
-            "variables": {
-                #
-                "filters": {"typeId": 1},
-                "first": 2,
-            },
-        },
-        id="filters-type_id-first-two",
+        id='first-two-sort',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_ALL_PRODUCTS_SHALLOW,
-            "variables": {
+            'query': QUERY_ALL_PRODUCTS_SHALLOW,
+            'variables': {
                 #
-                "filters": {"typeName": "map"},
-                "first": 2,
+                'filters': {'typeId': 1},
+                'first': 2,
             },
         },
-        id="filters-type_name-first-two",
-    ),
-    pytest.param(
-        {
-            "query": QUERY_ALL_PRODUCTS_SHALLOW,
-            "variables": {
-                #
-                "filters": {"typeId": 1},
-                "sort": "TIME_POSTED_DESC",
-            },
-        },
-        id="filters-type_id-sort",
+        id='filters-type_id-first-two',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_ALL_PRODUCTS_SHALLOW,
-            "variables": {
+            'query': QUERY_ALL_PRODUCTS_SHALLOW,
+            'variables': {
                 #
-                "filters": {"typeName": "map"},
-                "sort": "TIME_POSTED_DESC",
+                'filters': {'typeName': 'map'},
+                'first': 2,
             },
         },
-        id="filters-type_name-sort",
+        id='filters-type_name-first-two',
+    ),
+    pytest.param(
+        {
+            'query': QUERY_ALL_PRODUCTS_SHALLOW,
+            'variables': {
+                #
+                'filters': {'typeId': 1},
+                'sort': 'TIME_POSTED_DESC',
+            },
+        },
+        id='filters-type_id-sort',
     ),
     pytest.param(
         {
             #
-            "query": QUERY_ALL_PRODUCTS_TOTAL_COUNT,
-            "variables": {
+            'query': QUERY_ALL_PRODUCTS_SHALLOW,
+            'variables': {
                 #
-                "filters": {"typeName": "map"},
-                "first": 2,
+                'filters': {'typeName': 'map'},
+                'sort': 'TIME_POSTED_DESC',
             },
         },
-        id="total-count",
+        id='filters-type_name-sort',
+    ),
+    pytest.param(
+        {
+            #
+            'query': QUERY_ALL_PRODUCTS_TOTAL_COUNT,
+            'variables': {
+                #
+                'filters': {'typeName': 'map'},
+                'first': 2,
+            },
+        },
+        id='total-count',
     ),
 ]
 
 
-@pytest.mark.parametrize("data", params)
+@pytest.mark.parametrize('data', params)
 @pytest.mark.asyncio
-async def test_schema(app, snapshot, data):
+async def test_schema(
+    app: Flask, snapshot: PyTestSnapshotTest, data: Mapping[str, str]
+) -> None:
     await assert_query(app, snapshot, data, HEADERS)
