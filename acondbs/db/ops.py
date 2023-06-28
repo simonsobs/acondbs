@@ -32,7 +32,7 @@ def define_tables() -> None:
         tbl_names = metadata.tables.keys()
         # ['maps', 'beams']
 
-        tbl_names = ", ".join([f'"{t}"' for t in tbl_names])
+        tbl_names = ", ".join([f'"{t}"' for t in tbl_names])  # type: ignore
         # '"beams", "maps"'
 
         msg = f"Dropped all tables: {tbl_names}"
@@ -48,7 +48,7 @@ def define_tables() -> None:
     tbl_names = sa.Model.metadata.tables.keys()  # type: ignore
     # ['maps', 'beams']
 
-    tbl_names = ", ".join([f'"{t}"' for t in tbl_names])
+    tbl_names = ", ".join([f'"{t}"' for t in tbl_names])  # type: ignore
     # '"beams", "maps"'
 
     msg = f"Created tables: {tbl_names}"
@@ -219,7 +219,7 @@ def import_table_from_csv_file(tbl_name: str, path: Union[str, Path]) -> None:
         if not data:
             return
 
-        sa.session.execute(ins, data)
+        sa.session.execute(ins, data)  # type: ignore
         sa.session.commit()
 
 
