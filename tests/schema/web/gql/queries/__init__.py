@@ -1,4 +1,5 @@
-# fmt: off
-from .query_web_config import QUERY_WEB_CONFIG  # noqa: F401
+__all__ = [
+    'QUERY_WEB_CONFIG',
+]
 
-# fmt: on
+from .query_web_config import QUERY_WEB_CONFIG

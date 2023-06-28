@@ -1,12 +1,13 @@
 import json
 
 import pytest
+from flask import Flask
 
 from acondbs import ops
 
 
 @pytest.fixture
-def app(app_users):
+def app(app_users: Flask) -> Flask:
     y = app_users
 
     config_json = json.dumps(
@@ -25,4 +26,4 @@ def app(app_users):
         ops.save_web_config(json=config_json)
         ops.commit()
 
-    yield y
+    return y

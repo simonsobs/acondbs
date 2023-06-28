@@ -1,22 +1,23 @@
 import json
 
 import pytest
+from flask import Flask
 
 from acondbs import ops
 
 
 @pytest.fixture
-def app(app_empty):
+def app(app_empty: Flask) -> Flask:
     y = app_empty
 
     config_json = json.dumps(
         {
-            "headTitle": "Head Title",
-            "toolbarTitle": "Toolbar Title",
-            "devtoolLoadingstate": True,
-            "productCreationDialog": False,
-            "productUpdateDialog": True,
-            "productDeletionDialog": True,
+            'headTitle': 'Head Title',
+            'toolbarTitle': 'Toolbar Title',
+            'devtoolLoadingstate': True,
+            'productCreationDialog': False,
+            'productUpdateDialog': True,
+            'productDeletionDialog': True,
         },
         indent=2,
     )
@@ -25,4 +26,4 @@ def app(app_empty):
         ops.save_web_config(json=config_json)
         ops.commit()
 
-    yield y
+    return y
