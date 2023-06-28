@@ -2,7 +2,7 @@ from acondbs.db.sa import sa
 from acondbs.models import WebConfig
 
 
-def save_web_config(**kwargs):
+def save_web_config(**kwargs) -> WebConfig:
     model = WebConfig.query.one_or_none()
     if model:
         for k, v in kwargs.items():

@@ -1,12 +1,14 @@
+from flask import Flask
+
 from acondbs import ops
 from acondbs.models import Log
 
 
-def test_create(app):
+def test_create(app: Flask) -> None:
     with app.app_context():
         count = Log.query.count()
-        model = ops.create_log(level="ERROR", message="An exception occurred")
-        assert model.message == "An exception occurred"
+        model = ops.create_log(level='ERROR', message='An exception occurred')
+        assert model.message == 'An exception occurred'
         ops.commit()
         id_ = model.id_
         assert id_
@@ -14,12 +16,12 @@ def test_create(app):
     with app.app_context():
         assert Log.query.count() == (count + 1)
         model = Log.query.filter_by(id_=id_).one()
-        assert model.message == "An exception occurred"
+        assert model.message == 'An exception occurred'
 
 
-def test_delete(app):
+def test_delete(app: Flask) -> None:
     with app.app_context():
-        model = ops.create_log(level="ERROR", message="To be deleted")
+        model = ops.create_log(level='ERROR', message='To be deleted')
         ops.commit()
         id_ = model.id_
 

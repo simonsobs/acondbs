@@ -1,8 +1,10 @@
+from flask import Flask
+
 from acondbs import ops
 from acondbs.models import ProductRelation
 
 
-def test_create(app):
+def test_create(app: Flask) -> None:
     with app.app_context():
         count = ProductRelation.query.count()
         model = ops.create_product_relation(
@@ -18,7 +20,7 @@ def test_create(app):
         assert model.reverse
 
 
-def test_delete(app):
+def test_delete(app: Flask) -> None:
     with app.app_context():
         count = ProductRelation.query.count()
         model = ProductRelation.query.first()

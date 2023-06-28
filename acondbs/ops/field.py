@@ -1,9 +1,11 @@
+from typing import Optional
+
 from acondbs.db.sa import sa
 from acondbs.models import Field, FieldType
 
 
-def create_field(name, type_, field_id=None):
-    """Instantiate SQLAlchemy ORM model "Field"
+def create_field(name: str, type_: FieldType, field_id: Optional[int] = None) -> Field:
+    '''Instantiate SQLAlchemy ORM model 'Field'
 
     Parameters
     ----------
@@ -19,15 +21,15 @@ def create_field(name, type_, field_id=None):
     object
         The created model
 
-    """
+    '''
     type_ = FieldType(type_)  # in case given by int
     model = Field(name=name, type_=type_, field_id=field_id)
     sa.session.add(model)
     return model
 
 
-def update_field(field_id, name):
-    """Update a field
+def update_field(field_id: int, name: str) -> Field:
+    '''Update a field
 
     Only name can be changed.
 
@@ -43,14 +45,14 @@ def update_field(field_id, name):
     object
         The model
 
-    """
+    '''
     model = Field.query.filter_by(field_id=field_id).one()
     model.name = name
     return model
 
 
-def delete_field(field_id):
-    """Delete a field
+def delete_field(field_id: int) -> None:
+    '''Delete a field
 
     Parameters
     ----------
@@ -61,6 +63,6 @@ def delete_field(field_id):
     -------
     None
 
-    """
+    '''
     model = Field.query.filter_by(field_id=field_id).one()
     sa.session.delete(model)

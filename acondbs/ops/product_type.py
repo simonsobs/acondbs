@@ -1,25 +1,28 @@
+from typing import Iterable, Optional
 from acondbs.db.sa import sa
 from acondbs.models import Field, ProductType, TypeFieldAssociation
 
 
-def create_product_type(field_ids=None, **kwargs):
-    """Create a product type"""
+def create_product_type(
+    field_ids: Optional[Iterable[int]] = None, **kwargs
+) -> ProductType:
+    '''Create a product type'''
     model = ProductType(**kwargs)
     if field_ids:
-        with sa.session.no_autoflush:
+        with sa.session.no_autoflush:  # type: ignore
             model.fields = _create_fields(field_ids)
     sa.session.add(model)
     return model
 
 
-def _create_fields(field_ids):
+def _create_fields(field_ids: Iterable[int]) -> list[TypeFieldAssociation]:
     ids = sorted(set(field_ids))
     fields_ = [Field.query.filter_by(field_id=i).one() for i in ids]
     return [TypeFieldAssociation(field=f) for f in fields_]
 
 
-def update_product_type(type_id, field_ids=None, **kwargs):
-    """Update a product type"""
+def update_product_type(type_id, field_ids=None, **kwargs) -> ProductType:
+    '''Update a product type'''
 
     model = ProductType.query.filter_by(type_id=type_id).one()
 
@@ -55,7 +58,7 @@ def _update_fields(old_fields: list, new_field_ids: list) -> list:
     return [field_dict[i] for i in sorted(new_ids)]
 
 
-def delete_product_type(type_id):
-    """Delete a product type"""
+def delete_product_type(type_id) -> None:
+    '''Delete a product type'''
     model = ProductType.query.filter_by(type_id=type_id).one()
     sa.session.delete(model)

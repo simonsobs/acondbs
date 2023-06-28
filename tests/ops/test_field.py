@@ -1,21 +1,22 @@
 import pytest
+from flask import Flask
 
 from acondbs import ops
 from acondbs.models import Field, FieldType
 
 params = [
-    pytest.param(FieldType.Float, id="by-enum"),
-    pytest.param(4, id="by-int"),
+    pytest.param(FieldType.Float, id='by-enum'),
+    pytest.param(4, id='by-int'),
 ]
 
 
-@pytest.mark.parametrize("type_", params)
-def test_create(app_empty, type_):
+@pytest.mark.parametrize('type_', params)
+def test_create(app_empty: Flask, type_) -> None:
     app = app_empty
 
     with app.app_context():
-        model = ops.create_field(name="new_field", type_=type_)
-        assert model.name == "new_field"
+        model = ops.create_field(name='new_field', type_=type_)
+        assert model.name == 'new_field'
         assert model.type_ == FieldType.Float
         ops.commit()
         field_id = model.field_id
@@ -23,42 +24,41 @@ def test_create(app_empty, type_):
 
     with app.app_context():
         model = Field.query.filter_by(field_id=field_id).one()
-        assert model.name == "new_field"
+        assert model.name == 'new_field'
         assert model.type_ == FieldType.Float
         assert model.field_id == field_id
 
 
-def test_fixture(app):
+def test_fixture(app: Flask) -> None:
     with app.app_context():
         assert Field.query.count() == 9
 
 
-def test_update(app):
+def test_update(app: Flask) -> None:
     with app.app_context():
-        model = Field.query.filter_by(name="number").one()
+        model = Field.query.filter_by(name='number').one()
         field_id = model.field_id
 
     with app.app_context():
-        model = ops.update_field(field_id=field_id, name="number_renamed")
+        model = ops.update_field(field_id=field_id, name='number_renamed')
         ops.commit()
 
     with app.app_context():
         model = Field.query.filter_by(field_id=field_id).one()
-        assert model.name == "number_renamed"
+        assert model.name == 'number_renamed'
         assert model.field_id == field_id
 
 
-def test_delete(app):
+def test_delete(app: Flask) -> None:
     with app.app_context():
-        model = ops.create_field(name="to_be_deleted", type_=FieldType.Float)
+        model = ops.create_field(name='to_be_deleted', type_=FieldType.Float)
         ops.commit()
         field_id = model.field_id
 
     with app.app_context():
         count = Field.query.count()
-        ret = ops.delete_field(field_id=field_id)
+        ops.delete_field(field_id=field_id)
         ops.commit()
-        assert ret is None
 
     with app.app_context():
         model = Field.query.filter_by(field_id=field_id).one_or_none()

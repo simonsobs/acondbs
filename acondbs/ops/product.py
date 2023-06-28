@@ -1,4 +1,5 @@
 import datetime
+from typing import Sequence, TypeVar
 
 from acondbs.db.sa import sa
 from acondbs.models import (
@@ -11,6 +12,8 @@ from acondbs.models import (
     ProductType,
 )
 
+_T = TypeVar('_T')
+
 
 def create_product(
     type_id,
@@ -19,10 +22,10 @@ def create_product(
     attributes=None,
     posting_git_hub_user_id=None,
     **kwargs,
-):
-    """Create a product"""
+) -> Product:
+    '''Create a product'''
 
-    with sa.session.no_autoflush:
+    with sa.session.no_autoflush:  # type: ignore
         return _create_product(
             type_id, paths, relations, attributes, posting_git_hub_user_id, **kwargs
         )
@@ -35,44 +38,43 @@ def update_product(
     attributes=None,
     updating_git_hub_user_id=None,
     **kwargs,
-):
-    """Update a product"""
+) -> Product:
+    '''Update a product'''
 
-    with sa.session.no_autoflush:
+    with sa.session.no_autoflush:  # type: ignore
         return _update_product(
             product_id, paths, relations, attributes, updating_git_hub_user_id, **kwargs
         )
 
 
-def delete_product(product_id):
-    """Delete a product"""
+def delete_product(product_id) -> None:
+    '''Delete a product'''
 
     model = Product.query.filter_by(product_id=product_id).one()
     sa.session.delete(model)
-    return
 
 
-def convert_product_type(product_id, type_id, updating_git_hub_user_id=None):
-    with sa.session.no_autoflush:
+def convert_product_type(product_id, type_id, updating_git_hub_user_id=None) -> Product:
+    with sa.session.no_autoflush:  # type: ignore
         return _convert_product_type(product_id, type_id, updating_git_hub_user_id)
 
 
-def uniq_preserving_order(list_):
+def uniq_preserving_order(list_: Sequence[_T]) -> list[_T]:
     # https://stackoverflow.com/a/17016257/7309855
     return list(dict.fromkeys(list_))
 
 
-def _normalize_paths(paths):
-    # e.g., paths = ["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"]
+def _normalize_paths(paths: Sequence[str]) -> list[str]:
+    # e.g., paths = ['  /d/e ', ' ', '/a/b/c', '/f/g', '/d/e']
 
     ret = [p.strip() for p in paths]  # strip
-    # e.g., ["/d/e", "", "/a/b/c", "/f/g", "/d/e"]
+    # e.g., ['/d/e', '', '/a/b/c', '/f/g', '/d/e']
 
     ret = [p for p in ret if p]  # remove empty
-    # e.g., ["/d/e", "/a/b/c", "/f/g", "/d/e"]
+    # e.g., ['/d/e', '/a/b/c', '/f/g', '/d/e']
 
     ret = uniq_preserving_order(ret)
-    # e.g., ["/d/e", "/a/b/c", "/f/g"]
+    # e.g., ['/d/e', '/a/b/c', '/f/g']
 
     return ret
 
@@ -91,8 +93,8 @@ def _create_product(
     if relations is not None:
         model.relations = [
             ProductRelation(
-                type_=ProductRelationType.query.filter_by(type_id=r["type_id"]).one(),
-                other=Product.query.filter_by(product_id=r["product_id"]).one(),
+                type_=ProductRelationType.query.filter_by(type_id=r['type_id']).one(),
+                other=Product.query.filter_by(product_id=r['product_id']).one(),
             )
             for r in relations
         ]
@@ -175,7 +177,7 @@ def _update_paths(old, input):
 
 def _update_relations(old, input):
     # sets of tuples (type_id, other_product_id) of ProductRelation
-    new_ids = {(i["type_id"], i["product_id"]) for i in input}
+    new_ids = {(i['type_id'], i['product_id']) for i in input}
     old_ids = {(r.type_id, r.other_product_id) for r in old}
 
     added_ids = new_ids - old_ids
@@ -190,7 +192,7 @@ def _update_relations(old, input):
     return [model_dict[i] for i in new_ids]
 
 
-def _convert_product_type(product_id, type_id, updating_git_hub_user_id):
+def _convert_product_type(product_id, type_id, updating_git_hub_user_id) -> Product:
     model = Product.query.filter_by(product_id=product_id).one()
     product_type = ProductType.query.filter_by(type_id=type_id).one()
     model.type_ = product_type

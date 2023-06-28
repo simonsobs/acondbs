@@ -1,10 +1,12 @@
 import json
 
+from flask import Flask
+
 from acondbs import ops
 from acondbs.models import WebConfig
 
 
-def test_new(app_empty):
+def test_new(app_empty: Flask) -> None:
     app = app_empty
 
     config_json = json.dumps(
@@ -24,7 +26,7 @@ def test_new(app_empty):
         assert model.json == config_json
 
 
-def test_update(app_empty):
+def test_update(app_empty: Flask) -> None:
     app = app_empty
 
     config_json = json.dumps(

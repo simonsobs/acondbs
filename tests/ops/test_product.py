@@ -1,121 +1,122 @@
 import datetime
 
 import pytest
+from flask import Flask
 
 from acondbs import ops
 from acondbs.models import FieldType, GitHubUser, Product, ProductType
 from acondbs.ops.product import _normalize_paths
 
 params = [
-    pytest.param([], [], id="empty"),
-    pytest.param(["/a/b/c"], ["/a/b/c"], id="one"),
-    pytest.param([" /a/b/c  "], ["/a/b/c"], id="unstripped"),
-    pytest.param(["/d/e", "/a/b/c", "/f/g"], ["/d/e", "/a/b/c", "/f/g"], id="multiple"),
-    pytest.param(["/a/b/c", "", "/f/g"], ["/a/b/c", "/f/g"], id="empty-member"),
+    pytest.param([], [], id='empty'),
+    pytest.param(['/a/b/c'], ['/a/b/c'], id='one'),
+    pytest.param([' /a/b/c  '], ['/a/b/c'], id='unstripped'),
+    pytest.param(['/d/e', '/a/b/c', '/f/g'], ['/d/e', '/a/b/c', '/f/g'], id='multiple'),
+    pytest.param(['/a/b/c', '', '/f/g'], ['/a/b/c', '/f/g'], id='empty-member'),
     pytest.param(
-        ["/a/b/c", "  ", "/f/g"],
-        ["/a/b/c", "/f/g"],
-        id="empty-unstripped-member",
+        ['/a/b/c', '  ', '/f/g'],
+        ['/a/b/c', '/f/g'],
+        id='empty-unstripped-member',
     ),
-    pytest.param(["/d/e", "/a/b/c", "/d/e"], ["/d/e", "/a/b/c"], id="duplicate"),
+    pytest.param(['/d/e', '/a/b/c', '/d/e'], ['/d/e', '/a/b/c'], id='duplicate'),
     pytest.param(
-        ["  /d/e ", "/a/b/c", "/d/e"],
-        ["/d/e", "/a/b/c"],
-        id="duplicate-unstripped",
+        ['  /d/e ', '/a/b/c', '/d/e'],
+        ['/d/e', '/a/b/c'],
+        id='duplicate-unstripped',
     ),
 ]
 
 
-@pytest.mark.parametrize("paths, ret", params)
-def test_normalize_paths(paths, ret):
+@pytest.mark.parametrize('paths, ret', params)
+def test_normalize_paths(paths: list[str], ret: list[str]) -> None:
     assert _normalize_paths(paths) == ret
 
 
 params = [
-    pytest.param(None, id="none"),
-    pytest.param({}, id="empty"),
-    pytest.param({1: "An attribute"}, id="one"),
-    pytest.param({1: "An attribute", 3: False}, id="two"),
+    pytest.param(None, id='none'),
+    pytest.param({}, id='empty'),
+    pytest.param({1: 'An attribute'}, id='one'),
+    pytest.param({1: 'An attribute', 3: False}, id='two'),
     pytest.param(
         {
-            1: "An attribute",
+            1: 'An attribute',
             3: False,
             4: True,
             5: 512,
             6: 2.34,
             8: datetime.datetime(2021, 10, 15, 16, 55, 21),
         },
-        id="all",
+        id='all',
     ),
 ]
 
 
-@pytest.mark.parametrize("attributes", params)
-def test_create_attributes(app, attributes):
+@pytest.mark.parametrize('attributes', params)
+def test_create_attributes(app: Flask, attributes) -> None:
     return _test_create(app, attributes=attributes)
 
 
 params = [
-    pytest.param(None, id="none"),
-    pytest.param([], id="empty"),
-    pytest.param([{"type_id": 1, "product_id": 2}], id="one"),
+    pytest.param(None, id='none'),
+    pytest.param([], id='empty'),
+    pytest.param([{'type_id': 1, 'product_id': 2}], id='one'),
     pytest.param(
-        [{"type_id": 2, "product_id": 1}, {"type_id": 1, "product_id": 3}],
-        id="multiple",
+        [{'type_id': 2, 'product_id': 1}, {'type_id': 1, 'product_id': 3}],
+        id='multiple',
     ),
 ]
 
 
-@pytest.mark.parametrize("relations", params)
-def test_create_relations(app, relations):
+@pytest.mark.parametrize('relations', params)
+def test_create_relations(app: Flask, relations) -> None:
     return _test_create(app, relations=relations)
 
 
 params = [
-    pytest.param(None, id="none"),
-    pytest.param([], id="empty"),
-    pytest.param(["/a/b/c"], id="one"),
-    pytest.param(["/d/e", "/a/b/c", "/f/g"], id="multiple"),
-    pytest.param(["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"),
+    pytest.param(None, id='none'),
+    pytest.param([], id='empty'),
+    pytest.param(['/a/b/c'], id='one'),
+    pytest.param(['/d/e', '/a/b/c', '/f/g'], id='multiple'),
+    pytest.param(['  /d/e ', ' ', '/a/b/c', '/f/g', '/d/e'], id='not-normalized'),
 ]
 
 
-@pytest.mark.parametrize("paths", params)
-def test_create_paths(app, paths):
+@pytest.mark.parametrize('paths', params)
+def test_create_paths(app: Flask, paths) -> None:
     return _test_create(app, paths=paths)
 
 
-@pytest.mark.parametrize("posting_git_hub_user_id", [None, 1])
-def test_create_user(app, posting_git_hub_user_id):
+@pytest.mark.parametrize('posting_git_hub_user_id', [None, 1])
+def test_create_user(app: Flask, posting_git_hub_user_id) -> None:
     return _test_create(app, posting_git_hub_user_id=posting_git_hub_user_id)
 
 
 def _test_create(
-    app,
+    app: Flask,
     paths=None,
     relations=None,
     attributes=None,
     posting_git_hub_user_id=None,
-):
-    kwargs = {"type_id": 1, "name": "new-product"}
+) -> None:
+    kwargs = {'type_id': 1, 'name': 'new-product'}
 
     if paths is not None:
-        kwargs["paths"] = paths
+        kwargs['paths'] = paths
 
     if relations is not None:
-        kwargs["relations"] = relations
+        kwargs['relations'] = relations
 
     if attributes is not None:
-        kwargs["attributes"] = attributes
+        kwargs['attributes'] = attributes
 
     if posting_git_hub_user_id:
-        kwargs["posting_git_hub_user_id"] = posting_git_hub_user_id
+        kwargs['posting_git_hub_user_id'] = posting_git_hub_user_id
 
     with app.app_context():
         count = Product.query.count()
 
         model = ops.create_product(**kwargs)
-        assert model.name == "new-product"
+        assert model.name == 'new-product'
         ops.commit()
         product_id = model.product_id
         assert product_id
@@ -124,7 +125,7 @@ def _test_create(
         assert Product.query.count() == (count + 1)
 
         model = Product.query.filter_by(product_id=product_id).one()
-        assert model.name == "new-product"
+        assert model.name == 'new-product'
 
         if posting_git_hub_user_id:
             posting_git_hub_user = GitHubUser.query.filter_by(
@@ -142,7 +143,7 @@ def _test_create(
             assert model.paths == []
 
         if relations is not None:
-            expected = [(r["type_id"], r["product_id"]) for r in relations]
+            expected = [(r['type_id'], r['product_id']) for r in relations]
             actual = [(r.type_id, r.other_product_id) for r in model.relations]
             assert actual == expected
         else:
@@ -159,118 +160,118 @@ def _test_create(
 
 
 params = [
-    pytest.param(None, id="none"),
-    pytest.param({}, id="empty"),
-    pytest.param({1: "An attribute"}, id="one"),
-    pytest.param({1: "An attribute", 3: False}, id="two"),
+    pytest.param(None, id='none'),
+    pytest.param({}, id='empty'),
+    pytest.param({1: 'An attribute'}, id='one'),
+    pytest.param({1: 'An attribute', 3: False}, id='two'),
     pytest.param(
         {
-            1: "An attribute",
+            1: 'An attribute',
             3: False,
             4: True,
             5: 512,
             6: 2.34,
             8: datetime.datetime(2021, 10, 15, 16, 55, 21),
         },
-        id="all",
+        id='all',
     ),
 ]
 
 
-@pytest.mark.parametrize("attributes", params)
-def test_update_attributes(app, attributes):
+@pytest.mark.parametrize('attributes', params)
+def test_update_attributes(app: Flask, attributes) -> None:
     return _test_update(app, attributes=attributes)
 
 
 params = [
-    pytest.param(None, id="none"),
-    pytest.param([], id="empty"),
+    pytest.param(None, id='none'),
+    pytest.param([], id='empty'),
     pytest.param(
         [
-            {"type_id": 2, "product_id": 3},
-            {"type_id": 1, "product_id": 5},
+            {'type_id': 2, 'product_id': 3},
+            {'type_id': 1, 'product_id': 5},
         ],
-        id="same",
+        id='same',
     ),
     pytest.param(
         [
-            {"type_id": 1, "product_id": 5},
+            {'type_id': 1, 'product_id': 5},
         ],
-        id="remove",
+        id='remove',
     ),
     pytest.param(
         [
-            {"type_id": 2, "product_id": 3},
-            {"type_id": 1, "product_id": 5},
-            {"type_id": 1, "product_id": 4},
+            {'type_id': 2, 'product_id': 3},
+            {'type_id': 1, 'product_id': 5},
+            {'type_id': 1, 'product_id': 4},
         ],
-        id="add",
+        id='add',
     ),
     pytest.param(
         [
-            {"type_id": 1, "product_id": 4},
-            {"type_id": 2, "product_id": 3},
+            {'type_id': 1, 'product_id': 4},
+            {'type_id': 2, 'product_id': 3},
         ],
-        id="add-remove",
+        id='add-remove',
     ),
     pytest.param(
         [
-            {"type_id": 1, "product_id": 4},
-            {"type_id": 2, "product_id": 6},
+            {'type_id': 1, 'product_id': 4},
+            {'type_id': 2, 'product_id': 6},
         ],
-        id="replace",
+        id='replace',
     ),
 ]
 
 
-@pytest.mark.parametrize("relations", params)
-def test_update_relations(app, relations):
+@pytest.mark.parametrize('relations', params)
+def test_update_relations(app: Flask, relations) -> None:
     return _test_update(app, relations=relations)
 
 
 params = [
-    pytest.param(None, id="none"),
-    pytest.param([], id="empty"),
-    pytest.param(["/d/e", "/a/b/c"], id="same"),
-    pytest.param(["/a/b/c", "/d/e"], id="same-perm"),
-    pytest.param(["/a/b/c"], id="remove"),
-    pytest.param(["/d/e", "/a/b/c", "/f/g"], id="add"),
-    pytest.param(["/d/e", "/f/g", "/a/b/c"], id="add-perm"),
-    pytest.param(["  /d/e ", " ", "/a/b/c", "/f/g", "/d/e"], id="not-normalized"),
+    pytest.param(None, id='none'),
+    pytest.param([], id='empty'),
+    pytest.param(['/d/e', '/a/b/c'], id='same'),
+    pytest.param(['/a/b/c', '/d/e'], id='same-perm'),
+    pytest.param(['/a/b/c'], id='remove'),
+    pytest.param(['/d/e', '/a/b/c', '/f/g'], id='add'),
+    pytest.param(['/d/e', '/f/g', '/a/b/c'], id='add-perm'),
+    pytest.param(['  /d/e ', ' ', '/a/b/c', '/f/g', '/d/e'], id='not-normalized'),
 ]
 
 
-@pytest.mark.parametrize("paths", params)
-def test_update_paths(app, paths):
+@pytest.mark.parametrize('paths', params)
+def test_update_paths(app: Flask, paths) -> None:
     return _test_update(app, paths=paths)
 
 
-@pytest.mark.parametrize("updating_git_hub_user_id", [None, 2])
-def test_update_user(app, updating_git_hub_user_id):
+@pytest.mark.parametrize('updating_git_hub_user_id', [None, 2])
+def test_update_user(app: Flask, updating_git_hub_user_id) -> None:
     return _test_update(app, updating_git_hub_user_id=updating_git_hub_user_id)
 
 
 def _test_update(
-    app,
+    app: Flask,
     paths=None,
     relations=None,
     attributes=None,
     updating_git_hub_user_id=None,
-):
+) -> None:
     product_id = 1
-    kwargs = {"product_id": product_id, "name": "new-name"}
+    kwargs = {'product_id': product_id, 'name': 'new-name'}
 
     if paths is not None:
-        kwargs["paths"] = paths
+        kwargs['paths'] = paths
 
     if relations is not None:
-        kwargs["relations"] = relations
+        kwargs['relations'] = relations
 
     if attributes is not None:
-        kwargs["attributes"] = attributes
+        kwargs['attributes'] = attributes
 
     if updating_git_hub_user_id:
-        kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
+        kwargs['updating_git_hub_user_id'] = updating_git_hub_user_id
 
     with app.app_context():
         count = Product.query.count()
@@ -287,14 +288,14 @@ def _test_update(
         attributes_old = _extract_attributes(model)
 
         model = ops.update_product(**kwargs)
-        assert model.name == "new-name"
+        assert model.name == 'new-name'
         ops.commit()
 
     with app.app_context():
         assert Product.query.count() == count
 
         model = Product.query.filter_by(product_id=product_id).one()
-        assert model.name == "new-name"
+        assert model.name == 'new-name'
 
         if updating_git_hub_user_id:
             updating_git_hub_user = GitHubUser.query.filter_by(
@@ -320,7 +321,7 @@ def _test_update(
         assert path_ids == expected_path_ids
 
         if relations is not None:
-            expected = {(r["type_id"], r["product_id"]) for r in relations}
+            expected = {(r['type_id'], r['product_id']) for r in relations}
         else:
             expected = relations_old
         actual = {(r.type_id, r.other_product_id) for r in model.relations}
@@ -344,15 +345,15 @@ def _test_update(
         assert actual == expected
 
 
-def test_delete(app):
+def test_delete(app: Flask) -> None:
     with app.app_context():
-        model = ops.create_product(type_id=1, name="to_be_deleted")
+        model = ops.create_product(type_id=1, name='to_be_deleted')
         ops.commit()
         product_id = model.product_id
 
     with app.app_context():
         count = Product.query.count()
-        model = ops.delete_product(product_id=product_id)
+        ops.delete_product(product_id=product_id)
         ops.commit()
 
     with app.app_context():
@@ -361,21 +362,21 @@ def test_delete(app):
         assert Product.query.count() == (count - 1)
 
 
-@pytest.mark.parametrize("updating_git_hub_user_id", [None, 2])
-def test_convert_user(app, updating_git_hub_user_id):
+@pytest.mark.parametrize('updating_git_hub_user_id', [None, 2])
+def test_convert_user(app: Flask, updating_git_hub_user_id) -> None:
     return _test_convert(app, updating_git_hub_user_id=updating_git_hub_user_id)
 
 
 def _test_convert(
-    app,
+    app: Flask,
     updating_git_hub_user_id=None,
 ):
     product_id = 1
     type_id = 2
-    kwargs = {"product_id": product_id, "type_id": type_id}
+    kwargs = {'product_id': product_id, 'type_id': type_id}
 
     if updating_git_hub_user_id:
-        kwargs["updating_git_hub_user_id"] = updating_git_hub_user_id
+        kwargs['updating_git_hub_user_id'] = updating_git_hub_user_id
 
     attr_names = [
         a.attribute_class.backref_column for a in FieldType.__members__.values()
@@ -422,7 +423,7 @@ def _test_convert(
         assert set(expected_field_values) == set(actual_field_values)
 
 
-def _extract_attributes(model):
+def _extract_attributes(model) -> dict:
     attr_names = [
         a.attribute_class.backref_column for a in FieldType.__members__.values()
     ]
