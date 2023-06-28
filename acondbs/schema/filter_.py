@@ -39,7 +39,7 @@ class ProductFilter(FilterSet):
 class ProductTypeFilter(FilterSet):
     class Meta:
         model = ProductTypeModel
-        fields = {}
+        fields = {}  # type: ignore
 
 
 class GitHubTokenFilter(FilterSet):
@@ -57,7 +57,7 @@ class GitHubUserFilter(FilterSet):
 
     class Meta:
         model = GitHubUserModel
-        fields = {}
+        fields = {}  # type: ignore
 
     @staticmethod
     def org_member_filter(info, query, value):

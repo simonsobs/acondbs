@@ -30,7 +30,7 @@ def update_product_type(type_id, field_ids=None, **kwargs) -> ProductType:
         setattr(model, k, v)
 
     if field_ids is not None:
-        with sa.session.no_autoflush:
+        with sa.session.no_autoflush:  # type: ignore
             model.fields = _update_fields(model.fields, field_ids)
 
     return model

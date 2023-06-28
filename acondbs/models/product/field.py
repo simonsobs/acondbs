@@ -21,13 +21,13 @@ class FieldType(enum.Enum):
 
 
 FIELDTYPE_ATTRIBUTECLASS_MAP = {
-    FieldType.UnicodeText: attribute.AttributeUnicodeText,
-    FieldType.Boolean: attribute.AttributeBoolean,
-    FieldType.Integer: attribute.AttributeInteger,
-    FieldType.Float: attribute.AttributeFloat,
-    FieldType.Date: attribute.AttributeDate,
-    FieldType.DateTime: attribute.AttributeDateTime,
-    FieldType.Time: attribute.AttributeTime,
+    FieldType.UnicodeText: attribute.AttributeUnicodeText,  # type: ignore
+    FieldType.Boolean: attribute.AttributeBoolean,  # type: ignore
+    FieldType.Integer: attribute.AttributeInteger,  # type: ignore
+    FieldType.Float: attribute.AttributeFloat,  # type: ignore
+    FieldType.Date: attribute.AttributeDate,  # type: ignore
+    FieldType.DateTime: attribute.AttributeDateTime,  # type: ignore
+    FieldType.Time: attribute.AttributeTime,  # type: ignore
 }
 
 

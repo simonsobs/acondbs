@@ -143,7 +143,7 @@ def _test_create(
             assert model.paths == []
 
         if relations is not None:
-            expected = [(r['type_id'], r['product_id']) for r in relations]
+            expected = [(r['type_id'], r['product_id']) for r in relations]  # type: ignore
             actual = [(r.type_id, r.other_product_id) for r in model.relations]
             assert actual == expected
         else:
@@ -153,8 +153,8 @@ def _test_create(
             attributes = {}
         expected_ids = [(a.iid, a.field_id) for a in model.type_.fields]
         # list of (type_field_association.iid, field.field_id)
-        expected = {fid: (aid, attributes.get(fid)) for aid, fid in expected_ids}
-        actual = _extract_attributes(model)
+        expected = {fid: (aid, attributes.get(fid)) for aid, fid in expected_ids}  # type: ignore
+        actual = _extract_attributes(model)  # type: ignore
         # actual_field_ids = list(actual.keys())
         assert actual == expected
 
@@ -321,10 +321,10 @@ def _test_update(
         assert path_ids == expected_path_ids
 
         if relations is not None:
-            expected = {(r['type_id'], r['product_id']) for r in relations}
+            expected = {(r['type_id'], r['product_id']) for r in relations}  # type: ignore
         else:
-            expected = relations_old
-        actual = {(r.type_id, r.other_product_id) for r in model.relations}
+            expected = relations_old  # type: ignore
+        actual = {(r.type_id, r.other_product_id) for r in model.relations}  # type: ignore
         assert actual == expected
         expected_relation_ids = {
             k: v for k, v in relation_ids_old.items() if k in expected
@@ -338,10 +338,10 @@ def _test_update(
 
         if attributes is None:
             attributes = {}
-        expected = attributes_old.copy()
+        expected = attributes_old.copy()  # type: ignore
         update = {k: (expected[k][0], v) for k, v in attributes.items()}
-        expected.update(update)
-        actual = _extract_attributes(model)
+        expected.update(update)  # type: ignore
+        actual = _extract_attributes(model)  # type: ignore
         assert actual == expected
 
 
