@@ -1,13 +1,14 @@
 """Git operations
 """
 import warnings
+from os import PathLike
 from pathlib import Path
 from typing import Optional, Union
 
 import git
 
 
-def commit(path: Union[str, Path], message: Optional[str] = None) -> None:
+def commit(path: Union[str, PathLike[str]], message: Optional[str] = None) -> None:
     """commit all changes in a git repository to git
 
     If the path is not a git repository, unless it is empty, it will
@@ -54,7 +55,7 @@ def commit(path: Union[str, Path], message: Optional[str] = None) -> None:
     repo.index.commit(message)
 
 
-def pull(path: Union[str, Path]) -> None:
+def pull(path: Union[str, PathLike[str]]) -> None:
     """pull from a tracking branch
 
     Equivalent to execute "git pull" in the path.
@@ -95,7 +96,7 @@ def pull(path: Union[str, Path]) -> None:
     remote.pull()
 
 
-def push(path: Union[str, Path]) -> None:
+def push(path: Union[str, PathLike[str]]) -> None:
     """push to a upstream branch
 
     Equivalent to execute "git push" in the path.
