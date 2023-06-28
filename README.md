@@ -1,6 +1,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/acondbs.svg)](https://pypi.org/project/acondbs)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/acondbs.svg)](https://pypi.org/project/acondbs)
 [![Test Status](https://github.com/simonsobs/acondbs/actions/workflows/unit-test.yml/badge.svg)](https://github.com/simonsobs/acondbs/actions/workflows/unit-test.yml)
+[![Test Status](https://github.com/simonsobs/acondbs/actions/workflows/type-check.yml/badge.svg)](https://github.com/simonsobs/acondbs/actions/workflows/type-check.yml)
 [![codecov](https://codecov.io/gh/simonsobs/acondbs/branch/main/graph/badge.svg)](https://codecov.io/gh/simonsobs/acondbs)
 
 # Acondbs
