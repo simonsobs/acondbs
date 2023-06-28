@@ -33,7 +33,7 @@ dependencies = [
     "graphene-sqlalchemy>=2.3,<3",
     "requests>=2.24",
     "SQLAlchemy-Utils>=0.41",
-    "SQLAlchemy[mypy]>=1.4,<2",
+    "SQLAlchemy[mypy]>=1.4,<3",
 ]
 
 [project.optional-dependencies]
