@@ -103,3 +103,7 @@ module = [
     "sqlparse",
 ]
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["git"]
+implicit_reexport = true
