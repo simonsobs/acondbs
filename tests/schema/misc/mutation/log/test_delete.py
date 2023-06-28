@@ -1,3 +1,6 @@
+from typing import Any, Mapping
+from unittest import mock
+
 import pytest
 from flask import Flask
 from snapshottest.pytest import PyTestSnapshotTest
@@ -29,9 +32,9 @@ params = [
 async def test_schema_success(
     app: Flask,
     snapshot: PyTestSnapshotTest,
-    data_mutation,
-    data_query,
-    mock_request_backup_db,
+    data_mutation: Mapping[str, Any],
+    data_query: Mapping[str, Any],
+    mock_request_backup_db: mock.Mock,
 ) -> None:
     success = True
     await assert_mutation(

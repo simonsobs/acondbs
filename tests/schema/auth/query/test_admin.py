@@ -1,39 +1,49 @@
+from typing import Any, Mapping
+
 import pytest
+from flask import Flask
+from snapshottest.pytest import PyTestSnapshotTest
 
 from ...funcs import assert_query
 
-QUERY = "{ isAdmin }"
+QUERY = '{ isAdmin }'
 
 
 params = [
     pytest.param(
-        {"query": QUERY},
-        {"Authorization": "Bearer 90b2ee5fed25506df04fd37343bb68d1803dd97f"},
+        {'query': QUERY},
+        {'Authorization': 'Bearer 90b2ee5fed25506df04fd37343bb68d1803dd97f'},
         False,
-        id="octocat",
+        id='octocat',
     ),
     pytest.param(
-        {"query": QUERY},
-        {"Authorization": "Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080"},
+        {'query': QUERY},
+        {'Authorization': 'Bearer 0fb8c9e16d6f7c4961c4c49212bf197d79f14080'},
         False,
-        id="dojocat",
+        id='dojocat',
     ),
     pytest.param(
-        {"query": QUERY},
-        {"Authorization": "Bearer 1a2d18f270df3abacfb85c5413b668f97794b4ce"},
+        {'query': QUERY},
+        {'Authorization': 'Bearer 1a2d18f270df3abacfb85c5413b668f97794b4ce'},
         True,
-        id="wrong-token",
+        id='wrong-token',
     ),
     pytest.param(
-        {"query": QUERY},
+        {'query': QUERY},
         {},
         True,
-        id="no-token",
+        id='no-token',
     ),
 ]
 
 
-@pytest.mark.parametrize("data, headers, error", params)
+@pytest.mark.parametrize('data, headers, error', params)
 @pytest.mark.asyncio
-async def test_schema(app, snapshot, data, headers, error):
+async def test_schema(
+    app: Flask,
+    snapshot: PyTestSnapshotTest,
+    data: Mapping[str, Any],
+    headers: Mapping[str, Any],
+    error: bool,
+) -> None:
     await assert_query(app, snapshot, data, headers, error)
