@@ -1,5 +1,7 @@
-# fmt: off
-from .query_all_logs import QUERY_ALL_LOGS  # noqa: F401
-from .query_log import QUERY_LOG  # noqa: F401
+__all__ = [
+    'QUERY_ALL_LOGS',
+    'QUERY_LOG',
+]
 
-# fmt: on
+from .query_all_logs import QUERY_ALL_LOGS
+from .query_log import QUERY_LOG

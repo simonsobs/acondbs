@@ -1,6 +1,7 @@
 import datetime
 
 import pytest
+from flask import Flask
 
 from acondbs import ops
 from acondbs.db.sa import sa
@@ -8,7 +9,7 @@ from acondbs.models import GitHubToken, GitHubUser
 
 
 @pytest.fixture
-def app(app_empty):
+def app(app_empty: Flask) -> Flask:
     y = app_empty
 
     user1 = GitHubUser(login="user1", git_hub_id="04:User1")
@@ -128,4 +129,4 @@ def app(app_empty):
         )
         ops.commit()
 
-    yield y
+    return y

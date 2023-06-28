@@ -1,10 +1,11 @@
 import pytest
+from flask import Flask
 
 from acondbs import ops
 
 
 @pytest.fixture
-def app(app_users):
+def app(app_users: Flask) -> Flask:
     y = app_users
 
     # Relation types:
@@ -19,39 +20,39 @@ def app(app_users):
     with y.app_context():
         ops.create_product_relation_type(
             type_={
-                "type_id": 1,
-                "name": "parent",
-                "indef_article": "a",
-                "singular": "parent",
-                "plural": "parents",
+                'type_id': 1,
+                'name': 'parent',
+                'indef_article': 'a',
+                'singular': 'parent',
+                'plural': 'parents',
             },
             reverse={
-                "type_id": 2,
-                "name": "child",
-                "indef_article": "a",
-                "singular": "child",
-                "plural": "children",
+                'type_id': 2,
+                'name': 'child',
+                'indef_article': 'a',
+                'singular': 'child',
+                'plural': 'children',
             },
         )
         ops.create_product_relation_type(
             type_={
-                "type_id": 3,
-                "name": "plaintiff",
-                "indef_article": "a",
-                "singular": "plaintiff",
-                "plural": "plaintiffs",
+                'type_id': 3,
+                'name': 'plaintiff',
+                'indef_article': 'a',
+                'singular': 'plaintiff',
+                'plural': 'plaintiffs',
             },
             reverse={
-                "type_id": 4,
-                "name": "defendant",
-                "indef_article": "a",
-                "singular": "defendant",
-                "plural": "defendants",
+                'type_id': 4,
+                'name': 'defendant',
+                'indef_article': 'a',
+                'singular': 'defendant',
+                'plural': 'defendants',
             },
         )
 
-        ops.create_product_type(type_id=1, name="map")
-        ops.create_product_type(type_id=2, name="beam")
+        ops.create_product_type(type_id=1, name='map')
+        ops.create_product_type(type_id=2, name='beam')
 
         ops.commit()
 
@@ -59,17 +60,17 @@ def app(app_users):
         ops.create_product(
             product_id=1,
             type_id=1,
-            name="map1",
+            name='map1',
         )
         ops.create_product(
             product_id=4,
             type_id=2,
-            name="beam1",
+            name='beam1',
         )
         ops.create_product(
             product_id=5,
             type_id=2,
-            name="beam2",
+            name='beam2',
         )
         ops.commit()
 
@@ -91,4 +92,4 @@ def app(app_users):
         )
         ops.commit()
 
-    yield y
+    return y

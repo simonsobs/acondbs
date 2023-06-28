@@ -1,10 +1,11 @@
 import pytest
+from flask import Flask
 
 from acondbs import ops
 
 
 @pytest.fixture
-def app(app_users):
+def app(app_users: Flask) -> Flask:
     y = app_users
 
     with y.app_context():
@@ -12,4 +13,4 @@ def app(app_users):
         ops.create_log(level="ERROR", message="An error message!")
         ops.commit()
 
-    yield y
+    return y

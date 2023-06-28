@@ -1,10 +1,20 @@
+from typing import Any, Mapping, Optional
+from unittest import mock
+
 from a2wsgi import WSGIMiddleware
 from async_asgi_testclient import TestClient
+from snapshottest.pytest import PyTestSnapshotTest
 
-HEADERS_DEFAULT = {"Content-Type:": "application/json"}
+HEADERS_DEFAULT = {'Content-Type:': 'application/json'}
 
 
-async def assert_query(app, snapshot, data, headers=None, error=False):
+async def assert_query(
+    app: Any,
+    snapshot: PyTestSnapshotTest,
+    data: Mapping[str, Any],
+    headers: Optional[Mapping[str, Any]] = None,
+    error: bool = False,
+) -> None:
     if not headers:
         headers = {}
 
@@ -15,16 +25,16 @@ async def assert_query(app, snapshot, data, headers=None, error=False):
     headers.update(headers_custom)
 
     async with TestClient(app) as client:
-        resp = await client.post("/graphql", json=data, headers=headers)
+        resp = await client.post('/graphql', json=data, headers=headers)
 
     resp_json = resp.json()
 
     # assert errors
     if error:
-        assert "errors" in resp_json
+        assert 'errors' in resp_json
         return
 
-    assert "errors" not in resp_json
+    assert 'errors' not in resp_json
 
     # snapshot test
     #   https://github.com/syrusakbary/snapshottest/
@@ -32,15 +42,15 @@ async def assert_query(app, snapshot, data, headers=None, error=False):
 
 
 async def assert_mutation(
-    app,
-    snapshot,
-    data_mutation,
-    headers_mutation,
-    data_query,
-    headers_query,
-    mock_request_backup_db,
-    success=True,
-):
+    app: Any,
+    snapshot: PyTestSnapshotTest,
+    data_mutation: Mapping[str, Any],
+    headers_mutation: Mapping[str, Any],
+    data_query: Mapping[str, Any],
+    headers_query: Mapping[str, Any],
+    mock_request_backup_db: mock.Mock,
+    success: bool = True,
+) -> None:
     if success:
         mock_request_backup_db.reset_mock()
 

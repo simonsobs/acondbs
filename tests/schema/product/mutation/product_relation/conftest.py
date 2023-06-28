@@ -1,10 +1,11 @@
 import pytest
+from flask import Flask
 
 from acondbs import ops
 
 
 @pytest.fixture
-def app(app_users):
+def app(app_users: Flask) -> Flask:
     y = app_users
 
     # map1 -> beam1
@@ -16,12 +17,12 @@ def app(app_users):
 
     with y.app_context():
         ops.create_product_relation_type(
-            type_={"type_id": 1, "name": "parent"},
-            reverse={"type_id": 2, "name": "child"},
+            type_={'type_id': 1, 'name': 'parent'},
+            reverse={'type_id': 2, 'name': 'child'},
         )
 
-        ops.create_product_type(type_id=1, name="map")
-        ops.create_product_type(type_id=2, name="beam")
+        ops.create_product_type(type_id=1, name='map')
+        ops.create_product_type(type_id=2, name='beam')
 
         ops.commit()
 
@@ -29,27 +30,27 @@ def app(app_users):
         ops.create_product(
             product_id=1,
             type_id=1,
-            name="map1",
+            name='map1',
         )
         ops.create_product(
             product_id=2,
             type_id=1,
-            name="map2",
+            name='map2',
         )
         ops.create_product(
             product_id=3,
             type_id=1,
-            name="map3",
+            name='map3',
         )
         ops.create_product(
             product_id=4,
             type_id=2,
-            name="beam1",
+            name='beam1',
         )
         ops.create_product(
             product_id=5,
             type_id=2,
-            name="beam2",
+            name='beam2',
         )
         ops.commit()
 
@@ -68,4 +69,4 @@ def app(app_users):
         )
         ops.commit()
 
-    yield y
+    return y
