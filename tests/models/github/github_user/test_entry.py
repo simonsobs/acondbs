@@ -1,8 +1,10 @@
+from flask import Flask
+
 from acondbs.db.sa import sa
 from acondbs.models import GitHubUser
 
 
-def test_entry(app_empty):
+def test_entry(app_empty: Flask) -> None:
     app = app_empty
 
     user1 = GitHubUser(

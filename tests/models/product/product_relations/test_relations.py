@@ -1,7 +1,9 @@
+from flask import Flask
+
 from acondbs.models import Product
 
 
-def test_relations(app):
+def test_relations(app: Flask) -> None:
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -15,18 +17,18 @@ def test_relations(app):
     #                              +--------+
 
     with app.app_context():
-        parent1 = Product.query.filter_by(name="parent1").first()
-        child1 = Product.query.filter_by(name="child1").first()
-        child2 = Product.query.filter_by(name="child2").first()
+        parent1 = Product.query.filter_by(name='parent1').first()
+        child1 = Product.query.filter_by(name='child1').first()
+        child2 = Product.query.filter_by(name='child2').first()
 
         assert 2 == len(parent1.relations)
         assert 1 == len(child1.relations)
         assert 1 == len(child2.relations)
 
-        assert "child" == parent1.relations[0].type_.name
-        assert "child" == parent1.relations[1].type_.name
-        assert "parent" == child1.relations[0].type_.name
-        assert "parent" == child2.relations[0].type_.name
+        assert 'child' == parent1.relations[0].type_.name
+        assert 'child' == parent1.relations[1].type_.name
+        assert 'parent' == child1.relations[0].type_.name
+        assert 'parent' == child2.relations[0].type_.name
 
         assert child1 is parent1.relations[0].other
         assert child2 is parent1.relations[1].other

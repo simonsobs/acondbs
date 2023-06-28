@@ -1,11 +1,12 @@
 import pytest
+from flask import Flask
 
 from acondbs.db.sa import sa
 from acondbs.models import Field, FieldType, ProductType, TypeFieldAssociation
 
 
 @pytest.fixture
-def app(app_empty):
+def app(app_empty: Flask) -> Flask:
     y = app_empty
 
     field1 = Field(name="field1", type_=FieldType.UnicodeText)
@@ -25,4 +26,4 @@ def app(app_empty):
         sa.session.add(type1)
         sa.session.commit()
 
-    yield y
+    return y

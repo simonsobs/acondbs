@@ -1,11 +1,12 @@
 import pytest
+from flask import Flask
 from sqlalchemy import exc
 
 from acondbs.db.sa import sa
 from acondbs.models import Product, ProductRelation, ProductRelationType
 
 
-def test_constraint(app):
+def test_constraint(app: Flask) -> None:
     #                              +--------+
     #               --(child)-->   |        |
     #                    |         | child1 |
@@ -20,9 +21,9 @@ def test_constraint(app):
 
     # try to duplicate relation
     with app.app_context():
-        parent1 = Product.query.filter_by(name="parent1").first()
-        child1 = Product.query.filter_by(name="child1").first()
-        type_ = ProductRelationType.query.filter_by(name="child").first()
+        parent1 = Product.query.filter_by(name='parent1').first()
+        child1 = Product.query.filter_by(name='child1').first()
+        type_ = ProductRelationType.query.filter_by(name='child').first()
 
         relation = ProductRelation()
         relation.type_ = type_

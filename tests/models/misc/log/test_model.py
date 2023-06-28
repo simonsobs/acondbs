@@ -1,12 +1,14 @@
+from flask import Flask
+
 from acondbs.db.sa import sa
 from acondbs.models import Log
 
 
-def test_column(app_empty):
+def test_column(app_empty: Flask) -> None:
     app = app_empty
 
     with app.app_context():
-        model = Log(level="ERROR", message="an exception occurred")
+        model = Log(level='ERROR', message='an exception occurred')
         sa.session.add(model)
         sa.session.commit()
         id_ = model.id_
@@ -14,13 +16,13 @@ def test_column(app_empty):
 
     with app.app_context():
         model = Log.query.filter_by(id_=id_).one()
-        assert model.level == "ERROR"
+        assert model.level == 'ERROR'
 
 
-def test_repr(app_empty):
+def test_repr(app_empty: Flask) -> None:
     app = app_empty
 
-    model = Log(level="ERROR", message="an exception occurred")
+    model = Log(level='ERROR', message='an exception occurred')
     repr(model)
 
     with app.app_context():

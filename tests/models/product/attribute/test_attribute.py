@@ -1,7 +1,7 @@
 import datetime
 
 import pytest
-import sqlparse
+from flask import Flask
 from sqlalchemy.orm import aliased
 
 from acondbs.db.sa import sa
@@ -24,63 +24,63 @@ params = [
     pytest.param(
         FieldType.UnicodeText,
         AttributeUnicodeText,
-        "value1 値１",
-        id="UnicodeText",
+        'value1 値１',
+        id='UnicodeText',
     ),
-    pytest.param(FieldType.Boolean, AttributeBoolean, True, id="Boolean"),
-    pytest.param(FieldType.Integer, AttributeInteger, -512442, id="Integer"),
-    pytest.param(FieldType.Float, AttributeFloat, 3.14592613, id="Float"),
-    pytest.param(FieldType.Date, AttributeDate, datetime.date(2020, 2, 1), id="Date"),
+    pytest.param(FieldType.Boolean, AttributeBoolean, True, id='Boolean'),
+    pytest.param(FieldType.Integer, AttributeInteger, -512442, id='Integer'),
+    pytest.param(FieldType.Float, AttributeFloat, 3.14592613, id='Float'),
+    pytest.param(FieldType.Date, AttributeDate, datetime.date(2020, 2, 1), id='Date'),
     pytest.param(
         FieldType.DateTime,
         AttributeDateTime,
         datetime.datetime(2020, 2, 1, 9, 10, 25),
-        id="DateTime",
+        id='DateTime',
     ),
-    pytest.param(FieldType.Time, AttributeTime, datetime.time(9, 10, 25), id="Time"),
+    pytest.param(FieldType.Time, AttributeTime, datetime.time(9, 10, 25), id='Time'),
 ]
 
 
-@pytest.mark.parametrize("field_type, AttributeClass, value", params)
-def test_repr(app_empty, field_type, AttributeClass, value):
+@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+def test_repr(app_empty: Flask, field_type, AttributeClass, value) -> None:
     app = app_empty  # noqa: F841
 
     attr1 = AttributeClass(value=value)
     repr(attr1)
 
-    field1 = Field(name="attr1", type_=field_type)
+    field1 = Field(name='attr1', type_=field_type)
     assoc1 = TypeFieldAssociation(field=field1)
     attr1.type_field_association = assoc1
     attr1.field = field1
     repr(attr1)
 
 
-@pytest.mark.parametrize("field_type, AttributeClass, value", params)
-def test_obj(app_empty, field_type, AttributeClass, value):
+@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+def test_obj(app_empty: Flask, field_type, AttributeClass, value) -> None:
     app = app_empty  # noqa: F841
-    field = Field(name="field1", type_=field_type)
+    field = Field(name='field1', type_=field_type)
     assoc = TypeFieldAssociation(field=field)
     attr = AttributeClass(
         type_field_association=assoc, field=field, value=value
     )  # noqa: F841
 
 
-@pytest.mark.parametrize("field_type, AttributeClass, value", params)
-def test_commit(app_empty, field_type, AttributeClass, value):
+@pytest.mark.parametrize('field_type, AttributeClass, value', params)
+def test_commit(app_empty: Flask, field_type, AttributeClass, value) -> None:
     app = app_empty
     with app.app_context():
-        field = Field(name="field1", type_=field_type)
+        field = Field(name='field1', type_=field_type)
         assoc = TypeFieldAssociation(field=field)
-        product_type = ProductType(name="map")
+        product_type = ProductType(name='map')
         product_type.fields = [assoc]
         sa.session.add(product_type)
         sa.session.commit()
 
     with app.app_context():
-        product_type = ProductType.query.filter_by(name="map").one()
+        product_type = ProductType.query.filter_by(name='map').one()
         assoc = product_type.fields[0]
         field = assoc.field
-        product = Product(name="product1", type_=product_type)
+        product = Product(name='product1', type_=product_type)
         attr = AttributeClass(
             product=product,
             type_field_association=assoc,
@@ -93,16 +93,16 @@ def test_commit(app_empty, field_type, AttributeClass, value):
     with app.app_context():
         attr = AttributeClass.query.one()
         assert attr.__class__ is AttributeClass
-        assert attr.type_field_association.field.name == "field1"
+        assert attr.type_field_association.field.name == 'field1'
         assert attr.type_field_association.field.type_ is field_type
-        assert attr.field.name == "field1"
+        assert attr.field.name == 'field1'
         assert attr.field.type_ is field_type
         assert attr.value == value
         assert getattr(attr.product, AttributeClass.backref_column) == [attr]
         assert getattr(attr.field, AttributeClass.backref_column) == [attr]
 
 
-def test_filter(app):
+def test_filter(app: Flask) -> None:
     with app.app_context():
         expected = Product.query.filter_by(product_id=1).one()
         print(expected.attributes_unicode_text[0].type_field_association)
@@ -110,7 +110,7 @@ def test_filter(app):
             Product.query.join(AttributeUnicodeText)
             .join(TypeFieldAssociation)
             .join(Field)
-            .filter(Field.name == "attr1", AttributeUnicodeText.value == "value1")
+            .filter(Field.name == 'attr1', AttributeUnicodeText.value == 'value1')
         )
         # print(sqlparse.format(str(query), reindent=True))
         actual = query.one()
@@ -119,17 +119,17 @@ def test_filter(app):
         # another way
         query = (
             Product.query.join(AttributeUnicodeText)
-            .filter_by(value="value1")
+            .filter_by(value='value1')
             .join(TypeFieldAssociation)
             .join(Field)
-            .filter_by(name="attr1")
+            .filter_by(name='attr1')
         )
         # print(sqlparse.format(str(query), reindent=True))
         actual = query.one()
         assert actual is expected
 
 
-def test_order(app):
+def test_order(app: Flask) -> None:
     with app.app_context():
         map1 = Product.query.filter_by(product_id=1).one()
         map2 = Product.query.filter_by(product_id=2).one()
@@ -139,11 +139,11 @@ def test_order(app):
 
         query = (
             Product.query.join(ProductType)
-            .filter_by(name="map")
+            .filter_by(name='map')
             .join(AttributeDate)
             .join(TypeFieldAssociation)
             .join(Field)
-            .filter_by(name="date_produced")
+            .filter_by(name='date_produced')
             .order_by(AttributeDate.value.desc())
         )
 
@@ -154,27 +154,27 @@ def test_order(app):
         assert actual == expected
 
 
-def test_order_nested(app_empty):
+def test_order_nested(app_empty: Flask) -> None:
     app = app_empty
 
-    field_attr1 = Field(name="attr1", type_=FieldType.UnicodeText)
-    field_attr2 = Field(name="attr2", type_=FieldType.UnicodeText)
-    Map = ProductType(type_id=1, name="map")
+    field_attr1 = Field(name='attr1', type_=FieldType.UnicodeText)
+    field_attr2 = Field(name='attr2', type_=FieldType.UnicodeText)
+    Map = ProductType(type_id=1, name='map')
     assoc1 = TypeFieldAssociation(field=field_attr1)
     assoc2 = TypeFieldAssociation(field=field_attr2)
     Map.fields = [assoc1, assoc2]
 
-    map1 = Product(product_id=1, name="map1", type_=Map)
-    map2 = Product(product_id=2, name="map2", type_=Map)
-    map3 = Product(product_id=3, name="map3", type_=Map)
-    map4 = Product(product_id=4, name="map4", type_=Map)
-    map5 = Product(product_id=5, name="map5", type_=Map)
+    map1 = Product(product_id=1, name='map1', type_=Map)
+    map2 = Product(product_id=2, name='map2', type_=Map)
+    map3 = Product(product_id=3, name='map3', type_=Map)
+    map4 = Product(product_id=4, name='map4', type_=Map)
+    map5 = Product(product_id=5, name='map5', type_=Map)
 
     AttributeUnicodeText(
         product=map1,
         type_field_association=assoc1,
         field=field_attr1,
-        value="1",
+        value='1',
     )
     AttributeUnicodeText(
         product=map2,

@@ -1,8 +1,10 @@
+from flask import Flask
+
 from acondbs.db.sa import sa
 from acondbs.models import GitHubOrg, GitHubOrgMembership, GitHubUser
 
 
-def test_relation(app):
+def test_relation(app: Flask) -> None:
     with app.app_context():
         membership = GitHubOrgMembership.query.one()
         org1 = GitHubOrg.query.one()
@@ -13,7 +15,7 @@ def test_relation(app):
         assert [membership] == user1.memberships
 
 
-def test_cascade_delete_org(app):
+def test_cascade_delete_org(app: Flask) -> None:
     with app.app_context():
         org1 = GitHubOrg.query.filter_by(login="org1").one()
         sa.session.delete(org1)
@@ -28,7 +30,7 @@ def test_cascade_delete_org(app):
         assert len(users) == 1
 
 
-def test_cascade_delete_user(app):
+def test_cascade_delete_user(app: Flask) -> None:
     with app.app_context():
         user1 = GitHubUser.query.filter_by(login="user1").one()
         sa.session.delete(user1)
@@ -43,7 +45,7 @@ def test_cascade_delete_user(app):
         assert len(users) == 0
 
 
-def test_cascade_delete_membership(app):
+def test_cascade_delete_membership(app: Flask) -> None:
     with app.app_context():
         membership = GitHubOrgMembership.query.one()
         sa.session.delete(membership)

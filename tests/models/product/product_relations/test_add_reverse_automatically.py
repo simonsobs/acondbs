@@ -1,6 +1,8 @@
 from itertools import permutations
+from typing import Sequence
 
 import pytest
+from flask import Flask
 
 from acondbs.db.sa import sa
 from acondbs.models import Product, ProductRelation, ProductRelationType, ProductType
@@ -8,12 +10,12 @@ from acondbs.models import Product, ProductRelation, ProductRelationType, Produc
 params = list(permutations([1, 2, 3]))
 # i.e., [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
 
-ids = ["-".join(["{}".format(e) for e in p]) for p in params]
+ids = ['-'.join(['{}'.format(e) for e in p]) for p in params]
 # i.e., ['1-2-3', '1-3-2', '2-1-3', '2-3-1', '3-1-2', '3-2-1']
 
 
-@pytest.mark.parametrize("perm", params, ids=ids)
-def test_permutations(app_empty, perm):
+@pytest.mark.parametrize('perm', params, ids=ids)
+def test_permutations(app_empty: Flask, perm: Sequence[int]) -> None:
     app = app_empty
 
     #
@@ -24,12 +26,12 @@ def test_permutations(app_empty, perm):
     # +---------+                 +--------+
     #
 
-    type_ = ProductType(name="robot")
-    parent1 = Product(name="parent1", type_=type_)
-    child1 = Product(name="child1", type_=type_)
+    type_ = ProductType(name='robot')
+    parent1 = Product(name='parent1', type_=type_)
+    child1 = Product(name='child1', type_=type_)
 
-    relation_type_parent = ProductRelationType(name="parent")
-    relation_type_child = ProductRelationType(name="child")
+    relation_type_parent = ProductRelationType(name='parent')
+    relation_type_child = ProductRelationType(name='child')
     relation_type_parent.reverse = relation_type_child
     relation_type_child.reverse = relation_type_parent
 
@@ -50,14 +52,14 @@ def test_permutations(app_empty, perm):
         sa.session.commit()
 
     with app.app_context():
-        parent1 = Product.query.filter_by(name="parent1").first()
-        child1 = Product.query.filter_by(name="child1").first()
+        parent1 = Product.query.filter_by(name='parent1').first()
+        child1 = Product.query.filter_by(name='child1').first()
 
         assert 1 == len(parent1.relations)
         assert 1 == len(child1.relations)
 
-        assert "child" == parent1.relations[0].type_.name
-        assert "parent" == child1.relations[0].type_.name
+        assert 'child' == parent1.relations[0].type_.name
+        assert 'parent' == child1.relations[0].type_.name
 
         assert child1 is parent1.relations[0].other
 
@@ -67,8 +69,8 @@ def test_permutations(app_empty, perm):
         assert parent1.relations[0].reverse is child1.relations[0]
 
 
-@pytest.mark.parametrize("perm", params, ids=ids)
-def test_self_reverse_type(app_empty, perm):
+@pytest.mark.parametrize('perm', params, ids=ids)
+def test_self_reverse_type(app_empty: Flask, perm: Sequence[int]) -> None:
     app = app_empty
 
     #
@@ -79,11 +81,11 @@ def test_self_reverse_type(app_empty, perm):
     # +----------+                 +----------+
     #
 
-    type_ = ProductType(name="robot")
-    sibling1 = Product(name="sibling1", type_=type_)
-    sibling2 = Product(name="sibling2", type_=type_)
+    type_ = ProductType(name='robot')
+    sibling1 = Product(name='sibling1', type_=type_)
+    sibling2 = Product(name='sibling2', type_=type_)
 
-    relation_type_sibling = ProductRelationType(name="sibling")
+    relation_type_sibling = ProductRelationType(name='sibling')
     relation_type_sibling.reverse = relation_type_sibling
 
     relation_sibling1_to_sibling2 = ProductRelation()
@@ -103,14 +105,14 @@ def test_self_reverse_type(app_empty, perm):
         sa.session.commit()
 
     with app.app_context():
-        sibling1 = Product.query.filter_by(name="sibling1").first()
-        sibling2 = Product.query.filter_by(name="sibling2").first()
+        sibling1 = Product.query.filter_by(name='sibling1').first()
+        sibling2 = Product.query.filter_by(name='sibling2').first()
 
         assert 1 == len(sibling1.relations)
         assert 1 == len(sibling2.relations)
 
-        assert "sibling" == sibling1.relations[0].type_.name
-        assert "sibling" == sibling2.relations[0].type_.name
+        assert 'sibling' == sibling1.relations[0].type_.name
+        assert 'sibling' == sibling2.relations[0].type_.name
 
         assert sibling1.relations[0].type_ is sibling2.relations[0].type_
 
@@ -123,8 +125,8 @@ def test_self_reverse_type(app_empty, perm):
 
 
 @pytest.mark.xfail(reason="events won't be triggered by foreign keys")
-def test_id(app_empty):
-    # This test doesn't pass because the "set" events to the
+def test_id(app_empty: Flask) -> None:
+    # This test doesn't pass because the 'set' events to the
     # relationships won't be triggered when the foreign keys are set.
 
     # It might be possible to pass this test with before_flush().
@@ -142,12 +144,12 @@ def test_id(app_empty):
     # +---------+                 +--------+
     #
 
-    type_ = ProductType(name="robot")
-    parent1 = Product(product_id=1, name="parent1", type_=type_)
-    child1 = Product(product_id=2, name="child1", type_=type_)
+    type_ = ProductType(name='robot')
+    parent1 = Product(product_id=1, name='parent1', type_=type_)
+    child1 = Product(product_id=2, name='child1', type_=type_)
 
-    relation_type_parent = ProductRelationType(type_id=1, name="parent")
-    relation_type_child = ProductRelationType(type_id=2, name="child")
+    relation_type_parent = ProductRelationType(type_id=1, name='parent')
+    relation_type_child = ProductRelationType(type_id=2, name='child')
     relation_type_parent.reverse = relation_type_child
 
     relation_parent1_to_child1 = ProductRelation(
@@ -163,14 +165,14 @@ def test_id(app_empty):
         sa.session.commit()
 
     with app.app_context():
-        parent1 = Product.query.filter_by(name="parent1").first()
-        child1 = Product.query.filter_by(name="child1").first()
+        parent1 = Product.query.filter_by(name='parent1').first()
+        child1 = Product.query.filter_by(name='child1').first()
 
         assert 1 == len(parent1.relations)
         assert 1 == len(child1.relations)
 
-        assert "child" == parent1.relations[0].type_.name
-        assert "parent" == child1.relations[0].type_.name
+        assert 'child' == parent1.relations[0].type_.name
+        assert 'parent' == child1.relations[0].type_.name
 
         assert child1 is parent1.relations[0].other
 
@@ -180,7 +182,7 @@ def test_id(app_empty):
         assert parent1.relations[0].reverse is child1.relations[0]
 
 
-def test_attach_to_self(app_empty):
+def test_attach_to_self(app_empty: Flask) -> None:
     app = app_empty
 
     #
@@ -191,12 +193,12 @@ def test_attach_to_self(app_empty):
     # +---------+                 +--------+
     #
 
-    type_ = ProductType(name="robot")
-    parent1 = Product(product_id=1, name="parent1", type_=type_)
-    child1 = Product(product_id=2, name="child1", type_=type_)
+    type_ = ProductType(name='robot')
+    parent1 = Product(product_id=1, name='parent1', type_=type_)
+    child1 = Product(product_id=2, name='child1', type_=type_)
 
-    relation_type_parent = ProductRelationType(type_id=1, name="parent")
-    relation_type_child = ProductRelationType(type_id=2, name="child")
+    relation_type_parent = ProductRelationType(type_id=1, name='parent')
+    relation_type_child = ProductRelationType(type_id=2, name='child')
     relation_type_parent.reverse = relation_type_child
 
     relation_parent1_to_child1 = ProductRelation(
@@ -214,14 +216,14 @@ def test_attach_to_self(app_empty):
         sa.session.commit()
 
     with app.app_context():
-        parent1 = Product.query.filter_by(name="parent1").first()
-        child1 = Product.query.filter_by(name="child1").first()
+        parent1 = Product.query.filter_by(name='parent1').first()
+        child1 = Product.query.filter_by(name='child1').first()
 
         assert 1 == len(parent1.relations)
         assert 1 == len(child1.relations)
 
-        assert "child" == parent1.relations[0].type_.name
-        assert "parent" == child1.relations[0].type_.name
+        assert 'child' == parent1.relations[0].type_.name
+        assert 'parent' == child1.relations[0].type_.name
 
         assert child1 is parent1.relations[0].other
 

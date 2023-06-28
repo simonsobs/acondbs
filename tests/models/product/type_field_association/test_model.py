@@ -1,16 +1,17 @@
 import pytest
+from flask import Flask
 from sqlalchemy import exc
 
 from acondbs.db.sa import sa
 from acondbs.models import Field, FieldType, ProductType, TypeFieldAssociation
 
 
-def test_column(app_empty):
+def test_column(app_empty: Flask) -> None:
     app = app_empty
 
     with app.app_context():
-        field1 = Field(name="field1", type_=FieldType.UnicodeText)
-        type1 = ProductType(name="type1")
+        field1 = Field(name='field1', type_=FieldType.UnicodeText)
+        type1 = ProductType(name='type1')
         model = TypeFieldAssociation(
             order=123,
             type_=type1,
@@ -26,25 +27,25 @@ def test_column(app_empty):
         assert model.order == 123
 
 
-def test_repr(app_empty):
+def test_repr(app_empty: Flask) -> None:
     app = app_empty  # noqa: F841
 
     model = TypeFieldAssociation()
     repr(model)
 
-    field1 = Field(name="field1", type_=FieldType.UnicodeText)
-    type1 = ProductType(name="type1")
+    field1 = Field(name='field1', type_=FieldType.UnicodeText)
+    type1 = ProductType(name='type1')
 
     model.type_ = type1
     model.field = field1
     repr(model)
 
 
-def test_relationship(app):
+def test_relationship(app: Flask) -> None:
     with app.app_context():
-        field1 = Field.query.filter_by(name="field1").one()
-        field2 = Field.query.filter_by(name="field2").one()
-        type1 = ProductType.query.filter_by(name="type1").one()
+        field1 = Field.query.filter_by(name='field1').one()
+        field2 = Field.query.filter_by(name='field2').one()
+        type1 = ProductType.query.filter_by(name='type1').one()
         assoc1 = TypeFieldAssociation.query.filter_by(iid=1).one()
         assoc2 = TypeFieldAssociation.query.filter_by(iid=2).one()
         assert type1.fields == [assoc1, assoc2]
@@ -56,53 +57,53 @@ def test_relationship(app):
         assert assoc2.field is field2
 
 
-def test_unique_constraint(app_empty):
+def test_unique_constraint(app_empty: Flask) -> None:
     # A type cannot have multiple same field.
     app = app_empty
     with app.app_context():
-        field1 = Field(name="field1", type_=FieldType.UnicodeText)
+        field1 = Field(name='field1', type_=FieldType.UnicodeText)
         assoc1 = TypeFieldAssociation(field=field1)
         assoc2 = TypeFieldAssociation(field=field1)
-        type1 = ProductType(name="type1", fields=[assoc1, assoc2])
+        type1 = ProductType(name='type1', fields=[assoc1, assoc2])
         sa.session.add(type1)
         with pytest.raises(exc.IntegrityError):
             sa.session.commit()
 
 
-def test_cascade_deleting_type(app):
-    """test delete a type
+def test_cascade_deleting_type(app: Flask) -> None:
+    '''test delete a type
 
     When a type is deleted, its associations should be automatically
     deleted while the fields themselves should still exist.
 
-    """
+    '''
 
     with app.app_context():
-        type1 = ProductType.query.filter_by(name="type1").one()
+        type1 = ProductType.query.filter_by(name='type1').one()
         sa.session.delete(type1)
         sa.session.commit()
 
     with app.app_context():
-        assert ProductType.query.filter_by(name="type1").one_or_none() is None
-        assert Field.query.filter_by(name="field1").one()
-        assert Field.query.filter_by(name="field2").one()
+        assert ProductType.query.filter_by(name='type1').one_or_none() is None
+        assert Field.query.filter_by(name='field1').one()
+        assert Field.query.filter_by(name='field2').one()
         associations = TypeFieldAssociation.query.all()
         assert not associations  # emtpy
 
 
-def test_cascade_updating_type(app):
+def test_cascade_updating_type(app: Flask) -> None:
     with app.app_context():
-        type1 = ProductType.query.filter_by(name="type1").one()
+        type1 = ProductType.query.filter_by(name='type1').one()
 
-        type1.fields = [f for f in type1.fields if f.field.name == "field2"]
+        type1.fields = [f for f in type1.fields if f.field.name == 'field2']
         # remove field1
 
         sa.session.commit()
 
     with app.app_context():
-        field1 = Field.query.filter_by(name="field1").one()
-        field2 = Field.query.filter_by(name="field2").one()
-        type1 = ProductType.query.filter_by(name="type1").one()
+        field1 = Field.query.filter_by(name='field1').one()
+        field2 = Field.query.filter_by(name='field2').one()
+        type1 = ProductType.query.filter_by(name='type1').one()
         association2 = TypeFieldAssociation.query.filter_by(type_=type1, field=field2).one()  # fmt: skip
         assert type1.fields == [association2]
         assert field1.entry_types == []
@@ -114,19 +115,19 @@ def test_cascade_updating_type(app):
         # association1 is deleted from the DB
 
 
-def test_nullable_deleting_field(app):
-    """test delete a field
+def test_nullable_deleting_field(app: Flask) -> None:
+    '''test delete a field
 
     A field cannot be deleted if it is associated
 
-    """
+    '''
 
     with app.app_context():
-        field1 = Field.query.filter_by(name="field1").one()
+        field1 = Field.query.filter_by(name='field1').one()
         sa.session.delete(field1)
         with pytest.raises(exc.IntegrityError):
             sa.session.commit()
 
     with app.app_context():
-        field1 = Field.query.filter_by(name="field1").one()
+        field1 = Field.query.filter_by(name='field1').one()
         assert field1.entry_types

@@ -1,11 +1,12 @@
 import pytest
+from flask import Flask
 
 from acondbs.db.sa import sa
 from acondbs.models import GitHubOrg, GitHubOrgMembership, GitHubUser
 
 
 @pytest.fixture
-def app(app_empty):
+def app(app_empty: Flask) -> Flask:
     y = app_empty
 
     org1 = GitHubOrg(login="org1", git_hub_id="012:Organization1")
@@ -15,4 +16,5 @@ def app(app_empty):
     with y.app_context():
         sa.session.add(membership)
         sa.session.commit()
-    yield y
+
+    return y

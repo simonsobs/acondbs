@@ -1,47 +1,48 @@
 import datetime
 
 import pytest
+from flask import Flask
 
 from acondbs.db.sa import sa
 from acondbs.models import Field, FieldType, Product, ProductType, TypeFieldAssociation
 
 
 @pytest.fixture
-def app(app_empty):
+def app(app_empty: Flask) -> Flask:
     y = app_empty
 
     # create fields
-    field1 = Field(name="attr1", type_=FieldType.UnicodeText)
-    field2 = Field(name="date_produced", type_=FieldType.Date)
-    field3 = Field(name="time_posted", type_=FieldType.DateTime)
+    field1 = Field(name='attr1', type_=FieldType.UnicodeText)
+    field2 = Field(name='date_produced', type_=FieldType.Date)
+    field3 = Field(name='time_posted', type_=FieldType.DateTime)
     fields = [field1, field2, field3]
 
     # create product types
     Map = ProductType(
         type_id=1,
-        name="map",
+        name='map',
         order=2,
-        indef_article="a",
-        singular="map",
-        plural="maps",
-        icon="mdi-map",
+        indef_article='a',
+        singular='map',
+        plural='maps',
+        icon='mdi-map',
         fields=[TypeFieldAssociation(field=f) for f in fields],
     )
     Beam = ProductType(
         type_id=2,
-        name="beam",
+        name='beam',
         order=1,
-        indef_article="a",
-        singular="beam",
-        plural="beams",
-        icon="mdi-spotlight-beam",
+        indef_article='a',
+        singular='beam',
+        plural='beams',
+        icon='mdi-spotlight-beam',
         fields=[TypeFieldAssociation(field=f) for f in fields],
     )
 
     # create products
-    map1 = Product(product_id=1, name="map1", type_=Map)
+    map1 = Product(product_id=1, name='map1', type_=Map)
     values = (
-        "value1",
+        'value1',
         datetime.date(2020, 2, 1),
         datetime.datetime(2020, 2, 1, 9, 10, 25),
     )
@@ -53,9 +54,9 @@ def app(app_empty):
             value=value,
         )
 
-    map2 = Product(product_id=2, name="map2", type_=Map)
+    map2 = Product(product_id=2, name='map2', type_=Map)
     values = (
-        "value2",
+        'value2',
         datetime.date(2020, 2, 10),
         datetime.datetime(2020, 2, 10, 13, 20, 2),
     )
@@ -67,9 +68,9 @@ def app(app_empty):
             value=value,
         )
 
-    map3 = Product(product_id=3, name="map3", type_=Map)
+    map3 = Product(product_id=3, name='map3', type_=Map)
     values = (
-        "value3",
+        'value3',
         datetime.date(2020, 3, 19),
         datetime.datetime(2020, 3, 20, 8, 45, 30),
     )
@@ -81,9 +82,9 @@ def app(app_empty):
             value=value,
         )
 
-    beam1 = Product(product_id=4, name="beam1", type_=Beam)
+    beam1 = Product(product_id=4, name='beam1', type_=Beam)
     values = (
-        "value4",
+        'value4',
         datetime.date(2020, 2, 5),
         datetime.datetime(2020, 2, 5, 12, 3, 48),
     )
@@ -95,9 +96,9 @@ def app(app_empty):
             value=value,
         )
 
-    beam2 = Product(product_id=5, name="beam2", type_=Beam)
+    beam2 = Product(product_id=5, name='beam2', type_=Beam)
     values = (
-        "value5",
+        'value5',
         datetime.date(2020, 3, 4),
         datetime.datetime(2020, 3, 4, 19, 22, 5),
     )
@@ -114,4 +115,4 @@ def app(app_empty):
         sa.session.add(Beam)
         sa.session.commit()
 
-    yield y
+    return y

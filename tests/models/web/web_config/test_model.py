@@ -1,18 +1,20 @@
 import json
 
+from flask import Flask
+
 from acondbs.db.sa import sa
 from acondbs.models import WebConfig
 
 SAMPLE_CONFIG_JSON = json.dumps(
     {
-        "head_title": "Head Title",
-        "toolbar_title": "Toolbar Title",
+        'head_title': 'Head Title',
+        'toolbar_title': 'Toolbar Title',
     },
     indent=2,
 )
 
 
-def test_column(app_empty):
+def test_column(app_empty: Flask) -> None:
     app = app_empty
 
     with app.app_context():
@@ -27,7 +29,7 @@ def test_column(app_empty):
         assert model.json == SAMPLE_CONFIG_JSON
 
 
-def test_repr(app_empty):
+def test_repr(app_empty: Flask) -> None:
     app = app_empty
 
     model = WebConfig(json=SAMPLE_CONFIG_JSON)
