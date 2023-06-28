@@ -39,6 +39,7 @@ jobs:
           pip install --upgrade pip
           pip install -e '.[tests]'
           pip install --upgrade mypy
+          mypy --install-type
           pip list
 
       - name: Run mypy
