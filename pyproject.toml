@@ -47,6 +47,14 @@ tests = [
     "snapshottest>=0.6",
     "sqlparse",
 ]
+types = [
+    "types-Flask-Cors>=3.0",
+    "types-Flask-Migrate>=4.0",
+    "types-Flask-SQLAlchemy>=2.5",
+    "types-requests>=2.31",
+    "types-SQLAlchemy>=1.4",
+    "types-urllib3>=1.26",
+]
 
 [project.urls]
 Homepage = "https://github.com/simonsobs/acondbs"
