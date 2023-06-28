@@ -1,18 +1,21 @@
 import unittest.mock as mock
 
 import pytest
+from snapshottest.pytest import PyTestSnapshotTest
 
 from acondbs.github.call import exchange_code_for_token
 
 
 @pytest.fixture(autouse=True)
-def mock_requests(monkeypatch):
+def mock_requests(monkeypatch: pytest.MonkeyPatch) -> mock.Mock:
+    from acondbs.github import call
+
     y = mock.Mock()
-    monkeypatch.setattr("acondbs.github.call.requests", y)
-    yield y
+    monkeypatch.setattr(call, 'requests', y)
+    return y
 
 
-def test_success(mock_requests, snapshot):
+def test_success(mock_requests: mock.Mock, snapshot: PyTestSnapshotTest) -> None:
     code = 'code-xyz'
 
     token_url = 'https://github.com/login/oauth/access_token'
@@ -35,7 +38,7 @@ def test_success(mock_requests, snapshot):
     snapshot.assert_match(mock_requests.post.call_args_list)
 
 
-def test_error(mock_requests, snapshot):
+def test_error(mock_requests: mock.Mock, snapshot: PyTestSnapshotTest) -> None:
     code = 'code-xyz'
 
     token_url = 'https://github.com/login/oauth/access_token'
