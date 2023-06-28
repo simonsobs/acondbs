@@ -1,5 +1,5 @@
-"""Throttle function executions
-"""
+'''Throttle function executions
+'''
 import functools
 import queue
 import threading
@@ -8,7 +8,7 @@ from typing import Any, Callable
 
 
 class cap_exec_rate:
-    """cap the execution rate of a function
+    '''cap the execution rate of a function
 
     This class prevents a function from being executed too often. This
     class executes a function in another thread. Once it executes a
@@ -40,7 +40,7 @@ class cap_exec_rate:
         stopped at the end of Python program; the function that has
         been called but not executed will not be executed.
 
-    """
+    '''
 
     def __init__(
         self, func: Callable[[], Any], pause_time: float = 1.0, daemon: bool = False
@@ -57,20 +57,20 @@ class cap_exec_rate:
         self.machine.start()
 
     def __call__(self) -> None:
-        """call the function
+        '''call the function
 
         The number of executions of the function is capped
-        """
+        '''
         self.queue.put(Message.FUNC_CALLED)
 
     def end(self) -> None:
-        """end using this class
+        '''end using this class
 
         The function will be executed immediately if it is waiting for
         the timer. This method returns after the function is executed
         and the thread joins.
 
-        """
+        '''
         self.queue.put(Message.EXIT)
         self.machine.join()
 
@@ -82,7 +82,7 @@ class Message(Enum):
 
 
 class Config:
-    """Configuration of the state"""
+    '''Configuration of the state'''
 
     def __init__(
         self, func: Callable[[], Any], queue: queue.Queue[Message], pause_time: float
@@ -93,14 +93,14 @@ class Config:
 
 
 def state_machine(config: Config) -> None:
-    """the entry function to be executed in a thread"""
+    '''the entry function to be executed in a thread'''
     state: State = Active(config)
     while not state.end:
         state = state()
 
 
 class State:
-    """The base class of the states"""
+    '''The base class of the states'''
 
     end: bool = False
 
@@ -129,11 +129,11 @@ class State:
 
 
 class Active(State):
-    """Active state
+    '''Active state
 
     The timer is not running. The function can be executed immediately
     if it is called.
-    """
+    '''
 
     end = False
 
@@ -153,11 +153,11 @@ def timer_end(queue: queue.Queue[Message]) -> None:
 
 
 class Pause(State):
-    """Pause state. The function has not been called
+    '''Pause state. The function has not been called
 
     The timer is running. The function has not been called. It won't
     be executed immediately when it is called.
-    """
+    '''
 
     end = False
 
@@ -180,11 +180,11 @@ class Pause(State):
 
 
 class PauseCalled(State):
-    """Pause state. The function has been called
+    '''Pause state. The function has been called
 
     The timer is running. The function has been called. The function
     won't be executed until the timer goes off.
-    """
+    '''
 
     end = False
 
@@ -206,7 +206,7 @@ class PauseCalled(State):
 
 
 class Exit(State):
-    """Exit state"""
+    '''Exit state'''
 
     end = True
 

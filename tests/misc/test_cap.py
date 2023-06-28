@@ -7,24 +7,24 @@ from acondbs.misc.cap import State, cap_exec_rate
 
 
 class Task:
-    def __init__(self):
+    def __init__(self) -> None:
         self.counter = 0
 
-    def __call__(self):
+    def __call__(self) -> None:
         self.counter += 1
 
 
-def test_init():
+def test_init() -> None:
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1)
-    assert cap.func is task
+    assert cap.func is task  # type: ignore
     assert 0.1 == cap.pause_time
     assert not cap.daemon
     cap.end()
     assert 0 == task.counter
 
 
-def test_daemon():
+def test_daemon() -> None:
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1, daemon=True)
     assert cap.daemon
@@ -32,7 +32,7 @@ def test_daemon():
     assert 0 == task.counter
 
 
-def test_call():
+def test_call() -> None:
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1)
     cap()
@@ -41,7 +41,7 @@ def test_call():
     cap.end()
 
 
-def test_call_2():
+def test_call_2() -> None:
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.05)
     cap()
@@ -52,7 +52,7 @@ def test_call_2():
     cap.end()
 
 
-def test_call_3():
+def test_call_3() -> None:
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=0.1)
     cap()  # executed immediately
@@ -67,7 +67,7 @@ def test_call_3():
     cap.end()
 
 
-def test_call_4():
+def test_call_4() -> None:
     task = Task()
     cap = cap_exec_rate(func=task, pause_time=10)
     cap()  # executed immediately
@@ -81,7 +81,7 @@ def test_call_4():
     assert 2 == task.counter
 
 
-def test_state_raise():
+def test_state_raise() -> None:
     config = mock.Mock()
     config.queue.get().return_value = 'unknown message'
     state = State(config)

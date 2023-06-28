@@ -1,14 +1,11 @@
-import unittest.mock as mock
-from pathlib import Path
-
 import pytest
 
 from acondbs.misc.lock import TimeOutAcquiringLock, lock
 
 
-def test_acquire_release(tmpdir_factory):
-    folder = Path(tmpdir_factory.mktemp('lock'))
-    lock_file = folder.joinpath('.lock')
+def test_acquire_release(tmp_path_factory: pytest.TempPathFactory) -> None:
+    folder = tmp_path_factory.mktemp('lock')
+    lock_file = folder / '.lock'
 
     l = lock(lock_file)
     assert not l.locked
@@ -20,9 +17,9 @@ def test_acquire_release(tmpdir_factory):
     assert not lock_file.exists()
 
 
-def test_release_when_not_lockded(tmpdir_factory):
-    folder = Path(tmpdir_factory.mktemp('lock'))
-    lock_file = folder.joinpath('.lock')
+def test_release_when_not_locked(tmp_path_factory: pytest.TempPathFactory) -> None:
+    folder = tmp_path_factory.mktemp('lock')
+    lock_file = folder / '.lock'
 
     l = lock(lock_file)
     assert not l.locked
@@ -31,9 +28,11 @@ def test_release_when_not_lockded(tmpdir_factory):
     assert not lock_file.exists()
 
 
-def test_release_not_delete_when_not_lockded(tmpdir_factory):
-    folder = Path(tmpdir_factory.mktemp('lock'))
-    lock_file = folder.joinpath('.lock')
+def test_release_not_delete_when_not_locked(
+    tmp_path_factory: pytest.TempPathFactory,
+) -> None:
+    folder = tmp_path_factory.mktemp('lock')
+    lock_file = folder / '.lock'
 
     lock_file.touch()
 
@@ -44,11 +43,11 @@ def test_release_not_delete_when_not_lockded(tmpdir_factory):
     assert lock_file.exists()
 
 
-def test_acquire_timeout(tmpdir_factory):
+def test_acquire_timeout(tmp_path_factory: pytest.TempPathFactory) -> None:
     timeout = 0.1  # sec
 
-    folder = Path(tmpdir_factory.mktemp('lock'))
-    lock_file = folder.joinpath('.lock')
+    folder = tmp_path_factory.mktemp('lock')
+    lock_file = folder / '.lock'
 
     lock_file.touch()
 
@@ -58,9 +57,9 @@ def test_acquire_timeout(tmpdir_factory):
         l.acquire()
 
 
-def test_with_success(tmpdir_factory):
-    folder = Path(tmpdir_factory.mktemp('lock'))
-    lock_file = folder.joinpath('.lock')
+def test_with_success(tmp_path_factory: pytest.TempPathFactory) -> None:
+    folder = tmp_path_factory.mktemp('lock')
+    lock_file = folder / '.lock'
 
     with lock(lock_file) as l:
         assert l.locked
